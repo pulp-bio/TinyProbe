@@ -1,0 +1,37 @@
+# Libero
+project/designer/
+project/synthesis/
+project/tooldata/
+project/simulation/
+project/smartgen/
+project/constraint/io/pre
+.vscode/
+*.digest
+*.def
+*~
+*.aux
+*.log
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.synctex.gz
+*.toc
+*.bak
+
+# Sim files
+wave.do
+modelsim.ini
+*.wlf
+
+# Cocotb gitignore
+*.vcd
+results.xml
+**__pycache__/
+**sim_build/
+**work/
+*.mti
+*.vstf
+modelsim.ini
+transcript
