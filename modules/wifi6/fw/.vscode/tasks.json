@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "flash",
+            "type": "shell",
+            "command": "C:/SiliconLabs/SimplicityStudio/v5/developer/adapter_packs/commander/commander.exe",
+            "args": [
+                "flash",
+                "${workspaceFolder}/${workspaceFolderBasename}_cmake/build/default_config/${workspaceFolderBasename}.hex"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

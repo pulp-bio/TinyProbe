@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<device:XMLDevice xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:device="http://www.silabs.com/ss/hwconfig/document/device.ecore" name="pin_tool.siwg917m111mgtba" partId="mcu.arm.wfm.siwg917m111mgtba" contextId="com.silabs.sdk.stack.sisdk:2024.12.0._-2049764802">
+  <mode name="DefaultMode">
+    <property object="DefaultMode" propertyId="mode.diagramLocation" value="100, 100"/>
+    <property object="GSPI_MASTER" propertyId="ABModule.selectedRequirement" value="gspi_master%T%SL_GSPI_MASTER%T%sl_si91x_gspi_common_config.h"/>
+    <property object="GSPI_MASTER" propertyId="ABPeripheral.included" value="true"/>
+    <property object="GSPI_MASTER" propertyId="peripheral.name" value=""/>
+    <property object="PORTIO" propertyId="portio.gspi_master.location.cs0_" value="7"/>
+    <property object="PORTIO" propertyId="portio.gspi_master.location.miso_" value="22"/>
+    <property object="PORTIO" propertyId="portio.gspi_master.location.mosi_" value="17"/>
+    <property object="PORTIO" propertyId="portio.gspi_master.location.sck_" value="1"/>
+    <property object="SSI_MASTER" propertyId="ABModule.selectedRequirement" value="ssi_master%T%SL_SSI_MASTER%T%sl_si91x_ssi_primary_config.h"/>
+    <property object="SSI_MASTER" propertyId="ABPeripheral.included" value="true"/>
+  </mode>
+  <modeTransition>
+    <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.source" value="RESET"/>
+    <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.target" value="DefaultMode"/>
+  </modeTransition>
+</device:XMLDevice>

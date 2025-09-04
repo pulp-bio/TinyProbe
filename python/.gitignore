@@ -1,0 +1,5 @@
+.ruff_cache/
+.venv/
+**/__pycache__/
+.ipynb_checkpoints/
+*.log
