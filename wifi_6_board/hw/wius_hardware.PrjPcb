@@ -474,6 +474,23 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=OFDGRPEV
 
+[Document26]
+DocumentPath=wius.PCBDwf
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=FSGDULIK
+
 [ProjectVariant1]
 UniqueID=B546CDB7-DDD9-4291-8532-59B77C75CD41
 Description=mcu_1v8_from_tinyprobe
@@ -531,7 +548,71 @@ DocumentPath=Project Outputs for wius_hardware\BOM\Bill of Materials-ActiveBOM.x
 DItemRevisionGUID=
 
 [GeneratedDocument3]
+DocumentPath=docs\Bill of Materials-wius_hardware(mcu_1v8_from_tinyprobe).xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=fabrication_files\BOM\Bill of Materials-wius_hardware(mcu_1v8_from_tinyprobe).xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=docs\BOM\Copy of Bill of Materials-wius_hardware(mcu_1v8_from_tinyprobe).xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument6]
 DocumentPath=Project Outputs for wius_hardware\Design Rule Check - wius.html
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=docs\Pick Place for wius(mcu_1v8_from_tinyprobe).txt
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=fabrication_files\Pick Place\Pick Place for wius(mcu_1v8_from_tinyprobe).txt
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=docs\wius.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=fabrication_files\NC Drill\wius.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=docs\wius.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=fabrication_files\Gerber\wius.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=docs\wius.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=fabrication_files\NC Drill\wius.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=docs\wius.REP
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=fabrication_files\Gerber\wius.REP
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=docs\wius.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=fabrication_files\NC Drill\wius.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=docs\wius_bom.xlsx
 DItemRevisionGUID=
 
 [Parameter1]
