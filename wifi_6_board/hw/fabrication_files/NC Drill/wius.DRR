@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: wius.PcbDoc   07.09.2025  23:51:27
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : wius.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      0.15mm (6mil)                                             Round             300       PTH        475.31mm (18.71inch)
+T2      0.3mm (12mil)                                             Round             37        PTH        138.60mm (5.46inch)
+T3      0.7mm (28mil)                                             Round             6         PTH        8.17mm (0.32inch)
+T4      2.4mm (94mil)                                             Round             4         PTH        92.00mm (3.62inch)
+T5      1.1mm (43mil)                                             Round             1         NPTH       0.00mm (0.00inch)
+T6      1.6mm (63mil)                                             Round             1         NPTH       0.00mm (0.00inch)
+T7      3.7mm (146mil)                                            Round             1         NPTH       0.00mm (0.00inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              350
+
+Total Processing Time (hh:mm:ss) : 00:00:00
