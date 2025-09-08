@@ -1,28 +1,23 @@
 # TinyProbe Python API
 
-## System Overview
+High‑level Python tooling to set up, connect to, and stream data from TinyProbe.
 
-```mermaid
-graph TD
-    direction TB
+## Requirements
 
-    subgraph Z[Low-Level Drivers]
-        A[FPGA]
-        B[TX7332]
-        C[AFE5832LP]
-    end
+The development of the Python API was done with [uv](https://astral.sh/uv/) as the Python package and project manager.
 
-    subgraph Y[HAL Drivers]
-        FPGA
-        TX7332
-        AFE5832LP
-    end
+Please download and [install](https://docs.astral.sh/uv/#installation) uv first.
 
-    Y --> Z
-    Y --> X[Commands]
-
-    W[Configurator] --> Y
-    W --> X
-
-    V[Command Queue] --> W
+To then set up the environment, run
+```bash
+uv sync
 ```
+In this directory (where `uv.lock` and `pyproject.toml` are located). This will create a virtual environment (default: `.venv`) and install the needed Python version and dependencies.
+
+## Notebook
+
+The API is best used in a Jupyter notebook. To start one, run
+```bash
+uv run jupyter notebook
+```
+in this directory and open the notebook `main.ipynb`.

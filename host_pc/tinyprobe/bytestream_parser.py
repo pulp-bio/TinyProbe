@@ -17,8 +17,7 @@ limitations under the License.
 """
 
 import numpy as np
-from matplotlib import pyplot as plt
-from math import *
+from math import floor, ceil
 
 MAX_FIFO_SIZE = 2048
 

@@ -1,4 +1,6 @@
 import time
+import logging
+from typing import Optional
 
 from tinyprobe.protocol.commands import TinyProbeCmdSeq, TriggerShot
 from tqdm import tqdm
@@ -7,7 +9,14 @@ TP_COM_PACKET_BASE_SIZE = 1000
 
 
 class TPCom:
-    def __init__(self, packet_size: int):
+    def __init__(self, packet_size: int, log: Optional[int | logging.Logger] = None):
+        if isinstance(log, logging.Logger):
+            self._log = log
+        else:
+            self._log = logging.getLogger(self.__class__.__name__)
+            if isinstance(log, int):
+                self._log.setLevel(log)
+
         self.packet_size = packet_size
         self.connected = False
 
@@ -27,7 +36,11 @@ class TPCom:
         raise NotImplementedError(f"{self.__class__.__name__}/receive\tNot implemented")
 
     def send_cmd_seq(self, cmd_seq: TinyProbeCmdSeq, sleep_s: int = 1) -> bool:
-        packets = cmd_seq.get_formatted_packets()[0]
+        packets = cmd_seq.get_formatted_packets()
+        if packets is None:
+            self._log.warning("Failed to get formatted packets")
+            return False
+        packets = packets[0]
 
         n_shots_rx = 0
         for cmd in cmd_seq.cmd_list:
@@ -36,12 +49,12 @@ class TPCom:
 
         for packet in packets:
             if not self.send(packet):
-                print("[TP/Com/send]\tFailed to send packet")
+                self._log.warning("Failed to send packet")
                 return False
             if sleep_s is not None:
                 time.sleep(sleep_s)
 
-        print("[TP/Com/send]\tSent", len(packets), "packet(s)")
+        self._log.info(f"Sent {len(packets)} packet(s)")
         return True
 
     def receive_shots(
@@ -52,8 +65,7 @@ class TPCom:
         bytes_total = b""
 
         start_time = time.time()
-
-        indicator = 0
+        start_time_data = None
 
         concat_packets = (self.packet_size - 2) // TP_COM_PACKET_BASE_SIZE
 
@@ -67,7 +79,7 @@ class TPCom:
             while n_packets_concat > 0:
                 packet = self.receive(self.packet_size)
                 if packet == b"":
-                    print("[TP/Com/recv]\tFailed to receive packet")
+                    self._log.warning("Failed to receive packet")
                     progress_bar.close()
                     return bytes_total, 0
 
@@ -81,9 +93,8 @@ class TPCom:
                     )
                     pkgs_idx_list.append(pkg_idx * concat_packets + i)
 
-                if indicator == 0:
+                if start_time_data is None:
                     start_time_data = time.time()
-                    indicator = 1
 
                 n_packets_concat -= 1
 
@@ -98,12 +109,16 @@ class TPCom:
             bytes_total = bytes_total + packet
 
         if print_stats:
-            print(
-                "[TP/Com/recv]\tReceived:\n"
-                f"[TP/Com/recv]\t  Packet size:            {len(bytes_total) // len(data)} B\n"
-                f"[TP/Com/recv]\t  Number of packets:      {len(data)}\n"
-                f"[TP/Com/recv]\t  Total shot time:        {end_time - start_time:.2f} s\n"
-                f"[TP/Com/recv]\t  Data transmission time: {end_time - start_time_data:.2f} s"
+            self._log.info("Received:")
+            self._log.info(
+                f"  Packet size:            {len(bytes_total) // len(data)} B\n"
             )
+            self._log.info(f"  Number of packets:      {len(data)}\n")
+            self._log.info(f"  Total shot time:        {end_time - start_time:.2f} s\n")
 
-        return bytes_total, (end_time - start_time_data)
+            if start_time_data is not None:
+                self._log.info(
+                    f"  Data transmission time: {end_time - start_time_data:.2f} s"
+                )
+
+        return bytes_total, (end_time - start_time_data) if start_time_data else -1

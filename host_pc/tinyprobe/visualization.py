@@ -19,32 +19,53 @@ limitations under the License.
 
 import plotly.graph_objects as go
 import numpy as np
-from plotly import tools
-from plotly.graph_objs import Layout, YAxis, Scatter, Annotation, Annotations, Data, Figure, Marker, Font
+from plotly.graph_objs import (
+    Layout,
+    YAxis,
+    Scatter,
+    Annotation,
+    Annotations,
+    Data,
+    Figure,
+    Font,
+)
+
 
 def plot_channels(rf_data, f_sampling, channels_list):
+    time = np.arange(0, rf_data.shape[0]) / f_sampling
 
-    time = np.arange(0, rf_data.shape[0])/f_sampling
-
-    step = 1. / len(channels_list)
-    kwargs = dict(domain=[0, 0 + step], showticklabels=False, zeroline=False, showgrid=False)
+    step = 1.0 / len(channels_list)
+    kwargs = dict(
+        domain=[0, 0 + step], showticklabels=False, zeroline=False, showgrid=False
+    )
 
     # create objects for layout and traces
     layout = Layout(yaxis=YAxis(kwargs), showlegend=False)
     traces = [Scatter(x=time, y=rf_data[:, channels_list[0]])]
 
     # loop over the channels
-    for ii in range(1,len(channels_list)):
-            kwargs.update(domain=[0 + ii * step, 0 + (ii + 1) * step])
-            layout.update({'yaxis%d' % (ii + 1): YAxis(kwargs), 'showlegend': False})
-            traces.append(Scatter(x=time, y=rf_data[:, channels_list[ii]], yaxis='y%d' % (ii + 1)))
+    for ii in range(1, len(channels_list)):
+        kwargs.update(domain=[0 + ii * step, 0 + (ii + 1) * step])
+        layout.update({"yaxis%d" % (ii + 1): YAxis(kwargs), "showlegend": False})
+        traces.append(
+            Scatter(x=time, y=rf_data[:, channels_list[ii]], yaxis="y%d" % (ii + 1))
+        )
 
     # add channel names using Annotations
-    annotations = Annotations([Annotation(x=-0.06, y=0, xref='paper', yref='y%d' % (ii + 1),
-                                          text=ch_name, 
-                                          font=Font(size=12), 
-                                          showarrow=False)
-                              for ii, ch_name in enumerate(["Ch. " + str(i) for i in channels_list])])
+    annotations = Annotations(
+        [
+            Annotation(
+                x=-0.06,
+                y=0,
+                xref="paper",
+                yref="y%d" % (ii + 1),
+                text=ch_name,
+                font=Font(size=12),
+                showarrow=False,
+            )
+            for ii, ch_name in enumerate(["Ch. " + str(i) for i in channels_list])
+        ]
+    )
     layout.update(annotations=annotations)
 
     # set the size of the figure and plot it
@@ -53,23 +74,21 @@ def plot_channels(rf_data, f_sampling, channels_list):
     fig.show()
 
 
-
 def plot_trace(data, channel_number, f_sampling):
-    
-    time = np.arange(0, data.shape[0])/f_sampling
+    time = np.arange(0, data.shape[0]) / f_sampling
     value = data[:, channel_number]
-    
+
     # Create plot
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=time, y=value,
-                        mode='lines+markers',
-                        name='lines'))
-    
+    fig.add_trace(go.Scatter(x=time, y=value, mode="lines+markers", name="lines"))
+
     # Edit the layout
-    fig.update_layout(title='Data from channel ' + str(channel_number),
-                      xaxis_title='Time',
-                      yaxis_title='Signal')
+    fig.update_layout(
+        title="Data from channel " + str(channel_number),
+        xaxis_title="Time",
+        yaxis_title="Signal",
+    )
 
     fig.show()
-    
+
     return

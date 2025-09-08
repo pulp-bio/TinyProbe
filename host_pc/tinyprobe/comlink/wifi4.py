@@ -18,6 +18,8 @@ limitations under the License.
 """
 
 import socket
+import logging
+from typing import Optional
 
 from tinyprobe.comlink import TPCom
 
@@ -32,8 +34,9 @@ class TPComWiFi4(TPCom):
         port: int = 50007,
         packet_size: int = 1002,
         timeout: int = 5,
+        log: Optional[int | logging.Logger] = None,
     ):
-        super().__init__(packet_size)
+        super().__init__(packet_size, log=log)
 
         self.ip = ip
         self.port = port
@@ -47,9 +50,9 @@ class TPComWiFi4(TPCom):
             self.socket.bind(("", self.port))
             self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, int(20 * 1e8))
             self.connected = True
-            print(f"[TP/Com/WiFi4/open]\tConnected to {self.ip}:{self.port}")
+            self._log.info(f"Bound to {self.ip}:{self.port}")
         except Exception as e:
-            print(f"[TP/Com/WiFi4/open]\tFailed to connect: {e}")
+            self._log.error(f"Failed to bind: {e}")
             self.socket = None
             self.connected = False
 
@@ -59,25 +62,25 @@ class TPComWiFi4(TPCom):
         if self.socket:
             self.socket.close()
             self.connected = False
-            print(f"[TP/Com/WiFi4/close]\tDisconnected from {self.ip}:{self.port}")
+            self._log.info(f"Disconnected from {self.ip}:{self.port}")
         else:
-            print("[TP/Com/WiFi4/close]\tNo active connection to disconnect.")
+            self._log.warning("No active connection to disconnect.")
 
     def send(self, data: bytes) -> bool:
         if not self.connected:
-            print("[TP/Com/WiFi4/send]\tNot connected. Cannot send data.")
+            self._log.warning("Not connected. Cannot send data.")
             return False
 
         try:
             self.socket.sendto(data, (self.ip, self.port))
             return True
         except Exception as e:
-            print(f"[TP/Com/WiFi4/send]\tFailed to send data: {e}")
+            self._log.error(f"Failed to send data: {e}")
             return False
 
     def receive(self, length: int) -> bytes:
         if not self.connected:
-            print("[TP/Com/WiFi4/recv]\tNot connected. Cannot receive data.")
+            self._log.warning("Not connected. Cannot receive data.")
             return b""
 
         try:
@@ -91,15 +94,15 @@ class TPComWiFi4(TPCom):
                 to_receive -= len(chunk)
 
                 if addr != (self.ip, self.port):
-                    print(
-                        f"[TP/Com/WiFi4/recv]\tReceived data from unexpected address: {addr}, expected {(self.ip, self.port)}"
+                    self._log.warning(
+                        f"Received data from unexpected address: {addr}, expected {(self.ip, self.port)}"
                     )
 
             return received_bytes
 
         except socket.timeout:
-            print("[TP/Com/WiFi4/recv]\tReceive timed out.")
+            self._log.warning("Receive timed out.")
             return b""
         except Exception as e:
-            print(f"[TP/Com/WiFi4/recv]\tFailed to receive data: {e}")
+            self._log.error(f"Failed to receive data: {e}")
             return b""

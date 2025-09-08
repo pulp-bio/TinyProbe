@@ -17,17 +17,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from enum import IntEnum
 import time
 import logging
 from queue import Queue
 import attr
+from typing import Optional
 
 import numpy as np
 
 from tinyprobe.comlink import TPCom
 from tinyprobe.protocol.commands import TinyProbeCmdSeq
-from tinyprobe.visualizer import TPVisualizer
 
 
 class TPExecBase:
@@ -56,28 +55,12 @@ class TPExecWait(TPExecBase):
 
 
 @attr.s(auto_attribs=True, kw_only=True, frozen=True, slots=True)
-class TPExecVis(TPExecBase):
-    class Mode(IntEnum):
-        NOP = 0
-        PLOT_CHANNELS = 1
-        PLOT_TRACE = 2
-        LIVE_PLOT_START = 3
-        LIVE_PLOT_STOP = 4
-
-    name: str = attr.ib(default="VIS", init=False)
-
-    mode: int = attr.ib(default=0)
-    settings: dict = attr.ib(default={}, repr=lambda x: f"settings=<{len(x)} items>")
-
-
-@attr.s(auto_attribs=True, kw_only=True, frozen=True, slots=True)
 class TPExecRecv(TPExecBase):
     name: str = attr.ib(default="RECV", init=False)
 
     n_packets: int = attr.ib(default=1)
     n_shots: int = attr.ib(default=1)
     print_stats: bool = attr.ib(default=True)
-    push: bool = attr.ib(default=True)
 
 
 @attr.s(auto_attribs=True, kw_only=True, frozen=True, slots=True)
@@ -98,26 +81,26 @@ class TPExecSave(TPExecBase):
 
 
 class TPExecutor:
-    def __init__(self, log: int = logging.WARNING) -> None:
-        self._log = logging.getLogger("TP/Exe") if log is not None else None
-        if log is not None:
-            self._log.setLevel(log)
+    def __init__(self, log: Optional[int | logging.Logger] = None) -> None:
+        if isinstance(log, logging.Logger):
+            self._log = log
+        else:
+            self._log = logging.getLogger(self.__class__.__name__)
+            if isinstance(log, int):
+                self._log.setLevel(log)
 
         self._cmds = {
             "NOP": self._cmd_nop,
             "SEND": self._cmd_send,
             "WAIT": self._cmd_wait,
-            "VIS": self._cmd_vis,
             "RECV": self._cmd_recv,
-            "PUSH": self._cmd_push,
             "SAVE": self._cmd_save,
         }
 
         self._command_queue: Queue = Queue()
         self._data: bytes = b""
 
-        self._com_link: TPCom = None
-        self._visualizer: TPVisualizer = TPVisualizer()
+        self._com_link: Optional[TPCom] = None
 
     def set_com_link(self, com_link: TPCom):
         """Set the communication link for the executor.
@@ -185,6 +168,7 @@ class TPExecutor:
         while not self._command_queue.empty():
             command = self._command_queue.get()
             self._log.debug(f"Executing {command}")
+            result = None
             try:
                 result = self._cmds[command.name](command)
             except Exception as e:
@@ -197,7 +181,7 @@ class TPExecutor:
             results.append(result)
 
         if keep_queue:
-            for item in queue_copy:
+            for item in queue_copy:  # type: ignore since this is guarded by if keep_queue
                 self._command_queue.put(item)
             self._log.debug("Command queue preserved after execution.")
 
@@ -246,33 +230,6 @@ class TPExecutor:
         """
         return input(command.prompt)
 
-    def _cmd_vis(self, command: TPExecVis) -> None:
-        """Configure visualization.
-
-        Arguments:
-            command (TPExecVis): The command to execute.
-
-        Returns:
-            None
-        """
-        self._log.debug(f"{command.name} applying {command.settings}")
-        self._visualizer.configure(command.settings)
-
-        self._log.debug(f"{command.name} mode {command.mode}")
-        match command.mode:
-            case TPExecVis.Mode.NOP:
-                pass  # No operation for mode 0
-            case TPExecVis.Mode.PLOT_CHANNELS:
-                self._visualizer.plot_channels()
-            case TPExecVis.Mode.PLOT_TRACE:
-                self._visualizer.plot_trace()
-            case TPExecVis.Mode.LIVE_PLOT_START:
-                self._visualizer.start_live_plot()
-            case TPExecVis.Mode.LIVE_PLOT_STOP:
-                self._visualizer.stop_live_plot()
-            case _:
-                self._log.warning(f"Unknown mode: {command.mode}")
-
     def _cmd_recv(self, command: TPExecRecv) -> tuple[int, float]:
         """Receive data from the communication link.
 
@@ -292,42 +249,15 @@ class TPExecutor:
         self._log.debug(
             f"{command.name} receiving "
             f"{command.n_packets} packets "
-            f"and{command.n_shots} shots. "
+            f"and {command.n_shots} shots. "
             f"Print stats: {command.print_stats}. "
-            f"Push data: {command.push}."
         )
 
         data, elapsed_time = self._com_link.receive_shots(
             command.n_packets, command.n_shots, command.print_stats
         )
 
-        if command.push:
-            self._cmd_push(data)
-
         return len(data), elapsed_time
-
-    def _cmd_push(self, data: bytes | TPExecPush) -> None:
-        """Push data to the internal buffer (for testing purposes).
-
-        Arguments:
-            data (bytes): Data to push.
-
-        Returns:
-            None
-        """
-        if isinstance(data, TPExecPush):
-            data = data.data
-        if not isinstance(data, bytes) and not isinstance(data, np.ndarray):
-            raise ValueError(
-                "Data must be of type bytes or np.ndarray, not", type(data)
-            )
-
-        if not isinstance(data, np.ndarray):
-            # If we pushed parsed data (is of type np.ndarray), we dont want to push it into own data buffer
-            self._data += data
-            self._log.debug(f"Pushed data of size {len(data)}")
-
-        self._visualizer.push_data(data)
 
     def _cmd_save(self, command: TPExecSave) -> None:
         """Save the current data to a file.

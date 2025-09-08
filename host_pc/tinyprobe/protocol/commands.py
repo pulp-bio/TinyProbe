@@ -135,9 +135,6 @@ class TinyProbeCmdSeq(object):
         return
 
     def get_formatted_packets(self, max_packet_size=MAX_CMD_SEQ_SIZE_BYTES):
-        # Temporary packet length in bytes
-        pack_len = 0
-
         self._packets = [bytearray()]
         self._n_cmds = [0]
 

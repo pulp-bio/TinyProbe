@@ -32,8 +32,6 @@ AFE5832LP_TEST_PATTERNS = {
     "ramp": 7,
 }
 
-from tinyprobe.protocol.commands import WriteFPGAReg
-
 
 class TP_HAL_AFE5832LP(TP_HAL):
     def __init__(self):
