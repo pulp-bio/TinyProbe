@@ -1,11 +1,15 @@
-<img src="docs/images/tinyprobe_title.png" alt="TinyProbe main" width="70%"/>
+<img src="docs/images/tinyprobe_title.png" alt="TinyProbe main" width="90%"/>
 
 # TinyProbe v0.1.0
 ### A Wearable 32-Channel Multi-Modal Wireless Ultrasound Probe
 
 ## Introduction
 
-This repository contains work in progress on TinyProbe, an advanced wearable ultrasound platform.
+This repository contains ongoing work on **TinyProbe**, an advanced wearable ultrasound platform developed at the [Integrated Systems Laboratory (IIS)](https://iis.ee.ethz.ch/) of ETH Zurich.  
+
+The system design is described in detail in our publications in the [IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control (TUFFC)](https://ieeexplore.ieee.org/document/10750870) and in the [Proceedings of the IEEE International Ultrasonics Symposium (IUS 2025)](https://2025.ieee-ius.org/).
+
+
 
 ## Specifications
 
@@ -38,11 +42,11 @@ With Wi-Fi 4 shield:
 
 ## TinyProbe System Diagram
 
-<img src="docs/images/tinyprobe_system_diagram_300_dpi.png" alt="TinyProbe System Diagram" width="60%"/>
+<img src="docs/images/tinyprobe_system_diagram_300_dpi.png" alt="TinyProbe System Diagram" width="90%"/>
 
 ## YouTube Overview
 <a href="https://www.youtube.com/watch?v=qGP9-kKss0g">
-  <img src="docs/images/youtube_thumbnail.png" alt="YouTube thumbnail" width="40%">
+  <img src="docs/images/youtube_thumbnail.png" alt="YouTube thumbnail" width="70%">
 </a>
 
 ## Repository Structure
