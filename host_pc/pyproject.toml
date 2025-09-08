@@ -1,0 +1,27 @@
+[project]
+name = "tinyprobe_python_api"
+version = "0.1.0"
+description = "Python API for TinyProbe, a Wearable Ultrasound Probe developed at ETH Zurich."
+readme = "README.md"
+requires-python = ">=3.11.5"
+dependencies = [
+    "cupy-cuda12x>=13.4.1",
+    "h5py==3.9.0",
+    "ipympl>=0.9.7",
+    "ipython==8.20.0",
+    "ipywidgets==8.1.2",
+    "matplotlib==3.8.0",
+    "notebook==7.0.6",
+    "numba==0.59.1",
+    "numpy>=1.26.4",
+    "pandas==2.2.1",
+    "plotly==5.9.0",
+    "rich>=14.0.0",
+    "ruff>=0.11.2",
+    "scapy==2.4.3",
+    "scikit-image>=0.25.2",
+    "scipy==1.12.0",
+    "taichi>=1.7.3",
+    "tqdm>=4.67.1",
+    "warp-lang>=1.7.1",
+]

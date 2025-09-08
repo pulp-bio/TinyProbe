@@ -1,0 +1,23 @@
+{
+    "cmake.configureArgs": [
+        "--preset",
+        "project"
+    ],
+    "cmake.sourceDirectory": "${workspaceFolder}/wius_fw_cmake",
+    "cmake.buildDirectory": "${workspaceFolder}/wius_fw_cmake/build",
+    "cmake.generator": "",
+    "files.associations": {
+        "user.h": "c",
+        "common.h": "c",
+        "wius_spi.h": "c",
+        "wius_gpio.h": "c",
+        "sl_si91x_gspi_config.h": "c",
+        "tp_command.h": "c",
+        "tp_power.h": "c",
+        "sl_net_for_lwip.h": "c",
+        "si91x_device.h": "c",
+        "sl_si91x_power_manager.h": "c",
+        "cmsis_os2.h": "c",
+        "tp_fpga.h": "c"
+    }
+}
