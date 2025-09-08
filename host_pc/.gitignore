@@ -3,3 +3,8 @@
 **/__pycache__/
 .ipynb_checkpoints/
 *.log
+
+# Byte-compiled files
+tinyprobe/compile_ll.py
+tinyprobe/drivers/ll_source_backup/
+!tinyprobe/drivers/ll/*.pyc
