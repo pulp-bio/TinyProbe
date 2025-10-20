@@ -34,7 +34,9 @@
 #include "cmsis_os2.h"
 
 osMutexId_t log_mutex;
-int _log_lost = 0;
+//int _log_lost = 0;
+
+char buffer[64];
 
 sl_status_t log_init(void)
 {
@@ -50,26 +52,24 @@ sl_status_t log_init(void)
 
 void _log_printf(const char *level, uint32_t tick_count, const char *function, const char *format, ...)
 {
-    if (osMutexAcquire(log_mutex, 100) != osOK)
-    {
-        _log_lost++;
-        return;
-    }
-
-    if (_log_lost)
-    {
-        printf("!-- %d log messages lost --!\r\n", _log_lost);
-        _log_lost = 0;
-    }
-
     va_list args;
     va_start(args, format);
-
-    printf("[%s %7lu %27s]   ", level, tick_count, function);
-    vprintf(format, args);
-    printf("\r\n");
-
+    vsnprintf(buffer, sizeof(buffer), format, args);
     va_end(args);
 
-    osMutexRelease(log_mutex);
+//    if (osMutexAcquire(log_mutex, 100) != osOK)
+//    {
+////        _log_lost++;
+//        return;
+//    }
+
+//    if (_log_lost)
+//    {
+//        printf("!-- %d log messages lost --!\r\n", _log_lost);
+//        _log_lost = 0;
+//    }
+
+    printf("[%s %7lu %27s]   %s\r\n", level, tick_count, function, buffer);
+
+//    osMutexRelease(log_mutex);
 }

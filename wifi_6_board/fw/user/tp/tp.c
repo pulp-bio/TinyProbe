@@ -64,7 +64,7 @@ extern osEventFlagsId_t event_flags;
 osThreadId_t wifi_receive_thread_id;
 osThreadAttr_t wifi_rx_thread_attr = {
     .name = "TP wifi receive",
-    .stack_size = 1024,
+    .stack_size = TP_THREAD_STACK_WIFI,
     .priority = osPriorityLow,
 };
 
@@ -78,8 +78,8 @@ tp_buffer_t tp_buf;
 
 // Variables for the command functions
 bool enable_udp_replies = false;
-uint16_t irq_shot_count = 0;
 uint16_t n_packs_to_read = 0;
+uint16_t cb_pack_id = 0;
 
 void _tp_thread_wifi_receive(void *argument);
 // void _tp_thread_transmit(void *argument);
@@ -120,8 +120,16 @@ sl_status_t tp_init(void)
     wius_gpio_config(reset_pin);
     wius_gpio_config(int_pin);
 
+//    // EXPERIMENTAL: Enable pulldown on INT pin
+//    status = sl_si91x_gpio_driver_select_pad_driver_disable_state(int_pin.port_pin.pin, GPIO_PULLDOWN);
+//    if (SL_STATUS_OK != status)
+//    {
+//        LOG_E("Error initializing INT pin pulldown: 0x%lx", status);
+//        return status;
+//    }
+
     // Attach FPGA interrupt
-    status = wius_gpio_attach_interrupt(int_pin, WIUS_GPIO_INT_FALLING, _tp_int_handler);
+    status = wius_gpio_attach_interrupt(int_pin, WIUS_GPIO_INT_RISING, _tp_int_handler);
     if (SL_STATUS_OK != status)
     {
         LOG_E("Error initializing INT pin callback: 0x%lx", status);
@@ -189,7 +197,7 @@ sl_status_t tp_init(void)
     // Turn on also active control of the TX BF clk
     // (power downs in between TR_EN wake ups)
     // tp_fpga_write_reg_safe(0x0000ffff, 2);
-    tp_fpga_write_reg_safe(0xC000ffff, 2); // TEST: Enable clocks by default (no waveform generator)
+    tp_fpga_write_reg_safe(0x0000ffff, 2); // TEST: Enable clocks by default (no waveform generator)
 
     LOG_D("Configured TX");
 #endif
@@ -259,9 +267,9 @@ sl_status_t tp_init(void)
     }
     LOG_D("Wifi thread started");
 
-    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_LOWPOWER));
-    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_LOW));
-    LOG_D("Low power mode activated");
+//    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_LOWPOWER));
+//    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_LOW));
+//    LOG_D("Low power mode activated");
 
     LOG_I("TinyProbe initialized");
 
@@ -272,7 +280,7 @@ void tp_main_thread(void)
 {
     sl_status_t status = SL_STATUS_OK;
 
-    LOG_D("Started TinyProbe main thread");
+//    LOG_D("Started TinyProbe main thread");
 
     common_init();
 
@@ -281,9 +289,9 @@ void tp_main_thread(void)
     while (true)
     {
         // Wait for a command to be received
-        if (!(osEventFlagsWait(event_flags, FLAG_CMD_RECEIVED, 0, osWaitForever) & FLAG_CMD_RECEIVED))
+        if (!(osEventFlagsWait(event_flags, FLAG_CMD_RECEIVED, 0, 1000) & FLAG_CMD_RECEIVED))
         {
-            LOG_E("Error waiting for command received flags");
+            LOG_I("Still here");
             continue;
         }
 
@@ -309,7 +317,7 @@ void _tp_thread_wifi_receive(void *argument)
     (void)argument;
     sl_status_t status = SL_STATUS_OK;
 
-    LOG_D("Started TinyProbe WiFi receive thread");
+//    LOG_D("Started TinyProbe WiFi receive thread");
 
     wius_udp_init(&tp_socket);
 
@@ -350,11 +358,15 @@ void _tp_thread_wifi_receive(void *argument)
         osEventFlagsSet(event_flags, FLAG_CMD_RECEIVED);
 
         // Wait for the command to be executed
-        if (!(osEventFlagsWait(event_flags, FLAG_CMD_EXECUTED, 0, osWaitForever) & FLAG_CMD_EXECUTED))
+        if (!(osEventFlagsWait(event_flags, FLAG_CMD_EXECUTED, 0, 5000) & FLAG_CMD_EXECUTED))
         {
-            LOG_E("Error waiting for command executed flag");
+            LOG_W("Timeout waiting for command executed flag");
+//            LOG_E("Error waiting for command executed flag");
+
             continue;
         }
+
+        LOG_D("Stack space: %lu", osThreadGetStackSpace(wifi_receive_thread_id));
     }
 }
 
@@ -546,82 +558,88 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
     (void)args_length;
     sl_status_t status = SL_STATUS_OK;
 
-    // uint32_t n_shots = *(uint16_t *)args;
-    // n_packs_to_read = *(uint16_t *)(args + 2);
     uint32_t n_shots = GET(args, uint16_t, 0);
     n_packs_to_read = GET(args, uint16_t, 2);
-
-    // uint8_t usdivten = *(uint8_t *)(args + 4);
-    // uint8_t usfifo = *(uint8_t *)(args + 5);
-    uint8_t __attribute__((unused)) usdivten = GET(args, uint8_t, 4);
-    // uint8_t usfifo = GET(args, uint8_t, 5);
+    uint32_t dcdc_delay_ns = (uint32_t)GET(args, uint8_t, 4) * 100;
+    uint32_t read_delay_ns = (uint32_t)GET(args, uint8_t, 5) * 1000;
+    cb_pack_id = GET(args, uint16_t, 6);
+    uint8_t software_trig = GET(args, uint8_t, 8);
+    uint8_t dcdc_pwd_at_rx = GET(args, uint8_t, 9);
 
     LOG_I("Triggering %lu shots with %u packets to read", n_shots, n_packs_to_read);
     LOG_I("%u packets with %u packets concatenated", (n_packs_to_read + (TP_UDP_PACKET_AMT - 1)) / TP_UDP_PACKET_AMT, TP_UDP_PACKET_AMT);
 
-    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_HIGH));
-    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_HIGHSPEED));
-    LOG_D("High speed mode activated");
-
-    uint32_t start_time = 0;
-    uint32_t end_time = 0;
+//    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_HIGH));
+//    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_HIGHSPEED));
+//    LOG_D("High speed mode activated");
 
     CHECK_STATUS(tp_fpga_reset_multififo());
     CHECK_STATUS(tp_fpga_empty_tx());
 
-    irq_shot_count = 0;
-
-    start_time = time_ms();
-
-    CHECK_STATUS(tp_fpga_send_start());
-    LOG_D("Sent start command");
+    if (software_trig)
+    {
+        CHECK_STATUS(tp_fpga_send_start());
+        LOG_D("Sent start command");
+    }
 
     for (uint32_t i = 0; i < n_shots; i++)
     {
 #if !TP_TEST_MODE
-        uint32_t flag = osEventFlagsWait(event_flags, FLAG_FIFO_DATA_READY, 0, 10000);
-        while (!(flag & FLAG_FIFO_DATA_READY))
+//        if (!(osEventFlagsWait(event_flags, FLAG_FIFO_DATA_READY, 0, osWaitForever)))
+//        {
+//            LOG_E("Error waiting for FIFO data ready flag");
+//            continue;
+//        }
+        while (interrupt_count < 1)
         {
-            if (flag & osFlagsErrorTimeout)
-            {
-                LOG_E("Timeout waiting for FIFO data ready flag");
-                break;
-            }
-
-            flag = osEventFlagsWait(event_flags, FLAG_FIFO_DATA_READY, 0, 10000);
+            // wait
         }
+        interrupt_count -= 1;
 
-        // delay_ns(200000);
-        delay_ns(usdivten * 10 * 1000);
-
-        tp_power_set(TP_POWER_DOMAIN_POS_HV, true);
-        tp_power_set(TP_POWER_DOMAIN_NEG_HV, true);
+        LOG_D("Interrupt received");
 #else
         // delay_ms(1);
-        irq_shot_count++;
 #endif
 
-        CHECK_STATUS(tp_fpga_en_read());
-        // Wait 24 clock cycles of 10 MHz clock
-        // It is worst case maximum time needed for the internal IP
-        // To read the data from the Core FIFO and push it into the SPI TX buffer.
+        delay_ns(dcdc_delay_ns);
+
+        if (dcdc_pwd_at_rx)
+        {
+            tp_power_set(TP_POWER_DOMAIN_POS_HV, false);
+            tp_power_set(TP_POWER_DOMAIN_NEG_HV, false);
+        }
+
+        delay_ns(read_delay_ns);
+
+        if (dcdc_pwd_at_rx)
+        {
+            tp_power_set(TP_POWER_DOMAIN_POS_HV, true);
+            tp_power_set(TP_POWER_DOMAIN_NEG_HV, true);
+        }
+
+        if(cb_pack_id != 65535)
+        {
+            // Enable AFE Global power down
+            tp_fpga_write_reg_safe(48, 10);
+            // Disable LVDS IO bank of the FPGA
+            tp_power_set(TP_POWER_DOMAIN_LVDS_2_5V, false);
+        }
+
+        tp_fpga_en_read();
+
+
         delay_ns(2400);
 
         _tp_transmit_packages();
 
+        LOG_D("Transmitted");
+
         CHECK_STATUS(tp_fpga_reset_multififo());
     }
 
-    end_time = time_ms();
-
-    // Maybe unused tim taken
-    uint32_t __attribute__((unused)) time_taken = end_time - start_time;
-    LOG_I("Shot time:  %lu ms", time_taken);
-    LOG_D("Shot count: %u", irq_shot_count);
-
-    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_LOWPOWER));
-    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_LOW));
-    LOG_D("Low power mode activated");
+//    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_LOWPOWER));
+//    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_LOW));
+//    LOG_D("Low power mode activated");
 
     LOG_D("Done");
 
@@ -632,6 +650,8 @@ sl_status_t _tp_transmit_packages(void)
 {
     sl_status_t status = SL_STATUS_OK;
 
+    LOG_D("Executing");
+
     tp_buffer_init(&tp_buf);
 
     tp_buffer_slot_t *slot_spi = tp_buffer_claim_writing(&tp_buf);
@@ -641,8 +661,8 @@ sl_status_t _tp_transmit_packages(void)
         return SL_STATUS_FAIL;
     }
 
-    uint8_t tx_dummy[TP_UDP_PACKET_SIZE * TP_UDP_PACKET_AMT + 2] = {0};
-    status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_UDP_PACKET_SIZE * TP_UDP_PACKET_AMT + 2, false);
+    uint8_t tx_dummy[TP_BUFFER_SIZE] = {0};
+    status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
     if (SL_STATUS_OK != status)
     {
         LOG_E("Error starting initial SPI recv: 0x%04X", (unsigned)status);
@@ -657,9 +677,16 @@ sl_status_t _tp_transmit_packages(void)
         CHECK_STATUS(wius_spi_await(WIUS_SPI_INST_0));
         // CHECK_STATUS(sl_si91x_power_manager_set_clock_scaling(SL_SI91X_POWER_MANAGER_PERFORMANCE));
 
-        slot_spi->length = TP_UDP_PACKET_SIZE * TP_UDP_PACKET_AMT + 2;
+        slot_spi->length = TP_BUFFER_SIZE;
 
         tp_buffer_return(&tp_buf, slot_spi, false);
+
+        if (i == (uint16_t)(cb_pack_id / TP_UDP_PACKET_AMT))
+        {
+            tp_fpga_write_reg_safe(16, 10); // Disable AFE Global power down
+            tp_power_set(TP_POWER_DOMAIN_LVDS_2_5V, true);
+            LOG_D("Callback packet %u sent, AFE powered on", i);
+        }
 
         if (i != n_packs_to_read_div - 1)
         {
@@ -670,7 +697,7 @@ sl_status_t _tp_transmit_packages(void)
                 return SL_STATUS_FAIL;
             }
 
-            status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_UDP_PACKET_SIZE * TP_UDP_PACKET_AMT + 2, false);
+            status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
             if (SL_STATUS_OK != status)
             {
                 LOG_E("Error starting SPI recv: 0x%04X", (unsigned)status);
@@ -688,14 +715,14 @@ sl_status_t _tp_transmit_packages(void)
         // Prepend the packet with the shot number
         memcpy(slot_udp->data, &i, 2);
 
-        status = wius_udp_sendto(&tp_socket, slot_udp->data, TP_UDP_PACKET_SIZE * TP_UDP_PACKET_AMT + 2, client_ip, client_port);
+        status = wius_udp_sendto(&tp_socket, slot_udp->data, TP_BUFFER_SIZE, client_ip, client_port);
         if (SL_STATUS_OK != status)
             LOG_W("Error transmitting packet");
 
         tp_buffer_return(&tp_buf, slot_udp, true);
     }
 
-    LOG_D("Shot acquired");
+    LOG_D("Done");
 
     return status;
 }
@@ -724,12 +751,6 @@ void _tp_int_handler(uint32_t flag)
 {
     UNUSED(flag);
 
-    LOG_D("FPGA INT handler");
-
-    osEventFlagsSet(event_flags, FLAG_FIFO_DATA_READY);
-
-    tp_power_set(TP_POWER_DOMAIN_POS_HV, false);
-    tp_power_set(TP_POWER_DOMAIN_NEG_HV, false);
-
-    irq_shot_count++;
+//    osEventFlagsSet(event_flags, FLAG_FIFO_DATA_READY);
+    interrupt_count += 1;
 }

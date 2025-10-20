@@ -76,7 +76,7 @@ void common_tick_update(void);
  * @note This function is not very accurate
  *
  */
-void delay_ns(uint32_t ns);
+void delay_ns(uint64_t ns);
 
 /**
  * @brief Delay for a given number of milliseconds

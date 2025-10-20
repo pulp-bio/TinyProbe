@@ -79,4 +79,5 @@ static void user_application(void *argument)
     }
 
     tp_main_thread();
+
 }

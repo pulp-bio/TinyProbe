@@ -55,7 +55,7 @@ extern "C" {
 
 // <o SL_GSPI_BITRATE> Bit Rate (Bits/Second) <1-116000000>
 // <i> Default: 10000000
-#define SL_GSPI_BITRATE 40000000
+#define SL_GSPI_BITRATE 30000000
 
 // <o SL_GSPI_BIT_WIDTH> Data Width <1-16>
 // <i> Default: 8

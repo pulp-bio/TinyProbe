@@ -64,7 +64,7 @@
  * @name WiUS logging configurations
  * @{
  */
-#define WIUS_LOG_LEVEL LOG_LEVEL_INFO /**< Log level for WiUS */
+#define WIUS_LOG_LEVEL LOG_LEVEL_DEBUG/**< Log level for WiUS */
 #define WIUS_LOG_GPIO_LED_RED 7       /**< Red LED gpio number */
 #define WIUS_LOG_GPIO_LED_GREEN 6     /**< Green LED gpio number */
 /** @}
@@ -90,7 +90,7 @@
 #define TP_GPIO_INT 2               /**< FPGA Interrupt UULP gpio number */
 #define TP_GPIO_RESET 10            /**< FPGA Reset ULP gpio number */
 #define TP_THREAD_STACK_MAIN 16384  /**< Stack of main thread */
-#define TP_THREAD_STACK_WIFI 1024   /**< Stack of WiFi thread */
+#define TP_THREAD_STACK_WIFI 2048   /**< Stack of WiFi thread */
 /** @}
  */
 

@@ -38,6 +38,11 @@ void common_init(void)
     event_flags = osEventFlagsNew(NULL);
 
     common_tick_update();
+
+    // Enable DWT for nanosecond delay
+    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+    DWT->CYCCNT = 0;
+    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 }
 
 void common_tick_update(void)
@@ -51,18 +56,22 @@ void common_tick_update(void)
 }
 
 // TODO: Implement a more accurate delay function
-void delay_ns(uint32_t ns)
+void delay_ns(uint64_t ns)
 {
-    // volatile int32_t timeout = (ns - 110000) * 119 / 1000 / 7;
-    // //  volatile int32_t timeout = ns * 100 / 1000 / 7;
+    uint64_t cycles = ((uint64_t)ns * (uint64_t)sl_si91x_clock_manager_get_pll_freq(SOC_PLL) + 999999999ULL) / 1000000000ULL;
 
-    // do
-    // {
-    //     timeout--;
-    // } while (timeout > 0);
+    if (cycles < 32)
+      return;
 
-    // //  delay_ms(2 + ns / 1000000);
-    delay_ms(ns / 1000000 + 1);
+    DWT->CYCCNT = 0;
+
+    // Account for function/loop overhead (~20–40 cycles typical). Tune for your build.
+    const uint64_t overhead = 32;
+    uint32_t start = DWT->CYCCNT;
+    while ((uint64_t)(DWT->CYCCNT - start) < (uint64_t)(cycles + overhead)) {
+        if (DWT->CYCCNT < start)
+          return;
+    }
 }
 
 void delay_ms(uint32_t ms)
