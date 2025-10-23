@@ -29,6 +29,17 @@
 #include "tp_command.h"
 
 #include "tp.h"
+#include "commands/tp_command_ping.h"
+#include "commands/tp_command_enreplies.h"
+#include "commands/tp_command_swmux.h"
+#include "commands/tp_command_writespi.h"
+#include "commands/tp_command_writefpga.h"
+#include "commands/tp_command_writeafe.h"
+#include "commands/tp_command_writetx.h"
+#include "commands/tp_command_delayns.h"
+#include "commands/tp_command_sleepms.h"
+#include "commands/tp_command_ctrlpwr.h"
+#include "commands/tp_command_triggershot.h"
 
 tp_command_t _tp_command_commands[TP_COMMAND_MAX];
 uint16_t _tp_num_commands = 0;

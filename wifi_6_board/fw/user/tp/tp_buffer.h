@@ -52,6 +52,7 @@ typedef struct
     uint8_t data[TP_BUFFER_SIZE]; /**< Buffer data */
     size_t length;                /**< Length of the buffer data */
     tp_buffer_status_t status;    /**< Status of the buffer @warning Do not modify */
+    size_t id;                    /**< ID of the slot */
 } tp_buffer_slot_t;
 
 /**
@@ -74,7 +75,15 @@ typedef struct
  * @param buf Buffer structure to initialize
  *
  */
-void tp_buffer_init(tp_buffer_t *buf);
+sl_status_t tp_buffer_init(tp_buffer_t *buf);
+
+/**
+ * @brief Reset the buffer structure
+ *
+ * @param buf Buffer structure to reset
+ *
+ */
+void tp_buffer_reset(tp_buffer_t *buf);
 
 /**
  * @brief Claim a buffer slot for writing

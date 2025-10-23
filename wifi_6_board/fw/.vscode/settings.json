@@ -18,6 +18,8 @@
         "si91x_device.h": "c",
         "sl_si91x_power_manager.h": "c",
         "cmsis_os2.h": "c",
-        "tp_fpga.h": "c"
+        "tp_fpga.h": "c",
+        "tp_command_delayns.h": "c",
+        "sl_si91x_clock_manager.h": "c"
     }
 }

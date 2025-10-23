@@ -41,6 +41,8 @@
 #include "config.h"
 #include "log.h"
 
+#include "sl_si91x_clock_manager.h"
+
 #define CONCAT_2(a, b) a##b
 #define CONCAT_3(a, b, c) a##b##c
 
@@ -56,6 +58,8 @@
 
 #define UNUSED(x) (void)(x) // Suppress unused variable warning
 
+#define GET(args, type, pos) (*(type *)(args + pos)) // Get value of given type from args at given position
+
 /**
  * @brief Initialize some common stuff
  *
@@ -68,6 +72,11 @@ void common_init(void);
  */
 void common_tick_update(void);
 
+inline uint32_t core_clock_hz(void)
+{
+    return sl_si91x_clock_manager_get_pll_freq(SOC_PLL);
+}
+
 /**
  * @brief Delay for a given number of nanoseconds
  *
@@ -76,7 +85,24 @@ void common_tick_update(void);
  * @note This function is not very accurate
  *
  */
-void delay_ns(uint64_t ns);
+inline void delay_ns(uint64_t ns)
+{
+    uint64_t cycles = ((uint64_t)ns * (uint64_t)sl_si91x_clock_manager_get_pll_freq(SOC_PLL) + 999999999ULL) / 1000000000ULL;
+
+    if (cycles < 32)
+        return;
+
+    // DWT->CYCCNT = 0;
+
+    // Account for function/loop overhead (~20–40 cycles typical). Tune for your build.
+    const uint64_t overhead = 32;
+    uint32_t start = DWT->CYCCNT;
+    while ((uint64_t)(DWT->CYCCNT - start) < (uint64_t)(cycles + overhead))
+    {
+        if (DWT->CYCCNT < start)
+            return;
+    }
+}
 
 /**
  * @brief Delay for a given number of milliseconds

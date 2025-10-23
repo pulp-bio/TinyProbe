@@ -25,9 +25,22 @@ add_library(tinyprobe STATIC
     tp_power.c
     tp_tx.c
     tp.c
+
+    commands/tp_command_ping.c
+    commands/tp_command_enreplies.c
+    commands/tp_command_swmux.c
+    commands/tp_command_writespi.c
+    commands/tp_command_writefpga.c
+    commands/tp_command_writeafe.c
+    commands/tp_command_writetx.c
+    commands/tp_command_delayns.c
+    commands/tp_command_sleepms.c
+    commands/tp_command_ctrlpwr.c
+    commands/tp_command_triggershot.c
 )
 target_include_directories(tinyprobe PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/commands
 )
 target_link_libraries(tinyprobe PUBLIC
     slc_wius_fw

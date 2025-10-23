@@ -28,8 +28,6 @@
 
 #include "common.h"
 
-#include "sl_si91x_clock_manager.h"
-
 osEventFlagsId_t event_flags;
 uint32_t _common_ticks_mult = 0;
 
@@ -53,25 +51,6 @@ void common_tick_update(void)
     // TODO: Check if this makes sense
     _common_ticks_mult = 1;
     LOG_D("Core Frequency: %lu MHz", (uint32_t)(pll_freq / 1e6));
-}
-
-// TODO: Implement a more accurate delay function
-void delay_ns(uint64_t ns)
-{
-    uint64_t cycles = ((uint64_t)ns * (uint64_t)sl_si91x_clock_manager_get_pll_freq(SOC_PLL) + 999999999ULL) / 1000000000ULL;
-
-    if (cycles < 32)
-      return;
-
-    DWT->CYCCNT = 0;
-
-    // Account for function/loop overhead (~20–40 cycles typical). Tune for your build.
-    const uint64_t overhead = 32;
-    uint32_t start = DWT->CYCCNT;
-    while ((uint64_t)(DWT->CYCCNT - start) < (uint64_t)(cycles + overhead)) {
-        if (DWT->CYCCNT < start)
-          return;
-    }
 }
 
 void delay_ms(uint32_t ms)

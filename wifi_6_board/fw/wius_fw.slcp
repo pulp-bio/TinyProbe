@@ -17,12 +17,7 @@ readme:
 - {path: readme.md}
 - {path: readme.md}
 source:
-- {path: app.c}
 - {path: main.c}
-include:
-- path: .
-  file_list:
-  - {path: app.h}
 sdk: {id: simplicity_sdk, version: 2024.12.0}
 toolchain_settings: []
 component:

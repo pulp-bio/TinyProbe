@@ -1,7 +1,7 @@
 /**
- * @file tp.h
+ * @file tp_command_sleepms.h
  *
- * @brief TinyProbe main header file
+ * @brief TinyProbe sleep in milliseconds command header file
  *
  * @date 08.09.2025
  * @copyright ETH Zurich. All rights reserved.
@@ -29,35 +29,5 @@
 #pragma once
 
 #include "common.h"
-#include "wius_udp.h"
-#include "tp_buffer.h"
 
-extern wius_udp_t tp_socket;
-extern char client_ip[16];
-extern int client_port;
-
-extern bool enable_udp_replies;
-extern uint16_t n_packs_to_read;
-extern uint16_t cb_pack_id;
-
-extern osSemaphoreId_t sem_fpga;
-extern osMessageQueueId_t q_wifi_tx;
-
-extern tp_buffer_t tp_buf;
-
-extern volatile uint32_t count_interrupt;
-
-/**
- * @brief Initialize the FPGA (SPI, GPIOs, register values)
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: SPI, GPIO interrupt or register initialization failed
- *
- */
-sl_status_t tp_init(void);
-
-/**
- * @brief TinyProbe main thread
- *
- */
-void tp_main_thread(void);
+sl_status_t tp_sleep_ms(uint8_t *args, uint16_t args_length);

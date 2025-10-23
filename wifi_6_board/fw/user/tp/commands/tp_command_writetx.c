@@ -1,7 +1,7 @@
 /**
- * @file tp.h
+ * @file tp_command_writetx.c
  *
- * @brief TinyProbe main header file
+ * @brief TinyProbe TX write command implementation file
  *
  * @date 08.09.2025
  * @copyright ETH Zurich. All rights reserved.
@@ -26,38 +26,23 @@
  *
  */
 
-#pragma once
+#include "tp_command_writetx.h"
 
-#include "common.h"
-#include "wius_udp.h"
-#include "tp_buffer.h"
+#include "tp_tx.h"
 
-extern wius_udp_t tp_socket;
-extern char client_ip[16];
-extern int client_port;
+sl_status_t tp_write_tx(uint8_t *args, uint16_t args_length)
+{
+    LOG_D("Executing");
 
-extern bool enable_udp_replies;
-extern uint16_t n_packs_to_read;
-extern uint16_t cb_pack_id;
+    (void)args_length;
+    sl_status_t status = SL_STATUS_OK;
 
-extern osSemaphoreId_t sem_fpga;
-extern osMessageQueueId_t q_wifi_tx;
+    uint16_t tx_reg_addr = GET(args, uint16_t, 0);
+    uint32_t tx_reg_value = GET(args, uint32_t, 2);
 
-extern tp_buffer_t tp_buf;
+    CHECK_STATUS(tp_tx_write_reg(tx_reg_addr, tx_reg_value));
 
-extern volatile uint32_t count_interrupt;
+    LOG_D("Done");
 
-/**
- * @brief Initialize the FPGA (SPI, GPIOs, register values)
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: SPI, GPIO interrupt or register initialization failed
- *
- */
-sl_status_t tp_init(void);
-
-/**
- * @brief TinyProbe main thread
- *
- */
-void tp_main_thread(void);
+    return SL_STATUS_OK;
+}

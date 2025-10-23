@@ -28,7 +28,25 @@
 
 #include "tp_buffer.h"
 
-void tp_buffer_init(tp_buffer_t *buf)
+#include "cmsis_os2.h"
+
+osSemaphoreId_t sem_tp_buffer_new = NULL;
+
+sl_status_t tp_buffer_init(tp_buffer_t *buf)
+{
+    sem_tp_buffer_new = osSemaphoreNew(TP_BUFFER_NUM, 0, NULL);
+    if (sem_tp_buffer_new == NULL)
+    {
+        LOG_E("Error creating TP buffer semaphore");
+        return SL_STATUS_FAIL;
+    }
+
+    tp_buffer_reset(buf);
+
+    return SL_STATUS_OK;
+}
+
+void tp_buffer_reset(tp_buffer_t *buf)
 {
     memset(buf->slots, 0, sizeof(buf->slots));
 
@@ -40,6 +58,13 @@ void tp_buffer_init(tp_buffer_t *buf)
     {
         buf->slots[i].status = TP_BUFFER_FREE;
         buf->slots[i].length = TP_BUFFER_SIZE;
+        buf->slots[i].id = i;
+    }
+
+    if (sem_tp_buffer_new != NULL)
+    {
+        while (osSemaphoreAcquire(sem_tp_buffer_new, 0) == osOK)
+            ;
     }
 }
 
@@ -64,14 +89,23 @@ tp_buffer_slot_t *tp_buffer_claim_writing(tp_buffer_t *buf)
 
 tp_buffer_slot_t *tp_buffer_claim_reading(tp_buffer_t *buf)
 {
-    if (buf->count == 0)
+    // if (buf->count == 0)
+    // {
+    //     return NULL;
+    // }
+    osStatus_t status;
+    status = osSemaphoreAcquire(sem_tp_buffer_new, osWaitForever);
+    if (status != osOK)
     {
+        LOG_W("Failed to acquire semaphore for buffer: %d", status);
+        LOG_W("Semaphore: %p", sem_tp_buffer_new);
         return NULL;
     }
 
     tp_buffer_slot_t *slot = &buf->slots[buf->head];
     if (slot->status != TP_BUFFER_FILLED)
     {
+        LOG_W("Buffer slot not filled when claiming for reading");
         return NULL;
     }
 
@@ -96,6 +130,7 @@ void tp_buffer_return(tp_buffer_t *buf, tp_buffer_slot_t *slot, bool discard)
     else
     {
         buf->count++;
+        osSemaphoreRelease(sem_tp_buffer_new);
     }
 
     if (slot)

@@ -1,7 +1,7 @@
 /**
- * @file tp.h
+ * @file tp_command_swmux.c
  *
- * @brief TinyProbe main header file
+ * @brief TinyProbe SPI MUX command implementation file
  *
  * @date 08.09.2025
  * @copyright ETH Zurich. All rights reserved.
@@ -26,38 +26,20 @@
  *
  */
 
-#pragma once
+#include "tp_command_swmux.h"
 
-#include "common.h"
-#include "wius_udp.h"
-#include "tp_buffer.h"
+#include "tp_mux.h"
 
-extern wius_udp_t tp_socket;
-extern char client_ip[16];
-extern int client_port;
+sl_status_t tp_sw_mux(uint8_t *args, uint16_t args_length)
+{
+    LOG_D("Executing");
 
-extern bool enable_udp_replies;
-extern uint16_t n_packs_to_read;
-extern uint16_t cb_pack_id;
+    (void)args_length;
 
-extern osSemaphoreId_t sem_fpga;
-extern osMessageQueueId_t q_wifi_tx;
+    tp_mux_t mux = GET(args, tp_mux_t, 0);
+    tp_mux_select(mux);
 
-extern tp_buffer_t tp_buf;
+    LOG_D("Done");
 
-extern volatile uint32_t count_interrupt;
-
-/**
- * @brief Initialize the FPGA (SPI, GPIOs, register values)
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: SPI, GPIO interrupt or register initialization failed
- *
- */
-sl_status_t tp_init(void);
-
-/**
- * @brief TinyProbe main thread
- *
- */
-void tp_main_thread(void);
+    return SL_STATUS_OK;
+}
