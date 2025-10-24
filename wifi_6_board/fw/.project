@@ -537,6 +537,16 @@
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/si91x_socket/sl_si91x_socket_support.h</locationURI>
 		</link>
 		<link>
+			<name>wiseconnect3_sdk_3.4.0/components/service/mdns/inc/sl_mdns.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/mdns/inc/sl_mdns.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.4.0/components/service/mdns/si91x/sl_mdns.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/mdns/si91x/sl_mdns.c</locationURI>
+		</link>
+		<link>
 			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/inc/sl_net.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sl_net.h</locationURI>

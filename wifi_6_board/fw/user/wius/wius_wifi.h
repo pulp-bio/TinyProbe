@@ -30,6 +30,8 @@
 
 #include "common.h"
 
+#include "sl_mdns.h"
+
 /**
  * @brief WiFi performance profile enumeration
  *
@@ -57,6 +59,9 @@ sl_status_t wius_wifi_init(void);
  *
  */
 sl_status_t wius_wifi_deinit(void);
+
+sl_status_t wius_wifi_mdns_init(sl_mdns_t *mdns, char *host_name, sl_mdns_protocol_t protocol);
+sl_status_t wius_wifi_mdns_add(sl_mdns_t *mdns, char *service_name);
 
 /**
  * @brief Set the WiFi performance profile

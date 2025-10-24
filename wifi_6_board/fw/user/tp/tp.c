@@ -77,9 +77,10 @@ wius_udp_t tp_socket = {0};
 char client_ip[16] = {0};
 int client_port = 0;
 
+sl_mdns_t tp_mdns;
+
 // Synchronization variables
 osSemaphoreId_t sem_fpga;
-// osMessageQueueId_t q_wifi_tx;
 
 // Buffer for storing acquired data
 tp_buffer_t tp_buf;
@@ -120,7 +121,7 @@ sl_status_t tp_init(void)
         return status;
     }
 
-//    delay_ms(1000);
+    //    delay_ms(1000);
 
     // Initialize GPIO
     wius_gpio_init();
@@ -257,13 +258,6 @@ sl_status_t tp_init(void)
         return SL_STATUS_FAIL;
     }
 
-    // q_wifi_tx = osMessageQueueNew(TP_BUFFER_NUM, sizeof(tp_buffer_slot_t *), NULL);
-    // if (q_wifi_tx == NULL)
-    // {
-    //     LOG_E("Error creating WiFi TX queue");
-    //     return SL_STATUS_FAIL;
-    // }
-
     CHECK_STATUS(tp_buffer_init(&tp_buf));
 
     wifi_receive_thread_id = osThreadNew(_tp_thread_wifi_receive, NULL, &wifi_rx_thread_attr);
@@ -279,6 +273,9 @@ sl_status_t tp_init(void)
         return SL_STATUS_FAIL;
     }
     LOG_D("Wifi threads started");
+
+    CHECK_STATUS(wius_wifi_mdns_init(&tp_mdns, "tinyprobe", SL_MDNS_PROTO_UDP));
+    CHECK_STATUS(wius_wifi_mdns_add(&tp_mdns, "tinyprobe_service"));
 
     //    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_LOWPOWER));
     //    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_LOW));
@@ -395,7 +392,7 @@ void _tp_thread_wifi_transmit(void *argument)
             continue;
         }
 
-//        LOG_I("Transmitting UDP packet of length %d to %s:%d", TP_BUFFER_SIZE, client_ip, client_port);
+        //        LOG_I("Transmitting UDP packet of length %d to %s:%d", TP_BUFFER_SIZE, client_ip, client_port);
 
         status = wius_udp_sendto(&tp_socket, slot_udp->data, TP_BUFFER_SIZE, client_ip, client_port);
         if (SL_STATUS_OK != status)

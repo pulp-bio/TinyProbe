@@ -25,6 +25,7 @@ component:
 - {from: wiseconnect3_sdk, id: brd4338a}
 - {from: wiseconnect3_sdk, id: bsd_socket}
 - {from: wiseconnect3_sdk, id: device_needs_ram_execution}
+- {from: wiseconnect3_sdk, id: mdns}
 - {from: wiseconnect3_sdk, id: network_manager}
 - {from: wiseconnect3_sdk, id: si91x_memory_default_config}
 - {from: wiseconnect3_sdk, id: sl_gpio}
