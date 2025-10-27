@@ -77,7 +77,13 @@ wius_udp_t tp_socket = {0};
 char client_ip[16] = {0};
 int client_port = 0;
 
-sl_mdns_t tp_mdns;
+wius_wifi_mdns_t tp_mdns = {
+    .host_name = "wius",
+    .service_name = "tinyprobe",
+    .service_message = "TinyProbe Service",
+    .protocol = SL_MDNS_PROTO_UDP,
+    .port = TP_UDP_PORT,
+};
 
 // Synchronization variables
 osSemaphoreId_t sem_fpga;
@@ -274,8 +280,8 @@ sl_status_t tp_init(void)
     }
     LOG_D("Wifi threads started");
 
-    CHECK_STATUS(wius_wifi_mdns_init(&tp_mdns, "tinyprobe", SL_MDNS_PROTO_UDP));
-    CHECK_STATUS(wius_wifi_mdns_add(&tp_mdns, "tinyprobe_service"));
+    CHECK_STATUS(wius_wifi_mdns_init(&tp_mdns));
+    CHECK_STATUS(wius_wifi_mdns_add(&tp_mdns));
 
     //    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_LOWPOWER));
     //    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_LOW));
@@ -299,9 +305,11 @@ void tp_main_thread(void)
     while (true)
     {
         // Wait for a command to be received
-        if (!(osEventFlagsWait(event_flags, FLAG_CMD_RECEIVED, 0, 5000) & FLAG_CMD_RECEIVED))
+        if (!(osEventFlagsWait(event_flags, FLAG_CMD_RECEIVED, 0, 1000) & FLAG_CMD_RECEIVED))
         {
             LOG_I("Still here");
+            // FIXME: Re-advertise mDNS service every second
+            wius_wifi_mdns_add(&tp_mdns);
             continue;
         }
 

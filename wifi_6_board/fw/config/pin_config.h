@@ -20,48 +20,48 @@
 // [ULP_I2C]$
 
 // $[SSI_MASTER]
-// SSI_MASTER MOSI_DATA0 on GPIO_11
+// SSI_MASTER MOSI_DATA0 on GPIO_26
 #ifndef SSI_MASTER_MOSI_DATA0_PORT              
 #define SSI_MASTER_MOSI_DATA0_PORT               HP
 #endif
 #ifndef SSI_MASTER_MOSI_DATA0_PIN               
-#define SSI_MASTER_MOSI_DATA0_PIN                11
+#define SSI_MASTER_MOSI_DATA0_PIN                26
 #endif
 #ifndef SSI_MASTER_DATA0_LOC                    
-#define SSI_MASTER_DATA0_LOC                     0
+#define SSI_MASTER_DATA0_LOC                     1
 #endif
 
-// SSI_MASTER MISO_DATA1 on GPIO_12
+// SSI_MASTER MISO_DATA1 on GPIO_27
 #ifndef SSI_MASTER_MISO_DATA1_PORT              
 #define SSI_MASTER_MISO_DATA1_PORT               HP
 #endif
 #ifndef SSI_MASTER_MISO_DATA1_PIN               
-#define SSI_MASTER_MISO_DATA1_PIN                12
+#define SSI_MASTER_MISO_DATA1_PIN                27
 #endif
 #ifndef SSI_MASTER_DATA1_LOC                    
-#define SSI_MASTER_DATA1_LOC                     3
+#define SSI_MASTER_DATA1_LOC                     4
 #endif
 
-// SSI_MASTER SCK_ on GPIO_8
+// SSI_MASTER SCK_ on GPIO_25
 #ifndef SSI_MASTER_SCK__PORT                    
 #define SSI_MASTER_SCK__PORT                     HP
 #endif
 #ifndef SSI_MASTER_SCK__PIN                     
-#define SSI_MASTER_SCK__PIN                      8
+#define SSI_MASTER_SCK__PIN                      25
 #endif
 #ifndef SSI_MASTER_SCK_LOC                      
-#define SSI_MASTER_SCK_LOC                       6
+#define SSI_MASTER_SCK_LOC                       7
 #endif
 
-// SSI_MASTER CS0_ on GPIO_9
+// SSI_MASTER CS0_ on GPIO_28
 #ifndef SSI_MASTER_CS0__PORT                    
 #define SSI_MASTER_CS0__PORT                     HP
 #endif
 #ifndef SSI_MASTER_CS0__PIN                     
-#define SSI_MASTER_CS0__PIN                      9
+#define SSI_MASTER_CS0__PIN                      28
 #endif
 #ifndef SSI_MASTER_CS0_LOC                      
-#define SSI_MASTER_CS0_LOC                       9
+#define SSI_MASTER_CS0_LOC                       10
 #endif
 
 // [SSI_MASTER]$
@@ -84,15 +84,15 @@
 #define GSPI_MASTER_SCK_LOC                      1
 #endif
 
-// GSPI_MASTER CS0_ on GPIO_53
+// GSPI_MASTER CS0_ on GPIO_28
 #ifndef GSPI_MASTER_CS0__PORT                   
 #define GSPI_MASTER_CS0__PORT                    HP
 #endif
 #ifndef GSPI_MASTER_CS0__PIN                    
-#define GSPI_MASTER_CS0__PIN                     53
+#define GSPI_MASTER_CS0__PIN                     28
 #endif
 #ifndef GSPI_MASTER_CS0_LOC                     
-#define GSPI_MASTER_CS0_LOC                      7
+#define GSPI_MASTER_CS0_LOC                      5
 #endif
 
 // GSPI_MASTER MOSI_ on GPIO_27
@@ -226,6 +226,30 @@
 
 // $[QEI]
 // [QEI]$
+
+// $[HSPI_SECONDARY]
+// [HSPI_SECONDARY]$
+
+// $[OPAMP1]
+// [OPAMP1]$
+
+// $[OPAMP2]
+// [OPAMP2]$
+
+// $[OPAMP3]
+// [OPAMP3]$
+
+// $[SDC_CH1]
+// [SDC_CH1]$
+
+// $[SDC_CH2]
+// [SDC_CH2]$
+
+// $[SDC_CH3]
+// [SDC_CH3]$
+
+// $[SDC_CH4]
+// [SDC_CH4]$
 
 // $[CUSTOM_PIN_NAME]
 #ifndef _PORT                                   

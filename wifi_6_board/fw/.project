@@ -32,1894 +32,1864 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/aws_client_certificate.pem.crt.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/aws_client_certificate.pem.crt.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/aws_client_certificate.pem.crt.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/aws_client_private_key.pem.key.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/aws_client_private_key.pem.key.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/aws_client_private_key.pem.key.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/aws_starfield_ca.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/aws_ota_certificate.pem.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/aws_ota_certificate.pem.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/aws_starfield_ca.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/aws_starfield_ca.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/azure_baltimore_ca.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/azure_baltimore_ca.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/azure_baltimore_ca.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/cacert.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/cacert.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/cacert.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/clientcert.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/clientcert.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/clientcert.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/clientkey.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/clientkey.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/clientkey.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/eap.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/eap.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/eap.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/mydevkitcertificate.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/mydevkitcertificate.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/mydevkitcertificate.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/mydevkitkey.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/mydevkitkey.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/mydevkitkey.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/servercert.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/servercert.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/servercert.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/serverkey.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/serverkey.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/serverkey.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/silabs_client_cert.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/silabs_client_cert.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/silabs_client_cert.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/silabs_client_key.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/silabs_client_key.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/silabs_client_key.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/silabs_dgcert_ca.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/silabs_dgcert_ca.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/silabs_dgcert_ca.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/certificates/wifiuser.pem.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/certificates/wifiuser.pem.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/certificates/wifiuser.pem.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/html/helloworld.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/html/helloworld.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/html/helloworld.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/html/login.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/html/login.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/html/login.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/html/provisioning.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/html/provisioning.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/html/provisioning.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/resources/other/index.html.h</name>
+			<name>wiseconnect3_sdk_3.5.2/resources/other/index.html.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/resources/other/index.html.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_assert.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_assert.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_assert.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_atomic.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_atomic.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_atomic.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_bit.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_bit.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_bit.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_cmsis_os2_common.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_cmsis_os2_common.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_cmsis_os2_common.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_code_classification.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_code_classification.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_code_classification.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_common.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_common.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_common.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_compiler.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_compiler.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_compiler.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_core.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_core.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_core.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_slist.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_slist.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_slist.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_status.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_status.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_status.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sl_string.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sl_string.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_string.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sli_cmsis_os2_ext_task_register.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sli_cmsis_os2_ext_task_register.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sli_cmsis_os2_ext_task_register.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/inc/sli_code_classification.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/inc/sli_code_classification.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sli_code_classification.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/src/sl_assert.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/src/sl_assert.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_assert.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/src/sl_cmsis_os2_common.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/src/sl_cmsis_os2_common.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_cmsis_os2_common.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/src/sl_core_cortexm.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/src/sl_core_cortexm.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_core_cortexm.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/src/sl_slist.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/src/sl_slist.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_slist.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/src/sl_string.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/src/sl_string.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_string.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/src/sl_syscalls.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/src/sl_syscalls.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_syscalls.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/common/src/sli_cmsis_os2_ext_task_register.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/common/src/sli_cmsis_os2_ext_task_register.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sli_cmsis_os2_ext_task_register.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/emlib/inc/em_core.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_core.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_core.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/emlib/inc/em_core_generic.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_core_generic.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_core_generic.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/emlib/src/em_core.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_core.c</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/common/inc/sl_additional_status.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/common/inc/sl_additional_status.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/common/inc/sl_additional_status.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/common/inc/sl_cmsis_utility.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/common/inc/sl_cmsis_utility.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/common/inc/sl_cmsis_utility.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/common/inc/sl_constants.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/common/inc/sl_constants.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/common/inc/sl_constants.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/common/inc/sl_ieee802_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/common/inc/sl_ieee802_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/common/inc/sl_ieee802_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/common/inc/sl_ip_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/common/inc/sl_ip_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/common/inc/sl_ip_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/common/inc/sl_utility.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/common/inc/sl_utility.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/common/inc/sl_utility.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/common/src/sl_utility.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/common/src/sl_utility.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/common/src/sl_utility.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/Core/Include/cmsis_compiler.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/sli_si91x_wifi_event_handler/src/sli_si91x_wifi_event_handler.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/sli_si91x_wifi_event_handler/src/sli_si91x_wifi_event_handler.c</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/sli_wifi_command_engine/inc/sli_wifi_command_engine.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/sli_wifi_command_engine/inc/sli_wifi_command_engine.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/sli_wifi_command_engine/inc/sli_wifi_event_handler.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/sli_wifi_command_engine/inc/sli_wifi_event_handler.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/sli_wifi_command_engine/src/sli_wifi_command_engine.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/sli_wifi_command_engine/src/sli_wifi_command_engine.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/Core/Include/cmsis_compiler.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/Core/Include/cmsis_compiler.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/Core/Include/cmsis_gcc.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/Core/Include/cmsis_gcc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/Core/Include/cmsis_gcc.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/Core/Include/cmsis_version.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/Core/Include/cmsis_version.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/Core/Include/cmsis_version.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/Core/Include/core_cm4.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/Core/Include/core_cm4.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/Core/Include/core_cm4.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/Core/Include/mpu_armv7.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/Core/Include/mpu_armv7.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/Core/Include/mpu_armv7.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/Core/Include/tz_context.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/Core/Include/tz_context.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/Core/Include/tz_context.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/RTOS2/Include/cmsis_os2.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/RTOS2/Include/cmsis_os2.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/RTOS2/Include/cmsis_os2.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/RTOS2/Include/os_tick.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/RTOS2/Include/os_tick.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/RTOS2/Include/os_tick.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/CMSIS/RTOS2/Source/os_systick.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/CMSIS/RTOS2/Source/os_systick.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/RTOS2/Source/os_systick.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/service/sleeptimer/inc/sl_sleeptimer.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/service/memory_manager/inc/sl_memory_manager.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/memory_manager/inc/sl_memory_manager.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/service/memory_manager/inc/sl_memory_manager_region.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/memory_manager/inc/sl_memory_manager_region.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/service/memory_manager/src/sl_memory_manager_cpp.cpp</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/memory_manager/src/sl_memory_manager_cpp.cpp</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/service/memory_manager/src/sl_memory_manager_pool.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/memory_manager/src/sl_memory_manager_pool.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/service/memory_manager/src/sl_memory_manager_redirect.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/memory_manager/src/sl_memory_manager_redirect.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/service/memory_manager/src/sli_memory_manager.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/memory_manager/src/sli_memory_manager.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/service/sleeptimer/inc/sl_sleeptimer.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/inc/sl_sleeptimer.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/service/sleeptimer/inc/sli_sleeptimer.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/service/sleeptimer/inc/sli_sleeptimer.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/inc/sli_sleeptimer.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/service/sleeptimer/src/sl_sleeptimer.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/service/sleeptimer/src/sl_sleeptimer.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/src/sl_sleeptimer.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/service/sleeptimer/src/sli_sleeptimer_hal.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/service/sleeptimer/src/sli_sleeptimer_hal.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/src/sli_sleeptimer_hal.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/service/system/inc/sl_system_init.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/service/system/inc/sl_system_init.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/system/inc/sl_system_init.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/service/system/inc/sl_system_kernel.h</name>
+			<name>simplicity_sdk_2025.6.2/platform/service/system/inc/sl_system_kernel.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/system/inc/sl_system_kernel.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/service/system/src/sl_system_init.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/service/system/src/sl_system_init.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/system/src/sl_system_init.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/platform/service/system/src/sl_system_kernel.c</name>
+			<name>simplicity_sdk_2025.6.2/platform/service/system/src/sl_system_kernel.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/system/src/sl_system_kernel.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/croutine.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/croutine.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/croutine.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/event_groups.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/event_groups.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/event_groups.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/list.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/list.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/list.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/queue.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/queue.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/queue.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/stream_buffer.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/stream_buffer.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/stream_buffer.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/tasks.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/tasks.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/tasks.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/timers.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/timers.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/timers.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/inc/rsi_board.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/rsi_board.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/rsi_board.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/inc/rsi_board_configuration.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/rsi_board_configuration.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/rsi_board_configuration.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/inc/sl_gpio_board.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/sl_gpio_board.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/inc/sl_i2c_board.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/sl_i2c_board.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/sl_i2c_board.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/inc/sl_pwm_board.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/sl_opamp_board.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/sl_opamp_board.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/sl_pwm_board.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/sl_pwm_board.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/inc/sl_qei_board.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/sl_qei_board.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/sl_qei_board.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/inc/sl_sio_board.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/sl_rs485_board.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/sl_rs485_board.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/sl_sio_board.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/sl_sio_board.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/inc/sl_sysrtc_board.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/inc/sl_sysrtc_board.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/inc/sl_sysrtc_board.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/board/silabs/src/rsi_board.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/board/silabs/src/rsi_board.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/board/silabs/src/rsi_board.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/inc/sl_wifi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/inc/sl_wifi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/inc/sl_wifi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/inc/sl_wifi_callback_framework.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/inc/sl_wifi_callback_framework.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/inc/sl_wifi_callback_framework.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/inc/sl_wifi_constants.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/inc/sl_wifi_constants.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/inc/sl_wifi_constants.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/inc/sl_wifi_credentials.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/inc/sl_wifi_credentials.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/inc/sl_wifi_credentials.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/inc/sl_wifi_host_interface.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/inc/sl_wifi_host_interface.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/inc/sl_wifi_host_interface.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/inc/sl_wifi_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/inc/sl_wifi_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/inc/sl_wifi_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/si91x/sl_wifi.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/inc/sli_wifi_constants.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/inc/sli_wifi_constants.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/si91x/sl_wifi.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/si91x/sl_wifi.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/src/sl_wifi_basic_credentials.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/src/sl_wifi_basic_credentials.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/src/sl_wifi_basic_credentials.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/protocol/wifi/src/sl_wifi_callback_framework.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/protocol/wifi/src/sl_wifi_callback_framework.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/protocol/wifi/src/sl_wifi_callback_framework.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/inc/netdb.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/inc/netdb.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/inc/netdb.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/inc/netinet6_in6.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/inc/netinet6_in6.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/inc/netinet6_in6.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/inc/netinet_in.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/inc/netinet_in.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/inc/netinet_in.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/inc/select.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/inc/select.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/inc/select.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/inc/socket.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/inc/socket.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/inc/socket.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/inc/sys.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/inc/sys.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/inc/sys.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/inc/uio.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/inc/uio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/inc/uio.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/si91x_socket/sl_si91x_bsd_socket.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/si91x_socket/sl_si91x_bsd_socket.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/si91x_socket/sl_si91x_bsd_socket.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/bsd_socket/si91x_socket/sl_si91x_socket_support.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/bsd_socket/si91x_socket/sl_si91x_socket_support.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/bsd_socket/si91x_socket/sl_si91x_socket_support.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/mdns/inc/sl_mdns.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/mdns/inc/sl_mdns.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/mdns/inc/sl_mdns.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/mdns/si91x/sl_mdns.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/mdns/si91x/sl_mdns.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/mdns/si91x/sl_mdns.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/inc/sl_net.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sl_net.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sl_net.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/inc/sl_net_constants.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sl_net_constants.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sl_net_constants.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/inc/sl_net_dns.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sl_net_dns.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sl_net_dns.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/inc/sl_net_ip_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sl_net_ip_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sl_net_ip_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/inc/sl_net_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sl_net_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sl_net_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/inc/sl_net_wifi_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sl_net_wifi_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sl_net_wifi_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/si91x/sl_net_si91x.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sli_net_common_utility.h</name>
 			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/si91x/sl_net_si91x.c</locationURI>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sli_net_common_utility.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/src/sl_net.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sli_net_constants.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sli_net_constants.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/inc/sli_net_types.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/inc/sli_net_types.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/src/sl_net.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/src/sl_net.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/src/sl_net_basic_certificate_store.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/src/sl_net_basic_certificate_store.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/src/sl_net_basic_certificate_store.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/src/sl_net_basic_profiles.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/src/sl_net_basic_profiles.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/src/sl_net_basic_profiles.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/service/network_manager/src/sl_net_credentials.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/src/sl_net_credentials.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/src/sl_net_credentials.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/third_party/silicon_labs/freertos/src/sl_si91x_low_power_tickless_mode.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/service/network_manager/src/sli_net_common_utility.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/service/network_manager/src/sli_net_common_utility.c</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/third_party/silicon_labs/freertos/src/sl_si91x_low_power_tickless_mode.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/third_party/silicon_labs/freertos/src/sl_si91x_low_power_tickless_mode.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/cmsis/Include/freertos_mpool.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/cmsis/Include/freertos_mpool.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/cmsis/Include/freertos_mpool.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/cmsis/Include/freertos_os2.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/cmsis/Include/freertos_os2.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/cmsis/Include/freertos_os2.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/cmsis/Source/cmsis_os2.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/cmsis/Source/cmsis_os2.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/cmsis/Source/cmsis_os2.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/FreeRTOS.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/FreeRTOS.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/FreeRTOS.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/StackMacros.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/StackMacros.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/StackMacros.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/atomic.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/atomic.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/atomic.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/croutine.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/croutine.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/croutine.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/deprecated_definitions.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/deprecated_definitions.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/deprecated_definitions.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/event_groups.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/event_groups.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/event_groups.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/list.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/list.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/list.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/message_buffer.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/message_buffer.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/message_buffer.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/mpu_prototypes.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/mpu_prototypes.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/mpu_prototypes.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/mpu_wrappers.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/mpu_syscall_numbers.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/mpu_syscall_numbers.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/mpu_wrappers.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/mpu_wrappers.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/portable.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/portable.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/portable.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/projdefs.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/projdefs.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/projdefs.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/queue.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/queue.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/queue.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/semphr.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/semphr.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/semphr.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/stack_macros.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/stack_macros.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/stack_macros.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/stream_buffer.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/stream_buffer.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/stream_buffer.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/task.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/task.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/task.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/include/timers.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/include/timers.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/include/timers.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/portable/MemMang/heap_3.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/portable/MemMang/heap_3.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/portable/MemMang/heap_3.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/firmware_upgrade/firmware_upgradation.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/firmware_upgrade/firmware_upgradation.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/firmware_upgrade/firmware_upgradation.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/firmware_upgrade/firmware_upgradation.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/firmware_upgrade/firmware_upgradation.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/firmware_upgrade/firmware_upgradation.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/icmp/sl_net_ping.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/icmp/sl_net_ping.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/icmp/sl_net_ping.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/icmp/sl_net_ping.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/icmp/sl_net_ping.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/icmp/sl_net_ping.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_rsi_utility.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_rsi_utility.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_rsi_utility.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_constants.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_constants.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_constants.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_core_utilities.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_core_utilities.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_core_utilities.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_driver.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_driver.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_driver.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_host_interface.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_host_interface.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_host_interface.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_iot_socket.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_iot_socket.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_iot_socket.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_protocol_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_protocol_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_protocol_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_spi_constants.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_spi_constants.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_spi_constants.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_status.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_status.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_status.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_si91x_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_si91x_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_si91x_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/inc/sl_wifi_device.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/inc/sl_wifi_device.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/inc/sl_wifi_device.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/memory/malloc_buffers.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/memory/malloc_buffers.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/memory/malloc_buffers.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/src/sl_rsi_utility.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/src/sl_rsi_utility.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/src/sl_rsi_utility.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/src/sl_si91x_driver.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/src/sl_si91x_driver.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/src/sl_si91x_driver.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/threading/sli_si91x_multithreaded.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/threading/sli_si91x_multithreaded.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/portable/GCC/ARM_CM4F/port.c</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/portable/GCC/ARM_CM4F/port.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/portable/GCC/ARM_CM4F/port.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.12.0/util/third_party/freertos/kernel/portable/GCC/ARM_CM4F/portmacro.h</name>
+			<name>simplicity_sdk_2025.6.2/util/third_party/freertos/kernel/portable/GCC/ARM_CM4F/portmacro.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/util/third_party/freertos/kernel/portable/GCC/ARM_CM4F/portmacro.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/config/rsi_ccp_user_config.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/config/rsi_ccp_user_config.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/config/rsi_ccp_user_config.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/config/rsi_nvic_priorities_config.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/config/rsi_nvic_priorities_config.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/config/rsi_nvic_priorities_config.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/Driver_Common.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/Driver_Common.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/Driver_Common.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/EMAC.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/EMAC.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/GSPI.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/GSPI.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/GSPI.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/GSPI.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/GSPI.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/GSPI.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/I2C.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/I2C.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/I2C.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/MCI.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/MCI.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/PHY_LAN8742A.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/PHY_LAN8742A.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SAI.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SAI.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SAI.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SPI.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SPI.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SPI.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SPI.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SPI.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/SPI.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/UDMA.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/UDMA.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/UDMA.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/UDMA.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/UDMA.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/UDMA.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/USART.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/USART.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/USART.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/USART.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/USART.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/USART.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/USB.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/USB.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_common.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_common.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_common.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_data_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_data_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_data_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_driver.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_driver.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_driver.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_m4.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_m4.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_m4.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_os.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_os.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_os.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_pkt_mgmt.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_pkt_mgmt.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_pkt_mgmt.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_user.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_user.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_user.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wisemcu_hardware_setup.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wisemcu_hardware_setup.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wisemcu_hardware_setup.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wlan_common_config.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wlan_common_config.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wlan_common_config.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wlan_defines.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wlan_defines.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/rsi_wlan_defines.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/sl_device.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/sl_device.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/sl_device.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/sli_siwx917_soc.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/sli_siwx917_soc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/sli_siwx917_soc.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/inc/sli_siwx917_timer.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/inc/sli_siwx917_timer.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/inc/sli_siwx917_timer.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/src/rsi_hal_mcu_m4_ram.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/src/rsi_hal_mcu_m4_ram.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/src/rsi_hal_mcu_m4_ram.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/src/rsi_hal_mcu_m4_rom.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/src/rsi_hal_mcu_m4_rom.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/src/rsi_hal_mcu_m4_rom.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/src/sl_platform.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/src/sl_platform.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/src/sl_platform.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/src/sl_platform_wireless.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/src/sl_platform_wireless.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/src/sl_platform_wireless.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/src/sl_si91x_bus.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/src/sl_si91x_bus.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/src/sl_si91x_bus.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/src/sl_si91x_timer.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/src/sl_si91x_timer.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/src/sl_si91x_timer.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/ahb_interface/src/sli_siwx917_soc.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/ahb_interface/src/sli_siwx917_soc.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/ahb_interface/src/sli_siwx917_soc.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/asynchronous_socket/inc/sl_si91x_socket.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/asynchronous_socket/inc/sl_si91x_socket.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/asynchronous_socket/inc/sl_si91x_socket.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/asynchronous_socket/src/sl_si91x_socket.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/asynchronous_socket/src/sl_si91x_socket.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/asynchronous_socket/src/sl_si91x_socket.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/errno/inc/errno.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/errno/inc/errno.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/errno/inc/errno.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/errno/src/sl_si91x_errno.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/errno/src/sl_si91x_errno.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/errno/src/sl_si91x_errno.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/host_mcu/si91x/siwx917_soc_ncp_host.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/host_mcu/si91x/siwx917_soc_ncp_host.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/host_mcu/si91x/siwx917_soc_ncp_host.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/sl_net/inc/sl_net_rsi_utility.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/inc/sl_net_rsi_utility.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/sl_net/inc/sl_net_si91x.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/inc/sl_net_si91x.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/inc/sl_net_si91x.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/sl_net/inc/sl_net_si91x_integration_handler.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/inc/sl_net_si91x_integration_handler.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/inc/sl_net_si91x_integration_handler.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/sl_net/src/sl_net_rsi_utility.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/inc/sli_net_utility.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/inc/sli_net_utility.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/src/sl_net_rsi_utility.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/src/sl_net_rsi_utility.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/sl_net/src/sl_net_si91x_callback_framework.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/src/sl_net_si91x.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/src/sl_net_si91x.c</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/src/sl_net_si91x_callback_framework.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/src/sl_net_si91x_callback_framework.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/sl_net/src/sl_net_si91x_integration_handler.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/src/sl_net_si91x_integration_handler.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/src/sl_net_si91x_integration_handler.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/sl_net/src/sl_si91x_net_credentials.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/src/sl_si91x_net_credentials.c</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/sl_net/src/sl_si91x_net_internal_stack.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/src/sl_si91x_net_internal_stack.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/src/sl_si91x_net_internal_stack.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/socket/inc/sl_bsd_utility.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/sl_net/src/sli_net_si91x_utility.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/sl_net/src/sli_net_si91x_utility.c</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/socket/inc/sl_bsd_utility.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/socket/inc/sl_bsd_utility.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_callback_framework.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_callback_framework.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_callback_framework.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_constants.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_constants.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_constants.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_utility.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_utility.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/socket/inc/sl_si91x_socket_utility.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/wireless/socket/src/sl_si91x_socket_utility.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/wireless/socket/src/sl_si91x_socket_utility.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/wireless/socket/src/sl_si91x_socket_utility.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/base_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/base_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/base_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/data_types.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/data_types.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/data_types.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/em_assert.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/em_assert.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/em_assert.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/em_common.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/em_common.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/em_common.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/em_device.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/em_device.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/em_device.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ccp_common.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ccp_common.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ccp_common.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/rsi_error.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/rsi_error.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/rsi_error.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ps_config.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ps_config.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ps_config.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ps_ram_func.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ps_ram_func.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/rsi_ps_ram_func.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/rsi_system_config.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/rsi_system_config.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/rsi_system_config.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/si91x_device.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/si91x_device.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/si91x_device.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/si91x_mvp.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/si91x_mvp.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/si91x_mvp.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/inc/system_si91x.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/inc/system_si91x.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/inc/system_si91x.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/src/rsi_deepsleep_soc.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/src/rsi_deepsleep_soc.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/src/rsi_deepsleep_soc.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/src/rsi_ps_ram_func.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/src/rsi_ps_ram_func.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/src/rsi_ps_ram_func.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/src/startup_si91x.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/src/startup_si91x.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/src/startup_si91x.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/src/system_si91x.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/src/system_si91x.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/src/system_si91x.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/common/inc/rsi_debug.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/common/inc/rsi_debug.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/common/inc/rsi_debug.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/common/inc/syscalls.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/common/inc/sl_si91x_os.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/common/inc/sl_si91x_os.h</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/common/inc/syscalls.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/common/inc/syscalls.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/common/src/rsi_debug.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/common/src/malloc_thread_safety.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/common/src/malloc_thread_safety.c</locationURI>
+		</link>
+		<link>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/common/src/rsi_debug.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/common/src/rsi_debug.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/common/src/sl_si91x_stack_object_declare.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/common/src/sl_si91x_stack_object_declare.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/common/src/sl_si91x_stack_object_declare.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/common/src/syscalls.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/common/src/syscalls.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/common/src/syscalls.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/config/src/rsi_nvic_priorities_config.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/config/src/rsi_nvic_priorities_config.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/config/src/rsi_nvic_priorities_config.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/aux_reference_volt_config.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/aux_reference_volt_config.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/aux_reference_volt_config.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/clock_update.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/clock_update.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/clock_update.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_adc.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_adc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_adc.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_cci.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_cci.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_comparator.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_comparator.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_comparator.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_crc.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_crc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_crc.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_ct.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_ct.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_ct.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_cts.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_cts.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_dac.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_dac.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_dac.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_efuse.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_efuse.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_efuse.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_egpio.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_egpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_egpio.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_enhanced_fim.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_enhanced_fim.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_fim.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_fim.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_gpdma.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_gpdma.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_gpdma.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_gspi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_gspi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_gspi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_i2c.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_i2c.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_i2c.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_i2s.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_i2s.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_i2s.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_ir.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_ir.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_opamp.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_opamp.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_opamp.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_pwm.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_pwm.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_pwm.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qei.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qei.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qei.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qspi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qspi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qspi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qspi_proto.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qspi_proto.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_qspi_proto.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_rng.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_rng.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_rng.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_rpdma.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_rpdma.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_rpdma.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sdioh.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sdioh.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sdmem.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sdmem.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sio.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sio.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_smih.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_smih.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_spi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_spi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_spi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sspi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sspi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sspi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sysrtc.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sysrtc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sysrtc.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sysrtc_headers.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sysrtc_headers.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_sysrtc_headers.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_timers.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_timers.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_timers.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_udma.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_udma.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_udma.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_udma_wrapper.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_udma_wrapper.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_udma_wrapper.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_usart.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_usart.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_usart.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_vad.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_vad.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_wurx.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/rsi_wurx.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/sl_si91x_m4_ps.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/sl_si91x_m4_ps.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/inc/sl_si91x_m4_ps.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/aux_reference_volt_config.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/aux_reference_volt_config.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/aux_reference_volt_config.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/clock_update.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/clock_update.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/clock_update.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_adc.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_adc.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_adc.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_crc.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_crc.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_crc.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_dac.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_dac.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_dac.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_egpio.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_egpio.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_egpio.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_gspi.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_gspi.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_gspi.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_opamp.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_opamp.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_opamp.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_spi.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_spi.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_spi.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_sysrtc.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_sysrtc.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_sysrtc.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_udma.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_udma.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_udma.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_udma_wrapper.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_udma_wrapper.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_udma_wrapper.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_usart.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_usart.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/rsi_usart.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/sl_si91x_m4_ps.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/sl_si91x_m4_ps.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/peripheral_drivers/src/sl_si91x_m4_ps.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_packing.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_packing.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_packing.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_clks.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_clks.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_clks.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_crc.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_crc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_crc.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_ct.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_ct.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_ct.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_efuse.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_efuse.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_efuse.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_egpio.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_egpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_egpio.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_fim.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_fim.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_fim.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_gpdma.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_gpdma.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_gpdma.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_power_save.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_power_save.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_power_save.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_pwm.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_pwm.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_pwm.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_qspi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_qspi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_qspi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_rng.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_rng.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_rng.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_table_RS1xxxx.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_table_RS1xxxx.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_table_RS1xxxx.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_table_si91x.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_table_si91x.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_table_si91x.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_timer.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_timer.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_timer.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_udma.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_udma.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_udma.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_udma_wrapper.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_udma_wrapper.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_udma_wrapper.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_ulpss_clk.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_ulpss_clk.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/inc/rsi_rom_ulpss_clk.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/rom_driver/src/rsi_rom_table_si91x.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/rom_driver/src/rsi_rom_table_si91x.c</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_bod.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_bod.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_bod.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ds_timer.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ds_timer.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ds_timer.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ipmu.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ipmu.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ipmu.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_pll.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_pll.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_pll.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_pmu.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_pmu.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_pmu.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_power_save.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_power_save.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_power_save.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_processor_sensor.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_processor_sensor.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_processor_sensor.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_reg_spi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_reg_spi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_reg_spi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_retention.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_retention.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_retention.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_rtc.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_rtc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_rtc.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_temp_sensor.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_temp_sensor.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_temp_sensor.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_time_period.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_time_period.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_time_period.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ulpss_clk.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ulpss_clk.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_ulpss_clk.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_wwdt.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_wwdt.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/inc/rsi_wwdt.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_bod.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_bod.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_bod.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_ipmu.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_ipmu.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_ipmu.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_pll.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_pll.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_pll.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_power_save.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_power_save.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_power_save.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_rtc.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_rtc.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_rtc.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_temp_sensor.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_temp_sensor.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_temp_sensor.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_time_period.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_time_period.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_time_period.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_ulpss_clk.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_ulpss_clk.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/systemlevel/src/rsi_ulpss_clk.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_driver_gpio.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_driver_gpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_driver_gpio.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_adc.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_adc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_adc.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_bjt_temperature_sensor.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_bjt_temperature_sensor.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_bjt_temperature_sensor.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_dma.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_dma.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_dma.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_driver_gpio.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_driver_gpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_driver_gpio.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_gspi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_gspi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_gspi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_ssi.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_ssi.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/inc/sl_si91x_ssi.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_adc.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_adc.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_adc.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_bjt_temperature_sensor.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_bjt_temperature_sensor.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_bjt_temperature_sensor.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_dma.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_dma.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_dma.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_driver_gpio.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_driver_gpio.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_driver_gpio.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_gspi.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_gspi.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_gspi.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_ssi.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_ssi.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_api/src/sl_si91x_ssi.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_gpio.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_gpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_gpio.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_gpio_common.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_gpio_common.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_gpio_common.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_peripheral_gpio.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_peripheral_gpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/inc/sl_si91x_peripheral_gpio.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/src/sl_si91x_peripheral_gpio.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/src/sl_si91x_peripheral_gpio.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/unified_peripheral_drivers/src/sl_si91x_peripheral_gpio.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/clock_manager/inc/sl_si91x_clock_manager.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/clock_manager/inc/sl_si91x_clock_manager.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/clock_manager/inc/sl_si91x_clock_manager.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/clock_manager/inc/sli_si91x_clock_manager.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/clock_manager/inc/sli_si91x_clock_manager.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/clock_manager/inc/sli_si91x_clock_manager.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/clock_manager/src/sl_si91x_clock_manager.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/clock_manager/src/sl_si91x_clock_manager.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/clock_manager/src/sl_si91x_clock_manager.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/clock_manager/src/sli_si91x_clock_manager.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/clock_manager/src/sli_si91x_clock_manager.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/clock_manager/src/sli_si91x_clock_manager.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sl_si91x_power_manager.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sl_si91x_power_manager.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sl_si91x_power_manager.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sli_si91x_power_manager.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sli_si91x_power_manager.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sli_si91x_power_manager.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sli_si91x_power_manager_board_config.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sli_si91x_power_manager_board_config.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/power_manager/inc/sli_si91x_power_manager_board_config.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sl_si91x_power_manager.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sl_si91x_power_manager.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sl_si91x_power_manager.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sli_si91x_power_manager.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sli_si91x_power_manager.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sli_si91x_power_manager.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sli_si91x_power_manager_wakeup_init.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sli_si91x_power_manager_wakeup_init.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/power_manager/src/sli_si91x_power_manager_wakeup_init.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/sleeptimer/inc/sli_sleeptimer_hal.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/sleeptimer/inc/sli_sleeptimer_hal.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/sleeptimer/inc/sli_sleeptimer_hal.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/service/sleeptimer/src/sl_sleeptimer_hal_si91x_sysrtc.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/service/sleeptimer/src/sl_sleeptimer_hal_si91x_sysrtc.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/service/sleeptimer/src/sl_sleeptimer_hal_si91x_sysrtc.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/src/iPMU_prog/iPMU_dotc/ipmu_apis.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/src/iPMU_prog/iPMU_dotc/ipmu_apis.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/src/iPMU_prog/iPMU_dotc/ipmu_apis.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/core/chip/src/iPMU_prog/iPMU_dotc/rsi_system_config_917.c</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/core/chip/src/iPMU_prog/iPMU_dotc/rsi_system_config_917.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/core/chip/src/iPMU_prog/iPMU_dotc/rsi_system_config_917.c</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_CAN.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_CAN.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_Common.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_Common.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_Common.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_ETH.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_ETH.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_ETH_MAC.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_ETH_MAC.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_ETH_PHY.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_ETH_PHY.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_Flash.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_Flash.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_Flash.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_I2C.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_I2C.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_I2C.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_MCI.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_MCI.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_NAND.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_NAND.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_SAI.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_SAI.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_SAI.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_SPI.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_SPI.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_SPI.h</locationURI>
 		</link>
 		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USART.h</name>
+			<name>wiseconnect3_sdk_3.5.2/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USART.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USART.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USB.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USB.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USBD.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USBD.h</locationURI>
-		</link>
-		<link>
-			<name>wiseconnect3_sdk_3.4.0/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USBH.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/extension/wiseconnect/components/device/silabs/si91x/mcu/drivers/cmsis_driver/CMSIS/Driver/Include/Driver_USBH.h</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

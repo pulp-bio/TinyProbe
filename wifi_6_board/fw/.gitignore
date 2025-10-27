@@ -16,3 +16,4 @@ vscode.conf
 .env
 env.h
 .projectlinkstore
+*.bak

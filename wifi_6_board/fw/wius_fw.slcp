@@ -18,7 +18,7 @@ readme:
 - {path: readme.md}
 source:
 - {path: main.c}
-sdk: {id: simplicity_sdk, version: 2024.12.0}
+sdk: {id: simplicity_sdk, version: 2025.6.2}
 toolchain_settings: []
 component:
 - {from: wiseconnect3_sdk, id: SIWG917M111MGTBA}
@@ -45,7 +45,7 @@ ui_hints:
   highlight:
   - {path: readme.md, focus: true}
 sdk_extension:
-- {id: wiseconnect3_sdk, version: 3.4.0}
+- {id: wiseconnect3_sdk, version: 3.5.2}
 post_build:
 - {path: wius_fw.slpb}
 

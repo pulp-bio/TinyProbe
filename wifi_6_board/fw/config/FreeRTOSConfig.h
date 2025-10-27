@@ -90,7 +90,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //  <q>Use TICKLESS IDLE for Energy Management
 //  <i> Enable setting to use Tickless Idle.
 //  <i> Default: 0
-#define configUSE_TICKLESS_IDLE 1
+#define configUSE_TICKLESS_IDLE 0
 #endif
 
 #if (configUSE_TICKLESS_IDLE == 1)
@@ -125,7 +125,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //  <i> Callback function vApplicationStackOverflowHook implementation is required when stack checking is enabled.
 //  <i> Not applicable to the Win32 port.
 //  <i> Default: 0
-#define configCHECK_FOR_STACK_OVERFLOW 1
+#define configCHECK_FOR_STACK_OVERFLOW 0
 
 #if (configUSE_TICKLESS_IDLE == 1)
 

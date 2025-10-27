@@ -51,27 +51,54 @@ extern "C" {
 // <o ALARM_TIME_MSEC> Alarm Time (in milliseconds)
 // <i> Default: 5000
 #define ALARM_TIME_MSEC 5000
-
 // </e>
 
 // <e>GPIO Wakeup
 #define SL_ENABLE_GPIO_WAKEUP_SOURCE 0
 
-// <q ENABLE_NPSS_GPIO_0> Enable NPSS GPIO 0
+// <e ENABLE_NPSS_GPIO_0> Enable NPSS GPIO 0
 // <i> Default: 0
 #define ENABLE_NPSS_GPIO_0 0
 
-// <q ENABLE_NPSS_GPIO_1> Enable NPSS GPIO 1
+// <o NPSS_GPIO_0_POLARITY> Select NPSS GPIO_0 Polarity
+//   <POLARITY_LOW=> Polarity Low
+//   <POLARITY_HIGH=> Polarity High
+// <i> Selection of NPSS polarity.
+#define NPSS_GPIO_0_POLARITY POLARITY_LOW
+//</e>
+
+// <e ENABLE_NPSS_GPIO_1> Enable NPSS GPIO 1
 // <i> Default: 0
 #define ENABLE_NPSS_GPIO_1 0
 
-// <q ENABLE_NPSS_GPIO_2> Enable NPSS GPIO 2
+// <o NPSS_GPIO_1_POLARITY> Select NPSS GPIO_1 Polarity
+//   <POLARITY_LOW=> Polarity Low
+//   <POLARITY_HIGH=> Polarity High
+// <i> Selection of NPSS polarity.
+#define NPSS_GPIO_1_POLARITY POLARITY_LOW
+//</e>
+
+// <e ENABLE_NPSS_GPIO_2> Enable NPSS GPIO 2
 // <i> Default: 0
 #define ENABLE_NPSS_GPIO_2 0
 
-// <q ENABLE_NPSS_GPIO_3> Enable NPSS GPIO 3
+// <o NPSS_GPIO_2_POLARITY> Select NPSS GPIO_2 Polarity
+//   <POLARITY_LOW=> Polarity Low
+//   <POLARITY_HIGH=> Polarity High
+// <i> Selection of NPSS polarity.
+#define NPSS_GPIO_2_POLARITY POLARITY_LOW
+// </e>
+
+// <e ENABLE_NPSS_GPIO_3> Enable NPSS GPIO 3
 // <i> Default: 0
 #define ENABLE_NPSS_GPIO_3 0
+
+// <o NPSS_GPIO_3_POLARITY> Select NPSS GPIO_3 Polarity
+//   <POLARITY_LOW=> Polarity Low
+//   <POLARITY_HIGH=> Polarity High
+// <i> Selection of NPSS polarity.
+#define NPSS_GPIO_3_POLARITY POLARITY_LOW
+// </e>
 // </e>
 
 // <e>Deep Sleep Timer Wakeup

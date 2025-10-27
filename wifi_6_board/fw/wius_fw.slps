@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <model:MDescriptors xmlns:model="http://www.silabs.com/ss/Studio.ecore">
   <descriptors name="wius_fw">
-    <properties key="projectCommon.sdkId" value="com.silabs.sdk.stack.sisdk:2024.12.0._-2049764802"/>
+    <properties key="projectCommon.sdkId" value="com.silabs.sdk.stack.sisdk:2025.6.2._477918771"/>
     <properties key="universalConfig.relativeWorkspacePath" value="..\wius_fw.slcw"/>
     <properties key="universalConfig.generationDirectory" value=""/>
     <properties key="universalConfig.toolchainCompatibility" value="iar gcc"/>

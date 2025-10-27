@@ -43,8 +43,6 @@
 #define REQUIRED_IP_TYPE SL_IPV4
 #endif
 
-// NOTE: Change the Wi-Fi details in user/config.h
-
 #ifndef DEFAULT_WIFI_CLIENT_PROFILE_SSID
 #define DEFAULT_WIFI_CLIENT_PROFILE_SSID "YOUR_AP_SSID"
 #endif

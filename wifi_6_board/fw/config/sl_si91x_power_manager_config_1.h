@@ -64,10 +64,6 @@ extern "C" {
 // <i> Default: 1
 #define SL_ULP_AUX_PERIPHERAL 1
 
-// <q SL_ULP_CAP_PERIPHERAL> ULP CAPACITIVE TOUCH
-// <i> Default: 1
-#define SL_ULP_CAP_PERIPHERAL 1
-
 // <q SL_ULP_FIM_PERIPHERAL> ULP FIM
 // <i> Default: 1
 #define SL_ULP_FIM_PERIPHERAL 1
@@ -232,9 +228,6 @@ sl_power_peripheral_t peripheral_config = {
   .ulpss_peripheral = (0
 #if (SL_ULP_AUX_PERIPHERAL == 0)
                        | SL_SI91X_POWER_MANAGER_ULPSS_PG_AUX
-#endif
-#if (SL_ULP_CAP_PERIPHERAL == 0)
-                       | SL_SI91X_POWER_MANAGER_ULPSS_PG_CAP
 #endif
 #if (SL_ULP_FIM_PERIPHERAL == 0)
                        | SL_SI91X_POWER_MANAGER_ULPSS_PG_FIM

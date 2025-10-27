@@ -41,7 +41,7 @@ extern "C"
 
 // <e SL_GSPI_DMA_CONFIG_ENABLE> DMA
 // <i> Default: 0
-#define SL_GSPI_DMA_CONFIG_ENABLE 1
+#define SL_GSPI_DMA_CONFIG_ENABLE 0
 
 // <o SL_GSPI_AFULL_THRESHOLD> FIFO Threshold - Almost Full <0-14>
 // <i> Default: 5
@@ -57,7 +57,7 @@ extern "C"
 // <<< end of configuration section >>>
 
 // <<< sl:start pin_tool >>>
-// <gspi_master signal=SCK_,CS0_,MOSI_,MISO_> SL_GSPI_MASTER
+// <gspi_master signal=SCK_,(CS0_),(CS1_),(CS2_),MOSI_,MISO_> SL_GSPI_MASTER
 // $[GSPI_MASTER_SL_GSPI_MASTER]
 #ifndef SL_GSPI_MASTER_PERIPHERAL               
 #define SL_GSPI_MASTER_PERIPHERAL                GSPI_MASTER
@@ -74,15 +74,15 @@ extern "C"
 #define SL_GSPI_MASTER_SCK_LOC                   1
 #endif
 
-// GSPI_MASTER CS0_ on GPIO_53
+// GSPI_MASTER CS0_ on GPIO_28
 #ifndef SL_GSPI_MASTER_CS0__PORT                
 #define SL_GSPI_MASTER_CS0__PORT                 HP
 #endif
 #ifndef SL_GSPI_MASTER_CS0__PIN                 
-#define SL_GSPI_MASTER_CS0__PIN                  53
+#define SL_GSPI_MASTER_CS0__PIN                  28
 #endif
 #ifndef SL_GSPI_MASTER_CS0_LOC                  
-#define SL_GSPI_MASTER_CS0_LOC                   7
+#define SL_GSPI_MASTER_CS0_LOC                   5
 #endif
 
 // GSPI_MASTER MOSI_ on GPIO_27
@@ -108,6 +108,10 @@ extern "C"
 #endif
 // [GSPI_MASTER_SL_GSPI_MASTER]$
 // <<< sl:end pin_tool >>>
+
+#if !(defined(SL_GSPI_MASTER_CS0__PORT) || defined(SL_GSPI_MASTER_CS1__PORT) || defined(SL_GSPI_MASTER_CS2__PORT))
+#warning "No Chip Select pin is configured for GSPI_MASTER"
+#endif
 
 #ifdef __cplusplus
 }

@@ -42,6 +42,16 @@ typedef enum wius_wifi_performance_profile
     WIUS_PERF_PROFILE_LOWPOWER   /**< Low power */
 } wius_wifi_performance_profile_t;
 
+typedef struct wius_wifi_mdns
+{
+    sl_mdns_t handle;
+    sl_mdns_protocol_t protocol;
+    char *host_name;
+    char *service_name;
+    char *service_message;
+    uint16_t port;
+} wius_wifi_mdns_t;
+
 /**
  * @brief Initialize the WiFi client interface
  *
@@ -60,8 +70,8 @@ sl_status_t wius_wifi_init(void);
  */
 sl_status_t wius_wifi_deinit(void);
 
-sl_status_t wius_wifi_mdns_init(sl_mdns_t *mdns, char *host_name, sl_mdns_protocol_t protocol);
-sl_status_t wius_wifi_mdns_add(sl_mdns_t *mdns, char *service_name);
+sl_status_t wius_wifi_mdns_init(wius_wifi_mdns_t *mdns);
+sl_status_t wius_wifi_mdns_add(wius_wifi_mdns_t *mdns);
 
 /**
  * @brief Set the WiFi performance profile

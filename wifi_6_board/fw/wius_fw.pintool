@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<device:XMLDevice xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:device="http://www.silabs.com/ss/hwconfig/document/device.ecore" name="pin_tool.siwg917m111mgtba" partId="mcu.arm.wfm.siwg917m111mgtba" contextId="com.silabs.sdk.stack.sisdk:2024.12.0._-2049764802">
+<device:XMLDevice xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:device="http://www.silabs.com/ss/hwconfig/document/device.ecore" name="pin_tool.siwg917m111mgtba" partId="mcu.arm.wfm.siwg917m111mgtba" contextId="com.silabs.sdk.stack.sisdk:2025.6.2._477918771">
   <mode name="DefaultMode">
     <property object="DefaultMode" propertyId="mode.diagramLocation" value="100, 100"/>
     <property object="GSPI_MASTER" propertyId="ABModule.selectedRequirement" value="gspi_master%T%SL_GSPI_MASTER%T%sl_si91x_gspi_common_config.h"/>

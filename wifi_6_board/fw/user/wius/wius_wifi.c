@@ -53,7 +53,7 @@ static const sl_wifi_device_configuration_t station_init_configuration = {
         .oper_mode = SL_SI91X_CLIENT_MODE,
         .coex_mode = SL_SI91X_WLAN_ONLY_MODE,
         .feature_bit_map = (SL_SI91X_FEAT_SECURITY_OPEN | SL_SI91X_FEAT_AGGREGATION | SL_SI91X_FEAT_WPS_DISABLE),
-        .tcp_ip_feature_bit_map = (SL_SI91X_TCP_IP_FEAT_DHCPV4_CLIENT | SL_SI91X_TCP_IP_FEAT_SSL | SL_SI91X_TCP_IP_FEAT_EXTENSION_VALID),
+        .tcp_ip_feature_bit_map = (SL_SI91X_TCP_IP_FEAT_DHCPV4_CLIENT | SL_SI91X_TCP_IP_FEAT_SSL | SL_SI91X_TCP_IP_FEAT_EXTENSION_VALID | SL_SI91X_TCP_IP_FEAT_MDNSD),
         .custom_feature_bit_map = (SL_SI91X_CUSTOM_FEAT_EXTENTION_VALID | SL_SI91X_CUSTOM_FEAT_SOC_CLK_CONFIG_160MHZ),
         .ext_custom_feature_bit_map = (MEMORY_CONFIG | SL_SI91X_EXT_FEAT_FRONT_END_SWITCH_PINS_ULP_GPIO_4_5_0),
         .bt_feature_bit_map = 0,
@@ -171,23 +171,25 @@ sl_status_t wius_wifi_deinit(void)
     return sl_net_deinit(SL_NET_WIFI_CLIENT_INTERFACE);
 }
 
-sl_status_t wius_wifi_mdns_init(sl_mdns_t *mdns, char *host_name, sl_mdns_protocol_t protocol)
+sl_status_t wius_wifi_mdns_init(wius_wifi_mdns_t *mdns)
 {
     sl_status_t status = SL_STATUS_OK;
 
     sl_mdns_configuration_t mdns_config = {
-        .protocol = protocol,
+        .protocol = mdns->protocol,
         .type = SL_IPV4_VERSION,
     };
-    strncpy(mdns_config.host_name, host_name, SL_MIN((size_t)31, strlen(host_name)));
-    status = sl_mdns_init(mdns, &mdns_config, NULL);
+    // strncpy(mdns_config.host_name, "tinyprobe.local.", sizeof(mdns_config.host_name) - 1);
+    snprintf(mdns_config.host_name, sizeof(mdns_config.host_name), "%s.local.", mdns->host_name);
+    status = sl_mdns_init(&mdns->handle, &mdns_config, NULL);
     if (status != SL_STATUS_OK)
     {
         LOG_E("Failed to initialize mDNS: 0x%lx", status);
         return status;
     }
+    LOG_I("mDNS host name set to '%s'", mdns_config.host_name);
 
-    status = sl_mdns_add_interface(mdns, SL_NET_WIFI_CLIENT_INTERFACE);
+    status = sl_mdns_add_interface(&mdns->handle, SL_NET_WIFI_CLIENT_INTERFACE);
     if (status != SL_STATUS_OK)
     {
         LOG_E("Failed to add mDNS interface: 0x%lx", status);
@@ -197,17 +199,32 @@ sl_status_t wius_wifi_mdns_init(sl_mdns_t *mdns, char *host_name, sl_mdns_protoc
     return status;
 }
 
-sl_status_t wius_wifi_mdns_add(sl_mdns_t *mdns, char *service_name)
+sl_status_t wius_wifi_mdns_add(wius_wifi_mdns_t *mdns)
 {
     sl_status_t status = SL_STATUS_OK;
 
+    // sl_mdns_service_t service = {
+    //     .instance_name = "tinyprobe_service._tinyprobe._udp.local.",
+    //     .port = TP_UDP_PORT,
+    //     .service_message = "TinyProbe Service",
+    //     .service_type = "_tinyprobe._udp.local.",
+    //     .ttl = 120,
+    // };
+    char service_type[64];
+    char instance_name[64];
+    snprintf(service_type, sizeof(service_type), "_%s._%s.local.", mdns->host_name,
+             (mdns->protocol == SL_MDNS_PROTO_UDP) ? "udp" : "tcp");
+    snprintf(instance_name, sizeof(instance_name), "%s.%s", mdns->service_name, service_type);
     sl_mdns_service_t service = {
-        .instance_name = service_name,
-        .port = TP_UDP_PORT,
-        .service_message = "TinyProbe Service",
-        .service_type = "_tinyprobe",
+        .instance_name = instance_name,
+        .port = mdns->port,
+        .service_message = mdns->service_message,
+        .service_type = service_type,
+        .ttl = 120,
     };
-    status = sl_mdns_register_service(mdns, SL_NET_WIFI_CLIENT_INTERFACE, &service);
+    status = sl_mdns_register_service(&mdns->handle, SL_NET_WIFI_CLIENT_INTERFACE, &service);
+    LOG_I("mDNS service type '%s' instance '%s'", service_type, instance_name);
+    LOG_I("     added on port %d with message '%s'", mdns->port, mdns->service_message);
 
     return status;
 }

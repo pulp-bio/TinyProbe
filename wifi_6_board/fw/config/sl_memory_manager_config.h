@@ -1,9 +1,9 @@
 /***************************************************************************//**
  * @file
- * @brief sl_core Configuration
+ * @brief Memory Heap Allocator configuration file.
  *******************************************************************************
  * # License
- * <b>Copyright 2023 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2024 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
  * SPDX-License-Identifier: Zlib
@@ -28,17 +28,27 @@
  *
  ******************************************************************************/
 
-#ifndef SL_CORE_CONFIG_H
-#define SL_CORE_CONFIG_H
-
 // <<< Use Configuration Wizard in Context Menu >>>
 
-// <h> Core Abstraction Configuration
+#ifndef SL_MEMORY_MANAGER_CONFIG_H
+#define SL_MEMORY_MANAGER_CONFIG_H
 
-// <q SL_CORE_DEBUG_INTERRUPTS_MASKED_TIMING> Enables measurement of interrupt masking time for debugging purposes.
-// <i> Default: 0
-#define SL_CORE_DEBUG_INTERRUPTS_MASKED_TIMING    0
+// <h> Memory Manager Configuration
+
+// <o SL_MEMORY_MANAGER_BLOCK_ALLOCATION_MIN_SIZE> Minimum block allocation size
+// <32-128:8>
+// <i> Minimum block allocation size to avoid creating a block too small while splitting up an allocated block.
+// <i> Size expressed in bytes and can only be a multiple of 8 bytes for the proper data alignment management done by the dynamic allocator malloc() function.
+// <i> Default: 32
+#define SL_MEMORY_MANAGER_BLOCK_ALLOCATION_MIN_SIZE   (32)
+
+// <q SL_MEMORY_MANAGER_STATISTICS_API_ENABLE> Enables the statistics API.
+// <i> Setting this configuration to 0 will make all the statistics API return 0.
+// <i> Default: 1
+#define SL_MEMORY_MANAGER_STATISTICS_API_ENABLE  1
+
 // </h>
 
 // <<< end of configuration section >>>
-#endif // SL_CORE_CONFIG_H
+
+#endif /* SL_MEMORY_MANAGER_CONFIG_H */
