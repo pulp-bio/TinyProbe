@@ -45,7 +45,7 @@ typedef enum wius_wifi_performance_profile
 typedef struct wius_wifi_mdns
 {
     sl_mdns_t handle;
-    sl_mdns_protocol_t protocol;
+    char *protocol;
     char *host_name;
     char *service_name;
     char *service_message;

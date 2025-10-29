@@ -28,6 +28,8 @@
 
 #include "wius_wifi.h"
 
+#include <string.h>
+
 #include "sl_utility.h"
 #include "sl_wifi.h"
 #include "sl_net.h"
@@ -176,18 +178,29 @@ sl_status_t wius_wifi_mdns_init(wius_wifi_mdns_t *mdns)
     sl_status_t status = SL_STATUS_OK;
 
     sl_mdns_configuration_t mdns_config = {
-        .protocol = mdns->protocol,
+        .protocol = SL_MDNS_PROTO_UDP,
         .type = SL_IPV4_VERSION,
     };
-    // strncpy(mdns_config.host_name, "tinyprobe.local.", sizeof(mdns_config.host_name) - 1);
+
+    if (strlen(mdns->host_name) == 0 || mdns->host_name == NULL || strlen(mdns->host_name) + 8 > sizeof(mdns_config.host_name))
+    {
+        LOG_E("mDNS host name string not set");
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+    if (strlen(mdns->host_name) + 8 > sizeof(mdns_config.host_name))
+    {
+        LOG_E("mDNS host name too long");
+        return SL_STATUS_INVALID_PARAMETER;
+    }
     snprintf(mdns_config.host_name, sizeof(mdns_config.host_name), "%s.local.", mdns->host_name);
+
     status = sl_mdns_init(&mdns->handle, &mdns_config, NULL);
     if (status != SL_STATUS_OK)
     {
         LOG_E("Failed to initialize mDNS: 0x%lx", status);
         return status;
     }
-    LOG_I("mDNS host name set to '%s'", mdns_config.host_name);
+    LOG_D("mDNS host name set to '%s'", mdns_config.host_name);
 
     status = sl_mdns_add_interface(&mdns->handle, SL_NET_WIFI_CLIENT_INTERFACE);
     if (status != SL_STATUS_OK)
@@ -203,17 +216,33 @@ sl_status_t wius_wifi_mdns_add(wius_wifi_mdns_t *mdns)
 {
     sl_status_t status = SL_STATUS_OK;
 
-    // sl_mdns_service_t service = {
-    //     .instance_name = "tinyprobe_service._tinyprobe._udp.local.",
-    //     .port = TP_UDP_PORT,
-    //     .service_message = "TinyProbe Service",
-    //     .service_type = "_tinyprobe._udp.local.",
-    //     .ttl = 120,
-    // };
-    char service_type[64];
+    char service_type[32];
     char instance_name[64];
-    snprintf(service_type, sizeof(service_type), "_%s._%s.local.", mdns->host_name,
-             (mdns->protocol == SL_MDNS_PROTO_UDP) ? "udp" : "tcp");
+
+    if (mdns->protocol == NULL || strlen(mdns->protocol) == 0)
+    {
+        LOG_E("mDNS protocol string not set (should be 'udp' or 'tcp')");
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+    if (mdns->service_name == NULL || strlen(mdns->service_name) == 0)
+    {
+        LOG_E("mDNS service name string not set");
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+    if (strlen(mdns->host_name) + strlen(mdns->protocol) + 11 > sizeof(service_type))
+    {
+        LOG_E("mDNS host name too long");
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+
+    snprintf(service_type, sizeof(service_type), "_%s._%s.local.", mdns->host_name, mdns->protocol);
+
+    if (strlen(mdns->service_name) + strlen(service_type) + 2 > sizeof(instance_name))
+    {
+        LOG_E("mDNS service name too long");
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+
     snprintf(instance_name, sizeof(instance_name), "%s.%s", mdns->service_name, service_type);
     sl_mdns_service_t service = {
         .instance_name = instance_name,
@@ -223,8 +252,8 @@ sl_status_t wius_wifi_mdns_add(wius_wifi_mdns_t *mdns)
         .ttl = 120,
     };
     status = sl_mdns_register_service(&mdns->handle, SL_NET_WIFI_CLIENT_INTERFACE, &service);
-    LOG_I("mDNS service type '%s' instance '%s'", service_type, instance_name);
-    LOG_I("     added on port %d with message '%s'", mdns->port, mdns->service_message);
+    LOG_D("mDNS service type '%s' instance '%s'", service_type, instance_name);
+    LOG_D("     added on port %d with message '%s'", mdns->port, mdns->service_message);
 
     return status;
 }
@@ -233,24 +262,24 @@ sl_status_t wius_wifi_set_performance_profile(wius_wifi_performance_profile_t pr
 {
     sl_status_t status = SL_STATUS_OK;
 
-    sl_wifi_performance_profile_t set_profile;
+    sl_wifi_performance_profile_v2_t set_profile;
 
     switch (profile)
     {
     case WIUS_PERF_PROFILE_HIGHSPEED:
-        set_profile.profile = HIGH_PERFORMANCE;
+        set_profile.profile = SL_WIFI_SYSTEM_HIGH_PERFORMANCE;
         break;
     case WIUS_PERF_PROFILE_LOWPOWER:
-        set_profile.profile = ASSOCIATED_POWER_SAVE;
+        set_profile.profile = SL_WIFI_SYSTEM_ASSOCIATED_POWER_SAVE_LOW_LATENCY;
         break;
     default:
         return SL_STATUS_INVALID_PARAMETER;
     }
 
-    CHECK_STATUS(sl_wifi_set_performance_profile(&set_profile));
+    CHECK_STATUS(sl_wifi_set_performance_profile_v2(&set_profile));
 
-    sl_wifi_performance_profile_t read_profile;
-    CHECK_STATUS(sl_wifi_get_performance_profile(&read_profile));
+    sl_wifi_performance_profile_v2_t read_profile;
+    CHECK_STATUS(sl_wifi_get_performance_profile_v2(&read_profile));
 
     //	switch (read_profile.profile)
     //	{

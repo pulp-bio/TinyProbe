@@ -87,6 +87,8 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
         count_start = DWT->CYCCNT;
 
         LOG_D("Interrupt received");
+#else
+        delay_ms(5);
 #endif
 
         delay_ns(dcdc_delay_ns);

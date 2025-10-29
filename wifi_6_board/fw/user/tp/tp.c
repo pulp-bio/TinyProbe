@@ -81,7 +81,7 @@ wius_wifi_mdns_t tp_mdns = {
     .host_name = "wius",
     .service_name = "tinyprobe",
     .service_message = "TinyProbe Service",
-    .protocol = SL_MDNS_PROTO_UDP,
+    .protocol = "udp",
     .port = TP_UDP_PORT,
 };
 
@@ -305,7 +305,7 @@ void tp_main_thread(void)
     while (true)
     {
         // Wait for a command to be received
-        if (!(osEventFlagsWait(event_flags, FLAG_CMD_RECEIVED, 0, 1000) & FLAG_CMD_RECEIVED))
+        if (!(osEventFlagsWait(event_flags, FLAG_CMD_RECEIVED, 0, 5000) & FLAG_CMD_RECEIVED))
         {
             LOG_I("Still here");
             // FIXME: Re-advertise mDNS service every second
@@ -326,6 +326,8 @@ void tp_main_thread(void)
         osEventFlagsSet(event_flags, FLAG_CMD_EXECUTED);
 
         // led_red_set(false);
+        uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
+        LOG_I("Main thread stack watermark: %lu bytes", stack_watermark);
     }
 }
 
@@ -380,6 +382,9 @@ void _tp_thread_wifi_receive(void *argument)
             LOG_E("Error waiting for command executed flag");
             continue;
         }
+
+        uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
+        LOG_I("WiFi receive thread stack watermark: %lu bytes", stack_watermark);
     }
 }
 
@@ -409,6 +414,9 @@ void _tp_thread_wifi_transmit(void *argument)
         }
 
         tp_buffer_return(&tp_buf, slot_udp, true);
+
+        uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
+        LOG_I("WiFi transmit thread stack watermark: %lu bytes", stack_watermark);
     }
 }
 
