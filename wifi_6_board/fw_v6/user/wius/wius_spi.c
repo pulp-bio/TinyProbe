@@ -182,11 +182,11 @@ sl_status_t wius_spi_await(uint8_t id)
 
     if (id == WIUS_SPI_INST_0) // GSPI
     {
-        status = (osSemaphoreAcquire(_wius_spi_0_sem, osWaitForever) == osOK) ? SL_STATUS_OK : SL_STATUS_TIMEOUT;
+        status = (osSemaphoreAcquire(_wius_spi_0_sem, 1000) == osOK) ? SL_STATUS_OK : SL_STATUS_TIMEOUT;
     }
     else if (id == WIUS_SPI_INST_1) // SSI
     {
-        status = (osSemaphoreAcquire(_wius_spi_1_sem, osWaitForever) == osOK) ? SL_STATUS_OK : SL_STATUS_TIMEOUT;
+        status = (osSemaphoreAcquire(_wius_spi_1_sem, 1000) == osOK) ? SL_STATUS_OK : SL_STATUS_TIMEOUT;
     }
     else
     {

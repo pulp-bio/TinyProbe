@@ -2,6 +2,7 @@ import socket
 import threading
 from typing import Any
 import time
+import math
 
 from rich import print
 
@@ -52,20 +53,15 @@ def udp_receiver(port: int, stop_event: threading.Event):
 
 
 def main():
+    NUM_SHOTS = 100
     cmd = [
-        # PingCommand(),
-        # ActivateReplies(),
-        # SwitchSpiMux(),
-        # WriteSpiPacket(bytes_array=b"\xaa\xbb\xcc\xdd"),
-        # WriteFPGAReg(addr=0x10, val=0x12345678),
-        # WriteAfeReg(dtgc_die=True, addr=0x20, val=0x9ABC),
-        # WriteTxReg(addr=0x30, val=0xDEF01234),
-        # DelayNs(delay=500),
-        # SleepMs(delay=10),
-        # ControlPower(domain_id=1),
-        TriggerShot(n_shots=1),
-        # SetPowersaveMode(domain=2),
-        # PingCommand(),
+        TriggerShot(n_shots=NUM_SHOTS),
+        # TriggerShot(n_shots=NUM_SHOTS),
+        # TriggerShot(n_shots=NUM_SHOTS),
+        # TriggerShot(n_shots=NUM_SHOTS),
+        # TriggerShot(n_shots=NUM_SHOTS),
+        # TriggerShot(n_shots=NUM_SHOTS),
+        # TriggerShot(n_shots=NUM_SHOTS),
     ]
 
     addr = ("192.168.1.33", 50008)
@@ -92,7 +88,9 @@ def main():
     # for packet, addr in received_packets:
     #     print(f"From {addr}: 0x{packet.hex()} ({packet.decode(errors='ignore')!r})")
     total_bytes = sum(len(packet) for packet, _, _ in received_packets)
+    expected_bytes = math.ceil(NUM_SHOTS * 82 / 4) * 4002 * len(list(filter(lambda c: isinstance(c, TriggerShot), cmd)))
     print(f"Total UDP bytes received: {total_bytes}")
+    print(f"      Expected UDP bytes: {expected_bytes}")
     min_time = min(t for _, t, _ in received_packets) if received_packets else 0
     max_time = max(t for _, t, _ in received_packets) if received_packets else 0
     duration = max_time - min_time

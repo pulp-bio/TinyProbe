@@ -66,7 +66,9 @@ typedef struct
     tp_buffer_slot_t slots[TP_BUFFER_NUM]; /**< Buffer slots */
     size_t head;                           /**< Head index */
     size_t tail;                           /**< Tail index */
-    size_t count;                          /**< Number of filled slots */
+    osSemaphoreId_t sem_read;              /**< Semaphore for reading */
+    osSemaphoreId_t sem_write;             /**< Semaphore for writing */
+    osMutexId_t mutex;                     /**< Mutex for buffer access */
 } tp_buffer_t;
 
 size_t tp_buffer_history_get(uint32_t **history);
@@ -79,14 +81,6 @@ void tp_buffer_history_reset(void);
  *
  */
 sl_status_t tp_buffer_init(tp_buffer_t *buf);
-
-/**
- * @brief Reset the buffer structure
- *
- * @param buf Buffer structure to reset
- *
- */
-void tp_buffer_reset(tp_buffer_t *buf);
 
 /**
  * @brief Claim a buffer slot for writing
@@ -107,6 +101,16 @@ tp_buffer_slot_t *tp_buffer_claim_writing(tp_buffer_t *buf);
 tp_buffer_slot_t *tp_buffer_claim_reading(tp_buffer_t *buf);
 
 /**
+ * @brief Return a buffer slot after writing
+ *
+ * @param buf Buffer structure to return to
+ * @param slot Pointer to the buffer slot to return
+ * @param discard Discard the buffer slot after writing
+ *
+ */
+void tp_buffer_return_writing(tp_buffer_t *buf, tp_buffer_slot_t *slot);
+
+/**
  * @brief Return a buffer slot after reading
  *
  * @param buf Buffer structure to return to
@@ -114,4 +118,4 @@ tp_buffer_slot_t *tp_buffer_claim_reading(tp_buffer_t *buf);
  * @param discard Discard the buffer slot after reading
  *
  */
-void tp_buffer_return(tp_buffer_t *buf, tp_buffer_slot_t *slot, bool discard);
+void tp_buffer_return_reading(tp_buffer_t *buf, tp_buffer_slot_t *slot);

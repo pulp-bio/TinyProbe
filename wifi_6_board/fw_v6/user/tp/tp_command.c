@@ -191,6 +191,12 @@ sl_status_t tp_command_parse_and_execute(uint8_t *buffer, size_t buffer_length, 
         return SL_STATUS_INVALID_PARAMETER;
     }
 
+    LOG_D("Parsed %u commands:", _tp_num_commands);
+    for (uint16_t i = 0; i < _tp_num_commands; i++)
+    {
+        LOG_D("  - %u: ID %u, Length %u", i, _tp_command_commands[i].id, _tp_command_commands[i].args_length);
+    }
+
     for (uint16_t i = 0; i < _tp_num_commands; i++)
     {
         tp_command_execute(commands[i], msg);

@@ -338,18 +338,18 @@ void tp_main_thread(void)
         stack_watermark = osThreadGetStackSpace(wifi_transmit_thread_id);
         LOG_I("WiFi transmit thread stack watermark: %lu bytes", stack_watermark);
 
-        uint32_t *buffer_history;
-        size_t history_length = tp_buffer_history_get(&buffer_history);
-        LOG_I("Buffer history (length %d):", (int)history_length);
-        for (size_t i = 0; i < history_length; i++)
-        {
-            uint32_t entry = buffer_history[i];
-            uint32_t timestamp = entry & 0xFFFF;
-            uint32_t event = (entry >> 24) & 0xFF;
-            uint32_t buffer_index = (entry >> 16) & 0xFF;
+        // uint32_t *buffer_history;
+        // size_t history_length = tp_buffer_history_get(&buffer_history);
+        // LOG_I("Buffer history (length %d):", (int)history_length);
+        // for (size_t i = 0; i < history_length; i++)
+        // {
+        //     uint32_t entry = buffer_history[i];
+        //     uint32_t timestamp = entry & 0xFFFF;
+        //     uint32_t event = (entry >> 24) & 0xFF;
+        //     uint32_t buffer_index = (entry >> 16) & 0xFF;
 
-            LOG_I("  %5d,%d,%d", timestamp, event, buffer_index);
-        }
+        //     LOG_I("  %5d,%d,%d", timestamp, event, buffer_index);
+        // }
     }
 }
 
@@ -384,7 +384,7 @@ void _tp_thread_wifi_transmit(void *argument)
             LOG_W("Error transmitting UDP packet: 0x%lx", status);
         }
 
-        tp_buffer_return(&tp_buf, slot_udp, true);
+        tp_buffer_return_reading(&tp_buf, slot_udp);
 
         // uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
         // LOG_I("WiFi transmit thread stack watermark: %lu bytes", stack_watermark);

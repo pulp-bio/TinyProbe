@@ -30,7 +30,10 @@
 
 #include "cmsis_os2.h"
 
-uint32_t buffer_history[1024] = {0};
+#define BUFFER_HISTORY_ENABLED 0
+#define BUFFER_HISTORY_NUM_ENTRIES 1024
+
+uint32_t buffer_history[BUFFER_HISTORY_NUM_ENTRIES] = {0};
 size_t buffer_history_index = 0;
 
 typedef enum buffer_history_event
@@ -41,12 +44,15 @@ typedef enum buffer_history_event
     BUFFER_HISTORY_EVENT_RETURN_READ = 3,
 } buffer_history_event_t;
 
-osSemaphoreId_t sem_tp_buffer_new = NULL;
-osSemaphoreId_t sem_tp_buffer_rel = NULL;
-
 inline static void buffer_history_record(buffer_history_event_t event, uint8_t buffer_index)
 {
-    buffer_history[buffer_history_index++] = (osKernelGetTickCount() & 0xFFFF) | (event << 24) | (buffer_index << 16);
+#if BUFFER_HISTORY_ENABLED
+    buffer_history[buffer_history_index] = (osKernelGetTickCount() & 0xFFFF) | (event << 24) | (buffer_index << 16);
+    buffer_history_index = (buffer_history_index + 1) % BUFFER_HISTORY_NUM_ENTRIES;
+#else
+    UNUSED(event);
+    UNUSED(buffer_index);
+#endif
 }
 
 size_t tp_buffer_history_get(uint32_t **history)
@@ -63,33 +69,32 @@ void tp_buffer_history_reset(void)
 
 sl_status_t tp_buffer_init(tp_buffer_t *buf)
 {
-    sem_tp_buffer_new = osSemaphoreNew(TP_BUFFER_NUM, 0, NULL);
-    if (sem_tp_buffer_new == NULL)
+    buf->sem_read = osSemaphoreNew(TP_BUFFER_NUM, 0, NULL);
+    if (buf->sem_read == NULL)
     {
-        LOG_E("Error creating TP buffer semaphore");
+        LOG_E("Failed to create read semaphore");
         return SL_STATUS_FAIL;
-    }
-    sem_tp_buffer_rel = osSemaphoreNew(TP_BUFFER_NUM, TP_BUFFER_NUM, NULL);
-    if (sem_tp_buffer_rel == NULL)
-    {
-        LOG_E("Error creating TP buffer semaphore");
-        return SL_STATUS_FAIL;
+        ;
     }
 
-    tp_buffer_reset(buf);
+    buf->sem_write = osSemaphoreNew(TP_BUFFER_NUM, TP_BUFFER_NUM, NULL);
+    if (buf->sem_write == NULL)
+    {
+        LOG_E("Failed to create write semaphore");
+        return SL_STATUS_FAIL;
+    }
 
-    memset(buffer_history, 0, sizeof(buffer_history));
+    buf->mutex = osMutexNew(NULL);
+    if (buf->mutex == NULL)
+    {
+        LOG_E("Failed to create buffer mutex");
+        return SL_STATUS_FAIL;
+    }
 
-    return SL_STATUS_OK;
-}
-
-void tp_buffer_reset(tp_buffer_t *buf)
-{
     memset(buf->slots, 0, sizeof(buf->slots));
 
     buf->head = 0;
     buf->tail = 0;
-    buf->count = 0;
 
     for (size_t i = 0; i < TP_BUFFER_NUM; i++)
     {
@@ -98,36 +103,20 @@ void tp_buffer_reset(tp_buffer_t *buf)
         buf->slots[i].id = i;
     }
 
-    if (sem_tp_buffer_new != NULL)
-    {
-        while (osSemaphoreAcquire(sem_tp_buffer_new, 0) == osOK)
-            ;
-    }
-    if (sem_tp_buffer_rel != NULL)
-    {
-        while (osSemaphoreAcquire(sem_tp_buffer_rel, 0) == osOK)
-            ;
-        for (size_t i = 0; i < TP_BUFFER_NUM; i++)
-        {
-            osSemaphoreRelease(sem_tp_buffer_rel);
-        }
-    }
+    memset(buffer_history, 0, sizeof(buffer_history));
+
+    return SL_STATUS_OK;
 }
 
 tp_buffer_slot_t *tp_buffer_claim_writing(tp_buffer_t *buf)
 {
     osStatus_t status;
 
-    status = osSemaphoreAcquire(sem_tp_buffer_rel, osWaitForever);
+    // Wait for a free slot
+    status = osSemaphoreAcquire(buf->sem_write, osWaitForever);
     if (status != osOK)
     {
-        LOG_W("Failed to acquire semaphore for buffer: %d", status);
-        return NULL;
-    }
-
-    if (buf->count >= TP_BUFFER_NUM)
-    {
-        LOG_W("Buffer full when claiming for writing");
+        LOG_W("Failed to acquire write semaphore for buffer: %d", status);
         return NULL;
     }
 
@@ -135,13 +124,16 @@ tp_buffer_slot_t *tp_buffer_claim_writing(tp_buffer_t *buf)
     if (slot->status != TP_BUFFER_FREE)
     {
         LOG_W("Buffer slot not free when claiming for writing");
+        osSemaphoreRelease(buf->sem_write);
         return NULL;
     }
 
     buffer_history_record(BUFFER_HISTORY_EVENT_CLAIM_WRITE, buf->tail);
 
+    osMutexAcquire(buf->mutex, osWaitForever);
     slot->status = TP_BUFFER_INUSE;
     buf->tail = (buf->tail + 1) % TP_BUFFER_NUM;
+    osMutexRelease(buf->mutex);
 
     return slot;
 }
@@ -150,10 +142,10 @@ tp_buffer_slot_t *tp_buffer_claim_reading(tp_buffer_t *buf)
 {
     osStatus_t status;
 
-    status = osSemaphoreAcquire(sem_tp_buffer_new, osWaitForever);
+    status = osSemaphoreAcquire(buf->sem_read, osWaitForever);
     if (status != osOK)
     {
-        LOG_W("Failed to acquire semaphore for buffer: %d", status);
+        LOG_W("Failed to acquire read semaphore for buffer: %d", status);
         return NULL;
     }
 
@@ -161,43 +153,47 @@ tp_buffer_slot_t *tp_buffer_claim_reading(tp_buffer_t *buf)
     if (slot->status != TP_BUFFER_FILLED)
     {
         LOG_W("Buffer slot not filled when claiming for reading");
+        osSemaphoreRelease(buf->sem_read);
         return NULL;
     }
 
     buffer_history_record(BUFFER_HISTORY_EVENT_CLAIM_READ, buf->head);
 
+    osMutexAcquire(buf->mutex, osWaitForever);
     slot->status = TP_BUFFER_INUSE;
+    osMutexRelease(buf->mutex);
 
     return slot;
 }
 
-void tp_buffer_return(tp_buffer_t *buf, tp_buffer_slot_t *slot, bool discard)
+void tp_buffer_return_writing(tp_buffer_t *buf, tp_buffer_slot_t *slot)
 {
-    if (slot)
-    {
-        slot->status = discard ? TP_BUFFER_FREE : TP_BUFFER_FILLED;
-    }
+    buffer_history_record(BUFFER_HISTORY_EVENT_RETURN_WRITE, slot->id);
 
-    if (discard)
-    {
-        buf->count--;
-        buffer_history_record(BUFFER_HISTORY_EVENT_RETURN_READ, slot->id);
-        buf->head = (buf->head + 1) % TP_BUFFER_NUM;
-        slot->length = TP_BUFFER_SIZE;
-        osSemaphoreRelease(sem_tp_buffer_rel);
-    }
-    else
-    {
-        buf->count++;
-        buffer_history_record(BUFFER_HISTORY_EVENT_RETURN_WRITE, slot->id);
-        osSemaphoreRelease(sem_tp_buffer_new);
+    osMutexAcquire(buf->mutex, osWaitForever);
+    slot->status = TP_BUFFER_FILLED;
+    osMutexRelease(buf->mutex);
 
-        // // TEST: yield to allow reading thread to run
-        // osThreadYield();
-    }
+    osSemaphoreRelease(buf->sem_read);
 
-    if (slot)
-    {
-        slot = NULL;
-    }
+    slot = NULL;
+
+    osThreadYield();
+}
+
+void tp_buffer_return_reading(tp_buffer_t *buf, tp_buffer_slot_t *slot)
+{
+    buffer_history_record(BUFFER_HISTORY_EVENT_RETURN_READ, slot->id);
+
+    osMutexAcquire(buf->mutex, osWaitForever);
+    buf->head = (buf->head + 1) % TP_BUFFER_NUM;
+    slot->length = TP_BUFFER_SIZE;
+    slot->status = TP_BUFFER_FREE;
+    osMutexRelease(buf->mutex);
+
+    osSemaphoreRelease(buf->sem_write);
+
+    slot = NULL;
+
+    osThreadYield();
 }

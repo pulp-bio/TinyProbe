@@ -87,11 +87,10 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
             continue;
         }
         count_interrupt_received = DWT->CYCCNT;
-
-        LOG_D("Interrupt received");
 #else
+        delay_ms(1);
         count_interrupt = DWT->CYCCNT;
-        // delay_ms(1);
+
         count_interrupt_received = DWT->CYCCNT;
 #endif
 
@@ -127,8 +126,6 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
 
         _tp_transmit_packages();
 
-        LOG_D("Transmitted");
-
         CHECK_STATUS(tp_fpga_reset_multififo());
     }
 
@@ -144,8 +141,6 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
 sl_status_t _tp_transmit_packages(void)
 {
     sl_status_t status = SL_STATUS_OK;
-
-    LOG_D("Executing");
 
     count_called_transmit = DWT->CYCCNT;
 
@@ -173,8 +168,7 @@ sl_status_t _tp_transmit_packages(void)
         CHECK_STATUS(wius_spi_await(WIUS_SPI_INST_0));
 
         slot_spi->length = TP_BUFFER_SIZE;
-
-        tp_buffer_return(&tp_buf, slot_spi, false);
+        tp_buffer_return_writing(&tp_buf, slot_spi);
 
         if (i == (uint16_t)(cb_pack_id / TP_UDP_PACKET_AMT))
         {
@@ -229,8 +223,6 @@ sl_status_t _tp_transmit_packages(void)
     // LOG_I(" Start of Transmit pa.: %lu", count_called_transmit);
     // LOG_I(" Transmit Packets whi.: %lu", count_start_transmit);
     // LOG_I(" Transmit packets done: %lu", count_done);
-
-    LOG_D("Done");
 
     return status;
 }

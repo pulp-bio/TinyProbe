@@ -1,38 +1,46 @@
 {
     "version": 6,
     "cmakeMinimumRequired": {
-      "major": 3,
-      "minor": 25,
-      "patch": 0
+        "major": 3,
+        "minor": 25,
+        "patch": 0
     },
     "configurePresets": [
-      {
-        "name": "project",
-        "displayName": "Configure fw_v6",
-        "generator": "Ninja Multi-Config",
-        "binaryDir": "${sourceDir}/build",
-        "toolchainFile": "${sourceDir}/toolchain.cmake",
-        "cacheVariables": {
-          "CMAKE_CONFIGURATION_TYPES": "base"
+        {
+            "name": "project",
+            "displayName": "Configure fw_v6",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/build",
+            "toolchainFile": "${sourceDir}/toolchain.cmake",
+            "cacheVariables": {
+                "CMAKE_CONFIGURATION_TYPES": "base"
+            }
         }
-      }
     ],
     "buildPresets": [
-      {
-        "name": "default_config",
-        "displayName": "Build fw_v6",
-        "configurePreset": "project",
-        "configuration": "base",
-        "targets": ["fw_v6"]
-      }
+        {
+            "name": "default_config",
+            "displayName": "Build fw_v6 as default_config",
+            "configurePreset": "project",
+            "configuration": "base",
+            "targets": [
+                "fw_v6"
+            ]
+        }
     ],
     "workflowPresets": [
-      {
-        "name": "project",
-        "steps": [
-          {"type": "configure", "name": "project"},
-          {"type": "build", "name": "default_config"}
-        ]
-      }
+        {
+            "name": "project",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "project"
+                },
+                {
+                    "type": "build",
+                    "name": "default_config"
+                }
+            ]
+        }
     ]
-  }
+}
