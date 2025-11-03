@@ -37,6 +37,7 @@ add_library(tinyprobe STATIC
     commands/tp_command_sleepms.c
     commands/tp_command_ctrlpwr.c
     commands/tp_command_triggershot.c
+    commands/tp_command_setpowersave.c
 )
 target_include_directories(tinyprobe PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}

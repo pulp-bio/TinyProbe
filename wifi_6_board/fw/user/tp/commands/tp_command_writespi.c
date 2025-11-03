@@ -40,5 +40,5 @@ sl_status_t tp_write_spi(uint8_t *args, uint16_t args_length)
 
     LOG_D("Done");
 
-    return SL_STATUS_OK;
+    return SL_STATUS_NOT_SUPPORTED;
 }

@@ -487,7 +487,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="wius_fw_cmake/build/CMakeFiles/wius_fw.dir|simplicity_sdk_2024.12.1|wiseconnect3_sdk_3.4.1|trashed_modified_files|wius_fw_cmake|wius_fw_iar_cmake" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="scripts|wius_fw_cmake/build/CMakeFiles/wius_fw.dir|simplicity_sdk_2024.12.1|wiseconnect3_sdk_3.4.1|trashed_modified_files|wius_fw_cmake|wius_fw_iar_cmake" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

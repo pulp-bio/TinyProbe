@@ -40,7 +40,7 @@
 #include "wius_power.h"
 #include "wius_wifi.h"
 #include "wius_spi.h"
-#include "wius_udp.h"
+#include "wius_tcp.h"
 #include "wius_gpio.h"
 
 wius_gpio_t int_pin = WIUS_GPIO_UULP_INPUT(TP_GPIO_INT);
@@ -59,23 +59,12 @@ wius_spi_config_t spi_config = {
 uint8_t wifi_rx_buffer[TP_WIFI_RX_BUFFER_SIZE] = {0};
 
 extern osEventFlagsId_t event_flags;
-osThreadId_t wifi_receive_thread_id;
-osThreadAttr_t wifi_rx_thread_attr = {
-    .name = "TP wifi receive",
-    .stack_size = TP_THREAD_STACK_WIFI,
-    .priority = osPriorityLow,
-};
 osThreadId_t wifi_transmit_thread_id;
 osThreadAttr_t wifi_tx_thread_attr = {
     .name = "TP wifi transmit",
     .stack_size = TP_THREAD_STACK_WIFI,
-    .priority = osPriorityLow,
+    .priority = osPriorityNormal,
 };
-
-// UDP socket over which communication happens
-wius_udp_t tp_socket = {0};
-char client_ip[16] = {0};
-int client_port = 0;
 
 wius_wifi_mdns_t tp_mdns = {
     .host_name = "wius",
@@ -91,12 +80,17 @@ osSemaphoreId_t sem_fpga;
 // Buffer for storing acquired data
 tp_buffer_t tp_buf;
 
+// Last server message
+wius_tcp_server_message_t msg;
+
 // Variables for the command functions
 bool enable_udp_replies = false;
 uint16_t n_packs_to_read = 0;
 uint16_t cb_pack_id = 0;
 
-void _tp_thread_wifi_receive(void *argument);
+uint32_t transmit_times[256] = {0};
+size_t transmit_times_index = 0;
+
 void _tp_thread_wifi_transmit(void *argument);
 void _tp_int_handler(uint32_t flag);
 
@@ -266,12 +260,6 @@ sl_status_t tp_init(void)
 
     CHECK_STATUS(tp_buffer_init(&tp_buf));
 
-    wifi_receive_thread_id = osThreadNew(_tp_thread_wifi_receive, NULL, &wifi_rx_thread_attr);
-    if (wifi_receive_thread_id == NULL)
-    {
-        LOG_E("Error creating WiFi receive thread");
-        return SL_STATUS_FAIL;
-    }
     wifi_transmit_thread_id = osThreadNew(_tp_thread_wifi_transmit, NULL, &wifi_tx_thread_attr);
     if (wifi_transmit_thread_id == NULL)
     {
@@ -300,91 +288,68 @@ void tp_main_thread(void)
 
     common_init();
 
+    status = wius_tcp_server_init();
+    if (SL_STATUS_OK != status)
+    {
+        LOG_E("Error initializing TCP server: 0x%lx", status);
+        return;
+    }
+
+    status = wius_tcp_server_start(TP_TCP_PORT);
+    if (SL_STATUS_OK != status)
+    {
+        LOG_E("Error starting TCP server: 0x%lx", status);
+        return;
+    }
+    LOG_I("Waiting for TCP connections on port %d", TP_TCP_PORT);
+
+    tp_buffer_history_reset();
+
     LOG_I("TinyProbe ready");
 
     while (true)
     {
-        // Wait for a command to be received
-        if (!(osEventFlagsWait(event_flags, FLAG_CMD_RECEIVED, 0, 5000) & FLAG_CMD_RECEIVED))
+        tp_buffer_history_reset();
+
+        osStatus_t os_status = osMessageQueueGet(wius_tcp_server_queue, &msg, NULL, 2000);
+        if (os_status != osOK)
         {
-            LOG_I("Still here");
-            // FIXME: Re-advertise mDNS service every second
-            wius_wifi_mdns_add(&tp_mdns);
+            if (os_status == osErrorTimeout)
+            {
+                // Timeout, continue to next iteration
+                LOG_I("Still here...");
+                continue;
+            }
+
+            LOG_W("Error receiving TCP message from queue: %d", (int)os_status);
             continue;
         }
 
-        // led_red_set(true);
-
-        // Execute the command
-        status = tp_command_parse_and_execute(wifi_rx_buffer, TP_WIFI_RX_BUFFER_SIZE);
+        status = tp_command_parse_and_execute(msg.data, msg.length, &msg);
         if (SL_STATUS_OK != status)
         {
-            LOG_E("Error executing command: 0x%lx", status);
+            LOG_W("Error executing command: 0x%lx", status);
+            continue;
         }
-
-        // Set the command executed flag
-        osEventFlagsSet(event_flags, FLAG_CMD_EXECUTED);
 
         // led_red_set(false);
         uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
         LOG_I("Main thread stack watermark: %lu bytes", stack_watermark);
-    }
-}
+        stack_watermark = osThreadGetStackSpace(wifi_transmit_thread_id);
+        LOG_I("WiFi transmit thread stack watermark: %lu bytes", stack_watermark);
 
-void _tp_thread_wifi_receive(void *argument)
-{
-    // listens for incoming UDP packets
-    (void)argument;
-    sl_status_t status = SL_STATUS_OK;
-
-    //    LOG_D("Started TinyProbe WiFi receive thread");
-
-    wius_udp_init(&tp_socket);
-
-    status = wius_udp_bind(&tp_socket, 0, TP_UDP_PORT);
-    if (SL_STATUS_OK != status)
-    {
-        LOG_E("Error connecting UDP socket: 0x%lx", status);
-        return;
-    }
-
-    ssize_t received_len = 0;
-
-    while (true)
-    {
-        memset(wifi_rx_buffer, 0, TP_WIFI_RX_BUFFER_SIZE);
-
-        status = wius_udp_receivefrom(&tp_socket, wifi_rx_buffer, TP_WIFI_RX_BUFFER_SIZE, &received_len,
-                                      client_ip, sizeof(client_ip), &client_port, 0);
-        if (SL_STATUS_OK != status)
+        uint32_t *buffer_history;
+        size_t history_length = tp_buffer_history_get(&buffer_history);
+        LOG_I("Buffer history (length %d):", (int)history_length);
+        for (size_t i = 0; i < history_length; i++)
         {
-            LOG_E("Error receiving UDP packet: 0x%lx", status);
-            continue;
+            uint32_t entry = buffer_history[i];
+            uint32_t timestamp = entry & 0xFFFF;
+            uint32_t event = (entry >> 24) & 0xFF;
+            uint32_t buffer_index = (entry >> 16) & 0xFF;
+
+            LOG_I("  %5d,%d,%d", timestamp, event, buffer_index);
         }
-
-        LOG_I("Received UDP packet of length %d from %s:%d", received_len, client_ip, client_port);
-
-        // Parse the command
-        if (tp_command_parse(wifi_rx_buffer, TP_WIFI_RX_BUFFER_SIZE) == NULL)
-        {
-            LOG_E("Invalid command, skipping");
-            continue;
-        }
-
-        LOG_D("Valid command");
-
-        // Set the command received flag
-        osEventFlagsSet(event_flags, FLAG_CMD_RECEIVED);
-
-        // Wait for the command to be executed
-        if (!(osEventFlagsWait(event_flags, FLAG_CMD_EXECUTED, 0, osWaitForever) & FLAG_CMD_EXECUTED))
-        {
-            LOG_E("Error waiting for command executed flag");
-            continue;
-        }
-
-        uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
-        LOG_I("WiFi receive thread stack watermark: %lu bytes", stack_watermark);
     }
 }
 
@@ -405,18 +370,24 @@ void _tp_thread_wifi_transmit(void *argument)
             continue;
         }
 
+        transmit_times[transmit_times_index++] = DWT->CYCCNT;
+        if (transmit_times_index >= 256)
+        {
+            transmit_times_index = 0;
+        }
+
         //        LOG_I("Transmitting UDP packet of length %d to %s:%d", TP_BUFFER_SIZE, client_ip, client_port);
 
-        status = wius_udp_sendto(&tp_socket, slot_udp->data, TP_BUFFER_SIZE, client_ip, client_port);
+        status = wius_tcp_server_respond_udp(&msg, TP_UDP_PORT, slot_udp->data, TP_BUFFER_SIZE);
         if (SL_STATUS_OK != status)
         {
-            LOG_W("Error transmitting packet");
+            LOG_W("Error transmitting UDP packet: 0x%lx", status);
         }
 
         tp_buffer_return(&tp_buf, slot_udp, true);
 
-        uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
-        LOG_I("WiFi transmit thread stack watermark: %lu bytes", stack_watermark);
+        // uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
+        // LOG_I("WiFi transmit thread stack watermark: %lu bytes", stack_watermark);
     }
 }
 
@@ -429,4 +400,14 @@ void _tp_int_handler(uint32_t flag)
     count_interrupt = DWT->CYCCNT;
 
     osSemaphoreRelease(sem_fpga);
+}
+
+// OS stack overflow hook
+void vApplicationStackOverflowHook(void *xTask, char *pcTaskName)
+{
+    UNUSED(xTask);
+
+    LOG_E("Stack overflow in task %s", pcTaskName);
+    while (1)
+        ;
 }

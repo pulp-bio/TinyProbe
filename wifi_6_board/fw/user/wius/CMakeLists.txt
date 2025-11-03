@@ -19,6 +19,7 @@ limitations under the License.
 add_library(wius STATIC
     wius_gpio.c
     wius_spi.c
+    wius_tcp.c
     wius_udp.c
     wius_wifi.c
     wius_power.c

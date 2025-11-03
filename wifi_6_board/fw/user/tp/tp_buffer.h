@@ -69,6 +69,9 @@ typedef struct
     size_t count;                          /**< Number of filled slots */
 } tp_buffer_t;
 
+size_t tp_buffer_history_get(uint32_t **history);
+void tp_buffer_history_reset(void);
+
 /**
  * @brief Initialize the buffer structure
  *

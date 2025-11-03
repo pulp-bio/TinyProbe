@@ -33,9 +33,11 @@
 #include "tp_power.h"
 #include "wius_spi.h"
 
-volatile uint32_t count_start = 0;
-volatile uint32_t count_mid = 0;
-volatile uint32_t count_end = 0;
+volatile uint32_t count_interrupt_received = 0;
+volatile uint32_t count_call_transmit = 0;
+volatile uint32_t count_called_transmit = 0;
+volatile uint32_t count_start_transmit = 0;
+volatile uint32_t count_done = 0;
 
 sl_status_t _tp_transmit_packages(void);
 
@@ -54,10 +56,10 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
     uint8_t software_trig = GET(args, uint8_t, 8);
     uint8_t dcdc_pwd_at_rx = GET(args, uint8_t, 9);
 
-    LOG_I("Triggering %lu shots with %u each", n_shots, n_packs_to_read);
-    LOG_I("-> %u packets with %u packets concatenated", (n_packs_to_read + (TP_UDP_PACKET_AMT - 1)) / TP_UDP_PACKET_AMT, TP_UDP_PACKET_AMT);
+    LOG_I("Triggering %lu shots with %u packets each", n_shots, n_packs_to_read);
+    // LOG_I("-> %u packets with %u packets concatenated", (n_packs_to_read + (TP_UDP_PACKET_AMT - 1)) / TP_UDP_PACKET_AMT, TP_UDP_PACKET_AMT);
 
-    LOG_I("dcdc_delay_ns=%luns, read_delay_ns=%luns, software_trig=%u, dcdc_pwd_at_rx=%u", dcdc_delay_ns, read_delay_ns, software_trig, dcdc_pwd_at_rx);
+    // LOG_I("dcdc_delay_ns=%luns, read_delay_ns=%luns, software_trig=%u, dcdc_pwd_at_rx=%u", dcdc_delay_ns, read_delay_ns, software_trig, dcdc_pwd_at_rx);
 
     //    CHECK_STATUS(wius_power_set(WIUS_POWER_MODE_HIGH));
     //    CHECK_STATUS(wius_wifi_set_performance_profile(WIUS_PERF_PROFILE_HIGHSPEED));
@@ -84,11 +86,13 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
             LOG_E("Error waiting for FIFO data ready flag");
             continue;
         }
-        count_start = DWT->CYCCNT;
+        count_interrupt_received = DWT->CYCCNT;
 
         LOG_D("Interrupt received");
 #else
-        delay_ms(5);
+        count_interrupt = DWT->CYCCNT;
+        // delay_ms(1);
+        count_interrupt_received = DWT->CYCCNT;
 #endif
 
         delay_ns(dcdc_delay_ns);
@@ -119,7 +123,7 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
 
         delay_ns(2400);
 
-        count_mid = DWT->CYCCNT;
+        count_call_transmit = DWT->CYCCNT;
 
         _tp_transmit_packages();
 
@@ -143,6 +147,8 @@ sl_status_t _tp_transmit_packages(void)
 
     LOG_D("Executing");
 
+    count_called_transmit = DWT->CYCCNT;
+
     tp_buffer_slot_t *slot_spi = tp_buffer_claim_writing(&tp_buf);
     if (NULL == slot_spi)
     {
@@ -158,12 +164,7 @@ sl_status_t _tp_transmit_packages(void)
         return status;
     }
 
-    count_end = DWT->CYCCNT;
-
-    // uint32_t core_clock_mhz = core_clock_hz() / 1e6;
-    // LOG_I("Start: %lu cycles, Call: %lu cycles, Send: %lu cycles", count_start - count_interrupt, count_mid - count_interrupt, count_end - count_interrupt);
-    // LOG_I("Start: %lu us, Call: %lu us, Send: %lu us", (count_start - count_interrupt) / core_clock_mhz, (count_mid - count_interrupt) / core_clock_mhz, (count_end - count_interrupt) / core_clock_mhz);
-    // LOG_I("Core clock: %lu MHz", core_clock_mhz);
+    count_start_transmit = DWT->CYCCNT;
 
     uint16_t n_packs_to_read_div = (n_packs_to_read + (TP_UDP_PACKET_AMT - 1)) / TP_UDP_PACKET_AMT;
 
@@ -198,26 +199,36 @@ sl_status_t _tp_transmit_packages(void)
                 return status;
             }
         }
-
-        // if (osMessageQueueGetSpace(q_wifi_tx) == 0)
-        // {
-        //     LOG_W("WiFi TX queue full, dropping packet");
-        //     continue;
-        // }
-
-        // tp_buffer_slot_t *slot_udp = tp_buffer_claim_reading(&tp_buf);
-        // if (NULL == slot_udp)
-        // {
-        //     LOG_E("Error claiming buffer for read");
-        //     return SL_STATUS_FAIL;
-        // }
-
-        // if (osMessageQueuePut(q_wifi_tx, &slot_udp, 0, 0) != osOK)
-        // {
-        //     LOG_E("Error queueing packet for WiFi TX");
-        //     return SL_STATUS_FAIL;
-        // }
     }
+
+    count_done = DWT->CYCCNT;
+
+    count_interrupt_received -= count_interrupt;
+    count_call_transmit -= count_interrupt;
+    count_called_transmit -= count_interrupt;
+    count_start_transmit -= count_interrupt;
+    count_done -= count_interrupt;
+
+    // LOG_I("Cycle counts:");
+    // LOG_I(" Interrupt to received: %lu", count_interrupt_received);
+    // LOG_I(" Call Transmit Packets: %lu", count_call_transmit);
+    // LOG_I(" Start of Transmit pa.: %lu", count_called_transmit);
+    // LOG_I(" Transmit packets done: %lu", count_done);
+
+    uint32_t core_clock_mhz = core_clock_hz() / 1e6;
+
+    count_interrupt_received /= core_clock_mhz;
+    count_call_transmit /= core_clock_mhz;
+    count_called_transmit /= core_clock_mhz;
+    count_start_transmit /= core_clock_mhz;
+    count_done /= core_clock_mhz;
+
+    // LOG_I("Time [us]:");
+    // LOG_I(" Interrupt to received: %lu", count_interrupt_received);
+    // LOG_I(" Call Transmit Packets: %lu", count_call_transmit);
+    // LOG_I(" Start of Transmit pa.: %lu", count_called_transmit);
+    // LOG_I(" Transmit Packets whi.: %lu", count_start_transmit);
+    // LOG_I(" Transmit packets done: %lu", count_done);
 
     LOG_D("Done");
 

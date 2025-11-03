@@ -81,16 +81,17 @@
 /** @name TinyProbe general configurations
  * @{
  */
-#define TP_TEST_MODE 0              /**< For testing acquisition code without confirmation from TinyProbe */
+#define TP_TEST_MODE 1              /**< For testing acquisition code without confirmation from TinyProbe */
 #define TP_PROBE_ID 1               /**< ID of the probe */
 #define TP_WIFI_RX_BUFFER_SIZE 1472 /**< Size of the WiFi RX buffer */
 #define TP_UDP_PACKET_SIZE 1000     /**< Size of one UDP packet (without header) */
 #define TP_UDP_PACKET_AMT 4         /**< Number of packets to acquire per SPI before sending */
 #define TP_UDP_PORT 50007           /**< Port on which UDP transfers happen */
+#define TP_TCP_PORT 50008           /**< Port on which TCP transfers happen */
 #define TP_GPIO_INT 2               /**< FPGA Interrupt UULP gpio number */
 #define TP_GPIO_RESET 10            /**< FPGA Reset ULP gpio number */
-#define TP_THREAD_STACK_MAIN 8192   /**< Stack of main thread */
-#define TP_THREAD_STACK_WIFI 2048   /**< Stack of WiFi thread */
+#define TP_THREAD_STACK_MAIN 6000   /**< Stack of main thread */
+#define TP_THREAD_STACK_WIFI 2000   /**< Stack of WiFi thread */
 /** @}
  */
 
@@ -104,7 +105,7 @@
 /** @name TinyProbe buffering configurations
  * @{
  */
-#define TP_BUFFER_NUM 15                                            /**< Number of buffers available */
+#define TP_BUFFER_NUM 5                                            /**< Number of buffers available */
 #define TP_BUFFER_SIZE (TP_UDP_PACKET_SIZE * TP_UDP_PACKET_AMT + 2) /**< Size of one buffer in bytes */
 /** @}
  */
@@ -112,7 +113,7 @@
 /** @name TinyProbe commands configurations
  * @{
  */
-#define TP_COMMAND_MAX 2048 /**< Maximum number of commands per WiFi package */
+#define TP_COMMAND_MAX 128 /**< Maximum number of commands per WiFi package */
 /** @}
  */
 

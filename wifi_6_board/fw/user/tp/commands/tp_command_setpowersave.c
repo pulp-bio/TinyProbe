@@ -1,7 +1,7 @@
 /**
- * @file tp_command_ping.c
+ * @file tp_command_setpowersave.c
  *
- * @brief TinyProbe ping command implementation file
+ * @brief TinyProbe set power save command implementation file
  *
  * @date 08.09.2025
  * @copyright ETH Zurich. All rights reserved.
@@ -26,29 +26,19 @@
  *
  */
 
-#include "tp_command_ping.h"
+#include "tp_command_setpowersave.h"
 
-#include "tp.h"
-
-sl_status_t tp_ping(uint8_t *args, uint16_t args_length, wius_tcp_server_message_t *msg)
+sl_status_t tp_setpowersave(uint8_t *args, uint16_t args_length)
 {
     LOG_D("Executing");
 
+    (void)args;
     (void)args_length;
 
-    sl_status_t status = SL_STATUS_OK;
-
-    if (args[0] != TP_PROBE_ID)
-    {
-        LOG_W("Ping probe ID %d does not match expected %d", args[0], TP_PROBE_ID);
-        return SL_STATUS_INVALID_PARAMETER;
-    }
-
-    char reply[32] = {0};
-    snprintf(reply, sizeof(reply), "TinyProbe %d", TP_PROBE_ID);
-    CHECK_STATUS(wius_tcp_server_respond_udp(msg, TP_UDP_PORT, (uint8_t *)reply, strlen(reply)));
+    // TODO: Implement
+    LOG_W("Not yet implemented");
 
     LOG_D("Done");
 
-    return SL_STATUS_OK;
+    return SL_STATUS_NOT_SUPPORTED;
 }

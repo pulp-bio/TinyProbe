@@ -30,4 +30,6 @@
 
 #include "common.h"
 
-sl_status_t tp_ping(uint8_t *args, uint16_t args_length);
+#include "wius_tcp.h"
+
+sl_status_t tp_ping(uint8_t *args, uint16_t args_length, wius_tcp_server_message_t *msg);

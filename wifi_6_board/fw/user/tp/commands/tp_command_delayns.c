@@ -30,14 +30,17 @@
 
 sl_status_t tp_delay_ns(uint8_t *args, uint16_t args_length)
 {
-    LOG_D("Executing");
+  LOG_D("Executing");
 
-    (void)args_length;
+  (void)args_length;
 
-    uint64_t delay = GET(args, uint64_t, 0);
-    delay_ns(delay);
+  // FIXME: delay_higher crashes program
+  uint32_t delay_lower = GET(args, uint32_t, 0);
+  //    uint32_t delay_higher = GET(args, uint32_t, 4);
+  //    uint64_t delay = delay_higher << 32 | delay_lower;
+  delay_ns(delay_lower);
 
-    LOG_D("Done");
+  LOG_D("Done");
 
-    return SL_STATUS_OK;
+  return SL_STATUS_OK;
 }

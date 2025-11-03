@@ -40,12 +40,13 @@
 #include "commands/tp_command_sleepms.h"
 #include "commands/tp_command_ctrlpwr.h"
 #include "commands/tp_command_triggershot.h"
+#include "commands/tp_command_setpowersave.h"
 
 tp_command_t _tp_command_commands[TP_COMMAND_MAX];
 uint16_t _tp_num_commands = 0;
 
 // Command packet minimum lengths
-uint8_t _tp_command_min_lengths[TP_CMD_ID_MAX] = {0, 1, 1, 1, 5, 4, 6, 8, 4, 2, 6};
+uint8_t _tp_command_min_lengths[TP_CMD_ID_MAX] = {0, 1, 1, 1, 5, 4, 6, 8, 4, 2, 6, 2};
 
 tp_command_t *tp_command_parse(uint8_t *buffer, size_t buffer_length)
 {
@@ -110,65 +111,89 @@ tp_command_t *tp_command_parse(uint8_t *buffer, size_t buffer_length)
     return _tp_command_commands;
 }
 
-sl_status_t tp_command_execute(tp_command_t command)
+sl_status_t tp_command_execute(tp_command_t command, wius_tcp_server_message_t *msg)
 {
     if (command.args_length < _tp_command_min_lengths[command.id])
     {
+        wius_tcp_server_respond_error(msg, command.id, SL_STATUS_INVALID_PARAMETER);
+        LOG_E("Command %d has invalid args length %d (min %d)", command.id, command.args_length, _tp_command_min_lengths[command.id]);
         return SL_STATUS_INVALID_PARAMETER;
     }
 
-    // LOG_D("Executing command with ID %d", command.id);
+    sl_status_t status = SL_STATUS_OK;
 
+    // LOG_D("Executing command with ID %d", command.id);
     switch (command.id)
     {
     case TP_CMD_PING:
-        tp_ping(command.args, command.args_length);
+        status = tp_ping(command.args, command.args_length, msg);
         break;
     case TP_CMD_EN_REPLIES:
-        tp_en_replies(command.args, command.args_length);
+        status = tp_en_replies(command.args, command.args_length);
         break;
     case TP_CMD_SW_MUX:
-        tp_sw_mux(command.args, command.args_length);
+        status = tp_sw_mux(command.args, command.args_length);
         break;
     case TP_CMD_WRITE_SPI:
-        tp_write_spi(command.args, command.args_length);
+        status = tp_write_spi(command.args, command.args_length);
         break;
     case TP_CMD_WRITE_FPGA:
-        tp_write_fpga(command.args, command.args_length);
+        status = tp_write_fpga(command.args, command.args_length);
         break;
     case TP_CMD_WRITE_AFE:
-        tp_write_afe(command.args, command.args_length);
+        status = tp_write_afe(command.args, command.args_length);
         break;
     case TP_CMD_WRITE_TX:
-        tp_write_tx(command.args, command.args_length);
+        status = tp_write_tx(command.args, command.args_length);
         break;
     case TP_CMD_DELAY_NS:
-        tp_delay_ns(command.args, command.args_length);
+        status = tp_delay_ns(command.args, command.args_length);
         break;
     case TP_CMD_SLEEP_MS:
-        tp_sleep_ms(command.args, command.args_length);
+        status = tp_sleep_ms(command.args, command.args_length);
         break;
     case TP_CMD_CTRL_PWR:
-        tp_ctrl_pwr(command.args, command.args_length);
+        status = tp_ctrl_pwr(command.args, command.args_length);
         break;
     case TP_CMD_TRIGGER_SHOT:
-        tp_trigger_shot(command.args, command.args_length);
+        status = tp_trigger_shot(command.args, command.args_length);
+        break;
+    case TP_CMD_SET_POWERSAVE:
+        status = tp_setpowersave(command.args, command.args_length);
         break;
     default:
         LOG_W("Unknown command");
+        wius_tcp_server_respond_error(msg, command.id, SL_STATUS_INVALID_PARAMETER);
         return SL_STATUS_INVALID_PARAMETER;
     }
+
+    if (status != SL_STATUS_OK)
+    {
+        wius_tcp_server_respond_error(msg, command.id, status);
+        LOG_E("Command %d failed with status 0x%lx", command.id, status);
+        return status;
+    }
+    wius_tcp_server_respond_ok(msg, command.id);
+    LOG_I("Command %d executed successfully", command.id);
+
     return SL_STATUS_OK;
 }
 
-sl_status_t tp_command_parse_and_execute(uint8_t *buffer, size_t buffer_length)
+sl_status_t tp_command_parse_and_execute(uint8_t *buffer, size_t buffer_length, wius_tcp_server_message_t *msg)
 {
-    sl_status_t status = SL_STATUS_OK;
+    // sl_status_t status = SL_STATUS_OK;
     tp_command_t *commands = tp_command_parse(buffer, buffer_length);
+
+    if (commands == NULL)
+    {
+        LOG_W("Failed to parse commands");
+        wius_tcp_server_respond_error(msg, 0xFF, SL_STATUS_INVALID_PARAMETER);
+        return SL_STATUS_INVALID_PARAMETER;
+    }
 
     for (uint16_t i = 0; i < _tp_num_commands; i++)
     {
-        CHECK_STATUS(tp_command_execute(commands[i]));
+        tp_command_execute(commands[i], msg);
     }
 
     return SL_STATUS_OK;

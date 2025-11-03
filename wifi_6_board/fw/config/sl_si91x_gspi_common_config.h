@@ -41,7 +41,7 @@ extern "C"
 
 // <e SL_GSPI_DMA_CONFIG_ENABLE> DMA
 // <i> Default: 0
-#define SL_GSPI_DMA_CONFIG_ENABLE 0
+#define SL_GSPI_DMA_CONFIG_ENABLE 1
 
 // <o SL_GSPI_AFULL_THRESHOLD> FIFO Threshold - Almost Full <0-14>
 // <i> Default: 5

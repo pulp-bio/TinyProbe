@@ -21,6 +21,10 @@
         "tp_fpga.h": "c",
         "tp_command_delayns.h": "c",
         "sl_si91x_clock_manager.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "compare": "c",
+        "tp_command_setpowersave.h": "c",
+        "task.h": "c",
+        "freertos.h": "c"
     }
 }
