@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:MDescriptors xmlns:model="http://www.silabs.com/ss/Studio.ecore">
+  <descriptors name="fw_v6">
+    <properties key="projectCommon.sdkId" value="com.silabs.sdk.stack.sisdk:2025.6.2._-114018420-2373502477"/>
+    <properties key="universalConfig.relativeWorkspacePath" value="..\fw_v6.slcw"/>
+    <properties key="universalConfig.generationDirectory" value=""/>
+    <properties key="projectCommon.boardIds" value="brd4002a:0.0.0.A06 brd4338a:0.0.0.A11"/>
+    <properties key="projectCommon.kitId" value=""/>
+    <properties key="projectCommon.partId" value="mcu.arm.wfm.siwg917m111mgtba"/>
+    <properties key="universalConfig.toolchainCompatibility" value="iar gcc"/>
+    <properties key="projectCommon.overwriteCopiedSources" value="false"/>
+    <properties key="projectCommon.toolchainId" value="com.silabs.ss.framework.project.core.noToolChain:0.0.0"/>
+    <properties key="universalConfig.projectTypeIds" value="visual-studio-code"/>
+    <properties key="projectCommon.importModeId" value="LINK_LIBRARIES"/>
+    <properties key="universalConfig.compSelProjInstanceId" value="1762200367227"/>
+  </descriptors>
+</model:MDescriptors>
