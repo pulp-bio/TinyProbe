@@ -366,7 +366,7 @@ void _tp_thread_wifi_transmit(void *argument)
         tp_buffer_slot_t *slot_udp = tp_buffer_claim_reading(&tp_buf);
         if (NULL == slot_udp)
         {
-            LOG_E("Error claiming buffer for read");
+            // LOG_E("Error claiming buffer for read");
             continue;
         }
 

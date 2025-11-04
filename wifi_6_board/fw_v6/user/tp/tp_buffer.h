@@ -68,7 +68,6 @@ typedef struct
     size_t tail;                           /**< Tail index */
     osSemaphoreId_t sem_read;              /**< Semaphore for reading */
     osSemaphoreId_t sem_write;             /**< Semaphore for writing */
-    osMutexId_t mutex;                     /**< Mutex for buffer access */
 } tp_buffer_t;
 
 size_t tp_buffer_history_get(uint32_t **history);

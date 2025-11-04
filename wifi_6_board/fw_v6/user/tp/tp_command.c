@@ -46,7 +46,7 @@ tp_command_t _tp_command_commands[TP_COMMAND_MAX];
 uint16_t _tp_num_commands = 0;
 
 // Command packet minimum lengths
-uint8_t _tp_command_min_lengths[TP_CMD_ID_MAX] = {0, 1, 1, 1, 5, 4, 6, 8, 4, 2, 6, 2};
+uint8_t _tp_command_min_lengths[TP_CMD_ID_MAX] = {1, 1, 1, 0, 5, 4, 6, 8, 4, 2, 10, 2};
 
 tp_command_t *tp_command_parse(uint8_t *buffer, size_t buffer_length)
 {

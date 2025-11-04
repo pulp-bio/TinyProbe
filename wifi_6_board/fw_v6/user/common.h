@@ -44,12 +44,15 @@
 
 #define TICKS_PER_SEC (OS_Tick_GetClock() / OS_Tick_GetInterval()) // Number of ticks per second
 
-#define CHECK_STATUS(x)             \
-    do                              \
-    {                               \
-        status = (x);               \
-        if (SL_STATUS_OK != status) \
-            return status;          \
+#define CHECK_STATUS(x)                                                 \
+    do                                                                  \
+    {                                                                   \
+        status = (x);                                                   \
+        if (SL_STATUS_OK != status)                                     \
+        {                                                               \
+            LOG_E("Error at %s:%d: 0x%lx", __FILE__, __LINE__, status); \
+            return status;                                              \
+        }                                                               \
     } while (0) // Check status and return if not OK
 
 #define UNUSED(x) (void)(x) // Suppress unused variable warning
