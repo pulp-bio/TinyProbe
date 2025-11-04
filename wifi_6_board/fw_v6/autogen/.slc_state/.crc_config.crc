@@ -1,0 +1,13 @@
+#CRC Codes for initially generated config files -- do not modify!
+sl_core_config.h=-119586893
+sl_main_start_task_config.h=-1054800951
+sl_memory_manager_config.h=1702148085
+sl_net_default_values.h=-2060976431
+sl_si91x_gspi_common_config.h=703125770
+sl_si91x_gspi_config.h=1580588078
+sl_si91x_power_manager_config_1.h=-195289737
+sl_si91x_power_manager_wakeup_source_config.h=1643352678
+sl_si91x_ssi_primary_common_config.h=-581793502
+sl_si91x_ssi_primary_config.h=-940194733
+sl_sleeptimer_config.h=1360009810
+sl_wifi_region_db_config.h=1034858432

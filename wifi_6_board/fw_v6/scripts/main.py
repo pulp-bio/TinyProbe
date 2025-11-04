@@ -53,16 +53,10 @@ def udp_receiver(port: int, stop_event: threading.Event):
 
 
 def main():
-    NUM_SHOTS = 100
+    NUM_SHOTS = 10
     cmd = [
-        TriggerShot(n_shots=NUM_SHOTS),
-        # TriggerShot(n_shots=NUM_SHOTS),
-        # TriggerShot(n_shots=NUM_SHOTS),
-        # TriggerShot(n_shots=NUM_SHOTS),
-        # TriggerShot(n_shots=NUM_SHOTS),
-        # TriggerShot(n_shots=NUM_SHOTS),
-        # TriggerShot(n_shots=NUM_SHOTS),
-    ]
+        TriggerShot(n_shots=NUM_SHOTS)
+    ] * 100
 
     addr = ("192.168.1.33", 50008)
     device = CommunicationDevice(*addr)

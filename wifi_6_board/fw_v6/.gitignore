@@ -1,10 +1,10 @@
 .vscode/
 
-autogen/
+# autogen/
 cmake_gcc/build/
-cmake_gcc/fw_v6.cmake
-cmake_gcc/toolchain.cmake
-.projectlinkstore
+# cmake_gcc/fw_v6.cmake
+# cmake_gcc/toolchain.cmake
+# .projectlinkstore
 
 .env
 user/env.h

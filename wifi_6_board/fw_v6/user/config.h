@@ -64,9 +64,9 @@
  * @name WiUS logging configurations
  * @{
  */
-#define WIUS_LOG_LEVEL LOG_LEVEL_DEBUG /**< Log level for WiUS */
-#define WIUS_LOG_GPIO_LED_RED 7        /**< Red LED gpio number */
-#define WIUS_LOG_GPIO_LED_GREEN 6      /**< Green LED gpio number */
+#define WIUS_LOG_LEVEL LOG_LEVEL_INFO /**< Log level for WiUS */
+#define WIUS_LOG_GPIO_LED_RED 7       /**< Red LED gpio number */
+#define WIUS_LOG_GPIO_LED_GREEN 6     /**< Green LED gpio number */
 /** @}
  */
 

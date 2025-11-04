@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+TERMS OF USE - SILICON LABORATORIES INC.
+(With respect to Silicon Labs software components, this Software Bill of Materials (SBOM) is based upon Silicon Labs'
+review and analysis of the code version when released.  It is provided "AS IS" and does not modify, change or alter
+the terms or conditions of your use of Silicon Labs' software and/or SDKs based upon license terms and/or agreements
+associated with this software or SDKs when distributed to you, received by you, or installed by you.  Further, no
+warranties or obligations are created by this SBOM.  It is your obligation to comply with the terms of licenses
+referenced in this SBOM.)
+-->
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6" version="1">
+  <metadata>
+    <timestamp>2025-11-03T20:11:31Z</timestamp>
+    <authors>
+      <author>
+        <name>Silicon Laboratories, Inc.</name>
+      </author>
+    </authors>
+  </metadata>
+  <components>
+    <component bom-ref="wiseconnect3_sdk:3.5.2" type="library">
+      <name>WiSeConnect 3 SDK</name>
+      <version>3.5.2</version>
+      <components>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:SIWG917M111MGTBA" type="library">
+          <name>SIWG917M111MGTBA</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:brd4338a" type="library">
+          <name>BRD4338A</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:si91x_memory_default_config" type="library">
+          <name>Default RAM Memory Configuration</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:syscalls" type="library">
+          <name>System Calls</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_opamp" type="library">
+          <name>OPAMP</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:wiseconnect_toolchain_gcc_standard" type="library">
+          <name>GCC Toolchain Standard Linker</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_egpio" type="library">
+          <name>EGPIO</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:cmsis_usart" type="library">
+          <name>CMSIS USART</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Apache-2.0 AND Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_headers" type="library">
+          <name>System-Level API Headers</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:cmsis_driver_headers" type="library">
+          <name>CMSIS Driver Header Files</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Apache-2.0</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:wiseconnect_toolchain_plugin" type="library">
+          <name>GCC Toolchain Support</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_aux_reference_volt_config" type="library">
+          <name>AUX REFERENCE VOLT</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_si91x_mcu" type="library">
+          <name>Si91x MCU Subsystem</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_time_period" type="library">
+          <name>TIME PERIOD</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_clock_manager" type="library">
+          <name>Clock Manager</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_usart" type="library">
+          <name>USART</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_udma_wrapper" type="library">
+          <name>ROM DRIVER UDMA WRAPPER</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:freertos_config" type="library">
+          <name>SL SI91X FreeRTOS Configuration</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MIT</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_packing" type="library">
+          <name>ROM DRIVER PACKING</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_clks" type="library">
+          <name>ROM DRIVER CLOCK</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_bod" type="library">
+          <name>BOD</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:cmsis_udma" type="library">
+          <name>CMSIS UDMA</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA AND Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:cmsis_common_driver" type="library">
+          <name>CMSIS COMMON DRIVER</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_udma" type="library">
+          <name>UDMA</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_udma" type="library">
+          <name>ROM DRIVER UDMA</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_dac" type="library">
+          <name>DAC</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:brd4338a_config" type="library">
+          <name>brd4338a config</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:opn_config" type="library">
+          <name>opn config</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_ulpss_clk" type="library">
+          <name>ULPSS CLOCK</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_adc" type="library">
+          <name>ADC</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_romtable" type="library">
+          <name>ROM TABLE</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_reg_spi" type="library">
+          <name>REG SPI</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_romtable_headers" type="library">
+          <name>ROM Table Header</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_crc" type="library">
+          <name>ROM DRIVER CRC</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_headers" type="library">
+          <name>RSI Peripheral Headers</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:external_flash_none" type="library">
+          <name>No External Flash</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_dma" type="library">
+          <name>DMA</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:si91x_mem_config_1" type="library">
+          <name>MEMORY_MCU_BASIC_WIRELESS_ADVANCED</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_userconfig" type="library">
+          <name>RSI User Configuration</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_bjt_temperature_sensor" type="library">
+          <name>BJT Temperature Sensor</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:cmsis_peripheral_headers" type="library">
+          <name>CMSIS Peripheral Header Files</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA AND Apache-2.0</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:external_psram_none" type="library">
+          <name>No External PSRAM</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_rtc" type="library">
+          <name>RTC</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_ipmu" type="library">
+          <name>IPMU</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:udma_linker_config" type="library">
+          <name>UDMA Linker Configuration</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:board_configuration_headers" type="library">
+          <name>Board Configuration Header Files</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_adc" type="library">
+          <name>ADC</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_egpio" type="library">
+          <name>ROM DRIVER EGPIO</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_temp_sensor" type="library">
+          <name>TEMPERATURE SENSOR</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:si91x_device_init_nvic" type="library">
+          <name>NVIC Interrupt Priorities Configuration for FreeRTOS</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_pll" type="library">
+          <name>PLL</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_board" type="library">
+          <name>Si91x SoC Board Configurations</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA AND Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_clock_update" type="library">
+          <name>CLOCK UPDATE</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:si91x_debug" type="library">
+          <name>Debug Unit</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:si91x_common_flash" type="library">
+          <name>Common Flash Component</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_chip" type="library">
+          <name>Core</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_udma_wrapper" type="library">
+          <name>UDMA WRAPPER</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:si91x_stack_size_configuration" type="library">
+          <name>SiW91x Stack Size Configuration</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:cmsis_usart_driver" type="library">
+          <name>CMSIS USART DRIVER</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_ulpss" type="library">
+          <name>ROM DRIVER ULPSS</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_crc" type="library">
+          <name>CRC</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:device_needs_ram_execution" type="library">
+          <name>RAM Execution</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:mdns" type="library">
+          <name>MDNS</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:wifi_resources" type="library">
+          <name>WiSeConnect3 Resources</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:wiseconnect3_common" type="library">
+          <name>WiSeConnect3 Common Library</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_si91x_fwup" type="library">
+          <name>Firmware Upgrade (Si91x)</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:malloc_thread_safety" type="library">
+          <name>Malloc thread safety</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_si91x_errno" type="library">
+          <name>SL errno</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_si91x_basic_buffers" type="library">
+          <name>Basic Buffer Manager</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:wifi" type="library">
+          <name>Wi-Fi</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_si91x_wireless" type="library">
+          <name>Si91x Wireless Subsystem</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:bsd_socket_api" type="library">
+          <name>BSD Socket API</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA AND Apache-2.0</expression>
+          </licenses>
+          <pedigree>
+            <ancestors>
+              <component bom-ref="bsd_socket_api:1.3.0" type="library">
+                <supplier>
+                  <name>MDK-Packs</name>
+                </supplier>
+                <name>IoT Socket</name>
+                <version>1.3.0</version>
+                <purl>pkg:github/MDK-Packs/IoT_Socket@1.3.0</purl>
+                <externalReferences>
+                  <reference type="website">
+                    <url>https://github.com/MDK-Packs/IoT_Socket</url>
+                  </reference>
+                </externalReferences>
+              </component>
+            </ancestors>
+          </pedigree>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_headers" type="library">
+          <name>ROM Driver Headers</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_si91x_internal_stack" type="library">
+          <name>Internal Network Stack</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sli_wifi_command_engine" type="library">
+          <name>WiFi Command Engine</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sli_si91x_wifi_event_handler" type="library">
+          <name>si91x WiFi handler</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_si91x_socket" type="library">
+          <name>Si91x Socket</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:network_manager" type="library">
+          <name>Network Manager</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib AND Apache-2.0</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:basic_credential_manager" type="library">
+          <name>Basic Credential Manager</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:basic_network_config_manager" type="library">
+          <name>Basic Network Configuration Manager</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_si91x_asynchronous_socket" type="library">
+          <name>Si91x Asynchronous Socket</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_gpio" type="library">
+          <name>GPIO</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_gpio_peripheral" type="library">
+          <name>SL GPIO Peripheral</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_gspi" type="library">
+          <name>GSPI</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:cmsis_gspi" type="library">
+          <name>CMSIS GSPI</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Apache-2.0 AND Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_gspi" type="library">
+          <name>GSPI</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_ssi_instance" type="library">
+          <name>SSI</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_spi" type="library">
+          <name>SPI</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_ssi" type="library">
+          <name>SSI</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:cmsis_spi" type="library">
+          <name>CMSIS SPI</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Apache-2.0</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:bsd_socket" type="library">
+          <name>BSD Socket</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sl_power_manager" type="library">
+          <name>Power Manager</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:systemlevel_power_save" type="library">
+          <name>POWER SAVE</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:wakeup_source_config" type="library">
+          <name>PM Wakeup Source Configuration</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:romdriver_power_save" type="library">
+          <name>ROM DRIVER POWER SAVE</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:power_manager_config" type="library">
+          <name>Power Manager Configuration</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:si91x_tickless_mode" type="library">
+          <name>SI91X TICK-LESS MODE</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sllib_m4_power_save" type="library">
+          <name>Si91x Cortex-M4 Powersave</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:rsilib_sysrtc" type="library">
+          <name>SYSRTC</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="wiseconnect3_sdk:3.5.2:sleeptimer_si91x" type="library">
+          <name>Sleep Timer for Si91x</name>
+          <version>3.5.2</version>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+      </components>
+    </component>
+    <component bom-ref="simplicity_sdk:2025.6.2" type="library">
+      <supplier>
+        <name>Silicon Laboratories, Inc.</name>
+      </supplier>
+      <name>Simplicity SDK Suite</name>
+      <version>2025.6.2</version>
+      <components>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_main" type="library">
+          <name>System Setup (sl_main)</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:brd4002a" type="library">
+          <name>BRD4002A</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:event_handler" type="library">
+          <name>Event Handler</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_main_memory_init" type="library">
+          <name>sl_main Setup</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:status" type="library">
+          <name>Status Codes Definitions</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:toolchain_variant_arm" type="library">
+          <name>Toolchain for ARM</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_assert" type="library">
+          <name>Assert Functions</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:component_catalog" type="library">
+          <name>Component Catalog</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:cmsis_core" type="library">
+          <name>CMSIS-Core</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Apache 2.0</expression>
+          </licenses>
+          <pedigree>
+            <ancestors>
+              <component bom-ref="cmsis_core:5.8.0" type="library">
+                <supplier>
+                  <name>ARM-software</name>
+                </supplier>
+                <name>CMSIS_5</name>
+                <version>5.8.0</version>
+                <purl>pkg:github/ARM-software/CMSIS_5@5.8.0</purl>
+                <pedigree>
+                  <notes>The CMSIS is a set of tools, APIs, frameworks, and work flows</notes>
+                </pedigree>
+                <externalReferences>
+                  <reference type="website">
+                    <url>https://github.com/ARM-software/CMSIS_5</url>
+                  </reference>
+                </externalReferences>
+              </component>
+            </ancestors>
+          </pedigree>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_common" type="library">
+          <name>Common Functions</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_main_init" type="library">
+          <name>sl main Init</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_main_process_action" type="library">
+          <name>sl_main Process Action</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:bit" type="library">
+          <name>Bit Operations Library</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:slist" type="library">
+          <name>Single Link List</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_string" type="library">
+          <name>String Functions</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:atomic" type="library">
+          <name>Atomic Operations Library</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:code_classification" type="library">
+          <name>Code Classification</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:cmsis_os2_ext_task_register" type="library">
+          <name>Task registers abstraction layer</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_core" type="library">
+          <name>core</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:emlib_core" type="library">
+          <name>CORE</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:freertos" type="library">
+          <name>FreeRTOS Kernel</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+          <pedigree>
+            <ancestors>
+              <component bom-ref="freertos:11.1.0" type="library">
+                <supplier>
+                  <name>AWS open source</name>
+                </supplier>
+                <name>FreeRTOS kernel</name>
+                <version>11.1.0</version>
+                <purl>https://github.com/FreeRTOS/FreeRTOS-Kernel/releases/tag/V11.1.0</purl>
+                <pedigree>
+                  <notes>FreeRTOS kernel, Version 11.1.0</notes>
+                </pedigree>
+                <externalReferences>
+                  <reference type="website">
+                    <url>https://github.com/FreeRTOS/FreeRTOS-Kernel</url>
+                  </reference>
+                </externalReferences>
+              </component>
+            </ancestors>
+          </pedigree>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:freertos_kernel_cortexm" type="library">
+          <name>FreeRTOS Kernel ARM Cortex-M Port</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Apache 2.0</expression>
+          </licenses>
+          <pedigree>
+            <ancestors>
+              <component bom-ref="freertos_kernel_cortexm:11.1.0" type="library">
+                <supplier>
+                  <name>ARM-software</name>
+                </supplier>
+                <name>CMSIS-FreeRTOS</name>
+                <version>11.1.0</version>
+                <purl>https://github.com/ARM-software/CMSIS-FreeRTOS/releases/tag/v11.1.0</purl>
+                <pedigree>
+                  <notes>CMSIS-FreeRTOS, Version 11.1.0</notes>
+                </pedigree>
+                <externalReferences>
+                  <reference type="website">
+                    <url>https://github.com/ARM-software/CMSIS-FreeRTOS</url>
+                  </reference>
+                </externalReferences>
+              </component>
+            </ancestors>
+          </pedigree>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sl_main_kernel" type="library">
+          <name>SL Main Kernel</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:memory_manager_redirect" type="library">
+          <name>Memory Manager Redirect</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:cmsis_rtos2_tick" type="library">
+          <name>CMSIS-RTOS2 OS Tick</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Apache 2.0</expression>
+          </licenses>
+          <pedigree>
+            <ancestors>
+              <component bom-ref="cmsis_rtos2_tick:5.8.0" type="library">
+                <supplier>
+                  <name>ARM-software</name>
+                </supplier>
+                <name>CMSIS_5</name>
+                <version>5.8.0</version>
+                <purl>pkg:github/ARM-software/CMSIS_5@5.8.0</purl>
+                <pedigree>
+                  <notes>The CMSIS is a set of tools, APIs, frameworks, and work flows</notes>
+                </pedigree>
+                <externalReferences>
+                  <reference type="website">
+                    <url>https://github.com/ARM-software/CMSIS_5</url>
+                  </reference>
+                </externalReferences>
+              </component>
+            </ancestors>
+          </pedigree>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:cmsis_common" type="library">
+          <name>Common APIs for CMSIS-Compliant Kernels</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:cmsis_rtos2_init" type="library">
+          <name>CMSIS-RTOS2 Initialization</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Apache 2.0</expression>
+          </licenses>
+          <pedigree>
+            <ancestors>
+              <component bom-ref="cmsis_rtos2_init:5.8.0" type="library">
+                <supplier>
+                  <name>ARM-software</name>
+                </supplier>
+                <name>CMSIS_5</name>
+                <version>5.8.0</version>
+                <purl>pkg:github/ARM-software/CMSIS_5@5.8.0</purl>
+                <pedigree>
+                  <notes>The CMSIS is a set of tools, APIs, frameworks, and work flows</notes>
+                </pedigree>
+                <externalReferences>
+                  <reference type="website">
+                    <url>https://github.com/ARM-software/CMSIS_5</url>
+                  </reference>
+                </externalReferences>
+              </component>
+            </ancestors>
+          </pedigree>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:cmsis_rtos2_headers" type="library">
+          <name>CMSIS-RTOS2 Headers</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Apache 2.0</expression>
+          </licenses>
+          <pedigree>
+            <ancestors>
+              <component bom-ref="cmsis_rtos2_headers:5.8.0" type="library">
+                <supplier>
+                  <name>ARM-software</name>
+                </supplier>
+                <name>CMSIS_5</name>
+                <version>5.8.0</version>
+                <purl>pkg:github/ARM-software/CMSIS_5@5.8.0</purl>
+                <pedigree>
+                  <notes>The CMSIS is a set of tools, APIs, frameworks, and work flows.</notes>
+                </pedigree>
+                <externalReferences>
+                  <reference type="website">
+                    <url>https://github.com/ARM-software/CMSIS_5</url>
+                  </reference>
+                </externalReferences>
+              </component>
+            </ancestors>
+          </pedigree>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:sleeptimer" type="library">
+          <name>Sleep Timer</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib</expression>
+          </licenses>
+        </component>
+      </components>
+    </component>
+  </components>
+</bom>
