@@ -1,6 +1,10 @@
 # Define minimal required version of CMake.
 cmake_minimum_required(VERSION "3.25")
 
+# Force legacy .o object names so linker script wildcards still match C/ASM objects
+set(CMAKE_C_OUTPUT_EXTENSION ".o")
+set(CMAKE_ASM_OUTPUT_EXTENSION ".o")
+
 # Project definition
 project(
 	fw_v6

@@ -28,10 +28,15 @@
 
 #include "tp_command_triggershot.h"
 
+#include "SEGGER_RTT.h"
+
 #include "tp.h"
 #include "tp_fpga.h"
 #include "tp_power.h"
 #include "wius_spi.h"
+
+// #define PUTC_FAST(ch) SEGGER_RTT_PutChar(0, ch);
+#define PUTC_FAST(ch)
 
 volatile uint32_t count_interrupt_received = 0;
 volatile uint32_t count_call_transmit = 0;
@@ -88,7 +93,7 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
         }
         count_interrupt_received = DWT->CYCCNT;
 #else
-        delay_ms(1);
+        // delay_ms(1);
         count_interrupt = DWT->CYCCNT;
 
         count_interrupt_received = DWT->CYCCNT;
@@ -151,6 +156,8 @@ sl_status_t _tp_transmit_packages(void)
         return SL_STATUS_FAIL;
     }
 
+    PUTC_FAST('w');
+
     uint8_t tx_dummy[TP_BUFFER_SIZE] = {0};
     status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
     if (SL_STATUS_OK != status)
@@ -158,6 +165,8 @@ sl_status_t _tp_transmit_packages(void)
         LOG_E("Error starting initial SPI recv: 0x%04X", (unsigned)status);
         return status;
     }
+
+    PUTC_FAST('f');
 
     count_start_transmit = DWT->CYCCNT;
 
@@ -167,8 +176,13 @@ sl_status_t _tp_transmit_packages(void)
     {
         CHECK_STATUS(wius_spi_await(WIUS_SPI_INST_0));
 
+        PUTC_FAST('a');
+
         slot_spi->length = TP_BUFFER_SIZE;
         tp_buffer_return_writing(&tp_buf, slot_spi);
+
+        PUTC_FAST('r');
+        PUTC_FAST('\n');
 
         if (i == (uint16_t)(cb_pack_id / TP_UDP_PACKET_AMT))
         {
@@ -186,22 +200,26 @@ sl_status_t _tp_transmit_packages(void)
                 return SL_STATUS_FAIL;
             }
 
+            PUTC_FAST('w');
+
             status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
             if (SL_STATUS_OK != status)
             {
                 LOG_E("Error starting SPI recv: 0x%04X", (unsigned)status);
                 return status;
             }
+
+            PUTC_FAST('f');
         }
     }
 
     count_done = DWT->CYCCNT;
 
-    count_interrupt_received -= count_interrupt;
-    count_call_transmit -= count_interrupt;
-    count_called_transmit -= count_interrupt;
-    count_start_transmit -= count_interrupt;
-    count_done -= count_interrupt;
+    // count_interrupt_received -= count_interrupt;
+    // count_call_transmit -= count_interrupt;
+    // count_called_transmit -= count_interrupt;
+    // count_start_transmit -= count_interrupt;
+    // count_done -= count_interrupt;
 
     // LOG_I("Cycle counts:");
     // LOG_I(" Interrupt to received: %lu", count_interrupt_received);
@@ -209,13 +227,13 @@ sl_status_t _tp_transmit_packages(void)
     // LOG_I(" Start of Transmit pa.: %lu", count_called_transmit);
     // LOG_I(" Transmit packets done: %lu", count_done);
 
-    uint32_t core_clock_mhz = core_clock_hz() / 1e6;
+    // uint32_t core_clock_mhz = core_clock_hz() / 1e6;
 
-    count_interrupt_received /= core_clock_mhz;
-    count_call_transmit /= core_clock_mhz;
-    count_called_transmit /= core_clock_mhz;
-    count_start_transmit /= core_clock_mhz;
-    count_done /= core_clock_mhz;
+    // count_interrupt_received /= core_clock_mhz;
+    // count_call_transmit /= core_clock_mhz;
+    // count_called_transmit /= core_clock_mhz;
+    // count_start_transmit /= core_clock_mhz;
+    // count_done /= core_clock_mhz;
 
     // LOG_I("Time [us]:");
     // LOG_I(" Interrupt to received: %lu", count_interrupt_received);

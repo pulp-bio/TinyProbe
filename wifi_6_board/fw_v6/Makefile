@@ -13,7 +13,11 @@ $(CMAKE_DIR)/build: user/env.h
 	cd $(CMAKE_DIR) && cmake -B build --preset project
 
 flash: build
-	$(COMMANDER) flash cmake_gcc/build/base/fw_v6.hex
+	$(COMMANDER) flash cmake_gcc/build/base/fw_v6.hex --device SIWG917
+
+attach:
+	sleep 1.5
+	$(COMMANDER) rtt connect --device SIWG917
 
 user/env.h: .env
 	$(PYTHON) scripts/fetch_env.py $< $@
@@ -21,4 +25,4 @@ user/env.h: .env
 clean:
 	rm -rf $(CMAKE_DIR)/build user/env.h
 
-.PHONY: build configure flash clean
+.PHONY: build configure flash attach clean

@@ -30,7 +30,7 @@ class CommunicationDevice:
 
     def send(
         self, command: Command | CommandSequence | list[Command]
-    ) -> list[Response]:
+    ) -> list[list[Response]]:
         if not self.socket:
             raise ConnectionError("Not connected to the device.")
 
@@ -52,7 +52,7 @@ class CommunicationDevice:
         else:
             raise TypeError("Invalid command type.")
 
-        responses: list[Response] = []
+        responses: list[list[Response]] = []
 
         for i in track(
             range(len(packed_commands)),
@@ -72,6 +72,9 @@ class CommunicationDevice:
                 transient=True,
             ):
                 response = Response.from_socket(self.socket)
+                if len(response) == 0:
+                    raise TimeoutError("No response received from the device.")
+
                 responses.append(response)
 
         return responses

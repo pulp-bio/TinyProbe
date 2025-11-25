@@ -1,6 +1,8 @@
 #include "sl_main_init.h"
 #include "sl_main_kernel.h"
 
+#include "SEGGER_RTT.h"
+
 #include "user/user.h"
 
 int main(void)

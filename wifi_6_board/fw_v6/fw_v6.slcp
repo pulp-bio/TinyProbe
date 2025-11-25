@@ -5,50 +5,52 @@ description: |
   WiUS firmware for Simplicity Studio 6
 category: Example|Platform
 filter:
-  - name: Device Type
-    value: [SoC]
-  - name: MCU
-    value: [32-bit MCU]
-  - name: Project Difficulty
-    value: [Beginner]
+- name: Device Type
+  value: [SoC]
+- name: MCU
+  value: [32-bit MCU]
+- name: Project Difficulty
+  value: [Beginner]
 package: platform
 quality: production
 readme:
-  - { path: readme.md }
-  - { path: readme.md }
+- {path: readme.md}
+- {path: readme.md}
 source:
-  - { path: app.c }
+- {path: app.c}
 include:
-  - path: .
-    file_list:
-      - { path: app.h }
-sdk: { vendor: null, id: simplicity_sdk, version: 2025.6.2 }
+- path: .
+  file_list:
+  - {path: app.h}
+sdk: {vendor: null, id: simplicity_sdk, version: 2025.6.2}
 toolchain_settings:
-  - { value: -Wall -Werror, option: gcc_compiler_option }
+- {value: -Wall -Werror, option: gcc_compiler_option}
 component:
-  - { from: wiseconnect3_sdk, id: SIWG917M111MGTBA }
-  - { from: wiseconnect3_sdk, id: brd4338a }
-  - { from: wiseconnect3_sdk, id: bsd_socket }
-  - { from: wiseconnect3_sdk, id: device_needs_ram_execution }
-  - { from: wiseconnect3_sdk, id: mdns }
-  - { from: wiseconnect3_sdk, id: network_manager }
-  - { from: wiseconnect3_sdk, id: si91x_memory_default_config }
-  - { from: wiseconnect3_sdk, id: sl_gpio }
-  - { from: wiseconnect3_sdk, id: sl_gspi }
-  - { from: wiseconnect3_sdk, id: sl_power_manager }
-  - { from: wiseconnect3_sdk, id: sl_si91x_asynchronous_socket }
-  - instance: [primary]
-    from: wiseconnect3_sdk
-    id: sl_ssi_instance
-  - { from: wiseconnect3_sdk, id: syscalls }
-  - { id: freertos }
-  - { id: sl_main }
+- {from: wiseconnect3_sdk, id: SIWG917M111MGTBA}
+- {from: wiseconnect3_sdk, id: brd4338a}
+- {from: wiseconnect3_sdk, id: bsd_socket}
+- {from: wiseconnect3_sdk, id: device_needs_ram_execution}
+- {from: wiseconnect3_sdk, id: iostream_rtt_si91x}
+- {from: wiseconnect3_sdk, id: mdns}
+- {from: wiseconnect3_sdk, id: network_manager}
+- {from: wiseconnect3_sdk, id: si91x_memory_default_config}
+- {from: wiseconnect3_sdk, id: sl_gpio}
+- {from: wiseconnect3_sdk, id: sl_gspi}
+- {from: wiseconnect3_sdk, id: sl_power_manager}
+- {from: wiseconnect3_sdk, id: sl_si91x_asynchronous_socket}
+- instance: [primary]
+  from: wiseconnect3_sdk
+  id: sl_ssi_instance
+- {id: freertos}
+- {id: iostream_retarget_stdio}
+- {id: sl_main}
 define:
-  - { name: SLI_SI91X_EMPTY_PROJECT }
+- {name: SLI_SI91X_EMPTY_PROJECT}
 ui_hints:
   highlight:
-    - { path: readme.md, focus: true }
+  - {path: readme.md, focus: true}
 sdk_extension:
-  - { vendor: null, id: wiseconnect3_sdk, version: 3.5.2 }
+- {vendor: null, id: wiseconnect3_sdk, version: 3.5.2}
 post_build:
-  - { path: fw_v6.slpb }
+- {path: fw_v6.slpb}
+

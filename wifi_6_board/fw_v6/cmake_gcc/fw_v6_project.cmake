@@ -1,4 +1,4 @@
-#eyJzdGF0ZSI6eyJidWlsZFByZXNldHMiOnsiZGVmYXVsdF9jb25maWciOnsibmFtZSI6ImRlZmF1bHRfY29uZmlnIiwiY29uZmlndXJhdGlvbiI6ImJhc2UiLCJkZWZpbml0aW9ucyI6W10sInJlbW92ZWRGbGFncyI6eyJDIjpbIi1PcyIsIi1mb21pdC1mcmFtZS1wb2ludGVyIl0sIkNYWCI6WyItT3MiLCItZm9taXQtZnJhbWUtcG9pbnRlciJdLCJBU00iOltdfSwiYWRkaXRpb25hbEZsYWdzIjp7IkMiOlsiLU8yIiwiLWZuby1vbWl0LWZyYW1lLXBvaW50ZXIiLCItZm5vLWlubGluZS1mdW5jdGlvbnMtY2FsbGVkLW9uY2UiLCItZnZhci10cmFja2luZy1hc3NpZ25tZW50cyJdLCJDWFgiOlsiLU8yIiwiLWZuby1vbWl0LWZyYW1lLXBvaW50ZXIiLCItZm5vLWlubGluZS1mdW5jdGlvbnMtY2FsbGVkLW9uY2UiLCItZnZhci10cmFja2luZy1hc3NpZ25tZW50cyJdLCJBU00iOltdfX19LCJjdXJyZW50Q29uZkluZGV4IjowfSwiZm9sZGVycyI6WyJ1c2VyIiwidXNlci90cCIsInVzZXIvd2l1cyIsInVzZXIvdHAvY29tbWFuZHMiXSwiZmlsZXMiOltdfQ==
+#eyJzdGF0ZSI6eyJidWlsZFByZXNldHMiOnsiZGVmYXVsdF9jb25maWciOnsibmFtZSI6ImRlZmF1bHRfY29uZmlnIiwiY29uZmlndXJhdGlvbiI6ImJhc2UiLCJkZWZpbml0aW9ucyI6W10sInJlbW92ZWRGbGFncyI6eyJDIjpbIi1PcyJdLCJDWFgiOlsiLU9zIl0sIkFTTSI6W119LCJhZGRpdGlvbmFsRmxhZ3MiOnsiQyI6WyItTzMiLCItZmlubGluZS1mdW5jdGlvbnMtY2FsbGVkLW9uY2UiXSwiQ1hYIjpbIi1PMyIsIi1maW5saW5lLWZ1bmN0aW9ucy1jYWxsZWQtb25jZSJdLCJBU00iOltdfX19LCJjdXJyZW50Q29uZkluZGV4IjowfSwiZm9sZGVycyI6WyJ1c2VyIiwidXNlci90cCIsInVzZXIvd2l1cyIsInVzZXIvdHAvY29tbWFuZHMiXSwiZmlsZXMiOltdfQ==
 include_directories(
 	"../user"
 	"../user/tp"
@@ -78,18 +78,12 @@ target_sources(fw_v6 PRIVATE
 
 get_target_property(interface_compile_options slc INTERFACE_COMPILE_OPTIONS)
 	list(REMOVE_ITEM interface_compile_options $<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:C>>:-Os>)
-	list(REMOVE_ITEM interface_compile_options $<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:C>>:-fomit-frame-pointer>)
 	list(REMOVE_ITEM interface_compile_options $<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:CXX>>:-Os>)
-	list(REMOVE_ITEM interface_compile_options $<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:CXX>>:-fomit-frame-pointer>)
 set_target_properties(fw_v6 PROPERTIES INTERFACE_COMPILE_OPTIONS "${interface_compile_opitions}")
 
 target_compile_options(fw_v6 PRIVATE
-	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:C>>:-O2>
-	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:C>>:-fno-omit-frame-pointer>
-	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:C>>:-fno-inline-functions-called-once>
-	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:C>>:-fvar-tracking-assignments>
-	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:CXX>>:-O2>
-	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:CXX>>:-fno-omit-frame-pointer>
-	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:CXX>>:-fno-inline-functions-called-once>
-	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:CXX>>:-fvar-tracking-assignments>
+	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:C>>:-O3>
+	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:C>>:-finline-functions-called-once>
+	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:CXX>>:-O3>
+	$<$<AND:$<CONFIG:default_config>,$<COMPILE_LANGUAGE:CXX>>:-finline-functions-called-once>
 )

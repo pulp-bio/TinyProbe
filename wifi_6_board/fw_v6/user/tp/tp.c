@@ -63,7 +63,7 @@ osThreadId_t wifi_transmit_thread_id;
 osThreadAttr_t wifi_tx_thread_attr = {
     .name = "TP wifi transmit",
     .stack_size = TP_THREAD_STACK_WIFI,
-    .priority = osPriorityNormal,
+    .priority = osPriorityBelowNormal1,
 };
 
 wius_wifi_mdns_t tp_mdns = {
@@ -87,9 +87,6 @@ wius_tcp_server_message_t msg;
 bool enable_udp_replies = false;
 uint16_t n_packs_to_read = 0;
 uint16_t cb_pack_id = 0;
-
-uint32_t transmit_times[256] = {0};
-size_t transmit_times_index = 0;
 
 void _tp_thread_wifi_transmit(void *argument);
 void _tp_int_handler(uint32_t flag);
@@ -370,12 +367,6 @@ void _tp_thread_wifi_transmit(void *argument)
             continue;
         }
 
-        transmit_times[transmit_times_index++] = DWT->CYCCNT;
-        if (transmit_times_index >= 256)
-        {
-            transmit_times_index = 0;
-        }
-
         //        LOG_I("Transmitting UDP packet of length %d to %s:%d", TP_BUFFER_SIZE, client_ip, client_port);
 
         status = wius_tcp_server_respond_udp(&msg, TP_UDP_PORT, slot_udp->data, TP_BUFFER_SIZE);
@@ -383,6 +374,11 @@ void _tp_thread_wifi_transmit(void *argument)
         {
             LOG_W("Error transmitting UDP packet: 0x%lx", status);
         }
+        // status = wius_tcp_server_respond_data(&msg, TP_CMD_TRIGGER_SHOT, slot_udp->data, TP_BUFFER_SIZE);
+        // if (SL_STATUS_OK != status)
+        // {
+        //     LOG_W("Error transmitting packet: 0x%lx", status);
+        // }
 
         tp_buffer_return_reading(&tp_buf, slot_udp);
 

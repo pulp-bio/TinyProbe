@@ -3,7 +3,7 @@
   "specVersion" : "1.6",
   "version" : 1,
   "metadata" : {
-    "timestamp" : "2025-11-03T20:11:31Z",
+    "timestamp" : "2025-11-04T12:27:05Z",
     "authors" : [ {
       "name" : "Silicon Laboratories, Inc."
     } ],
@@ -39,6 +39,42 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:bsd_socket",
+      "name" : "BSD Socket",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:device_needs_ram_execution",
+      "name" : "RAM Execution",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:mdns",
+      "name" : "MDNS",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:network_manager",
+      "name" : "Network Manager",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib AND Apache-2.0"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:si91x_memory_default_config",
       "name" : "Default RAM Memory Configuration",
       "version" : "3.5.2",
@@ -48,11 +84,47 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:syscalls",
-      "name" : "System Calls",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_gpio",
+      "name" : "GPIO",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_gspi",
+      "name" : "GSPI",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_power_manager",
+      "name" : "Power Manager",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_asynchronous_socket",
+      "name" : "Si91x Asynchronous Socket",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_ssi_instance",
+      "name" : "SSI",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
       } ]
     }, {
       "scope" : "required",
@@ -84,6 +156,15 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:wifi_resources",
+      "name" : "WiSeConnect3 Resources",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:cmsis_usart",
       "name" : "CMSIS USART",
       "version" : "3.5.2",
@@ -93,8 +174,17 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_headers",
-      "name" : "System-Level API Headers",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_power_save",
+      "name" : "POWER SAVE",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_spi",
+      "name" : "SPI",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -111,26 +201,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:wiseconnect_toolchain_plugin",
-      "name" : "GCC Toolchain Support",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_aux_reference_volt_config",
-      "name" : "AUX REFERENCE VOLT",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_mcu",
-      "name" : "Si91x MCU Subsystem",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:basic_credential_manager",
+      "name" : "Basic Credential Manager",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "MSLA"
@@ -147,24 +219,6 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_clock_manager",
-      "name" : "Clock Manager",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_usart",
-      "name" : "USART",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_udma_wrapper",
       "name" : "ROM DRIVER UDMA WRAPPER",
       "version" : "3.5.2",
@@ -174,35 +228,17 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:freertos_config",
-      "name" : "SL SI91X FreeRTOS Configuration",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:malloc_thread_safety",
+      "name" : "Malloc thread safety",
       "version" : "3.5.2",
       "licenses" : [ {
-        "expression" : "MIT"
+        "expression" : "MSLA"
       } ]
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_packing",
-      "name" : "ROM DRIVER PACKING",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_clks",
-      "name" : "ROM DRIVER CLOCK",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_bod",
-      "name" : "BOD",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_errno",
+      "name" : "SL errno",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -219,8 +255,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:cmsis_common_driver",
-      "name" : "CMSIS COMMON DRIVER",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:wifi",
+      "name" : "Wi-Fi",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -237,11 +273,20 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_udma",
-      "name" : "ROM DRIVER UDMA",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_gpio_peripheral",
+      "name" : "SL GPIO Peripheral",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:si91x_tickless_mode",
+      "name" : "SI91X TICK-LESS MODE",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "MSLA"
       } ]
     }, {
       "scope" : "required",
@@ -273,15 +318,6 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_ulpss_clk",
-      "name" : "ULPSS CLOCK",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_adc",
       "name" : "ADC",
       "version" : "3.5.2",
@@ -291,8 +327,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_romtable",
-      "name" : "ROM TABLE",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sllib_m4_power_save",
+      "name" : "Si91x Cortex-M4 Powersave",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -327,8 +363,34 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_headers",
-      "name" : "RSI Peripheral Headers",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:bsd_socket_api",
+      "name" : "BSD Socket API",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "MSLA AND Apache-2.0"
+      } ],
+      "pedigree" : {
+        "ancestors" : [ {
+          "scope" : "required",
+          "type" : "library",
+          "bom-ref" : "bsd_socket_api:1.3.0",
+          "name" : "IoT Socket",
+          "version" : "1.3.0",
+          "supplier" : {
+            "name" : "MDK-Packs"
+          },
+          "externalReferences" : [ {
+            "type" : "website",
+            "url" : "https://github.com/MDK-Packs/IoT_Socket"
+          } ],
+          "purl" : "pkg:github/MDK-Packs/IoT_Socket@1.3.0"
+        } ]
+      }
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:wakeup_source_config",
+      "name" : "PM Wakeup Source Configuration",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -347,6 +409,24 @@
       "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_dma",
       "name" : "DMA",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:basic_network_config_manager",
+      "name" : "Basic Network Configuration Manager",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_internal_stack",
+      "name" : "Internal Network Stack",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -390,15 +470,6 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:external_psram_none",
-      "name" : "No External PSRAM",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_rtc",
       "name" : "RTC",
       "version" : "3.5.2",
@@ -417,26 +488,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:udma_linker_config",
-      "name" : "UDMA Linker Configuration",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:board_configuration_headers",
-      "name" : "Board Configuration Header Files",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_adc",
-      "name" : "ADC",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_gspi",
+      "name" : "GSPI",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -471,38 +524,11 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_pll",
-      "name" : "PLL",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_board",
       "name" : "Si91x SoC Board Configurations",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "MSLA AND Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_clock_update",
-      "name" : "CLOCK UPDATE",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:si91x_debug",
-      "name" : "Debug Unit",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
       } ]
     }, {
       "scope" : "required",
@@ -516,8 +542,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_chip",
-      "name" : "Core",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_sysrtc",
+      "name" : "SYSRTC",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -525,8 +551,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_udma_wrapper",
-      "name" : "UDMA WRAPPER",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_socket",
+      "name" : "Si91x Socket",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -552,6 +578,15 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sleeptimer_si91x",
+      "name" : "Sleep Timer for Si91x",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_ulpss",
       "name" : "ROM DRIVER ULPSS",
       "version" : "3.5.2",
@@ -570,8 +605,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:device_needs_ram_execution",
-      "name" : "RAM Execution",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_ssi",
+      "name" : "SSI",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -579,26 +614,17 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:mdns",
-      "name" : "MDNS",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:wifi_resources",
-      "name" : "WiSeConnect3 Resources",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:wiseconnect3_common",
       "name" : "WiSeConnect3 Common Library",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_headers",
+      "name" : "System-Level API Headers",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -615,8 +641,26 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:malloc_thread_safety",
-      "name" : "Malloc thread safety",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:wiseconnect_toolchain_plugin",
+      "name" : "GCC Toolchain Support",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_aux_reference_volt_config",
+      "name" : "AUX REFERENCE VOLT",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_mcu",
+      "name" : "Si91x MCU Subsystem",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "MSLA"
@@ -624,8 +668,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_errno",
-      "name" : "SL errno",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_clock_manager",
+      "name" : "Clock Manager",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -633,250 +677,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_basic_buffers",
-      "name" : "Basic Buffer Manager",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:wifi",
-      "name" : "Wi-Fi",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_wireless",
-      "name" : "Si91x Wireless Subsystem",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:bsd_socket_api",
-      "name" : "BSD Socket API",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "MSLA AND Apache-2.0"
-      } ],
-      "pedigree" : {
-        "ancestors" : [ {
-          "scope" : "required",
-          "type" : "library",
-          "bom-ref" : "bsd_socket_api:1.3.0",
-          "name" : "IoT Socket",
-          "version" : "1.3.0",
-          "supplier" : {
-            "name" : "MDK-Packs"
-          },
-          "externalReferences" : [ {
-            "type" : "website",
-            "url" : "https://github.com/MDK-Packs/IoT_Socket"
-          } ],
-          "purl" : "pkg:github/MDK-Packs/IoT_Socket@1.3.0"
-        } ]
-      }
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_headers",
-      "name" : "ROM Driver Headers",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_internal_stack",
-      "name" : "Internal Network Stack",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sli_wifi_command_engine",
-      "name" : "WiFi Command Engine",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sli_si91x_wifi_event_handler",
-      "name" : "si91x WiFi handler",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_socket",
-      "name" : "Si91x Socket",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:network_manager",
-      "name" : "Network Manager",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib AND Apache-2.0"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:basic_credential_manager",
-      "name" : "Basic Credential Manager",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:basic_network_config_manager",
-      "name" : "Basic Network Configuration Manager",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_asynchronous_socket",
-      "name" : "Si91x Asynchronous Socket",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_gpio",
-      "name" : "GPIO",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_gpio_peripheral",
-      "name" : "SL GPIO Peripheral",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_gspi",
-      "name" : "GSPI",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:cmsis_gspi",
-      "name" : "CMSIS GSPI",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Apache-2.0 AND Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_gspi",
-      "name" : "GSPI",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_ssi_instance",
-      "name" : "SSI",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_spi",
-      "name" : "SPI",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_ssi",
-      "name" : "SSI",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:cmsis_spi",
-      "name" : "CMSIS SPI",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Apache-2.0"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:bsd_socket",
-      "name" : "BSD Socket",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_power_manager",
-      "name" : "Power Manager",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_power_save",
-      "name" : "POWER SAVE",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:wakeup_source_config",
-      "name" : "PM Wakeup Source Configuration",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_usart",
+      "name" : "USART",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -893,6 +695,222 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:freertos_config",
+      "name" : "SL SI91X FreeRTOS Configuration",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "MIT"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_packing",
+      "name" : "ROM DRIVER PACKING",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_basic_buffers",
+      "name" : "Basic Buffer Manager",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_clks",
+      "name" : "ROM DRIVER CLOCK",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_bod",
+      "name" : "BOD",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:cmsis_common_driver",
+      "name" : "CMSIS COMMON DRIVER",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_udma",
+      "name" : "ROM DRIVER UDMA",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_ulpss_clk",
+      "name" : "ULPSS CLOCK",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_romtable",
+      "name" : "ROM TABLE",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_si91x_wireless",
+      "name" : "Si91x Wireless Subsystem",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:cmsis_gspi",
+      "name" : "CMSIS GSPI",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Apache-2.0 AND Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:romdriver_headers",
+      "name" : "ROM Driver Headers",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_headers",
+      "name" : "RSI Peripheral Headers",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:cmsis_spi",
+      "name" : "CMSIS SPI",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Apache-2.0"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sli_wifi_command_engine",
+      "name" : "WiFi Command Engine",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:external_psram_none",
+      "name" : "No External PSRAM",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sli_si91x_wifi_event_handler",
+      "name" : "si91x WiFi handler",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:udma_linker_config",
+      "name" : "UDMA Linker Configuration",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:board_configuration_headers",
+      "name" : "Board Configuration Header Files",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:sl_adc",
+      "name" : "ADC",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:systemlevel_pll",
+      "name" : "PLL",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_clock_update",
+      "name" : "CLOCK UPDATE",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:si91x_debug",
+      "name" : "Debug Unit",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_chip",
+      "name" : "Core",
+      "version" : "3.5.2",
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "wiseconnect3_sdk:3.5.2:power_manager_config",
       "name" : "Power Manager Configuration",
       "version" : "3.5.2",
@@ -902,17 +920,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:si91x_tickless_mode",
-      "name" : "SI91X TICK-LESS MODE",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sllib_m4_power_save",
-      "name" : "Si91x Cortex-M4 Powersave",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_udma_wrapper",
+      "name" : "UDMA WRAPPER",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -920,17 +929,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:rsilib_sysrtc",
-      "name" : "SYSRTC",
-      "version" : "3.5.2",
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "wiseconnect3_sdk:3.5.2:sleeptimer_si91x",
-      "name" : "Sleep Timer for Si91x",
+      "bom-ref" : "wiseconnect3_sdk:3.5.2:iostream_rtt_si91x",
+      "name" : "IO Stream:SI91X RTT",
       "version" : "3.5.2",
       "licenses" : [ {
         "expression" : "Zlib"
@@ -946,266 +946,6 @@
       "name" : "Silicon Laboratories, Inc."
     },
     "components" : [ {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:sl_main",
-      "name" : "System Setup (sl_main)",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:brd4002a",
-      "name" : "BRD4002A",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:event_handler",
-      "name" : "Event Handler",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:sl_main_memory_init",
-      "name" : "sl_main Setup",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:status",
-      "name" : "Status Codes Definitions",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:toolchain_variant_arm",
-      "name" : "Toolchain for ARM",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:sl_assert",
-      "name" : "Assert Functions",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:component_catalog",
-      "name" : "Component Catalog",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:cmsis_core",
-      "name" : "CMSIS-Core",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Apache 2.0"
-      } ],
-      "pedigree" : {
-        "ancestors" : [ {
-          "scope" : "required",
-          "type" : "library",
-          "bom-ref" : "cmsis_core:5.8.0",
-          "name" : "CMSIS_5",
-          "version" : "5.8.0",
-          "supplier" : {
-            "name" : "ARM-software"
-          },
-          "externalReferences" : [ {
-            "type" : "website",
-            "url" : "https://github.com/ARM-software/CMSIS_5"
-          } ],
-          "purl" : "pkg:github/ARM-software/CMSIS_5@5.8.0",
-          "pedigree" : {
-            "notes" : "The CMSIS is a set of tools, APIs, frameworks, and work flows"
-          }
-        } ]
-      }
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:sl_common",
-      "name" : "Common Functions",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:sl_main_init",
-      "name" : "sl main Init",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:sl_main_process_action",
-      "name" : "sl_main Process Action",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:bit",
-      "name" : "Bit Operations Library",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:slist",
-      "name" : "Single Link List",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:sl_string",
-      "name" : "String Functions",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:atomic",
-      "name" : "Atomic Operations Library",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:code_classification",
-      "name" : "Code Classification",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:cmsis_os2_ext_task_register",
-      "name" : "Task registers abstraction layer",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:sl_core",
-      "name" : "core",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:emlib_core",
-      "name" : "CORE",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
       "scope" : "required",
       "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:freertos",
@@ -1237,6 +977,54 @@
           }
         } ]
       }
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:sl_main",
+      "name" : "System Setup (sl_main)",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bit",
+      "name" : "Bit Operations Library",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:brd4002a",
+      "name" : "BRD4002A",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:slist",
+      "name" : "Single Link List",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
     }, {
       "scope" : "required",
       "type" : "library",
@@ -1272,6 +1060,42 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:sl_main_memory_init",
+      "name" : "sl_main Setup",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:atomic",
+      "name" : "Atomic Operations Library",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:code_classification",
+      "name" : "Code Classification",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:sl_main_kernel",
       "name" : "SL Main Kernel",
       "version" : "2025.6.2",
@@ -1286,6 +1110,42 @@
       "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:memory_manager_redirect",
       "name" : "Memory Manager Redirect",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:status",
+      "name" : "Status Codes Definitions",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:toolchain_variant_arm",
+      "name" : "Toolchain for ARM",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:cmsis_os2_ext_task_register",
+      "name" : "Task registers abstraction layer",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
@@ -1340,6 +1200,30 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:event_handler",
+      "name" : "Event Handler",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:sl_string",
+      "name" : "String Functions",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:cmsis_rtos2_init",
       "name" : "CMSIS-RTOS2 Initialization",
       "version" : "2025.6.2",
@@ -1369,6 +1253,18 @@
           }
         } ]
       }
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:sl_assert",
+      "name" : "Assert Functions",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
     }, {
       "scope" : "required",
       "type" : "library",
@@ -1404,8 +1300,160 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:component_catalog",
+      "name" : "Component Catalog",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:sl_core",
+      "name" : "core",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:cmsis_core",
+      "name" : "CMSIS-Core",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Apache 2.0"
+      } ],
+      "pedigree" : {
+        "ancestors" : [ {
+          "scope" : "required",
+          "type" : "library",
+          "bom-ref" : "cmsis_core:5.8.0",
+          "name" : "CMSIS_5",
+          "version" : "5.8.0",
+          "supplier" : {
+            "name" : "ARM-software"
+          },
+          "externalReferences" : [ {
+            "type" : "website",
+            "url" : "https://github.com/ARM-software/CMSIS_5"
+          } ],
+          "purl" : "pkg:github/ARM-software/CMSIS_5@5.8.0",
+          "pedigree" : {
+            "notes" : "The CMSIS is a set of tools, APIs, frameworks, and work flows"
+          }
+        } ]
+      }
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:emlib_core",
+      "name" : "CORE",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:sleeptimer",
       "name" : "Sleep Timer",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:sl_common",
+      "name" : "Common Functions",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:sl_main_init",
+      "name" : "sl main Init",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:sl_main_process_action",
+      "name" : "sl_main Process Action",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:segger_rtt",
+      "name" : "SEGGER RTT",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Segger"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:iostream",
+      "name" : "IO Stream",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:enum",
+      "name" : "Enumerations",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:iostream_retarget_stdio",
+      "name" : "IO Stream: Retarget STDIO",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."

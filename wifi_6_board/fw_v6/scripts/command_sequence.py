@@ -3,7 +3,7 @@ import struct
 from commands import Command
 
 
-PACKET_SIZE = 255
+PACKET_SIZE = 260
 
 
 class CommandSequence:

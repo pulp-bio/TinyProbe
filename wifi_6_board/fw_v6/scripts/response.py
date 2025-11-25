@@ -17,49 +17,61 @@ class Response:
     execution_time: float = 0.0
 
     @staticmethod
-    def from_bytes(data: bytes) -> "Response":
-        command_id = data[0]
-        status = data[1:3]
-        if status == b"OK":
-            response_size = struct.unpack("<H", data[3:5])[0]
-            response_data = data[5 : 5 + response_size]
-            return Response(command_id, True, data=response_data)
-        else:  # status == b"ER"
-            error_code = data[3]
-            return Response(command_id, False, error_code=error_code)
+    def from_socket(sock: socket.socket) -> list["Response"]:
+        result = []
+        
+        while True:
+            try:
+                command_id = sock.recv(1)[0]
+                response_time = time.time()
+                status = sock.recv(2)
+                execution_time = time.time()
+
+                match status:
+
+                    case b"OK":
+                        result.append(Response(
+                            command_id,
+                            True,
+                            # data=response_data,
+                            response_time=response_time,
+                            execution_time=execution_time,
+                        ))
+                        break
+
+                    case b"ER":
+                        error_code = sock.recv(4)
+                        result.append(Response(
+                            command_id,
+                            False,
+                            error_code=struct.unpack("<I", error_code)[0],
+                            response_time=response_time,
+                            execution_time=execution_time,
+                        ))
+                        break
+
+                    case b"DT":
+                        num_packets = sock.recv(1)
+                        packets = []
+                        for _ in range(num_packets[0]):
+                            packets.append(sock.recv(1400))
+
+                        result.append(Response(
+                            command_id,
+                            True,
+                            data=b"".join(packets),
+                            response_time=response_time,
+                            execution_time=execution_time,
+                        ))
+
+            except socket.timeout:
+                # raise TimeoutError("Response timed out.")
+                break
+
+        return result
 
     @staticmethod
-    def from_socket(sock: socket.socket) -> "Response":
-        try:
-            command_id = sock.recv(1)[0]
-            response_time = time.time()
-            status = sock.recv(2)
-            execution_time = time.time()
-            if status == b"OK":
-                # response_size_bytes = sock.recv(2)
-                # response_size = struct.unpack("<H", response_size_bytes)[0]
-                # response_data = sock.recv(response_size)
-                return Response(
-                    command_id,
-                    True,
-                    # data=response_data,
-                    response_time=response_time,
-                    execution_time=execution_time,
-                )
-            else:  # status == b"ER"
-                error_code = sock.recv(4)
-                return Response(
-                    command_id,
-                    False,
-                    error_code=struct.unpack("<I", error_code)[0],
-                    response_time=response_time,
-                    execution_time=execution_time,
-                )
-        except socket.timeout:
-            raise TimeoutError("Response timed out.")
-
-    @staticmethod
-    def print_table(responses: list["Response"]) -> None:
+    def print_table(responses: list[list["Response"]]) -> None:
         table = Table(title="Device Responses")
         table.add_column("IDX", justify="right", style="dim", no_wrap=True)
         table.add_column("Cmd. ID", justify="right", style="cyan", no_wrap=True)
@@ -69,21 +81,25 @@ class Response:
         table.add_column("Resp. Time", justify="right", style="dim")
         table.add_column("Exec. Time", justify="right", style="dim")
 
-        prev_time = responses[0].response_time
+        prev_time = responses[0][-1].response_time
 
         for i, response in enumerate(responses):
-            status = "OK" if response.is_ok else "ERROR"
-            data_str = response.data.hex() if response.data else ""
-            error_code_str = str(response.error_code) if not response.is_ok else ""
+            num_responses = len(response)
+            last_response = response[-1]
 
-            response_time = response.response_time - prev_time
-            prev_time = response.response_time
-            execution_time = response.execution_time - prev_time
-            prev_time = response.execution_time
+            data_str = f"{num_responses-1} pkt(s)" if num_responses > 2 else ""
+
+            status = "OK" if last_response.is_ok else "ERROR"
+            error_code_str = str(last_response.error_code) if not last_response.is_ok else ""
+
+            response_time = last_response.response_time - prev_time
+            prev_time = last_response.response_time
+            execution_time = last_response.execution_time - prev_time
+            prev_time = last_response.execution_time
 
             table.add_row(
                 str(i),
-                str(response.command_id),
+                str(last_response.command_id),
                 status,
                 data_str,
                 error_code_str,

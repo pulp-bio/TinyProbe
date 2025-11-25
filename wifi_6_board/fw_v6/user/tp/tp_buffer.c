@@ -133,7 +133,7 @@ tp_buffer_slot_t *tp_buffer_claim_reading(tp_buffer_t *buf)
 {
     osStatus_t status;
 
-    status = osSemaphoreAcquire(buf->sem_read, 1000);
+    status = osSemaphoreAcquire(buf->sem_read, osWaitForever);
     if (status != osOK)
     {
         LOG_W("Failed to acquire read semaphore for buffer: %d", status);

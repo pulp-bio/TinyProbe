@@ -32,11 +32,12 @@
 #include <stdarg.h>
 
 #include "cmsis_os2.h"
+#include "sl_iostream.h"
 
 osMutexId_t log_mutex;
 // int _log_lost = 0;
 
-char buffer[64];
+char buffer[WIUS_LOG_BUFFER_SIZE];
 
 sl_status_t log_init(void)
 {
@@ -74,6 +75,7 @@ void _log_printf(const char *level, uint32_t tick_count, const char *function, c
 
     // printf("[%s %7lu %27s]   %s\r\n", level, tick_count, function, buffer);
     printf("[%s]   %s\r\n", level, buffer);
+    // sl_iostream_printf(SL_IOSTREAM_STDOUT, "[%s]   %s\r\n", level, buffer);
 
     //    osMutexRelease(log_mutex);
 }

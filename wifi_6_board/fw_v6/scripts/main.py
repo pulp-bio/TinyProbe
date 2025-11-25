@@ -51,14 +51,27 @@ def udp_receiver(port: int, stop_event: threading.Event):
 
     udp_socket.close()
 
+def to_human(num_bytes: int) -> str:
+    if num_bytes >= 1e12:
+        return f"{num_bytes/1e12:.4f} TB"
+    elif num_bytes >= 1e9:
+        return f"{num_bytes/1e9:.4f} GB"
+    elif num_bytes >= 1e6:
+        return f"{num_bytes/1e6:.4f} MB"
+    elif num_bytes >= 1e3:
+        return f"{num_bytes/1e3:.4f} kB"
+    
+    return str(num_bytes)
 
 def main():
-    NUM_SHOTS = 10
+    NUM_SHOTS = 50
     cmd = [
         TriggerShot(n_shots=NUM_SHOTS)
-    ] * 100
+    ] * 20
 
-    addr = ("192.168.1.33", 50008)
+    # addr = ("192.168.50.223", 50008)
+    addr = ("192.168.50.234", 50008)
+
     device = CommunicationDevice(*addr)
 
     stop_event = threading.Event()
@@ -81,10 +94,19 @@ def main():
 
     # for packet, addr in received_packets:
     #     print(f"From {addr}: 0x{packet.hex()} ({packet.decode(errors='ignore')!r})")
+    # data_responses = []
+    # for resp in response:
+    #     data_responses.extend([r for r in resp if r.data != b""])
+
     total_bytes = sum(len(packet) for packet, _, _ in received_packets)
-    expected_bytes = math.ceil(NUM_SHOTS * 82 / 4) * 4002 * len(list(filter(lambda c: isinstance(c, TriggerShot), cmd)))
-    print(f"Total UDP bytes received: {total_bytes}")
-    print(f"      Expected UDP bytes: {expected_bytes}")
+    # total_bytes = sum(len(r.data) for r in data_responses)
+    expected_bytes = NUM_SHOTS * len(list(filter(lambda c: isinstance(c, TriggerShot), cmd))) * 84042
+    print(f"Total received: {to_human(total_bytes)}")
+    print(f"      Expected: {to_human(expected_bytes)}", end='\t')
+    if total_bytes == expected_bytes:
+        print("[green]MATCH[/green]")
+    else:
+        print("[red]MISMATCH[/red]")
     min_time = min(t for _, t, _ in received_packets) if received_packets else 0
     max_time = max(t for _, t, _ in received_packets) if received_packets else 0
     duration = max_time - min_time

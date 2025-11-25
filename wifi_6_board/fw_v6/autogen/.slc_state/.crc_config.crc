@@ -1,4 +1,5 @@
 #CRC Codes for initially generated config files -- do not modify!
+SEGGER_RTT_Conf.h=-96194652
 sl_core_config.h=-119586893
 sl_main_start_task_config.h=-1054800951
 sl_memory_manager_config.h=1702148085

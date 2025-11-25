@@ -29,3 +29,4 @@ sl_status_t wius_tcp_server_respond_udp(wius_tcp_server_message_t *msg, uint16_t
 
 sl_status_t wius_tcp_server_respond_ok(wius_tcp_server_message_t *msg, uint8_t cmd_id);
 sl_status_t wius_tcp_server_respond_error(wius_tcp_server_message_t *msg, uint8_t cmd_id, sl_status_t error_code);
+sl_status_t wius_tcp_server_respond_data(wius_tcp_server_message_t *msg, uint8_t cmd_id, uint8_t *data, size_t data_length);

@@ -5,7 +5,7 @@
   "name" : "Silicon-Laboratories",
   "documentNamespace" : "https://silabs.com",
   "creationInfo" : {
-    "created" : "2025-11-03T20:11:31Z",
+    "created" : "2025-11-04T12:27:05Z",
     "creators" : [ "Tool: Silicon Labs Configuration Tooling" ]
   },
   "comment" : "TERMS OF USE - SILICON LABORATORIES INC.\n(With respect to Silicon Labs software components, this Software Bill of Materials (SBOM) is based upon Silicon Labs'\nreview and analysis of the code version when released.  It is provided \"AS IS\" and does not modify, change or alter\nthe terms or conditions of your use of Silicon Labs' software and/or SDKs based upon license terms and/or agreements\nassociated with this software or SDKs when distributed to you, received by you, or installed by you.  Further, no\nwarranties or obligations are created by this SBOM.  It is your obligation to comply with the terms of licenses\nreferenced in this SBOM.)",
@@ -34,6 +34,38 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket",
+    "name" : "BSD Socket",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-device_needs_ram_execution",
+    "name" : "RAM Execution",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-mdns",
+    "name" : "MDNS",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "MSLA"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-network_manager",
+    "name" : "Network Manager",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib AND Apache-2.0"
+  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_memory_default_config",
     "name" : "Default RAM Memory Configuration",
     "versionInfo" : "3.5.2",
@@ -42,13 +74,45 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-syscalls",
-    "name" : "System Calls",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gpio",
+    "name" : "GPIO",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gspi",
+    "name" : "GSPI",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_power_manager",
+    "name" : "Power Manager",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_asynchronous_socket",
+    "name" : "Si91x Asynchronous Socket",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "MSLA"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_ssi_instance",
+    "name" : "SSI",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
   }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_opamp",
     "name" : "OPAMP",
@@ -74,6 +138,14 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wifi_resources",
+    "name" : "WiSeConnect3 Resources",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "MSLA"
+  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_usart",
     "name" : "CMSIS USART",
     "versionInfo" : "3.5.2",
@@ -82,8 +154,16 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Apache-2.0 AND Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_headers",
-    "name" : "System-Level API Headers",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_power_save",
+    "name" : "POWER SAVE",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_spi",
+    "name" : "SPI",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -98,24 +178,8 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Apache-2.0"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wiseconnect_toolchain_plugin",
-    "name" : "GCC Toolchain Support",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_aux_reference_volt_config",
-    "name" : "AUX REFERENCE VOLT",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_mcu",
-    "name" : "Si91x MCU Subsystem",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-basic_credential_manager",
+    "name" : "Basic Credential Manager",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -130,22 +194,6 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_clock_manager",
-    "name" : "Clock Manager",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_usart",
-    "name" : "USART",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_udma_wrapper",
     "name" : "ROM DRIVER UDMA WRAPPER",
     "versionInfo" : "3.5.2",
@@ -154,32 +202,16 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-freertos_config",
-    "name" : "SL SI91X FreeRTOS Configuration",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-malloc_thread_safety",
+    "name" : "Malloc thread safety",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "MIT"
+    "licenseConcluded" : "MSLA"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_packing",
-    "name" : "ROM DRIVER PACKING",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_clks",
-    "name" : "ROM DRIVER CLOCK",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_bod",
-    "name" : "BOD",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_errno",
+    "name" : "SL errno",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -194,8 +226,8 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "MSLA AND Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_common_driver",
-    "name" : "CMSIS COMMON DRIVER",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wifi",
+    "name" : "Wi-Fi",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -210,13 +242,21 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_udma",
-    "name" : "ROM DRIVER UDMA",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gpio_peripheral",
+    "name" : "SL GPIO Peripheral",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_tickless_mode",
+    "name" : "SI91X TICK-LESS MODE",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "MSLA"
   }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_dac",
     "name" : "DAC",
@@ -242,14 +282,6 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_ulpss_clk",
-    "name" : "ULPSS CLOCK",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_adc",
     "name" : "ADC",
     "versionInfo" : "3.5.2",
@@ -258,8 +290,8 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_romtable",
-    "name" : "ROM TABLE",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sllib_m4_power_save",
+    "name" : "Si91x Cortex-M4 Powersave",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -290,8 +322,30 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_headers",
-    "name" : "RSI Peripheral Headers",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket_api",
+    "name" : "BSD Socket API",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "MSLA AND Apache-2.0"
+  }, {
+    "SPDXID" : "SPDXRef-bsd_socket_api-1.3.0",
+    "name" : "IoT Socket",
+    "versionInfo" : "1.3.0",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: MDK-Packs",
+    "originator" : "Organization: NOASSERTION",
+    "homepage" : "https://github.com/MDK-Packs/IoT_Socket",
+    "externalRefs" : [ {
+      "referenceCategory" : "PACKAGE-MANAGER",
+      "referenceLocator" : "pkg:github/MDK-Packs/IoT_Socket@1.3.0",
+      "referenceType" : "purl"
+    } ]
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wakeup_source_config",
+    "name" : "PM Wakeup Source Configuration",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -308,6 +362,22 @@
   }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_dma",
     "name" : "DMA",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-basic_network_config_manager",
+    "name" : "Basic Network Configuration Manager",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "MSLA"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_internal_stack",
+    "name" : "Internal Network Stack",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -346,14 +416,6 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "MSLA AND Apache-2.0"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-external_psram_none",
-    "name" : "No External PSRAM",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_rtc",
     "name" : "RTC",
     "versionInfo" : "3.5.2",
@@ -370,24 +432,8 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-udma_linker_config",
-    "name" : "UDMA Linker Configuration",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-board_configuration_headers",
-    "name" : "Board Configuration Header Files",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_adc",
-    "name" : "ADC",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_gspi",
+    "name" : "GSPI",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -418,14 +464,6 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "MSLA"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_pll",
-    "name" : "PLL",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_board",
     "name" : "Si91x SoC Board Configurations",
     "versionInfo" : "3.5.2",
@@ -433,22 +471,6 @@
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "MSLA AND Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_clock_update",
-    "name" : "CLOCK UPDATE",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_debug",
-    "name" : "Debug Unit",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
   }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_common_flash",
     "name" : "Common Flash Component",
@@ -458,16 +480,16 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_chip",
-    "name" : "Core",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_sysrtc",
+    "name" : "SYSRTC",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_udma_wrapper",
-    "name" : "UDMA WRAPPER",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_socket",
+    "name" : "Si91x Socket",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -490,6 +512,14 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sleeptimer_si91x",
+    "name" : "Sleep Timer for Si91x",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_ulpss",
     "name" : "ROM DRIVER ULPSS",
     "versionInfo" : "3.5.2",
@@ -506,32 +536,24 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-device_needs_ram_execution",
-    "name" : "RAM Execution",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_ssi",
+    "name" : "SSI",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-mdns",
-    "name" : "MDNS",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "MSLA"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wifi_resources",
-    "name" : "WiSeConnect3 Resources",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "MSLA"
-  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wiseconnect3_common",
     "name" : "WiSeConnect3 Common Library",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_headers",
+    "name" : "System-Level API Headers",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -546,238 +568,40 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "MSLA"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-malloc_thread_safety",
-    "name" : "Malloc thread safety",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wiseconnect_toolchain_plugin",
+    "name" : "GCC Toolchain Support",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_aux_reference_volt_config",
+    "name" : "AUX REFERENCE VOLT",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_mcu",
+    "name" : "Si91x MCU Subsystem",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "MSLA"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_errno",
-    "name" : "SL errno",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_clock_manager",
+    "name" : "Clock Manager",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_basic_buffers",
-    "name" : "Basic Buffer Manager",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wifi",
-    "name" : "Wi-Fi",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_wireless",
-    "name" : "Si91x Wireless Subsystem",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket_api",
-    "name" : "BSD Socket API",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "MSLA AND Apache-2.0"
-  }, {
-    "SPDXID" : "SPDXRef-bsd_socket_api-1.3.0",
-    "name" : "IoT Socket",
-    "versionInfo" : "1.3.0",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: MDK-Packs",
-    "originator" : "Organization: NOASSERTION",
-    "homepage" : "https://github.com/MDK-Packs/IoT_Socket",
-    "externalRefs" : [ {
-      "referenceCategory" : "PACKAGE-MANAGER",
-      "referenceLocator" : "pkg:github/MDK-Packs/IoT_Socket@1.3.0",
-      "referenceType" : "purl"
-    } ]
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_headers",
-    "name" : "ROM Driver Headers",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_internal_stack",
-    "name" : "Internal Network Stack",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sli_wifi_command_engine",
-    "name" : "WiFi Command Engine",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sli_si91x_wifi_event_handler",
-    "name" : "si91x WiFi handler",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_socket",
-    "name" : "Si91x Socket",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-network_manager",
-    "name" : "Network Manager",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib AND Apache-2.0"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-basic_credential_manager",
-    "name" : "Basic Credential Manager",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "MSLA"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-basic_network_config_manager",
-    "name" : "Basic Network Configuration Manager",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "MSLA"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_asynchronous_socket",
-    "name" : "Si91x Asynchronous Socket",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "MSLA"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gpio",
-    "name" : "GPIO",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gpio_peripheral",
-    "name" : "SL GPIO Peripheral",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gspi",
-    "name" : "GSPI",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_gspi",
-    "name" : "CMSIS GSPI",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Apache-2.0 AND Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_gspi",
-    "name" : "GSPI",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_ssi_instance",
-    "name" : "SSI",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_spi",
-    "name" : "SPI",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_ssi",
-    "name" : "SSI",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_spi",
-    "name" : "CMSIS SPI",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Apache-2.0"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket",
-    "name" : "BSD Socket",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_power_manager",
-    "name" : "Power Manager",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_power_save",
-    "name" : "POWER SAVE",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-wakeup_source_config",
-    "name" : "PM Wakeup Source Configuration",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_usart",
+    "name" : "USART",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -792,6 +616,198 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-freertos_config",
+    "name" : "SL SI91X FreeRTOS Configuration",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "MIT"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_packing",
+    "name" : "ROM DRIVER PACKING",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_basic_buffers",
+    "name" : "Basic Buffer Manager",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_clks",
+    "name" : "ROM DRIVER CLOCK",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_bod",
+    "name" : "BOD",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_common_driver",
+    "name" : "CMSIS COMMON DRIVER",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_udma",
+    "name" : "ROM DRIVER UDMA",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_ulpss_clk",
+    "name" : "ULPSS CLOCK",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_romtable",
+    "name" : "ROM TABLE",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_wireless",
+    "name" : "Si91x Wireless Subsystem",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_gspi",
+    "name" : "CMSIS GSPI",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Apache-2.0 AND Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_headers",
+    "name" : "ROM Driver Headers",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_headers",
+    "name" : "RSI Peripheral Headers",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_spi",
+    "name" : "CMSIS SPI",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Apache-2.0"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sli_wifi_command_engine",
+    "name" : "WiFi Command Engine",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-external_psram_none",
+    "name" : "No External PSRAM",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sli_si91x_wifi_event_handler",
+    "name" : "si91x WiFi handler",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-udma_linker_config",
+    "name" : "UDMA Linker Configuration",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-board_configuration_headers",
+    "name" : "Board Configuration Header Files",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_adc",
+    "name" : "ADC",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_pll",
+    "name" : "PLL",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_clock_update",
+    "name" : "CLOCK UPDATE",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_debug",
+    "name" : "Debug Unit",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_chip",
+    "name" : "Core",
+    "versionInfo" : "3.5.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: NOASSERTION",
+    "licenseConcluded" : "Zlib"
+  }, {
     "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-power_manager_config",
     "name" : "Power Manager Configuration",
     "versionInfo" : "3.5.2",
@@ -800,32 +816,16 @@
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_tickless_mode",
-    "name" : "SI91X TICK-LESS MODE",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "MSLA"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sllib_m4_power_save",
-    "name" : "Si91x Cortex-M4 Powersave",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_udma_wrapper",
+    "name" : "UDMA WRAPPER",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: NOASSERTION",
     "licenseConcluded" : "Zlib"
   }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_sysrtc",
-    "name" : "SYSRTC",
-    "versionInfo" : "3.5.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: NOASSERTION",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-sleeptimer_si91x",
-    "name" : "Sleep Timer for Si91x",
+    "SPDXID" : "SPDXRef-wiseconnect3_sdk-3.5.2-iostream_rtt_si91x",
+    "name" : "IO Stream:SI91X RTT",
     "versionInfo" : "3.5.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -838,181 +838,6 @@
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
     "supplier" : "Organization: Silicon Laboratories, Inc."
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main",
-    "name" : "System Setup (sl_main)",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-brd4002a",
-    "name" : "BRD4002A",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-event_handler",
-    "name" : "Event Handler",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_memory_init",
-    "name" : "sl_main Setup",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-status",
-    "name" : "Status Codes Definitions",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-toolchain_variant_arm",
-    "name" : "Toolchain for ARM",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_assert",
-    "name" : "Assert Functions",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-component_catalog",
-    "name" : "Component Catalog",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_core",
-    "name" : "CMSIS-Core",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Apache 2.0"
-  }, {
-    "SPDXID" : "SPDXRef-cmsis_core-5.8.0",
-    "name" : "CMSIS_5",
-    "versionInfo" : "5.8.0",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: ARM-software",
-    "originator" : "Organization: NOASSERTION",
-    "homepage" : "https://github.com/ARM-software/CMSIS_5",
-    "externalRefs" : [ {
-      "referenceCategory" : "PACKAGE-MANAGER",
-      "referenceLocator" : "pkg:github/ARM-software/CMSIS_5@5.8.0",
-      "referenceType" : "purl"
-    } ],
-    "comment" : "The CMSIS is a set of tools, APIs, frameworks, and work flows"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_common",
-    "name" : "Common Functions",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_init",
-    "name" : "sl main Init",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_process_action",
-    "name" : "sl_main Process Action",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-bit",
-    "name" : "Bit Operations Library",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-slist",
-    "name" : "Single Link List",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_string",
-    "name" : "String Functions",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-atomic",
-    "name" : "Atomic Operations Library",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-code_classification",
-    "name" : "Code Classification",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_os2_ext_task_register",
-    "name" : "Task registers abstraction layer",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_core",
-    "name" : "core",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
-  }, {
-    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-emlib_core",
-    "name" : "CORE",
-    "versionInfo" : "2025.6.2",
-    "primaryPackagePurpose" : "LIBRARY",
-    "downloadLocation" : "NOASSERTION",
-    "supplier" : "Organization: Silicon Laboratories, Inc.",
-    "licenseConcluded" : "Zlib"
   }, {
     "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-freertos",
     "name" : "FreeRTOS Kernel",
@@ -1037,6 +862,38 @@
     } ],
     "comment" : "FreeRTOS kernel, Version 11.1.0"
   }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main",
+    "name" : "System Setup (sl_main)",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-bit",
+    "name" : "Bit Operations Library",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-brd4002a",
+    "name" : "BRD4002A",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-slist",
+    "name" : "Single Link List",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
     "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-freertos_kernel_cortexm",
     "name" : "FreeRTOS Kernel ARM Cortex-M Port",
     "versionInfo" : "2025.6.2",
@@ -1060,6 +917,30 @@
     } ],
     "comment" : "CMSIS-FreeRTOS, Version 11.1.0"
   }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_memory_init",
+    "name" : "sl_main Setup",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-atomic",
+    "name" : "Atomic Operations Library",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-code_classification",
+    "name" : "Code Classification",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
     "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_kernel",
     "name" : "SL Main Kernel",
     "versionInfo" : "2025.6.2",
@@ -1070,6 +951,30 @@
   }, {
     "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-memory_manager_redirect",
     "name" : "Memory Manager Redirect",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-status",
+    "name" : "Status Codes Definitions",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-toolchain_variant_arm",
+    "name" : "Toolchain for ARM",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_os2_ext_task_register",
+    "name" : "Task registers abstraction layer",
     "versionInfo" : "2025.6.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -1107,6 +1012,22 @@
     "supplier" : "Organization: Silicon Laboratories, Inc.",
     "licenseConcluded" : "Zlib"
   }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-event_handler",
+    "name" : "Event Handler",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_string",
+    "name" : "String Functions",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
     "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_rtos2_init",
     "name" : "CMSIS-RTOS2 Initialization",
     "versionInfo" : "2025.6.2",
@@ -1129,6 +1050,14 @@
       "referenceType" : "purl"
     } ],
     "comment" : "The CMSIS is a set of tools, APIs, frameworks, and work flows"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_assert",
+    "name" : "Assert Functions",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
   }, {
     "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_rtos2_headers",
     "name" : "CMSIS-RTOS2 Headers",
@@ -1153,8 +1082,111 @@
     } ],
     "comment" : "The CMSIS is a set of tools, APIs, frameworks, and work flows."
   }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-component_catalog",
+    "name" : "Component Catalog",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_core",
+    "name" : "core",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_core",
+    "name" : "CMSIS-Core",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Apache 2.0"
+  }, {
+    "SPDXID" : "SPDXRef-cmsis_core-5.8.0",
+    "name" : "CMSIS_5",
+    "versionInfo" : "5.8.0",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: ARM-software",
+    "originator" : "Organization: NOASSERTION",
+    "homepage" : "https://github.com/ARM-software/CMSIS_5",
+    "externalRefs" : [ {
+      "referenceCategory" : "PACKAGE-MANAGER",
+      "referenceLocator" : "pkg:github/ARM-software/CMSIS_5@5.8.0",
+      "referenceType" : "purl"
+    } ],
+    "comment" : "The CMSIS is a set of tools, APIs, frameworks, and work flows"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-emlib_core",
+    "name" : "CORE",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
     "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sleeptimer",
     "name" : "Sleep Timer",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_common",
+    "name" : "Common Functions",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_init",
+    "name" : "sl main Init",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_process_action",
+    "name" : "sl_main Process Action",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-segger_rtt",
+    "name" : "SEGGER RTT",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Segger"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-iostream",
+    "name" : "IO Stream",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-enum",
+    "name" : "Enumerations",
+    "versionInfo" : "2025.6.2",
+    "primaryPackagePurpose" : "LIBRARY",
+    "downloadLocation" : "NOASSERTION",
+    "supplier" : "Organization: Silicon Laboratories, Inc.",
+    "licenseConcluded" : "Zlib"
+  }, {
+    "SPDXID" : "SPDXRef-simplicity_sdk-2025.6.2-iostream_retarget_stdio",
+    "name" : "IO Stream: Retarget STDIO",
     "versionInfo" : "2025.6.2",
     "primaryPackagePurpose" : "LIBRARY",
     "downloadLocation" : "NOASSERTION",
@@ -1179,11 +1211,43 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-device_needs_ram_execution",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-mdns",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-network_manager",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_memory_default_config",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-syscalls",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gpio",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gspi",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_power_manager",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_asynchronous_socket",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_ssi_instance",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1199,11 +1263,19 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-wifi_resources",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_usart",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_headers",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_power_save",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_spi",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1211,15 +1283,7 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-wiseconnect_toolchain_plugin",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_aux_reference_volt_config",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_mcu",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-basic_credential_manager",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1227,31 +1291,15 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_clock_manager",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_usart",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_udma_wrapper",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-freertos_config",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-malloc_thread_safety",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_packing",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_clks",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_bod",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_errno",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1259,7 +1307,7 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_common_driver",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-wifi",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1267,7 +1315,11 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_udma",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gpio_peripheral",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_tickless_mode",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1283,15 +1335,11 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_ulpss_clk",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_adc",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_romtable",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sllib_m4_power_save",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1307,7 +1355,15 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_headers",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket_api",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket_api",
+    "relatedSpdxElement" : "SPDXRef-bsd_socket_api-1.3.0",
+    "relationshipType" : "ANCESTOR_OF"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-wakeup_source_config",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1316,6 +1372,14 @@
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_dma",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-basic_network_config_manager",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_internal_stack",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1335,10 +1399,6 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-external_psram_none",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_rtc",
     "relationshipType" : "CONTAINS"
   }, {
@@ -1347,15 +1407,7 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-udma_linker_config",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-board_configuration_headers",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_adc",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_gspi",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1371,19 +1423,7 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_pll",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_board",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_clock_update",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_debug",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1391,11 +1431,11 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_chip",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_sysrtc",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_udma_wrapper",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_socket",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1407,6 +1447,10 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sleeptimer_si91x",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_ulpss",
     "relationshipType" : "CONTAINS"
   }, {
@@ -1415,15 +1459,7 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-device_needs_ram_execution",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-mdns",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-wifi_resources",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_ssi",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1431,123 +1467,31 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_headers",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_fwup",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-malloc_thread_safety",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-wiseconnect_toolchain_plugin",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_errno",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_aux_reference_volt_config",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_basic_buffers",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_mcu",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-wifi",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_clock_manager",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_wireless",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket_api",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket_api",
-    "relatedSpdxElement" : "SPDXRef-bsd_socket_api-1.3.0",
-    "relationshipType" : "ANCESTOR_OF"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_headers",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_internal_stack",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sli_wifi_command_engine",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sli_si91x_wifi_event_handler",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_socket",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-network_manager",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-basic_credential_manager",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-basic_network_config_manager",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_asynchronous_socket",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gpio",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gpio_peripheral",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_gspi",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_gspi",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_gspi",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_ssi_instance",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_spi",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_ssi",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_spi",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-bsd_socket",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_power_manager",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_power_save",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-wakeup_source_config",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_usart",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
@@ -1555,107 +1499,111 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-freertos_config",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_packing",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_basic_buffers",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_clks",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_bod",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_common_driver",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_udma",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_ulpss_clk",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_romtable",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_si91x_wireless",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_gspi",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-romdriver_headers",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_headers",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-cmsis_spi",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sli_wifi_command_engine",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-external_psram_none",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sli_si91x_wifi_event_handler",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-udma_linker_config",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-board_configuration_headers",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sl_adc",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-systemlevel_pll",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_clock_update",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_debug",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_chip",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
     "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-power_manager_config",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-si91x_tickless_mode",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_udma_wrapper",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sllib_m4_power_save",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-rsilib_sysrtc",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-wiseconnect3_sdk-3.5.2",
-    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-sleeptimer_si91x",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-brd4002a",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-event_handler",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_memory_init",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-status",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-toolchain_variant_arm",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_assert",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-component_catalog",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_core",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_core",
-    "relatedSpdxElement" : "SPDXRef-cmsis_core-5.8.0",
-    "relationshipType" : "ANCESTOR_OF"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_common",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_init",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_process_action",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-bit",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-slist",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_string",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-atomic",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-code_classification",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_os2_ext_task_register",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_core",
-    "relationshipType" : "CONTAINS"
-  }, {
-    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
-    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-emlib_core",
+    "relatedSpdxElement" : "SPDXRef-wiseconnect3_sdk-3.5.2-iostream_rtt_si91x",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
@@ -1667,6 +1615,22 @@
     "relationshipType" : "ANCESTOR_OF"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-bit",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-brd4002a",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-slist",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
     "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-freertos_kernel_cortexm",
     "relationshipType" : "CONTAINS"
   }, {
@@ -1675,11 +1639,35 @@
     "relationshipType" : "ANCESTOR_OF"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_memory_init",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-atomic",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-code_classification",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
     "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_kernel",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
     "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-memory_manager_redirect",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-status",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-toolchain_variant_arm",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_os2_ext_task_register",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
@@ -1695,12 +1683,24 @@
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-event_handler",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_string",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
     "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_rtos2_init",
     "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_rtos2_init",
     "relatedSpdxElement" : "SPDXRef-cmsis_rtos2_init-5.8.0",
     "relationshipType" : "ANCESTOR_OF"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_assert",
+    "relationshipType" : "CONTAINS"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
     "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_rtos2_headers",
@@ -1711,7 +1711,55 @@
     "relationshipType" : "ANCESTOR_OF"
   }, {
     "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-component_catalog",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_core",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_core",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2-cmsis_core",
+    "relatedSpdxElement" : "SPDXRef-cmsis_core-5.8.0",
+    "relationshipType" : "ANCESTOR_OF"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-emlib_core",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
     "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sleeptimer",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_common",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_init",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-sl_main_process_action",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-segger_rtt",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-iostream",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-enum",
+    "relationshipType" : "CONTAINS"
+  }, {
+    "spdxElementId" : "SPDXRef-simplicity_sdk-2025.6.2",
+    "relatedSpdxElement" : "SPDXRef-simplicity_sdk-2025.6.2-iostream_retarget_stdio",
     "relationshipType" : "CONTAINS"
   } ]
 }
