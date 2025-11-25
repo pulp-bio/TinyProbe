@@ -76,6 +76,8 @@ typedef struct wius_spi_inst
     } inst;                    /**< Peripheral handle */
 } wius_spi_inst_t;
 
+wius_spi_inst_t wius_spi_get_instance(uint8_t id);
+
 /**
  * @brief Initialize SPI module
  *

@@ -39,6 +39,11 @@ wius_spi_inst_t _wius_spi_1_instance = {0};
 static void _wius_spi_gspi_callback(uint32_t event);
 static void _wius_spi_ssi_callback(uint32_t event);
 
+wius_spi_inst_t wius_spi_get_instance(uint8_t id)
+{
+    return (id == WIUS_SPI_INST_0) ? _wius_spi_0_instance : _wius_spi_1_instance;
+}
+
 sl_status_t wius_spi_init(uint8_t id, wius_spi_config_t *config)
 {
     sl_status_t status = SL_STATUS_OK;

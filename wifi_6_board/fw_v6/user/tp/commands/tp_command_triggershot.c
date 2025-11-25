@@ -129,7 +129,7 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
 
         count_call_transmit = DWT->CYCCNT;
 
-        _tp_transmit_packages();
+        CHECK_STATUS(_tp_transmit_packages());
 
         CHECK_STATUS(tp_fpga_reset_multififo());
     }

@@ -42,6 +42,8 @@
 #include "commands/tp_command_triggershot.h"
 #include "commands/tp_command_setpowersave.h"
 
+#include "wius_spi.h"
+
 tp_command_t _tp_command_commands[TP_COMMAND_MAX];
 uint16_t _tp_num_commands = 0;
 
@@ -171,6 +173,28 @@ sl_status_t tp_command_execute(tp_command_t command, wius_tcp_server_message_t *
     {
         wius_tcp_server_respond_error(msg, command.id, status);
         LOG_E("Command %d failed with status 0x%lx", command.id, status);
+
+        switch (status)
+        {
+        case SL_STATUS_FAIL:
+            LOG_E("  -> Reason: SL_STATUS_FAIL");
+            break;
+        case SL_STATUS_BUSY:
+            LOG_E("  -> Reason: SL_STATUS_BUSY");
+            // Mostly emitting from SPI, so let's read out the SPI status register
+            sl_gspi_status_t spi_status = sl_si91x_gspi_get_status(wius_spi_get_instance(WIUS_SPI_INST_0).inst.gspi);
+            LOG_E("SPI status: busy=%u, data_lost=%u, mode_fault=%u", spi_status.busy, spi_status.data_lost, spi_status.mode_fault);
+            break;
+        case SL_STATUS_TIMEOUT:
+            LOG_E("  -> Reason: SL_STATUS_TIMEOUT");
+            break;
+        case SL_STATUS_INVALID_PARAMETER:
+            LOG_E("  -> Reason: SL_STATUS_INVALID_PARAMETER");
+            break;
+        default:
+            break;
+        }
+
         return status;
     }
     wius_tcp_server_respond_ok(msg, command.id);
