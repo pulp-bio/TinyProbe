@@ -3,12 +3,13 @@
  *
  * @brief TX chip driver for TinyProbe source file
  *
- * @date 08.09.2025
+ * @date 26.11.2025
  * @copyright ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich
+ * @author Sergei Vostrikov, ETH Zürich
  *
- * @ingroup wius
+ * @ingroup tinyprobe
  *
  * @parblock
  * Licensed under the Apache License, Version 2.0 (the "License");

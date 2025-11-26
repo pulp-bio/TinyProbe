@@ -3,7 +3,7 @@
  *
  * @brief UDP implementation for WiUS source file
  *
- * @date 08.09.2025
+ * @date 26.11.2025
  * @copyright ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich
