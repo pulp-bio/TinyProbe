@@ -44,6 +44,8 @@ volatile uint32_t count_called_transmit = 0;
 volatile uint32_t count_start_transmit = 0;
 volatile uint32_t count_done = 0;
 
+uint8_t tx_dummy[TP_BUFFER_SIZE] = {0};
+
 sl_status_t _tp_transmit_packages(void);
 
 sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
@@ -158,7 +160,6 @@ sl_status_t _tp_transmit_packages(void)
 
     PUTC_FAST('w');
 
-    uint8_t tx_dummy[TP_BUFFER_SIZE] = {0};
     status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
     if (SL_STATUS_OK != status)
     {

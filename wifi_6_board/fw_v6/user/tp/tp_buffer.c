@@ -165,7 +165,7 @@ void tp_buffer_return_writing(tp_buffer_t *buf, tp_buffer_slot_t *slot)
 
     slot = NULL;
 
-    osThreadYield();
+    // osThreadYield();
 }
 
 void tp_buffer_return_reading(tp_buffer_t *buf, tp_buffer_slot_t *slot)

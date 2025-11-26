@@ -64,10 +64,13 @@ def to_human(num_bytes: int) -> str:
     return str(num_bytes)
 
 def main():
-    NUM_SHOTS = 50
+    NUM_SHOTS = 15
     cmd = [
         TriggerShot(n_shots=NUM_SHOTS)
-    ] * 20
+    ] * 200
+
+    # One shot is 63 packets (always 3 packets (1400, 1400, 1202) together for 4002 bytes)
+    # -> 21 * 4002 = 84042 bytes per shot
 
     # addr = ("192.168.50.223", 50008)
     addr = ("192.168.50.234", 50008)
@@ -80,10 +83,11 @@ def main():
 
     try:
         with device:
+            start_time = time.time()
             cmds_packed = CommandSequence(cmd)  # type: ignore
             response = device.send(cmds_packed)
 
-            Response.print_table(response)
+            Response.print_table(response, start_time, errors_only=True)
     except Exception as e:
         print(f"[red]Error:[/red] {e}")
     finally:

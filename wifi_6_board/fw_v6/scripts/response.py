@@ -5,6 +5,7 @@ import socket
 
 from rich.table import Table
 from rich.console import Console
+from rich.panel import Panel
 
 
 @dataclass
@@ -25,11 +26,13 @@ class Response:
                 command_id = sock.recv(1)[0]
                 response_time = time.time()
                 status = sock.recv(2)
-                execution_time = time.time()
+                
 
                 match status:
 
                     case b"OK":
+                        execution_time = time.time()
+                    
                         result.append(Response(
                             command_id,
                             True,
@@ -41,6 +44,9 @@ class Response:
 
                     case b"ER":
                         error_code = sock.recv(4)
+
+                        execution_time = time.time()
+
                         result.append(Response(
                             command_id,
                             False,
@@ -55,6 +61,8 @@ class Response:
                         packets = []
                         for _ in range(num_packets[0]):
                             packets.append(sock.recv(1400))
+
+                        execution_time = time.time()
 
                         result.append(Response(
                             command_id,
@@ -71,7 +79,7 @@ class Response:
         return result
 
     @staticmethod
-    def print_table(responses: list[list["Response"]]) -> None:
+    def print_table(responses: list[list["Response"]], start_time: float, errors_only: bool = False) -> None:
         table = Table(title="Device Responses")
         table.add_column("IDX", justify="right", style="dim", no_wrap=True)
         table.add_column("Cmd. ID", justify="right", style="cyan", no_wrap=True)
@@ -81,7 +89,7 @@ class Response:
         table.add_column("Resp. Time", justify="right", style="dim")
         table.add_column("Exec. Time", justify="right", style="dim")
 
-        prev_time = responses[0][-1].response_time
+        prev_time = start_time
 
         for i, response in enumerate(responses):
             num_responses = len(response)
@@ -91,6 +99,9 @@ class Response:
 
             status = "OK" if last_response.is_ok else "ERROR"
             error_code_str = str(last_response.error_code) if not last_response.is_ok else ""
+
+            if errors_only and last_response.is_ok:
+                continue
 
             response_time = last_response.response_time - prev_time
             prev_time = last_response.response_time
@@ -108,4 +119,8 @@ class Response:
             )
 
         console = Console()
-        console.print(table)
+
+        if table.row_count == 0:
+            console.print(Panel.fit("[green]All commands executed successfully without errors.[/green]", title="Device Responses", subtitle=f"Total Commands: {i+1}"))
+        else:
+            console.print(table)
