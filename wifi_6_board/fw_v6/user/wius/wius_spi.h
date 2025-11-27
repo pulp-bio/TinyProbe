@@ -56,7 +56,7 @@ typedef struct wius_spi_config
     uint32_t freq;              /**< Clock frequency in Hz */
     wius_spi_cs_mode_t cs_mode; /**< Chip select mode */
     uint8_t cs_pin;             /**< Chip select pin (only for SW mode) */
-    uint8_t cs_polarity;        /**< Chip select polarity (only for SW mode, 1 for active low, 0 for active high) */
+    uint8_t cs_polarity;        /**< Chip select polarity (only for SW mode, 0 for active low, 1 for active high) */
 } wius_spi_config_t;
 
 /**

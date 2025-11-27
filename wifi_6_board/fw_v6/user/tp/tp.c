@@ -49,10 +49,10 @@ wius_gpio_t reset_pin = WIUS_GPIO_ULP_OUTPUT(TP_GPIO_RESET);
 
 wius_spi_inst_t spi_inst;
 wius_spi_config_t spi_config = {
-    .cs_mode = (WIUS_SPI_EXT_CS0 != 0) ? WIUS_SPI_CS_SW : WIUS_SPI_CS_HW,
+    .cs_mode = WIUS_SPI_CS_SW,
     .cs_pin = WIUS_SPI_EXT_CS0,
-    .cs_polarity = 1,
-    .freq = 40000000,
+    .cs_polarity = 0,
+    .freq = 10000000,
     .mode = 0,
     .width = 8,
 };
@@ -119,7 +119,7 @@ sl_status_t tp_init(void)
         return status;
     }
 
-    //    delay_ms(1000);
+    delay_ms(1000);
 
     // Initialize GPIO
     wius_gpio_init();

@@ -40,7 +40,6 @@
 /** @name WiUS SPI configurations
  * @{
  */
-#define WIUS_SPI_FREQ 1000000   /**< SPI frequency in Hz (UNUSED, CHANGE IN sl_si91x_gspi_config.h) */
 #define WIUS_SPI_RX_TIMEOUT 100 /**< Timeout for reception (ticks) */
 #define WIUS_SPI_EXT_CS0 53     /**< Use seperate CS0 pin (set to 0 if unused) */
 #define WIUS_SPI_EXT_CS1 0      /**< Use seperate CS1 pin (set to 0 if unused) */
@@ -82,7 +81,7 @@
 /** @name TinyProbe general configurations
  * @{
  */
-#define TP_TEST_MODE 1              /**< For testing acquisition code without confirmation from TinyProbe */
+#define TP_TEST_MODE 0              /**< For testing acquisition code without confirmation from TinyProbe */
 #define TP_PROBE_ID 1               /**< ID of the probe */
 #define TP_WIFI_RX_BUFFER_SIZE 1472 /**< Size of the WiFi RX buffer */
 #define TP_UDP_PACKET_SIZE 1000     /**< Size of one UDP packet (without header) */

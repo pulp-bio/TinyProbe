@@ -57,7 +57,7 @@ sl_status_t wius_spi_init(uint8_t id, wius_spi_config_t *config)
 
     instance->id = id;
     instance->config = *config;
-    if (instance->config.cs_mode != WIUS_SPI_CS_SW)
+    if (instance->config.cs_mode == WIUS_SPI_CS_SW)
     {
         instance->cs = WIUS_GPIO_OUTPUT(instance->config.cs_pin);
         wius_gpio_config(instance->cs);
@@ -158,7 +158,7 @@ sl_status_t wius_spi_xfer(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t l
 
         _wius_spi_cs_active(instance->id);
 
-        status = sl_si91x_ssi_transfer_data(instance->inst.gspi, tx_buf, rx_buf, len);
+        status = sl_si91x_ssi_transfer_data(instance->inst.ssi, tx_buf, rx_buf, len);
         if (status != SL_STATUS_OK)
         {
             _wius_spi_cs_inactive(instance->id);
