@@ -1,30 +1,35 @@
+"""
+Copyright (C) 2025 ETH Zurich. All rights reserved.
+
+Author: Cedric Hirschi, ETH Zurich
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
 import socket
 import threading
 from typing import Any
 import time
-import math
 import datetime
 
 from rich import print
 
-from commands import (
-    PingCommand,
-    ActivateReplies,
-    SwitchSpiMux,
-    WriteSpiPacket,
-    WriteFPGAReg,
-    WriteAfeReg,
-    WriteTxReg,
-    DelayNs,
-    SleepMs,
-    ControlPower,
+from src.commands import (
     TriggerShot,
-    SetPowersaveMode,
 )
-from command_sequence import CommandSequence
-from response import Response
-from communication_device import CommunicationDevice
-from command_sequences.load import load_sequence_config, load_sequence_acquire
+from src.response import Response
+from src.communication_device import CommunicationDevice
+from src.command_sequences.load import load_sequence_config, load_sequence_acquire
 
 
 received_packets: list[tuple[bytes, float, Any]] = []

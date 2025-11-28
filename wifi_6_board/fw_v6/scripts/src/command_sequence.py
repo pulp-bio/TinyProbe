@@ -1,6 +1,25 @@
+"""
+Copyright (C) 2025 ETH Zurich. All rights reserved.
+
+Author: Cedric Hirschi, ETH Zurich
+        Sergei Vostrikov, ETH Zurich
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
 import struct
 
-from commands import Command
+from .commands import Command
 
 
 PACKET_SIZE = 1000
@@ -10,11 +29,17 @@ class CommandSequence:
     def __init__(self, commands: list[Command] = []):
         self.commands = commands
 
-    def add_command(self, commands: Command | list[Command]):
-        if isinstance(commands, list):
-            self.commands.extend(commands)
-        else:
+    def add_command(self, commands: Command | list[Command] | "CommandSequence"):
+        if isinstance(commands, list) and all(isinstance(c, Command) for c in commands):
+            self.commands.extend(commands)  # type: ignore
+        elif isinstance(commands, Command):
             self.commands.append(commands)
+        elif isinstance(commands, CommandSequence):
+            self.commands.extend(commands.commands)
+        else:
+            raise TypeError(
+                "commands must be a Command, list of Command instances, or CommandSequence"
+            )
 
     def pack(self) -> tuple[list[bytes], list[int]]:
         packed_commands: list[bytes] = [command.pack() for command in self.commands]

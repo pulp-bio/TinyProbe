@@ -1,3 +1,21 @@
+"""
+Copyright (C) 2025 ETH Zurich. All rights reserved.
+
+Author: Cedric Hirschi, ETH Zurich
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
 from dataclasses import dataclass
 import struct
 import time
@@ -20,26 +38,26 @@ class Response:
     @staticmethod
     def from_socket(sock: socket.socket) -> list["Response"]:
         result = []
-        
+
         while True:
             try:
                 command_id = sock.recv(1)[0]
                 response_time = time.time()
                 status = sock.recv(2)
-                
 
                 match status:
-
                     case b"OK":
                         execution_time = time.time()
-                    
-                        result.append(Response(
-                            command_id,
-                            True,
-                            # data=response_data,
-                            response_time=response_time,
-                            execution_time=execution_time,
-                        ))
+
+                        result.append(
+                            Response(
+                                command_id,
+                                True,
+                                # data=response_data,
+                                response_time=response_time,
+                                execution_time=execution_time,
+                            )
+                        )
                         break
 
                     case b"ER":
@@ -47,13 +65,15 @@ class Response:
 
                         execution_time = time.time()
 
-                        result.append(Response(
-                            command_id,
-                            False,
-                            error_code=struct.unpack("<I", error_code)[0],
-                            response_time=response_time,
-                            execution_time=execution_time,
-                        ))
+                        result.append(
+                            Response(
+                                command_id,
+                                False,
+                                error_code=struct.unpack("<I", error_code)[0],
+                                response_time=response_time,
+                                execution_time=execution_time,
+                            )
+                        )
                         break
 
                     case b"DT":
@@ -64,13 +84,15 @@ class Response:
 
                         execution_time = time.time()
 
-                        result.append(Response(
-                            command_id,
-                            True,
-                            data=b"".join(packets),
-                            response_time=response_time,
-                            execution_time=execution_time,
-                        ))
+                        result.append(
+                            Response(
+                                command_id,
+                                True,
+                                data=b"".join(packets),
+                                response_time=response_time,
+                                execution_time=execution_time,
+                            )
+                        )
 
             except socket.timeout:
                 # raise TimeoutError("Response timed out.")
@@ -79,7 +101,9 @@ class Response:
         return result
 
     @staticmethod
-    def print_table(responses: list[list["Response"]], start_time: float, errors_only: bool = False) -> None:
+    def print_table(
+        responses: list[list["Response"]], start_time: float, errors_only: bool = False
+    ) -> None:
         table = Table(title="Device Responses")
         table.add_column("IDX", justify="right", style="dim", no_wrap=True)
         table.add_column("Cmd. ID", justify="right", style="cyan", no_wrap=True)
@@ -91,6 +115,7 @@ class Response:
 
         prev_time = start_time
 
+        i = -1
         for i, response in enumerate(responses):
             num_responses = len(response)
             last_response = response[-1]
@@ -98,7 +123,9 @@ class Response:
             data_str = f"{num_responses-1} pkt(s)" if num_responses > 2 else ""
 
             status = "OK" if last_response.is_ok else "ERROR"
-            error_code_str = str(last_response.error_code) if not last_response.is_ok else ""
+            error_code_str = (
+                str(last_response.error_code) if not last_response.is_ok else ""
+            )
 
             if errors_only and last_response.is_ok:
                 continue
@@ -121,6 +148,12 @@ class Response:
         console = Console()
 
         if table.row_count == 0:
-            console.print(Panel.fit("[green]All commands executed successfully without errors.[/green]", title="Device Responses", subtitle=f"Total Commands: {i+1}"))
+            console.print(
+                Panel.fit(
+                    "[green]All commands executed successfully without errors.[/green]",
+                    title="Device Responses",
+                    subtitle=f"Total Commands: {i+1}",
+                )
+            )
         else:
             console.print(table)

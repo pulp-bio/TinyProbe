@@ -1,7 +1,7 @@
 [project]
-name = "py"
+name = "wius-fw-v6-scripts"
 version = "0.1.0"
-description = "Add your description here"
+description = "Test scripts used in the development of the WiUS v6 firmware"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -10,3 +10,6 @@ dependencies = [
     "pandas>=2.3.3",
     "rich>=14.2.0",
 ]
+
+[dependency-groups]
+dev = ["ty>=0.0.1a28"]

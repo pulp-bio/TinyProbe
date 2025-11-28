@@ -1,0 +1,12 @@
+lint_args := "--exclude dlog.py"
+
+lint: format check typecheck
+
+typecheck:
+    uv run ty check {{lint_args}}
+
+check:
+    uv run ruff check --fix {{lint_args}}
+
+format:
+    uv run ruff format {{lint_args}}
