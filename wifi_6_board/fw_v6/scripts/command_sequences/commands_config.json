@@ -1,0 +1,453 @@
+{
+    "commands": [
+        [
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    1
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    0,
+                    0
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    1,
+                    51
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    2,
+                    1208025087
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    3,
+                    3276825632
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    4,
+                    1966580
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    5,
+                    710
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    6,
+                    0
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    7,
+                    0
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    8,
+                    0
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    9,
+                    0
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    10,
+                    48
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    11,
+                    10
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    12,
+                    2154087248
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    13,
+                    0
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    13,
+                    4
+                ]
+            }
+        ],
+        [
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    3
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    0,
+                    1
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    23,
+                    24
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    25,
+                    1073741892
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    288,
+                    10985890
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    0,
+                    8
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    21,
+                    1703962
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    22,
+                    1703962
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    24,
+                    12582915
+                ]
+            },
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    3
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    22,
+                    270143514
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    32,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    33,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    34,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    35,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    36,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    37,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    38,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    39,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    40,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    41,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    42,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    43,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    44,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    45,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    46,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    47,
+                    0
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    0,
+                    8
+                ]
+            }
+        ],
+        [
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    2
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    1,
+                    181,
+                    200
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    1,
+                    182,
+                    32768
+                ]
+            }
+        ],
+        [
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    2
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    0,
+                    2,
+                    0
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    0,
+                    249,
+                    0
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    1,
+                    161,
+                    120
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    1,
+                    182,
+                    2048
+                ]
+            }
+        ],
+        [
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    1
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    6,
+                    1
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    7,
+                    2020
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    8,
+                    2120
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    9,
+                    20
+                ]
+            }
+        ],
+        [
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    2
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    0,
+                    197,
+                    0
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    0,
+                    199,
+                    10341
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    0,
+                    200,
+                    1
+                ]
+            },
+            {
+                "type": "WriteAfeReg",
+                "args": [
+                    0,
+                    206,
+                    0
+                ]
+            }
+        ]
+    ]
+}

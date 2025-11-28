@@ -3,6 +3,7 @@ import threading
 from typing import Any
 import time
 import math
+import datetime
 
 from rich import print
 
@@ -23,6 +24,7 @@ from commands import (
 from command_sequence import CommandSequence
 from response import Response
 from communication_device import CommunicationDevice
+from command_sequences.load import load_sequence_config, load_sequence_acquire
 
 
 received_packets: list[tuple[bytes, float, Any]] = []
@@ -51,6 +53,7 @@ def udp_receiver(port: int, stop_event: threading.Event):
 
     udp_socket.close()
 
+
 def to_human(num_bytes: int) -> str:
     if num_bytes >= 1e12:
         return f"{num_bytes/1e12:.4f} TB"
@@ -60,20 +63,22 @@ def to_human(num_bytes: int) -> str:
         return f"{num_bytes/1e6:.4f} MB"
     elif num_bytes >= 1e3:
         return f"{num_bytes/1e3:.4f} kB"
-    
+
     return str(num_bytes)
 
+
 def main():
-    NUM_SHOTS = 15
-    cmd = [
-        TriggerShot(n_shots=NUM_SHOTS)
-    ] * 200
+    # NUM_SHOTS = 15
+    # cmd = [
+    #     # TriggerShot(n_shots=NUM_SHOTS)
+    #     PingCommand(),
+    # ] * 1
 
     # One shot is 63 packets (always 3 packets (1400, 1400, 1202) together for 4002 bytes)
     # -> 21 * 4002 = 84042 bytes per shot
 
     # addr = ("192.168.50.223", 50008)
-    addr = ("192.168.50.234", 50008)
+    addr = ("192.168.0.213", 50008)
 
     device = CommunicationDevice(*addr)
 
@@ -83,11 +88,19 @@ def main():
 
     try:
         with device:
+            cmds_config = load_sequence_config()
             start_time = time.time()
-            cmds_packed = CommandSequence(cmd)  # type: ignore
-            response = device.send(cmds_packed)
-
+            response = device.send(cmds_config)
             Response.print_table(response, start_time, errors_only=True)
+
+            cmds_acquire = load_sequence_acquire()
+
+            input("\nPress enter to start acquisition...")
+
+            start_time = time.time()
+            response = device.send(cmds_acquire)
+            Response.print_table(response, start_time, errors_only=True)
+
     except Exception as e:
         print(f"[red]Error:[/red] {e}")
     finally:
@@ -103,10 +116,16 @@ def main():
     #     data_responses.extend([r for r in resp if r.data != b""])
 
     total_bytes = sum(len(packet) for packet, _, _ in received_packets)
-    # total_bytes = sum(len(r.data) for r in data_responses)
-    expected_bytes = NUM_SHOTS * len(list(filter(lambda c: isinstance(c, TriggerShot), cmd))) * 84042
+    # # total_bytes = sum(len(r.data) for r in data_responses)
+    # expected_bytes = NUM_SHOTS * len(list(filter(lambda c: isinstance(c, TriggerShot), cmd))) * 84042
+
+    expected_bytes = 0
+    for command in cmds_acquire.commands:  # type: ignore
+        if isinstance(command, TriggerShot):
+            expected_bytes += command.n_shots * 16008
+
     print(f"Total received: {to_human(total_bytes)}")
-    print(f"      Expected: {to_human(expected_bytes)}", end='\t')
+    print(f"      Expected: {to_human(expected_bytes)}", end="\t")
     if total_bytes == expected_bytes:
         print("[green]MATCH[/green]")
     else:
@@ -119,6 +138,14 @@ def main():
     # print(
     #     f"UDP responses: {[packet.decode(errors='ignore') for packet, _ in received_packets]}"
     # )
+
+    # If received data is not empty, save as binary
+    if received_packets:
+        filename = f"data/{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.bin"
+        with open(filename, "wb") as f:
+            for packet, _, _ in received_packets:
+                f.write(packet)
+        print(f"Saved received data to '{filename}'")
 
 
 if __name__ == "__main__":

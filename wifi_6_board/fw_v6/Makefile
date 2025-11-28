@@ -17,7 +17,10 @@ flash: build
 
 attach:
 	sleep 1.5
-	$(COMMANDER) rtt connect --device SIWG917
+	$(COMMANDER) rtt connect --device SIWG917 --speed 2500 --noreset
+
+attach_reset:
+	$(COMMANDER) rtt connect --device SIWG917 --speed 2500
 
 user/env.h: .env
 	$(PYTHON) scripts/fetch_env.py $< $@

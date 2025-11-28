@@ -149,12 +149,10 @@ sl_status_t wius_spi_xfer(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t l
 
             return status;
         }
-
-        _wius_spi_cs_inactive(instance->id);
     }
     else if (instance->id == WIUS_SPI_INST_1) // SSI
     {
-        sl_si91x_ssi_set_slave_number(GSPI_SLAVE_0);
+        sl_si91x_ssi_set_slave_number(SSI_SLAVE_0);
 
         _wius_spi_cs_active(instance->id);
 
@@ -165,8 +163,6 @@ sl_status_t wius_spi_xfer(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t l
 
             return status;
         }
-
-        _wius_spi_cs_inactive(instance->id);
     }
     else
     {
@@ -188,10 +184,12 @@ sl_status_t wius_spi_await(uint8_t id)
     if (id == WIUS_SPI_INST_0) // GSPI
     {
         status = (osSemaphoreAcquire(_wius_spi_0_sem, 1000) == osOK) ? SL_STATUS_OK : SL_STATUS_TIMEOUT;
+        _wius_spi_cs_inactive(WIUS_SPI_INST_0);
     }
     else if (id == WIUS_SPI_INST_1) // SSI
     {
         status = (osSemaphoreAcquire(_wius_spi_1_sem, 1000) == osOK) ? SL_STATUS_OK : SL_STATUS_TIMEOUT;
+        _wius_spi_cs_inactive(WIUS_SPI_INST_1);
     }
     else
     {

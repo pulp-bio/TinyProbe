@@ -1,4 +1,5 @@
 import socket
+import time
 
 from rich.progress import track
 from rich import print
@@ -37,20 +38,13 @@ class CommunicationDevice:
         packed_commands: list[bytes] = []
         num_commands: list[int] = []
 
-        if isinstance(command, list):
-            packed_command, num_commands = CommandSequence(command).pack()
-            packed_commands.extend(packed_command)
-            num_commands.extend(num_commands)
-
-        elif isinstance(command, CommandSequence):
-            packed_command, num_commands = command.pack()
-            packed_commands.extend(packed_command)
-            num_commands.extend(num_commands)
-        elif isinstance(command, Command):
-            packed_commands.append(command.pack())
-            num_commands = [1]
+        if not isinstance(command, CommandSequence):
+            command_sequence = CommandSequence()
+            command_sequence.add_command(command)
         else:
-            raise TypeError("Invalid command type.")
+            command_sequence = command
+
+        packed_commands, num_commands = command_sequence.pack()
 
         responses: list[list[Response]] = []
 
@@ -76,5 +70,7 @@ class CommunicationDevice:
                     raise TimeoutError("No response received from the device.")
 
                 responses.append(response)
+
+            # time.sleep(0.5)  # Small delay between command packets
 
         return responses

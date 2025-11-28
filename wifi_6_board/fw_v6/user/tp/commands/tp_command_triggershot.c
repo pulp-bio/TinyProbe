@@ -176,7 +176,13 @@ sl_status_t _tp_transmit_packages(void)
 
     for (uint16_t i = 0; i < n_packs_to_read_div; i++)
     {
-        CHECK_STATUS(wius_spi_await(WIUS_SPI_INST_0));
+        status = wius_spi_await(WIUS_SPI_INST_0);
+        if (SL_STATUS_OK != status)
+        {
+            LOG_E("Error waiting for SPI recv complete: 0x%04X", (unsigned)status);
+            tp_buffer_return_writing(&tp_buf, slot_spi);
+            return status;
+        }
 
         PUTC_FAST('a');
 

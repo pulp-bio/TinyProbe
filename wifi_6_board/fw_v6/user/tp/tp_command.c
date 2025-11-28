@@ -197,8 +197,11 @@ sl_status_t tp_command_execute(tp_command_t command, wius_tcp_server_message_t *
 
         return status;
     }
-    wius_tcp_server_respond_ok(msg, command.id);
-    LOG_I("Command %d executed successfully", command.id);
+    else
+    {
+        wius_tcp_server_respond_ok(msg, command.id);
+        LOG_D("Command %d executed successfully", command.id);
+    }
 
     return SL_STATUS_OK;
 }

@@ -6,7 +6,7 @@
 
 #define WIUS_TCP_SERVER_MAX_CLIENTS 5
 #define WIUS_TCP_SERVER_QUEUE_SIZE 10
-#define WIUS_TCP_SERVER_MESSAGE_DATA_SIZE 256
+#define WIUS_TCP_SERVER_MESSAGE_DATA_SIZE 1000
 
 typedef struct wius_tcp_server_message
 {

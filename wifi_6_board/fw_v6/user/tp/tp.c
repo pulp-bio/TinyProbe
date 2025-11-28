@@ -52,7 +52,7 @@ wius_spi_config_t spi_config = {
     .cs_mode = WIUS_SPI_CS_SW,
     .cs_pin = WIUS_SPI_EXT_CS0,
     .cs_polarity = 0,
-    .freq = 10000000,
+    .freq = 40000000,
     .mode = 0,
     .width = 8,
 };
@@ -323,6 +323,8 @@ void tp_main_thread(void)
             continue;
         }
 
+        LOG_I("Received command sequence of length %d", (int)msg.length);
+
         status = tp_command_parse_and_execute(msg.data, msg.length, &msg);
         if (SL_STATUS_OK != status)
         {
@@ -331,10 +333,10 @@ void tp_main_thread(void)
         }
 
         // led_red_set(false);
-        uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
-        LOG_I("Main thread stack watermark: %lu bytes", stack_watermark);
-        stack_watermark = osThreadGetStackSpace(wifi_transmit_thread_id);
-        LOG_I("WiFi transmit thread stack watermark: %lu bytes", stack_watermark);
+        // uint32_t stack_watermark = osThreadGetStackSpace(osThreadGetId());
+        // LOG_I("Main thread stack watermark: %lu bytes", stack_watermark);
+        // stack_watermark = osThreadGetStackSpace(wifi_transmit_thread_id);
+        // LOG_I("WiFi transmit thread stack watermark: %lu bytes", stack_watermark);
 
         // uint32_t *buffer_history;
         // size_t history_length = tp_buffer_history_get(&buffer_history);

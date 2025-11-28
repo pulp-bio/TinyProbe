@@ -11,6 +11,20 @@ class Command:
     _id: int = 255
     _format: str = ""
 
+    def from_dict(self, data: dict):
+        args = data.get("args", [])
+        # print(f"Loading command {self.__class__.__name__} with args: {args}")
+
+        fields = [
+            field
+            for field in self.__dataclass_fields__.values()
+            if not field.name.startswith("_")
+        ]
+
+        for field, value in zip(fields, args):
+            # print(f"Setting {field.name} to {value}")
+            setattr(self, field.name, value)
+
     def pack(self) -> bytes:
         # Get all args in self
         args = [

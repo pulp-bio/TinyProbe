@@ -1,0 +1,234 @@
+{
+    "commands": [
+        [
+            {
+                "type": "ControlPower",
+                "args": [
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "ControlPower",
+                "args": [
+                    2,
+                    1
+                ]
+            },
+            {
+                "type": "ControlPower",
+                "args": [
+                    3,
+                    1
+                ]
+            },
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    1
+                ]
+            },
+            {
+                "type": "ControlPower",
+                "args": [
+                    0,
+                    1
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    10,
+                    16
+                ]
+            },
+            {
+                "type": "SleepMs",
+                "args": [
+                    4
+                ]
+            },
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    3
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    22,
+                    1703962
+                ]
+            },
+            {
+                "type": "WriteTxReg",
+                "args": [
+                    0,
+                    8
+                ]
+            },
+            {
+                "type": "SwitchSpiMux",
+                "args": [
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "TriggerShot",
+                "args": [
+                    10,
+                    82,
+                    61,
+                    65,
+                    65535,
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "ControlPower",
+                "args": [
+                    0,
+                    0
+                ]
+            },
+            {
+                "type": "WriteFPGAReg",
+                "args": [
+                    10,
+                    48
+                ]
+            },
+            {
+                "type": "ControlPower",
+                "args": [
+                    1,
+                    0
+                ]
+            },
+            {
+                "type": "ControlPower",
+                "args": [
+                    2,
+                    0
+                ]
+            },
+            {
+                "type": "ControlPower",
+                "args": [
+                    3,
+                    0
+                ]
+            }
+        ]
+    ]
+}
