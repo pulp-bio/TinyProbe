@@ -163,3 +163,19 @@ class SetPowersaveMode(Command):
 
     domain: int = 0
     enable: bool = False
+
+
+all_commands = {
+    "PingCommand": PingCommand,
+    "ActivateReplies": ActivateReplies,
+    "SwitchSpiMux": SwitchSpiMux,
+    "WriteSpiPacket": WriteSpiPacket,
+    "WriteFPGAReg": WriteFPGAReg,
+    "WriteAfeReg": WriteAfeReg,
+    "WriteTxReg": WriteTxReg,
+    "DelayNs": DelayNs,
+    "SleepMs": SleepMs,
+    "ControlPower": ControlPower,
+    "TriggerShot": TriggerShot,
+    "SetPowersaveMode": SetPowersaveMode,
+}

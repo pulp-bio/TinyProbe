@@ -16,41 +16,55 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import socket
+from dataclasses import dataclass
+from typing import Protocol, runtime_checkable
 
 from rich.progress import track
-from rich import print
 
-from .commands import Command
-from .command_sequence import CommandSequence
-from .response import Response
+from ..commands import Command
+from ..command_sequence import CommandSequence
+from ..response import Response
 
 
+class CommunicationError(Exception):
+    pass
+
+
+@dataclass(slots=True)
 class CommunicationDevice:
-    def __init__(self, host: str, port: int, timeout: float = 5.0):
-        self.host = host
-        self.port = port
-        self.timeout = timeout
-        self.socket = None
+    device: str
+    description: str
 
-    def __enter__(self):
-        self.socket = socket.create_connection(
-            (self.host, self.port), timeout=self.timeout
-        )
-        print(f"Connected to {self.host}:{self.port}")
-        return self
+    def __str__(self) -> str:
+        return f"{self.device}: {self.description}"
 
-    def __exit__(self, exc_type, exc_value, traceback):
-        if self.socket:
-            self.socket.close()
-            self.socket = None
-            print(f"Disconnected from {self.host}:{self.port}")
+    @staticmethod
+    def from_str(s: str) -> "CommunicationDevice":
+        parts = s.split(":", 1)
+        device = parts[0]
+        description = parts[1].strip() if len(parts) > 1 else ""
+        return CommunicationDevice(device=device, description=description)
+
+
+@runtime_checkable
+class CommunicationInterface(Protocol):
+    def get_available(self) -> list[CommunicationDevice]: ...
+    def set_device(self, device: CommunicationDevice) -> None: ...
+
+    @property
+    def open(self) -> bool: ...
+
+    def __enter__(self) -> "CommunicationInterface": ...
+    def __exit__(self, exc_type, exc_value, traceback) -> None: ...
+
+    def _send_bytes(self, data: bytes) -> None: ...
+    def _receive_responses(self) -> list[Response]: ...
 
     def send(
         self, command: Command | CommandSequence | list[Command]
     ) -> list[list[Response]]:
-        if not self.socket:
-            raise ConnectionError("Not connected to the device.")
+        if not self.open:
+            raise CommunicationError("Connection is not opened.")
 
         packed_commands: list[bytes] = []
         num_commands: list[int] = []
@@ -73,21 +87,17 @@ class CommunicationDevice:
             packed_command = packed_commands[i]
             num = num_commands[i]
 
-            self.socket.sendall(packed_command)
-
-            # start_time = time.time()
+            self._send_bytes(packed_command)
 
             for _ in track(
                 range(num),
                 description="Receiving responses",
                 transient=True,
             ):
-                response = Response.from_socket(self.socket)
+                response = self._receive_responses()
                 if len(response) == 0:
                     raise TimeoutError("No response received from the device.")
 
                 responses.append(response)
-
-            # time.sleep(0.5)  # Small delay between command packets
 
         return responses

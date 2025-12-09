@@ -12,4 +12,7 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["ty>=0.0.1a28"]
+dev = [
+    "ipympl>=0.9.8",
+    "ty>=0.0.1a28",
+]

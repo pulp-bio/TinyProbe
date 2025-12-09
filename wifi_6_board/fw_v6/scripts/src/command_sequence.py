@@ -29,7 +29,7 @@ class CommandSequence:
     def __init__(self, commands: list[Command] = []):
         self.commands = commands
 
-    def add_command(self, commands: Command | list[Command] | "CommandSequence"):
+    def add_command(self, commands: "Command | list[Command] | CommandSequence"):
         if isinstance(commands, list) and all(isinstance(c, Command) for c in commands):
             self.commands.extend(commands)  # type: ignore
         elif isinstance(commands, Command):
