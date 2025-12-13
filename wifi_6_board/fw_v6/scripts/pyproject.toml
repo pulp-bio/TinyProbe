@@ -5,10 +5,19 @@ description = "Test scripts used in the development of the WiUS v6 firmware"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "h5py>=3.15.1",
+    "jax>=0.8.1",
     "matplotlib>=3.10.7",
+    "numba>=0.63.0",
     "numpy>=2.3.4",
     "pandas>=2.3.3",
+    "plotly>=6.5.0",
+    "pydantic>=2.12.5",
+    "pyqtgraph>=0.14.0",
+    "pyside6>=6.10.1",
     "rich>=14.2.0",
+    "scipy>=1.16.3",
+    "tqdm>=4.67.1",
 ]
 
 [dependency-groups]

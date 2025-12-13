@@ -19,7 +19,7 @@ limitations under the License.
 
 import struct
 
-from .commands import Command
+from .command import Command
 
 
 PACKET_SIZE = 1000

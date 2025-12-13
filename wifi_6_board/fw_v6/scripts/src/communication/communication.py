@@ -21,9 +21,9 @@ from typing import Protocol, runtime_checkable
 
 from rich.progress import track
 
-from ..commands import Command
-from ..command_sequence import CommandSequence
-from ..response import Response
+from ..command.command import Command
+from ..command.sequence import CommandSequence
+from ..command.response import Response
 
 
 class CommunicationError(Exception):

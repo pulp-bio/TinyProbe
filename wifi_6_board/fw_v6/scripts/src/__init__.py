@@ -4,9 +4,9 @@ from .communication.communication import (
     CommunicationInterface,
 )
 from .communication.interfaces.wifi6 import CommunicationInterfaceWiFi6
-from .command_sequence import CommandSequence
-from .commands import (
-    Command,
+from .command.command import Command
+from .command.sequence import CommandSequence
+from .command.models import (
     ActivateReplies,
     ControlPower,
     DelayNs,
@@ -20,7 +20,7 @@ from .commands import (
     WriteSpiPacket,
     WriteTxReg,
 )
-from .response import Response
+from .command.response import Response
 
 
 __all__ = [

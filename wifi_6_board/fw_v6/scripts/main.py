@@ -75,17 +75,17 @@ def to_human(num_bytes: int) -> str:
 
 
 def main():
-    NUM_SHOTS = 10
-    cmd = [
-        TriggerShot(n_shots=NUM_SHOTS)
-        # PingCommand(),
-    ] * 1
+    # NUM_SHOTS = 10
+    # cmd = [
+    #     TriggerShot(n_shots=NUM_SHOTS)
+    #     # PingCommand(),
+    # ] * 1
 
     # One shot is 63 packets (always 3 packets (1400, 1400, 1202) together for 4002 bytes)
     # -> 21 * 4002 = 84042 bytes per shot
 
     # addr = ("192.168.50.223", 50008)
-    addr = ("192.168.0.110", 50008)
+    addr = ("192.168.0.213", 50008)
 
     interface = CommunicationInterfaceWiFi6()
     interface.set_device(
@@ -98,19 +98,19 @@ def main():
 
     try:
         with interface:
-            # cmds_config = load_sequence_config()
+            cmds_config = load_sequence_config()
             start_time = time.time()
-            # response = interface.send(cmds_config)
-            response = interface.send(cmd)
+            response = interface.send(cmds_config)
+            # response = interface.send(cmd)
             Response.print_table(response, start_time, errors_only=True)
 
-            # cmds_acquire = load_sequence_acquire()
+            cmds_acquire = load_sequence_acquire()
 
-            # input("\nPress enter to start acquisition...")
+            input("\nPress enter to start acquisition...")
 
-            # start_time = time.time()
-            # response = interface.send(cmds_acquire)
-            # Response.print_table(response, start_time, errors_only=True)
+            start_time = time.time()
+            response = interface.send(cmds_acquire)
+            Response.print_table(response, start_time, errors_only=True)
 
     except Exception as e:
         print(f"[red]Error:[/red] {e}")
@@ -130,17 +130,19 @@ def main():
     # # total_bytes = sum(len(r.data) for r in data_responses)
     # expected_bytes = NUM_SHOTS * len(list(filter(lambda c: isinstance(c, TriggerShot), cmd))) * 84042
 
-    # expected_bytes = 0
-    # for command in cmds_acquire.commands:  # type: ignore
-    #     if isinstance(command, TriggerShot):
-    #         expected_bytes += command.n_shots * 16008
+    expected_bytes = 0
+    for command in cmds_acquire.commands:  # type: ignore
+        if isinstance(command, TriggerShot):
+            expected_bytes += command.n_packets * command.n_shots * 420210 / 410
+
+    expected_bytes = int(expected_bytes)
 
     print(f"Total received: {to_human(total_bytes)}")
-    # print(f"      Expected: {to_human(expected_bytes)}", end="\t")
-    # if total_bytes == expected_bytes:
-    #     print("[green]MATCH[/green]")
-    # else:
-    #     print("[red]MISMATCH[/red]")
+    print(f"      Expected: {to_human(expected_bytes)}", end="\t")
+    if total_bytes == expected_bytes:
+        print("[green]MATCH[/green]")
+    else:
+        print("[red]MISMATCH[/red]")
     min_time = min(t for _, t, _ in received_packets) if received_packets else 0
     max_time = max(t for _, t, _ in received_packets) if received_packets else 0
     duration = max_time - min_time
@@ -150,13 +152,13 @@ def main():
     #     f"UDP responses: {[packet.decode(errors='ignore') for packet, _ in received_packets]}"
     # )
 
-    # # If received data is not empty, save as binary
-    # if received_packets:
-    #     filename = f"data/{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.bin"
-    #     with open(filename, "wb") as f:
-    #         for packet, _, _ in received_packets:
-    #             f.write(packet)
-    #     print(f"Saved received data to '{filename}'")
+    # If received data is not empty, save as binary
+    if received_packets:
+        filename = f"data/{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.bin"
+        with open(filename, "wb") as f:
+            for packet, _, _ in received_packets:
+                f.write(packet)
+        print(f"Saved received data to '{filename}'")
 
 
 if __name__ == "__main__":

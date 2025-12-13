@@ -1,0 +1,30 @@
+{
+    "config": "./simple.json",
+    "rx_mapping": "vermon_ndt",
+    "preprocess": {
+        "f_pass_frac": [
+            0.65,
+            1.35
+        ],
+        "gain_stop_db": 150,
+        "median_filter_samples": null,
+        "flatten_samples": null
+    },
+    "beamform": {
+        "x_range_cm": [
+            -2.0,
+            2.0
+        ],
+        "z_range_cm": [
+            0.0,
+            5.0
+        ],
+        "resolution_px": [
+            500,
+            500
+        ],
+        "db_range": 40,
+        "fov_deg": 60,
+        "correction_shift_us": 0.56
+    }
+}

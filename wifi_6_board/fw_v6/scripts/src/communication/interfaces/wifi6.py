@@ -23,7 +23,7 @@ from ..communication import (
     CommunicationDevice,
     CommunicationInterface,
 )
-from ...response import Response
+from ...command.response import Response
 
 
 DEFAULT_PORT = 50008
