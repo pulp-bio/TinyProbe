@@ -1,0 +1,41 @@
+{
+    "connection": {
+        "mode": "wifi6",
+        "ip": "192.168.0.213",
+        "packet_size": 1000
+    },
+    "fpga": {
+        "lvds_lanes": [
+            0
+        ],
+        "fifo_depth": 2048,
+        "num_shots": 10,
+        "shot_period_ms": 5,
+        "afe_clk_hispeed": true
+    },
+    "tx": {
+        "pulse_freq_hz": 2250000,
+        "num_elems": 32,
+        "pitch_m": 0.0006,
+        "strategy": {
+            "name": "PW_1_0",
+            "num_planewaves": 1,
+            "max_angle": 0
+        },
+        "num_pulses": 2
+    },
+    "afe": {
+        "test_pattern": "ramp",
+        "fixed_gain_atten": 200,
+        "tgc": {
+            "slope_db_per_us": 2.0784,
+            "start_db": 0,
+            "stop_db": 30
+        },
+        "lna_gain_db": 21,
+        "pga_gain_db": 27,
+        "lpf_freq_mhz": 15,
+        "hpf_freq_khz": 310
+    },
+    "num_frames": 1
+}
