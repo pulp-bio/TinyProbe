@@ -284,17 +284,58 @@ sl_status_t wius_tcp_server_respond_error(wius_tcp_server_message_t *msg, uint8_
     return wius_tcp_server_respond(msg, (char *)response, sizeof(response));
 }
 
+// ssize_t _upd_send_large_data(int socket, const uint8_t *buffer, size_t buffer_length, int32_t flags)
+// {
+//     ssize_t total_sent = 0;
+
+//     if (buffer_length > 1472)
+//     {
+//         size_t iterations = buffer_length / 1472;
+//         size_t packet_size = 1472;
+//         size_t last_packet_size = 1472;
+
+//         if (buffer_length > iterations * 1472)
+//         {
+//             iterations += 1;
+//             last_packet_size = buffer_length - (iterations - 1) * 1472;
+//         }
+
+//         for (size_t it = 0; it < iterations; it++)
+//         {
+//             size_t current_packet_size = (it == (iterations - 1)) ? last_packet_size : packet_size;
+
+//             int sent = sl_si91x_send(socket, buffer + total_sent, current_packet_size, flags);
+//             if (sent < 0)
+//             {
+//                 LOG_E("Send failed: %s", strerror(errno));
+//                 return -1;
+//             }
+//             total_sent += sent;
+//         }
+//     }
+//     else
+//     {
+//         total_sent = sl_si91x_send(socket, buffer, buffer_length, flags);
+//     }
+
+//     return total_sent;
+// }
+
 sl_status_t wius_tcp_server_respond_data(wius_tcp_server_message_t *msg, uint8_t cmd_id, uint8_t *data, size_t data_length)
 {
     sl_status_t status = SL_STATUS_OK;
-    size_t num_packets = (data_length + 1400) / 1400;
-    uint8_t response[4];
-    response[0] = cmd_id;
-    memcpy(&response[1], "DT", 2);
-    response[3] = (uint8_t)num_packets;
-    CHECK_STATUS(wius_tcp_server_respond(msg, (char *)response, sizeof(response)));
+
+    UNUSED_PARAMETER(cmd_id);
+
+    // size_t num_packets = (data_length + 1400) / 1400;
+    // uint8_t response[4];
+    // response[0] = cmd_id;
+    // memcpy(&response[1], "DT", 2);
+    // response[3] = (uint8_t)num_packets;
+    // CHECK_STATUS(wius_tcp_server_respond(msg, (char *)response, sizeof(response)));
 
     int sent = sl_si91x_send_large_data(msg->socket, data, data_length, 0);
+    // int sent = _upd_send_large_data(msg->socket, data, data_length, 0);
     if (sent < 0)
     {
         LOG_E("Send failed: %s", strerror(errno));

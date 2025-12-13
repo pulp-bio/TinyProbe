@@ -186,6 +186,8 @@ sl_status_t _tp_transmit_packages(void)
 
         PUTC_FAST('a');
 
+        memcpy(slot_spi->data, &i, 2); // Set packet index
+
         slot_spi->length = TP_BUFFER_SIZE;
         tp_buffer_return_writing(&tp_buf, slot_spi);
 
