@@ -1,11 +1,15 @@
 import numpy as np
 from matplotlib import pyplot as plt
 from math import *
+from numba import njit
 
 MAX_FIFO_SIZE = 2048
+BUFFER_SIZE = 4000
+HEADER_LENGTH = 2
+NUM_BITS = 10
 
 
-def parse_bitstream(
+def parse_bitstream_original(
     bytes,
     dbg_msgs=True,
     read_size_samples=2048,
@@ -161,3 +165,126 @@ def parse_bitstream(
 
     # return arr_out, arr_bits_ch_padded, arr_temp, arr_bit_slip
     return arr_out
+
+
+def parse_bitstream_numpy(
+    data_raw: bytes | np.ndarray,
+    num_shots: int,
+    num_frames: int,
+    fifo_depth: int,
+    lvds_lanes: list[int] | np.ndarray,
+) -> np.ndarray:
+    data_headers_removed = []
+    for i in range(len(data_raw)):
+        if (i % (BUFFER_SIZE + HEADER_LENGTH)) < HEADER_LENGTH:
+            continue
+        data_headers_removed.append(data_raw[i])
+
+    data_raw = bytes(data_headers_removed)[1:]
+    data_raw = data_raw[: len(data_raw) - (len(data_raw) % NUM_BITS)]
+    data = np.frombuffer(data_raw, dtype=np.uint8)
+
+    data_bits = np.unpackbits(data, axis=-1, bitorder="big")
+    data_bits = data_bits.reshape((-1, NUM_BITS)).astype(np.uint16)
+
+    weights = (1 << np.arange(NUM_BITS - 1, -1, -1)).astype(np.uint16)
+    data_stitched = (data_bits * weights).sum(axis=1).astype(np.uint16)
+    data = data_stitched
+
+    bytes_per_acq = len(data) // (num_frames * num_shots)
+    data = data[: len(data) - (len(data) % bytes_per_acq)].reshape((-1, bytes_per_acq))
+    data = data[:, : fifo_depth * len(lvds_lanes) * 2]
+
+    return data[
+        :,
+        : data.shape[1]
+        - (data.shape[1] % (num_shots * num_frames * len(lvds_lanes) * 2)),
+    ].reshape((num_shots, num_frames, len(lvds_lanes) * 2, -1))
+
+
+@njit
+def parse_bitstream_numba(
+    data: np.ndarray,  # uint8 array, NOT bytes
+    num_shots: int,
+    num_frames: int,
+    fifo_depth: int,
+    lvds_lanes: np.ndarray,  # int array
+) -> np.ndarray:
+    # ------------------------------------------------------------
+    # Remove headers
+    # ------------------------------------------------------------
+    total_block = BUFFER_SIZE + HEADER_LENGTH
+
+    # count valid bytes
+    valid_count = 0
+    for i in range(data.size):
+        if (i % total_block) >= HEADER_LENGTH:
+            valid_count += 1
+
+    tmp = np.empty(valid_count, dtype=np.uint8)
+    idx = 0
+    for i in range(data.size):
+        if (i % total_block) >= HEADER_LENGTH:
+            tmp[idx] = data[i]
+            idx += 1
+
+    # drop first byte
+    tmp = tmp[1:]
+
+    # ------------------------------------------------------------
+    # Trim to NUM_BITS alignment
+    # ------------------------------------------------------------
+    usable_len = tmp.size - (tmp.size % NUM_BITS)
+    tmp = tmp[:usable_len]
+
+    # ------------------------------------------------------------
+    # Unpack bits
+    # ------------------------------------------------------------
+    bit_count = tmp.size * 8
+    bits = np.empty(bit_count, dtype=np.uint8)
+
+    bidx = 0
+    for i in range(tmp.size):
+        v = tmp[i]
+        for b in range(8):
+            bits[bidx + b] = (v >> (7 - b)) & 1
+        bidx += 8
+
+    # reshape to NUM_BITS
+    n_words = bits.size // NUM_BITS
+    bits = bits[: n_words * NUM_BITS]
+    bits = bits.reshape((n_words, NUM_BITS))
+
+    # ------------------------------------------------------------
+    # Stitch NUM_BITS → uint16
+    # ------------------------------------------------------------
+    out = np.zeros(n_words, dtype=np.uint16)
+
+    for i in range(n_words):
+        acc = 0
+        for b in range(NUM_BITS):
+            acc |= bits[i, b] << (NUM_BITS - 1 - b)
+        out[i] = acc
+
+    data = out
+
+    # ------------------------------------------------------------
+    # Frame / shot reshaping
+    # ------------------------------------------------------------
+    bytes_per_acq = data.size // (num_frames * num_shots)
+    usable = bytes_per_acq * num_frames * num_shots
+    data = data[:usable]
+
+    data = data.reshape((-1, bytes_per_acq))
+
+    lane_count = lvds_lanes.size
+    lane_bytes = fifo_depth * lane_count * 2
+    data = data[:, :lane_bytes]
+
+    block = num_shots * num_frames * lane_count * 2
+    usable_cols = data.shape[1] - (data.shape[1] % block)
+
+    data = data[:, :usable_cols]
+    data = np.ascontiguousarray(data)
+
+    return data.reshape(num_shots, num_frames, lane_count * 2, -1)
