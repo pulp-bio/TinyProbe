@@ -85,7 +85,7 @@
 #define TP_PROBE_ID 1               /**< ID of the probe */
 #define TP_WIFI_RX_BUFFER_SIZE 1472 /**< Size of the WiFi RX buffer */
 #define TP_UDP_PACKET_SIZE 1000     /**< Size of one UDP packet (without header) */
-#define TP_UDP_PACKET_AMT 4         /**< Number of packets to acquire per SPI before sending */
+#define TP_UDP_PACKET_AMT 1         /**< Number of packets to acquire per SPI before sending */
 #define TP_UDP_PORT 50007           /**< Port on which UDP transfers happen */
 #define TP_TCP_PORT 50008           /**< Port on which TCP transfers happen */
 #define TP_GPIO_INT 2               /**< FPGA Interrupt UULP gpio number */

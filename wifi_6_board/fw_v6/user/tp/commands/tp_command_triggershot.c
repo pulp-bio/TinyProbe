@@ -161,7 +161,7 @@ sl_status_t _tp_transmit_packages(void)
 
     PUTC_FAST('w');
 
-    status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
+    status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false); // TODO: Set actual FIFO size
     if (SL_STATUS_OK != status)
     {
         LOG_E("Error starting initial SPI recv: 0x%04X", (unsigned)status);
@@ -188,7 +188,7 @@ sl_status_t _tp_transmit_packages(void)
 
         memcpy(slot_spi->data, &i, 2); // Set packet index
 
-        slot_spi->length = TP_BUFFER_SIZE;
+        slot_spi->length = TP_BUFFER_SIZE; // TODO: Set to actual FIFO size?
         tp_buffer_return_writing(&tp_buf, slot_spi);
 
         PUTC_FAST('r');
@@ -212,7 +212,7 @@ sl_status_t _tp_transmit_packages(void)
 
             PUTC_FAST('w');
 
-            status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
+            status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false); // TODO: Set actual FIFO size?
             if (SL_STATUS_OK != status)
             {
                 LOG_E("Error starting SPI recv: 0x%04X", (unsigned)status);

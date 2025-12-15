@@ -4,7 +4,7 @@ from math import *
 from numba import njit
 
 MAX_FIFO_SIZE = 2048
-BUFFER_SIZE = 4000
+BUFFER_SIZE = 1000
 HEADER_LENGTH = 2
 NUM_BITS = 10
 
