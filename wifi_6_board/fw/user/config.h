@@ -40,6 +40,7 @@
 /** @name WiUS SPI configurations
  * @{
  */
+#define WIUS_SPI_FREQ 40000000  /**< SPI clock frequency in Hz */
 #define WIUS_SPI_RX_TIMEOUT 100 /**< Timeout for reception (ticks) */
 #define WIUS_SPI_EXT_CS0 53     /**< Use seperate CS0 pin (set to 0 if unused) */
 #define WIUS_SPI_EXT_CS1 0      /**< Use seperate CS1 pin (set to 0 if unused) */

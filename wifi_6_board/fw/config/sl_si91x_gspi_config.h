@@ -37,6 +37,7 @@ extern "C"
 #endif
 
 #include "sl_si91x_gspi.h"
+#include "config.h"
 
 // <<< Use Configuration Wizard in Context Menu >>>
 
@@ -56,7 +57,7 @@ extern "C"
 
 // <o SL_GSPI_BITRATE> Bit Rate (Bits/Second) <1-116000000>
 // <i> Default: 10000000
-#define SL_GSPI_BITRATE 40000000
+#define SL_GSPI_BITRATE WIUS_SPI_FREQ
 
 // <o SL_GSPI_BIT_WIDTH> Data Width <1-16>
 // <i> Default: 8

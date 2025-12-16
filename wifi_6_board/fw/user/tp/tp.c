@@ -52,7 +52,7 @@ wius_spi_config_t spi_config = {
     .cs_mode = WIUS_SPI_CS_SW,
     .cs_pin = WIUS_SPI_EXT_CS0,
     .cs_polarity = 0,
-    .freq = 40000000,
+    .freq = WIUS_SPI_FREQ,
     .mode = 0,
     .width = 8,
 };
