@@ -6,6 +6,7 @@ __pycache__/
 
 data/*
 !data/bitshift_fix/
+!data/semaphore_fix/
 
 preprocessed_data.npy
 beamformed_data.npy

@@ -19,7 +19,7 @@ from src.config.flows.configure_acquire import (
 )
 
 log = logging.getLogger("tp").getChild("standalone")
-log.setLevel(logging.DEBUG)
+log.setLevel(logging.INFO)
 log.handlers = []
 console_handler = RichHandler(
     rich_tracebacks=True, show_time=False, show_path=False, tracebacks_show_locals=True
@@ -139,6 +139,8 @@ def main(config: str) -> None:
 
                 if any([response.error_code for response in responses_flat]):
                     Response.print_table(response_afe, time_start, errors_only=True)
+
+            input("Press Enter to start acquisition...")
 
             log.info("Starting acquisition")
             time_start = time.time()

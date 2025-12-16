@@ -23,8 +23,8 @@
             14,
             15
         ],
-        "fifo_depth": 1024,
-        "num_shots": 5,
+        "fifo_depth": 2048,
+        "num_shots": 1,
         "shot_period_ms": 5,
         "afe_clk_hispeed": true
     },
@@ -40,7 +40,7 @@
         "num_pulses": 2
     },
     "afe": {
-        "test_pattern": "all_zeros",
+        "test_pattern": "normal",
         "fixed_gain_atten": 200,
         "tgc": {
             "slope_db_per_us": 2.0784,

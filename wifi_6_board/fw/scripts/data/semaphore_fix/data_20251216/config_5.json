@@ -23,7 +23,7 @@
             14,
             15
         ],
-        "fifo_depth": 1024,
+        "fifo_depth": 400,
         "num_shots": 5,
         "shot_period_ms": 5,
         "afe_clk_hispeed": true

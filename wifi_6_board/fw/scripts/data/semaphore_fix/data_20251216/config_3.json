@@ -6,25 +6,10 @@
     },
     "fpga": {
         "lvds_lanes": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15
+            0
         ],
-        "fifo_depth": 1024,
-        "num_shots": 5,
+        "fifo_depth": 2048,
+        "num_shots": 1,
         "shot_period_ms": 5,
         "afe_clk_hispeed": true
     },
