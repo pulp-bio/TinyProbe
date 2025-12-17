@@ -1,9 +1,9 @@
 /**
  * @file tp_buffer.c
  *
- * @brief Buffer handler for TinyProbe source file
+ * @brief TinyProbe buffer handler source file
  *
- * @date 26.11.2025
+ * @date 17.12.2025
  * @copyright ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich

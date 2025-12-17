@@ -1,9 +1,9 @@
 /**
  * @file tp_power.h
  *
- * @brief Power Management driver for TinyProbe
+ * @brief TinyProbe power management driver header file
  *
- * @date 26.11.2025
+ * @date 17.12.2025
  * @copyright ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich

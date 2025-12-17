@@ -1,9 +1,9 @@
 /**
  * @file tp_afe.c
  *
- * @brief AFE driver for TinyProbe source file
+ * @brief TinyProbe AFE driver source file
  *
- * @date 26.11.2025
+ * @date 17.12.2025
  * @copyright ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich

@@ -1,9 +1,9 @@
 /**
  * @file wius_wifi.c
  *
- * @brief WiFi implementation for WiUS source file
+ * @brief WiUS WiFi implementation source file
  *
- * @date 26.11.2025
+ * @date 17.12.2025
  * @copyright ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich

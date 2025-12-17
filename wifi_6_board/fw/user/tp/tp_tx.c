@@ -1,9 +1,9 @@
 /**
  * @file tp_tx.c
  *
- * @brief TX chip driver for TinyProbe source file
+ * @brief TinyProbe TX chip driver source file
  *
- * @date 26.11.2025
+ * @date 17.12.2025
  * @copyright ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich
