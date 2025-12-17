@@ -18,9 +18,7 @@
 
 ## Requisites
 
-In order to use this firmware, you need to install Simplicity Studio. You can download it from the [Silicon Labs website](https://www.silabs.com/developers/simplicity-studio).
-
-To get an introduction to Simplicity Studio, check the [Developing with WiSeConnect™ SDK v3.x with SiWx91x™ Boards](https://docs.silabs.com/wiseconnect/latest/wiseconnect-developers-guide-developing-for-silabs-hosts/) guide.
+In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the [Toolchain Getting Started](docs/markdown/toolchain.md) guide.
 
 ## Build, Flash and Debug
 
@@ -92,12 +90,12 @@ TODO
 
 ## Code Structure
 
-The code is structured to be modular and easy to understand. All of the code which is written by us is in the `user` directory. The code is divided into the following directories:
-- `wius`: Low-level and Hardware-specific code for the WiUS PCB
+The code is structured to be modular and easy to understand. All of the code which is written by us is in the [`user`](user) directory. The code is divided into the following directories:
+- [`wius`](user/wius) (See [WiUS Architecture](docs/markdown/architecture_wius.md)): Low-level and Hardware-specific code for the WiUS PCB
   - Peripheral drivers
   - Networking drivers
   - etc.
-- `tp`: TinyProbe-specific code built on top of the WiUS code
+- [`tp`](user/tp) (See [TinyProbe Architecture](docs/markdown/architecture_tp.md)): TinyProbe-specific code built on top of the WiUS code
   - Power Management
   - AFE/TX drivers
   - Command handlers
