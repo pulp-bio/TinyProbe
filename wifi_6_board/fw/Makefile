@@ -47,4 +47,4 @@ clean:
 docs:
 	cd docs && doxygen -q
 
-.PHONY: build configure flash attach attach_reset clean docs 
+.PHONY: build configure flash attach attach_reset clean docs $(CMAKE_DIR)/.migrated
