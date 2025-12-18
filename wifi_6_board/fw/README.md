@@ -2,93 +2,62 @@
 
 ## Requisites
 
-In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the [Toolchain Getting Started](docs/markdown/toolchain.md) guide.
+In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the [Toolchain Getting Started](docs/toolchain.md) guide.
 
-## Build, Flash and Debug
+## Build and Flash Instructions
 
-### Opening the Project
+Please follow the instructions in the [Toolchain Getting Started](docs/toolchain.md) guide for detailed steps on building and flashing the firmware.
 
-TODO
+### Environment Variables
 
-### Building the Project
+The project expects Wi-Fi credentials:
 
-#### Environment Variables
+- `WIUS_WIFI_SSID`: Wi-Fi network name
+- `WIUS_WIFI_PASS`: Wi-Fi password
 
-The project uses some sensitive environment variables:
+Provide them in one of two ways:
 
-- `WIUS_WIFI_SSID`: The WiFi SSID to connect to
-- `WIUS_WIFI_PASS`: The WiFi password to connect to the SSID
+- `env.h` in the repo root:
+  ```c
+  #ifndef ENV_H
+  #define ENV_H
 
-These are not included in the base project. You need to set these up manually. There is two ways to do this:
+  #define WIUS_WIFI_SSID "<your_wifi_ssid>"
+  #define WIUS_WIFI_PASS "<your_wifi_password>"
 
-##### `env.h` File
+  #endif /* ENV_H */
+  ```
 
-The compiler searches for the `env.h` file in the root directory. You can create this file and add the following lines:
-
-```c
-#ifndef ENV_H
-#define ENV_H
-
-#define WIUS_WIFI_SSID "<your_wifi_ssid>"
-#define WIUS_WIFI_PASS "<your_wifi_password>"
-
-#endif /* ENV_H */
-```
-
-Where `<your_wifi_ssid>` and `<your_wifi_password>` are the WiFi SSID and password you want to use.
-
-##### `.env` File
-
-You can also create a `.env` file in the root directory. Add the following lines:
-
-```bash
-WIUS_WIFI_SSID=<your_wifi_ssid>
-WIUS_WIFI_PASS=<your_wifi_password>
-```
-
-Where `<your_wifi_ssid>` and `<your_wifi_password>` are the WiFi SSID and password you want to use.
-
-This `.env` file is then compiled into above `env.h` file using the [`scripts/fetch_env.py`](scripts/fetch_env.py) script. You can use it using the following command:
-
-```bash
-python scripts/fetch_env.py .env env.h
-```
-
-Or via `make user/env.h`.
-
-#### Building Setup
-
-TODO
-
-#### Subsequent Builds
-
-TODO
-
-### Flashing the Project
-
-TODO
-
-### Debugging the Project
-
-TODO
+- `.env` file in the repo root:
+  ```bash
+  WIUS_WIFI_SSID=<your_wifi_ssid>
+  WIUS_WIFI_PASS=<your_wifi_password>
+  ```
+  Then generate env.h via:
+  ```powershell
+  python scripts/fetch_env.py .env env.h
+  ```
+  or `make user/env.h`.
 
 ## Code Structure
 
-The code is structured to be modular and easy to understand. All of the code which is written by us is in the [`user`](user) directory. The code is divided into the following directories:
-- [`wius`](user/wius) (See [WiUS Architecture](docs/markdown/architecture_wius.md)): Low-level and Hardware-specific code for the WiUS PCB
+The code is structured to be modular and easy to understand. All of the code which is written by us is in the `user` directory. The code is divided into the following directories:
+- `user/wius`: Low-level and Hardware-specific code for the WiUS PCB
   - Peripheral drivers
   - Networking drivers
   - etc.
-- [`tp`](user/tp) (See [TinyProbe Architecture](docs/markdown/architecture_tp.md)): TinyProbe-specific code built on top of the WiUS code
+- `user/tp`: TinyProbe-specific code built on top of the WiUS code
   - Power Management
   - AFE/TX drivers
   - Command handlers
   - etc.
 - Other, common code that is used by both WiUS and TinyProbe
-  - `user.h/user.c`: User entry point for the firmware
-  - `log.h/log.c`: Logging code
-  - `common.h/common.c`: Common code that is used by both WiUS and TinyProbe
-  - `config.h`: Constants and configuration code
+  - user.h / user.c: User entry point for the firmware
+  - log.h / log.c: Logging code
+  - common.h / common.c: Common code that is used by both WiUS and TinyProbe
+  - config.h: Constants and configuration code
+
+For detailed architecture documentation, see the generated Doxygen documentation.
 
 ## Licensing
 

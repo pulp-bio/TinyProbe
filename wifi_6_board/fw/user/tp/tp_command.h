@@ -84,9 +84,9 @@ typedef enum tp_cmd_id
  */
 typedef struct tp_cmd
 {
-    tp_command_id_t id;
-    uint8_t *args;
-    size_t args_length;
+    tp_command_id_t id; /**< Command ID */
+    uint8_t *args;      /**< Command arguments */
+    size_t args_length; /**< Length of command arguments */
 } tp_command_t;
 
 /**

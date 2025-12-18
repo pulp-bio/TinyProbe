@@ -53,6 +53,6 @@ clean:
 
 # Build the docs using Doxygen
 docs:
-	cmake -E chdir docs doxygen -q
+	cmake -E chdir docs/doxygen doxygen -q
 
 .PHONY: build configure flash attach attach_reset clean docs

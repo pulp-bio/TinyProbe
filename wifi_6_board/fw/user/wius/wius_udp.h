@@ -40,9 +40,9 @@
  */
 typedef struct wius_udp
 {
-    bool connected;                    // Connection status flag
-    int socket;                        // Socket file descriptor
-    struct sockaddr_in server_address; // Server address structure
+    bool connected;                    /**< Connection status flag */
+    int socket;                        /**< Socket file descriptor */
+    struct sockaddr_in server_address; /**< Server address structure */
 } wius_udp_t;
 
 /**

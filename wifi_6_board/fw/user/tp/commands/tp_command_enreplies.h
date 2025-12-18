@@ -9,7 +9,7 @@
  * @author Cédric Hirschi, ETH Zürich
  * @author Sergei Vostrikov, ETH Zürich
  *
- * @ingroup tinyprobe
+ * @ingroup tinyprobe_commands
  *
  * @parblock
  * Licensed under the Apache License, Version 2.0 (the "License");

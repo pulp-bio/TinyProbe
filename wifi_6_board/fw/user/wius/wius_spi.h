@@ -73,11 +73,11 @@ typedef struct wius_spi_inst
     wius_spi_config_t config; /**< Configuration */
     wius_gpio_t cs;           /**< Chip select GPIO (only in SW/HW mode) */
 
-    union instance /**< Peripheral handle */
+    union instance /**< Peripheral handle union */
     {
         sl_gspi_handle_t gspi; /**< Peripheral handle (GPSI) */
         sl_ssi_handle_t ssi;   /**< Peripheral handle (SSI) */
-    } inst;
+    } inst;                    /**< Peripheral handle */
 } wius_spi_inst_t;
 
 /**
