@@ -66,6 +66,8 @@ if local_json_path.exists():
 
         print("\nProcessing CMake files:")
         for cmake_file in cmake_files(CMAKE_DIR):
+            print(f"\nProcessing {cmake_file.as_posix()}:")
+
             with open(cmake_file, "r") as f:
                 content = f.read()
 
@@ -85,13 +87,13 @@ if local_json_path.exists():
                     # Show differences between old and new content (Changed lines)
                     for line in content.splitlines():
                         if match in line:
-                            print(f"- {line}")
-                            print(f"+ {line.replace(match, new_path)}")
+                            print(f"  - {line}")
+                            print(f"  + {line.replace(match, new_path)}")
 
                     content = new_content
                     modified = True
 
-            pattern = r"\".*/simpleb526998f4a4d/p"
+            pattern = r"\".*/simple[a-zA-Z0-9]+/p"
             new_path = '"' + (Path(REQUIRED_INSTALL_PATHS["simplicity-sdk"])).as_posix()
 
             matches = re.findall(pattern, content)
@@ -107,12 +109,28 @@ if local_json_path.exists():
                     content = new_content
                     modified = True
 
+            pattern = r"PKG_PATH \".*/.silabs/slt/installs\""
+            new_path = f'PKG_PATH "{SLT_DIR.as_posix()}/installs"'
+
+            matches = re.findall(pattern, content)
+            for match in matches:
+                new_content = content.replace(match, new_path)
+                if new_content != content:
+                    # Show differences between old and new content (Changed lines)
+                    for line in content.splitlines():
+                        if match in line:
+                            print(f"- {line}")
+                            print(f"+ {line.replace(match, new_path)}")
+
+                    content = new_content
+                    modified = True
+
             if modified:
-                # with open(cmake_file, "w") as f:
-                #     f.write(content)
-                print(f"- Updated {cmake_file.as_posix()}")
+                with open(cmake_file, "w") as f:
+                    f.write(content)
+                print(f"  Updated {cmake_file.as_posix()}")
             else:
-                print(f"- No changes needed for {cmake_file.as_posix()}")
+                print(f"  No changes needed for {cmake_file.as_posix()}")
 
 else:
     print(f"local.json does not exist in {SLT_DIR.as_posix()}")

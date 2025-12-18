@@ -25,7 +25,7 @@ elseif(WIN32)
 elseif(APPLE)
   set(POST_BUILD_EXE "")
 else()
-  set(POST_BUILD_EXE "")
+  set(POST_BUILD_EXE "$ENV{HOME}/.silabs/slt/installs/archive/commander/commander")
 endif()
 
 if(DEFINED ENV{NINJA_EXE_PATH})
