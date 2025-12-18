@@ -1,4 +1,4 @@
-PROJECT_NAME := fw
+PROJECT_NAME := fw_v6
 CMAKE_DIR := cmake_gcc
 
 PYTHON ?= python
@@ -24,7 +24,7 @@ $(CMAKE_DIR)/.migrated: scripts/migrate.py
 
 # Flash the firmware to the device
 flash: build
-	$(COMMANDER) flash cmake_gcc/build/base/fw.hex --device SIWG917
+	$(COMMANDER) flash cmake_gcc/build/base/$(PROJECT_NAME).hex --device SIWG917
 
 # Attach to the device using RTT (without reset)
 attach:
