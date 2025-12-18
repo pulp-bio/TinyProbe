@@ -22,7 +22,7 @@ configure: $(CMAKE_DIR)/build
 
 # Configure the project with CMake
 $(CMAKE_DIR)/build: user/env.h $(CMAKE_DIR)/.migrated
-	cd $(CMAKE_DIR) && cmake -B build --preset project
+	cmake -E chdir $(CMAKE_DIR) cmake -B build --preset project
 
 # Run migration script to update CMake files
 $(CMAKE_DIR)/.migrated: scripts/migrate.py
@@ -49,10 +49,10 @@ user/env.h: .env
 
 # Clean build artifacts
 clean:
-	rm -rf $(CMAKE_DIR)/build user/env.h $(CMAKE_DIR)/.migrated
+	cmake -E rm -rf $(CMAKE_DIR)/build user/env.h $(CMAKE_DIR)/.migrated
 
 # Build the docs using Doxygen
 docs:
-	cd docs && doxygen -q
+	cmake -E chdir docs doxygen -q
 
 .PHONY: build configure flash attach attach_reset clean docs
