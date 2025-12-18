@@ -2,6 +2,7 @@
 
 # autogen/
 cmake_gcc/build/
+cmake_gcc/.migrated
 # cmake_gcc/fw_v6.cmake
 # cmake_gcc/toolchain.cmake
 # .projectlinkstore
