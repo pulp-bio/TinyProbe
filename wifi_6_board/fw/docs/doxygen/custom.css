@@ -1,0 +1,56 @@
+/* Custom footer styling for ETH Zurich copyright */
+.navpath,
+#nav-path,
+.navpath ul,
+#nav-path ul {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden !important;
+    margin: 0 auto !important;
+    box-sizing: border-box;
+}
+
+.navpath {
+    max-width: 100vw !important;
+    overflow-x: auto !important;
+}
+
+.navpath ul {
+    max-width: 100vw !important;
+    overflow-x: auto !important;
+}
+
+.navpath li.footer {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: center;
+    float: none !important;
+    padding: 10px 0 !important;
+    padding-bottom: 2em !important;
+    /* Add a bit of bottom padding to prevent footer cutoff */
+    overflow-x: hidden !important;
+}
+
+/* Remove bottom margin from #container, add padding to body instead for footer clearance */
+#container {
+    margin-bottom: 0 !important;
+}
+
+body {
+    padding-bottom: 0 !important;
+}
+
+/* Remove all forced height and overflow on html/body/container to let the layout flow naturally */
+html,
+body,
+#container {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+}
+
+.navpath li.footer {
+    padding-bottom: 0 !important;
+}

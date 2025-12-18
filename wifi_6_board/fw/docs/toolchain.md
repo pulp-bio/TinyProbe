@@ -1,3 +1,6 @@
+@page toolchain_getting_started Toolchain Getting Started
+@brief How to set up the Silicon Labs toolchain for building and flashing
+
 # Getting started with the Silicon Labs Toolchain
 
 ## Installation

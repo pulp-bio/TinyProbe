@@ -2,11 +2,11 @@
 
 ## Requisites
 
-In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the [Toolchain Getting Started](docs/toolchain.md) guide.
+In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the <a href="docs/toolchain.md">Toolchain Getting Started</a> guide.
 
 ## Build and Flash Instructions
 
-Please follow the instructions in the [Toolchain Getting Started](docs/toolchain.md) guide for detailed steps on building and flashing the firmware.
+Please follow the instructions in the <a href="docs/toolchain.md">Toolchain Getting Started</a> guide for detailed steps on building and flashing the firmware.
 
 ### Environment Variables
 
