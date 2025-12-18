@@ -2,8 +2,16 @@ PROJECT_NAME := fw_v6
 CMAKE_DIR := cmake_gcc
 
 PYTHON ?= python
-# Path to Simplicity Commander executable (adjust as needed)
-COMMANDER ?= commander
+# On Windows, the commander path is $(USERPROFILE)/.silabs/slt/installs/archive/Simplicity Commander/commander.exe
+# On Linux/Mac, the commander path is $(HOME)/.silabs/slt/installs/archive/commander/commander
+ifeq ($(COMMANDER),)
+	ifeq ($(OS),Windows_NT)
+		USER_HOME := $(subst \,/,$(USERPROFILE))
+		COMMANDER := "$(USER_HOME)/.silabs/slt/installs/archive/Simplicity Commander/commander.exe"
+	else
+		COMMANDER := $(HOME)/.silabs/slt/installs/archive/commander/commander
+	endif
+endif
 
 # Build the firmware with CMake/Ninja
 build: $(CMAKE_DIR)/build
