@@ -109,13 +109,16 @@ typedef enum wius_gpio_interrupt
     WIUS_GPIO_INT_TOGGLE = SL_GPIO_INTERRUPT_RISE_FALL_EDGE /**< Any edge */
 } wius_gpio_interrupt_t;
 
+//! GPIO pin definition
 typedef sl_si91x_gpio_pin_config_t wius_gpio_t;
+//! GPIO callback function type
 typedef sl_gpio_irq_callback_t wius_gpio_callback_t;
-
-// TODO: Fill in the return values for the functions below
 
 /**
  * @brief Initialize GPIO module
+ *
+ * @retval SL_STATUS_OK: Success
+ * @retval other: GPIO initialization failed
  *
  */
 sl_status_t wius_gpio_init(void);
@@ -124,6 +127,9 @@ sl_status_t wius_gpio_init(void);
  * @brief Configure GPIO pin
  *
  * @param gpio: GPIO pin definition
+ *
+ * @retval SL_STATUS_OK: Success
+ * @retval other: GPIO configuration failed
  *
  * @note Must be called before using the pin
  * @note Must be called after @ref wius_gpio_init

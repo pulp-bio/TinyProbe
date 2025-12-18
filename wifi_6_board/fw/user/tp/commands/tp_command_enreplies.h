@@ -31,4 +31,13 @@
 
 #include "common.h"
 
+/**
+ * @brief Enable replies command
+ *
+ * @param args: Command arguments
+ * @param args_length: Length of command arguments
+ *
+ * @return sl_status_t Status code of the operation
+ *
+ */
 sl_status_t tp_en_replies(uint8_t *args, uint16_t args_length);

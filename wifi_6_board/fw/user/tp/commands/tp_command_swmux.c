@@ -35,7 +35,7 @@ sl_status_t tp_sw_mux(uint8_t *args, uint16_t args_length)
 {
     LOG_D("Executing");
 
-    (void)args_length;
+    UNUSED(args_length);
 
     tp_mux_t mux = GET(args, tp_mux_t, 0);
     tp_mux_select(mux);

@@ -39,11 +39,22 @@
 #include "config.h"
 #include "log.h"
 
+//! Concatenate two tokens
 #define CONCAT_2(a, b) a##b
+//! Concatenate three tokens
 #define CONCAT_3(a, b, c) a##b##c
 
-#define TICKS_PER_SEC (OS_Tick_GetClock() / OS_Tick_GetInterval()) // Number of ticks per second
+//! Number of RTOS ticks per second
+#define TICKS_PER_SEC (OS_Tick_GetClock() / OS_Tick_GetInterval())
 
+/**
+ * @brief Macro to check the status of a function call and return if it is not SL_STATUS_OK
+ *
+ * @param x: Function call to check
+ *
+ * @warning This macro uses 'return', so it can only be used in functions with a return value of sl_status_t and a variable named 'status'
+ *
+ */
 #define CHECK_STATUS(x)                                                 \
     do                                                                  \
     {                                                                   \
@@ -53,11 +64,27 @@
             LOG_E("Error at %s:%d: 0x%lx", __FILE__, __LINE__, status); \
             return status;                                              \
         }                                                               \
-    } while (0) // Check status and return if not OK
+    } while (0)
 
-#define UNUSED(x) (void)(x) // Suppress unused variable warning
+//! Suppress unused variable warning
+#define UNUSED(x) (void)(x)
 
-#define GET(args, type, pos) (*(type *)(args + pos)) // Get value of given type from args at given position
+/**
+ * @brief Macro to get a typed argument from a byte array
+ *
+ * @param args: Pointer to the byte array
+ * @param type: Type of the argument to get
+ * @param pos: Position of the argument in the byte array
+ *
+ * @return The argument casted to the specified type
+ *
+ * @note The position is in bytes
+ * @note The caller is responsible for ensuring that the position is valid and that the type matches the data at that position
+ *
+ * @warning This macro does not perform any bounds checking
+ *
+ */
+#define GET(args, type, pos) (*(type *)(args + pos))
 
 /**
  * @brief Initialize some common stuff
@@ -92,7 +119,7 @@ void delay_ns(uint64_t ns);
 /**
  * @brief Delay for a given number of milliseconds
  *
- * @param us Number of milliseconds to delay
+ * @param ms Number of milliseconds to delay
  *
  */
 void delay_ms(uint32_t ms);

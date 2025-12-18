@@ -33,20 +33,12 @@
 #include "wius_udp.h"
 #include "tp_buffer.h"
 
-extern wius_udp_t tp_socket;
-extern char client_ip[16];
-extern int client_port;
+extern uint16_t n_packs_to_read; /**< Number of packets to read in this shot */
+extern uint16_t cb_pack_id;      /**< Packet ID to trigger callback */
 
-extern bool enable_udp_replies;
-extern uint16_t n_packs_to_read;
-extern uint16_t cb_pack_id;
+extern osSemaphoreId_t sem_fpga; /**< Semaphore raised by FPGA interrupts */
 
-extern osSemaphoreId_t sem_fpga;
-extern osMessageQueueId_t q_wifi_tx;
-
-extern tp_buffer_t tp_buf;
-
-extern volatile uint32_t count_interrupt;
+extern tp_buffer_t tp_buf; /**< Buffer for storing acquired data */
 
 /**
  * @brief Initialize the FPGA (SPI, GPIOs, register values)

@@ -34,7 +34,7 @@ sl_status_t tp_write_spi(uint8_t *args, uint16_t args_length)
     LOG_D("Executing");
 
     (void)args;
-    (void)args_length;
+    UNUSED(args_length);
 
     // TODO: Implement
     LOG_W("Not yet implemented");

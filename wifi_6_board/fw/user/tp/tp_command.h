@@ -104,6 +104,7 @@ tp_command_t *tp_command_parse(uint8_t *buffer, size_t buffer_length);
  * @brief Execute a command
  *
  * @param command The command to execute
+ * @param msg The TCP message metadata for responses
  *
  * @return The status of the command execution
  *
@@ -115,11 +116,11 @@ sl_status_t tp_command_execute(tp_command_t command, wius_tcp_server_message_t *
  *
  * @param buffer The buffer containing the command
  * @param buffer_length The length of the buffer
- * @param msg The TCP message metadata
+ * @param msg The TCP message metadata for responses
  *
  * @return The status of the command execution
  *
- * @note This function is a wrapper around @ref tp_parse_command and @ref tp_execute_command
+ * @note This function is a wrapper around @ref tp_command_parse and @ref tp_command_execute
  *
  */
 sl_status_t tp_command_parse_and_execute(uint8_t *buffer, size_t buffer_length, wius_tcp_server_message_t *msg);

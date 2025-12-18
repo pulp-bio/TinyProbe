@@ -31,6 +31,26 @@
 #include "env.h"
 
 /**
+ * @defgroup config_common Common firmware configurations
+ * This module documents the common firmware configurations.
+ * @ingroup common
+ * @{
+ */
+
+/**
+ * @name Logging configurations
+ * @{
+ */
+//! Log level to use
+#define LOG_LEVEL LOG_LEVEL_INFO
+//! Buffer size to use per log line
+#define LOG_BUFFER_SIZE 256
+/** @}
+ */
+
+/** @} End of config_common group */
+
+/**
  * @defgroup config_wius WiUS firmware configurations
  * This module documents the firmware configurations specific to WiUS.
  * @ingroup wius
@@ -40,10 +60,14 @@
 /** @name WiUS SPI configurations
  * @{
  */
-#define WIUS_SPI_FREQ 40000000  /**< SPI clock frequency in Hz */
-#define WIUS_SPI_RX_TIMEOUT 100 /**< Timeout for reception (ticks) */
-#define WIUS_SPI_EXT_CS0 53     /**< Use seperate CS0 pin (set to 0 if unused) */
-#define WIUS_SPI_EXT_CS1 0      /**< Use seperate CS1 pin (set to 0 if unused) */
+//! SPI clock frequency in Hz
+#define WIUS_SPI_FREQ 40000000
+//! SPI timeout for transmission in ticks
+#define WIUS_SPI_RX_TIMEOUT 100
+//! CS pin number for instance 0 (set to 0 if unused)
+#define WIUS_SPI_EXT_CS0 53
+//! CS pin number for instance 1 (set to 0 if unused)
+#define WIUS_SPI_EXT_CS1 0
 /** @}
  */
 
@@ -56,18 +80,8 @@
 #ifndef WIUS_WIFI_PASS
 #error "Please define WIUS_WIFI_PASS in env.h"
 #endif
-#define WIUS_WIFI_DEVICE_NAME "WiUS" /**< WiFi device name */
-/** @}
- */
-
-/**
- * @name WiUS logging configurations
- * @{
- */
-#define WIUS_LOG_LEVEL LOG_LEVEL_INFO /**< Log level for WiUS */
-#define WIUS_LOG_GPIO_LED_RED 7       /**< Red LED gpio number */
-#define WIUS_LOG_GPIO_LED_GREEN 6     /**< Green LED gpio number */
-#define WIUS_LOG_BUFFER_SIZE 256      /**< Buffer size to use per log line */
+//! Device name for WiFi
+#define WIUS_WIFI_DEVICE_NAME "WiUS"
 /** @}
  */
 
@@ -82,77 +96,88 @@
 /** @name TinyProbe general configurations
  * @{
  */
-#define TP_TEST_MODE 0              /**< For testing acquisition code without confirmation from TinyProbe */
-#define TP_PROBE_ID 1               /**< ID of the probe */
-#define TP_WIFI_RX_BUFFER_SIZE 1472 /**< Size of the WiFi RX buffer */
-#define TP_UDP_PACKET_SIZE 1000     /**< Size of one UDP packet (without header) */
-#define TP_UDP_PACKET_AMT 4         /**< Number of packets to acquire per SPI before sending */
-#define TP_UDP_PORT 50007           /**< Port on which UDP transfers happen */
-#define TP_TCP_PORT 50008           /**< Port on which TCP transfers happen */
-#define TP_GPIO_INT 2               /**< FPGA Interrupt UULP gpio number */
-#define TP_GPIO_RESET 10            /**< FPGA Reset ULP gpio number */
-#define TP_THREAD_STACK_MAIN 6000   /**< Stack of main thread */
-#define TP_THREAD_STACK_WIFI 2000   /**< Stack of WiFi thread */
+//! Enable test mode (1=enabled, 0=disabled). Used for testing acquisition code without actual TinyProbe hardware.
+#define TP_TEST_MODE 0
+//! ID of the probe (used for Ping responses)
+#define TP_PROBE_ID 1
+//! Size of the WiFi RX buffer
+#define TP_WIFI_RX_BUFFER_SIZE 1472
+//! Size of one UDP packet (no header)
+#define TP_UDP_PACKET_SIZE 1000
+//! Number of packets to acquire per SPI before sending
+#define TP_UDP_PACKET_AMT 4
+//! Port on which UDP transfers happen
+#define TP_UDP_PORT 50007
+//! Port on which TCP transfers happen
+#define TP_TCP_PORT 50008
+//! FPGA Interrupt UULP gpio number
+#define TP_GPIO_INT 2
+//! FPGA Reset ULP gpio number
+#define TP_GPIO_RESET 10
+//! Stack size for main thread
+#define TP_THREAD_STACK_MAIN 6000
+//! Stack size for WiFi thread
+#define TP_THREAD_STACK_WIFI 2000
 /** @}
  */
 
 /** @name TinyProbe AFE control configurations
  * @{
  */
-#define TP_AFE_SPI_DELAY_NS 500000 /**< Delay after SPI transfers in ns */
+//! Delay after SPI transfers in ns
+#define TP_AFE_SPI_DELAY_NS 500000
 /** @}
  */
 
 /** @name TinyProbe buffering configurations
  * @{
  */
-#define TP_BUFFER_NUM 5                                             /**< Number of buffers available */
-#define TP_BUFFER_SIZE (TP_UDP_PACKET_SIZE * TP_UDP_PACKET_AMT + 2) /**< Size of one buffer in bytes */
+//! Number of buffers available for data acquisition
+#define TP_BUFFER_NUM 5
+//! Size of one buffer in bytes
+#define TP_BUFFER_SIZE (TP_UDP_PACKET_SIZE * TP_UDP_PACKET_AMT + 2)
 /** @}
  */
 
 /** @name TinyProbe commands configurations
  * @{
  */
-#define TP_COMMAND_MAX 128 /**< Maximum number of commands per WiFi package */
+//! Maximum number of commands per WiFi package
+#define TP_COMMAND_MAX 128
 /** @}
  */
 
 /** @name TinyProbe FPGA control configurations
  * @{
  */
-#define TP_FPGA_SPI_DELAY_NS 50 /**< Delay after SPI transfers in ns */
+//! Delay after SPI transfers in ns
+#define TP_FPGA_SPI_DELAY_NS 50
 /** @}
  */
 
 /** @name TinyProbe MUX control configurations
  * @{
  */
-#define TP_MUX_GPIO_EXTINT 3 /**< EXT INT MUX UULP gpio number */
-#define TP_MUX_GPIO_AFETX 1  /**< AFE TX MUX ULP gpio number */
+//! EXT INT MUX UULP gpio number
+#define TP_MUX_GPIO_EXTINT 3
+//! AFE TX MUX ULP gpio number
+#define TP_MUX_GPIO_AFETX 1
 /** @}
  */
 
 /** @name TinyProbe power control configurations
  * @{
  */
-#define TP_POWER_GPIO_NEG_5V 2      /**< -5V ULP gpio number */
-#define TP_POWER_GPIO_NEG_HV 52     /**< -HV gpio number */
-#define TP_POWER_GPIO_POS_HV 56     /**< +HV gpio number */
-#define TP_POWER_GPIO_LVDS_PWR_SW 8 /**< LVDS power switch ULP gpio number */
+//! -5V ULP gpio number
+#define TP_POWER_GPIO_NEG_5V 2
+//! -HV gpio number
+#define TP_POWER_GPIO_NEG_HV 52
+//! +HV gpio number
+#define TP_POWER_GPIO_POS_HV 56
+//! LVDS power switch ULP gpio number
+#define TP_POWER_GPIO_LVDS_PWR_SW 8
 /** @}
  */
-
-/** @name TinyProbe event flags
- * @{
- */
-#define FLAG_CMD_RECEIVED (1 << 0)    /**< Command received flag */
-#define FLAG_CMD_EXECUTED (1 << 1)    /**< Command done executing flag */
-#define FLAG_SPI_TF0_DONE (1 << 2)    /**< SPI instance 0 transfer done flag */
-#define FLAG_SPI_TF1_DONE (1 << 3)    /**< SPI instance 1 transfer done flag */
-#define FLAG_FIFO_DATA_READY (1 << 4) /**< FIFO data ready flag */
-                                      /** @}
-                                       */
 
 /** @} End of config_tinyprobe group */
 

@@ -35,7 +35,7 @@ sl_status_t tp_write_afe(uint8_t *args, uint16_t args_length)
 {
     LOG_D("Executing");
 
-    (void)args_length;
+    UNUSED(args_length);
     sl_status_t status = SL_STATUS_OK;
 
     uint8_t dtgc_reg_flag = GET(args, uint8_t, 0);

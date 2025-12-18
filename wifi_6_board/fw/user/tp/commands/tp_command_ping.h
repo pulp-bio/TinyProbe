@@ -33,4 +33,14 @@
 
 #include "wius_tcp.h"
 
+/**
+ * @brief Ping command
+ *
+ * @param args: Command arguments
+ * @param args_length: Length of command arguments
+ * @param msg: Incoming TCP server message for UDP reply
+ *
+ * @return sl_status_t Status code of the operation
+ *
+ */
 sl_status_t tp_ping(uint8_t *args, uint16_t args_length, wius_tcp_server_message_t *msg);

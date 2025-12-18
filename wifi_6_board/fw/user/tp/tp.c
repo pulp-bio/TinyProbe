@@ -59,7 +59,6 @@ wius_spi_config_t spi_config = {
 
 uint8_t wifi_rx_buffer[TP_WIFI_RX_BUFFER_SIZE] = {0};
 
-extern osEventFlagsId_t event_flags;
 osThreadId_t wifi_transmit_thread_id;
 osThreadAttr_t wifi_tx_thread_attr = {
     .name = "TP wifi transmit",
@@ -85,7 +84,6 @@ tp_buffer_t tp_buf;
 wius_tcp_server_message_t msg;
 
 // Variables for the command functions
-bool enable_udp_replies = false;
 uint16_t n_packs_to_read = 0;
 uint16_t cb_pack_id = 0;
 
@@ -370,8 +368,6 @@ void _tp_thread_wifi_transmit(void *argument)
             continue;
         }
 
-        //        LOG_I("Transmitting UDP packet of length %d to %s:%d", TP_BUFFER_SIZE, client_ip, client_port);
-
         status = wius_tcp_server_respond_udp(&msg, TP_UDP_PORT, slot_udp->data, TP_BUFFER_SIZE);
         if (SL_STATUS_OK != status)
         {
@@ -390,13 +386,9 @@ void _tp_thread_wifi_transmit(void *argument)
     }
 }
 
-volatile uint32_t count_interrupt = 0;
-
 void _tp_int_handler(uint32_t flag)
 {
     UNUSED(flag);
-
-    count_interrupt = DWT->CYCCNT;
 
     osSemaphoreRelease(sem_fpga);
 }

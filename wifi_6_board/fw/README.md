@@ -1,21 +1,5 @@
 # WiUS (Wireless Ultrasound) Firmware - TinyProbe WiFi v2
 
-- [WiUS (Wireless Ultrasound) Firmware - TinyProbe WiFi v2](#wius-wireless-ultrasound-firmware---tinyprobe-wifi-v2)
-  - [Requisites](#requisites)
-  - [Build, Flash and Debug](#build-flash-and-debug)
-    - [Opening the Project](#opening-the-project)
-    - [Building the Project](#building-the-project)
-      - [Environment Variables](#environment-variables)
-        - [`env.h` File](#envh-file)
-        - [`.env` File](#env-file)
-      - [Building Setup](#building-setup)
-      - [Subsequent Builds](#subsequent-builds)
-    - [Flashing the Project](#flashing-the-project)
-    - [Debugging the Project](#debugging-the-project)
-  - [Code Structure](#code-structure)
-  - [Licensing](#licensing)
-
-
 ## Requisites
 
 In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the [Toolchain Getting Started](docs/markdown/toolchain.md) guide.

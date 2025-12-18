@@ -33,7 +33,7 @@ sl_status_t tp_delay_ns(uint8_t *args, uint16_t args_length)
 {
   LOG_D("Executing");
 
-  (void)args_length;
+  UNUSED(args_length);
 
   // FIXME: delay_higher crashes program
   uint32_t delay_lower = GET(args, uint32_t, 0);

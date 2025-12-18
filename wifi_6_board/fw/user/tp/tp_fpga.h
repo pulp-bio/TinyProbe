@@ -31,27 +31,6 @@
 
 #include "common.h"
 
-// Generic commands
-#define SPI_READ_CFG 1
-#define SPI_WRITE_CFG 2
-#define SP_RD_FIFO 16
-#define SPI_WR_FIFO 17
-
-#define SPI_DUMMY_ADDR 0
-
-#define SPI_BURST_MODE_SIZE 1000
-
-// Commands for User logic (System controller)
-#define SYS_CTRL_CMD_DUMMY 0
-#define SYS_CTRL_CMD_START 1
-#define SYS_CTRL_CMD_RESET 2
-#define SYS_CTRL_CMD_RD_EN 3
-#define SYS_CTRL_CMD_ECHO 4
-
-// Commands for Memory Controller
-#define MEM_CTRL_WR_CMD 1
-#define MEM_CTRL_RD_CMD 0
-
 /**
  * @brief FPGA initialization
  *

@@ -35,7 +35,7 @@ sl_status_t tp_write_tx(uint8_t *args, uint16_t args_length)
 {
     LOG_D("Executing");
 
-    (void)args_length;
+    UNUSED(args_length);
     sl_status_t status = SL_STATUS_OK;
 
     uint16_t tx_reg_addr = GET(args, uint16_t, 0);

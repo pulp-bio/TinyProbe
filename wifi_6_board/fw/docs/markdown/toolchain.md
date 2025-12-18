@@ -1,23 +1,5 @@
 # Getting started with the Silicon Labs Toolchain
 
-- [Getting started with the Silicon Labs Toolchain](#getting-started-with-the-silicon-labs-toolchain)
-  - [Installation](#installation)
-    - [Simplicity Studio v6](#simplicity-studio-v6)
-    - [Visual Studio Code](#visual-studio-code)
-    - [Visual Studio Code Extension](#visual-studio-code-extension)
-    - [Linux: udev rules](#linux-udev-rules)
-  - [Setting up an example project](#setting-up-an-example-project)
-  - [Building and flashing the example project](#building-and-flashing-the-example-project)
-    - [Opening the project](#opening-the-project)
-    - [Adjusting the project configuration](#adjusting-the-project-configuration)
-    - [Building the project](#building-the-project)
-    - [Flashing the project](#flashing-the-project)
-  - [Running the example project](#running-the-example-project)
-  - [Adding a component (Using RTT)](#adding-a-component-using-rtt)
-    - [Generating the updated project](#generating-the-updated-project)
-    - [Using RTT in your code](#using-rtt-in-your-code)
-  - [Simplicity Commander](#simplicity-commander)
-
 ## Installation
 
 > Official Instructions can be found [here](https://docs.silabs.com/ssv6ug/latest/install-ssv6/install-simplicity-studio)

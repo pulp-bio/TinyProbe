@@ -35,7 +35,7 @@ sl_status_t tp_ctrl_pwr(uint8_t *args, uint16_t args_length)
 {
     LOG_D("Executing");
 
-    (void)args_length;
+    UNUSED(args_length);
 
     tp_power_domain_t domain = GET(args, tp_power_domain_t, 0);
     uint8_t enabled = GET(args, uint8_t, 1);

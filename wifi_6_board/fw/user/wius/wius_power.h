@@ -30,6 +30,10 @@
 
 #include "common.h"
 
+/**
+ * @brief WiUS power modes enumeration
+ *
+ */
 typedef enum wius_power_mode
 {
     WIUS_POWER_MODE_LOW = 0, /**< Low power */

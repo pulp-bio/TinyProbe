@@ -30,11 +30,10 @@
 
 #include "cmsis_os2.h"
 
-#define BUFFER_HISTORY_ENABLED 0
-#define BUFFER_HISTORY_NUM_ENTRIES 1024
-
-uint32_t buffer_history[BUFFER_HISTORY_NUM_ENTRIES] = {0};
+#if TP_BUFFER_HISTORY
+uint32_t buffer_history[TP_BUFFER_HISTORY_ENTRIES] = {0};
 size_t buffer_history_index = 0;
+#endif
 
 typedef enum buffer_history_event
 {
@@ -46,9 +45,9 @@ typedef enum buffer_history_event
 
 inline static void buffer_history_record(buffer_history_event_t event, uint8_t buffer_index)
 {
-#if BUFFER_HISTORY_ENABLED
+#if TP_BUFFER_HISTORY
     buffer_history[buffer_history_index] = (osKernelGetTickCount() & 0xFFFF) | (event << 24) | (buffer_index << 16);
-    buffer_history_index = (buffer_history_index + 1) % BUFFER_HISTORY_NUM_ENTRIES;
+    buffer_history_index = (buffer_history_index + 1) % TP_BUFFER_HISTORY_ENTRIES;
 #else
     UNUSED(event);
     UNUSED(buffer_index);
@@ -57,14 +56,21 @@ inline static void buffer_history_record(buffer_history_event_t event, uint8_t b
 
 size_t tp_buffer_history_get(uint32_t **history)
 {
+#if TP_BUFFER_HISTORY
     *history = buffer_history;
     return buffer_history_index;
+#else
+    *history = NULL;
+    return 0;
+#endif
 }
 
 void tp_buffer_history_reset(void)
 {
+#if TP_BUFFER_HISTORY
     buffer_history_index = 0;
     memset(buffer_history, 0, sizeof(buffer_history));
+#endif
 }
 
 sl_status_t tp_buffer_init(tp_buffer_t *buf)

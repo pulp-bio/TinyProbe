@@ -1,7 +1,7 @@
 /**
  * @file tp_command_triggershot.h
  *
- * @brief TinyProbe AFE write command header file
+ * @brief TinyProbe Trigger Shot command header file
  *
  * @date 17.12.2025
  * @copyright ETH Zurich. All rights reserved.
@@ -31,4 +31,13 @@
 
 #include "common.h"
 
+/**
+ * @brief Trigger shot command
+ *
+ * @param args: Command arguments
+ * @param args_length: Length of command arguments
+ *
+ * @return sl_status_t Status code of the operation
+ *
+ */
 sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length);

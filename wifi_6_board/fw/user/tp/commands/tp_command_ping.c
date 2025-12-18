@@ -35,7 +35,7 @@ sl_status_t tp_ping(uint8_t *args, uint16_t args_length, wius_tcp_server_message
 {
     LOG_D("Executing");
 
-    (void)args_length;
+    UNUSED(args_length);
 
     sl_status_t status = SL_STATUS_OK;
 

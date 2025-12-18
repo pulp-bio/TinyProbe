@@ -37,7 +37,7 @@
 osMutexId_t log_mutex;
 // int _log_lost = 0;
 
-char buffer[WIUS_LOG_BUFFER_SIZE];
+char buffer[LOG_BUFFER_SIZE];
 
 sl_status_t log_init(void)
 {

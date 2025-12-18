@@ -33,10 +33,18 @@
 
 #include "user/user.h"
 
+/**
+ * @brief Main function
+ *
+ * @return int
+ *
+ */
 int main(void)
 {
   // Initialize Silicon Labs device, system, service(s) and protocol stack(s).
   sl_main_second_stage_init();
 
   user_init();
+
+  return 0;
 }

@@ -38,6 +38,10 @@
 #define WIUS_SPI_INST_0 0 /**< Instance 0 on pins [25, 26, 27, 53] (GSPI Master) */
 #define WIUS_SPI_INST_1 1 /**< Instance 1 on pins [8, 9, 10, 11] (SSI Master) */
 
+/**
+ * @brief SPI chip select modes enumeration
+ *
+ */
 typedef enum wius_spi_cs_mode
 {
     WIUS_SPI_CS_NONE = SL_GSPI_MASTER_UNUSED, /**< No chip select */
@@ -69,19 +73,28 @@ typedef struct wius_spi_inst
     wius_spi_config_t config; /**< Configuration */
     wius_gpio_t cs;           /**< Chip select GPIO (only in SW/HW mode) */
 
-    union instance
+    union instance /**< Peripheral handle */
     {
         sl_gspi_handle_t gspi; /**< Peripheral handle (GPSI) */
         sl_ssi_handle_t ssi;   /**< Peripheral handle (SSI) */
-    } inst;                    /**< Peripheral handle */
+    } inst;
 } wius_spi_inst_t;
 
+/**
+ * @brief Get SPI instance by ID
+ *
+ * @param id: SPI instance ID
+ *
+ * @return Pointer to the SPI instance structure
+ *
+ */
 wius_spi_inst_t wius_spi_get_instance(uint8_t id);
 
 /**
  * @brief Initialize SPI module
  *
- * @param instance: SPI instance to initialize
+ * @param id: SPI instance to initialize
+ * @param config: Pointer to the SPI configuration
  *
  * @retval SL_STATUS_OK: Success
  * @retval SL_STATUS_INVALID_PARAMETER: Invalid instance
@@ -93,7 +106,7 @@ sl_status_t wius_spi_init(uint8_t id, wius_spi_config_t *config);
 /**
  * @brief Transfer data over SPI
  *
- * @param instance: SPI instance to use for transfer
+ * @param id: SPI instance to use for transfer
  * @param tx_buf: Pointer to the buffer containing the data to be sent
  * @param rx_buf: Pointer to the buffer where the received data will be stored
  * @param len: Number of bytes to transfer
@@ -108,7 +121,7 @@ sl_status_t wius_spi_xfer(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t l
 /**
  * @brief Await SPI transfer completion
  *
- * @param instance: SPI instance to await
+ * @param id: SPI instance to await
  *
  * @retval SL_STATUS_OK: Success
  * @retval SL_STATUS_TIMEOUT: Timeout occured (See @ref WIUS_SPI_RX_TIMEOUT)

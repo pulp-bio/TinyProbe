@@ -1,7 +1,7 @@
 /**
  * @file tp_command_triggershot.c
  *
- * @brief TinyProbe AFE write command implementation file
+ * @brief TinyProbe Trigger Shot command implementation file
  *
  * @date 17.12.2025
  * @copyright ETH Zurich. All rights reserved.
@@ -39,12 +39,6 @@
 // #define PUTC_FAST(ch) SEGGER_RTT_PutChar(0, ch);
 #define PUTC_FAST(ch)
 
-volatile uint32_t count_interrupt_received = 0;
-volatile uint32_t count_call_transmit = 0;
-volatile uint32_t count_called_transmit = 0;
-volatile uint32_t count_start_transmit = 0;
-volatile uint32_t count_done = 0;
-
 uint8_t tx_dummy[TP_BUFFER_SIZE] = {0};
 
 sl_status_t _tp_transmit_packages(void);
@@ -53,7 +47,7 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
 {
     LOG_D("Executing");
 
-    (void)args_length;
+    UNUSED(args_length);
     sl_status_t status = SL_STATUS_OK;
 
     uint32_t n_shots = GET(args, uint16_t, 0);
@@ -94,12 +88,8 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
             LOG_E("Error waiting for FIFO data ready flag");
             continue;
         }
-        count_interrupt_received = DWT->CYCCNT;
 #else
         // delay_ms(1);
-        count_interrupt = DWT->CYCCNT;
-
-        count_interrupt_received = DWT->CYCCNT;
 #endif
 
         delay_ns(dcdc_delay_ns);
@@ -130,8 +120,6 @@ sl_status_t tp_trigger_shot(uint8_t *args, uint16_t args_length)
 
         delay_ns(2400);
 
-        count_call_transmit = DWT->CYCCNT;
-
         CHECK_STATUS(_tp_transmit_packages());
 
         CHECK_STATUS(tp_fpga_reset_multififo());
@@ -150,8 +138,6 @@ sl_status_t _tp_transmit_packages(void)
 {
     sl_status_t status = SL_STATUS_OK;
 
-    count_called_transmit = DWT->CYCCNT;
-
     tp_buffer_slot_t *slot_spi = tp_buffer_claim_writing(&tp_buf);
     if (NULL == slot_spi)
     {
@@ -169,8 +155,6 @@ sl_status_t _tp_transmit_packages(void)
     }
 
     PUTC_FAST('f');
-
-    count_start_transmit = DWT->CYCCNT;
 
     uint16_t n_packs_to_read_div = (n_packs_to_read + (TP_UDP_PACKET_AMT - 1)) / TP_UDP_PACKET_AMT;
 
@@ -222,35 +206,6 @@ sl_status_t _tp_transmit_packages(void)
             PUTC_FAST('f');
         }
     }
-
-    count_done = DWT->CYCCNT;
-
-    // count_interrupt_received -= count_interrupt;
-    // count_call_transmit -= count_interrupt;
-    // count_called_transmit -= count_interrupt;
-    // count_start_transmit -= count_interrupt;
-    // count_done -= count_interrupt;
-
-    // LOG_I("Cycle counts:");
-    // LOG_I(" Interrupt to received: %lu", count_interrupt_received);
-    // LOG_I(" Call Transmit Packets: %lu", count_call_transmit);
-    // LOG_I(" Start of Transmit pa.: %lu", count_called_transmit);
-    // LOG_I(" Transmit packets done: %lu", count_done);
-
-    // uint32_t core_clock_mhz = core_clock_hz() / 1e6;
-
-    // count_interrupt_received /= core_clock_mhz;
-    // count_call_transmit /= core_clock_mhz;
-    // count_called_transmit /= core_clock_mhz;
-    // count_start_transmit /= core_clock_mhz;
-    // count_done /= core_clock_mhz;
-
-    // LOG_I("Time [us]:");
-    // LOG_I(" Interrupt to received: %lu", count_interrupt_received);
-    // LOG_I(" Call Transmit Packets: %lu", count_call_transmit);
-    // LOG_I(" Start of Transmit pa.: %lu", count_called_transmit);
-    // LOG_I(" Transmit Packets whi.: %lu", count_start_transmit);
-    // LOG_I(" Transmit packets done: %lu", count_done);
 
     return status;
 }

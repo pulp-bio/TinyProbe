@@ -35,9 +35,11 @@ sl_status_t tp_en_replies(uint8_t *args, uint16_t args_length)
 {
     LOG_D("Executing");
 
-    (void)args_length;
+    UNUSED(args);
+    UNUSED(args_length);
 
-    enable_udp_replies = GET(args, uint8_t, 0) ? true : false;
+    LOG_W("Not implemented yet");
+    // bool enable_udp_replies = GET(args, uint8_t, 0) ? true : false;
 
     LOG_D("Done");
 

@@ -32,13 +32,10 @@
 #include "os_tick.h"
 #include "sl_si91x_clock_manager.h"
 
-osEventFlagsId_t event_flags;
 uint32_t _common_ticks_mult = 0;
 
 void common_init(void)
 {
-    event_flags = osEventFlagsNew(NULL);
-
     common_tick_update();
 
     // Enable DWT for nanosecond delay
@@ -52,7 +49,7 @@ void common_tick_update(void)
     // Get current System Core clock
     uint32_t __attribute__((unused)) pll_freq = sl_si91x_clock_manager_get_pll_freq(SOC_PLL);
 
-    // TODO: Check if this makes sense
+    // TODO: Update this to work over different clock frequencies
     _common_ticks_mult = 1;
     LOG_D("Core Frequency: %lu MHz", (uint32_t)(pll_freq / 1e6));
 }
@@ -68,8 +65,6 @@ void delay_ns(uint64_t ns)
 
     if (cycles < 32)
         return;
-
-    // DWT->CYCCNT = 0;
 
     // Account for function/loop overhead (~20–40 cycles typical). Tune for your build.
     const uint64_t overhead = 32;

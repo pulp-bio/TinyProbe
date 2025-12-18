@@ -33,7 +33,7 @@ sl_status_t tp_sleep_ms(uint8_t *args, uint16_t args_length)
 {
     LOG_D("Executing");
 
-    (void)args_length;
+    UNUSED(args_length);
 
     uint32_t delay = GET(args, uint32_t, 0);
     delay_ms(delay);

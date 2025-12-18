@@ -42,14 +42,18 @@ typedef enum wius_wifi_performance_profile
     WIUS_PERF_PROFILE_LOWPOWER   /**< Low power */
 } wius_wifi_performance_profile_t;
 
+/**
+ * @brief WiFi mDNS service structure
+ *
+ */
 typedef struct wius_wifi_mdns
 {
-    sl_mdns_t handle;
-    char *protocol;
-    char *host_name;
-    char *service_name;
-    char *service_message;
-    uint16_t port;
+    sl_mdns_t handle;      /**< mDNS handle */
+    char *protocol;        /**< Protocol string ("udp" or "tcp") */
+    char *host_name;       /**< Host name string (without .local) */
+    char *service_name;    /**< Service name string */
+    char *service_message; /**< Service message string */
+    uint16_t port;         /**< Service port number */
 } wius_wifi_mdns_t;
 
 /**
@@ -70,7 +74,27 @@ sl_status_t wius_wifi_init(void);
  */
 sl_status_t wius_wifi_deinit(void);
 
+/**
+ * @brief Initialize an mDNS service structure
+ *
+ * @param mdns: Pointer to the mDNS service structure
+ *
+ * @retval SL_STATUS_OK: Success
+ * @retval SL_STATUS_INVALID_PARAMETER: Invalid parameter (null pointer or invalid host name)
+ * @retval other: mDNS or interface initialization failed
+ *
+ */
 sl_status_t wius_wifi_mdns_init(wius_wifi_mdns_t *mdns);
+
+/**
+ * @brief Add an mDNS service
+ *
+ * @param mdns: Pointer to the mDNS service structure
+ *
+ * @retval SL_STATUS_OK: Success
+ * @retval other: mDNS service addition failed
+ *
+ */
 sl_status_t wius_wifi_mdns_add(wius_wifi_mdns_t *mdns);
 
 /**
