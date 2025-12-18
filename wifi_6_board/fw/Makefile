@@ -3,7 +3,7 @@ CMAKE_DIR := cmake_gcc
 
 PYTHON ?= python
 # Path to Simplicity Commander executable (adjust as needed)
-COMMANDER ?= "C:/Users/cedr0/.silabs/slt/installs/archive/Simplicity Commander/commander.exe"
+COMMANDER ?= commander
 
 # Build the firmware with CMake/Ninja
 build: $(CMAKE_DIR)/build
@@ -41,10 +41,10 @@ user/env.h: .env
 
 # Clean build artifacts
 clean:
-	rm -rf $(CMAKE_DIR)/build user/env.h
+	rm -rf $(CMAKE_DIR)/build user/env.h $(CMAKE_DIR)/.migrated
 
 # Build the docs using Doxygen
 docs:
 	cd docs && doxygen -q
 
-.PHONY: build configure flash attach attach_reset clean docs $(CMAKE_DIR)/.migrated
+.PHONY: build configure flash attach attach_reset clean docs
