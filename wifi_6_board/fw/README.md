@@ -4,11 +4,29 @@
 
 In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the [Toolchain Getting Started][toolchain_getting_started] guide.
 
+Additionally, make sure you have the following tools installed on your system:
+- Python 3.7 or higher (We suggest using [uv](https://docs.astral.sh/uv/))
+- Make (We will use the Makefile to build and flash the project)
+
 ## Build and Flash Instructions
 
-Please follow the instructions in the [Toolchain Getting Started][toolchain_getting_started] guide for detailed steps on building and flashing the firmware.
+In order to build and flash the firmware, we will simply use the provided Makefile. This way, we circumvent the need to use Simplicity Studio directly, which does not work well on some systems.
+
+Thus, open this directory in a terminal and run:
+
+```bash
+make
+```
 
 ### Environment Variables
+
+You will see the following error:
+
+```bash
+make: *** No rule to make target '.env', needed by 'user/env.h'.  Stop.
+```
+
+This project includes some sensitive information that is included at build time and that should not be committed to version control. To proceed, you need to provide this information in a safe(ish) way.
 
 The project expects Wi-Fi credentials:
 
@@ -17,7 +35,8 @@ The project expects Wi-Fi credentials:
 
 Provide them in one of two ways:
 
-- `env.h` in the repo root:
+- `env.h` in the user directory:
+  
   ```c
   #ifndef ENV_H
   #define ENV_H
@@ -26,18 +45,46 @@ Provide them in one of two ways:
   #define WIUS_WIFI_PASS "<your_wifi_password>"
 
   #endif /* ENV_H */
+
   ```
 
-- `.env` file in the repo root:
+- `.env` file in this directory:
+  
   ```bash
   WIUS_WIFI_SSID=<your_wifi_ssid>
   WIUS_WIFI_PASS=<your_wifi_password>
   ```
-  Then generate env.h via:
-  ```powershell
-  python scripts/fetch_env.py .env env.h
-  ```
-  or `make user/env.h`.
+
+  Which will be used to generate `user/env.h` at build time.
+
+### Building
+
+Now, run again:
+
+```bash
+make
+```
+
+This should build the project without errors. The resulting firmware binary will be located at `cmake_gcc/build/base/fw_v6.hex`.
+
+### Flashing
+
+To flash the firmware to the device, connect it via USB and run:
+
+```bash
+make flash
+```
+
+**Note:** On Linux, you need to install the udev rules for the board to be recognized. Please refer to the [Toolchain Getting Started][toolchain_getting_started] guide for more information.
+
+### Monitoring
+
+To monitor the logging output of the device, we need to attach via RTT. This is also included in the Makefile two ways:
+
+```make
+make attach       # Attach without resetting the device
+make attach_reset # Attach with a device reset
+```
 
 ## Code Structure
 

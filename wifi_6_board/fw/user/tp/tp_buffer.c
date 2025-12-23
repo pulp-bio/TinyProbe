@@ -102,7 +102,10 @@ sl_status_t tp_buffer_init(tp_buffer_t *buf)
         buf->slots[i].id = i;
     }
 
+#if TP_BUFFER_HISTORY
     memset(buffer_history, 0, sizeof(buffer_history));
+    buffer_history_index = 0;
+#endif
 
     return SL_STATUS_OK;
 }
