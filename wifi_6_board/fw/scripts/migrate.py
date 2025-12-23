@@ -47,7 +47,9 @@ if local_json_path.exists():
         any(install.get("id") == req for install in local_config)
         for req in REQUIRED_INSTALLS
     ):
-        print("Warning: Not all required installs are present in local.json")
+        print("ERROR: Not all required installs are present in local.json")
+        print("      Did you install the correct toolchain? Check the docs.")
+        exit(1)
     else:
         print("All required installs are present in local.json")
         REQUIRED_INSTALL_PATHS = {
@@ -133,4 +135,6 @@ if local_json_path.exists():
                 print(f"  No changes needed for {cmake_file.as_posix()}")
 
 else:
-    print(f"local.json does not exist in {SLT_DIR.as_posix()}")
+    print(f"ERROR: local.json does not exist in {SLT_DIR.as_posix()}")
+    print("       Did you install the correct toolchain? Check the docs.")
+    exit(1)

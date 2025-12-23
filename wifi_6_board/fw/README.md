@@ -2,11 +2,11 @@
 
 ## Requisites
 
-In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the <a href="docs/toolchain.md">Toolchain Getting Started</a> guide.
+In order to use this firmware, you need to install Simplicity Studio. To get an introduction, check the [Toolchain Getting Started][toolchain_getting_started] guide.
 
 ## Build and Flash Instructions
 
-Please follow the instructions in the <a href="docs/toolchain.md">Toolchain Getting Started</a> guide for detailed steps on building and flashing the firmware.
+Please follow the instructions in the [Toolchain Getting Started][toolchain_getting_started] guide for detailed steps on building and flashing the firmware.
 
 ### Environment Variables
 
@@ -57,7 +57,9 @@ The code is structured to be modular and easy to understand. All of the code whi
   - common.h / common.c: Common code that is used by both WiUS and TinyProbe
   - config.h: Constants and configuration code
 
-For detailed architecture documentation, see the generated Doxygen documentation.
+Any scripts used for development are located in the `scripts` directory. Refer to the [scripts overview][scripts_overview] for more information.
+
+For detailed architecture documentation, see the generated Doxygen documentation (_Firmware Structure_).
 
 ## Licensing
 
@@ -67,3 +69,6 @@ This project in particular also uses code from the [FreeRTOS](https://github.com
 
 
 The code developed at [Integrated Systems Laboratory (IIS)](https://iis.ee.ethz.ch/) (ETH Zurich) is licensed under the Apache License 2.0.
+
+[toolchain_getting_started]: docs/toolchain.md
+[scripts_overview]: scripts/overview.md

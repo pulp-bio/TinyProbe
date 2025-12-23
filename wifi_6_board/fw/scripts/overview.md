@@ -1,6 +1,3 @@
-@page scripts_readme Scripts
-@brief Python scripts for interacting with the WiUS v6 firmware
-
 # WiUS v6 firmware scripts
 
 This repository contains scripts for interacting with the WiUS v6 firmware on Tinyprobe WiFi 6 boards. It includes tools for configuring the device, acquiring data, and processing responses.
