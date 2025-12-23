@@ -10,6 +10,8 @@ Additionally, make sure you have the following tools installed on your system:
 
 ## Build and Flash Instructions
 
+**Note:** These instructions assume you have made your way through the [Toolchain Getting Started][toolchain_getting_started] guide and have set up the example project as described there.
+
 In order to build and flash the firmware, we will simply use the provided Makefile. This way, we circumvent the need to use Simplicity Studio directly, which does not work well on some systems.
 
 Thus, open this directory in a terminal and run:

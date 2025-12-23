@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/cmake_gcc",
+    "cmake.configureArgs": [
+        "--preset=project"
+    ]
+}
