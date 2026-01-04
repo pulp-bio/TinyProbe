@@ -27,17 +27,19 @@ I suggest the latter, as it avoids potential issues with environment activation.
 
 ## Usage
 
-### Environment header generation: [`fetch_env.py`](fetch_env.py)
+### C header generation: [`to_header.py`](to_header.py)
 
-This script generates a C header file from a .env file, generally used for embedding environment variables like WiFi credentials into firmware code. Used in the main firmware build process.
+This script generates a C header file from a configuration file, generally used for embedding environment variables like WiFi credentials into firmware code. Used in the main firmware build process.
+
+The configuration file is a simple text file with `KEY=VALUE` pairs, one per line. Lines starting with `#` are treated as comments and ignored.
 
 ```bash
-fetch_env.py [-h] env_file header_file
+python to_header.py [-h] conf_file header_file
 ```
 
 Positional arguments:
 
-- **env_file**:    Path to the .env file
+- **conf_file**:   Path to the configuration file
 - **header_file**: Path to the output C header file
 
 Options:

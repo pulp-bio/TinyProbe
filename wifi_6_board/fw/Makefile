@@ -45,7 +45,7 @@ attach_reset:
 
 # Generate user/env.h from .env
 user/env.h: .env
-	$(PYTHON) scripts/fetch_env.py $< $@
+	$(PYTHON) scripts/to_header.py $< $@
 
 # Clean build artifacts
 clean:
