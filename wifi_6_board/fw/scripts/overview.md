@@ -33,6 +33,8 @@ This script generates a C header file from a configuration file, generally used 
 
 The configuration file is a simple text file with `KEY=VALUE` pairs, one per line. Lines starting with `#` are treated as comments and ignored.
 
+This script is automatically run via the Makefile when building the firmware. It converts a `.env` file into a C header file `user/env.h` to include sensitive information like WiFi credentials in the build process.
+
 ```bash
 python to_header.py [-h] conf_file header_file
 ```
@@ -45,6 +47,24 @@ Positional arguments:
 Options:
 
 - **-h, --help**: show help message
+
+### Project Migration: [`migrate.py`](migrate.py)
+
+This script migrates the Silicon Labs project from one user to another by updating the relevant CMake configuration files. This is done such that the project does not have to run through Simplicity Studio, which does not work correctly right now.
+
+This script is automatically run via the Makefile when building the firmware. To check if a migration is needed, a `.migrated` file is created in the CMake project directory on successful migration. The relevant installation info is fetched from a common configuration file at `~/.silabs/slt/local.json`, which is created and populated upon installation of the relevant SDKs via Simplicity Studio.
+
+```bash
+python migrate.py
+```
+
+Positional arguments:
+
+- **None**
+
+Options:
+
+- **None**
 
 ### Keysight dlog parser: [`dlog.py`](dlog.py)
 
