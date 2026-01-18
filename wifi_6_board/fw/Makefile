@@ -27,8 +27,8 @@ $(CMAKE_DIR)/build: user/env.h $(CMAKE_DIR)/.migrated
 # Run migration script to update CMake files
 $(CMAKE_DIR)/.migrated: scripts/migrate.py
 	$(PYTHON) scripts/migrate.py
-	touch $@
-	echo "Migration completed on $(shell date)" >> $@
+	cmake -E touch $@
+	cmake -E echo "Migration completed" >> $@
 
 # Flash the firmware to the device
 flash: build
