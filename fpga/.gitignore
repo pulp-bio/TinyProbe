@@ -30,7 +30,8 @@ modelsim.ini
 results.xml
 **__pycache__/
 **sim_build/
-**work/
+**work/*
+!project/component/work/  # Negate the exclusion for this specific folder
 *.mti
 *.vstf
 modelsim.ini

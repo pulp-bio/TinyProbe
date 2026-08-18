@@ -1,3 +1,4 @@
+# Author: Soumyo Bhattacharjee
 # AFE LVDS clocks (for 33.3(3) MHz AFE sampling rate)
 #create_clock -name {afe_bit_clk} -period 3 -waveform {0 1.5 } [ get_ports { afe_bit_clk_i } ]
 #create_clock -name {afe_frame_clk} -period 30 -waveform {2.25 17.25 } [ get_ports { afe_bit_clk_i } ]
@@ -18,12 +19,12 @@ set_input_delay 0.65 -min -clock_fall -add_delay  -clock { afe_bit_clk } [ get_p
 set_input_delay 0.65 -max -clock_fall -add_delay  -clock { afe_bit_clk } [ get_ports { afe_data_i[*] } ]
 
 # SPI clock constraints (for 50 MHz AFE sampling rate)
-create_clock -name {spi_clk_i} -period 20 [ get_ports { spi_clk_i } ]
-# MISO constraints
+create_clock -name {spi_clk_i} -period 100 [ get_ports { spi_clk_i } ]
+# Dual-SPI data output constraints
 # Setup (max = + tSU)
-set_output_delay -max 4 -clock {spi_clk_i} [get_ports {spi_miso_o}]
+set_output_delay -max 4 -clock {spi_clk_i} [get_ports {spi_io0_io spi_io1_io}]
 # Hold  (min = - tH)
-set_output_delay -min -7.5 -clock {spi_clk_i} [get_ports {spi_miso_o}]
+set_output_delay -min -7.5 -clock {spi_clk_i} [get_ports {spi_io0_io spi_io1_io}]
 
 # PLL clocks
 create_clock -ignore_errors -name {crystal_clk_i} -period 62.5 [ get_pins { ext_osc/EXT_OSC_0/I_XTLOSC/CLKOUT } ]
@@ -46,6 +47,3 @@ set_output_delay  3 -max  -clock { afe_clk_out } [ get_ports { tgc_slope_o  tgc_
 set_output_delay -1.57 -min  -clock { tx_bf_clk_out } [ get_ports { tx_bf_sync_o } ]
 set_output_delay  1.27 -max  -clock { tx_bf_clk_out } [ get_ports { tx_bf_sync_o } ]
 
-# Set false path for configuration registers
-#set_false_path -through [ get_pins -regexp { spi_slave/config_regs/genblk\d\[\d\].config_reg_inst/register\[\d\]/Q } ]
-set_false_path -through [ get_pins { spi_slave/config_regs/genblk*[*].config_reg_inst/data_q[*]/Q } ]

@@ -18,30 +18,4 @@ module ibuf_diff (
         .Y        (d_o)
     );
 
-    // logic pad_n_int;
-    // logic iout_int;
-    // logic buf_i;
-
-    // IOPADN_IN padn_in (
-    //     .PAD_P      (pad_ni),
-    //     .N2POUT_P   (pad_n_int)
-    // );
-
-    // IOPADP_IN padp_in (
-    //     .PAD_P      (pad_i),
-    //     .N2PIN_P    (pad_n_int),
-    //     .IOUT_P     (iout_int)
-    // );
-
-    // IOINFF_BYPASS ioinff_bypass (
-    //     .A    (iout_int),
-    //     .Y    (buf_i)
-    // );
-
-    // IOIN_IB input_buf (
-    //     .YIN    (buf_i),
-    //     .E      (en_i),
-    //     .Y      (d_o)
-    // );
-
 endmodule

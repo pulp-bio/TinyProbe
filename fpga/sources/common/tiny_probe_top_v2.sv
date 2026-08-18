@@ -1,4 +1,5 @@
-// Top module of Tinyprobe compact design
+// Author: Soumyo Bhattacharjee
+  // Top module of Tinyprobe compact design
 
 module tiny_probe_top#(
     parameter N_LVDS_LANES          = 16,
@@ -16,8 +17,8 @@ module tiny_probe_top#(
     input logic crystal_clk_i,
 
     // SPI Input Master Interface (FPGA is a Slave) //
-    input  logic spi_mosi_i,
-    output logic spi_miso_o,
+    inout  wire  spi_io0_io,
+    inout  wire  spi_io1_io,
     input  logic spi_clk_i,
     input  logic spi_ss_ni,
 
@@ -133,7 +134,9 @@ module tiny_probe_top#(
     );
 
     ///////////////////////////////// SPI in/out buffers /////////////////////////////////
-    logic spi_mosi, spi_miso, spi_clk, spi_ss_n;
+    logic spi_io0_i, spi_io1_i, spi_io0_o, spi_io1_o;
+    logic [1:0] spi_pad_oe;
+    logic spi_clk, spi_ss_n;
     logic spi_clk_temp;
 
     INBUF spi_clk_ibuf (
@@ -146,19 +149,22 @@ module tiny_probe_top#(
         .Y     (spi_clk)
     );
 
-    INBUF spi_mosi_ibuf (
-        .PAD   (spi_mosi_i),
-        .Y     (spi_mosi)
+    BIBUF spi_io0_iobuf (
+        .PAD   (spi_io0_io),
+        .Y     (spi_io0_i),
+        .D     (spi_io0_o),
+        .E     (spi_pad_oe[0])
+    );
+    BIBUF spi_io1_iobuf (
+        .PAD   (spi_io1_io),
+        .Y     (spi_io1_i),
+        .D     (spi_io1_o),
+        .E     (spi_pad_oe[1])
     );
 
     INBUF spi_ss_ibuf (
         .PAD   (spi_ss_ni),
         .Y     (spi_ss_n)
-    );
-
-    OUTBUF spi_miso_obuf (
-        .D     (spi_miso),
-        .PAD   (spi_miso_o)
     );
 
     // PLL Clock generator
@@ -223,6 +229,7 @@ module tiny_probe_top#(
         // Outputs
         .XTLOSC_CCC (osc_xtal)
     );
+
 
     Clock_gen pll_clk_gen (
         // Inputs
@@ -302,6 +309,7 @@ module tiny_probe_top#(
 
     waveform_generator waveform_gen (
         .clk_i                (core_clk),
+
         .rst_ni               (rst_n),
 
         // General signals
@@ -402,41 +410,154 @@ module tiny_probe_top#(
 
     // FIFO write enable 
     logic [N_LVDS_LANES - 1: 0] fifos_wr_en;
+    // Stage-3A uses the real frame-clock write port of rx_fifo_v3 but
+    // replaces the waveform/AFE producer with a deterministic local source.
+    // It is selected exclusively by config-register 13 bit 28.
+    logic stage3_smoke_enable;
+    logic stage3_fifo_reset, stage3_start_capture;
+    logic stage3_req_seen, stage3_done;
+    logic [2:0] stage3_state;
+    logic [7:0] stage3_frame_gray;
+    logic stage3_enable_meta, stage3_enable_sync;
+    logic [READ_CNT_WIDTH - 1:0] stage3_wr_count_dbg, stage3_wr_count_gray;
+    logic stage3_start_asserted_dbg;
+    logic [N_LVDS_LANES * N_BITS_PER_FRAME - 1:0] stage3_fifo_data;
+    logic [N_LVDS_LANES - 1:0] stage3_fifo_wr_en;
+    logic [N_LVDS_LANES - 1:0] fifo_reset_i;
+    logic fifo_state_rst_ni, fifo_start_capture_i;
+    // Stream-path smoke-test source.  When config register 13 bit 31 is set,
+    // lane 0 receives a deterministic 20-bit sample on the *real* AFE frame
+    // clock/write-enable path.  This deliberately bypasses only afe_rx; the
+    // rx_fifo_v3, multi_fifo_reader, QSPI_STREAM_FIFO and 0x6B path remain
+    // exactly the production path.  All other lanes are held inactive.
+    logic stream_test_enable;
+    logic [N_LVDS_LANES * N_BITS_PER_FRAME - 1:0] fifo_data_i;
+    logic [N_LVDS_LANES - 1:0]                    fifo_wr_en_i;
+
+    always_comb begin
+        fifo_data_i  = data_fifo_write;
+        fifo_wr_en_i = fifos_wr_en;
+        if (stream_test_enable) begin
+            fifo_data_i  = '0;
+            fifo_data_i[0 +: N_BITS_PER_FRAME] = 20'hA5_3C9;
+            fifo_wr_en_i = '0;
+            fifo_wr_en_i[0] = fifos_wr_en[0];
+        end
+        if (stage3_smoke_enable) begin
+            fifo_data_i  = stage3_fifo_data;
+            fifo_wr_en_i = stage3_fifo_wr_en;
+        end
+    end
+
+    always_comb begin
+        fifo_reset_i        = fifos_rst_spi;
+        fifo_state_rst_ni   = !fifo_rst_wave_gen;
+        fifo_start_capture_i = fifo_start_capt_wave_gen;
+        if (stage3_smoke_enable) begin
+            fifo_reset_i         = {N_LVDS_LANES{stage3_fifo_reset}};
+            fifo_state_rst_ni    = !stage3_fifo_reset;
+            fifo_start_capture_i = stage3_start_capture;
+        end
+    end
 
     rx_fifo_v3  #(
         .N_FIFOS          (N_LVDS_LANES),
         .DATA_WIDTH       (N_BITS_PER_FRAME),
         .WRITE_CNT_WIDTH  (READ_CNT_WIDTH)
     ) rf_data_fifo (
-        .rst_state_ni     (!fifo_rst_wave_gen), // Resets the state of the rx_ifo_v3 module in between the shots
-        .rst_fifos_i      (fifos_rst_spi), // Resets all the internal FIFOs (their write/read pointers)
+        .rst_state_ni     (fifo_state_rst_ni), // Resets the rx_fifo_v3 capture state between shots
+        .rst_fifos_i      (fifo_reset_i), // Resets all internal FIFO write/read pointers
 
         .write_cnt_i      (fifos_read_cnt), // Write the same number of samples which we will read
         .wr_fifo_done_o   (wr_fifo_done),
 
         .wr_clk_i         (afe_frame_clock),
-        .wr_en_i          (fifos_wr_en),
-        .data_i           (data_fifo_write),
+        .wr_en_i          (fifo_wr_en_i),
+        .data_i           (fifo_data_i),
         .full_o           (),
 
-        .rd_clk_i         (core_clk),
+        // Keep this read port in the QSPI transport's 60 MHz domain.
+        .rd_clk_i         (afe_clk),
         .rd_en_i          (fifos_read_req),
         .data_o           (fifos_data_read),
         .empty_o          (fifos_empty),
 
-        .start_capture_i  (fifo_start_capt_wave_gen)
+        .start_capture_i  (fifo_start_capture_i),
+        .start_asserted_dbg_o(stage3_start_asserted_dbg),
+        .wr_count_dbg_o   (stage3_wr_count_dbg)
     );
 
     ///////////////////////////////// SPI slave /////////////////////////////////
     logic [ 2**CFG_REG_MEM_ADDR_SIZE - 1:0] [CFG_REG_WIDTH - 1:0] config_regs;
+    // Runtime-only stream smoke-test controls default low after reset.  The
+    // Stage-3 mode is supplied as an explicit scalar by the QSPI transport,
+    // rather than being reconstructed from this packed register-array port.
+    assign stream_test_enable = config_regs[13][31];
 
-    logic spi_ss_int_n, spi_mosi_int, spi_miso_int, spi_clk_int;
+    tp_stage3_capture_smoke #(
+        .N_LANES      (N_LVDS_LANES),
+        .SAMPLE_WIDTH (N_BITS_PER_FRAME)
+    ) i_stage3_capture_smoke (
+        .frame_clk_i      (afe_frame_clock),
+        .rst_ni           (rst_n),
+        .enable_i         (stage3_smoke_enable),
+        .wr_done_i        (wr_fifo_done),
+        .fifo_reset_o     (stage3_fifo_reset),
+        .start_capture_o  (stage3_start_capture),
+        .fifo_data_o      (stage3_fifo_data),
+        .fifo_wr_en_o     (stage3_fifo_wr_en),
+        .req_seen_o       (stage3_req_seen),
+        .done_o           (stage3_done),
+        .state_o          (stage3_state),
+        .frame_gray_o     (stage3_frame_gray),
+        .enable_meta_o    (stage3_enable_meta),
+        .enable_sync_o    (stage3_enable_sync)
+    );
+
+    assign stage3_wr_count_gray = stage3_wr_count_dbg ^ (stage3_wr_count_dbg >> 1);
+
+    logic spi_ss_int_n, spi_io0_int, spi_io1_int, spi_io0_qspi, spi_io1_qspi, spi_clk_int;
+    logic [1:0] spi_pad_oe_qspi;
     logic [N_LVDS_LANES - 1:0] fifos_en;
     // Indicates how much input samples to acquire from every activ FIFO
     logic [READ_CNT_WIDTH - 1:0] fifos_read_cnt;
 
     logic start_capture_spi;
 
+    tinyprobe_qspi_transport #(
+        .N_FIFOS             (N_LVDS_LANES),
+        .IN_DATA_WIDTH       (N_BITS_PER_FRAME),
+        .READ_CNT_WIDTH      (READ_CNT_WIDTH)
+    ) qspi_transport (
+        .spi_sclk_i          (spi_clk_int),
+        .spi_cs_ni           (spi_ss_int_n),
+        .spi_io0_i           (spi_io0_int),
+        .spi_io1_i           (spi_io1_int),
+        .spi_io0_o           (spi_io0_qspi),
+        .spi_io1_o           (spi_io1_qspi),
+        .spi_pad_oe_o        (spi_pad_oe_qspi),
+        // GL1 / afe_clk is forced to 60 MHz below during QSPI bring-up.
+        .core_clk_i          (afe_clk),
+        .rst_ni              (rst_n),
+        .fifos_empty_i       (fifos_empty),
+        .fifos_data_i        (fifos_data_read),
+        .fifos_read_req_o    (fifos_read_req),
+        .fifos_en_i          (fifos_en),
+        .read_cnt_i          (fifos_read_cnt),
+        .stage3_frame_gray_i (stage3_frame_gray),
+        .stage3_enable_meta_i(stage3_enable_meta),
+        .stage3_enable_sync_i(stage3_enable_sync),
+        .stage3_wr_count_gray_i(stage3_wr_count_gray),
+        .stage3_req_seen_i   (stage3_req_seen),
+        .stage3_start_asserted_i(stage3_start_asserted_dbg),
+        .stage3_wr_done_i    (stage3_done),
+        .stage3_lane0_nonempty_i(!fifos_empty[0]),
+        .stage3_state_i      (stage3_state),
+        .fifo_reader_busy_o  (fifo_reader_busy),
+        .capture_start_o     (start_capture_spi),
+        .stage3_enable_o     (stage3_smoke_enable),
+        .config_regs_o       (config_regs)
+    );
 
     ///////////////////////////////// Configuration registers (connections) /////////////////////////////////
 
@@ -468,11 +589,15 @@ module tiny_probe_top#(
     // REG 1
     // PLL NGMUX controls for different clock domains
     assign pll_tx_clk_mux_ctrl   = config_regs[PLL_CONFIG_REG][0];
-    assign pll_afe_clk_mux_ctrl  = config_regs[PLL_CONFIG_REG][1];
+    // GL1 is the existing 20/60 MHz PLL output.  Select its 60 MHz input so
+    // the QSPI transport/register-bank test domain has a deterministic clock.
+    assign pll_afe_clk_mux_ctrl  = 1'b1;
     assign pll_core_clk_mux_ctrl = config_regs[PLL_CONFIG_REG][2];
 
     assign pll_tx_bf_clk_en      = config_regs[PLL_CONFIG_REG][3] ? tx_clk_buf_en_wave_gen : config_regs[PLL_CONFIG_REG][4];
-    assign pll_afe_clk_en        = config_regs[PLL_CONFIG_REG][5] ? afe_clk_buf_en_wave_gen : config_regs[PLL_CONFIG_REG][6];
+    // GL1 is now the QSPI transport core clock as well as the AFE clock;
+    // keep its global buffer enabled independently of reset register values.
+    assign pll_afe_clk_en        = 1'b1;
 
     assign pll_arst_pwd_mux_ctrl = config_regs[PLL_CONFIG_REG][7];
 
@@ -662,8 +787,8 @@ module tiny_probe_top#(
     spi_demux spi_demux_inst (
     // SPI Master input signals
         .spi_clk_i          (spi_clk),
-        .spi_mosi_i         (spi_mosi),
-        .spi_miso_o         (spi_miso),
+        .spi_io0_i          (spi_io0_i),
+        .spi_io1_i          (spi_io1_i),
         .spi_cs_i           (spi_ss_demux_n),
 
     // Control inputs for mux/demux
@@ -673,9 +798,15 @@ module tiny_probe_top#(
     // SPI internal signals
     // (For internal FPGA SPI module)
         .spi_clk_int_o      (spi_clk_int),
-        .spi_mosi_int_o     (spi_mosi_int),
-        .spi_miso_int_i     (spi_miso_int),
+        .spi_io0_int_o      (spi_io0_int),
+        .spi_io1_int_o      (spi_io1_int),
+        .spi_io0_int_i      (spi_io0_qspi),
+        .spi_io1_int_i      (spi_io1_qspi),
+        .spi_pad_oe_int_i   (spi_pad_oe_qspi),
         .spi_cs_int_no      (spi_ss_int_n),
+        .spi_io0_o          (spi_io0_o),
+        .spi_io1_o          (spi_io1_o),
+        .spi_pad_oe_o       (spi_pad_oe),
 
     // SPI external signals
         .spi_clk_ext_o      (spi_clk_ext_o),
