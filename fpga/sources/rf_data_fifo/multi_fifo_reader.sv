@@ -22,253 +22,116 @@ module multi_fifo_reader #(
     // Ready/Valid output interface
     output logic [OUT_DATA_WIDTH - 1:0]                  data_o,
     output logic                                         valid_o,
-    input  logic                                         ready_i
+    input  logic                                         ready_i,
+
+    output logic                                         debug_word_load_o,
+    output logic [IN_DATA_WIDTH-1:0]                     debug_word_data_o
 );
 
-    ///////////////////////////////// Input start trigger  /////////////////////////////////
+    // Each enabled lane produces exactly 1000 output bytes. EMPTY ends a
+    // lane immediately: retain any partial byte, then pad with zero bytes.
+    // Reaching the byte limit stops reads, leaving surplus FIFO words unread.
+    // The normal acquisition reset owns clearing those surplus words.
+    localparam integer FRAME_BYTES = 1000;
+    localparam integer RESERVOIR_WIDTH = IN_DATA_WIDTH + OUT_DATA_WIDTH;
+    localparam integer LANE_WIDTH = (N_FIFOS > 1) ? $clog2(N_FIFOS) : 1;
+    typedef enum logic [2:0] {IDLE, SELECT_LANE, EMIT, READ_RETURN,
+                              PAD, NEXT_LANE} state_t;
+    state_t state_q;
     logic start_q;
+    logic [LANE_WIDTH:0] lane_q;
+    logic [READ_CNT_WIDTH-1:0] word_count_q;
+    logic [9:0] byte_count_q;
+    logic [RESERVOIR_WIDTH-1:0] reservoir_q;
+    integer bits_q;
+    wire [IN_DATA_WIDTH-1:0] lane_data =
+        fifos_data_i[lane_q*IN_DATA_WIDTH +: IN_DATA_WIDTH];
 
-    // Internal enable signal
-    logic en, en_clr;
-
-    // State transition logic
-    always_ff  @(posedge clk_i, negedge rst_ni)begin
-        if (~rst_ni) begin
-            en <= '0;
-            start_q <= start_i;
-        end
-        else begin
-            if (en_clr)
-                en <= '0;
-            // Edge detector
-            else if(~start_q & start_i)
-                en <= 1'b1;
-            start_q <= start_i;
-        end
-    end
-
-    ///////////////////////////////// FSM /////////////////////////////////
-    // FSM states type definition. This FSM is responsible for start, maintaining and finishing the transfer.
-    typedef enum {IDLE, WAIT_TILL_BUSY, WAIT_READ, FINISHED} state_e;
-
-    // State vasriable
-    state_e state_q, state_d;
-
-    // Counter variables
-    localparam CNT_WIDTH = $clog2(N_FIFOS);
-    // Create a counter (counts the states actually)
-    logic [(CNT_WIDTH + 1) - 1: 0] cnt_d, cnt_q;
-    logic [CNT_WIDTH - 1: 0] mux_ctrl;
-    logic cnt_enable;
-
-    // A variable indication the next and current active FIFO
-    logic switch_fifo;
-
-    // A signal to start the submodule
-    logic start_submod_d, start_submod_q;
-    logic submod_busy;
-
-    logic active_fifo_found;
-    assign active_fifo_found = |((1 << cnt_q) & fifos_en_i);
-
-    // Next state logic
     always_comb begin
-
-        busy_o = 1;
-
-        en_clr = 0;
-        
-        state_d = state_q;
-
-        start_submod_d = 0;
-
-        switch_fifo = 0;
-        cnt_enable = 0;
-
-        unique case (state_q)
-            // default state after the reset
-            IDLE: begin
-                // Start by finding the first non-zero active FIFO ID
-                cnt_enable = 1;
-
-                // Check if start condition is met
-                if(en) begin
-                    // If the next FIFO is found
-                    if (active_fifo_found) begin
-                        state_d = WAIT_TILL_BUSY;
-                        // Multiplex the FIFO signals to the new one
-                        switch_fifo = 1;
-                        // Start the submodule
-                        start_submod_d = 1;
-                        // Keep the counter running to find the next active FIFO
-                        cnt_enable = 1;
-                    end 
-
-                end else begin
-
-                    // Disable the counter
-                    cnt_enable = 0;
-
-                    // The module is not yet busy
-                    busy_o = 0;
-
-                end
+        busy_o = (state_q != IDLE);
+        fifos_read_req_o = '0;
+        fifos_rst_o = '0;
+        valid_o = 1'b0;
+        data_o = '0;
+        debug_word_load_o = (state_q == READ_RETURN);
+        debug_word_data_o = lane_data;
+        if (state_q == EMIT) begin
+            if (bits_q >= OUT_DATA_WIDTH) begin
+                valid_o = 1'b1;
+                data_o = reservoir_q >> (bits_q - OUT_DATA_WIDTH);
+            end else if ((word_count_q < read_cnt_i) && !fifos_empty_i[lane_q]) begin
+                fifos_read_req_o[lane_q] = 1'b1;
             end
-
-            WAIT_TILL_BUSY: begin
-                // Wait until submodule has started
-                if (submod_busy) begin
-                    state_d = WAIT_READ;
-                end
-            end
-
-            WAIT_READ: begin
-
-                // If fifo reshaper is not busy anymore
-                // (finished its job)
-                if (!submod_busy) begin
-
-                    // Check if the counter saturated
-                    if (cnt_q == N_FIFOS) begin
-                        // No more active FIFOs found
-                        // Finish
-                        state_d = FINISHED;
-                        en_clr = 1;
-
-                    end else begin
-
-                        // Enable counter
-                        cnt_enable = 1;
-
-                        // If the next FIFO is found
-                        if(active_fifo_found) begin
-
-                            state_d = WAIT_TILL_BUSY;
-                            // Multiplex the FIFO signals to the new one
-                            switch_fifo = 1;
-                            // Start the submodule
-                            start_submod_d = 1;
-
-                            // Keep the counter running to find the next active FIFO
-                            cnt_enable = 1;
-                        end 
-                    end              
-                end else
-
-                // If the next active FIFO is found
-                // keep its state in the counter (disable the counter) but do not yet switch fifo
-                if (active_fifo_found) begin
-                    switch_fifo = 0;
-                    cnt_enable = 0;
-                end else begin
-                    // Keep iterating further
-                    cnt_enable = 1;                    
-                end;
-
-
-            end
-
-            FINISHED: begin
-                // The module is not busy
-                busy_o = 0;
-                state_d = FINISHED;
-            end
-            default: state_d = IDLE;
-        endcase
-
-        // Counter next state logic
-        if (cnt_enable) begin
-            // Check saturation
-            if (cnt_q == N_FIFOS) begin 
-                cnt_d = N_FIFOS;
-            end else begin
-                cnt_d    =  cnt_q + 1'b1;
-            end
-        end else begin
-            cnt_d = cnt_q;
+        end else if (state_q == PAD) begin
+            valid_o = 1'b1;
+            // At most one partial byte remains. Put its bits first and
+            // zero-fill the low bits; subsequent padding bytes are all zero.
+            if (bits_q != 0)
+                data_o = reservoir_q << (OUT_DATA_WIDTH - bits_q);
         end
-
     end
 
-    // State transition logic
-    always_ff  @(posedge clk_i, negedge rst_ni)begin
-        if (~rst_ni)
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+        if (!rst_ni) begin
             state_q <= IDLE;
-        else
-            state_q <= state_d;
+            start_q <= 1'b0;
+            lane_q <= '0;
+            word_count_q <= '0;
+            byte_count_q <= '0;
+            reservoir_q <= '0;
+            bits_q <= 0;
+        end else begin
+            start_q <= start_i;
+            case (state_q)
+                IDLE: if (start_i && !start_q) begin
+                    lane_q <= '0;
+                    state_q <= SELECT_LANE;
+                end
+                SELECT_LANE: begin
+                    if (lane_q == N_FIFOS)
+                        state_q <= IDLE;
+                    else if (fifos_en_i[lane_q]) begin
+                        word_count_q <= '0;
+                        byte_count_q <= '0;
+                        reservoir_q <= '0;
+                        bits_q <= 0;
+                        state_q <= EMIT;
+                    end else
+                        lane_q <= lane_q + 1'b1;
+                end
+                EMIT: begin
+                    if (bits_q >= OUT_DATA_WIDTH) begin
+                        if (ready_i) begin
+                            bits_q <= bits_q - OUT_DATA_WIDTH;
+                            byte_count_q <= byte_count_q + 1'b1;
+                            if (byte_count_q == FRAME_BYTES-1)
+                                state_q <= NEXT_LANE;
+                        end
+                    end else if ((word_count_q < read_cnt_i) && !fifos_empty_i[lane_q]) begin
+                        word_count_q <= word_count_q + 1'b1;
+                        state_q <= READ_RETURN;
+                    end else
+                        state_q <= PAD;
+                end
+                READ_RETURN: begin
+                    // Same registered FIFO latency as the previous reshaper.
+                    reservoir_q <= (reservoir_q << IN_DATA_WIDTH) | lane_data;
+                    bits_q <= bits_q + IN_DATA_WIDTH;
+                    state_q <= EMIT;
+                end
+                PAD: if (ready_i) begin
+                    bits_q <= 0;
+                    reservoir_q <= '0;
+                    byte_count_q <= byte_count_q + 1'b1;
+                    if (byte_count_q == FRAME_BYTES-1)
+                        state_q <= NEXT_LANE;
+                end
+                NEXT_LANE: begin
+                    lane_q <= lane_q + 1'b1;
+                    state_q <= SELECT_LANE;
+                end
+                default: state_q <= IDLE;
+            endcase
+        end
     end
-
-    // Counter state transition
-    always_ff  @(posedge clk_i, negedge rst_ni)begin
-        if(~rst_ni) begin
-            cnt_q          <= '0;
-            mux_ctrl       <= '0;
-            start_submod_q <=  0;
-            
-        end
-        else  begin
-            cnt_q          <= cnt_d;
-
-            start_submod_q <= start_submod_d;
-
-            if(switch_fifo) begin
-                mux_ctrl   <= cnt_q;
-            end
-        end
-    end
-
-    ///////////////////////////////// FIFOs signals multiplexing /////////////////////////////////
-
-
-    logic [N_FIFOS - 1:0][IN_DATA_WIDTH - 1:0] fifos_data_temp;
-
-    // Conversion from 1D input to 2D temp array
-    always_comb begin
-		for (int l = 0; l < N_FIFOS; l++) begin
-            fifos_data_temp[l] = fifos_data_i[(l * IN_DATA_WIDTH) +: IN_DATA_WIDTH];
-        end
-	end
-
-    // Data input mapping
-    logic [IN_DATA_WIDTH - 1:0] h2l_data_in;
-    assign h2l_data_in = fifos_data_temp[mux_ctrl];
-
-    // FIFO empty signal mapping
-    logic h2l_fifo_empty;
-    assign h2l_fifo_empty = fifos_empty_i[mux_ctrl];
-
-
-    logic h2l_fifo_read_req, h2l_fifo_rst;
-
-    // Read request signal and reset
-    genvar i;
-    generate
-        for (i = 0; i < N_FIFOS; i++) begin : gen_block_fifos_read_o
-            assign fifos_read_req_o[i] = (mux_ctrl == i) ? h2l_fifo_read_req : 0;
-            assign fifos_rst_o[i] = (mux_ctrl == i) ? h2l_fifo_rst : 0;
-        end
-    endgenerate
-
-
-    ///////////////////////////////// FIFO h2l Reshaper instance /////////////////////////////////
-
-    fifo_h2l_reshaper #(
-        .INPUT_DATA_WIDTH     (IN_DATA_WIDTH),
-        .OUTPUT_DATA_WIDTH    (OUT_DATA_WIDTH),
-        .READ_CNT_WIDTH       (READ_CNT_WIDTH)
-    ) fifo_h2l_reshaper_inst (
-        .clk_i                (clk_i),
-        .rst_ni               (rst_ni),
-        .read_cnt_i           (read_cnt_i),
-        .fifo_empty_i         (h2l_fifo_empty),
-        .fifo_data_i          (h2l_data_in),
-        .fifo_read_req_o      (h2l_fifo_read_req),
-        .fifo_rst_o           (h2l_fifo_rst),
-        .data_o               (data_o),
-        .valid_o              (valid_o),
-        .ready_i              (ready_i),
-        .start_i              (start_submod_q),
-        .busy_o               (submod_busy)
-    );
-
 endmodule

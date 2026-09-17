@@ -28,6 +28,7 @@ module spi_quad_slave #(
     input  logic [31:0] rd_data,
     input  logic        rd_valid,
     output logic        rd_ready,
+    output logic        stream_word_complete_toggle,
 
     output logic [7:0]  latched_cmd
 );
@@ -64,6 +65,7 @@ module spi_quad_slave #(
         .latched_addr(wr_addr),
         .sys_reg_rd_req(reg_rd_req),
         .sys_rd_data(rd_data), .sys_rd_valid(rd_valid), .sys_rd_ready(rd_ready),
+        .stream_word_complete_toggle(stream_word_complete_toggle),
         .spi_pad_oe(spi_pad_oe), .latched_cmd(latched_cmd)
     );
 

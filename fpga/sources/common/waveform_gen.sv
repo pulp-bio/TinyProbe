@@ -8,8 +8,13 @@ module waveform_generator (
     input logic  [15:0] start_cap_time_i,
     input logic  [15:0] capture_delay_i,
     input logic         start_capture_i,
-    input logic  [15:0] n_shots_i,
+    input logic  [7:0] n_shots_i,
     input logic         fifo_rd_busy_i,
+    input logic         oa_mode_i,
+    input logic  [15:0] oa_pulse_width_cycles_i,
+    // Asserted during the terminal count; main_cnt_q becomes zero on the
+    // following clk_i edge.  This is a public period-boundary status signal.
+    output logic        period_done_o,
 
     // RX FIFO control signals
     output logic        fifo_start_capture_o,
@@ -273,9 +278,39 @@ module waveform_generator (
 
     assign sync_period = sync_period_q;
 
+    // Export the exact terminal-count event without changing the counter
+    // behavior.  Consumers can use this to advance synchronous control logic
+    // on the same edge that reloads main_cnt_q to zero.
+    assign period_done_o = shot_en_q && sync_per_finish;
+
     ///////////////////////////////// AFE TX trig anf TX BF SYNC signals /////////////////////////////////
 
     logic trigger_d, trigger_q;
+    logic oa_mode_q;
+    logic [15:0] oa_pulse_width_cycles_q;
+    logic tx_sync_d, tx_sync_q;
+    // Latch width for the acquisition; zero preserves the legacy two-cycle pulse.
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+        if (!rst_ni) begin
+            oa_mode_q <= 1'b0;
+            oa_pulse_width_cycles_q <= 16'd2;
+        end else if (start_capt_rising_edge) begin
+            oa_mode_q <= oa_mode_i;
+            oa_pulse_width_cycles_q <= (oa_pulse_width_cycles_i == 0) ?
+                16'd2 : oa_pulse_width_cycles_i;
+        end
+    end
+    always_comb begin
+        tx_sync_d = trigger_d;
+        if (oa_mode_q)
+            tx_sync_d = (main_cnt_q >= sync_half_period) &&
+                ({1'b0, main_cnt_q} < ({1'b0, sync_half_period} +
+                    {1'b0, oa_pulse_width_cycles_q}));
+    end
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+        if (!rst_ni) tx_sync_q <= 1'b0;
+        else tx_sync_q <= tx_sync_d;
+    end
 
     assign trigger_d = (main_cnt_q == sync_half_period) ? 1'b1 : 1'b0;
 
@@ -290,7 +325,7 @@ module waveform_generator (
 
     // Enable the sync and tx signals only is shot_en signal is active
     // And if the FIFO read signal is not busy
-    assign tx_bf_sync_o  = (shot_en_q & !fifo_rd_busy_i) ? trigger_q : 1'b0;
+    assign tx_bf_sync_o  = (shot_en_q & !fifo_rd_busy_i) ? tx_sync_q : 1'b0;
     assign afe_tx_trig_o = (shot_en_q & !fifo_rd_busy_i) ? trigger_q : 1'b0;
 
     ///////////////////////////////// Output buffers enable signals + AFE FAST PWDN + TR_EN signal for TX chip /////////////////////////////////

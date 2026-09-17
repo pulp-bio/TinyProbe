@@ -21,6 +21,15 @@ module tinyprobe_qspi_transport #(
     input logic stage3_req_seen_i, stage3_start_asserted_i, stage3_wr_done_i,
     input logic stage3_lane0_nonempty_i,
     input logic [2:0] stage3_state_i,
+    // Sticky normal-acquisition checkpoints captured in the AFE frame-clock
+    // domain. Bit 0 is the core-domain results_ready level. The vector is
+    // synchronized locally and returned at status address F while register
+    // 13 bit 27 is set.
+    input logic [7:0] normal_debug_i,
+    input logic [31:0] average_engine_debug_i,
+    input logic [31:0] average_fifo_debug_i,
+    input logic [7:0] average_event_debug_i,
+    input logic [31:0] pipeline_trace_data_i,
     output logic [N_FIFOS-1:0] fifos_read_req_o,
     output logic capture_start_o,
     output logic fifo_reader_busy_o,
@@ -28,6 +37,7 @@ module tinyprobe_qspi_transport #(
     // Keep this separate from config_regs_o so both the transport status and
     // the capture controller use one canonical decoded signal.
     output logic stage3_enable_o,
+    output logic accumulation_test_enable_o,
     output logic [15:0][31:0] config_regs_o
 );
     localparam logic [7:0] CMD_REG_READ = 8'h4c;
@@ -107,17 +117,33 @@ module tinyprobe_qspi_transport #(
     logic cmd_start_q, cmd_reset_q, cmd_stream_start_q;
     logic sw_rst_no, reader_valid, reader_ready, reader_busy;
     logic [7:0] reader_data;
+    logic reader_debug_word_load;
+    logic [IN_DATA_WIDTH-1:0] reader_debug_word_data;
     logic [1:0] pack_count_q;
     logic [31:0] pack_word_q;
     logic stream_full, stream_empty, stream_rd_valid, stream_rd_en;
     logic [31:0] stream_rd_data, stream_hold_q;
+    logic stream_word_complete_toggle, stream_complete_seen_q;
+    logic [31:0] stream_replay_q;
+    logic stream_replay_valid_q, stream_transaction_loaded_q;
+    logic stream_use_replay;
     logic stream_hold_valid_q, stream_fetch_pending_q, stream_ready_q, stream_started_q, stream_overflow_q, stream_underflow_q;
     logic stream_rst_ni;
     logic stream_seed_enable;
     logic stream_reader_test_enable;
     logic stream_stage3_enable;
-    logic [4:0] stream_seed_count_q;
+    logic normal_debug_enable;
+    logic pipeline_trace_enable;
+    logic [3:0] stream_seed_settle_q;
+    logic [8:0] stream_seed_bytes_remaining_q;
+    logic [7:0] stream_seed_byte_index_q;
+    logic stream_seed_valid;
+    logic [7:0] stream_seed_data;
+    logic pack_input_valid;
+    logic [7:0] pack_input_data;
     logic [4:0] stream_reader_test_reads_q;
+    logic [IN_DATA_WIDTH-1:0] stream_reader_test_counter_q;
+    logic [IN_DATA_WIDTH-1:0] stream_reader_test_data_q;
     logic stream_fifo_wr_en;
     logic [31:0] stream_fifo_wr_data;
     logic [N_FIFOS-1:0] reader_fifos_empty_i, reader_fifos_en_i, reader_fifos_read_req;
@@ -130,6 +156,16 @@ module tinyprobe_qspi_transport #(
     logic stage3_start_asserted_meta_q, stage3_start_asserted_core_q;
     logic stage3_wr_done_meta_q, stage3_wr_done_core_q;
     logic [2:0] stage3_state_meta_q, stage3_state_core_q;
+    logic [7:0] normal_debug_meta_q, normal_debug_core_q;
+    logic [31:0] average_engine_debug_meta_q, average_engine_debug_core_q;
+    logic [31:0] average_fifo_debug_meta_q, average_fifo_debug_core_q;
+    logic [7:0] average_event_debug_meta_q, average_event_debug_core_q;
+    logic [31:0] normal_debug_page_data;
+    logic [IN_DATA_WIDTH-1:0] reshaper_word_trace_q [0:15];
+    logic [7:0] reshaper_byte_trace_q [0:63];
+    logic [4:0] reshaper_word_trace_count_q;
+    logic [6:0] reshaper_byte_trace_count_q;
+    logic [31:0] pipeline_trace_mux_data;
     logic [READ_CNT_WIDTH-1:0] stage3_wr_count_bin;
     logic reg_write_valid;
     logic [7:0] dbg_core_count_q;
@@ -160,6 +196,7 @@ module tinyprobe_qspi_transport #(
         .spi_sdi0(spi_io0_i), .spi_sdi1(spi_io1_i), .spi_sdi2(1'b0), .spi_sdi3(1'b0),
         .spi_sdo0(spi_io0_o), .spi_sdo1(spi_io1_o), .spi_sdo2(), .spi_sdo3(),
         .spi_pad_oe(core_pad_oe), .sys_clk(core_clk_i), .sys_rst_n(rst_ni),
+        .stream_word_complete_toggle(stream_word_complete_toggle),
         .wr_data(core_wr_data), .wr_valid(core_wr_valid),
         .wr_begin(core_wr_begin), .wr_begin_addr(core_wr_begin_addr),
         .wr_data_active(core_wr_data_active),
@@ -242,7 +279,14 @@ module tinyprobe_qspi_transport #(
                              // readable contents of config register 15.  Stage 3A has a
                              // dedicated diagnostic layout while its exclusive bit-28
                              // test mode is selected; all prior layouts remain unchanged.
-                             (stream_stage3_enable ?
+                             (normal_debug_enable ?
+                              // D4 identifies the normal-acquisition sticky-event
+                              // layout. The low byte remains valid indefinitely after
+                              // an event, so slow firmware polling cannot miss pulses.
+                              normal_debug_page_data :
+                              pipeline_trace_enable ?
+                              pipeline_trace_mux_data :
+                              stream_stage3_enable ?
                               // Status[31:29] expose the exact enable path:
                               // core decode, first frame-clock synchronizer,
                               // second frame-clock synchronizer.  The lower
@@ -262,9 +306,7 @@ module tinyprobe_qspi_transport #(
                              config_regs_o[rd_req_mb_data];
     mem_mapped_regs #(
         .ADDR_SIZE(REG_ADDR_W),
-        .REG_WIDTH(32),
-        // Register 14 is reserved for the firmware configuration shadow.
-        .REG14_DEFAULT(32'h00000000)
+        .REG_WIDTH(32)
     ) i_mem_mapped_regs (
         .clk_i(core_clk_i), .rst_ni(rst_ni), .addr_i(reg_addr_i), .data_o(reg_data_o),
         .data_i(wr_mb_data[31:0]), .wr_en_i(reg_write_valid), .raw_regs_o(config_regs_o)
@@ -291,6 +333,14 @@ module tinyprobe_qspi_transport #(
             stage3_wr_done_core_q         <= 1'b0;
             stage3_state_meta_q           <= '0;
             stage3_state_core_q           <= '0;
+            normal_debug_meta_q           <= '0;
+            normal_debug_core_q           <= '0;
+            average_engine_debug_meta_q    <= '0;
+            average_engine_debug_core_q    <= '0;
+            average_fifo_debug_meta_q      <= '0;
+            average_fifo_debug_core_q      <= '0;
+            average_event_debug_meta_q     <= '0;
+            average_event_debug_core_q     <= '0;
         end else begin
             stage3_frame_gray_meta_q      <= stage3_frame_gray_i;
             stage3_frame_gray_core_q      <= stage3_frame_gray_meta_q;
@@ -308,6 +358,14 @@ module tinyprobe_qspi_transport #(
             stage3_wr_done_core_q         <= stage3_wr_done_meta_q;
             stage3_state_meta_q           <= stage3_state_i;
             stage3_state_core_q           <= stage3_state_meta_q;
+            normal_debug_meta_q           <= normal_debug_i;
+            normal_debug_core_q           <= normal_debug_meta_q;
+            average_engine_debug_meta_q    <= average_engine_debug_i;
+            average_engine_debug_core_q    <= average_engine_debug_meta_q;
+            average_fifo_debug_meta_q      <= average_fifo_debug_i;
+            average_fifo_debug_core_q      <= average_fifo_debug_meta_q;
+            average_event_debug_meta_q     <= average_event_debug_i;
+            average_event_debug_core_q     <= average_event_debug_meta_q;
         end
     end
     assign stage3_wr_count_bin = gray_to_bin(stage3_wr_count_gray_core_q);
@@ -317,7 +375,7 @@ module tinyprobe_qspi_transport #(
     sw_rst_gen i_sw_rst_gen (.clk_i(core_clk_i), .rst_ni(rst_ni), .trig_in(cmd_reset_q),
                              .sw_rst_no(sw_rst_no), .sw_rst_o(), .busy_o());
     // Stage-2 smoke test: replace only the rx_fifo_v3 read interface with a
-    // finite, request-driven lane-0 source.  The multi_fifo_reader,
+    // finite, registered-output, request-driven lane-0 counter source. The multi_fifo_reader,
     // fifo_h2l_reshaper, byte packer, generated QSPI_STREAM_FIFO and 0x6B
     // transmitter remain on their production connections.
     always_comb begin
@@ -328,7 +386,7 @@ module tinyprobe_qspi_transport #(
             reader_fifos_empty_i = '1;
             reader_fifos_empty_i[0] = 1'b0;
             reader_fifos_data_i = '0;
-            reader_fifos_data_i[0 +: IN_DATA_WIDTH] = 20'hA_53C9;
+            reader_fifos_data_i[0 +: IN_DATA_WIDTH] = stream_reader_test_data_q;
             reader_fifos_en_i = '0;
             // Retain the normal register-2 lane-enable control: lane 0 must
             // still be deliberately selected by firmware for this test.
@@ -343,7 +401,9 @@ module tinyprobe_qspi_transport #(
         .clk_i(core_clk_i), .rst_ni(sw_rst_no), .start_i(cmd_stream_start_q && !stream_seed_enable), .read_cnt_i(read_cnt_i),
         .busy_o(reader_busy), .fifos_en_i(reader_fifos_en_i), .fifos_empty_i(reader_fifos_empty_i),
         .fifos_data_i(reader_fifos_data_i), .fifos_read_req_o(reader_fifos_read_req), .fifos_rst_o(),
-        .data_o(reader_data), .valid_o(reader_valid), .ready_i(reader_ready)
+        .data_o(reader_data), .valid_o(reader_valid), .ready_i(reader_ready),
+        .debug_word_load_o(reader_debug_word_load),
+        .debug_word_data_o(reader_debug_word_data)
     );
     assign fifo_reader_busy_o = reader_busy;
     assign stream_rst_ni = rst_ni & ~cmd_stream_start_q;
@@ -351,27 +411,61 @@ module tinyprobe_qspi_transport #(
     assign stream_reader_test_enable = config_regs_o[13][29] && !stream_seed_enable;
     assign stream_stage3_enable = config_regs_o[13][28] &&
                                   !(|config_regs_o[13][31:29]);
+    assign normal_debug_enable = config_regs_o[13][27] &&
+                                 !(|config_regs_o[13][31:28]);
+    assign pipeline_trace_enable = config_regs_o[13][23] &&
+                                   !(|config_regs_o[13][31:28]);
+    always_comb begin
+        unique case (config_regs_o[13][26:25])
+            2'b00: normal_debug_page_data = {24'hd40000, normal_debug_core_q};
+            2'b01: normal_debug_page_data = average_engine_debug_core_q;
+            2'b10: normal_debug_page_data = average_fifo_debug_core_q;
+            2'b11: normal_debug_page_data = {24'hd60000, average_event_debug_core_q};
+            default: normal_debug_page_data = 32'hd4ff_ffff;
+        endcase
+    end
     assign stage3_enable_o = stream_stage3_enable;
+    assign accumulation_test_enable_o = config_regs_o[13][24];
     assign reader_ready = !stream_full;
 
-    // Stage-1 hardware smoke test: bypass capture and reader logic, but use
-    // the actual generated asynchronous QSPI_STREAM_FIFO and the normal 0x6B
-    // response path.  A stream-start command resets the FIFO first; after a
-    // ten-core-clock reset-release delay, seed eight known words.  This
-    // matches the reset-settle interval used by the generated CoreFIFO testbench.
-    assign stream_fifo_wr_en = stream_seed_enable ?
-                              ((stream_seed_count_q <= 5'd8) && (stream_seed_count_q != '0)) :
-                              (reader_valid && reader_ready && (pack_count_q == 2'd3));
-    assign stream_fifo_wr_data = stream_seed_enable ?
-                               ((stream_seed_count_q == 5'd8) ? 32'hA53C_9A53 :
-                                (stream_seed_count_q == 5'd7) ? 32'hC9A5_3C9A :
-                                (stream_seed_count_q == 5'd6) ? 32'h3C9A_53C9 :
-                                (stream_seed_count_q == 5'd5) ? 32'h9A53_C9A5 :
-                                (stream_seed_count_q == 5'd4) ? 32'h0123_4567 :
-                                (stream_seed_count_q == 5'd3) ? 32'h89AB_CDEF :
-                                (stream_seed_count_q == 5'd2) ? 32'h55AA_55AA :
-                                                                    32'hDEAD_BEEF) :
-                                {pack_word_q[23:0], reader_data};
+    // Reuse existing pipeline-trace pages so current firmware needs no new
+    // commands. In one-shot mode the unused shot2 page reports the first 16
+    // words actually loaded by the reshaper. The average_output page reports
+    // the first 64 accepted reshaper bytes, four bytes per register read.
+    always_comb begin
+        pipeline_trace_mux_data = pipeline_trace_data_i;
+        unique case (config_regs_o[13][5:4])
+            2'd1: pipeline_trace_mux_data =
+                {{(32-IN_DATA_WIDTH){1'b0}},
+                 reshaper_word_trace_q[config_regs_o[13][3:0]]};
+            2'd3: pipeline_trace_mux_data = {
+                reshaper_byte_trace_q[{config_regs_o[13][3:0], 2'b00} + 0],
+                reshaper_byte_trace_q[{config_regs_o[13][3:0], 2'b00} + 1],
+                reshaper_byte_trace_q[{config_regs_o[13][3:0], 2'b00} + 2],
+                reshaper_byte_trace_q[{config_regs_o[13][3:0], 2'b00} + 3]
+            };
+            default: pipeline_trace_mux_data = pipeline_trace_data_i;
+        endcase
+    end
+
+    // Packer-input counter test: replace the multi_fifo_reader byte output,
+    // while retaining the production byte packer, asynchronous stream FIFO,
+    // FIFO-full backpressure, CDC/refill behavior and normal 0x6B response.
+    // The 256 generated bytes encode big-endian words 0 through 63.  Valid and
+    // data are held whenever stream_full removes reader_ready.
+    assign stream_seed_valid = stream_seed_enable &&
+                               (stream_seed_settle_q == '0) &&
+                               (stream_seed_bytes_remaining_q != '0);
+    always_comb begin
+        stream_seed_data = 8'h00;
+        if (stream_seed_byte_index_q[1:0] == 2'd3)
+            stream_seed_data = {2'b00, stream_seed_byte_index_q[7:2]};
+    end
+    assign pack_input_valid = stream_seed_enable ? stream_seed_valid : reader_valid;
+    assign pack_input_data  = stream_seed_enable ? stream_seed_data  : reader_data;
+    assign stream_fifo_wr_en = pack_input_valid && reader_ready &&
+                               (pack_count_q == 2'd3);
+    assign stream_fifo_wr_data = {pack_word_q[23:0], pack_input_data};
     tp_stream_corefifo i_stream_fifo (
         .rst_ni(stream_rst_ni), .wr_clk_i(core_clk_i),
         .wr_en_i(stream_fifo_wr_en), .wr_data_i(stream_fifo_wr_data), .wr_full_o(stream_full),
@@ -383,35 +477,86 @@ module tinyprobe_qspi_transport #(
         if (!rst_ni) begin
             cmd_start_q <= 1'b0; cmd_reset_q <= 1'b0; cmd_stream_start_q <= 1'b0;
             pack_count_q <= '0; pack_word_q <= '0; stream_ready_q <= 1'b0; stream_started_q <= 1'b0; stream_overflow_q <= 1'b0;
-            stream_seed_count_q <= '0;
+            stream_seed_settle_q <= '0;
+            stream_seed_bytes_remaining_q <= '0;
+            stream_seed_byte_index_q <= '0;
             stream_reader_test_reads_q <= '0;
+            stream_reader_test_counter_q <= '0;
+            stream_reader_test_data_q <= '0;
+            reshaper_word_trace_count_q <= '0;
+            reshaper_byte_trace_count_q <= '0;
+            for (int trace_idx = 0; trace_idx < 16; trace_idx++)
+                reshaper_word_trace_q[trace_idx] <= '0;
+            for (int trace_idx = 0; trace_idx < 64; trace_idx++)
+                reshaper_byte_trace_q[trace_idx] <= '0;
         end else begin
             cmd_start_q <= reg_write_valid && (wr_mb_data[35:32] == 4'd0) && (wr_mb_data[7:0] == 8'h01);
             cmd_reset_q <= reg_write_valid && (wr_mb_data[35:32] == 4'd0) && (wr_mb_data[7:0] == 8'h02);
             cmd_stream_start_q <= reg_write_valid && (wr_mb_data[35:32] == 4'd0) && (wr_mb_data[7:0] == 8'h03);
             if (cmd_stream_start_q) begin
                 pack_count_q <= '0; pack_word_q <= '0; stream_ready_q <= 1'b0; stream_started_q <= 1'b0; stream_overflow_q <= 1'b0;
-                // Counts 18 down to 1: ten reset-settle clocks followed by
-                // the eight writes encoded above.
-                stream_seed_count_q <= stream_seed_enable ? 5'd18 : '0;
+                stream_seed_settle_q <= stream_seed_enable ? 4'd10 : '0;
+                stream_seed_bytes_remaining_q <= stream_seed_enable ? 9'd256 : '0;
+                stream_seed_byte_index_q <= '0;
                 stream_reader_test_reads_q <= '0;
+                stream_reader_test_counter_q <= '0;
+                stream_reader_test_data_q <= '0;
+                reshaper_word_trace_count_q <= '0;
+                reshaper_byte_trace_count_q <= '0;
             end else begin
-                if (stream_reader_test_enable && reader_fifos_read_req[0] &&
-                    (stream_reader_test_reads_q != 5'd31))
-                    stream_reader_test_reads_q <= stream_reader_test_reads_q + 1'b1;
+                if (reader_debug_word_load &&
+                    reshaper_word_trace_count_q < 5'd16) begin
+                    reshaper_word_trace_q[reshaper_word_trace_count_q[3:0]] <=
+                        reader_debug_word_data;
+                    reshaper_word_trace_count_q <=
+                        reshaper_word_trace_count_q + 1'b1;
+                end
+                if (reader_valid && reader_ready &&
+                    reshaper_byte_trace_count_q < 7'd64) begin
+                    reshaper_byte_trace_q[reshaper_byte_trace_count_q[5:0]] <=
+                        reader_data;
+                    reshaper_byte_trace_count_q <=
+                        reshaper_byte_trace_count_q + 1'b1;
+                end
+                if (stream_reader_test_enable && reader_fifos_read_req[0]) begin
+                    // Model the registered-output timing of rx_fifo_v3: a
+                    // request captures the current counter word, which is
+                    // consumed by fifo_h2l_reshaper on the following cycle.
+                    stream_reader_test_data_q <= stream_reader_test_counter_q;
+                    stream_reader_test_counter_q <= stream_reader_test_counter_q + 1'b1;
+                    if (stream_reader_test_reads_q != 5'd31)
+                        stream_reader_test_reads_q <= stream_reader_test_reads_q + 1'b1;
+                end
                 if (stream_seed_enable) begin
-                    if (stream_seed_count_q != '0)
-                        stream_seed_count_q <= stream_seed_count_q - 1'b1;
-                    if (stream_seed_count_q == 5'd1)
+                    if (stream_seed_settle_q != '0) begin
+                        stream_seed_settle_q <= stream_seed_settle_q - 1'b1;
+                    end else if (pack_input_valid && reader_ready) begin
+                        stream_seed_bytes_remaining_q <=
+                            stream_seed_bytes_remaining_q - 1'b1;
+                        stream_seed_byte_index_q <= stream_seed_byte_index_q + 1'b1;
+                    end
+                    // Let the MCU start only after the FIFO has reached its
+                    // 32-word capacity. Further counter words then exercise
+                    // FULL deassertion and refill while SPI drains the FIFO.
+                    if (stream_full)
                         stream_ready_q <= 1'b1;
                 end else begin
-                    if (reader_valid && reader_ready) begin
-                        pack_word_q <= {pack_word_q[23:0], reader_data};
-                        pack_count_q <= pack_count_q + 1'b1;
-                    end
                     if (reader_busy) stream_started_q <= 1'b1;
-                    if (stream_started_q && !reader_busy) stream_ready_q <= 1'b1;
-                    if (reader_valid && stream_full) stream_overflow_q <= 1'b1;
+                    // Start MCU consumption when the stream FIFO reaches its
+                    // initial buffering threshold. Waiting for reader_busy to
+                    // deassert deadlocks whenever the complete acquisition is
+                    // larger than this FIFO: the full FIFO backpressures the
+                    // reader, while firmware waits for the reader to finish.
+                    if (stream_full) stream_ready_q <= 1'b1;
+                    // Backpressure is legal while reader_valid is held. Only
+                    // record an overflow if an actual FIFO write is attempted
+                    // while FULL is asserted.
+                    if (stream_fifo_wr_en && stream_full)
+                        stream_overflow_q <= 1'b1;
+                end
+                if (pack_input_valid && reader_ready) begin
+                    pack_word_q <= {pack_word_q[23:0], pack_input_data};
+                    pack_count_q <= pack_count_q + 1'b1;
                 end
             end
         end
@@ -503,24 +648,59 @@ module tinyprobe_qspi_transport #(
     // SPI-clock capture stage between RE and stream_hold_q.
     assign stream_rd_en = !spi_cs_ni && (latched_cmd == CMD_STREAM_READ) &&
                           !stream_empty && !stream_hold_valid_q && !stream_fetch_pending_q;
+    // Register responses retain their original transaction-local lifetime.
     always_ff @(posedge spi_sclk_i or negedge rst_ni or posedge spi_cs_ni) begin
         if (!rst_ni || spi_cs_ni) begin
-            rd_rsp_hold_q <= '0; rd_rsp_hold_valid_q <= 1'b0; stream_hold_q <= '0;
-            stream_hold_valid_q <= 1'b0; stream_fetch_pending_q <= 1'b0; stream_underflow_q <= 1'b0;
+            rd_rsp_hold_q <= '0;
+            rd_rsp_hold_valid_q <= 1'b0;
         end else begin
             if (rd_rsp_mb_valid && !rd_rsp_hold_valid_q) begin
-                rd_rsp_hold_q <= rd_rsp_mb_data; rd_rsp_hold_valid_q <= 1'b1;
+                rd_rsp_hold_q <= rd_rsp_mb_data;
+                rd_rsp_hold_valid_q <= 1'b1;
             end
-            if (stream_rd_en) begin
+            if (core_rd_ready && latched_cmd == CMD_REG_READ)
+                rd_rsp_hold_valid_q <= 1'b0;
+        end
+    end
+
+    // Only the first load of a resumed transaction can replay an unfinished
+    // word. A completed word is excluded even before its toggle is consumed.
+    assign stream_use_replay = stream_replay_valid_q &&
+        !stream_transaction_loaded_q &&
+        (stream_complete_seen_q == stream_word_complete_toggle);
+    always_ff @(posedge spi_sclk_i or negedge stream_rst_ni or posedge spi_cs_ni) begin
+        if (!stream_rst_ni || spi_cs_ni)
+            stream_transaction_loaded_q <= 1'b0;
+        else if (core_rd_ready && latched_cmd == CMD_STREAM_READ)
+            stream_transaction_loaded_q <= 1'b1;
+    end
+
+    // Stream ownership survives CS. Reset only for a new stream or hardware
+    // reset. Preserve both the prefetched word and the word in the shifter.
+    always_ff @(posedge spi_sclk_i or negedge stream_rst_ni) begin
+        if (!stream_rst_ni) begin
+            stream_hold_q <= '0;
+            stream_hold_valid_q <= 1'b0;
+            stream_fetch_pending_q <= 1'b0;
+            stream_underflow_q <= 1'b0;
+            stream_replay_q <= '0;
+            stream_replay_valid_q <= 1'b0;
+            stream_complete_seen_q <= 1'b0;
+        end else begin
+            stream_complete_seen_q <= stream_word_complete_toggle;
+            if (stream_complete_seen_q != stream_word_complete_toggle)
+                stream_replay_valid_q <= 1'b0;
+            if (stream_rd_en)
                 stream_fetch_pending_q <= 1'b1;
-            end
             if (stream_fetch_pending_q) begin
-                stream_hold_q <= stream_rd_data; stream_hold_valid_q <= 1'b1;
+                stream_hold_q <= stream_rd_data;
+                stream_hold_valid_q <= 1'b1;
                 stream_fetch_pending_q <= 1'b0;
             end
-            if (core_rd_ready) begin
-                if (latched_cmd == CMD_REG_READ) rd_rsp_hold_valid_q <= 1'b0;
-                if (latched_cmd == CMD_STREAM_READ) begin
+            if (!spi_cs_ni && core_rd_ready && latched_cmd == CMD_STREAM_READ) begin
+                if (!stream_use_replay) begin
+                    stream_replay_q <= stream_hold_q;
+                    stream_replay_valid_q <= stream_hold_valid_q;
                     if (!stream_hold_valid_q) stream_underflow_q <= 1'b1;
                     stream_hold_valid_q <= 1'b0;
                 end
@@ -545,7 +725,8 @@ module tinyprobe_qspi_transport #(
                             dbg_rsp_seen_spi_q, dbg_rsp_issued_spi_q,
                             dbg_req_seen_spi_q}) :
                           (latched_cmd == CMD_REG_READ) ? rd_rsp_hold_q :
-                          (latched_cmd == CMD_STREAM_READ) ? stream_hold_q : 32'h0;
+                          (latched_cmd == CMD_STREAM_READ) ?
+                          (stream_use_replay ? stream_replay_q : stream_hold_q) : 32'h0;
     assign core_rd_valid = DIAG_MAILBOX_OBSERVABILITY ? 1'b1 :
                            (latched_cmd == CMD_REG_READ) ? rd_rsp_hold_valid_q :
                            (latched_cmd == CMD_STREAM_READ) ? 1'b1 : 1'b0;

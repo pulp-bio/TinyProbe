@@ -6,6 +6,7 @@
  * @date 22.09.2026
  * @copyright Copyright (C) 2026 ETH Zurich. All rights reserved.
  *
+ * @author Lisa Maria Odermatt, ETH Zurich
  * @ingroup wius
  *
  * @details
@@ -35,7 +36,7 @@
 #ifndef PIN_CONFIG_H
 #define PIN_CONFIG_H
 
-/* SSI: MOSI GPIO 26, MISO GPIO 27, clock GPIO 25, chip select GPIO 28. */
+/* SSI: MOSI GPIO 26, MISO GPIO 27, clock GPIO 25, chip select GPIO 53. */
 #ifndef SSI_MASTER_MOSI_DATA0_PORT
 #define SSI_MASTER_MOSI_DATA0_PORT HP
 #endif
@@ -70,10 +71,18 @@
 #define SSI_MASTER_CS0__PORT HP
 #endif
 #ifndef SSI_MASTER_CS0__PIN
-#define SSI_MASTER_CS0__PIN 28
+#define SSI_MASTER_CS0__PIN 53
 #endif
 #ifndef SSI_MASTER_CS0_LOC
-#define SSI_MASTER_CS0_LOC 10
+#define SSI_MASTER_CS0_LOC 11
+#endif
+
+/* Primary SSI uses the SDK's paired RX (28) and TX (29) DMA channels. */
+#ifndef RTE_SSI_MASTER_RX_DMA
+#define RTE_SSI_MASTER_RX_DMA 1
+#endif
+#ifndef RTE_SSI_MASTER_TX_DMA
+#define RTE_SSI_MASTER_TX_DMA 1
 #endif
 
 

@@ -7,6 +7,7 @@
  * @copyright Copyright (C) 2026 ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup common
  *
@@ -73,15 +74,15 @@
  * @{
  */
 //! SPI clock frequency in Hz
-#define WIUS_SPI_FREQ 32000000
-//! SPI timeout for transmission in ticks
-#define WIUS_SPI_RX_TIMEOUT 100
+#define WIUS_SPI_FREQ 5000000
+//! Delay before deasserting software SPI CS after transfer completion in ns
+#define WIUS_SPI_CS_DEASSERT_DELAY_NS 200
+//! Delay after asserting software SPI CS before starting transfer in ns
+#define WIUS_SPI_CS_ASSERT_DELAY_NS 200
 //! Maximum transfer size that waits by polling an interrupt-updated flag
 #define WIUS_SPI_SHORT_XFER_MAX 16
 //! CS pin number for instance 0 (set to 0 if unused)
 #define WIUS_SPI_EXT_CS0 53
-//! CS pin number for instance 1 (set to 0 if unused)
-#define WIUS_SPI_EXT_CS1 0
 /** @}
  */
 
@@ -168,8 +169,12 @@
 /** @name TinyProbe FPGA control configurations
  * @{
  */
-//! Delay after SPI transfers in ns
-#define TP_FPGA_SPI_DELAY_NS 50
+//! Settling delay between an FPGA register write and its 0x4C verification read in ns
+#define TP_FPGA_READBACK_TURNAROUND_DELAY_NS 200
+//! SSI baud rate used by the FPGA dual-SPI register transport.
+// Conservative bring-up rate for verified 0x32/0x4C FPGA register traffic.
+// TX and AFE continue to use WIUS_SPI_FREQ independently.
+#define TP_FPGA_DUAL_SPI_BAUDRATE 1000000UL
 /** @}
  */
 

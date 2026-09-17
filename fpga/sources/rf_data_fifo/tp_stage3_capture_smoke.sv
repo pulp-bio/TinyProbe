@@ -15,9 +15,11 @@ module tp_stage3_capture_smoke #(
     input  logic                              rst_ni,
     input  logic                              enable_i,
     input  logic                              wr_done_i,
+    input  logic                              sample_accepted_i,
 
     output logic                              fifo_reset_o,
     output logic                              start_capture_o,
+    output logic                              first_shot_o,
     output logic [N_LANES*SAMPLE_WIDTH-1:0]  fifo_data_o,
     output logic [N_LANES-1:0]               fifo_wr_en_o,
 
@@ -32,23 +34,26 @@ module tp_stage3_capture_smoke #(
 );
     localparam logic [2:0] ST_IDLE   = 3'd0;
     localparam logic [2:0] ST_RESET  = 3'd1;
-    localparam logic [2:0] ST_ARM    = 3'd2;
-    localparam logic [2:0] ST_SETTLE = 3'd3;
-    localparam logic [2:0] ST_WRITE  = 3'd4;
-    localparam logic [2:0] ST_DONE   = 3'd5;
+    localparam logic [2:0] ST_ARM_1  = 3'd2;
+    localparam logic [2:0] ST_WRITE_1 = 3'd3;
+    localparam logic [2:0] ST_ARM_2  = 3'd4;
+    localparam logic [2:0] ST_WRITE_2 = 3'd5;
+    localparam logic [2:0] ST_DONE   = 3'd6;
 
     logic [2:0] state_q;
     (* ASYNC_REG = "TRUE" *) logic enable_meta_q, enable_sync_q;
     logic [3:0] delay_q;
     logic [7:0] frame_count_q;
+    logic [SAMPLE_WIDTH-1:0] sample_counter_q;
 
     always_comb begin
         fifo_reset_o    = (state_q == ST_RESET);
-        start_capture_o = (state_q == ST_ARM);
+        start_capture_o = (state_q == ST_ARM_1) || (state_q == ST_ARM_2);
+        first_shot_o     = (state_q != ST_ARM_2) && (state_q != ST_WRITE_2);
         fifo_data_o     = '0;
-        fifo_data_o[0 +: SAMPLE_WIDTH] = SAMPLE_DATA;
+        fifo_data_o[0 +: SAMPLE_WIDTH] = sample_counter_q;
         fifo_wr_en_o    = '0;
-        fifo_wr_en_o[0] = (state_q == ST_WRITE);
+        fifo_wr_en_o[0] = (state_q == ST_WRITE_1) || (state_q == ST_WRITE_2);
     end
 
     always_ff @(posedge frame_clk_i or negedge rst_ni) begin
@@ -60,6 +65,7 @@ module tp_stage3_capture_smoke #(
             req_seen_o    <= 1'b0;
             done_o        <= 1'b0;
             frame_count_q <= '0;
+            sample_counter_q <= '0;
         end else begin
             enable_meta_q <= enable_i;
             enable_sync_q <= enable_meta_q;
@@ -77,31 +83,43 @@ module tp_stage3_capture_smoke #(
                 ST_RESET: begin
                     if (delay_q == 4'd7) begin
                         delay_q <= '0;
-                        state_q <= ST_ARM;
+                        sample_counter_q <= '0;
+                        state_q <= ST_ARM_1;
                     end else begin
                         delay_q <= delay_q + 1'b1;
                     end
                 end
-                ST_ARM: begin
-                    if (delay_q == 4'd3) begin
+                ST_ARM_1: begin
+                    if (delay_q == 4'd7) begin
                         delay_q <= '0;
-                        state_q <= ST_SETTLE;
+                        state_q <= ST_WRITE_1;
                     end else begin
                         delay_q <= delay_q + 1'b1;
                     end
                 end
-                ST_SETTLE: begin
-                    if (delay_q == 4'd3) begin
+                ST_WRITE_1: begin
+                    if (wr_done_i) begin
                         delay_q <= '0;
-                        state_q <= ST_WRITE;
+                        sample_counter_q <= '0;
+                        state_q <= ST_ARM_2;
+                    end else if (sample_accepted_i) begin
+                        sample_counter_q <= sample_counter_q + 1'b1;
+                    end
+                end
+                ST_ARM_2: begin
+                    if (delay_q == 4'd7) begin
+                        delay_q <= '0;
+                        state_q <= ST_WRITE_2;
                     end else begin
                         delay_q <= delay_q + 1'b1;
                     end
                 end
-                ST_WRITE: begin
+                ST_WRITE_2: begin
                     if (wr_done_i) begin
                         done_o  <= 1'b1;
                         state_q <= ST_DONE;
+                    end else if (sample_accepted_i) begin
+                        sample_counter_q <= sample_counter_q + 1'b1;
                     end
                 end
                 ST_DONE: begin

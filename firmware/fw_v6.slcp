@@ -1,4 +1,5 @@
 # Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+# SSI configuration: Lisa Maria Odermatt
 project_name: fw_v6
 label: fw_v6
 description: |
@@ -35,7 +36,7 @@ component:
 - {from: wiseconnect3_sdk, id: network_manager}
 - {from: wiseconnect3_sdk, id: si91x_memory_default_config}
 - {from: wiseconnect3_sdk, id: sl_gpio}
-- {from: wiseconnect3_sdk, id: sl_gspi}
+- {from: wiseconnect3_sdk, id: sl_dma}
 - {from: wiseconnect3_sdk, id: sl_power_manager}
 - {from: wiseconnect3_sdk, id: sl_si91x_asynchronous_socket}
 - instance: [primary]
@@ -55,6 +56,6 @@ post_build:
 - {path: fw_v6.slpb}
 configuration:
 - {name: configCHECK_FOR_STACK_OVERFLOW, value: '1'}
-- {name: SL_GSPI_DMA_CONFIG_ENABLE, value: '1'}
-- {name: SL_GSPI_BITRATE, value: '32000000'}
+- {name: SSI_PRIMARY_UC, value: '0'}
+- {name: SL_SSI_PRIMARY_DMA_CONFIG_ENABLE, value: '1'}
 - {name: SL_STACK_SIZE, value: '2048'}

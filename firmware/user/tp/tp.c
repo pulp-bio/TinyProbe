@@ -8,6 +8,7 @@
  *
  * @author Cédric Hirschi, ETH Zürich
  * @author Sergei Vostrikov, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup tinyprobe
  *
@@ -44,17 +45,37 @@
 #include "wius_spi.h"
 #include "wius_tcp.h"
 #include "wius_gpio.h"
+#include "sl_si91x_ssi_primary_config.h"
 
 wius_gpio_t int_pin = WIUS_GPIO_UULP_INPUT(TP_GPIO_INT);
 wius_gpio_t reset_pin = WIUS_GPIO_ULP_OUTPUT(TP_GPIO_RESET);
 
-wius_spi_inst_t spi_inst;
-wius_spi_config_t spi_config = {
+static wius_spi_config_t spi_config = {
     .cs_mode = WIUS_SPI_CS_SW,
     .cs_pin = WIUS_SPI_EXT_CS0,
     .cs_polarity = 0,
     .freq = WIUS_SPI_FREQ,
-    .mode = 0,
+    // Base FPGA mode. Dual payload framing is installed by the FPGA HAL.
+    // The shared SSI wrapper explicitly restores software CS ownership on
+    // GPIO 53 after every mode switch.
+    .mode = SL_SSI_PERIPHERAL_CPOL0_CPHA1,
+    .transfer_mode = SPI_TRANSFER_MODE_STANDARD,
+    .cs_assert_delay_ns = WIUS_SPI_CS_ASSERT_DELAY_NS,
+    .cs_deassert_delay_ns = WIUS_SPI_CS_DEASSERT_DELAY_NS,
+    .rx_sample_delay = 0U,
+    .width = 8,
+};
+
+static const wius_spi_config_t spi_external_config = {
+    .cs_mode = WIUS_SPI_CS_SW,
+    .cs_pin = WIUS_SPI_EXT_CS0,
+    .cs_polarity = 0,
+    .freq = WIUS_SPI_FREQ,
+    .mode = SL_SSI_PERIPHERAL_CPOL0_CPHA0,
+    .transfer_mode = SPI_TRANSFER_MODE_STANDARD,
+    .cs_assert_delay_ns = WIUS_SPI_CS_ASSERT_DELAY_NS,
+    .cs_deassert_delay_ns = WIUS_SPI_CS_DEASSERT_DELAY_NS,
+    .rx_sample_delay = 0U,
     .width = 8,
 };
 
@@ -90,6 +111,63 @@ void _tp_thread_wifi_transmit(void *argument);
 void _tp_int_handler(uint32_t flag);
 static void _tp_nanopb_sender(const char *response, size_t response_len);
 
+/* SSI is shared by the FPGA and the external TX/AFE devices.  Keep the
+ * current configuration when it already matches the selected bus target;
+ * reconfiguration is required only on an actual FPGA <-> TX/AFE transition.
+ */
+static sl_status_t _tp_spi_ensure_config(const wius_spi_config_t *target)
+{
+    wius_spi_inst_t current = wius_spi_get_instance(WIUS_SPI_INST_0);
+
+    if ((current.inst.ssi != NULL) &&
+        (current.config.freq == target->freq) &&
+        (current.config.width == target->width) &&
+        (current.config.mode == target->mode) &&
+        (current.config.transfer_mode == target->transfer_mode) &&
+        (current.config.rx_sample_delay == target->rx_sample_delay))
+    {
+        return SL_STATUS_OK;
+    }
+
+    return wius_spi_reconfigure(WIUS_SPI_INST_0, target);
+}
+
+sl_status_t tp_spi_select(tp_mux_t target)
+{
+    sl_status_t status = SL_STATUS_OK;
+
+    switch (target)
+    {
+    case TP_MUX_AFE:
+    case TP_MUX_TX:
+        // Leaving the FPGA invalidates its enhanced dual-data framing and
+        // restores the raw Mode-0 transfers expected by the external chips.
+        status = _tp_spi_ensure_config(&spi_external_config);
+        if (status != SL_STATUS_OK)
+        {
+            return status;
+        }
+        break;
+
+    case TP_MUX_FPGA:
+        // Each FPGA HAL transaction restores Mode-1 and SSI_FRF_DUAL after a
+        // preceding external-device transaction.
+        break;
+
+    case TP_MUX_PLL:
+        // In PLL mode the chip-select pin controls the FPGA PLL directly.
+        break;
+
+    default:
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+
+    tp_mux_select(target);
+    delay_ms(10);
+
+    return SL_STATUS_OK;
+}
+
 sl_status_t tp_init(void)
 {
     sl_status_t status = SL_STATUS_OK;
@@ -109,6 +187,8 @@ sl_status_t tp_init(void)
         log_warn("Error setting high power mode");
     }
 
+    LOG_RET_STATUS(wius_gpio_init());
+
     // Initialize SPI
     status = wius_spi_init(WIUS_SPI_INST_0, &spi_config);
     if (SL_STATUS_OK != status)
@@ -120,9 +200,15 @@ sl_status_t tp_init(void)
     delay_ms(1000);
 
     // Initialize GPIO
-    wius_gpio_init();
     wius_gpio_config(reset_pin);
     wius_gpio_config(int_pin);
+
+    sem_fpga = osSemaphoreNew(10, 0, NULL);
+    if (sem_fpga == NULL)
+    {
+        log_error("Error creating FPGA semaphore");
+        return SL_STATUS_FAIL;
+    }
 
     // Attach FPGA interrupt
     status = wius_gpio_attach_interrupt(int_pin, WIUS_GPIO_INT_RISING, _tp_int_handler);
@@ -147,8 +233,7 @@ sl_status_t tp_init(void)
     log_debug("Reset FPGA");
 
     // Select internal SPI slave module of the FPGA
-    tp_mux_select(TP_MUX_FPGA);
-    delay_ms(10);
+    LOG_RET_STATUS(tp_spi_select(TP_MUX_FPGA));
 
 #if !TP_TEST_MODE
     // Initialize the FPGA
@@ -175,64 +260,26 @@ sl_status_t tp_init(void)
     // Remove reset signals and set TR_EN to 0
     LOG_RET_STATUS(tp_fpga_write_reg_safe(0x00000054, 10));
 
-    // Turn on active control of the AFE clk (power downs in between shots)
-    LOG_RET_STATUS(tp_fpga_write_reg_safe(0x4000ffff, 2));
 
     log_debug("Reset AFE and TX");
 #endif
 
-    // Select TX
-    tp_mux_select(TP_MUX_TX);
-    delay_ms(10);
-
+    // Configure the AFE while its clock is running before initializing the TX.
+    LOG_RET_STATUS(tp_spi_select(TP_MUX_AFE));
 #if !TP_TEST_MODE
-    // TX chip setup //
-    // Config TX chip
-    LOG_RET_STATUS(tp_tx_init());
-
-    // Turn on also active control of the TX BF clk
-    // (power downs in between TR_EN wake ups)
-    // tp_fpga_write_reg_safe(0x0000ffff, 2);
-    tp_fpga_write_reg_safe(0x0000ffff, 2); // TEST: Enable clocks by default (no waveform generator)
-
-    log_debug("Configured TX");
-#endif
-
-    // Switch the MUX to the AFE
-    tp_mux_select(TP_MUX_AFE);
-    delay_ms(10);
-
-#if !TP_TEST_MODE
-    // AFE setup //
-    // Config AFE
     LOG_RET_STATUS(tp_afe_init());
-    LOG_RET_STATUS(tp_afe_test_pattern(HALF_ZEROS_HALF_ONES));
-
-    // Set AFE Gain
+    LOG_RET_STATUS(tp_afe_test_pattern(NORMAL_OPERATION));
     LOG_RET_STATUS(tp_afe_write_reg_dtgc_safe(0xB5, 0));
-
-    log_debug("Configured AFE");
 #endif
 
-    // Select the internal SPI slave module of the FPGA
-    tp_mux_select(TP_MUX_FPGA);
-    delay_ms(10);
-
+    LOG_RET_STATUS(tp_spi_select(TP_MUX_TX));
 #if !TP_TEST_MODE
-    //        // Enable AFE Fast Power down in between the shots
-    //        // (controlled by waveform_gen)
-    //        tp_fpga_write_reg_safe(0x00000050, 10);
-    //        // Enable AFE Global Power down in between the shots
-    //        // (controlled by waveform_gen)
-    //        tp_fpga_write_reg_safe(0x00000044, 10);
+    LOG_RET_STATUS(tp_tx_init());
+#endif
 
-    //            // Enable AFE Fast Power down and TR_EN signal duty cycling
-    //            // AFE Global power down is manually disabled
-    //            tp_fpga_write_reg_safe(0x00000010, 10);
-
-    // Enable automatic AFE Fast Power down and TR_EN signal duty cycling
-    // Enable AFE Global Power Down through pin
-    tp_fpga_write_reg_safe(0x00000030, 10);
+    LOG_RET_STATUS(tp_spi_select(TP_MUX_FPGA));
+#if !TP_TEST_MODE
+    LOG_RET_STATUS(tp_fpga_write_reg_safe(0x00000030, 10));
 #endif
 
     log_info("Connecting to WiFi");
@@ -246,13 +293,6 @@ sl_status_t tp_init(void)
         status = wius_wifi_init();
     }
     log_info("Connected to WiFi");
-
-    sem_fpga = osSemaphoreNew(10, 0, NULL);
-    if (sem_fpga == NULL)
-    {
-        log_error("Error creating FPGA semaphore");
-        return SL_STATUS_FAIL;
-    }
 
     LOG_RET_STATUS(tp_buffer_init(&tp_buf));
 

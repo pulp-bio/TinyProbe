@@ -7,6 +7,7 @@
  * @copyright Copyright (C) 2026 ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup wius
  *
@@ -30,13 +31,12 @@
 
 #include "common.h"
 
-#include "sl_si91x_gspi.h"
 #include "sl_si91x_ssi.h"
 
 #include "wius_gpio.h"
 
-#define WIUS_SPI_INST_0 0 /**< Instance 0 on pins [25, 26, 27, 53] (GSPI Master) */
-#define WIUS_SPI_INST_1 1 /**< Instance 1 on pins [8, 9, 10, 11] (SSI Master) */
+#define WIUS_SPI_INST_0 0 /**< Instance 0 on pins [25, 26, 27, 53] (SSI Master) */
+#define WIUS_SPI_INST_1 1 /**< Reserved */
 
 /**
  * @brief SPI chip select modes enumeration
@@ -44,9 +44,9 @@
  */
 typedef enum wius_spi_cs_mode
 {
-    WIUS_SPI_CS_NONE = SL_GSPI_MASTER_UNUSED, /**< No chip select */
-    WIUS_SPI_CS_SW = SL_GSPI_MASTER_SW,       /**< Software controlled chip select (Handled by this API) */
-    WIUS_SPI_CS_HW = SL_GSPI_MASTER_HW_OUTPUT /**< Hardware controlled chip select (Handled by peripheral) */
+    WIUS_SPI_CS_NONE = 0, /**< No chip select */
+    WIUS_SPI_CS_SW = 1,   /**< Software controlled chip select (Handled by this API) */
+    WIUS_SPI_CS_HW = 2    /**< Hardware controlled chip select (Handled by peripheral) */
 } wius_spi_cs_mode_t;
 
 /**
@@ -56,8 +56,12 @@ typedef enum wius_spi_cs_mode
 typedef struct wius_spi_config
 {
     uint8_t width;              /**< Data width in bits */
-    uint8_t mode;               /**< SPI mode (0-3) */
+    uint32_t mode;              /**< SSI clock mode */
     uint32_t freq;              /**< Clock frequency in Hz */
+    uint32_t transfer_mode;     /**< SSI transfer mode */
+    uint32_t cs_assert_delay_ns; /**< Delay after CS assert before transfer start */
+    uint32_t cs_deassert_delay_ns; /**< Delay before CS deassert after transfer completion */
+    uint8_t rx_sample_delay;    /**< SSI receive sample delay */
     wius_spi_cs_mode_t cs_mode; /**< Chip select mode */
     uint8_t cs_pin;             /**< Chip select pin (only for SW mode) */
     uint8_t cs_polarity;        /**< Chip select polarity (only for SW mode, 0 for active low, 1 for active high) */
@@ -75,8 +79,7 @@ typedef struct wius_spi_inst
 
     union instance /**< Peripheral handle union */
     {
-        sl_gspi_handle_t gspi; /**< Peripheral handle (GPSI) */
-        sl_ssi_handle_t ssi;   /**< Peripheral handle (SSI) */
+        sl_ssi_handle_t ssi; /**< Peripheral handle (SSI) */
     } inst;                    /**< Peripheral handle */
 } wius_spi_inst_t;
 
@@ -85,7 +88,7 @@ typedef struct wius_spi_inst
  *
  * @param id: SPI instance ID
  *
- * @return Pointer to the SPI instance structure
+ * @return SPI instance configuration and driver handle
  *
  */
 wius_spi_inst_t wius_spi_get_instance(uint8_t id);
@@ -102,6 +105,9 @@ wius_spi_inst_t wius_spi_get_instance(uint8_t id);
  *
  */
 sl_status_t wius_spi_init(uint8_t id, wius_spi_config_t *config);
+/** Reconfigure the already initialized SSI peripheral without changing its CS GPIO ownership. */
+sl_status_t wius_spi_reconfigure(uint8_t id, const wius_spi_config_t *config);
+sl_status_t wius_spi_set_cs(uint8_t id, bool active);
 
 /**
  * @brief Transfer data over SPI
@@ -118,18 +124,7 @@ sl_status_t wius_spi_init(uint8_t id, wius_spi_config_t *config);
  */
 sl_status_t wius_spi_xfer(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t len, bool wait);
 
-/**
- * @brief Send data over SPI without receiving data
- *
- * @param id: SPI instance to use for transfer
- * @param tx_buf: Pointer to the buffer containing the data to be sent
- * @param len: Number of bytes to send
- * @param wait: Wait for transfer to complete
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during transfer or waiting
- *
- */
+/** Send data over SPI. This entry point is also used by the AFE and TX drivers. */
 sl_status_t wius_spi_send(uint8_t id, const uint8_t *tx_buf, size_t len, bool wait);
 
 /**
@@ -138,8 +133,17 @@ sl_status_t wius_spi_send(uint8_t id, const uint8_t *tx_buf, size_t len, bool wa
  * @param id: SPI instance to await
  *
  * @retval SL_STATUS_OK: Success
- * @retval SL_STATUS_TIMEOUT: Timeout occured (See @ref WIUS_SPI_RX_TIMEOUT)
+ * @retval SL_STATUS_TIMEOUT: The transfer timed out
  * @retval SL_STATUS_FAIL: Error during acquiring semaphores
  *
  */
 sl_status_t wius_spi_await(uint8_t id);
+
+/** Remove any pending completion event before starting a direct SSI transfer. */
+sl_status_t wius_spi_clear_completion(uint8_t id);
+
+/** Wait for a direct SSI transfer callback without changing chip select. */
+sl_status_t wius_spi_await_completion(uint8_t id, uint32_t timeout_ms);
+
+/** Abort the current SSI transfer before releasing its buffers. */
+void wius_spi_abort(uint8_t id);
