@@ -1,0 +1,1 @@
+::: tipy.protocol.hardware.common

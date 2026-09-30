@@ -1,0 +1,10 @@
+Output: Bill of Materials
+Type  : BOM
+From  : Variant [fabrication] of Project [tinyprobe_power_fix.PrjPcb]
+   Generated File[Bill of Materials-tinyprobe_power_fix(fabrication).xlsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 12:05:02 On 16/05/2025

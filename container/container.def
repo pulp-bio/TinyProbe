@@ -1,0 +1,93 @@
+# Copyright (C) 2026 ETH Zurich. All rights reserved.
+#
+# Authors:
+#     - Cedric Hirschi, ETH Zurich
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+BootStrap: docker
+From: ubuntu:24.04
+
+%files
+   slt-cli-1.0.1-linux-x64.zip /opt/setup/slt-linux.zip
+   cli_tools.toml /opt/setup/cli_tools.toml
+
+%post -c /bin/bash
+   set -euo pipefail
+
+   export DEBIAN_FRONTEND=noninteractive
+   export TZ=UTC
+   apt-get -y update
+   apt-get -y install --no-install-recommends ca-certificates curl unzip xz-utils git python3 python3-pip python3-protobuf protobuf-compiler usbutils build-essential pkg-config libgl1 libglib2.0-0 libdbus-1-3
+   rm -rf /var/lib/apt/lists/*
+
+   mkdir -p /opt/silabs/slt
+   unzip -q /opt/setup/slt-linux.zip -d /opt/silabs/slt
+
+   export PATH="/opt/silabs/slt:$PATH"
+
+   # Fresh slt-cli 1.0.1 has no Conan remotes.json; update --self installs it
+   slt update --self --non-interactive
+   slt install -f /opt/setup/cli_tools.toml --non-interactive
+   rm -rf /opt/setup
+
+   curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /opt/just
+
+   export PATH="/opt/just:$PATH"
+
+   ln -s /usr/bin/python3 /usr/bin/python
+
+   cmake_path="$(slt where cmake)"
+   commander_path="$(slt where commander)"
+   gcc_arm_path="$(slt where gcc-arm-none-eabi)"
+   java_path="$(slt where java21)"
+   ninja_path="$(slt where ninja)"
+   sdm_path="$(slt where sdm)"
+   slc_cli_path="$(slt where slc_cli_base)"
+   sdk_path="$(slt where simplicity-sdk)"
+
+   cat <<EOF > /etc/profile.d/slt.sh
+export PATH="${cmake_path}/bin:${commander_path}:${gcc_arm_path}/bin:${java_path}/jre/bin:${ninja_path}:${sdm_path}:${sdm_path}/bin:${slc_cli_path}:\$PATH"
+export ARM_GCC_DIR="${gcc_arm_path}"
+export SLC_SDK="${sdk_path}"
+export POST_BUILD_EXE="${commander_path}/commander"
+if [ ! -d /tmp/tinyprobe-slc-osgi-config/org.eclipse.osgi ]; then
+  mkdir -p /tmp/tinyprobe-slc-osgi-config
+  cp -a /opt/silabs/slc-osgi-config/. /tmp/tinyprobe-slc-osgi-config/
+fi
+export JAVA_TOOL_OPTIONS="-Dosgi.configuration.area=/tmp/tinyprobe-slc-osgi-config"
+EOF
+
+   extension_path="${sdk_path}/extension/wiseconnect3"
+   wiseconnect_path="$(slt where wiseconnect)"
+   mkdir -p "${extension_path}"
+   cp -a "${wiseconnect_path}/"* "${extension_path}/"
+
+   export PATH="${cmake_path}/bin:${commander_path}:${gcc_arm_path}/bin:${java_path}/jre/bin:${ninja_path}:${sdm_path}:${sdm_path}/bin:${slc_cli_path}:$PATH"
+   mkdir -p /opt/silabs/slc-osgi-config
+   export JAVA_TOOL_OPTIONS="-Dosgi.configuration.area=/opt/silabs/slc-osgi-config"
+
+   slc configuration --sdk "${sdk_path}"
+   slc signature trust --sdk "${sdk_path}"
+   slc signature trust -extpath "${extension_path}"
+   slc configuration --gcc-toolchain "${gcc_arm_path}"
+
+%environment
+   export PATH=/opt/silabs/slt:/opt/just:$PATH
+   # Host XDG_RUNTIME_DIR (/run/user/…) is not writable inside Apptainer
+   export XDG_RUNTIME_DIR="${TMPDIR:-/tmp}/xdg-runtime-${UID:-user}"
+   mkdir -p "${XDG_RUNTIME_DIR}"
+   . /etc/profile.d/slt.sh
+
+%labels
+   Author Cedric Hirschi

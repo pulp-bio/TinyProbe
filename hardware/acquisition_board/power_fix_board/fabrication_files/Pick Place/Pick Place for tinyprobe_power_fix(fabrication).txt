@@ -1,0 +1,25 @@
+Altium Designer Pick and Place Locations
+C:\Users\serge\Documents\repos\tinyprobe_main\acquisition_board\hw\tinyprobe_power_fix_board\\fabrication_files\Pick Place\Pick Place for tinyprobe_power_fix(fabrication).txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       16/05/25
+Time:       12:04
+Revision:   Not in VersionControl
+Variant:    fabrication
+Units used: mil
+
+Designator Comment          Layer    Footprint                     Center-X(mil) Center-Y(mil) Rotation Description
+R5         27k              TopLayer RESC1005X40X25LL10T10         243.351       55.795        90       ERA-2AEB273X
+R4         27k              TopLayer RESC1005X40X25LL10T10         79.843        98.268        90       ERA-2AEB273X
+R3         12k              TopLayer RESC1005X40X25LL05T05         90.079        150.709       0        ERJ-2RKF1202X
+U1         NCP189CMTW120TAG TopLayer NCP189                        205.512       125.315       315      "LDO Regulator, 0.5 A, High
+Accuracy (0.7%), Adjustable,
+Low Noise, High PSRR with
+Power Good"
+R1         "1.5 MOhm"       TopLayer RESC1005X40X25NL05T10         190.827       38.779        0        RC0402FR-071M5L
+C6         "100 nF"         TopLayer FP-C0402-BB-MFG               142.402       77.362        180      "CAP CER 0.1UF 10V X5R 0402
+C0402C104K8PACTU"
+C4         10uF             TopLayer FP-GRM188-0_1-e0_2_0_55-IPC_A 309.330       95.467        90       "Chip Multilayer Ceramic Capacitors for General Purpose, 0603, 10uF, X5R, 15%, 20%, 6.3V"
+C2         10uF             TopLayer FP-GRM188-0_1-e0_2_0_55-IPC_A 36.024        92.121        270      "Chip Multilayer Ceramic Capacitors for General Purpose, 0603, 10uF, X5R, 15%, 20%, 6.3V"

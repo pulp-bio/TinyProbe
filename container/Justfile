@@ -1,0 +1,54 @@
+# Copyright (C) 2026 ETH Zurich. All rights reserved.
+#
+# Authors:
+#     - Cedric Hirschi, ETH Zurich
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+container_dir := replace(module_directory(), "\\", "/")
+root_dir := replace(parent_directory(container_dir), "\\", "/")
+fw_dir := root_dir / "firmware"
+config_dir := root_dir / "config"
+export COMPOSE_DOCKER_CLI_BUILD := "1"
+
+# List available commands
+default:
+    @just --list
+
+# Build the Docker image
+build:
+    docker build -t siwg917-dev .
+
+build_appt:
+    apptainer build --force {{ container_dir }}/container.sif {{ container_dir }}/container.def
+
+# Pack to built Docker image
+pack:
+    docker save siwg917-dev | gzip > siwg917-dev.tar.gz
+
+# Load from packed Docker image
+load:
+    docker load < siwg917-dev.tar.gz
+
+# Run the Docker container with the firmware directory mounted
+run DIR=fw_dir:
+    docker run --rm -it --privileged -v {{ DIR }}:/work -v {{ config_dir }}:/config siwg917-dev
+
+run_appt DIR=fw_dir:
+    cd {{ DIR }} && apptainer shell --bind {{ root_dir }} --env "XDG_RUNTIME_DIR=${TMPDIR:-/tmp}/xdg-runtime-$UID" {{ container_dir }}/container.sif
+
+# Publish the Docker image to Docker Hub
+publish DOCKER_USERNAME IMAGE_NAME="siwg917-dev":
+    @echo "Tagging and pushing {{ DOCKER_USERNAME }}/{{ IMAGE_NAME }} to Docker Hub..."
+    docker tag {{ IMAGE_NAME }} {{ DOCKER_USERNAME }}/{{ IMAGE_NAME }}:latest
+    docker push {{ DOCKER_USERNAME }}/{{ IMAGE_NAME }}:latest

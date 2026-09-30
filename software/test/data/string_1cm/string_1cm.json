@@ -1,0 +1,70 @@
+{
+  "afe": {
+    "gain_atten_db": 23.5,
+    "tgc": {
+      "slope_db_per_us": 2.0784,
+      "start_db": 0.0,
+      "stop_db": 30.0
+    },
+    "lna_gain": 1,
+    "pga_gain": 1,
+    "lpf_freq": 3,
+    "hpf_freq": 20,
+    "test_pattern": 0,
+    "configure_tgc": true,
+    "configure_lowpower": true
+  },
+  "fpga": {
+    "lvds_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "fifo_depth": 500,
+    "shot_period_ms": 5,
+    "num_shots": 5,
+    "afe_clk_hispeed": false,
+    "txbf_clk_hispeed": true,
+    "fpga_clk_hispeed": false,
+    "afe_startcapt_delay_us": 8,
+    "mcu_interrupt_src": 2
+  },
+  "tx": {
+    "pulse_freq_hz": 2250000.0,
+    "num_elems": 32,
+    "pitch_m": 0.0006,
+    "num_pulses": 2
+  },
+  "acquisition": {
+    "num_frames": 1
+  },
+  "transport": {
+    "command": {
+      "ip": "192.168.0.213",
+      "port": 50008,
+      "timeout": 5.0
+    },
+    "command_dummy": false,
+    "command_resolve": true,
+    "bulk": {
+      "ip": "0.0.0.0",
+      "port": 50007,
+      "timeout": 0.5
+    },
+    "bulk_packet_size_bytes": 3000,
+    "bulk_throughput_bps": 32000000.0
+  }
+}

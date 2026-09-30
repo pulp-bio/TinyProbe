@@ -1,0 +1,75 @@
+# Copyright (C) 2026 ETH Zurich. All rights reserved.
+#
+# Authors:
+#     - Cedric Hirschi, ETH Zurich
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+project_name := "fw_v6"
+cmake_dir := "cmake_gcc"
+build_dir := cmake_dir / "build"
+project_cmake := cmake_dir / project_name + ".cmake"
+map_file := build_dir / "base" / project_name + ".map"
+
+python := "python"
+commander := "commander"
+
+
+# List available recipes
+default:
+    @just --list --list-submodules
+
+
+# Build the firmware with CMake/Ninja
+build: configure
+	cmake --build {{ build_dir }}
+
+# Print the linked address of the SEGGER RTT control block using a Python script
+rtt_addr:
+	{{ python }} scripts/print_rtt_addr.py {{ map_file }}
+
+# Configure the project with CMake
+configure: env_header
+	cmake -E chdir {{ cmake_dir }} cmake -B build --preset project
+
+# Generate the wiseconnect files using the SLC tool
+generate:
+	slc generate -p {{ project_name}}.slcp
+	cmake -E chdir autogen sed -i 's/\.o/\.c\.obj/g' linkerfile_SoC.ld # See https://community.silabs.com/s/question/0D7Vm00000CO68bKAD
+	cmake -E chdir {{ cmake_dir }} sed -i 's/ -Werror//g' {{ project_name }}.cmake # Disable warnings as errors since the SDK itself has warnings that are not fixable by the user
+
+# Flash the firmware to the device
+flash:
+	{{ commander }} flash {{ build_dir }}/base/{{ project_name }}.hex --device SIWG917
+
+# Attach to the device using RTT (without reset)
+attach:
+	sleep 1.5
+	{{ commander }} rtt connect --noreset --blockaddress {{ shell(just_executable(), "rtt_addr") }} --device SIWG917
+
+# Attach to the device using RTT (with reset)
+attach_reset:
+	{{ commander }} rtt connect --blockaddress {{ shell(just_executable(), "rtt_addr") }} --device SIWG917
+
+# Generate user/env.h from .env
+env_header:
+	{{ python }} scripts/to_header.py .env user/env.h
+
+# Clean build artifacts
+clean:
+	cmake -E rm -rf {{ build_dir }} user/env.h
+
+# Clean all build artifacts, including generated files
+clean_all: clean
+	cmake -E rm -rf autogen/ {{ project_cmake }} {{ cmake_dir / "toolchain.cmake" }}
+	find config -mindepth 1 ! -name pin_config.h -delete

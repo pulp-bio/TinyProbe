@@ -1,0 +1,126 @@
+syntax = "proto3";
+
+package methods;
+
+// Control the state of a power domain
+enum Powerdomain {
+  LVDS_2V5 = 0; // LVDS 2.5V
+  POS_HV = 1; // Positive High Voltage
+  NEG_HV = 2; // Negative High Voltage
+  NEG_5V = 3; // Negative 5V
+  PLL_PWD = 4; // PLL Powerdown
+}
+
+message controlpower_args {
+  Powerdomain domain = 1; // Power domain to control
+  bool enable = 2; // Enable (true) or disable (false) the power domain
+}
+
+// Switch the SPI MUX
+enum Spidomain {
+  PLL = 0; // PLL
+  FPGA = 1; // FPGA
+  AFE = 2; // AFE
+  TX = 3; // TX
+}
+
+message controlspi_args {
+  Spidomain domain = 1; // SPI domain to switch to
+}
+
+// Delay for a specified number of milliseconds
+message delayms_args {
+  uint32 delay = 1; // Number of milliseconds to delay
+}
+
+// Delay for a specified number of nanoseconds
+message delayns_args {
+  uint64 delay = 1; // Number of nanoseconds to delay
+}
+
+// Go back in the command queue to a previous command for a given number of iterations
+message loop_args {
+  uint32 iterations = 1; // Number of iterations to loop
+  uint32 command_index = 2; // Index of the command to loop back to (0-based)
+}
+
+// Ping the device
+message ping_args {
+  uint32 probe_id = 1; // ID of the probe to ping
+}
+
+// Set the log level on the device
+enum Loglevel {
+  TRACE = 0; // All logs
+  DEBUG = 1; // Debug and above
+  INFO = 2; // Info and above
+  WARN = 3; // Warning and above
+  ERROR = 4; // Error and above
+  FATAL = 5; // Fatal only
+}
+
+message setloglevel_args {
+  Loglevel level = 1; // Log level to set
+}
+
+// Trigger a shot
+message triggershot_args {
+  uint32 num_shots = 1; // Number of shots to trigger
+  uint32 num_packets = 2; // Number of packets to expect
+  uint32 delay_dcdc_off_ns = 3; // Delay before DCDC is disabled, in nanoseconds
+  uint32 delay_read_fifo_ns = 4; // Delay before FIFO read, in nanoseconds
+  uint32 callback_id = 5; // Callback packet identifier (0-65535), or 65535 for no callback
+  bool software_trigger = 6; // True to use a software trigger
+  bool pwd_dcdc_at_rx = 7; // True to power down DCDC during RX
+}
+
+// Write to an AFE register
+message writeafe_args {
+  bool dtgc = 1; // Register map to write (true for DTGC, false for GLB)
+  uint32 address = 2; // Address of the AFE register to write
+  uint32 value = 3; // Value to write to the AFE register
+}
+
+// Write to a FPGA register
+message writefpga_args {
+  uint32 address = 1; // Address of the FPGA register to write
+  uint32 value = 2; // Value to write to the FPGA register
+}
+
+// Write to a TX register
+message writetx_args {
+  uint32 address = 1; // Address of the TX register to write
+  uint32 value = 2; // Value to write to the TX register
+}
+
+message cmd {
+  oneof args {
+    controlpower_args controlpower = 1;
+    controlspi_args controlspi = 2;
+    delayms_args delayms = 3;
+    delayns_args delayns = 4;
+    loop_args loop = 5;
+    ping_args ping = 6;
+    setloglevel_args setloglevel = 7;
+    triggershot_args triggershot = 8;
+    writeafe_args writeafe = 9;
+    writefpga_args writefpga = 10;
+    writetx_args writetx = 11;
+  }
+}
+
+message request {
+  repeated cmd cmd = 1; // Commands to execute
+}
+
+enum status {
+  OK = 0; // Command executed successfully
+  INVALID_ARGUMENT = 1; // Invalid argument provided to the command
+  INVALID_STATE = 2; // Command cannot be executed in the current state
+  TIMEOUT = 3; // Command execution timed out
+  UNKNOWN_ERROR = 4; // An unknown error occurred during command execution
+}
+
+message response {
+  repeated status status = 1; // Status codes for each command in the request
+}

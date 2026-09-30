@@ -1,0 +1,164 @@
+# Copyright (C) 2026 ETH Zurich. All rights reserved.
+#
+# Authors:
+#     - Sergei Vostrikov, ETH Zurich
+#     - Cedric Hirschi, ETH Zurich
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Tinyprobe
+file: methods
+max_count: 60
+
+methods:
+  - name: controlpower
+    description: "Control the state of a power domain"
+    args:
+      - name: domain
+        enum_name: powerdomain
+        enums:
+          - { name: LVDS_2V5, value: 0, description: "LVDS 2.5V" }
+          - { name: POS_HV, value: 1, description: "Positive High Voltage" }
+          - { name: NEG_HV, value: 2, description: "Negative High Voltage" }
+          - { name: NEG_5V, value: 3, description: "Negative 5V" }
+          - { name: PLL_PWD, value: 4, description: "PLL Powerdown" }
+        type: B
+        description: "Power domain to control"
+      - name: enable
+        type: "?"
+        description: "Enable (true) or disable (false) the power domain"
+
+  - name: delayns
+    description: "Delay for a specified number of nanoseconds"
+    args:
+      - name: delay
+        type: Q
+        description: "Number of nanoseconds to delay"
+
+  - name: ping
+    description: "Ping the device"
+    args:
+      - name: probe_id
+        default: 1
+        type: B
+        description: "ID of the probe to ping"
+
+  - name: setloglevel
+    description: "Set the log level on the device"
+    args:
+      - name: level
+        enum_name: loglevel
+        enums:
+          - { name: TRACE, value: 0, description: "All logs" }
+          - { name: DEBUG, value: 1, description: "Debug and above" }
+          - { name: INFO, value: 2, description: "Info and above" }
+          - { name: WARN, value: 3, description: "Warning and above" }
+          - { name: ERROR, value: 4, description: "Error and above" }
+          - { name: FATAL, value: 5, description: "Fatal only" }
+        type: B
+        description: "Log level to set"
+
+  - name: delayms
+    description: "Delay for a specified number of milliseconds"
+    args:
+      - name: delay
+        type: I
+        description: "Number of milliseconds to delay"
+
+  - name: controlspi
+    description: "Switch the SPI MUX"
+    args:
+      - name: domain
+        enum_name: spidomain
+        enums:
+          - { name: PLL, value: 0, description: "PLL" }
+          - { name: FPGA, value: 1, description: "FPGA" }
+          - { name: AFE, value: 2, description: "AFE" }
+          - { name: TX, value: 3, description: "TX" }
+        type: B
+        description: "SPI domain to switch to"
+
+  - name: triggershot
+    description: "Trigger a shot"
+    args:
+      - name: num_shots
+        default: 1
+        type: H
+        description: "Number of shots to trigger"
+      - name: num_packets
+        default: 82
+        type: H
+        description: "Number of packets to expect"
+      - name: delay_dcdc_off_ns
+        default: 6100
+        type: I
+        description: "Delay before DCDC is disabled, in nanoseconds"
+      - name: delay_read_fifo_ns
+        default: 200000
+        type: I
+        description: "Delay before FIFO read, in nanoseconds"
+      - name: callback_id
+        default: 65535
+        type: H
+        description: "Callback packet identifier (0-65535), or 65535 for no callback"
+      - name: software_trigger
+        default: true
+        type: "?"
+        description: "True to use a software trigger"
+      - name: pwd_dcdc_at_rx
+        default: true
+        type: "?"
+        description: "True to power down DCDC during RX"
+
+  - name: writeafe
+    description: "Write to an AFE register"
+    args:
+      - name: dtgc
+        type: "?"
+        description: "Register map to write (true for DTGC, false for GLB)"
+      - name: address
+        type: B
+        description: "Address of the AFE register to write"
+      - name: value
+        type: H
+        description: "Value to write to the AFE register"
+
+  - name: writefpga
+    description: "Write to a FPGA register"
+    args:
+      - name: address
+        type: B
+        description: "Address of the FPGA register to write"
+      - name: value
+        type: I
+        description: "Value to write to the FPGA register"
+
+  - name: writetx
+    description: "Write to a TX register"
+    args:
+      - name: address
+        type: H
+        description: "Address of the TX register to write"
+      - name: value
+        type: I
+        description: "Value to write to the TX register"
+
+  - name: loop
+    description: "Go back in the command queue to a previous command for a given number of iterations"
+    args:
+      - name: iterations
+        type: H
+        description: "Number of iterations to loop"
+      - name: command_index
+        type: H
+        description: "Index of the command to loop back to (0-based)"

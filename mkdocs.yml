@@ -1,0 +1,216 @@
+# Copyright (C) 2026 ETH Zurich. All rights reserved.
+#
+# Authors:
+#     - Cedric Hirschi, ETH Zurich
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+site_name: Tinyprobe
+site_description: A Wearable 32-Channel Multimodal Wireless Ultrasound Probe
+site_author: PULP-Bio
+site_url: https://pulp-bio.github.io/tinyprobe/
+repo_name: TinyProbe
+repo_url: https://github.com/pulp-bio/tinyprobe
+
+nav:
+- Home: README.md
+- System Overview:
+  - Overview: system/index.md
+  - Hardware & Control: system/hardware-control.md
+  - Acquisition Timing: system/acquisition-timing.md
+  - Glossary: system/glossary.md
+- Software:
+  - Overview: software/index.md
+  - API Reference:
+    - Runtime:
+      - Session Runtime: software/api/runtime/session.md
+      - Bitstream Parser: software/api/runtime/parser.md
+    - Control:
+      - Command Interface: software/api/control/command.md
+      - Bulk Data Interface: software/api/control/bulk.md
+      - RPC: software/api/control/rpc.md
+      - Methods (Generated): software/api/control/methods.md
+    - Hardware:
+      - FPGA:
+        - Register Map: software/api/hardware/fpga/regmap.md
+        - Hardware Abstraction Layer (HAL):
+          - software/api/hardware/fpga/hal.md
+          - Components: software/api/hardware/fpga/components.md
+      - Register Map Base Classes (Generated): software/api/hardware/regmap_base.md
+    - Measurement Protocols:
+      - software/api/protocol/index.md
+      - Hardware Components:
+        - Common: software/api/protocol/hardware/common.md
+        - FPGA: software/api/protocol/hardware/fpga.md
+- Firmware:
+    - firmware/index.md
+    - Toolchain Setup: firmware/toolchain.md
+    - API Reference:
+        - firmware/links.md
+        - firmware/modules.md
+        - Classes:
+            - Class List: firmware/annotated.md
+            - Class Index: firmware/classes.md
+            - Class Hierarchy: firmware/hierarchy.md
+            - Class Members: firmware/class_members.md
+            - Class Member Functions: firmware/class_member_functions.md
+            - Class Member Variables: firmware/class_member_variables.md
+            - Class Member Typedefs: firmware/class_member_typedefs.md
+            - Class Member Enumerations: firmware/class_member_enums.md
+        - Functions: firmware/functions.md
+        - Variables: firmware/variables.md
+        - Macros: firmware/macros.md
+        - Files: firmware/files.md
+
+copyright: Copyright &copy; 2026 ETH Zurich - IIS D-ITET
+
+theme:
+  name: material
+
+  font:
+    text: Roboto Flex
+    code: Roboto Mono
+
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+      primary: black
+      accent: amber
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to auto mode
+      primary: black
+      accent: amber
+
+  icon:
+    # logo: material/black-mesa
+    repo: fontawesome/brands/github
+
+  features:
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.prune
+    - toc.follow
+    # - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - header.autohide
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+
+plugins:
+  - search
+  - social
+  - glightbox
+  - mkdocstrings:
+      handlers:
+        python:
+          docstring_style: google
+          options:
+            show_root_heading: false
+            show_root_toc_entry: false
+            heading_level: 3
+            show_source: false
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            separate_signature: true
+            backlinks: tree
+            show_inheritance_diagram: true
+            show_root_members_full_path: true
+            type_parameter_headings: true
+            summary: true
+            docstring_section_style: spacy
+            merge_init_into_class: true
+            docstring_options:
+              ignore_init_summary: true
+            line_length: 40
+            modernize_annotations: true
+            show_signature_annotations: true
+          selection:
+            members: true
+  - mkdoxy:
+      projects:
+        firmware:
+          src-dirs: firmware/user
+          full-doc: True
+  - gh-admonitions
+  - section-index
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - tables
+  - attr_list
+  - md_in_html
+  - def_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.details
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.blocks.caption
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+hooks:
+  - docs/hooks.py

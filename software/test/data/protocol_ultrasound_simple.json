@@ -1,0 +1,22 @@
+{
+    "fpga": {
+        "lvds_lanes": [
+            0,
+            1
+        ],
+        "fifo_depth": 1200,
+        "shot_period_ms": 5,
+        "num_shots": 5,
+        "afe_clk_hispeed": false,
+        "txbf_clk_hispeed": true,
+        "fpga_clk_hispeed": false,
+        "afe_startcapt_delay_us": 0,
+        "mcu_interrupt_src": "tx_bf_sync"
+    },
+    "acquisition": {
+        "num_frames": 5
+    },
+    "transport": {
+        "command_dummy": true
+    }
+}

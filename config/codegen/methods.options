@@ -1,0 +1,2 @@
+methods.request.cmd max_count:60
+methods.response.status max_count:60

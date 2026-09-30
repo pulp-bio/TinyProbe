@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "*example*.json"
+            ],
+            "url": "./schemas/protocol_example.schema.json"
+        }
+    ]
+}

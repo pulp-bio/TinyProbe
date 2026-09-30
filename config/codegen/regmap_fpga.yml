@@ -1,0 +1,358 @@
+# Copyright (C) 2026 ETH Zurich. All rights reserved.
+#
+# Authors:
+#     - Sergei Vostrikov, ETH Zurich
+#     - Cedric Hirschi, ETH Zurich
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Regmap_FPGA
+file: regmap
+
+support_file: regmap_base
+
+regmap:
+  - name: CMD
+    description: Command Register
+    address: 0
+    bitfields:
+      - name: CMD
+        description: Command byte controlling acquisition and helper functions.
+        width: 8
+        offset: 0
+        reset: 0
+        access: rw
+        enums:
+          - { name: NOP,       value: 0, description: "No operation" }
+          - { name: START,     value: 1, description: "Start acquisition" }
+          - { name: SW_RESET,  value: 2, description: "Software reset" }
+          - { name: RD_EN,     value: 3, description: "Enable readout" }
+          - { name: ECHO,      value: 4, description: "Echo command" }
+
+  - name: PLL_CONFIG_REG
+    description: PLL Configuration Register
+    address: 1
+    bitfields:
+      - name: TX_MUX
+        description: "TX Beamforming clock: 0 = 20 MHz, 1 = 100 MHz."
+        width: 1
+        offset: 0
+        reset: 0
+        access: rw
+      - name: AFE_MUX
+        description: "AFE clock: 0 = 20 MHz (10 MHz sampling), 1 = 60 MHz (30 MHz sampling)."
+        width: 1
+        offset: 1
+        reset: 0
+        access: rw
+      - name: FPGA_MUX
+        description: "FPGA core clock: 0 = 10 MHz, 1 = 20 MHz."
+        width: 1
+        offset: 2
+        reset: 0
+        access: rw
+      - name: TX_CTRL
+        description: "Multiplexer for PLL GL0 enable signal: 0 = Controlled by TX_EN, 1 = Defined by tx_clk_buf_en_wave_gen"
+        width: 1
+        offset: 3
+        reset: 0
+        access: rw
+      - name: TX_EN
+        description: "PLL GL0 enable signal (active high) for TX clock output."
+        width: 1
+        offset: 4
+        reset: 0
+        access: rw
+      - name: AFE_CTRL
+        description: "Multiplexer for PLL GL1 enable signal: 0 = Controlled by AFE_EN, 1 = Defined by afe_clk_buf_en_wave_gen"
+        width: 1
+        offset: 5
+        reset: 0
+        access: rw
+      - name: AFE_EN
+        description: "PLL GL1 enable signal (active high) for AFE clock output."
+        width: 1
+        offset: 6
+        reset: 0
+        access: rw
+      - name: PRM
+        description: "SPI SS alt-func mux: drives either PLL async reset or power-down."
+        width: 1
+        offset: 7
+        reset: 0
+        access: rw
+        enums:
+          - { name: PLL_POWERDOWN, value: 0, description: "SPI->PLL power-down" }
+          - { name: PLL_ARST_N,    value: 1, description: "SPI->PLL async reset_n" }
+
+  - name: LVDS_CH_EN
+    description: LVDS Channel Enable
+    address: 2
+    bitfields:
+      - name: LVDS_CH_EN
+        description: "Enable mask for 16 LVDS receivers; also gates which FIFOs accept writes and are later readable via SPI. If all 0, bit/frame clock buffers auto-disable."
+        width: 16
+        offset: 0
+        reset: 0
+        access: rw
+      - name: FIFO_RD_WR_CNT
+        description: "Samples per channel to write to and read from FIFOs."
+        width: 12
+        offset: 16
+        reset: 0
+        access: rw
+      - name: CLK_CTL_TX
+        description: "TX chip clock buffer {0=WF gen control, 1=force ON}"
+        width: 1
+        offset: 30
+        reset: 0
+        access: rw
+      - name: CLK_CTL_AFE
+        description: "AFE clock buffer {0=WF gen control, 1=force ON}."
+        width: 1
+        offset: 31
+        reset: 0
+        access: rw
+
+  - name: WAVEFORM_GEN_REG_1
+    description: Waveform Generator Reg 1
+    address: 3
+    bitfields:
+      - name: SYNC_PERIOD
+        description: "Synchronization period of the waveform generator (defines PRF)."
+        width: 16
+        offset: 16
+        reset: 0
+        access: rw
+      - name: TR_SW_WKP_TIME
+        description: "TX switch (TR) wake-up time before sync event."
+        width: 8
+        offset: 8
+        reset: 0
+        access: rw
+      - name: TR_SW_SLEEP_TIME
+        description: "TX switch (TR) sleep time after sync event."
+        width: 8
+        offset: 0
+        reset: 0
+        access: rw
+
+  - name: WAVEFORM_GEN_REG_2
+    description: Waveform Generator Reg 2
+    address: 4
+    bitfields:
+      - name: AFE_WKP_TIME
+        description: "AFE wake-up lead time before sync."
+        width: 8
+        offset: 16
+        reset: 0
+        access: rw
+      - name: AFE_CLK_ON_TIME
+        description: "Duration the AFE clock stays on around sync."
+        width: 16
+        offset: 0
+        reset: 0
+        access: rw
+
+  - name: WAVEFORM_GEN_REG_3
+    description: Waveform Generator Reg 3
+    address: 5
+    bitfields:
+      - name: CAPTURE_DELAY
+        description: "Delay from TX sync to start of AFE acquisition."
+        width: 16
+        offset: 16
+        reset: 0
+        access: rw
+      - name: AFE_DATA_ACQ_TIME
+        description: "Duration of AFE data acquisition window."
+        width: 16
+        offset: 0
+        reset: 0
+        access: rw
+
+  - name: TGC_REG_1
+    description: TGC Register 1
+    address: 6
+    bitfields:
+      - name: TGC_CLK_DIVIDER
+        description: "Clock divider for TGC slope generation (gain ramp rate)."
+        width: 32
+        offset: 0
+        reset: 0
+        access: rw
+
+  - name: TGC_REG_2
+    description: TGC Register 2
+    address: 7
+    bitfields:
+      - name: TGC_CAPTURE_TIME
+        description: "Duration the TGC gain adjustment is applied after start."
+        width: 32
+        offset: 0
+        reset: 0
+        access: rw
+
+  - name: TGC_REG_3
+    description: TGC Register 3
+    address: 8
+    bitfields:
+      - name: TGC_DELAY_FINISH
+        description: "Extra delay before TGC returns to default after final gain."
+        width: 32
+        offset: 0
+        reset: 0
+        access: rw
+
+  - name: TGC_REG_4
+    description: TGC Register 4
+    address: 9
+    bitfields:
+      - name: TGC_DELAY_START
+        description: "Delay before TGC gain ramp begins after trigger."
+        width: 32
+        offset: 0
+        reset: 0
+        access: rw
+
+  - name: AFE_TX_RST_REG
+    description: AFE and TX Reset Register
+    address: 10
+    bitfields:
+      - name: AFE
+        description: "Reset AFE."
+        width: 1
+        offset: 0
+        reset: 0
+        access: rw
+      - name: TX
+        description: "Reset TX."
+        width: 1
+        offset: 1
+        reset: 0
+        access: rw
+      - name: AFE_FPWD_SRC
+        description: "AFE fast power-down control source. Enables control from AFE_FPWD_CTRL if set."
+        width: 1
+        offset: 2
+        reset: 0
+        access: rw
+      - name: AFE_FPWD_CTRL
+        description: "Drive AFE fast power-down when set."
+        width: 1
+        offset: 3
+        reset: 0
+        access: rw
+      - name: AFE_GPWD_SRC
+        description: "AFE global power-down control source. Enables control from AFE_GPWD_CTRL if set."
+        width: 1
+        offset: 4
+        reset: 0
+        access: rw
+      - name: AFE_GPWD_CTRL
+        description: "Drive AFE global power-down when set."
+        width: 1
+        offset: 5
+        reset: 0
+        access: rw
+      - name: TX_EN_SRC
+        description: "TX enable control source. Enables control from TX_EN_CTRL if set."
+        width: 1
+        offset: 6
+        reset: 0
+        access: rw
+      - name: TX_EN_CTRL
+        description: "Drive TX_EN when set."
+        width: 1
+        offset: 7
+        reset: 0
+        access: rw
+
+  - name: WAVEFORM_GEN_REG_4
+    description: Waveform Generator Reg 4
+    address: 11
+    bitfields:
+      - name: START_CAPTURE_TIME
+        description: "Preload of main counter to set deterministic delay from trigger to first TX event."
+        width: 16
+        offset: 16
+        reset: 0
+        access: rw
+      - name: N_SHOTS_TO_MAKE
+        description: "Number of acquisitions (shots) to perform."
+        width: 16
+        offset: 0
+        reset: 0
+        access: rw
+
+  - name: WAVEFORM_GEN_REG_5
+    description: Waveform Generator Reg 5
+    address: 12
+    bitfields:
+      - name: REFRESH_CNT_PERIOD
+        description: "Period of refresh counter for periodic TR_EN pulses (TX LDO refresh)."
+        width: 16
+        offset: 0
+        reset: 0
+        access: rw
+      - name: TR_EN_ON_TIME
+        description: "High-time of TR_EN during each refresh cycle."
+        width: 8
+        offset: 16
+        reset: 0
+        access: rw
+      - name: FEN
+        description: "Enable periodic refresh mechanism."
+        width: 1
+        offset: 31
+        reset: 0
+        access: rw
+        enums:
+          - { name: DISABLE_REFRESH, value: 0, description: "Disable refresh" }
+          - { name: ENABLE_REFRESH,  value: 1, description: "Enable refresh" }
+
+  - name: EXT_INT_TRIG_REG
+    description: External/Internal Trigger Register
+    address: 13
+    bitfields:
+      - name: EIT
+        description: "Select trigger source."
+        width: 1
+        offset: 0
+        reset: 0
+        access: rw
+        enums:
+          - { name: INTERNAL_SW_TRIGGER, value: 0, description: "Use internal SW trigger" }
+          - { name: EXTERNAL_TRIGGER,    value: 1, description: "Use external trigger" }
+      - name: MIM
+        description: "MCU interrupt source select (SPI mux must not be 00)."
+        width: 2
+        offset: 1
+        reset: 0
+        access: rw
+        enums:
+          - { name: MCU_INT_FIFO_WR_DONE, value: 0, description: "FIFO write done" }
+          - { name: MCU_INT_AFE_TX_TRIG,  value: 1, description: "AFE/TX trigger" }
+          - { name: MCU_INT_TX_BF_SYNC,   value: 2, description: "TX BF sync" }
+          - { name: MCU_INT_EXT_TRIG,     value: 3, description: "External trigger" }
+      - name: OTM
+        description: "Output trigger (trigger_o) source select."
+        width: 2
+        offset: 3
+        reset: 0
+        access: rw
+        enums:
+          - { name: TRIG_OUT_TX_BF_SYNC,   value: 0, description: "TX BF sync" }
+          - { name: TRIG_OUT_AFE_TX_TRIG,  value: 1, description: "AFE/TX trigger" }
+          - { name: TRIG_OUT_PLL_LOCK,     value: 2, description: "PLL lock" }
+          - { name: TRIG_OUT_FIFO_WR_DONE, value: 3, description: "FIFO write done" }

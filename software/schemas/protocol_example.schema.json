@@ -1,0 +1,184 @@
+{
+  "$defs": {
+    "ConfigFPGA": {
+      "properties": {
+        "lvds_lanes": {
+          "default": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "items": {
+            "type": "integer"
+          },
+          "title": "Lvds Lanes",
+          "type": "array"
+        },
+        "fifo_depth": {
+          "default": 400,
+          "title": "Fifo Depth",
+          "type": "integer"
+        },
+        "shot_period_ms": {
+          "default": 5.0,
+          "title": "Shot Period Ms",
+          "type": "number"
+        },
+        "num_shots": {
+          "default": 1,
+          "title": "Num Shots",
+          "type": "integer"
+        },
+        "afe_clk_hispeed": {
+          "default": false,
+          "title": "Afe Clk Hispeed",
+          "type": "boolean"
+        },
+        "txbf_clk_hispeed": {
+          "default": true,
+          "title": "Txbf Clk Hispeed",
+          "type": "boolean"
+        },
+        "fpga_clk_hispeed": {
+          "default": false,
+          "title": "Fpga Clk Hispeed",
+          "type": "boolean"
+        },
+        "afe_startcapt_delay_us": {
+          "default": 0,
+          "title": "Afe Startcapt Delay Us",
+          "type": "integer"
+        },
+        "mcu_interrupt_src": {
+          "$ref": "#/$defs/EnumMim",
+          "default": 2
+        }
+      },
+      "title": "ConfigFPGA",
+      "type": "object"
+    },
+    "EnumMim": {
+      "description": "Enum for bitfield MIM.EXT_INT_TRIG_REG",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "title": "EnumMim",
+      "type": "integer"
+    },
+    "ProtocolAcquisitionConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "num_frames": {
+          "default": 1,
+          "title": "Num Frames",
+          "type": "integer"
+        },
+        "onboard_looping": {
+          "default": true,
+          "title": "Onboard Looping",
+          "type": "boolean"
+        }
+      },
+      "title": "ProtocolAcquisitionConfig",
+      "type": "object"
+    },
+    "ProtocolSingleTransportConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "ip": {
+          "default": "0.0.0.0",
+          "format": "ipv4",
+          "title": "Ip",
+          "type": "string"
+        },
+        "port": {
+          "title": "Port",
+          "type": "integer"
+        },
+        "timeout": {
+          "default": 5.0,
+          "title": "Timeout",
+          "type": "number"
+        }
+      },
+      "required": [
+        "port"
+      ],
+      "title": "ProtocolSingleTransportConfig",
+      "type": "object"
+    },
+    "ProtocolTransportConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "$ref": "#/$defs/ProtocolSingleTransportConfig",
+          "default": {
+            "ip": "0.0.0.0",
+            "port": 50008,
+            "timeout": 5.0
+          }
+        },
+        "command_dummy": {
+          "default": false,
+          "title": "Command Dummy",
+          "type": "boolean"
+        },
+        "command_resolve": {
+          "default": true,
+          "title": "Command Resolve",
+          "type": "boolean"
+        },
+        "bulk": {
+          "$ref": "#/$defs/ProtocolSingleTransportConfig",
+          "default": {
+            "ip": "0.0.0.0",
+            "port": 50007,
+            "timeout": 0.5
+          }
+        },
+        "bulk_packet_size_bytes": {
+          "default": 3000,
+          "title": "Bulk Packet Size Bytes",
+          "type": "integer"
+        },
+        "bulk_throughput_bps": {
+          "default": 32000000.0,
+          "title": "Bulk Throughput Bps",
+          "type": "number"
+        }
+      },
+      "title": "ProtocolTransportConfig",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "fpga": {
+      "$ref": "#/$defs/ConfigFPGA"
+    },
+    "acquisition": {
+      "$ref": "#/$defs/ProtocolAcquisitionConfig"
+    },
+    "transport": {
+      "$ref": "#/$defs/ProtocolTransportConfig"
+    }
+  },
+  "title": "ProtocolExampleConfig",
+  "type": "object"
+}
