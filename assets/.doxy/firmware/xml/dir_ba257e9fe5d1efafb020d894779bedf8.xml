@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_ba257e9fe5d1efafb020d894779bedf8" kind="dir">
+    <compoundname>firmware/user/tp/hal</compoundname>
+    <innerfile refid="tp__afe_8c">tp_afe.c</innerfile>
+    <innerfile refid="tp__afe_8h">tp_afe.h</innerfile>
+    <innerfile refid="tp__fpga_8c">tp_fpga.c</innerfile>
+    <innerfile refid="tp__fpga_8h">tp_fpga.h</innerfile>
+    <innerfile refid="tp__mux_8c">tp_mux.c</innerfile>
+    <innerfile refid="tp__mux_8h">tp_mux.h</innerfile>
+    <innerfile refid="tp__power_8c">tp_power.c</innerfile>
+    <innerfile refid="tp__power_8h">tp_power.h</innerfile>
+    <innerfile refid="tp__tx_8c">tp_tx.c</innerfile>
+    <innerfile refid="tp__tx_8h">tp_tx.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/tp/hal/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1013 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__afe_8c" kind="file" language="C++">
+    <compoundname>tp_afe.c</compoundname>
+    <includes refid="tp__afe_8h" local="yes">tp_afe.h</includes>
+    <includes refid="wius__spi_8h" local="yes">wius_spi.h</includes>
+    <incdepgraph>
+      <node id="321">
+        <label>stdbool.h</label>
+      </node>
+      <node id="326">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="327" relation="include">
+        </childnode>
+      </node>
+      <node id="329">
+        <label>stdarg.h</label>
+      </node>
+      <node id="324">
+        <label>sl_status.h</label>
+      </node>
+      <node id="330">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="326" relation="include">
+        </childnode>
+      </node>
+      <node id="332">
+        <label>sl_si91x_gspi.h</label>
+      </node>
+      <node id="320">
+        <label>stdint.h</label>
+      </node>
+      <node id="331">
+        <label>wius_spi.h</label>
+        <link refid="wius__spi_8h"/>
+        <childnode refid="319" relation="include">
+        </childnode>
+        <childnode refid="332" relation="include">
+        </childnode>
+        <childnode refid="333" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+      </node>
+      <node id="319">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="320" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="324" relation="include">
+        </childnode>
+        <childnode refid="325" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="328" relation="include">
+        </childnode>
+        <childnode refid="330" relation="include">
+        </childnode>
+      </node>
+      <node id="334">
+        <label>wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="319" relation="include">
+        </childnode>
+        <childnode refid="335" relation="include">
+        </childnode>
+        <childnode refid="336" relation="include">
+        </childnode>
+      </node>
+      <node id="322">
+        <label>stddef.h</label>
+      </node>
+      <node id="335">
+        <label>sl_gpio_board.h</label>
+      </node>
+      <node id="327">
+        <label>env.h</label>
+      </node>
+      <node id="325">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="336">
+        <label>sl_si91x_driver_gpio.h</label>
+      </node>
+      <node id="333">
+        <label>sl_si91x_ssi.h</label>
+      </node>
+      <node id="323">
+        <label>string.h</label>
+      </node>
+      <node id="328">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="329" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+      </node>
+      <node id="317">
+        <label>firmware/user/tp/hal/tp_afe.c</label>
+        <link refid="tp__afe_8c"/>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="331" relation="include">
+        </childnode>
+      </node>
+      <node id="318">
+        <label>tp_afe.h</label>
+        <link refid="tp__afe_8h"/>
+        <childnode refid="319" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="struct__tp__afe__reg" prot="public">_tp_afe_reg</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="tp__afe_8c_1a2304d562f0dd6ac350757ce1d8bf8faa" prot="public" static="no">
+        <name>DTGC_WR_EN</name>
+        <initializer>0x10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="35" column="9" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tp__afe_8c_1ab7040c976cb1261523c88f6a56488943" prot="public" static="no">
+        <name>REG_READ_EN</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="36" column="9" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tp__afe_8c_1a4cadd7f8951a3c49930fc1576881df6e" prot="public" static="no">
+        <name>AFE_SOFT_RST</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="37" column="9" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tp__afe_8c_1a4f5f296364e1df2b2379bccfff24fae4" prot="public" static="no">
+        <name>ADC_REG_41_PLLRST1</name>
+        <initializer>0x4000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="39" column="9" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tp__afe_8c_1ad8c80f969b21fd67d54dcbc7a17e329d" prot="public" static="no">
+        <name>ADC_REG_42_PLLRST2</name>
+        <initializer>0x4000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="40" column="9" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tp__afe_8c_1a00645ed27ca22714f3d70a4fe1569fb2" prot="public" static="no">
+        <name>NUM_OF_ADC_VCA_REGS</name>
+        <initializer>(55 + 23)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="48" column="9" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tp__afe_8c_1a0f0febdb4a252f44a9c998adf4e9c5b5" prot="public" static="no">
+        <name>NUM_OF_DTGC_REGS</name>
+        <initializer>(23)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="175" column="9" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="tp__afe_8c_1a2279c1564e713d4a5b8b165e1fb01e8a" prot="public" static="no">
+        <type>struct <ref refid="struct__tp__afe__reg" kindref="compound">_tp_afe_reg</ref></type>
+        <definition>typedef struct _tp_afe_reg  _tp_afe_reg_t</definition>
+        <argsstring></argsstring>
+        <name>_tp_afe_reg_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="46" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="tp__afe_8c_1ae20951649ba3a79ed191b4c2cf478680" prot="public" static="no" mutable="no">
+        <type><ref refid="struct__tp__afe__reg" kindref="compound">_tp_afe_reg_t</ref> const</type>
+        <definition>_tp_afe_reg_t const tp_afe_adc_vca_reg_init_seq[NUM_OF_ADC_VCA_REGS]</definition>
+        <argsstring>[NUM_OF_ADC_VCA_REGS]</argsstring>
+        <name>tp_afe_adc_vca_reg_init_seq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="50" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="tp__afe_8c_1a2c1b049ad30a7fa1fbd19998101e4a3c" prot="public" static="no" mutable="no">
+        <type><ref refid="struct__tp__afe__reg" kindref="compound">_tp_afe_reg_t</ref> const</type>
+        <definition>_tp_afe_reg_t const tp_afe_dtgc_reg_init_seq[NUM_OF_DTGC_REGS]</definition>
+        <argsstring>[NUM_OF_DTGC_REGS]</argsstring>
+        <name>tp_afe_dtgc_reg_init_seq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="177" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_afe_write_reg</definition>
+        <argsstring>(uint8_t address, uint16_t value)</argsstring>
+        <name>tp_afe_write_reg</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register of the AFE. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during SPI transfer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="226" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="226" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__afe_8c_1a7f768a58b16108a678f58deaf837f7c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_afe_read_reg</definition>
+        <argsstring>(uint8_t address, uint16_t *value)</argsstring>
+        <name>tp_afe_read_reg</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Read from a register of the AFE. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to read from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the variable where the value of the register will be stored</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during SPI transfer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="238" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="238" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__afe_8c_1a1fff96077c591fe32e1fc11592f9a2e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_afe_write_reg_safe</definition>
+        <argsstring>(uint8_t address, uint16_t value)</argsstring>
+        <name>tp_afe_write_reg_safe</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register of the AFE and check if the write was successful. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Write was not successful </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during SPI transfer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="258" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="258" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__afe_8c_1a682e87d4356ee7282d49ee708b788ece" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_afe_write_reg_dtgc</definition>
+        <argsstring>(uint8_t address, uint16_t value)</argsstring>
+        <name>tp_afe_write_reg_dtgc</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register of the AFE in the DTGC (Digital Time Gain Compensation) block. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during SPI transfer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="279" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="279" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__afe_8c_1aadcec1c9e5a47c8d5a3804ddbb809a20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_afe_read_reg_dtgc</definition>
+        <argsstring>(uint8_t address, uint16_t *value)</argsstring>
+        <name>tp_afe_read_reg_dtgc</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Read from a register of the AFE in the DTGC (Digital Time Gain Compensation) block. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to read from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the variable where the value of the register will be stored</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during SPI transfer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="296" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="296" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__afe_8c_1ad268716e423add955a16b331d2f90908" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_afe_write_reg_dtgc_safe</definition>
+        <argsstring>(uint8_t address, uint16_t value)</argsstring>
+        <name>tp_afe_write_reg_dtgc_safe</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register of the AFE in the DTGC (Digital Time Gain Compensation) block and check if the write was successful. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Write was not successful </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during SPI transfer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="316" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="316" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__afe_8c_1a1eda21d08fdd3b6343b60a527223f903" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_afe_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_afe_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>AFE initialization. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function must be called before any other AFE function </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="337" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="337" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__afe_8c_1a80797fe4daa0f83662c5460e74c97a12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_afe_test_pattern</definition>
+        <argsstring>(tp_afe_patt_t pattern)</argsstring>
+        <name>tp_afe_test_pattern</name>
+        <param>
+          <type><ref refid="tp__afe_8h_1a016d56c5a79907bad49cdc4bbe887a58" kindref="member">tp_afe_patt_t</ref></type>
+          <declname>pattern</declname>
+        </param>
+        <briefdescription>
+<para>AFE test pattern selection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pattern</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Test pattern to be applied</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="376" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="376" bodyend="388"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe AFE driver source file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__afe_8h" kindref="compound">tp_afe.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__spi_8h" kindref="compound">wius_spi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Define<sp/>for<sp/>Globas<sp/>register<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DTGC_WR_EN<sp/>0x10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_READ_EN<sp/>0x02</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>AFE_SOFT_RST<sp/>0x01</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_REG_41_PLLRST1<sp/>0x4000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_REG_42_PLLRST2<sp/>0x4000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="struct__tp__afe__reg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__tp__afe__reg" kindref="compound">_tp_afe_reg</ref></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>addr;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>data;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/><ref refid="struct__tp__afe__reg" kindref="compound">_tp_afe_reg_t</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_OF_ADC_VCA_REGS<sp/>(55<sp/>+<sp/>23)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><ref refid="struct__tp__afe__reg" kindref="compound">_tp_afe_reg_t</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>tp_afe_adc_vca_reg_init_seq[NUM_OF_ADC_VCA_REGS]<sp/>=</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Global<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x00,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Standart<sp/>LVDs<sp/>rate,<sp/>LVDS<sp/>enabled,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>global<sp/>PDN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x01,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>tests<sp/>patterns</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x02,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SER_DATA_RATE<sp/>=<sp/>10x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Digital<sp/>gain<sp/>disabled,<sp/>no<sp/>offset,<sp/>ser.<sp/>factor<sp/>=<sp/>10x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x03,<sp/>0x6008},</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10<sp/>bit<sp/>resolution,<sp/>MSB<sp/>first,<sp/>twos<sp/>complementary</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x04,<sp/>0x0003},</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x05,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x07,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x08,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ADC<sp/>LOW<sp/>power<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x0B,<sp/>0x0800},</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>params<sp/>of<sp/>digital<sp/>gain<sp/>and<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>ADC(1-4)o<sp/>and<sp/>ADC(1-4)e</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x0D,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x0E,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x0F,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x10,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x11,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x12,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x13,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x14,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disabled<sp/>Test<sp/>patterns<sp/>on<sp/>LVDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x15,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x17,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LVDS<sp/>1-4<sp/>pdn<sp/>is<sp/>disabled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x18,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>params<sp/>of<sp/>digital<sp/>gain<sp/>and<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>ADC(5-8)o<sp/>and<sp/>ADC(5-8)e</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x19,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x1A,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x1B,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x1C,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x1D,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x1E,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x1F,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x20,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disabled<sp/>Test<sp/>patterns<sp/>on<sp/>LVDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x21,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x23,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LVDS<sp/>5-8<sp/>pdn<sp/>is<sp/>disabled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x24,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>params<sp/>of<sp/>digital<sp/>gain<sp/>and<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>ADC(9-12)o<sp/>and<sp/>ADC(9-12)e</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x25,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x26,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x27,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x28,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x29,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x2A,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x2B,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x2C,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disabled<sp/>Test<sp/>patterns<sp/>on<sp/>LVDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x2D,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x2F,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LVDS<sp/>9-12<sp/>pdn<sp/>is<sp/>disabled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x30,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>params<sp/>of<sp/>digital<sp/>gain<sp/>and<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>ADC(13-16)o<sp/>and<sp/>ADC(13-16)e</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x31,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x32,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x33,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x34,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x35,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x36,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x37,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x38,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disabled<sp/>Test<sp/>patterns<sp/>on<sp/>LVDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x39,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x3B,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LVDS<sp/>13-16<sp/>pdn<sp/>is<sp/>disabled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x3C,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PLLRST<sp/>1<sp/>is<sp/>not<sp/>active</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x41,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PLLRST<sp/>2<sp/>is<sp/>not<sp/>active</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x42,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LVDS_DCLK_DELAY_PROG<sp/>is<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0x43,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>VCA<sp/>registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC0,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC1,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC2,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC3,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC4,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>Power<sp/>down<sp/>settings<sp/>for<sp/>individual<sp/>ch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC5,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>Power<sp/>down<sp/>settings<sp/>for<sp/>all<sp/>ch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC6,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PGA_gain<sp/>27<sp/>dB,<sp/>LNA<sp/>gain<sp/>21<sp/>dB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC7,<sp/>0x0005},</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Low<sp/>power<sp/>VCA<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xC8,<sp/>0x0001},</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xCA,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xCB,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xCC,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xCD,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Power<sp/>down<sp/>ch<sp/>17-32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xCE,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xD0,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xD1,<sp/>0x0007},</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xD4,<sp/>0x0001},</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Temp<sp/>sensor<sp/>disabled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xE0,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>TGC<sp/>profile<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xF9,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xFA,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xFB,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xFC,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>{0xFD,<sp/>0x0000},</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_OF_DTGC_REGS<sp/>(23)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><ref refid="struct__tp__afe__reg" kindref="compound">_tp_afe_reg_t</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>tp_afe_dtgc_reg_init_seq[NUM_OF_DTGC_REGS]<sp/>=</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start/stop<sp/>gain<sp/>for<sp/>profile<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA1,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>pos/neg<sp/>step<sp/>for<sp/>profile<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA2,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start/stop<sp/>index<sp/>for<sp/>profile<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA3,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start<sp/>gain<sp/>time<sp/>for<sp/>profile<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA4,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start<sp/>gain<sp/>time<sp/>for<sp/>profile<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA5,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start/stop<sp/>gain<sp/>for<sp/>profile<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA6,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>pos/neg<sp/>step<sp/>for<sp/>profile<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA7,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start/stop<sp/>index<sp/>for<sp/>profile<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA8,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Dfault<sp/>start<sp/>gain<sp/>time<sp/>for<sp/>profile<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xA9,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start<sp/>gain<sp/>time<sp/>for<sp/>profile<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xAA,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start/stop<sp/>gain<sp/>for<sp/>profile<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xAB,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>pos/neg<sp/>step<sp/>for<sp/>profile<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xAC,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start/stop<sp/>index<sp/>for<sp/>profile<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xAD,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start<sp/>gain<sp/>time<sp/>for<sp/>profile<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xAE,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start<sp/>gain<sp/>time<sp/>for<sp/>profile<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xAF,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start/stop<sp/>gain<sp/>for<sp/>profile<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xB0,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>pos/neg<sp/>step<sp/>for<sp/>profile<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xB1,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start/stop<sp/>index<sp/>for<sp/>profile<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xB2,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Dfault<sp/>start<sp/>gain<sp/>time<sp/>for<sp/>profile<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xB3,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>start<sp/>gain<sp/>time<sp/>for<sp/>profile<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xB4,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Manual<sp/>gain<sp/>TGC<sp/>is<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xB5,<sp/>0x0000},</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mode<sp/>Programmable<sp/>fixed<sp/>gain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xB6,<sp/>0x8000},</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0xB7,<sp/>0x8000}};</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal">sl_status_t<sp/><ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(uint8_t<sp/>address,<sp/>uint16_t<sp/>value)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>tx_buf[3]<sp/>=<sp/>{address,<sp/>(value<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xFF,<sp/>value<sp/>&amp;<sp/>0xFF};</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__spi_8c_1a33cc84419ac464f6de41a332c90586e7" kindref="member">wius_spi_send</ref>(<ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>,<sp/>tx_buf,<sp/>3,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1a8d0b12edc73fcead8218d099d67d1d90" kindref="member">delay_ns</ref>(<ref refid="group__config__tinyprobe_1gaa8c7f772c64d442a763ed7650d81b5f2" kindref="member">TP_AFE_SPI_DELAY_NS</ref>);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal">sl_status_t<sp/><ref refid="tp__afe_8c_1a7f768a58b16108a678f58deaf837f7c7" kindref="member">tp_afe_read_reg</ref>(uint8_t<sp/>address,<sp/>uint16_t<sp/>*value)</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0,<sp/>REG_READ_EN));</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>tx_buf[3]<sp/>=<sp/>{address,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>rx_buf[3];</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__spi_8c_1a635806440d8bcf7fbcc1d1f6ca17c3c3" kindref="member">wius_spi_xfer</ref>(<ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>,<sp/>tx_buf,<sp/>rx_buf,<sp/>3,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1a8d0b12edc73fcead8218d099d67d1d90" kindref="member">delay_ns</ref>(<ref refid="group__config__tinyprobe_1gaa8c7f772c64d442a763ed7650d81b5f2" kindref="member">TP_AFE_SPI_DELAY_NS</ref>);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0,<sp/>0));</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>*value<sp/>=<sp/>(uint16_t)((rx_buf[1]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>rx_buf[2]);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal">sl_status_t<sp/><ref refid="tp__afe_8c_1a1fff96077c591fe32e1fc11592f9a2e7" kindref="member">tp_afe_write_reg_safe</ref>(uint8_t<sp/>address,<sp/>uint16_t<sp/>value)</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>read_value<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(address,<sp/>value));</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a7f768a58b16108a678f58deaf837f7c7" kindref="member">tp_afe_read_reg</ref>(address,<sp/>&amp;read_value));</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(read_value<sp/>!=<sp/>value)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_warn(</highlight><highlight class="stringliteral">&quot;Expected<sp/>0x%04X,<sp/>got<sp/>0x%04X<sp/>at<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/>value,<sp/>read_value,<sp/>address);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_FAIL;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_debug(</highlight><highlight class="stringliteral">&quot;0x%04X<sp/>at<sp/>0x%02X<sp/>OK&quot;</highlight><highlight class="normal">,<sp/>value,<sp/>address);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal">sl_status_t<sp/><ref refid="tp__afe_8c_1a682e87d4356ee7282d49ee708b788ece" kindref="member">tp_afe_write_reg_dtgc</ref>(uint8_t<sp/>address,<sp/>uint16_t<sp/>value)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>tx_buf[3]<sp/>=<sp/>{address,<sp/>(value<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xFF,<sp/>value<sp/>&amp;<sp/>0xFF};</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>bit<sp/>DTGC_WR_EN<sp/>to<sp/>Global<sp/>reg<sp/>0<sp/>(all<sp/>the<sp/>others<sp/>are<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0,<sp/>DTGC_WR_EN));</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__spi_8c_1a33cc84419ac464f6de41a332c90586e7" kindref="member">wius_spi_send</ref>(<ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>,<sp/>tx_buf,<sp/>3,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1a8d0b12edc73fcead8218d099d67d1d90" kindref="member">delay_ns</ref>(<ref refid="group__config__tinyprobe_1gaa8c7f772c64d442a763ed7650d81b5f2" kindref="member">TP_AFE_SPI_DELAY_NS</ref>);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>bit<sp/>DTGC_WR_EN<sp/>in<sp/>Global<sp/>reg<sp/>0<sp/>(all<sp/>the<sp/>others<sp/>are<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0,<sp/>0));</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal">sl_status_t<sp/><ref refid="tp__afe_8c_1aadcec1c9e5a47c8d5a3804ddbb809a20" kindref="member">tp_afe_read_reg_dtgc</ref>(uint8_t<sp/>address,<sp/>uint16_t<sp/>*value)</highlight></codeline>
+<codeline lineno="297"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0,<sp/>REG_READ_EN<sp/>|<sp/>DTGC_WR_EN));</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>tx_buf[3]<sp/>=<sp/>{address,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>rx_buf[3]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__spi_8c_1a635806440d8bcf7fbcc1d1f6ca17c3c3" kindref="member">wius_spi_xfer</ref>(<ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>,<sp/>tx_buf,<sp/>rx_buf,<sp/>3,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1a8d0b12edc73fcead8218d099d67d1d90" kindref="member">delay_ns</ref>(<ref refid="group__config__tinyprobe_1gaa8c7f772c64d442a763ed7650d81b5f2" kindref="member">TP_AFE_SPI_DELAY_NS</ref>);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0,<sp/>DTGC_WR_EN));</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>*value<sp/>=<sp/>(uint16_t)((rx_buf[1]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>rx_buf[2]);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal">sl_status_t<sp/><ref refid="tp__afe_8c_1ad268716e423add955a16b331d2f90908" kindref="member">tp_afe_write_reg_dtgc_safe</ref>(uint8_t<sp/>address,<sp/>uint16_t<sp/>value)</highlight></codeline>
+<codeline lineno="317"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>read_value<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a682e87d4356ee7282d49ee708b788ece" kindref="member">tp_afe_write_reg_dtgc</ref>(address,<sp/>value));</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1aadcec1c9e5a47c8d5a3804ddbb809a20" kindref="member">tp_afe_read_reg_dtgc</ref>(address,<sp/>&amp;read_value));</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(read_value<sp/>!=<sp/>value)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_warn(</highlight><highlight class="stringliteral">&quot;Expected<sp/>0x%04X,<sp/>got<sp/>0x%04X<sp/>at<sp/>0x%02x&quot;</highlight><highlight class="normal">,<sp/>value,<sp/>read_value,<sp/>address);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_FAIL;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_debug(</highlight><highlight class="stringliteral">&quot;0x%04X<sp/>at<sp/>0x%02X<sp/>OK&quot;</highlight><highlight class="normal">,<sp/>value,<sp/>address);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal">sl_status_t<sp/><ref refid="tp__afe_8c_1a1eda21d08fdd3b6343b60a527223f903" kindref="member">tp_afe_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LOG_RET_STATUS(tp_afe_write_reg_safe(tp_afe_adc_vca_reg_init_seq[0].addr,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tp_afe_adc_vca_reg_init_seq[0].data));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>NUM_OF_ADC_VCA_REGS;<sp/>i++)</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a1fff96077c591fe32e1fc11592f9a2e7" kindref="member">tp_afe_write_reg_safe</ref>(tp_afe_adc_vca_reg_init_seq[i].addr,</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tp_afe_adc_vca_reg_init_seq[i].data));</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>delay_ms(10);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LOG_RET_STATUS(tp_afe_write_reg_safe(tp_afe_adc_vca_reg_init_seq[0].addr,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tp_afe_adc_vca_reg_init_seq[0].data));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>NUM_OF_DTGC_REGS;<sp/>i++)</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1ad268716e423add955a16b331d2f90908" kindref="member">tp_afe_write_reg_dtgc_safe</ref>(tp_afe_dtgc_reg_init_seq[i].addr,</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tp_afe_dtgc_reg_init_seq[i].data));</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>delay_ms(10);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>the<sp/>PLLRST<sp/>bits<sp/>to<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0x41,<sp/>ADC_REG_41_PLLRST1));</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0x42,<sp/>ADC_REG_42_PLLRST2));</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1a8d0b12edc73fcead8218d099d67d1d90" kindref="member">delay_ns</ref>(100000);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>the<sp/>PLLRST<sp/>bits<sp/>to<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0x41,<sp/>ADC_REG_41_PLLRST1));</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kindref="member">tp_afe_write_reg</ref>(0x42,<sp/>ADC_REG_42_PLLRST2));</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1a8d0b12edc73fcead8218d099d67d1d90" kindref="member">delay_ns</ref>(100000);</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal">sl_status_t<sp/><ref refid="tp__afe_8c_1a80797fe4daa0f83662c5460e74c97a12" kindref="member">tp_afe_test_pattern</ref>(<ref refid="tp__afe_8h_1a016d56c5a79907bad49cdc4bbe887a58" kindref="member">tp_afe_patt_t</ref><sp/>pattern)</highlight></codeline>
+<codeline lineno="377"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>temp<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a7f768a58b16108a678f58deaf837f7c7" kindref="member">tp_afe_read_reg</ref>(0x02,<sp/>&amp;temp));</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/>temp<sp/>|=<sp/>((uint16_t)pattern<sp/>&lt;&lt;<sp/>7);</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="tp__afe_8c_1a1fff96077c591fe32e1fc11592f9a2e7" kindref="member">tp_afe_write_reg_safe</ref>(0x02,<sp/>temp));</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/hal/tp_afe.c"/>
+  </compounddef>
+</doxygen>

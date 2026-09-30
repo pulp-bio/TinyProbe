@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structwius__wifi__mdns" kind="struct" language="C++" prot="public">
+    <compoundname>wius_wifi_mdns</compoundname>
+    <includes refid="wius__wifi_8h" local="no">wius_wifi.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwius__wifi__mdns_1a1e74eaf538a21737cd5f2f7dcc78060f" prot="public" static="no" mutable="no">
+        <type>sl_mdns_t</type>
+        <definition>sl_mdns_t wius_wifi_mdns::handle</definition>
+        <argsstring></argsstring>
+        <name>handle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>mDNS handle </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="51" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* wius_wifi_mdns::protocol</definition>
+        <argsstring></argsstring>
+        <name>protocol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Protocol string (&quot;udp&quot; or &quot;tcp&quot;) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="52" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* wius_wifi_mdns::host_name</definition>
+        <argsstring></argsstring>
+        <name>host_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Host name string (without .local) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="53" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* wius_wifi_mdns::service_name</definition>
+        <argsstring></argsstring>
+        <name>service_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Service name string </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="54" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__wifi__mdns_1a2c4d3caa89b8d3679c78053007f5235f" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* wius_wifi_mdns::service_message</definition>
+        <argsstring></argsstring>
+        <name>service_message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Service message string </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="55" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__wifi__mdns_1a98cb52450cf5cd771f2b2cab2756d80d" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t wius_wifi_mdns::port</definition>
+        <argsstring></argsstring>
+        <name>port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Service port number </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="56" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiFi mDNS service structure. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/wius/hal/wius_wifi.h" line="50" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.h" bodystart="49" bodyend="57"/>
+    <listofallmembers>
+      <member refid="structwius__wifi__mdns_1a1e74eaf538a21737cd5f2f7dcc78060f" prot="public" virt="non-virtual"><scope>wius_wifi_mdns</scope><name>handle</name></member>
+      <member refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" prot="public" virt="non-virtual"><scope>wius_wifi_mdns</scope><name>host_name</name></member>
+      <member refid="structwius__wifi__mdns_1a98cb52450cf5cd771f2b2cab2756d80d" prot="public" virt="non-virtual"><scope>wius_wifi_mdns</scope><name>port</name></member>
+      <member refid="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" prot="public" virt="non-virtual"><scope>wius_wifi_mdns</scope><name>protocol</name></member>
+      <member refid="structwius__wifi__mdns_1a2c4d3caa89b8d3679c78053007f5235f" prot="public" virt="non-virtual"><scope>wius_wifi_mdns</scope><name>service_message</name></member>
+      <member refid="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" prot="public" virt="non-virtual"><scope>wius_wifi_mdns</scope><name>service_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

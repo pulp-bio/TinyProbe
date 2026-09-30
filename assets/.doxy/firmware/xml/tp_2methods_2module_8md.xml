@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp_2methods_2module_8md" kind="file" language="Markdown">
+    <compoundname>module.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">@defgroup<sp/>tinyprobe_methods<sp/>TinyProbe<sp/>Methods</highlight></codeline>
+<codeline><highlight class="normal">@ingroup<sp/>tinyprobe</highlight></codeline>
+<codeline><highlight class="normal">@brief<sp/>Method<sp/>handlers<sp/>for<sp/>TinyProbe<sp/>control<sp/>operations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>TinyProbe<sp/>Methods</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>group<sp/>contains<sp/>all<sp/>method<sp/>handlers<sp/>used<sp/>by<sp/>TinyProbe<sp/>to<sp/>interact<sp/>with<sp/>hardware<sp/>and<sp/>system<sp/>services.<sp/>Each<sp/>method<sp/>implementation<sp/>and<sp/>its<sp/>public<sp/>interface<sp/>lives<sp/>in<sp/>this<sp/>subgroup<sp/>to<sp/>keep<sp/>the<sp/>method<sp/>surface<sp/>easy<sp/>to<sp/>navigate.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Method<sp/>Catalog</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Method<sp/>|<sp/>Header<sp/>|<sp/>Description<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|---------|--------|-------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Ping<sp/>|<sp/>@ref<sp/>tp_method_ping.h<sp/>|<sp/>Reachability<sp/>and<sp/>identity<sp/>check<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Trigger<sp/>shot<sp/>|<sp/>@ref<sp/>tp_method_triggershot.h<sp/>|<sp/>Trigger<sp/>capture<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Delay<sp/>ns<sp/>|<sp/>@ref<sp/>tp_method_delayns.h<sp/>|<sp/>Nanosecond<sp/>timing<sp/>control<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Delay<sp/>ms<sp/>|<sp/>@ref<sp/>tp_method_delayms.h<sp/>|<sp/>Millisecond<sp/>timing<sp/>control<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Power<sp/>control<sp/>|<sp/>@ref<sp/>tp_method_controlpower.h<sp/>|<sp/>Toggle<sp/>power<sp/>rails<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Set<sp/>log<sp/>level<sp/>|<sp/>@ref<sp/>tp_method_setloglevel.h<sp/>|<sp/>Configure<sp/>firmware<sp/>log<sp/>verbosity<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>SPI<sp/>MUX<sp/>|<sp/>@ref<sp/>tp_method_controlspi.h<sp/>|<sp/>Select<sp/>SPI<sp/>MUX<sp/>target<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Write<sp/>AFE<sp/>|<sp/>@ref<sp/>tp_method_writeafe.h<sp/>|<sp/>AFE<sp/>register<sp/>write<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Write<sp/>FPGA<sp/>|<sp/>@ref<sp/>tp_method_writefpga.h<sp/>|<sp/>FPGA<sp/>register<sp/>write<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Write<sp/>TX<sp/>|<sp/>@ref<sp/>tp_method_writetx.h<sp/>|<sp/>TX<sp/>buffer<sp/>write<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>How<sp/>Methods<sp/>Are<sp/>Dispatched</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Incoming<sp/>framed<sp/>protobuf<sp/>packets<sp/>are<sp/>decoded<sp/>by<sp/>`tp_methods_handle()`<sp/>in<sp/>@ref<sp/>tp_methods.h.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>The<sp/>dispatcher<sp/>switches<sp/>on<sp/>the<sp/>generated<sp/>nanopb<sp/>oneof<sp/>tag<sp/>and<sp/>calls<sp/>the<sp/>corresponding<sp/>handler<sp/>from<sp/>this<sp/>group.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Handlers<sp/>validate<sp/>arguments,<sp/>perform<sp/>hardware<sp/>actions<sp/>through<sp/>@ref<sp/>common<sp/>&quot;common&quot;<sp/>helpers<sp/>and<sp/>TinyProbe<sp/>drivers,<sp/>and<sp/>return<sp/>a<sp/>generated<sp/>status<sp/>code.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Adding<sp/>a<sp/>New<sp/>Method</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Create<sp/>`tp_method_&lt;name&gt;.c/.h`<sp/>under<sp/>`user/tp/methods/`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Add<sp/>it<sp/>to<sp/>the<sp/>generated<sp/>method<sp/>definition<sp/>and<sp/>include<sp/>it<sp/>in<sp/>the<sp/>`TP_METHODS`<sp/>macro.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Document<sp/>it<sp/>in<sp/>this<sp/>catalog<sp/>and<sp/>keep<sp/>the<sp/>description<sp/>concise<sp/>(what<sp/>it<sp/>does,<sp/>inputs,<sp/>side<sp/>effects).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@addtogroup<sp/>tinyprobe_methods</highlight></codeline>
+<codeline><highlight class="normal">@{</highlight></codeline>
+<codeline><highlight class="normal">@}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/methods/module.md"/>
+  </compounddef>
+</doxygen>

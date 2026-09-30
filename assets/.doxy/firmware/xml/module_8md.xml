@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="module_8md" kind="file" language="Markdown">
+    <compoundname>module.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">@defgroup<sp/>common<sp/>Common<sp/>Module</highlight></codeline>
+<codeline><highlight class="normal">@brief<sp/>Shared<sp/>utilities,<sp/>HAL<sp/>glue,<sp/>and<sp/>logging<sp/>used<sp/>across<sp/>TinyProbe<sp/>and<sp/>WiUS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Common<sp/>Module</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>common<sp/>module<sp/>provides<sp/>shared<sp/>glue<sp/>that<sp/>both<sp/>@ref<sp/>tinyprobe<sp/>&quot;TinyProbe&quot;<sp/>and<sp/>@ref<sp/>wius<sp/>&quot;WiUS&quot;<sp/>modules<sp/>rely<sp/>on.<sp/>It<sp/>contains<sp/>lightweight<sp/>utilities,<sp/>logging,<sp/>timing<sp/>helpers,<sp/>and<sp/>macros<sp/>that<sp/>keep<sp/>the<sp/>platform<sp/>code<sp/>consistent<sp/>across<sp/>commands<sp/>and<sp/>transports.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Purpose</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Provide<sp/>common<sp/>macros<sp/>and<sp/>helpers<sp/>(see<sp/>@ref<sp/>common.h)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Offer<sp/>a<sp/>lightweight<sp/>logging<sp/>facade<sp/>for<sp/>all<sp/>modules<sp/>(see<sp/>@ref<sp/>log.h)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Centralize<sp/>timing/delay<sp/>helpers<sp/>used<sp/>by<sp/>command<sp/>handlers<sp/>and<sp/>drivers</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Key<sp/>Pieces</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Logging:<sp/>initialized<sp/>via<sp/>`log_init()`<sp/>and<sp/>consumed<sp/>through<sp/>`LOG_*`<sp/>macros</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Time<sp/>helpers:<sp/>`delay_ms`,<sp/>`delay_ns`,<sp/>and<sp/>`TICKS_PER_SEC`<sp/>definitions</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Safety<sp/>macros:<sp/>`CHECK_STATUS`,<sp/>`ASSERT`,<sp/>and<sp/>argument<sp/>extraction<sp/>helpers<sp/>in<sp/>commands</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Interactions</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Method<sp/>handlers<sp/>in<sp/>@ref<sp/>tinyprobe_methods<sp/>&quot;TinyProbe<sp/>Methods&quot;<sp/>use<sp/>the<sp/>logging<sp/>and<sp/>argument<sp/>macros<sp/>from<sp/>this<sp/>module.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>WiUS<sp/>transports<sp/>depend<sp/>on<sp/>shared<sp/>type<sp/>and<sp/>error<sp/>definitions.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@addtogroup<sp/>common</highlight></codeline>
+<codeline><highlight class="normal">@{</highlight></codeline>
+<codeline><highlight class="normal">@}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/module.md"/>
+  </compounddef>
+</doxygen>

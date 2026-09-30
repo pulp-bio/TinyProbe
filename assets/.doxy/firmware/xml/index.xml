@@ -1,0 +1,706 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.14">
+  <compound refid="struct__tp__afe__reg" kind="struct"><name>_tp_afe_reg</name>
+    <member refid="struct__tp__afe__reg_1ae9845c6b5fd341f68ff72139a4898def" kind="variable"><name>addr</name></member>
+    <member refid="struct__tp__afe__reg_1a8eb072ce64fe27cc5dff3995f6ebee6d" kind="variable"><name>data</name></member>
+  </compound>
+  <compound refid="unionwius__spi__inst_1_1instance" kind="union"><name>wius_spi_inst::instance</name>
+    <member refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" kind="variable"><name>gspi</name></member>
+    <member refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" kind="variable"><name>ssi</name></member>
+  </compound>
+  <compound refid="structtp__buffer__slot__t" kind="struct"><name>tp_buffer_slot_t</name>
+    <member refid="structtp__buffer__slot__t_1a9c32a4b0a8158067ba6859a511fd1d63" kind="variable"><name>data</name></member>
+    <member refid="structtp__buffer__slot__t_1a60884ce48d2604dffcf6f8b0efcd9dc3" kind="variable"><name>length</name></member>
+    <member refid="structtp__buffer__slot__t_1a343de7a7c30f335989ae2d668833bd03" kind="variable"><name>status</name></member>
+    <member refid="structtp__buffer__slot__t_1a02e2c65e3afd46aafd7fb7ff70c36f54" kind="variable"><name>id</name></member>
+  </compound>
+  <compound refid="structtp__buffer__t" kind="struct"><name>tp_buffer_t</name>
+    <member refid="structtp__buffer__t_1a295f8b1ee7ed55a5bfb2119fbb67ed96" kind="variable"><name>slots</name></member>
+    <member refid="structtp__buffer__t_1a1eb14807390dc9a2aca50bf7f6c50ddb" kind="variable"><name>head</name></member>
+    <member refid="structtp__buffer__t_1a8147fdbf4f78149aed5831550a92ef9c" kind="variable"><name>tail</name></member>
+    <member refid="structtp__buffer__t_1ab91d13657b27240a54730f7cf12b5436" kind="variable"><name>sem_read</name></member>
+    <member refid="structtp__buffer__t_1a817f7edb865c3b5e5cd4251e11aa62aa" kind="variable"><name>sem_write</name></member>
+  </compound>
+  <compound refid="structwius__spi__config" kind="struct"><name>wius_spi_config</name>
+    <member refid="structwius__spi__config_1a464a9360a36971185406f7bf8e5181c6" kind="variable"><name>width</name></member>
+    <member refid="structwius__spi__config_1aabd48310fdb19cb135c66f797f97ca18" kind="variable"><name>mode</name></member>
+    <member refid="structwius__spi__config_1a8b30e868d6bffbc8c6ed5c8e21ddc637" kind="variable"><name>freq</name></member>
+    <member refid="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" kind="variable"><name>cs_mode</name></member>
+    <member refid="structwius__spi__config_1a0b6a1a8c4604544b58ce125cdedb0102" kind="variable"><name>cs_pin</name></member>
+    <member refid="structwius__spi__config_1ad89ae86bf8cedc1b15c72fcf02392247" kind="variable"><name>cs_polarity</name></member>
+  </compound>
+  <compound refid="structwius__spi__inst" kind="struct"><name>wius_spi_inst</name>
+    <member refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kind="variable"><name>id</name></member>
+    <member refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kind="variable"><name>config</name></member>
+    <member refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" kind="variable"><name>cs</name></member>
+    <member refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kind="variable"><name>inst</name></member>
+  </compound>
+  <compound refid="structwius__tcp__server__message" kind="struct"><name>wius_tcp_server_message</name>
+    <member refid="structwius__tcp__server__message_1abeec1718e893a6c7ea73b26b313de58a" kind="variable"><name>socket</name></member>
+    <member refid="structwius__tcp__server__message_1a38e768968dc2012cd20d071bf190c898" kind="variable"><name>data</name></member>
+    <member refid="structwius__tcp__server__message_1a5b0c0ab617b6e108f9abb7f68491ce97" kind="variable"><name>length</name></member>
+    <member refid="structwius__tcp__server__message_1a5cd263a0db8a56928c57d823c4d80829" kind="variable"><name>meta</name></member>
+  </compound>
+  <compound refid="structwius__udp" kind="struct"><name>wius_udp</name>
+    <member refid="structwius__udp_1a7ff3c801686b18aa7a0947c9b83145e3" kind="variable"><name>connected</name></member>
+    <member refid="structwius__udp_1a2242a3a0521c7ec8dd71fc40dd3785ca" kind="variable"><name>socket</name></member>
+    <member refid="structwius__udp_1aa40aa98b41e130f67fc1021f3406c43a" kind="variable"><name>server_address</name></member>
+  </compound>
+  <compound refid="structwius__wifi__mdns" kind="struct"><name>wius_wifi_mdns</name>
+    <member refid="structwius__wifi__mdns_1a1e74eaf538a21737cd5f2f7dcc78060f" kind="variable"><name>handle</name></member>
+    <member refid="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" kind="variable"><name>protocol</name></member>
+    <member refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kind="variable"><name>host_name</name></member>
+    <member refid="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" kind="variable"><name>service_name</name></member>
+    <member refid="structwius__wifi__mdns_1a2c4d3caa89b8d3679c78053007f5235f" kind="variable"><name>service_message</name></member>
+    <member refid="structwius__wifi__mdns_1a98cb52450cf5cd771f2b2cab2756d80d" kind="variable"><name>port</name></member>
+  </compound>
+  <compound refid="common_8c" kind="file"><name>common.c</name>
+    <member refid="common_8c_1a90d55cb91af5665080721ccf3a475274" kind="variable"><name>_common_ticks_mult</name></member>
+    <member refid="common_8c_1abc83594c3f1a29f76c05b748580fbe92" kind="variable"><name>_common_core_clock_hz</name></member>
+    <member refid="common_8c_1a6b6e573eacc06557395d478481e830fe" kind="function"><name>_log_callback</name></member>
+    <member refid="common_8c_1a14befe20ee926d993356b9fabac4b225" kind="function"><name>common_init</name></member>
+    <member refid="common_8c_1a3eb73598ef1a1883d57e9ca79679b26a" kind="function"><name>common_tick_update</name></member>
+    <member refid="common_8c_1af6090ef9f4a9124b628abff09b82c890" kind="function"><name>core_clock_hz</name></member>
+    <member refid="common_8c_1a8d0b12edc73fcead8218d099d67d1d90" kind="function"><name>delay_ns</name></member>
+    <member refid="common_8c_1ab7cce8122024d7ba47bf10f434956de4" kind="function"><name>delay_ms</name></member>
+    <member refid="common_8c_1a9c4a18b1127470d7dc900f7744c7646c" kind="function"><name>time_ms</name></member>
+    <member refid="common_8c_1a044e79babf40fbebb0a93ce59f7c21d1" kind="function"><name>log_status</name></member>
+  </compound>
+  <compound refid="common_8h" kind="file"><name>common.h</name>
+    <member refid="common_8h_1aee2a57e33d2c9cdc5ca83b4d9e11e1e6" kind="define"><name>CONCAT_2</name></member>
+    <member refid="common_8h_1a93d1ecea70d8ee1b817884f3624dfdff" kind="define"><name>CONCAT_3</name></member>
+    <member refid="common_8h_1a4a0c770328891d8916c1142a26481e4a" kind="define"><name>TICKS_PER_SEC</name></member>
+    <member refid="common_8h_1a15b48961e1154f835693058463daffc5" kind="define"><name>LOG_STATUS</name></member>
+    <member refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kind="define"><name>LOG_RET_STATUS</name></member>
+    <member refid="common_8h_1a3254d8df847ba3b721c964cc8d45968e" kind="define"><name>LOG_RET_VOID</name></member>
+    <member refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" kind="define"><name>UNUSED</name></member>
+    <member refid="common_8h_1a14befe20ee926d993356b9fabac4b225" kind="function"><name>common_init</name></member>
+    <member refid="common_8h_1a3eb73598ef1a1883d57e9ca79679b26a" kind="function"><name>common_tick_update</name></member>
+    <member refid="common_8h_1af6090ef9f4a9124b628abff09b82c890" kind="function"><name>core_clock_hz</name></member>
+    <member refid="common_8h_1a8d0b12edc73fcead8218d099d67d1d90" kind="function"><name>delay_ns</name></member>
+    <member refid="common_8h_1ab7cce8122024d7ba47bf10f434956de4" kind="function"><name>delay_ms</name></member>
+    <member refid="common_8h_1a9c4a18b1127470d7dc900f7744c7646c" kind="function"><name>time_ms</name></member>
+    <member refid="common_8h_1a044e79babf40fbebb0a93ce59f7c21d1" kind="function"><name>log_status</name></member>
+  </compound>
+  <compound refid="led_8c" kind="file"><name>led.c</name>
+    <member refid="led_8c_1a15b7e1973e582002ad8bfe8692b490ad" kind="function"><name>led_init</name></member>
+    <member refid="led_8c_1ad5c6c530f388c9bba28d93132b44080e" kind="function"><name>led_set</name></member>
+  </compound>
+  <compound refid="led_8h" kind="file"><name>led.h</name>
+    <member refid="led_8h_1a2b90b815358f1c78e36a5f4c56308449" kind="define"><name>LED_COLOR_OFF</name></member>
+    <member refid="led_8h_1a8987a69d33df1353af6077ff67dfea28" kind="define"><name>LED_COLOR_RED</name></member>
+    <member refid="led_8h_1a913f289eb3203c4e3043b1ecb4047032" kind="define"><name>LED_COLOR_GREEN</name></member>
+    <member refid="led_8h_1a97348e8acf253232595a481314f8a396" kind="define"><name>LED_COLOR_YELLOW</name></member>
+    <member refid="led_8h_1a2d47198409056e390f092e898b5b3e4e" kind="define"><name>led_init</name></member>
+    <member refid="led_8h_1ab33e64187b43fb10155d40d0d8a18fad" kind="define"><name>led_set</name></member>
+  </compound>
+  <compound refid="log_8c" kind="file"><name>log.c</name>
+    <member refid="log_8c_1a7471e51eb004d0095effd82e83144300" kind="define"><name>LOG_IMPLEMENTATION</name></member>
+  </compound>
+  <compound refid="log_8h" kind="file"><name>log.h</name>
+    <member refid="log_8h_1af220e0f0458659bfccf3d336d1cacdda" kind="define"><name>LOG_MAX_CALLBACKS</name></member>
+    <member refid="log_8h_1a381c342b2b34df0b1a5b39c0d94da4e1" kind="define"><name>LOG_BUFFER_SIZE</name></member>
+    <member refid="log_8h_1a25998682e04e0265f8e4198b6f35ce3f" kind="define"><name>_LOG_LOG</name></member>
+    <member refid="log_8h_1a056b9e71b3a2e575f88c564ff3670877" kind="define"><name>log_trace</name></member>
+    <member refid="log_8h_1a0e37223ab9f5df7af8cb2a59b7c4dc18" kind="define"><name>log_debug</name></member>
+    <member refid="log_8h_1a442f23202cd03383ed8e3ec6bbae5bd2" kind="define"><name>log_info</name></member>
+    <member refid="log_8h_1afd2d22d45a6b32ff3ff8ea73013f09dc" kind="define"><name>log_warn</name></member>
+    <member refid="log_8h_1a887f83dbb884a13949e4f2ad710e5ddf" kind="define"><name>log_error</name></member>
+    <member refid="log_8h_1a35b816bc17d7683cb333439a2a17cecf" kind="define"><name>log_fatal</name></member>
+    <member refid="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06" kind="enum"><name>log_level_e</name></member>
+    <member refid="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a7fa27e82c6c4f69434225ed81e5d151e" kind="enumvalue"><name>TRACE</name></member>
+    <member refid="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a0593585da9181e972974c1274d8f2b4f" kind="enumvalue"><name>DEBUG</name></member>
+    <member refid="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a748005382152808a72b1a9177d9dc806" kind="enumvalue"><name>INFO</name></member>
+    <member refid="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a74dac7ac23d5b810db6d4067f14e8676" kind="enumvalue"><name>WARN</name></member>
+    <member refid="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a2fd6f336d08340583bd620a7f5694c90" kind="enumvalue"><name>ERROR</name></member>
+    <member refid="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a651d8a47a6976d6fe05c0e03fb4cd2d0" kind="enumvalue"><name>FATAL</name></member>
+    <member refid="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06ac8312acdf50b862a92c7807ed7657344" kind="enumvalue"><name>LOG_LEVEL_COUNT</name></member>
+    <member refid="log_8h_1a071055f67a714cff7cdd508bc3723f79" kind="typedef"><name>log_level_t</name></member>
+    <member refid="log_8h_1a9b2a8d8c0ab25415119a31b51fa947ab" kind="typedef"><name>log_callback_t</name></member>
+    <member refid="log_8h_1ad164aeb597d1fb87abdaa83f361d6fb1" kind="variable"><name>log_level_strings</name></member>
+    <member refid="log_8h_1a335caee3209dca44238ff176e369c9b2" kind="function"><name>log_register_callback</name></member>
+    <member refid="log_8h_1a8e218e24cdea0d77f812f29e482a1dad" kind="function"><name>log_unregister_callback</name></member>
+    <member refid="log_8h_1a1b7d2f9b80deb60879db98fcdd555377" kind="function"><name>log_log</name></member>
+  </compound>
+  <compound refid="config_8h" kind="file"><name>config.h</name>
+    <member refid="group__config__common_1gaed91737767c96e2af18274f8aca5e6a8" kind="define"><name>WIUS_BOARD</name></member>
+    <member refid="group__config__common_1gaf220e0f0458659bfccf3d336d1cacdda" kind="define"><name>LOG_MAX_CALLBACKS</name></member>
+    <member refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kind="define"><name>LOG_BUFFER_SIZE</name></member>
+    <member refid="group__config__common_1ga4993efe73dbf525b44ee2deca215d595" kind="define"><name>LOG_ONCE</name></member>
+    <member refid="group__config__common_1ga66c43661af4dcbd9cf28884139343649" kind="define"><name>LOG_NO_COLOR</name></member>
+    <member refid="group__config__wius_1ga828b21f1639e1f61e3c11b4ae30aee8a" kind="define"><name>WIUS_SPI_FREQ</name></member>
+    <member refid="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" kind="define"><name>WIUS_SPI_RX_TIMEOUT</name></member>
+    <member refid="group__config__wius_1ga9f5eccac536c6a82a45c557825ce80fb" kind="define"><name>WIUS_SPI_SHORT_XFER_MAX</name></member>
+    <member refid="group__config__wius_1ga5a13ae0c719433b77bcaed48eaa19fc7" kind="define"><name>WIUS_SPI_EXT_CS0</name></member>
+    <member refid="group__config__wius_1gac41a23d5859834f639180ce898679ae7" kind="define"><name>WIUS_SPI_EXT_CS1</name></member>
+    <member refid="group__config__wius_1ga0fb6abe0ceadcc2168b436c5f531f8d2" kind="define"><name>WIUS_WIFI_DEVICE_NAME</name></member>
+    <member refid="group__config__tinyprobe_1ga847efbd12a789766466eb1b53eb1756c" kind="define"><name>TP_TEST_MODE</name></member>
+    <member refid="group__config__tinyprobe_1gabfe4c2202e961a2f200075735b7525d5" kind="define"><name>TP_PROBE_ID</name></member>
+    <member refid="group__config__tinyprobe_1ga7406d8ca8d5b7d3ed7cb36986bdb531b" kind="define"><name>TP_WIFI_RX_BUFFER_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1ga6fdbf1a538943d80f3ed5e4cea669db2" kind="define"><name>TP_UDP_PACKET_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1ga92dda9fe52c98ced3e52ac0c0a91662b" kind="define"><name>TP_UDP_PACKET_AMT</name></member>
+    <member refid="group__config__tinyprobe_1gac6d27f073879a9bdc4cfd92e7c496a0a" kind="define"><name>TP_UDP_PORT</name></member>
+    <member refid="group__config__tinyprobe_1gafe1863a06fa74bcfc27f71305efdef08" kind="define"><name>TP_TCP_PORT</name></member>
+    <member refid="group__config__tinyprobe_1ga886e6b681d04e833135384b906c35855" kind="define"><name>TP_GPIO_INT</name></member>
+    <member refid="group__config__tinyprobe_1ga1d147963731373a6548eb05ec9566b7a" kind="define"><name>TP_GPIO_RESET</name></member>
+    <member refid="group__config__tinyprobe_1ga620a92942d660c7539c0d4204ae2bbf8" kind="define"><name>TP_THREAD_STACK_MAIN</name></member>
+    <member refid="group__config__tinyprobe_1ga585a303cc76e1c41648053420492f586" kind="define"><name>TP_THREAD_STACK_WIFI</name></member>
+    <member refid="group__config__tinyprobe_1gaa8c7f772c64d442a763ed7650d81b5f2" kind="define"><name>TP_AFE_SPI_DELAY_NS</name></member>
+    <member refid="group__config__tinyprobe_1gaa79cc3d791200b9aa20df7f8561848d5" kind="define"><name>TP_BUFFER_NUM</name></member>
+    <member refid="group__config__tinyprobe_1gaf50d4cb1e27fca09afa5151fa469d686" kind="define"><name>TP_FIFO_READ_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1ga669190c664bc3df1976b0dbdf0b2064e" kind="define"><name>TP_BUFFER_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1gaeb9b1e088aa0a565966217292bee9f08" kind="define"><name>TP_RESPONSE_BUFFER_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1ga4360960e1ff4d05b32d1d3d14511b0e9" kind="define"><name>TP_METHOD_TIMING</name></member>
+    <member refid="group__config__tinyprobe_1gae886c0017d472d2b9e9fa27b7c537408" kind="define"><name>TP_FPGA_SPI_DELAY_NS</name></member>
+    <member refid="group__config__tinyprobe_1ga18b027740f4b5cd2da100138c487ca61" kind="define"><name>TP_MUX_GPIO_EXTINT</name></member>
+    <member refid="group__config__tinyprobe_1gae715ae579035cb5e18263576d6914aaf" kind="define"><name>TP_MUX_GPIO_AFETX</name></member>
+    <member refid="group__config__tinyprobe_1gaa4e408fd057a997a23d2a67e9b91faa7" kind="define"><name>TP_POWER_GPIO_NEG_5V</name></member>
+    <member refid="group__config__tinyprobe_1gaea16d7b845305f7ada04cc932fd02681" kind="define"><name>TP_POWER_GPIO_NEG_HV</name></member>
+    <member refid="group__config__tinyprobe_1ga4f24fc2335891e0bcbf47365165fee12" kind="define"><name>TP_POWER_GPIO_POS_HV</name></member>
+    <member refid="group__config__tinyprobe_1ga1b642e68d16f9762cd7400a26f32014a" kind="define"><name>TP_POWER_GPIO_LVDS_PWR_SW</name></member>
+    <member refid="config_8h_1a2d8e7f5e7cf0c758d269915839802089" kind="define"><name>RSI_DHCP_HOST_NAME</name></member>
+  </compound>
+  <compound refid="module_8md" kind="file"><name>module.md</name>
+  </compound>
+  <compound refid="tp_2methods_2module_8md" kind="file"><name>module.md</name>
+  </compound>
+  <compound refid="tp_2module_8md" kind="file"><name>module.md</name>
+  </compound>
+  <compound refid="wius_2module_8md" kind="file"><name>module.md</name>
+  </compound>
+  <compound refid="tp__buffer_8c" kind="file"><name>tp_buffer.c</name>
+    <member refid="tp__buffer_8c_1a4368aa6abfa09085015f833af97cfe8e" kind="enum"><name>buffer_history_event</name></member>
+    <member refid="tp__buffer_8c_1a4368aa6abfa09085015f833af97cfe8eaee1d8be52afbab6cf8cd11100728239b" kind="enumvalue"><name>BUFFER_HISTORY_EVENT_CLAIM_WRITE</name></member>
+    <member refid="tp__buffer_8c_1a4368aa6abfa09085015f833af97cfe8ea71117ebd5573ce12d1105bd976f5aa9f" kind="enumvalue"><name>BUFFER_HISTORY_EVENT_RETURN_WRITE</name></member>
+    <member refid="tp__buffer_8c_1a4368aa6abfa09085015f833af97cfe8ea089b0cbbcea936427d6cd6cc702f3701" kind="enumvalue"><name>BUFFER_HISTORY_EVENT_CLAIM_READ</name></member>
+    <member refid="tp__buffer_8c_1a4368aa6abfa09085015f833af97cfe8ea64f8e75d355c18e232637dc9b4147285" kind="enumvalue"><name>BUFFER_HISTORY_EVENT_RETURN_READ</name></member>
+    <member refid="tp__buffer_8c_1a0944ecc1bc62362a8012dd0f1a55ccbd" kind="typedef"><name>buffer_history_event_t</name></member>
+    <member refid="tp__buffer_8c_1afc8b2b661106ee1c4f6b4ec439aa82e2" kind="function"><name>buffer_history_record</name></member>
+    <member refid="tp__buffer_8c_1a4dd5227c03bafa82254919aceedf0469" kind="function"><name>tp_buffer_history_get</name></member>
+    <member refid="tp__buffer_8c_1a065e9774887a8e4efc1a7c6c1a042a54" kind="function"><name>tp_buffer_history_reset</name></member>
+    <member refid="tp__buffer_8c_1a75e2904d307382f94b076c9cba359294" kind="function"><name>tp_buffer_init</name></member>
+    <member refid="tp__buffer_8c_1afe6b885b11172b641a566706f75e56b0" kind="function"><name>tp_buffer_claim_writing</name></member>
+    <member refid="tp__buffer_8c_1a9b027317eaca6f40473b04e5774d8d99" kind="function"><name>tp_buffer_claim_reading</name></member>
+    <member refid="tp__buffer_8c_1a2c321e88788c3324a7f8307a9ded2ca2" kind="function"><name>tp_buffer_return_writing</name></member>
+    <member refid="tp__buffer_8c_1aab200dfe79e54dcf0c46dc1a7fa2155a" kind="function"><name>tp_buffer_return_reading</name></member>
+  </compound>
+  <compound refid="tp__buffer_8h" kind="file"><name>tp_buffer.h</name>
+    <member refid="tp__buffer_8h_1a1f7b1b9b4054944c12def08b01d16323" kind="define"><name>TP_BUFFER_HISTORY</name></member>
+    <member refid="tp__buffer_8h_1accc8ed3d4b0b10f3c6709d4a835823a6" kind="define"><name>TP_BUFFER_HISTORY_ENTRIES</name></member>
+    <member refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0" kind="enum"><name>tp_buffer_status_t</name></member>
+    <member refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0aa2697ed8b85e77c1400e3e9f54f0d6d0" kind="enumvalue"><name>TP_BUFFER_FREE</name></member>
+    <member refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0a96509a959606d4fc820ce9621bcb442a" kind="enumvalue"><name>TP_BUFFER_FILLED</name></member>
+    <member refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0a87f553ebee29eb482a996e442e70998c" kind="enumvalue"><name>TP_BUFFER_INUSE</name></member>
+    <member refid="tp__buffer_8h_1a4dd5227c03bafa82254919aceedf0469" kind="function"><name>tp_buffer_history_get</name></member>
+    <member refid="tp__buffer_8h_1a065e9774887a8e4efc1a7c6c1a042a54" kind="function"><name>tp_buffer_history_reset</name></member>
+    <member refid="tp__buffer_8h_1a75e2904d307382f94b076c9cba359294" kind="function"><name>tp_buffer_init</name></member>
+    <member refid="tp__buffer_8h_1afe6b885b11172b641a566706f75e56b0" kind="function"><name>tp_buffer_claim_writing</name></member>
+    <member refid="tp__buffer_8h_1a9b027317eaca6f40473b04e5774d8d99" kind="function"><name>tp_buffer_claim_reading</name></member>
+    <member refid="tp__buffer_8h_1a2c321e88788c3324a7f8307a9ded2ca2" kind="function"><name>tp_buffer_return_writing</name></member>
+    <member refid="tp__buffer_8h_1aab200dfe79e54dcf0c46dc1a7fa2155a" kind="function"><name>tp_buffer_return_reading</name></member>
+  </compound>
+  <compound refid="tp__afe_8c" kind="file"><name>tp_afe.c</name>
+    <member refid="tp__afe_8c_1a2304d562f0dd6ac350757ce1d8bf8faa" kind="define"><name>DTGC_WR_EN</name></member>
+    <member refid="tp__afe_8c_1ab7040c976cb1261523c88f6a56488943" kind="define"><name>REG_READ_EN</name></member>
+    <member refid="tp__afe_8c_1a4cadd7f8951a3c49930fc1576881df6e" kind="define"><name>AFE_SOFT_RST</name></member>
+    <member refid="tp__afe_8c_1a4f5f296364e1df2b2379bccfff24fae4" kind="define"><name>ADC_REG_41_PLLRST1</name></member>
+    <member refid="tp__afe_8c_1ad8c80f969b21fd67d54dcbc7a17e329d" kind="define"><name>ADC_REG_42_PLLRST2</name></member>
+    <member refid="tp__afe_8c_1a00645ed27ca22714f3d70a4fe1569fb2" kind="define"><name>NUM_OF_ADC_VCA_REGS</name></member>
+    <member refid="tp__afe_8c_1a0f0febdb4a252f44a9c998adf4e9c5b5" kind="define"><name>NUM_OF_DTGC_REGS</name></member>
+    <member refid="tp__afe_8c_1a2279c1564e713d4a5b8b165e1fb01e8a" kind="typedef"><name>_tp_afe_reg_t</name></member>
+    <member refid="tp__afe_8c_1ae20951649ba3a79ed191b4c2cf478680" kind="variable"><name>tp_afe_adc_vca_reg_init_seq</name></member>
+    <member refid="tp__afe_8c_1a2c1b049ad30a7fa1fbd19998101e4a3c" kind="variable"><name>tp_afe_dtgc_reg_init_seq</name></member>
+    <member refid="tp__afe_8c_1a61206d891744e8d765b5bbf4b9efc1e2" kind="function"><name>tp_afe_write_reg</name></member>
+    <member refid="tp__afe_8c_1a7f768a58b16108a678f58deaf837f7c7" kind="function"><name>tp_afe_read_reg</name></member>
+    <member refid="tp__afe_8c_1a1fff96077c591fe32e1fc11592f9a2e7" kind="function"><name>tp_afe_write_reg_safe</name></member>
+    <member refid="tp__afe_8c_1a682e87d4356ee7282d49ee708b788ece" kind="function"><name>tp_afe_write_reg_dtgc</name></member>
+    <member refid="tp__afe_8c_1aadcec1c9e5a47c8d5a3804ddbb809a20" kind="function"><name>tp_afe_read_reg_dtgc</name></member>
+    <member refid="tp__afe_8c_1ad268716e423add955a16b331d2f90908" kind="function"><name>tp_afe_write_reg_dtgc_safe</name></member>
+    <member refid="tp__afe_8c_1a1eda21d08fdd3b6343b60a527223f903" kind="function"><name>tp_afe_init</name></member>
+    <member refid="tp__afe_8c_1a80797fe4daa0f83662c5460e74c97a12" kind="function"><name>tp_afe_test_pattern</name></member>
+  </compound>
+  <compound refid="tp__afe_8h" kind="file"><name>tp_afe.h</name>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57" kind="enum"><name>tp_afe_patt</name></member>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57a40a71b2d40ad7ef49b7e28e422ae351e" kind="enumvalue"><name>NORMAL_OPERATION</name></member>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57acee3ff238d616bcefbd268644ed05b5e" kind="enumvalue"><name>HALF_ZEROS_HALF_ONES</name></member>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57ac671178b7a613b078fe1fd8a3c2031ec" kind="enumvalue"><name>ALTERN_ZERO_ONE</name></member>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57a945d6010d321d9fe75cbba7b6f37f3b5" kind="enumvalue"><name>CUSTOM</name></member>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57acb7ce5c393137d8b3ec9fbb1bfff3313" kind="enumvalue"><name>ALL_ONES</name></member>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57a4acfde02350139a12fcef53ff7289aa7" kind="enumvalue"><name>TOGGLE</name></member>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57a3f5d21d8122dc27d9675db453ccaa068" kind="enumvalue"><name>ALL_ZEROS</name></member>
+    <member refid="tp__afe_8h_1ae95e0d6cbe8a1fa07070ed93d9b1cf57a291e3bb43cd8449155161d1fa023348b" kind="enumvalue"><name>RAMP</name></member>
+    <member refid="tp__afe_8h_1a016d56c5a79907bad49cdc4bbe887a58" kind="typedef"><name>tp_afe_patt_t</name></member>
+    <member refid="tp__afe_8h_1a1eda21d08fdd3b6343b60a527223f903" kind="function"><name>tp_afe_init</name></member>
+    <member refid="tp__afe_8h_1a80797fe4daa0f83662c5460e74c97a12" kind="function"><name>tp_afe_test_pattern</name></member>
+    <member refid="tp__afe_8h_1a61206d891744e8d765b5bbf4b9efc1e2" kind="function"><name>tp_afe_write_reg</name></member>
+    <member refid="tp__afe_8h_1a1fff96077c591fe32e1fc11592f9a2e7" kind="function"><name>tp_afe_write_reg_safe</name></member>
+    <member refid="tp__afe_8h_1a682e87d4356ee7282d49ee708b788ece" kind="function"><name>tp_afe_write_reg_dtgc</name></member>
+    <member refid="tp__afe_8h_1ad268716e423add955a16b331d2f90908" kind="function"><name>tp_afe_write_reg_dtgc_safe</name></member>
+    <member refid="tp__afe_8h_1a7f768a58b16108a678f58deaf837f7c7" kind="function"><name>tp_afe_read_reg</name></member>
+    <member refid="tp__afe_8h_1aadcec1c9e5a47c8d5a3804ddbb809a20" kind="function"><name>tp_afe_read_reg_dtgc</name></member>
+  </compound>
+  <compound refid="tp__fpga_8c" kind="file"><name>tp_fpga.c</name>
+    <member refid="tp__fpga_8c_1aee70377c350660b5b782c840895b1a94" kind="define"><name>SPI_READ_CFG</name></member>
+    <member refid="tp__fpga_8c_1a79e913c9996863f6587a0ec2fe7e353b" kind="define"><name>SPI_WRITE_CFG</name></member>
+    <member refid="tp__fpga_8c_1a0b1633efc0d0e9208c198a7eb9d7e1c5" kind="define"><name>SP_RD_FIFO</name></member>
+    <member refid="tp__fpga_8c_1a679de54b00ab8f449f5b8dca5479a001" kind="define"><name>SPI_WR_FIFO</name></member>
+    <member refid="tp__fpga_8c_1a1a57af7b6a732bb5b4a35f40f816d5d7" kind="define"><name>SPI_DUMMY_ADDR</name></member>
+    <member refid="tp__fpga_8c_1a978a094d101abeaf9c355a2175a38cf1" kind="define"><name>SYS_CTRL_CMD_DUMMY</name></member>
+    <member refid="tp__fpga_8c_1a78c7842d5a7f73eca628776786aa5cd2" kind="define"><name>SYS_CTRL_CMD_START</name></member>
+    <member refid="tp__fpga_8c_1a4664ffb61211f3ebe3e9a2b728883fab" kind="define"><name>SYS_CTRL_CMD_RESET</name></member>
+    <member refid="tp__fpga_8c_1a08c8619c1cec187176194521c2a96bc0" kind="define"><name>SYS_CTRL_CMD_RD_EN</name></member>
+    <member refid="tp__fpga_8c_1a58e92543c0057f8c11aed881b1c9cb21" kind="define"><name>SYS_CTRL_CMD_ECHO</name></member>
+    <member refid="tp__fpga_8c_1a756a031772e1dc6cac61e432c7bc75ca" kind="define"><name>MEM_CTRL_WR_CMD</name></member>
+    <member refid="tp__fpga_8c_1a09d4d28706aa7c326021afd55fff77fe" kind="define"><name>MEM_CTRL_RD_CMD</name></member>
+    <member refid="tp__fpga_8c_1a4d042fec97ead3177de620c63b2f361f" kind="define"><name>TP_NUM_DEFAULT_REGS</name></member>
+    <member refid="tp__fpga_8c_1ae168e9bc76ccb3d5f6e9cc8513991bb9" kind="variable"><name>default_values</name></member>
+    <member refid="tp__fpga_8c_1a245e28ef4f4955728de745e6e3b5cc22" kind="variable"><name>default_registers</name></member>
+    <member refid="tp__fpga_8c_1abfa7e0e67ddd4b39e1cbc0e7dd2ca6eb" kind="function"><name>tp_fpga_read_fifo</name></member>
+    <member refid="tp__fpga_8c_1af5815ceb27f9df140f5fbb131cddb6e3" kind="function"><name>tp_fpga_write_reg</name></member>
+    <member refid="tp__fpga_8c_1a8a20878fac888827537fba61b39c6e38" kind="function"><name>tp_fpga_send_read_reg_cmd</name></member>
+    <member refid="tp__fpga_8c_1ad6772d7a3a7ffbca4b049647e5bb75ef" kind="function"><name>tp_fpga_write_reg_safe</name></member>
+    <member refid="tp__fpga_8c_1aa285208b0b15ac379384d3437fbdcc3a" kind="function"><name>tp_fpga_write_cfg</name></member>
+    <member refid="tp__fpga_8c_1a81c7003257a953ec4084e973b74e42df" kind="function"><name>tp_fpga_read_cfg</name></member>
+    <member refid="tp__fpga_8c_1a08eec530ab1a4b75a9fcc48953a2bd4f" kind="function"><name>tp_fpga_send_cmd</name></member>
+    <member refid="tp__fpga_8c_1a46421a225d6040c78bf0d5d598ac8742" kind="function"><name>tp_fpga_init</name></member>
+    <member refid="tp__fpga_8c_1a6e7bc425f240dcd6fda20cc72654dc49" kind="function"><name>tp_fpga_trigger_shot</name></member>
+    <member refid="tp__fpga_8c_1aec88b400c34f6cda2e32a560255e2c22" kind="function"><name>tp_fpga_send_start</name></member>
+    <member refid="tp__fpga_8c_1aa511aa65c3186451a882d789a499c8e7" kind="function"><name>tp_fpga_reset_multififo</name></member>
+    <member refid="tp__fpga_8c_1a7b370a061e3e3ccedfdc79d28a9e547e" kind="function"><name>tp_fpga_empty_tx</name></member>
+    <member refid="tp__fpga_8c_1a31137f97ee7d33df7a4172d470e99685" kind="function"><name>tp_fpga_en_read</name></member>
+  </compound>
+  <compound refid="tp__fpga_8h" kind="file"><name>tp_fpga.h</name>
+    <member refid="tp__fpga_8h_1a46421a225d6040c78bf0d5d598ac8742" kind="function"><name>tp_fpga_init</name></member>
+    <member refid="tp__fpga_8h_1af5815ceb27f9df140f5fbb131cddb6e3" kind="function"><name>tp_fpga_write_reg</name></member>
+    <member refid="tp__fpga_8h_1ad6772d7a3a7ffbca4b049647e5bb75ef" kind="function"><name>tp_fpga_write_reg_safe</name></member>
+    <member refid="tp__fpga_8h_1aa285208b0b15ac379384d3437fbdcc3a" kind="function"><name>tp_fpga_write_cfg</name></member>
+    <member refid="tp__fpga_8h_1a8a20878fac888827537fba61b39c6e38" kind="function"><name>tp_fpga_send_read_reg_cmd</name></member>
+    <member refid="tp__fpga_8h_1abfa7e0e67ddd4b39e1cbc0e7dd2ca6eb" kind="function"><name>tp_fpga_read_fifo</name></member>
+    <member refid="tp__fpga_8h_1a81c7003257a953ec4084e973b74e42df" kind="function"><name>tp_fpga_read_cfg</name></member>
+    <member refid="tp__fpga_8h_1a08eec530ab1a4b75a9fcc48953a2bd4f" kind="function"><name>tp_fpga_send_cmd</name></member>
+    <member refid="tp__fpga_8h_1a6e7bc425f240dcd6fda20cc72654dc49" kind="function"><name>tp_fpga_trigger_shot</name></member>
+    <member refid="tp__fpga_8h_1aec88b400c34f6cda2e32a560255e2c22" kind="function"><name>tp_fpga_send_start</name></member>
+    <member refid="tp__fpga_8h_1aa511aa65c3186451a882d789a499c8e7" kind="function"><name>tp_fpga_reset_multififo</name></member>
+    <member refid="tp__fpga_8h_1a7b370a061e3e3ccedfdc79d28a9e547e" kind="function"><name>tp_fpga_empty_tx</name></member>
+    <member refid="tp__fpga_8h_1a31137f97ee7d33df7a4172d470e99685" kind="function"><name>tp_fpga_en_read</name></member>
+  </compound>
+  <compound refid="tp__mux_8c" kind="file"><name>tp_mux.c</name>
+    <member refid="tp__mux_8c_1ad719025549906e2089cbf4bc35fb0492" kind="variable"><name>extintmux_pin</name></member>
+    <member refid="tp__mux_8c_1a1192f1967ce69ec7ee8a38321b6bfa70" kind="variable"><name>afetxmux_pin</name></member>
+    <member refid="tp__mux_8c_1a345ab0e8f28ee7df36d2524872e0edfe" kind="function"><name>tp_mux_init</name></member>
+    <member refid="tp__mux_8c_1a3056dcc64563523df3ffba7a306b4078" kind="function"><name>tp_mux_select</name></member>
+  </compound>
+  <compound refid="tp__mux_8h" kind="file"><name>tp_mux.h</name>
+    <member refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2d" kind="enum"><name>tp_mux</name></member>
+    <member refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dac915f405e6bdba45b4338c847ead2871" kind="enumvalue"><name>TP_MUX_PLL</name></member>
+    <member refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2daae0fe945b3029c12736995cb0f407a48" kind="enumvalue"><name>TP_MUX_FPGA</name></member>
+    <member refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2da7a59c069708c5648908545878501393c" kind="enumvalue"><name>TP_MUX_AFE</name></member>
+    <member refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dad4c6397c9013e7da9c578b50bf16c2df" kind="enumvalue"><name>TP_MUX_TX</name></member>
+    <member refid="tp__mux_8h_1acb5e90c4e5d140416be1908840a0776c" kind="typedef"><name>tp_mux_t</name></member>
+    <member refid="tp__mux_8h_1a345ab0e8f28ee7df36d2524872e0edfe" kind="function"><name>tp_mux_init</name></member>
+    <member refid="tp__mux_8h_1a3056dcc64563523df3ffba7a306b4078" kind="function"><name>tp_mux_select</name></member>
+  </compound>
+  <compound refid="tp__power_8c" kind="file"><name>tp_power.c</name>
+    <member refid="tp__power_8c_1a698c055f20e4ca8d031fb6ab91d1d77e" kind="variable"><name>neg_5v_pin</name></member>
+    <member refid="tp__power_8c_1a8eb2ed4374ed80297cc3b959bb8bffd2" kind="variable"><name>neg_hv_pin</name></member>
+    <member refid="tp__power_8c_1a2d6d46667570ad54f987d0a06b51353d" kind="variable"><name>pos_hv_pin</name></member>
+    <member refid="tp__power_8c_1a8ea710ce617e21a5fc70456a6a9e55fe" kind="variable"><name>lvds_pwr_switch_pin</name></member>
+    <member refid="tp__power_8c_1a8eb8f9958ed95a620520d7af8ea603a5" kind="function"><name>tp_power_init</name></member>
+    <member refid="tp__power_8c_1a60b58ec40db6c7ce2679004af099c0f1" kind="function"><name>tp_power_on</name></member>
+    <member refid="tp__power_8c_1ad0aed64c7ed1cc0415e1ba6c3b087941" kind="function"><name>tp_power_set</name></member>
+  </compound>
+  <compound refid="tp__power_8h" kind="file"><name>tp_power.h</name>
+    <member refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9e" kind="enum"><name>tp_power_domain</name></member>
+    <member refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4ced40720b88fcf8d0034327a1da93c6" kind="enumvalue"><name>TP_POWER_DOMAIN_LVDS_2_5V</name></member>
+    <member refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4812600986de55f6bcb826757c14fe12" kind="enumvalue"><name>TP_POWER_DOMAIN_POS_HV</name></member>
+    <member refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9eaea78c3856cf79c5d8d5ee654be18cb3f" kind="enumvalue"><name>TP_POWER_DOMAIN_NEG_HV</name></member>
+    <member refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea666e5c94c41e2fa90236f8b6b54dc065" kind="enumvalue"><name>TP_POWER_DOMAIN_NEG_5V</name></member>
+    <member refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea39cd583bdce367a99b3f843cc06df5d5" kind="enumvalue"><name>TP_POWER_DOMAIN_PLL_PWD</name></member>
+    <member refid="tp__power_8h_1a9768fdd498cb105fc0b148d6099746b1" kind="typedef"><name>tp_power_domain_t</name></member>
+    <member refid="tp__power_8h_1a8eb8f9958ed95a620520d7af8ea603a5" kind="function"><name>tp_power_init</name></member>
+    <member refid="tp__power_8h_1a60b58ec40db6c7ce2679004af099c0f1" kind="function"><name>tp_power_on</name></member>
+    <member refid="tp__power_8h_1ad0aed64c7ed1cc0415e1ba6c3b087941" kind="function"><name>tp_power_set</name></member>
+  </compound>
+  <compound refid="tp__tx_8c" kind="file"><name>tp_tx.c</name>
+    <member refid="tp__tx_8c_1ad5ffa6bf13c7684c49dcaecc7cadb3b5" kind="define"><name>XFER_PACK_LEN</name></member>
+    <member refid="tp__tx_8c_1a016c7dfc79ef7d3ea76839ef56395263" kind="define"><name>LVL_PHV</name></member>
+    <member refid="tp__tx_8c_1a7e1a7f0c09eac4d3a5f543accf41c59d" kind="define"><name>LVL_ZERO</name></member>
+    <member refid="tp__tx_8c_1a6019950b9d4736dc584fda36da367f02" kind="define"><name>LVL_MHV</name></member>
+    <member refid="tp__tx_8c_1a4857ed29621e80c9e471dea0bd171103" kind="define"><name>LVL_TERMINATE</name></member>
+    <member refid="tp__tx_8c_1adcc9bf14ed250c96cec94f82cf6c754c" kind="define"><name>CMD_READEN_0</name></member>
+    <member refid="tp__tx_8c_1a70e2d3e6399114822507256ee51a5782" kind="define"><name>CMD_READEN_1</name></member>
+    <member refid="tp__tx_8c_1a0257ec39bba8fc95a49d9eed5b0ec3d8" kind="define"><name>CMD_READEN_2</name></member>
+    <member refid="tp__tx_8c_1aa68ec57be4bccd1f6856e60e2fbf3d04" kind="function"><name>tp_tx_write_reg</name></member>
+    <member refid="tp__tx_8c_1ae2a31acb8f2800e94bc7aa09929c9e4a" kind="function"><name>tp_tx_read_reg</name></member>
+    <member refid="tp__tx_8c_1a8a803401e7ecaeea8e56230e7a9e329b" kind="function"><name>tp_tx_write_reg_safe</name></member>
+    <member refid="tp__tx_8c_1a1f9c34c0591f4a8e0036473828ffcd1f" kind="function"><name>tp_tx_init</name></member>
+  </compound>
+  <compound refid="tp__tx_8h" kind="file"><name>tp_tx.h</name>
+    <member refid="tp__tx_8h_1a1f9c34c0591f4a8e0036473828ffcd1f" kind="function"><name>tp_tx_init</name></member>
+    <member refid="tp__tx_8h_1aa68ec57be4bccd1f6856e60e2fbf3d04" kind="function"><name>tp_tx_write_reg</name></member>
+    <member refid="tp__tx_8h_1a8a803401e7ecaeea8e56230e7a9e329b" kind="function"><name>tp_tx_write_reg_safe</name></member>
+    <member refid="tp__tx_8h_1ae2a31acb8f2800e94bc7aa09929c9e4a" kind="function"><name>tp_tx_read_reg</name></member>
+  </compound>
+  <compound refid="tp__method__controlpower_8c" kind="file"><name>tp_method_controlpower.c</name>
+    <member refid="tp__method__controlpower_8c_1a4e7e4b9c58ce22e48331c411e4b703d5" kind="function"><name>tp_method_controlpower</name></member>
+  </compound>
+  <compound refid="tp__method__controlpower_8h" kind="file"><name>tp_method_controlpower.h</name>
+    <member refid="tp__method__controlpower_8h_1a4e7e4b9c58ce22e48331c411e4b703d5" kind="function"><name>tp_method_controlpower</name></member>
+  </compound>
+  <compound refid="tp__method__controlspi_8c" kind="file"><name>tp_method_controlspi.c</name>
+    <member refid="tp__method__controlspi_8c_1af69683654e13e034d538b4c51a96833e" kind="function"><name>tp_method_controlspi</name></member>
+  </compound>
+  <compound refid="tp__method__controlspi_8h" kind="file"><name>tp_method_controlspi.h</name>
+    <member refid="tp__method__controlspi_8h_1af69683654e13e034d538b4c51a96833e" kind="function"><name>tp_method_controlspi</name></member>
+  </compound>
+  <compound refid="tp__method__delayms_8c" kind="file"><name>tp_method_delayms.c</name>
+    <member refid="tp__method__delayms_8c_1aec4b28171d928758c76a510eedd44a2a" kind="function"><name>tp_method_delayms</name></member>
+  </compound>
+  <compound refid="tp__method__delayms_8h" kind="file"><name>tp_method_delayms.h</name>
+    <member refid="tp__method__delayms_8h_1aec4b28171d928758c76a510eedd44a2a" kind="function"><name>tp_method_delayms</name></member>
+  </compound>
+  <compound refid="tp__method__delayns_8c" kind="file"><name>tp_method_delayns.c</name>
+    <member refid="tp__method__delayns_8c_1a97fe2d3b6cde674734b284531483d43a" kind="function"><name>tp_method_delayns</name></member>
+  </compound>
+  <compound refid="tp__method__delayns_8h" kind="file"><name>tp_method_delayns.h</name>
+    <member refid="tp__method__delayns_8h_1a97fe2d3b6cde674734b284531483d43a" kind="function"><name>tp_method_delayns</name></member>
+  </compound>
+  <compound refid="tp__method__ping_8c" kind="file"><name>tp_method_ping.c</name>
+    <member refid="tp__method__ping_8c_1ac2e24851e0e52a811dfb479b783525de" kind="function"><name>tp_method_ping</name></member>
+  </compound>
+  <compound refid="tp__method__ping_8h" kind="file"><name>tp_method_ping.h</name>
+    <member refid="tp__method__ping_8h_1ac2e24851e0e52a811dfb479b783525de" kind="function"><name>tp_method_ping</name></member>
+  </compound>
+  <compound refid="tp__method__setloglevel_8c" kind="file"><name>tp_method_setloglevel.c</name>
+    <member refid="tp__method__setloglevel_8c_1a608f257e98ba0cb1eb304802f1128910" kind="function"><name>tp_method_setloglevel</name></member>
+  </compound>
+  <compound refid="tp__method__setloglevel_8h" kind="file"><name>tp_method_setloglevel.h</name>
+    <member refid="tp__method__setloglevel_8h_1aac29812602823ee982df3f478455cf17" kind="function"><name>tp_method_setloglevel</name></member>
+  </compound>
+  <compound refid="tp__method__triggershot_8c" kind="file"><name>tp_method_triggershot.c</name>
+    <member refid="tp__method__triggershot_8c_1ae3e68fdb6849d7e868ab4b685aae56c4" kind="variable"><name>tx_dummy</name></member>
+    <member refid="tp__method__triggershot_8c_1a59c483ac253b1df34696b37aa23f8d65" kind="function"><name>_tp_transmit_packages</name></member>
+    <member refid="tp__method__triggershot_8c_1ab0defec027affec451b5d059f9d40aa8" kind="function"><name>_tp_restore_callback_power</name></member>
+    <member refid="tp__method__triggershot_8c_1a068c6fa3ce58f8781a5d7e8252ea5934" kind="function"><name>tp_method_triggershot</name></member>
+  </compound>
+  <compound refid="tp__method__triggershot_8h" kind="file"><name>tp_method_triggershot.h</name>
+    <member refid="tp__method__triggershot_8h_1a068c6fa3ce58f8781a5d7e8252ea5934" kind="function"><name>tp_method_triggershot</name></member>
+  </compound>
+  <compound refid="tp__method__writeafe_8c" kind="file"><name>tp_method_writeafe.c</name>
+    <member refid="tp__method__writeafe_8c_1a72260312842fb676ba8f199ca7c70811" kind="function"><name>tp_method_writeafe</name></member>
+  </compound>
+  <compound refid="tp__method__writeafe_8h" kind="file"><name>tp_method_writeafe.h</name>
+    <member refid="tp__method__writeafe_8h_1a72260312842fb676ba8f199ca7c70811" kind="function"><name>tp_method_writeafe</name></member>
+  </compound>
+  <compound refid="tp__method__writefpga_8c" kind="file"><name>tp_method_writefpga.c</name>
+    <member refid="tp__method__writefpga_8c_1af793ad1a1206cbe848c7440f639d7ac7" kind="function"><name>tp_method_writefpga</name></member>
+  </compound>
+  <compound refid="tp__method__writefpga_8h" kind="file"><name>tp_method_writefpga.h</name>
+    <member refid="tp__method__writefpga_8h_1af793ad1a1206cbe848c7440f639d7ac7" kind="function"><name>tp_method_writefpga</name></member>
+  </compound>
+  <compound refid="tp__method__writetx_8c" kind="file"><name>tp_method_writetx.c</name>
+    <member refid="tp__method__writetx_8c_1ac173fabd26898cd471e298e95e73dac5" kind="function"><name>tp_method_writetx</name></member>
+  </compound>
+  <compound refid="tp__method__writetx_8h" kind="file"><name>tp_method_writetx.h</name>
+    <member refid="tp__method__writetx_8h_1ac173fabd26898cd471e298e95e73dac5" kind="function"><name>tp_method_writetx</name></member>
+  </compound>
+  <compound refid="tp_8c" kind="file"><name>tp.c</name>
+    <member refid="tp_8c_1a603c3df8d015f622cb8a20984a912b8c" kind="variable"><name>int_pin</name></member>
+    <member refid="tp_8c_1a738c063000c0b92ff476c9b0220f4ad0" kind="variable"><name>reset_pin</name></member>
+    <member refid="tp_8c_1ab027165f0833128de99d706344108355" kind="variable"><name>spi_inst</name></member>
+    <member refid="tp_8c_1ab2593e08e6b5322cccc27a362f8d2b1c" kind="variable"><name>spi_config</name></member>
+    <member refid="tp_8c_1accffa1e57b7bcc453014340f90cb8dc9" kind="variable"><name>wifi_rx_buffer</name></member>
+    <member refid="tp_8c_1a60041ce2715588ca21e2e5c035573ff1" kind="variable"><name>wifi_transmit_thread_id</name></member>
+    <member refid="tp_8c_1a19b98df21104edbff2a52c26f704ef78" kind="variable"><name>wifi_tx_thread_attr</name></member>
+    <member refid="tp_8c_1a19d439e0c1fc33537246bb88b61203c5" kind="variable"><name>tp_mdns</name></member>
+    <member refid="tp_8c_1a75715c21eb08018a2db3599df7e843c4" kind="variable"><name>sem_fpga</name></member>
+    <member refid="tp_8c_1a7f6b4c1f1e432ce0ed77fe25f6904233" kind="variable"><name>tp_buf</name></member>
+    <member refid="tp_8c_1ace7478d2ad6fe71ec52f6514363ecd50" kind="variable"><name>msg</name></member>
+    <member refid="tp_8c_1a484e4e24b6e47062014bb37acc16493a" kind="variable"><name>rsp_buffer</name></member>
+    <member refid="tp_8c_1a6d426eeeeb312e39345608ec3d826e1e" kind="variable"><name>rsp_buffer_len</name></member>
+    <member refid="tp_8c_1acdaea490e6faa458ccfb8088b4cb09c6" kind="variable"><name>payload</name></member>
+    <member refid="tp_8c_1a6d56f095714d465977089617e86867fd" kind="function"><name>_tp_thread_wifi_transmit</name></member>
+    <member refid="tp_8c_1a63418bf947e1feea13df775be36aa8eb" kind="function"><name>_tp_int_handler</name></member>
+    <member refid="tp_8c_1a3a6ea2dbfbd5891449abe2d064b68b9f" kind="function"><name>_tp_nanopb_sender</name></member>
+    <member refid="tp_8c_1abb67ba059293d9052b809b7000c635de" kind="function"><name>tp_init</name></member>
+    <member refid="tp_8c_1adfad6a9bedb9076e7cff63da5977a9b0" kind="function"><name>tp_main_thread</name></member>
+    <member refid="tp_8c_1a808b82b255e8f886889728a5ab64ce7b" kind="function"><name>vApplicationStackOverflowHook</name></member>
+  </compound>
+  <compound refid="tp_8h" kind="file"><name>tp.h</name>
+    <member refid="tp_8h_1a75715c21eb08018a2db3599df7e843c4" kind="variable"><name>sem_fpga</name></member>
+    <member refid="tp_8h_1a7f6b4c1f1e432ce0ed77fe25f6904233" kind="variable"><name>tp_buf</name></member>
+    <member refid="tp_8h_1abb67ba059293d9052b809b7000c635de" kind="function"><name>tp_init</name></member>
+    <member refid="tp_8h_1adfad6a9bedb9076e7cff63da5977a9b0" kind="function"><name>tp_main_thread</name></member>
+  </compound>
+  <compound refid="tp__methods_8c" kind="file"><name>tp_methods.c</name>
+    <member refid="tp__methods_8c_1a826edd40636cbaa44266b97c8c6a4fa3" kind="define"><name>X</name></member>
+    <member refid="tp__methods_8c_1abd5bbcdb76ac65efe5ee1504362aeec9" kind="variable"><name>response_data</name></member>
+    <member refid="tp__methods_8c_1a03aeb6b1e0b1b6dedf379c1c7b6813b7" kind="variable"><name>req</name></member>
+    <member refid="tp__methods_8c_1a9db4c152ab0514203746345933cbfc51" kind="variable"><name>rsp</name></member>
+    <member refid="tp__methods_8c_1ab763b48bb0caae51d13d3a8b9d417311" kind="function"><name>tp_methods_handle</name></member>
+  </compound>
+  <compound refid="tp__methods_8h" kind="file"><name>tp_methods.h</name>
+    <member refid="tp__methods_8h_1aa41f0609b4f642da47f7ad40ae07f0d8" kind="define"><name>TP_METHODS</name></member>
+    <member refid="tp__methods_8h_1ab763b48bb0caae51d13d3a8b9d417311" kind="function"><name>tp_methods_handle</name></member>
+  </compound>
+  <compound refid="user_8c" kind="file"><name>user.c</name>
+    <member refid="user_8c_1aa49d63c9f52309021c5a7bc23c4d85e5" kind="variable"><name>user_application_attr</name></member>
+    <member refid="user_8c_1a1db8bbb08853f1d9ea903ffad6eac981" kind="variable"><name>user_application_id</name></member>
+    <member refid="user_8c_1ace108c2e1d2b6012d3a20899fd36fbe5" kind="function"><name>user_application</name></member>
+    <member refid="user_8c_1aa8253cd89ed4b268472ed62f4f2074ae" kind="function"><name>user_init</name></member>
+  </compound>
+  <compound refid="user_8h" kind="file"><name>user.h</name>
+    <member refid="user_8h_1aa8253cd89ed4b268472ed62f4f2074ae" kind="function"><name>user_init</name></member>
+  </compound>
+  <compound refid="wius__gpio_8c" kind="file"><name>wius_gpio.c</name>
+    <member refid="wius__gpio_8c_1ab076de2f44ee7b825dcf012db0f55bf5" kind="variable"><name>_wius_gpio_active_interrupts</name></member>
+    <member refid="wius__gpio_8c_1ae6ae18a83a13606df7bf91397e972e45" kind="variable"><name>_wius_gpio_ulp_active_interrupts</name></member>
+    <member refid="wius__gpio_8c_1a81b111e94aa7cd2e02bc6cfaa64b6af4" kind="variable"><name>_wius_gpio_uulp_active_interrupts</name></member>
+    <member refid="wius__gpio_8c_1ac0c17a10fb3f554be94b4e26c811131a" kind="function"><name>wius_gpio_init</name></member>
+    <member refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kind="function"><name>wius_gpio_config</name></member>
+    <member refid="wius__gpio_8c_1a731ec09db1b4af9cb01cdc4b08d622ad" kind="function"><name>wius_gpio_attach_interrupt</name></member>
+    <member refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kind="function"><name>wius_gpio_put</name></member>
+    <member refid="wius__gpio_8c_1a9d3eee4f4e257ec0c45e605aa3673336" kind="function"><name>wius_gpio_toggle</name></member>
+    <member refid="wius__gpio_8c_1a943098bbaa33871e802477d1a4fdfdc4" kind="function"><name>wius_gpio_get</name></member>
+  </compound>
+  <compound refid="wius__gpio_8h" kind="file"><name>wius_gpio.h</name>
+    <member refid="wius__gpio_8h_1a785cd61c8beea3c10993c7e1cddd7dc0" kind="define"><name>_WIUS_GPIO_PIN</name></member>
+    <member refid="wius__gpio_8h_1af819d45b00329db2576a529ded6c1458" kind="define"><name>_WIUS_GPIO_PORT</name></member>
+    <member refid="wius__gpio_8h_1a4fa85229190520c4857ab0909c0ff2b1" kind="define"><name>_WIUS_GPIO_ULP_PIN</name></member>
+    <member refid="wius__gpio_8h_1a034c720539143f5e569ded311ec51007" kind="define"><name>_WIUS_GPIO_ULP_PORT</name></member>
+    <member refid="wius__gpio_8h_1ae7534b7bc75b800dc62eb2513464769c" kind="define"><name>_WIUS_GPIO_UULP_PIN</name></member>
+    <member refid="wius__gpio_8h_1a31a07f43a5f80f199a262e083975b1d2" kind="define"><name>_WIUS_GPIO_UULP_PORT</name></member>
+    <member refid="wius__gpio_8h_1acdd1dd0bc2969cf47f8c03faa9c9e347" kind="define"><name>WIUS_GPIO_OUTPUT</name></member>
+    <member refid="wius__gpio_8h_1a6454a4069022f8b4faa75059a31d6a68" kind="define"><name>WIUS_GPIO_ULP_OUTPUT</name></member>
+    <member refid="wius__gpio_8h_1a9f9df45c6165cac918e282dbde1986e1" kind="define"><name>WIUS_GPIO_UULP_OUTPUT</name></member>
+    <member refid="wius__gpio_8h_1a68fa12429a079905373969ab16fadf84" kind="define"><name>WIUS_GPIO_INPUT</name></member>
+    <member refid="wius__gpio_8h_1ac2e936d9e0b0e474dc05e5390f56f820" kind="define"><name>WIUS_GPIO_ULP_INPUT</name></member>
+    <member refid="wius__gpio_8h_1a9352cc5293acec9d0a99fb3628b48c4a" kind="define"><name>WIUS_GPIO_UULP_INPUT</name></member>
+    <member refid="wius__gpio_8h_1af22f9cd3a4c7a96e1cf85538d63cacf1" kind="enum"><name>wius_gpio_interrupt</name></member>
+    <member refid="wius__gpio_8h_1af22f9cd3a4c7a96e1cf85538d63cacf1a471ff4c9bbac44ca1c0bee4ed7e71054" kind="enumvalue"><name>WIUS_GPIO_INT_HIGH</name></member>
+    <member refid="wius__gpio_8h_1af22f9cd3a4c7a96e1cf85538d63cacf1ae9f5add20cbaf28230acd36c69e31ea4" kind="enumvalue"><name>WIUS_GPIO_INT_LOW</name></member>
+    <member refid="wius__gpio_8h_1af22f9cd3a4c7a96e1cf85538d63cacf1a2416f0e478335d23d9597baa48fb962d" kind="enumvalue"><name>WIUS_GPIO_INT_RISING</name></member>
+    <member refid="wius__gpio_8h_1af22f9cd3a4c7a96e1cf85538d63cacf1aefebeb819c0295f7a76767c31124d3ac" kind="enumvalue"><name>WIUS_GPIO_INT_FALLING</name></member>
+    <member refid="wius__gpio_8h_1af22f9cd3a4c7a96e1cf85538d63cacf1ac94a77c2288ef0ee8b9e9031f8df270b" kind="enumvalue"><name>WIUS_GPIO_INT_TOGGLE</name></member>
+    <member refid="wius__gpio_8h_1a42dd4e49bd651ad5354882fdb4760739" kind="typedef"><name>wius_gpio_interrupt_t</name></member>
+    <member refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kind="typedef"><name>wius_gpio_t</name></member>
+    <member refid="wius__gpio_8h_1a4019fe852a443565eeafe07da5bad25e" kind="typedef"><name>wius_gpio_callback_t</name></member>
+    <member refid="wius__gpio_8h_1ac0c17a10fb3f554be94b4e26c811131a" kind="function"><name>wius_gpio_init</name></member>
+    <member refid="wius__gpio_8h_1a1c7fd4dc9012e186c45f29f7b92b15e8" kind="function"><name>wius_gpio_config</name></member>
+    <member refid="wius__gpio_8h_1a731ec09db1b4af9cb01cdc4b08d622ad" kind="function"><name>wius_gpio_attach_interrupt</name></member>
+    <member refid="wius__gpio_8h_1a56b5a886449b21ca5512920fd5ccfaa5" kind="function"><name>wius_gpio_put</name></member>
+    <member refid="wius__gpio_8h_1a9d3eee4f4e257ec0c45e605aa3673336" kind="function"><name>wius_gpio_toggle</name></member>
+    <member refid="wius__gpio_8h_1a943098bbaa33871e802477d1a4fdfdc4" kind="function"><name>wius_gpio_get</name></member>
+  </compound>
+  <compound refid="wius__power_8c" kind="file"><name>wius_power.c</name>
+    <member refid="wius__power_8c_1a58233657d300250657e148fe69d27eab" kind="function"><name>wius_power_init</name></member>
+    <member refid="wius__power_8c_1a14e2d5e1b84a778679ed752ec70e4e6f" kind="function"><name>wius_power_set</name></member>
+  </compound>
+  <compound refid="wius__power_8h" kind="file"><name>wius_power.h</name>
+    <member refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246" kind="enum"><name>wius_power_mode</name></member>
+    <member refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a87d6fc152671f566ec22732b8c2ee36c" kind="enumvalue"><name>WIUS_POWER_MODE_LOW</name></member>
+    <member refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a16c220b56cb785160051030ab4d2273d" kind="enumvalue"><name>WIUS_POWER_MODE_HIGH</name></member>
+    <member refid="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" kind="typedef"><name>wius_power_mode_t</name></member>
+    <member refid="wius__power_8h_1a58233657d300250657e148fe69d27eab" kind="function"><name>wius_power_init</name></member>
+    <member refid="wius__power_8h_1a14e2d5e1b84a778679ed752ec70e4e6f" kind="function"><name>wius_power_set</name></member>
+  </compound>
+  <compound refid="wius__spi_8c" kind="file"><name>wius_spi.c</name>
+    <member refid="wius__spi_8c_1a499c6992628d9159c49511782c8bc60d" kind="enum"><name>wius_spi_wait_mode_t</name></member>
+    <member refid="wius__spi_8c_1a499c6992628d9159c49511782c8bc60dace13e2947e9e9f4b23cb83a6e85b9a23" kind="enumvalue"><name>WIUS_SPI_WAIT_IDLE</name></member>
+    <member refid="wius__spi_8c_1a499c6992628d9159c49511782c8bc60da40b1fcb78513dcfcf2977319b46670ce" kind="enumvalue"><name>WIUS_SPI_WAIT_POLL</name></member>
+    <member refid="wius__spi_8c_1a499c6992628d9159c49511782c8bc60da94637a49b352ede551c6487972173d1e" kind="enumvalue"><name>WIUS_SPI_WAIT_SEMAPHORE</name></member>
+    <member refid="wius__spi_8c_1a8a7c7e654c5d0bbf28eddd06e60adc35" kind="variable"><name>_wius_spi_0_sem</name></member>
+    <member refid="wius__spi_8c_1aeb6927edb95ceac5bd53de5a32a6911a" kind="variable"><name>_wius_spi_1_sem</name></member>
+    <member refid="wius__spi_8c_1a664d695fcd5fe1d75136f52868c7cfd0" kind="variable"><name>_wius_spi_0_wait_mode</name></member>
+    <member refid="wius__spi_8c_1aabdb344d70d83ad57639e738a3e20c75" kind="variable"><name>_wius_spi_0_event</name></member>
+    <member refid="wius__spi_8c_1a602b746b0e0c2e825770e9255b280c19" kind="variable"><name>_wius_spi_0_complete</name></member>
+    <member refid="wius__spi_8c_1aac86acad5e67c56f5b5f8e498fd2b9da" kind="variable"><name>_wius_spi_0_instance</name></member>
+    <member refid="wius__spi_8c_1a7a5df799d192db0cc0b9e637003b4cfa" kind="variable"><name>_wius_spi_1_instance</name></member>
+    <member refid="wius__spi_8c_1a3b9c1861ab9331bf731c285d10528888" kind="function"><name>_wius_spi_gspi_callback</name></member>
+    <member refid="wius__spi_8c_1a67e7ba148e4f546fcee06f9df17577d6" kind="function"><name>_wius_spi_ssi_callback</name></member>
+    <member refid="wius__spi_8c_1a6a2b0ec67ae7611c5d8fc9a2f64320dd" kind="function"><name>_wius_spi_prepare_gspi_wait</name></member>
+    <member refid="wius__spi_8c_1a34d425e3858e9ea7250034554e05308b" kind="function"><name>_wius_spi_poll_gspi</name></member>
+    <member refid="wius__spi_8c_1a2c63d3c2fe1a38377ce7e9223cd761d8" kind="function"><name>_wius_spi_gspi_event_status</name></member>
+    <member refid="wius__spi_8c_1ad0e6c92f255926b5a5ebdff2bb333fb5" kind="function"><name>wius_spi_get_instance</name></member>
+    <member refid="wius__spi_8c_1ac3fc8f4c404b4b2ca545fb275ea41a6c" kind="function"><name>wius_spi_init</name></member>
+    <member refid="wius__spi_8c_1a7937be4a862bfb4080ca3db6e40a3c8d" kind="function"><name>_wius_spi_cs_active</name></member>
+    <member refid="wius__spi_8c_1abc7d0609165947e34448a28d89ea72af" kind="function"><name>_wius_spi_cs_inactive</name></member>
+    <member refid="wius__spi_8c_1a635806440d8bcf7fbcc1d1f6ca17c3c3" kind="function"><name>wius_spi_xfer</name></member>
+    <member refid="wius__spi_8c_1a33cc84419ac464f6de41a332c90586e7" kind="function"><name>wius_spi_send</name></member>
+    <member refid="wius__spi_8c_1a3455051967cd593c0adebcb04d148d10" kind="function"><name>wius_spi_await</name></member>
+  </compound>
+  <compound refid="wius__spi_8h" kind="file"><name>wius_spi.h</name>
+    <member refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kind="define"><name>WIUS_SPI_INST_0</name></member>
+    <member refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kind="define"><name>WIUS_SPI_INST_1</name></member>
+    <member refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23" kind="enum"><name>wius_spi_cs_mode</name></member>
+    <member refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23a74a3bdc146382f3158ff169a221963ec" kind="enumvalue"><name>WIUS_SPI_CS_NONE</name></member>
+    <member refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23ac7502901d7fd9cc3e382d6c0512043cd" kind="enumvalue"><name>WIUS_SPI_CS_SW</name></member>
+    <member refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23a0d50cd14936ca64d85f976e5b99ddcaa" kind="enumvalue"><name>WIUS_SPI_CS_HW</name></member>
+    <member refid="wius__spi_8h_1aede8e12fa0ede54dba99c170315eb6aa" kind="typedef"><name>wius_spi_cs_mode_t</name></member>
+    <member refid="wius__spi_8h_1ad4c07c831a649c8f73c7359df9a151a6" kind="typedef"><name>wius_spi_config_t</name></member>
+    <member refid="wius__spi_8h_1af201cebdc47bffa3d7fd5f7b5f51a7d8" kind="typedef"><name>wius_spi_inst_t</name></member>
+    <member refid="wius__spi_8h_1ad0e6c92f255926b5a5ebdff2bb333fb5" kind="function"><name>wius_spi_get_instance</name></member>
+    <member refid="wius__spi_8h_1ac3fc8f4c404b4b2ca545fb275ea41a6c" kind="function"><name>wius_spi_init</name></member>
+    <member refid="wius__spi_8h_1a635806440d8bcf7fbcc1d1f6ca17c3c3" kind="function"><name>wius_spi_xfer</name></member>
+    <member refid="wius__spi_8h_1a33cc84419ac464f6de41a332c90586e7" kind="function"><name>wius_spi_send</name></member>
+    <member refid="wius__spi_8h_1a3455051967cd593c0adebcb04d148d10" kind="function"><name>wius_spi_await</name></member>
+  </compound>
+  <compound refid="wius__tcp_8c" kind="file"><name>wius_tcp.c</name>
+    <member refid="wius__tcp_8c_1a5903d0b282fc5eae503de618f896b5e1" kind="variable"><name>sock</name></member>
+    <member refid="wius__tcp_8c_1ac6d2a667f3b05601272a9d19aebbcb5f" kind="variable"><name>client_socks</name></member>
+    <member refid="wius__tcp_8c_1a469e2f5dd4fb3e5925c1d2def23753da" kind="variable"><name>udp_sock</name></member>
+    <member refid="wius__tcp_8c_1aa3b1c22a319ba0228cc0bbcb86c04283" kind="variable"><name>server_addr</name></member>
+    <member refid="wius__tcp_8c_1a497247b3071524696500fd746bf16382" kind="variable"><name>wius_tcp_server_queue</name></member>
+    <member refid="wius__tcp_8c_1aef1c9984fdf39a4bcf8347f87b6e2c54" kind="function"><name>_wius_tcp_server_add_client</name></member>
+    <member refid="wius__tcp_8c_1a9943b5e20b219948000be17e7757ee66" kind="function"><name>_wius_tcp_server_remove_client</name></member>
+    <member refid="wius__tcp_8c_1a4bc6f2063ac86e9f3d063cb599497a2a" kind="function"><name>_wius_tcp_server_cb_term</name></member>
+    <member refid="wius__tcp_8c_1a5fc8219683dadb5fa50865f6db7f2fc2" kind="function"><name>_wius_tcp_server_cb_rx</name></member>
+    <member refid="wius__tcp_8c_1a08946d6b8e05775257861ad6cd029180" kind="function"><name>_wius_tcp_server_cb_accept</name></member>
+    <member refid="wius__tcp_8c_1ade3c34c213992075a796a7ad93dc362f" kind="function"><name>wius_tcp_server_init</name></member>
+    <member refid="wius__tcp_8c_1ad2f298780f6d457b704aca7b4ea3c3b4" kind="function"><name>wius_tcp_server_deinit</name></member>
+    <member refid="wius__tcp_8c_1af40d945009db8b491691bb228a5bc970" kind="function"><name>wius_tcp_server_start</name></member>
+    <member refid="wius__tcp_8c_1a0a715b1c9f663b80db6b88a961becbe6" kind="function"><name>wius_tcp_server_stop</name></member>
+    <member refid="wius__tcp_8c_1a5f4b12f04bc793c12b06851fe4fe353d" kind="function"><name>wius_tcp_server_respond</name></member>
+    <member refid="wius__tcp_8c_1a41fff1a99c5f49c9c61435cc05ae8677" kind="function"><name>_wius_tcp_server_cb_udp_rx</name></member>
+    <member refid="wius__tcp_8c_1a3b5afa10b815fdc3c578055dd301e5db" kind="function"><name>_wius_tcp_server_respond_udp_done_handler</name></member>
+    <member refid="wius__tcp_8c_1a5f2eca72de35712f6d97ea2a572ad755" kind="function"><name>wius_tcp_server_respond_udp</name></member>
+    <member refid="wius__tcp_8c_1aba9cd73ef34295991d4e30422d2b5fd8" kind="function"><name>wius_tcp_server_respond_ok</name></member>
+    <member refid="wius__tcp_8c_1a7f945d0dcd184b02037c49f226a988ee" kind="function"><name>wius_tcp_server_respond_error</name></member>
+    <member refid="wius__tcp_8c_1afff6c9a2528f0e9720a18e3343d9c44b" kind="function"><name>wius_tcp_server_respond_data</name></member>
+  </compound>
+  <compound refid="wius__tcp_8h" kind="file"><name>wius_tcp.h</name>
+    <member refid="wius__tcp_8h_1a0886528f4b9c2a64f4cf41b41c3e4e9d" kind="define"><name>WIUS_TCP_SERVER_MAX_CLIENTS</name></member>
+    <member refid="wius__tcp_8h_1ac08b1ebe0b1e11ff91dd5ef59e5e1e43" kind="define"><name>WIUS_TCP_SERVER_QUEUE_SIZE</name></member>
+    <member refid="wius__tcp_8h_1a71fc5da54721508d19d017ce2782c85d" kind="define"><name>WIUS_TCP_SERVER_MESSAGE_DATA_SIZE</name></member>
+    <member refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kind="typedef"><name>wius_tcp_server_message_t</name></member>
+    <member refid="wius__tcp_8h_1a497247b3071524696500fd746bf16382" kind="variable"><name>wius_tcp_server_queue</name></member>
+    <member refid="wius__tcp_8h_1ade3c34c213992075a796a7ad93dc362f" kind="function"><name>wius_tcp_server_init</name></member>
+    <member refid="wius__tcp_8h_1ad2f298780f6d457b704aca7b4ea3c3b4" kind="function"><name>wius_tcp_server_deinit</name></member>
+    <member refid="wius__tcp_8h_1af40d945009db8b491691bb228a5bc970" kind="function"><name>wius_tcp_server_start</name></member>
+    <member refid="wius__tcp_8h_1a0a715b1c9f663b80db6b88a961becbe6" kind="function"><name>wius_tcp_server_stop</name></member>
+    <member refid="wius__tcp_8h_1a5f4b12f04bc793c12b06851fe4fe353d" kind="function"><name>wius_tcp_server_respond</name></member>
+    <member refid="wius__tcp_8h_1a5f2eca72de35712f6d97ea2a572ad755" kind="function"><name>wius_tcp_server_respond_udp</name></member>
+    <member refid="wius__tcp_8h_1aba9cd73ef34295991d4e30422d2b5fd8" kind="function"><name>wius_tcp_server_respond_ok</name></member>
+    <member refid="wius__tcp_8h_1a7f945d0dcd184b02037c49f226a988ee" kind="function"><name>wius_tcp_server_respond_error</name></member>
+    <member refid="wius__tcp_8h_1afff6c9a2528f0e9720a18e3343d9c44b" kind="function"><name>wius_tcp_server_respond_data</name></member>
+  </compound>
+  <compound refid="wius__udp_8c" kind="file"><name>wius_udp.c</name>
+    <member refid="wius__udp_8c_1a879456c3b8e2853f7044d764e9c180d4" kind="define"><name>MAX_PACKET_SIZE</name></member>
+    <member refid="wius__udp_8c_1af3c89ac38b6a57158642592f21a0ad63" kind="function"><name>_udp_sendto_fragmented</name></member>
+    <member refid="wius__udp_8c_1ab261748d3aba5b0dd0635f561ca8317b" kind="function"><name>wius_udp_init</name></member>
+    <member refid="wius__udp_8c_1ac6681bf45b86647fb9a0575fba14c4a8" kind="function"><name>wius_udp_bind</name></member>
+    <member refid="wius__udp_8c_1a16d2f74cf85e9bf2d403065ce1f1c0e9" kind="function"><name>wius_udp_close</name></member>
+    <member refid="wius__udp_8c_1ac9fa29b6355f2fa4c83420a60d2ec908" kind="function"><name>wius_udp_send</name></member>
+    <member refid="wius__udp_8c_1a5f44bf4e4a0c7a0770ae3d04f1f8c517" kind="function"><name>wius_udp_sendto</name></member>
+    <member refid="wius__udp_8c_1ac07e72eb078aa6a7370bfc8ad6d19548" kind="function"><name>wius_udp_receive</name></member>
+    <member refid="wius__udp_8c_1abcff7fa7767de94838b602286e8b5908" kind="function"><name>wius_udp_receivefrom</name></member>
+  </compound>
+  <compound refid="wius__udp_8h" kind="file"><name>wius_udp.h</name>
+    <member refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kind="typedef"><name>wius_udp_t</name></member>
+    <member refid="wius__udp_8h_1ab261748d3aba5b0dd0635f561ca8317b" kind="function"><name>wius_udp_init</name></member>
+    <member refid="wius__udp_8h_1ac6681bf45b86647fb9a0575fba14c4a8" kind="function"><name>wius_udp_bind</name></member>
+    <member refid="wius__udp_8h_1a16d2f74cf85e9bf2d403065ce1f1c0e9" kind="function"><name>wius_udp_close</name></member>
+    <member refid="wius__udp_8h_1ac9fa29b6355f2fa4c83420a60d2ec908" kind="function"><name>wius_udp_send</name></member>
+    <member refid="wius__udp_8h_1a5f44bf4e4a0c7a0770ae3d04f1f8c517" kind="function"><name>wius_udp_sendto</name></member>
+    <member refid="wius__udp_8h_1ac07e72eb078aa6a7370bfc8ad6d19548" kind="function"><name>wius_udp_receive</name></member>
+    <member refid="wius__udp_8h_1abcff7fa7767de94838b602286e8b5908" kind="function"><name>wius_udp_receivefrom</name></member>
+  </compound>
+  <compound refid="wius__wifi_8c" kind="file"><name>wius_wifi.c</name>
+    <member refid="wius__wifi_8c_1a69fdf82e0ee416ff44d1681d4fc13c69" kind="define"><name>WIUS_WIFI_FILTER_BROADCAST</name></member>
+    <member refid="wius__wifi_8c_1a104fdd561726bf17c143d7dfa125cef6" kind="variable"><name>station_init_configuration</name></member>
+    <member refid="wius__wifi_8c_1a0a0a77f580495bfbf13981b5c016ccad" kind="variable"><name>wifi_client_profile</name></member>
+    <member refid="wius__wifi_8c_1a67ce20da6e6a6c69abe0d2256ff704a6" kind="variable"><name>wifi_client_credential</name></member>
+    <member refid="wius__wifi_8c_1aaf695214e7fe3c1481f397c69668c2f6" kind="function"><name>wius_wifi_init</name></member>
+    <member refid="wius__wifi_8c_1a594f2cd66c2c4de2d2193b834d215f35" kind="function"><name>wius_wifi_deinit</name></member>
+    <member refid="wius__wifi_8c_1afd6ea0925f54fe735565ea49180035c8" kind="function"><name>wius_wifi_mdns_init</name></member>
+    <member refid="wius__wifi_8c_1a82855ff628f8f7e45c9d75bca469d5ca" kind="function"><name>wius_wifi_mdns_add</name></member>
+    <member refid="wius__wifi_8c_1a603a11e2f3cac17c65aed65f53b911ec" kind="function"><name>wius_wifi_set_performance_profile</name></member>
+  </compound>
+  <compound refid="wius__wifi_8h" kind="file"><name>wius_wifi.h</name>
+    <member refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9" kind="enum"><name>wius_wifi_performance_profile</name></member>
+    <member refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9a71330d36c135ee2e5b2c2b09ce369aff" kind="enumvalue"><name>WIUS_PERF_PROFILE_HIGHSPEED</name></member>
+    <member refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9ab20c5ed6f4ea3304bfd92880656066dd" kind="enumvalue"><name>WIUS_PERF_PROFILE_LOWPOWER</name></member>
+    <member refid="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" kind="typedef"><name>wius_wifi_performance_profile_t</name></member>
+    <member refid="wius__wifi_8h_1a279c187e55c77e417944eebd2d3d81ee" kind="typedef"><name>wius_wifi_mdns_t</name></member>
+    <member refid="wius__wifi_8h_1aaf695214e7fe3c1481f397c69668c2f6" kind="function"><name>wius_wifi_init</name></member>
+    <member refid="wius__wifi_8h_1a594f2cd66c2c4de2d2193b834d215f35" kind="function"><name>wius_wifi_deinit</name></member>
+    <member refid="wius__wifi_8h_1afd6ea0925f54fe735565ea49180035c8" kind="function"><name>wius_wifi_mdns_init</name></member>
+    <member refid="wius__wifi_8h_1a82855ff628f8f7e45c9d75bca469d5ca" kind="function"><name>wius_wifi_mdns_add</name></member>
+    <member refid="wius__wifi_8h_1a603a11e2f3cac17c65aed65f53b911ec" kind="function"><name>wius_wifi_set_performance_profile</name></member>
+  </compound>
+  <compound refid="group__config__common" kind="group"><name>config_common</name>
+    <member refid="group__config__common_1gaed91737767c96e2af18274f8aca5e6a8" kind="define"><name>WIUS_BOARD</name></member>
+    <member refid="group__config__common_1gaf220e0f0458659bfccf3d336d1cacdda" kind="define"><name>LOG_MAX_CALLBACKS</name></member>
+    <member refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kind="define"><name>LOG_BUFFER_SIZE</name></member>
+    <member refid="group__config__common_1ga4993efe73dbf525b44ee2deca215d595" kind="define"><name>LOG_ONCE</name></member>
+    <member refid="group__config__common_1ga66c43661af4dcbd9cf28884139343649" kind="define"><name>LOG_NO_COLOR</name></member>
+  </compound>
+  <compound refid="group__config__wius" kind="group"><name>config_wius</name>
+    <member refid="group__config__wius_1ga828b21f1639e1f61e3c11b4ae30aee8a" kind="define"><name>WIUS_SPI_FREQ</name></member>
+    <member refid="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" kind="define"><name>WIUS_SPI_RX_TIMEOUT</name></member>
+    <member refid="group__config__wius_1ga9f5eccac536c6a82a45c557825ce80fb" kind="define"><name>WIUS_SPI_SHORT_XFER_MAX</name></member>
+    <member refid="group__config__wius_1ga5a13ae0c719433b77bcaed48eaa19fc7" kind="define"><name>WIUS_SPI_EXT_CS0</name></member>
+    <member refid="group__config__wius_1gac41a23d5859834f639180ce898679ae7" kind="define"><name>WIUS_SPI_EXT_CS1</name></member>
+    <member refid="group__config__wius_1ga0fb6abe0ceadcc2168b436c5f531f8d2" kind="define"><name>WIUS_WIFI_DEVICE_NAME</name></member>
+  </compound>
+  <compound refid="group__config__tinyprobe" kind="group"><name>config_tinyprobe</name>
+    <member refid="group__config__tinyprobe_1ga847efbd12a789766466eb1b53eb1756c" kind="define"><name>TP_TEST_MODE</name></member>
+    <member refid="group__config__tinyprobe_1gabfe4c2202e961a2f200075735b7525d5" kind="define"><name>TP_PROBE_ID</name></member>
+    <member refid="group__config__tinyprobe_1ga7406d8ca8d5b7d3ed7cb36986bdb531b" kind="define"><name>TP_WIFI_RX_BUFFER_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1ga6fdbf1a538943d80f3ed5e4cea669db2" kind="define"><name>TP_UDP_PACKET_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1ga92dda9fe52c98ced3e52ac0c0a91662b" kind="define"><name>TP_UDP_PACKET_AMT</name></member>
+    <member refid="group__config__tinyprobe_1gac6d27f073879a9bdc4cfd92e7c496a0a" kind="define"><name>TP_UDP_PORT</name></member>
+    <member refid="group__config__tinyprobe_1gafe1863a06fa74bcfc27f71305efdef08" kind="define"><name>TP_TCP_PORT</name></member>
+    <member refid="group__config__tinyprobe_1ga886e6b681d04e833135384b906c35855" kind="define"><name>TP_GPIO_INT</name></member>
+    <member refid="group__config__tinyprobe_1ga1d147963731373a6548eb05ec9566b7a" kind="define"><name>TP_GPIO_RESET</name></member>
+    <member refid="group__config__tinyprobe_1ga620a92942d660c7539c0d4204ae2bbf8" kind="define"><name>TP_THREAD_STACK_MAIN</name></member>
+    <member refid="group__config__tinyprobe_1ga585a303cc76e1c41648053420492f586" kind="define"><name>TP_THREAD_STACK_WIFI</name></member>
+    <member refid="group__config__tinyprobe_1gaa8c7f772c64d442a763ed7650d81b5f2" kind="define"><name>TP_AFE_SPI_DELAY_NS</name></member>
+    <member refid="group__config__tinyprobe_1gaa79cc3d791200b9aa20df7f8561848d5" kind="define"><name>TP_BUFFER_NUM</name></member>
+    <member refid="group__config__tinyprobe_1gaf50d4cb1e27fca09afa5151fa469d686" kind="define"><name>TP_FIFO_READ_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1ga669190c664bc3df1976b0dbdf0b2064e" kind="define"><name>TP_BUFFER_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1gaeb9b1e088aa0a565966217292bee9f08" kind="define"><name>TP_RESPONSE_BUFFER_SIZE</name></member>
+    <member refid="group__config__tinyprobe_1ga4360960e1ff4d05b32d1d3d14511b0e9" kind="define"><name>TP_METHOD_TIMING</name></member>
+    <member refid="group__config__tinyprobe_1gae886c0017d472d2b9e9fa27b7c537408" kind="define"><name>TP_FPGA_SPI_DELAY_NS</name></member>
+    <member refid="group__config__tinyprobe_1ga18b027740f4b5cd2da100138c487ca61" kind="define"><name>TP_MUX_GPIO_EXTINT</name></member>
+    <member refid="group__config__tinyprobe_1gae715ae579035cb5e18263576d6914aaf" kind="define"><name>TP_MUX_GPIO_AFETX</name></member>
+    <member refid="group__config__tinyprobe_1gaa4e408fd057a997a23d2a67e9b91faa7" kind="define"><name>TP_POWER_GPIO_NEG_5V</name></member>
+    <member refid="group__config__tinyprobe_1gaea16d7b845305f7ada04cc932fd02681" kind="define"><name>TP_POWER_GPIO_NEG_HV</name></member>
+    <member refid="group__config__tinyprobe_1ga4f24fc2335891e0bcbf47365165fee12" kind="define"><name>TP_POWER_GPIO_POS_HV</name></member>
+    <member refid="group__config__tinyprobe_1ga1b642e68d16f9762cd7400a26f32014a" kind="define"><name>TP_POWER_GPIO_LVDS_PWR_SW</name></member>
+  </compound>
+  <compound refid="group__common" kind="group"><name>common</name>
+  </compound>
+  <compound refid="group__tinyprobe__methods" kind="group"><name>tinyprobe_methods</name>
+  </compound>
+  <compound refid="group__tinyprobe" kind="group"><name>tinyprobe</name>
+  </compound>
+  <compound refid="group__wius" kind="group"><name>wius</name>
+  </compound>
+  <compound refid="md_firmware_user_module" kind="page"><name>md_firmware_user_module</name>
+  </compound>
+  <compound refid="md_firmware_user_tp_methods_module" kind="page"><name>md_firmware_user_tp_methods_module</name>
+  </compound>
+  <compound refid="md_firmware_user_tp_module" kind="page"><name>md_firmware_user_tp_module</name>
+  </compound>
+  <compound refid="md_firmware_user_wius_module" kind="page"><name>md_firmware_user_wius_module</name>
+  </compound>
+  <compound refid="dir_85edcc1f099af2a701a791767791d401" kind="dir"><name>firmware/user/common</name>
+  </compound>
+  <compound refid="dir_b3d49238ee93ee123788c1fa6c06a286" kind="dir"><name>firmware/user/tp/common</name>
+  </compound>
+  <compound refid="dir_d9edf6c004b4a7ff14fe9ae7a92214ee" kind="dir"><name>firmware</name>
+  </compound>
+  <compound refid="dir_7f08c57397c8971977b54cfee07615c0" kind="dir"><name>firmware/user/wius/hal</name>
+  </compound>
+  <compound refid="dir_ba257e9fe5d1efafb020d894779bedf8" kind="dir"><name>firmware/user/tp/hal</name>
+  </compound>
+  <compound refid="dir_9149039fde39a20b8d7b4b86d87b742c" kind="dir"><name>firmware/user/tp/methods</name>
+  </compound>
+  <compound refid="dir_79b6053a5ce46efc48854f71c67386da" kind="dir"><name>firmware/user/tp</name>
+  </compound>
+  <compound refid="dir_83392af1a298c3d0e842ea40b1e13d83" kind="dir"><name>firmware/user</name>
+  </compound>
+  <compound refid="dir_428ea0099726046bf3ca5149c3e3a453" kind="dir"><name>firmware/user/wius</name>
+  </compound>
+</doxygenindex>

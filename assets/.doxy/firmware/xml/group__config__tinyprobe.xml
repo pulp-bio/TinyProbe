@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="group__config__tinyprobe" kind="group">
+    <compoundname>config_tinyprobe</compoundname>
+    <title>TinyProbe firmware configurations</title>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe general configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga847efbd12a789766466eb1b53eb1756c" prot="public" static="no">
+        <name>TP_TEST_MODE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Enable test mode (1=enabled, 0=disabled). Used for testing acquisition code without actual TinyProbe hardware. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="114" column="9" bodyfile="firmware/user/config.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gabfe4c2202e961a2f200075735b7525d5" prot="public" static="no">
+        <name>TP_PROBE_ID</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>ID of the probe (used for Ping responses) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="116" column="9" bodyfile="firmware/user/config.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga7406d8ca8d5b7d3ed7cb36986bdb531b" prot="public" static="no">
+        <name>TP_WIFI_RX_BUFFER_SIZE</name>
+        <initializer>1472</initializer>
+        <briefdescription>
+<para>Size of the WiFi RX buffer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="118" column="9" bodyfile="firmware/user/config.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga6fdbf1a538943d80f3ed5e4cea669db2" prot="public" static="no">
+        <name>TP_UDP_PACKET_SIZE</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+<para>Size of one UDP packet (no header) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="120" column="9" bodyfile="firmware/user/config.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga92dda9fe52c98ced3e52ac0c0a91662b" prot="public" static="no">
+        <name>TP_UDP_PACKET_AMT</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>Number of packets to acquire per SPI before sending. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="122" column="9" bodyfile="firmware/user/config.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gac6d27f073879a9bdc4cfd92e7c496a0a" prot="public" static="no">
+        <name>TP_UDP_PORT</name>
+        <initializer>50007</initializer>
+        <briefdescription>
+<para>Port on which UDP transfers happen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="124" column="9" bodyfile="firmware/user/config.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gafe1863a06fa74bcfc27f71305efdef08" prot="public" static="no">
+        <name>TP_TCP_PORT</name>
+        <initializer>50008</initializer>
+        <briefdescription>
+<para>Port on which TCP transfers happen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="126" column="9" bodyfile="firmware/user/config.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga886e6b681d04e833135384b906c35855" prot="public" static="no">
+        <name>TP_GPIO_INT</name>
+        <initializer>2</initializer>
+        <briefdescription>
+<para>FPGA Interrupt UULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="128" column="9" bodyfile="firmware/user/config.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga1d147963731373a6548eb05ec9566b7a" prot="public" static="no">
+        <name>TP_GPIO_RESET</name>
+        <initializer>10</initializer>
+        <briefdescription>
+<para>FPGA Reset ULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="130" column="9" bodyfile="firmware/user/config.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga620a92942d660c7539c0d4204ae2bbf8" prot="public" static="no">
+        <name>TP_THREAD_STACK_MAIN</name>
+        <initializer>4500</initializer>
+        <briefdescription>
+<para>Stack size for main thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="132" column="9" bodyfile="firmware/user/config.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga585a303cc76e1c41648053420492f586" prot="public" static="no">
+        <name>TP_THREAD_STACK_WIFI</name>
+        <initializer>1500</initializer>
+        <briefdescription>
+<para>Stack size for WiFi thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="134" column="9" bodyfile="firmware/user/config.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe AFE control configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaa8c7f772c64d442a763ed7650d81b5f2" prot="public" static="no">
+        <name>TP_AFE_SPI_DELAY_NS</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Delay after SPI transfers in ns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="142" column="9" bodyfile="firmware/user/config.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe buffering configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaa79cc3d791200b9aa20df7f8561848d5" prot="public" static="no">
+        <name>TP_BUFFER_NUM</name>
+        <initializer>10</initializer>
+        <briefdescription>
+<para>Number of buffers available for data acquisition. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="150" column="9" bodyfile="firmware/user/config.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaf50d4cb1e27fca09afa5151fa469d686" prot="public" static="no">
+        <name>TP_FIFO_READ_SIZE</name>
+        <initializer>(<ref refid="group__config__tinyprobe_1ga6fdbf1a538943d80f3ed5e4cea669db2" kindref="member">TP_UDP_PACKET_SIZE</ref> * <ref refid="group__config__tinyprobe_1ga92dda9fe52c98ced3e52ac0c0a91662b" kindref="member">TP_UDP_PACKET_AMT</ref>)</initializer>
+        <briefdescription>
+<para>FIFO read size in bytes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="152" column="9" bodyfile="firmware/user/config.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga669190c664bc3df1976b0dbdf0b2064e" prot="public" static="no">
+        <name>TP_BUFFER_SIZE</name>
+        <initializer>(<ref refid="group__config__tinyprobe_1gaf50d4cb1e27fca09afa5151fa469d686" kindref="member">TP_FIFO_READ_SIZE</ref> + 2)</initializer>
+        <briefdescription>
+<para>Size of one buffer in bytes (FIFO read size + 2 bytes for packet index) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="154" column="9" bodyfile="firmware/user/config.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe methods configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaeb9b1e088aa0a565966217292bee9f08" prot="public" static="no">
+        <name>TP_RESPONSE_BUFFER_SIZE</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+<para>Response buffer size for JSON-RPC methods in bytes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="162" column="9" bodyfile="firmware/user/config.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga4360960e1ff4d05b32d1d3d14511b0e9" prot="public" static="no">
+        <name>TP_METHOD_TIMING</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Enable per-method DWT timing logs. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="164" column="9" bodyfile="firmware/user/config.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe FPGA control configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gae886c0017d472d2b9e9fa27b7c537408" prot="public" static="no">
+        <name>TP_FPGA_SPI_DELAY_NS</name>
+        <initializer>50</initializer>
+        <briefdescription>
+<para>Delay after SPI transfers in ns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="172" column="9" bodyfile="firmware/user/config.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe MUX control configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga18b027740f4b5cd2da100138c487ca61" prot="public" static="no">
+        <name>TP_MUX_GPIO_EXTINT</name>
+        <initializer>3</initializer>
+        <briefdescription>
+<para>EXT INT MUX UULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="180" column="9" bodyfile="firmware/user/config.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gae715ae579035cb5e18263576d6914aaf" prot="public" static="no">
+        <name>TP_MUX_GPIO_AFETX</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>AFE TX MUX ULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="182" column="9" bodyfile="firmware/user/config.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe power control configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaa4e408fd057a997a23d2a67e9b91faa7" prot="public" static="no">
+        <name>TP_POWER_GPIO_NEG_5V</name>
+        <initializer>2</initializer>
+        <briefdescription>
+<para>-5V ULP gpio number </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="190" column="9" bodyfile="firmware/user/config.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaea16d7b845305f7ada04cc932fd02681" prot="public" static="no">
+        <name>TP_POWER_GPIO_NEG_HV</name>
+        <initializer>52</initializer>
+        <briefdescription>
+<para>-HV gpio number </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="192" column="9" bodyfile="firmware/user/config.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga4f24fc2335891e0bcbf47365165fee12" prot="public" static="no">
+        <name>TP_POWER_GPIO_POS_HV</name>
+        <initializer>56</initializer>
+        <briefdescription>
+<para>+HV gpio number </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="194" column="9" bodyfile="firmware/user/config.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga1b642e68d16f9762cd7400a26f32014a" prot="public" static="no">
+        <name>TP_POWER_GPIO_LVDS_PWR_SW</name>
+        <initializer>8</initializer>
+        <briefdescription>
+<para>LVDS power switch ULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="196" column="9" bodyfile="firmware/user/config.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This module documents the firmware configurations specific to TinyProbe. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

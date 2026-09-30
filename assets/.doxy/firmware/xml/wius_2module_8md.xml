@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius_2module_8md" kind="file" language="Markdown">
+    <compoundname>module.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">@defgroup<sp/>wius<sp/>WiUS<sp/>Module</highlight></codeline>
+<codeline><highlight class="normal">@brief<sp/>Wireless<sp/>transport,<sp/>sockets,<sp/>and<sp/>power<sp/>coordination<sp/>for<sp/>TinyProbe</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>WiUS<sp/>Module</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>WiUS<sp/>module<sp/>handles<sp/>connectivity,<sp/>sockets,<sp/>and<sp/>power<sp/>states<sp/>for<sp/>the<sp/>probe.<sp/>It<sp/>exposes<sp/>TCP/UDP<sp/>helpers<sp/>that<sp/>feed<sp/>TinyProbe&apos;s<sp/>command<sp/>pipeline<sp/>and<sp/>provides<sp/>GPIO/SPI<sp/>abstractions<sp/>used<sp/>by<sp/>the<sp/>hardware-facing<sp/>code.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Responsibilities</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Networking:<sp/>TCP<sp/>server<sp/>and<sp/>UDP<sp/>helpers<sp/>in<sp/>@ref<sp/>wius_tcp.h<sp/>and<sp/>@ref<sp/>wius_udp.h</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Wi-Fi<sp/>control:<sp/>initialization<sp/>and<sp/>mDNS<sp/>helpers<sp/>in<sp/>@ref<sp/>wius_wifi.h</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Peripheral<sp/>access:<sp/>GPIO<sp/>and<sp/>SPI<sp/>wrappers<sp/>in<sp/>@ref<sp/>wius_gpio.h<sp/>and<sp/>@ref<sp/>wius_spi.h</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Power:<sp/>power<sp/>mode<sp/>helpers<sp/>in<sp/>@ref<sp/>wius_power.h</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Interaction<sp/>with<sp/>TinyProbe</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Incoming<sp/>network<sp/>packets<sp/>are<sp/>delivered<sp/>to<sp/>the<sp/>@ref<sp/>tinyprobe<sp/>&quot;TinyProbe&quot;<sp/>dispatcher<sp/>along<sp/>with<sp/>metadata<sp/>required<sp/>for<sp/>replies.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Command<sp/>replies<sp/>(when<sp/>enabled)<sp/>are<sp/>sent<sp/>back<sp/>via<sp/>WiUS<sp/>TCP/UDP<sp/>primitives.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Power<sp/>state<sp/>transitions<sp/>should<sp/>be<sp/>coordinated<sp/>so<sp/>that<sp/>active<sp/>transfers<sp/>are<sp/>drained<sp/>before<sp/>entering<sp/>low-power<sp/>modes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Notes<sp/>for<sp/>Contributors</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Keep<sp/>socket<sp/>buffer<sp/>sizes<sp/>and<sp/>queue<sp/>depths<sp/>in<sp/>sync<sp/>with<sp/>command<sp/>expectations<sp/>to<sp/>avoid<sp/>partial<sp/>frames.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>When<sp/>adding<sp/>transports<sp/>or<sp/>altering<sp/>power<sp/>behavior,<sp/>document<sp/>the<sp/>flow<sp/>here<sp/>and<sp/>cross-reference<sp/>the<sp/>affected<sp/>command<sp/>handlers.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@addtogroup<sp/>wius</highlight></codeline>
+<codeline><highlight class="normal">@{</highlight></codeline>
+<codeline><highlight class="normal">@}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/module.md"/>
+  </compounddef>
+</doxygen>

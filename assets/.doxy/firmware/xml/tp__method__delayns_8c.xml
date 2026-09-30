@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__method__delayns_8c" kind="file" language="C++">
+    <compoundname>tp_method_delayns.c</compoundname>
+    <includes refid="tp__method__delayns_8h" local="yes">tp_method_delayns.h</includes>
+    <incdepgraph>
+      <node id="614">
+        <label>stdbool.h</label>
+      </node>
+      <node id="619">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="620" relation="include">
+        </childnode>
+      </node>
+      <node id="622">
+        <label>stdarg.h</label>
+      </node>
+      <node id="617">
+        <label>sl_status.h</label>
+      </node>
+      <node id="623">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="619" relation="include">
+        </childnode>
+      </node>
+      <node id="613">
+        <label>stdint.h</label>
+      </node>
+      <node id="612">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="613" relation="include">
+        </childnode>
+        <childnode refid="614" relation="include">
+        </childnode>
+        <childnode refid="615" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+        <childnode refid="617" relation="include">
+        </childnode>
+        <childnode refid="618" relation="include">
+        </childnode>
+        <childnode refid="619" relation="include">
+        </childnode>
+        <childnode refid="621" relation="include">
+        </childnode>
+        <childnode refid="623" relation="include">
+        </childnode>
+      </node>
+      <node id="615">
+        <label>stddef.h</label>
+      </node>
+      <node id="620">
+        <label>env.h</label>
+      </node>
+      <node id="618">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="616">
+        <label>string.h</label>
+      </node>
+      <node id="621">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="622" relation="include">
+        </childnode>
+        <childnode refid="614" relation="include">
+        </childnode>
+      </node>
+      <node id="624">
+        <label>methods.pb.h</label>
+      </node>
+      <node id="610">
+        <label>firmware/user/tp/methods/tp_method_delayns.c</label>
+        <link refid="tp__method__delayns_8c"/>
+        <childnode refid="611" relation="include">
+        </childnode>
+      </node>
+      <node id="611">
+        <label>tp_method_delayns.h</label>
+        <link refid="tp__method__delayns_8h"/>
+        <childnode refid="612" relation="include">
+        </childnode>
+        <childnode refid="624" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__method__delayns_8c_1a97fe2d3b6cde674734b284531483d43a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>methods_status</type>
+        <definition>methods_status tp_method_delayns</definition>
+        <argsstring>(const methods_delayns_args *args, void *userdata)</argsstring>
+        <name>tp_method_delayns</name>
+        <param>
+          <type>const methods_delayns_args *</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userdata</declname>
+        </param>
+        <briefdescription>
+<para>JSON-RPC method handler for the &quot;delayns&quot; method. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command arguments struct </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>userdata</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data pointer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>OK if method executed successfully, otherwise an error code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/methods/tp_method_delayns.c" line="32" column="1" bodyfile="firmware/user/tp/methods/tp_method_delayns.c" bodystart="32" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe delay in nanoseconds method implementation file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__delayns_8h" kindref="compound">tp_method_delayns.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">methods_status<sp/><ref refid="tp__method__delayns_8c_1a97fe2d3b6cde674734b284531483d43a" kindref="member">tp_method_delayns</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>methods_delayns_args<sp/>*args,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*userdata)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" kindref="member">UNUSED</ref>(userdata);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1a8d0b12edc73fcead8218d099d67d1d90" kindref="member">delay_ns</ref>(args-&gt;delay);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>methods_status_OK;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/methods/tp_method_delayns.c"/>
+  </compounddef>
+</doxygen>

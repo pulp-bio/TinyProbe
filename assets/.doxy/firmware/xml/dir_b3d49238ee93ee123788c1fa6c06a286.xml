@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_b3d49238ee93ee123788c1fa6c06a286" kind="dir">
+    <compoundname>firmware/user/tp/common</compoundname>
+    <innerfile refid="tp__buffer_8c">tp_buffer.c</innerfile>
+    <innerfile refid="tp__buffer_8h">tp_buffer.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/tp/common/"/>
+  </compounddef>
+</doxygen>

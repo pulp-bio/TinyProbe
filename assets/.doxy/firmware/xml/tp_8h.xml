@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp_8h" kind="file" language="C++">
+    <compoundname>tp.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="wius__udp_8h" local="yes">wius_udp.h</includes>
+    <includes refid="tp__buffer_8h" local="yes">tp_buffer.h</includes>
+    <includedby refid="tp__method__triggershot_8c" local="yes">firmware/user/tp/methods/tp_method_triggershot.c</includedby>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <includedby refid="user_8c" local="yes">firmware/user/user.c</includedby>
+    <incdepgraph>
+      <node id="922">
+        <label>stdbool.h</label>
+      </node>
+      <node id="927">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="928" relation="include">
+        </childnode>
+      </node>
+      <node id="930">
+        <label>stdarg.h</label>
+      </node>
+      <node id="925">
+        <label>sl_status.h</label>
+      </node>
+      <node id="931">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="927" relation="include">
+        </childnode>
+      </node>
+      <node id="921">
+        <label>stdint.h</label>
+      </node>
+      <node id="920">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="921" relation="include">
+        </childnode>
+        <childnode refid="922" relation="include">
+        </childnode>
+        <childnode refid="923" relation="include">
+        </childnode>
+        <childnode refid="924" relation="include">
+        </childnode>
+        <childnode refid="925" relation="include">
+        </childnode>
+        <childnode refid="926" relation="include">
+        </childnode>
+        <childnode refid="927" relation="include">
+        </childnode>
+        <childnode refid="929" relation="include">
+        </childnode>
+        <childnode refid="931" relation="include">
+        </childnode>
+      </node>
+      <node id="923">
+        <label>stddef.h</label>
+      </node>
+      <node id="928">
+        <label>env.h</label>
+      </node>
+      <node id="926">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="933">
+        <label>socket.h</label>
+      </node>
+      <node id="924">
+        <label>string.h</label>
+      </node>
+      <node id="919">
+        <label>firmware/user/tp/tp.h</label>
+        <link refid="tp_8h"/>
+        <childnode refid="920" relation="include">
+        </childnode>
+        <childnode refid="932" relation="include">
+        </childnode>
+        <childnode refid="934" relation="include">
+        </childnode>
+      </node>
+      <node id="929">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="930" relation="include">
+        </childnode>
+        <childnode refid="922" relation="include">
+        </childnode>
+      </node>
+      <node id="934">
+        <label>tp_buffer.h</label>
+        <link refid="tp__buffer_8h"/>
+        <childnode refid="920" relation="include">
+        </childnode>
+      </node>
+      <node id="932">
+        <label>wius_udp.h</label>
+        <link refid="wius__udp_8h"/>
+        <childnode refid="933" relation="include">
+        </childnode>
+        <childnode refid="920" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="938">
+        <label>firmware/user/user.c</label>
+        <link refid="user_8c"/>
+      </node>
+      <node id="937">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="935">
+        <label>firmware/user/tp/tp.h</label>
+        <link refid="tp_8h"/>
+        <childnode refid="936" relation="include">
+        </childnode>
+        <childnode refid="937" relation="include">
+        </childnode>
+        <childnode refid="938" relation="include">
+        </childnode>
+      </node>
+      <node id="936">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="tp_8h_1a75715c21eb08018a2db3599df7e843c4" prot="public" static="no" mutable="no">
+        <type>osSemaphoreId_t</type>
+        <definition>osSemaphoreId_t sem_fpga</definition>
+        <argsstring></argsstring>
+        <name>sem_fpga</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Semaphore raised by FPGA interrupts </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp.h" line="36" column="1" bodyfile="firmware/user/tp/tp.c" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="tp_8h_1a7f6b4c1f1e432ce0ed77fe25f6904233" prot="public" static="no" mutable="no">
+        <type><ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref></type>
+        <definition>tp_buffer_t tp_buf</definition>
+        <argsstring></argsstring>
+        <name>tp_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Buffer for storing acquired data </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp.h" line="38" column="1" bodyfile="firmware/user/tp/tp.c" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp_8h_1abb67ba059293d9052b809b7000c635de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the FPGA (SPI, GPIOs, register values) </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI, GPIO interrupt or register initialization failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp.h" line="47" column="1" bodyfile="firmware/user/tp/tp.c" bodystart="93" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="tp_8h_1adfad6a9bedb9076e7cff63da5977a9b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_main_thread</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_main_thread</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>TinyProbe main thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp.h" line="53" column="1" bodyfile="firmware/user/tp/tp.c" bodystart="287" bodyend="393"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe main header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__udp_8h" kindref="compound">wius_udp.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__buffer_8h" kindref="compound">tp_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>osSemaphoreId_t<sp/><ref refid="tp_8h_1a75715c21eb08018a2db3599df7e843c4" kindref="member">sem_fpga</ref>;<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref><sp/><ref refid="tp_8h_1a7f6b4c1f1e432ce0ed77fe25f6904233" kindref="member">tp_buf</ref>;<sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">sl_status_t<sp/><ref refid="tp_8h_1abb67ba059293d9052b809b7000c635de" kindref="member">tp_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">sl_status_t<sp/><ref refid="tp_8h_1adfad6a9bedb9076e7cff63da5977a9b0" kindref="member">tp_main_thread</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/tp.h"/>
+  </compounddef>
+</doxygen>

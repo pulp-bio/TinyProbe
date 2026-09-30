@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_79b6053a5ce46efc48854f71c67386da" kind="dir">
+    <compoundname>firmware/user/tp</compoundname>
+    <innerdir refid="dir_b3d49238ee93ee123788c1fa6c06a286">firmware/user/tp/common</innerdir>
+    <innerdir refid="dir_ba257e9fe5d1efafb020d894779bedf8">firmware/user/tp/hal</innerdir>
+    <innerdir refid="dir_9149039fde39a20b8d7b4b86d87b742c">firmware/user/tp/methods</innerdir>
+    <innerfile refid="tp_8c">tp.c</innerfile>
+    <innerfile refid="tp_8h">tp.h</innerfile>
+    <innerfile refid="tp__methods_8c">tp_methods.c</innerfile>
+    <innerfile refid="tp__methods_8h">tp_methods.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/tp/"/>
+  </compounddef>
+</doxygen>

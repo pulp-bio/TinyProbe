@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="log_8c" kind="file" language="C++">
+    <compoundname>log.c</compoundname>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includes refid="log_8h" local="yes">log.h</includes>
+    <incdepgraph>
+      <node id="159">
+        <label>stdbool.h</label>
+      </node>
+      <node id="155">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="156" relation="include">
+        </childnode>
+      </node>
+      <node id="158">
+        <label>stdarg.h</label>
+      </node>
+      <node id="156">
+        <label>env.h</label>
+      </node>
+      <node id="154">
+        <label>firmware/user/common/log.c</label>
+        <link refid="log_8c"/>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+      </node>
+      <node id="157">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="log_8c_1a7471e51eb004d0095effd82e83144300" prot="public" static="no">
+        <name>LOG_IMPLEMENTATION</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.c" line="30" column="10" bodyfile="firmware/user/common/log.c" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Logging implementation file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/common/log.c"/>
+  </compounddef>
+</doxygen>

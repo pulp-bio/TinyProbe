@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_83392af1a298c3d0e842ea40b1e13d83" kind="dir">
+    <compoundname>firmware/user</compoundname>
+    <innerdir refid="dir_85edcc1f099af2a701a791767791d401">firmware/user/common</innerdir>
+    <innerdir refid="dir_79b6053a5ce46efc48854f71c67386da">firmware/user/tp</innerdir>
+    <innerdir refid="dir_428ea0099726046bf3ca5149c3e3a453">firmware/user/wius</innerdir>
+    <innerfile refid="config_8h">config.h</innerfile>
+    <innerfile refid="user_8c">user.c</innerfile>
+    <innerfile refid="user_8h">user.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="struct__tp__afe__reg" kind="struct" language="C++" prot="public">
+    <compoundname>_tp_afe_reg</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__tp__afe__reg_1ae9845c6b5fd341f68ff72139a4898def" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t _tp_afe_reg::addr</definition>
+        <argsstring></argsstring>
+        <name>addr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="44" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__tp__afe__reg_1a8eb072ce64fe27cc5dff3995f6ebee6d" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t _tp_afe_reg::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_afe.c" line="45" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/tp/hal/tp_afe.c" line="43" column="1" bodyfile="firmware/user/tp/hal/tp_afe.c" bodystart="42" bodyend="46"/>
+    <listofallmembers>
+      <member refid="struct__tp__afe__reg_1ae9845c6b5fd341f68ff72139a4898def" prot="public" virt="non-virtual"><scope>_tp_afe_reg</scope><name>addr</name></member>
+      <member refid="struct__tp__afe__reg_1a8eb072ce64fe27cc5dff3995f6ebee6d" prot="public" virt="non-virtual"><scope>_tp_afe_reg</scope><name>data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__method__writetx_8h" kind="file" language="C++">
+    <compoundname>tp_method_writetx.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes local="yes">methods.pb.h</includes>
+    <includedby refid="tp__method__writetx_8c" local="yes">firmware/user/tp/methods/tp_method_writetx.c</includedby>
+    <includedby refid="tp__methods_8h" local="yes">firmware/user/tp/tp_methods.h</includedby>
+    <incdepgraph>
+      <node id="856">
+        <label>stdbool.h</label>
+      </node>
+      <node id="861">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="862" relation="include">
+        </childnode>
+      </node>
+      <node id="864">
+        <label>stdarg.h</label>
+      </node>
+      <node id="859">
+        <label>sl_status.h</label>
+      </node>
+      <node id="865">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="861" relation="include">
+        </childnode>
+      </node>
+      <node id="855">
+        <label>stdint.h</label>
+      </node>
+      <node id="854">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="855" relation="include">
+        </childnode>
+        <childnode refid="856" relation="include">
+        </childnode>
+        <childnode refid="857" relation="include">
+        </childnode>
+        <childnode refid="858" relation="include">
+        </childnode>
+        <childnode refid="859" relation="include">
+        </childnode>
+        <childnode refid="860" relation="include">
+        </childnode>
+        <childnode refid="861" relation="include">
+        </childnode>
+        <childnode refid="863" relation="include">
+        </childnode>
+        <childnode refid="865" relation="include">
+        </childnode>
+      </node>
+      <node id="857">
+        <label>stddef.h</label>
+      </node>
+      <node id="862">
+        <label>env.h</label>
+      </node>
+      <node id="860">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="858">
+        <label>string.h</label>
+      </node>
+      <node id="853">
+        <label>firmware/user/tp/methods/tp_method_writetx.h</label>
+        <link refid="tp__method__writetx_8h"/>
+        <childnode refid="854" relation="include">
+        </childnode>
+        <childnode refid="866" relation="include">
+        </childnode>
+      </node>
+      <node id="863">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="864" relation="include">
+        </childnode>
+        <childnode refid="856" relation="include">
+        </childnode>
+      </node>
+      <node id="866">
+        <label>methods.pb.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="868">
+        <label>firmware/user/tp/methods/tp_method_writetx.c</label>
+        <link refid="tp__method__writetx_8c"/>
+      </node>
+      <node id="870">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="867">
+        <label>firmware/user/tp/methods/tp_method_writetx.h</label>
+        <link refid="tp__method__writetx_8h"/>
+        <childnode refid="868" relation="include">
+        </childnode>
+        <childnode refid="869" relation="include">
+        </childnode>
+      </node>
+      <node id="871">
+        <label>firmware/user/tp/tp_methods.c</label>
+        <link refid="tp__methods_8c"/>
+      </node>
+      <node id="869">
+        <label>firmware/user/tp/tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="870" relation="include">
+        </childnode>
+        <childnode refid="871" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__method__writetx_8h_1ac173fabd26898cd471e298e95e73dac5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>methods_status</type>
+        <definition>methods_status tp_method_writetx</definition>
+        <argsstring>(const methods_writetx_args *args, void *userdata)</argsstring>
+        <name>tp_method_writetx</name>
+        <param>
+          <type>const methods_writetx_args *</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userdata</declname>
+        </param>
+        <briefdescription>
+<para>JSON-RPC method handler for the &quot;writetx&quot; method. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command arguments struct </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>userdata</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data pointer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>OK if method executed successfully, otherwise an error code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/methods/tp_method_writetx.h" line="44" column="1" bodyfile="firmware/user/tp/methods/tp_method_writetx.c" bodystart="34" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe TX write method header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;methods.pb.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">methods_status<sp/><ref refid="tp__method__writetx_8h_1ac173fabd26898cd471e298e95e73dac5" kindref="member">tp_method_writetx</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>methods_writetx_args<sp/>*args,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*userdata);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/methods/tp_method_writetx.h"/>
+  </compounddef>
+</doxygen>

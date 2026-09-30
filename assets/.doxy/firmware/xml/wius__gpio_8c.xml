@@ -1,0 +1,454 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__gpio_8c" kind="file" language="C++">
+    <compoundname>wius_gpio.c</compoundname>
+    <includes refid="wius__gpio_8h" local="yes">wius_gpio.h</includes>
+    <incdepgraph>
+      <node id="1026">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1031">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1032" relation="include">
+        </childnode>
+      </node>
+      <node id="1034">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1029">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1035">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1031" relation="include">
+        </childnode>
+      </node>
+      <node id="1025">
+        <label>stdint.h</label>
+      </node>
+      <node id="1024">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1025" relation="include">
+        </childnode>
+        <childnode refid="1026" relation="include">
+        </childnode>
+        <childnode refid="1027" relation="include">
+        </childnode>
+        <childnode refid="1028" relation="include">
+        </childnode>
+        <childnode refid="1029" relation="include">
+        </childnode>
+        <childnode refid="1030" relation="include">
+        </childnode>
+        <childnode refid="1031" relation="include">
+        </childnode>
+        <childnode refid="1033" relation="include">
+        </childnode>
+        <childnode refid="1035" relation="include">
+        </childnode>
+      </node>
+      <node id="1022">
+        <label>firmware/user/wius/hal/wius_gpio.c</label>
+        <link refid="wius__gpio_8c"/>
+        <childnode refid="1023" relation="include">
+        </childnode>
+      </node>
+      <node id="1023">
+        <label>wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="1024" relation="include">
+        </childnode>
+        <childnode refid="1036" relation="include">
+        </childnode>
+        <childnode refid="1037" relation="include">
+        </childnode>
+      </node>
+      <node id="1027">
+        <label>stddef.h</label>
+      </node>
+      <node id="1036">
+        <label>sl_gpio_board.h</label>
+      </node>
+      <node id="1032">
+        <label>env.h</label>
+      </node>
+      <node id="1030">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1037">
+        <label>sl_si91x_driver_gpio.h</label>
+      </node>
+      <node id="1028">
+        <label>string.h</label>
+      </node>
+      <node id="1033">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1034" relation="include">
+        </childnode>
+        <childnode refid="1026" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="wius__gpio_8c_1ab076de2f44ee7b825dcf012db0f55bf5" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t _wius_gpio_active_interrupts</definition>
+        <argsstring></argsstring>
+        <name>_wius_gpio_active_interrupts</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="31" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__gpio_8c_1ae6ae18a83a13606df7bf91397e972e45" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t _wius_gpio_ulp_active_interrupts</definition>
+        <argsstring></argsstring>
+        <name>_wius_gpio_ulp_active_interrupts</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="32" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__gpio_8c_1a81b111e94aa7cd2e02bc6cfaa64b6af4" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t _wius_gpio_uulp_active_interrupts</definition>
+        <argsstring></argsstring>
+        <name>_wius_gpio_uulp_active_interrupts</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="33" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__gpio_8c_1ac0c17a10fb3f554be94b4e26c811131a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_gpio_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_gpio_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize GPIO module. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO initialization failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="35" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="35" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_gpio_config</definition>
+        <argsstring>(wius_gpio_t gpio)</argsstring>
+        <name>wius_gpio_config</name>
+        <param>
+          <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+          <declname>gpio</declname>
+        </param>
+        <briefdescription>
+<para>Configure GPIO pin. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO pin definition</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO configuration failed</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Must be called before using the pin </para></simplesect>
+<simplesect kind="note"><para>Must be called after <ref refid="wius__gpio_8h_1ac0c17a10fb3f554be94b4e26c811131a" kindref="member">wius_gpio_init</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="44" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="44" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__gpio_8c_1a731ec09db1b4af9cb01cdc4b08d622ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_gpio_attach_interrupt</definition>
+        <argsstring>(wius_gpio_t gpio, wius_gpio_interrupt_t trigger, wius_gpio_callback_t function)</argsstring>
+        <name>wius_gpio_attach_interrupt</name>
+        <param>
+          <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+          <declname>gpio</declname>
+        </param>
+        <param>
+          <type><ref refid="wius__gpio_8h_1a42dd4e49bd651ad5354882fdb4760739" kindref="member">wius_gpio_interrupt_t</ref></type>
+          <declname>trigger</declname>
+        </param>
+        <param>
+          <type><ref refid="wius__gpio_8h_1a4019fe852a443565eeafe07da5bad25e" kindref="member">wius_gpio_callback_t</ref></type>
+          <declname>function</declname>
+        </param>
+        <briefdescription>
+<para>Attach interrupt to GPIO pin. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO pin definition </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>trigger</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Interrupt trigger (see <ref refid="wius__gpio_8h_1a42dd4e49bd651ad5354882fdb4760739" kindref="member">wius_gpio_interrupt_t</ref>) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>function</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Interrupt callback function</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_STATE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin is not an input or maximum number of interrupts reached </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="66" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="66" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wius_gpio_put</definition>
+        <argsstring>(wius_gpio_t gpio, bool on)</argsstring>
+        <name>wius_gpio_put</name>
+        <param>
+          <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+          <declname>gpio</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>on</declname>
+        </param>
+        <briefdescription>
+<para>Set GPIO pin state. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO pin definition </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>on</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>State to set (true = high, false = low) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="90" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__gpio_8c_1a9d3eee4f4e257ec0c45e605aa3673336" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wius_gpio_toggle</definition>
+        <argsstring>(wius_gpio_t gpio)</argsstring>
+        <name>wius_gpio_toggle</name>
+        <param>
+          <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+          <declname>gpio</declname>
+        </param>
+        <briefdescription>
+<para>Toggle GPIO pin state. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO pin definition </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="95" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__gpio_8c_1a943098bbaa33871e802477d1a4fdfdc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t wius_gpio_get</definition>
+        <argsstring>(wius_gpio_t gpio)</argsstring>
+        <name>wius_gpio_get</name>
+        <param>
+          <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+          <declname>gpio</declname>
+        </param>
+        <briefdescription>
+<para>Get GPIO pin state. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO pin definition</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO pin state (0 = low, 1 = high) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_gpio.c" line="100" column="1" bodyfile="firmware/user/wius/hal/wius_gpio.c" bodystart="100" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS GPIO implementation source file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__gpio_8h" kindref="compound">wius_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>_wius_gpio_active_interrupts<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>_wius_gpio_ulp_active_interrupts<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>_wius_gpio_uulp_active_interrupts<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">sl_status_t<sp/><ref refid="wius__gpio_8c_1ac0c17a10fb3f554be94b4e26c811131a" kindref="member">wius_gpio_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_gpio_driver_init());</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">sl_status_t<sp/><ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(<ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>gpio)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_gpio_set_configuration(gpio));</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((gpio.port_pin.port<sp/>==<sp/>SL_GPIO_UULP_PORT)<sp/>&amp;&amp;<sp/>(gpio.direction<sp/>==<sp/>GPIO_INPUT))</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uulp_pad_config_t<sp/>uulp_pad<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.gpio_padnum<sp/>=<sp/>gpio.port_pin.pin,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.pad_select<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mode<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.direction<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.receiver<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_gpio_driver_set_uulp_pad_configuration(&amp;uulp_pad));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">sl_status_t<sp/><ref refid="wius__gpio_8c_1a731ec09db1b4af9cb01cdc4b08d622ad" kindref="member">wius_gpio_attach_interrupt</ref>(<ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>gpio,<sp/><ref refid="wius__gpio_8h_1a42dd4e49bd651ad5354882fdb4760739" kindref="member">wius_gpio_interrupt_t</ref><sp/>trigger,<sp/><ref refid="wius__gpio_8h_1a4019fe852a443565eeafe07da5bad25e" kindref="member">wius_gpio_callback_t</ref><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>*interrupt_number<sp/>=<sp/>&amp;_wius_gpio_active_interrupts;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio.port_pin.port<sp/>==<sp/>SL_GPIO_ULP_PORT)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>interrupt_number<sp/>=<sp/>&amp;_wius_gpio_ulp_active_interrupts;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio.port_pin.port<sp/>==<sp/>SL_GPIO_UULP_PORT)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>interrupt_number<sp/>=<sp/>&amp;_wius_gpio_uulp_active_interrupts;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LOG_RET_STATUS(sl_gpio_driver_configure_interrupt((sl_gpio_t<sp/>*)&amp;gpio.port_pin,<sp/>*interrupt_number,<sp/>(sl_gpio_interrupt_flag_t)trigger,<sp/>function,<sp/>NULL));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Check<sp/>what<sp/>to<sp/>pass<sp/>as<sp/>int_no</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>avl_intr_no<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_gpio_driver_configure_interrupt(&amp;gpio.port_pin,<sp/>2,<sp/>(sl_gpio_interrupt_flag_t)trigger,<sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">,<sp/>&amp;avl_intr_no));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>log_trace(</highlight><highlight class="stringliteral">&quot;avl_intr_no:<sp/>%lu&quot;</highlight><highlight class="normal">,<sp/>avl_intr_no);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>*interrupt_number<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(<ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>gpio,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>on)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>on<sp/>?<sp/>sl_gpio_driver_set_pin((sl_gpio_t<sp/>*)&amp;gpio)<sp/>:<sp/>sl_gpio_driver_clear_pin((sl_gpio_t<sp/>*)&amp;gpio);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="wius__gpio_8c_1a9d3eee4f4e257ec0c45e605aa3673336" kindref="member">wius_gpio_toggle</ref>(<ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>gpio)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_gpio_driver_toggle_pin((sl_gpio_t<sp/>*)&amp;gpio);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal">uint8_t<sp/><ref refid="wius__gpio_8c_1a943098bbaa33871e802477d1a4fdfdc4" kindref="member">wius_gpio_get</ref>(<ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>gpio)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>result<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_gpio_driver_get_pin((sl_gpio_t<sp/>*)&amp;gpio,<sp/>&amp;result);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_gpio.c"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="unionwius__spi__inst_1_1instance" kind="union" language="C++" prot="public">
+    <compoundname>wius_spi_inst::instance</compoundname>
+    <includes refid="wius__spi_8h" local="no">wius_spi.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" prot="public" static="no" mutable="no">
+        <type>sl_gspi_handle_t</type>
+        <definition>sl_gspi_handle_t wius_spi_inst::instance::gspi</definition>
+        <argsstring></argsstring>
+        <name>gspi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Peripheral handle (GPSI) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="78" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" prot="public" static="no" mutable="no">
+        <type>sl_ssi_handle_t</type>
+        <definition>sl_ssi_handle_t wius_spi_inst::instance::ssi</definition>
+        <argsstring></argsstring>
+        <name>ssi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Peripheral handle (SSI) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="79" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>&lt; Peripheral handle union </para>    </detaileddescription>
+    <location file="firmware/user/wius/hal/wius_spi.h" line="77" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="76" bodyend="80"/>
+    <listofallmembers>
+      <member refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" prot="public" virt="non-virtual"><scope>wius_spi_inst::instance</scope><name>gspi</name></member>
+      <member refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" prot="public" virt="non-virtual"><scope>wius_spi_inst::instance</scope><name>ssi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

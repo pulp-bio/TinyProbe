@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="group__config__common" kind="group">
+    <compoundname>config_common</compoundname>
+    <title>Common firmware configurations</title>
+      <sectiondef kind="user-defined">
+      <header>Board configurations</header>
+      <memberdef kind="define" id="group__config__common_1gaed91737767c96e2af18274f8aca5e6a8" prot="public" static="no">
+        <name>WIUS_BOARD</name>
+        <initializer>3</initializer>
+        <briefdescription>
+<para>&lt; Board type for WiUS firmware. Can be one of 0: &quot;DK2605A&quot;, 1: &quot;EK2708A&quot;, 2: &quot;PK6031A&quot;, 3: &quot;WIUS1&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="45" column="9" bodyfile="firmware/user/config.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Logging configurations</header>
+      <memberdef kind="define" id="group__config__common_1gaf220e0f0458659bfccf3d336d1cacdda" prot="public" static="no">
+        <name>LOG_MAX_CALLBACKS</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>&lt; Maximum number of log callbacks that can be registered </para>        </briefdescription>
+        <detaileddescription>
+<para>Size of the log buffer in bytes </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="54" column="9" bodyfile="firmware/user/config.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" prot="public" static="no">
+        <name>LOG_BUFFER_SIZE</name>
+        <initializer>128</initializer>
+        <briefdescription>
+<para>Remove lifetime of log library (no deinitialization, no callback unregistration) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="56" column="9" bodyfile="firmware/user/config.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__common_1ga4993efe73dbf525b44ee2deca215d595" prot="public" static="no">
+        <name>LOG_ONCE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="58" column="9" bodyfile="firmware/user/config.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__common_1ga66c43661af4dcbd9cf28884139343649" prot="public" static="no">
+        <name>LOG_NO_COLOR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="59" column="9" bodyfile="firmware/user/config.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This module documents the common firmware configurations. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

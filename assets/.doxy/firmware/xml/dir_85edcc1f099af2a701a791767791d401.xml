@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_85edcc1f099af2a701a791767791d401" kind="dir">
+    <compoundname>firmware/user/common</compoundname>
+    <innerfile refid="common_8c">common.c</innerfile>
+    <innerfile refid="common_8h">common.h</innerfile>
+    <innerfile refid="led_8c">led.c</innerfile>
+    <innerfile refid="led_8h">led.h</innerfile>
+    <innerfile refid="log_8c">log.c</innerfile>
+    <innerfile refid="log_8h">log.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/common/"/>
+  </compounddef>
+</doxygen>

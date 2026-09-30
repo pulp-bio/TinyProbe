@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_9149039fde39a20b8d7b4b86d87b742c" kind="dir">
+    <compoundname>firmware/user/tp/methods</compoundname>
+    <innerfile refid="tp__method__controlpower_8c">tp_method_controlpower.c</innerfile>
+    <innerfile refid="tp__method__controlpower_8h">tp_method_controlpower.h</innerfile>
+    <innerfile refid="tp__method__controlspi_8c">tp_method_controlspi.c</innerfile>
+    <innerfile refid="tp__method__controlspi_8h">tp_method_controlspi.h</innerfile>
+    <innerfile refid="tp__method__delayms_8c">tp_method_delayms.c</innerfile>
+    <innerfile refid="tp__method__delayms_8h">tp_method_delayms.h</innerfile>
+    <innerfile refid="tp__method__delayns_8c">tp_method_delayns.c</innerfile>
+    <innerfile refid="tp__method__delayns_8h">tp_method_delayns.h</innerfile>
+    <innerfile refid="tp__method__ping_8c">tp_method_ping.c</innerfile>
+    <innerfile refid="tp__method__ping_8h">tp_method_ping.h</innerfile>
+    <innerfile refid="tp__method__setloglevel_8c">tp_method_setloglevel.c</innerfile>
+    <innerfile refid="tp__method__setloglevel_8h">tp_method_setloglevel.h</innerfile>
+    <innerfile refid="tp__method__triggershot_8c">tp_method_triggershot.c</innerfile>
+    <innerfile refid="tp__method__triggershot_8h">tp_method_triggershot.h</innerfile>
+    <innerfile refid="tp__method__writeafe_8c">tp_method_writeafe.c</innerfile>
+    <innerfile refid="tp__method__writeafe_8h">tp_method_writeafe.h</innerfile>
+    <innerfile refid="tp__method__writefpga_8c">tp_method_writefpga.c</innerfile>
+    <innerfile refid="tp__method__writefpga_8h">tp_method_writefpga.h</innerfile>
+    <innerfile refid="tp__method__writetx_8c">tp_method_writetx.c</innerfile>
+    <innerfile refid="tp__method__writetx_8h">tp_method_writetx.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/tp/methods/"/>
+  </compounddef>
+</doxygen>

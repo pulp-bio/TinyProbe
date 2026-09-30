@@ -1,0 +1,551 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="led_8h" kind="file" language="C++">
+    <compoundname>led.h</compoundname>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includedby refid="common_8h" local="yes">firmware/user/common/common.h</includedby>
+    <includedby refid="led_8c" local="yes">firmware/user/common/led.c</includedby>
+    <incdepgraph>
+      <node id="99">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>firmware/user/common/led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>env.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="153">
+        <label>firmware/user/wius/hal/wius_wifi.c</label>
+        <link refid="wius__wifi_8c"/>
+      </node>
+      <node id="152">
+        <label>firmware/user/wius/hal/wius_wifi.h</label>
+        <link refid="wius__wifi_8h"/>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+      </node>
+      <node id="112">
+        <label>firmware/user/tp/methods/tp_method_writeafe.c</label>
+        <link refid="tp__method__writeafe_8c"/>
+      </node>
+      <node id="138">
+        <label>firmware/user/tp/methods/tp_method_writeafe.h</label>
+        <link refid="tp__method__writeafe_8h"/>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="147">
+        <label>firmware/user/wius/hal/wius_power.c</label>
+        <link refid="wius__power_8c"/>
+      </node>
+      <node id="142">
+        <label>firmware/user/common/led.c</label>
+        <link refid="led_8c"/>
+      </node>
+      <node id="146">
+        <label>firmware/user/wius/hal/wius_power.h</label>
+        <link refid="wius__power_8h"/>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>firmware/user/common/led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+      </node>
+      <node id="145">
+        <label>firmware/user/wius/hal/wius_spi.c</label>
+        <link refid="wius__spi_8c"/>
+      </node>
+      <node id="144">
+        <label>firmware/user/wius/hal/wius_spi.h</label>
+        <link refid="wius__spi_8h"/>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>firmware/user/common/common.c</label>
+        <link refid="common_8c"/>
+      </node>
+      <node id="102">
+        <label>firmware/user/common/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+      </node>
+      <node id="109">
+        <label>firmware/user/user.c</label>
+        <link refid="user_8c"/>
+      </node>
+      <node id="143">
+        <label>firmware/user/wius/hal/wius_gpio.c</label>
+        <link refid="wius__gpio_8c"/>
+      </node>
+      <node id="141">
+        <label>firmware/user/wius/hal/wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+      </node>
+      <node id="121">
+        <label>firmware/user/tp/methods/tp_method_controlpower.c</label>
+        <link refid="tp__method__controlpower_8c"/>
+      </node>
+      <node id="125">
+        <label>firmware/user/tp/methods/tp_method_controlpower.h</label>
+        <link refid="tp__method__controlpower_8h"/>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>firmware/user/tp/hal/tp_mux.c</label>
+        <link refid="tp__mux_8c"/>
+      </node>
+      <node id="116">
+        <label>firmware/user/tp/hal/tp_mux.h</label>
+        <link refid="tp__mux_8h"/>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="134">
+        <label>firmware/user/tp/methods/tp_method_ping.c</label>
+        <link refid="tp__method__ping_8c"/>
+      </node>
+      <node id="133">
+        <label>firmware/user/tp/methods/tp_method_ping.h</label>
+        <link refid="tp__method__ping_8h"/>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="124">
+        <label>firmware/user/tp/methods/tp_method_writetx.c</label>
+        <link refid="tp__method__writetx_8c"/>
+      </node>
+      <node id="108">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="140">
+        <label>firmware/user/tp/methods/tp_method_writetx.h</label>
+        <link refid="tp__method__writetx_8h"/>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>firmware/user/tp/tp.h</label>
+        <link refid="tp_8h"/>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+      </node>
+      <node id="115">
+        <label>firmware/user/tp/methods/tp_method_writefpga.c</label>
+        <link refid="tp__method__writefpga_8c"/>
+      </node>
+      <node id="139">
+        <label>firmware/user/tp/methods/tp_method_writefpga.h</label>
+        <link refid="tp__method__writefpga_8h"/>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="105">
+        <label>firmware/user/tp/common/tp_buffer.c</label>
+        <link refid="tp__buffer_8c"/>
+      </node>
+      <node id="104">
+        <label>firmware/user/tp/common/tp_buffer.h</label>
+        <link refid="tp__buffer_8h"/>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+      </node>
+      <node id="123">
+        <label>firmware/user/tp/hal/tp_tx.c</label>
+        <link refid="tp__tx_8c"/>
+      </node>
+      <node id="122">
+        <label>firmware/user/tp/hal/tp_tx.h</label>
+        <link refid="tp__tx_8h"/>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="130">
+        <label>firmware/user/tp/methods/tp_method_delayms.c</label>
+        <link refid="tp__method__delayms_8c"/>
+      </node>
+      <node id="129">
+        <label>firmware/user/tp/methods/tp_method_delayms.h</label>
+        <link refid="tp__method__delayms_8h"/>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="149">
+        <label>firmware/user/wius/hal/wius_tcp.c</label>
+        <link refid="wius__tcp_8c"/>
+      </node>
+      <node id="148">
+        <label>firmware/user/wius/hal/wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>firmware/user/wius/hal/wius_udp.c</label>
+        <link refid="wius__udp_8c"/>
+      </node>
+      <node id="150">
+        <label>firmware/user/wius/hal/wius_udp.h</label>
+        <link refid="wius__udp_8h"/>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+      </node>
+      <node id="136">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.c</label>
+        <link refid="tp__method__setloglevel_8c"/>
+      </node>
+      <node id="135">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.h</label>
+        <link refid="tp__method__setloglevel_8h"/>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="132">
+        <label>firmware/user/tp/methods/tp_method_delayns.c</label>
+        <link refid="tp__method__delayns_8c"/>
+      </node>
+      <node id="131">
+        <label>firmware/user/tp/methods/tp_method_delayns.h</label>
+        <link refid="tp__method__delayns_8h"/>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="107">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+      <node id="137">
+        <label>firmware/user/tp/methods/tp_method_triggershot.h</label>
+        <link refid="tp__method__triggershot_8h"/>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>firmware/user/tp/hal/tp_power.c</label>
+        <link refid="tp__power_8c"/>
+      </node>
+      <node id="119">
+        <label>firmware/user/tp/hal/tp_power.h</label>
+        <link refid="tp__power_8h"/>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="114">
+        <label>firmware/user/tp/hal/tp_fpga.c</label>
+        <link refid="tp__fpga_8c"/>
+      </node>
+      <node id="113">
+        <label>firmware/user/tp/hal/tp_fpga.h</label>
+        <link refid="tp__fpga_8h"/>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>firmware/user/tp/tp_methods.c</label>
+        <link refid="tp__methods_8c"/>
+      </node>
+      <node id="126">
+        <label>firmware/user/tp/tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>firmware/user/tp/hal/tp_afe.c</label>
+        <link refid="tp__afe_8c"/>
+      </node>
+      <node id="110">
+        <label>firmware/user/tp/hal/tp_afe.h</label>
+        <link refid="tp__afe_8h"/>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="118">
+        <label>firmware/user/tp/methods/tp_method_controlspi.c</label>
+        <link refid="tp__method__controlspi_8c"/>
+      </node>
+      <node id="128">
+        <label>firmware/user/tp/methods/tp_method_controlspi.h</label>
+        <link refid="tp__method__controlspi_8h"/>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="led_8h_1a2b90b815358f1c78e36a5f4c56308449" prot="public" static="no">
+        <name>LED_COLOR_OFF</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/led.h" line="33" column="9" bodyfile="firmware/user/common/led.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="led_8h_1a8987a69d33df1353af6077ff67dfea28" prot="public" static="no">
+        <name>LED_COLOR_RED</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/led.h" line="34" column="9" bodyfile="firmware/user/common/led.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="led_8h_1a913f289eb3203c4e3043b1ecb4047032" prot="public" static="no">
+        <name>LED_COLOR_GREEN</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/led.h" line="35" column="9" bodyfile="firmware/user/common/led.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="led_8h_1a97348e8acf253232595a481314f8a396" prot="public" static="no">
+        <name>LED_COLOR_YELLOW</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/led.h" line="36" column="9" bodyfile="firmware/user/common/led.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="led_8h_1a2d47198409056e390f092e898b5b3e4e" prot="public" static="no">
+        <name>led_init</name>
+        <param><defname>void</defname></param>
+        <initializer>(SL_STATUS_OK)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/led.h" line="40" column="10" bodyfile="firmware/user/common/led.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="led_8h_1ab33e64187b43fb10155d40d0d8a18fad" prot="public" static="no">
+        <name>led_set</name>
+        <param><defname>x</defname></param>
+        <initializer>(SL_STATUS_OK)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/led.h" line="41" column="9" bodyfile="firmware/user/common/led.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>LED control header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_COLOR_OFF<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_COLOR_RED<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_COLOR_GREEN<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_COLOR_YELLOW<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WIUS_BOARD</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#warning<sp/>&quot;No<sp/>WIUS_BOARD<sp/>defined,<sp/>LED<sp/>functions<sp/>will<sp/>be<sp/>stubbed&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>led_init()<sp/>(SL_STATUS_OK)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>led_set(x)<sp/>(SL_STATUS_OK)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_status.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>WIUS_BOARD<sp/>==<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_RED<sp/>WIUS_GPIO_OUTPUT(50)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_GREEN<sp/>WIUS_GPIO_OUTPUT(51)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_BLUE<sp/>WIUS_GPIO_OUTPUT(15)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_INVERTED<sp/>true<sp/>//<sp/>LEDs<sp/>are<sp/>active<sp/>low<sp/>on<sp/>DK2605A</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>WIUS_BOARD<sp/>==<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_RED<sp/>WIUS_GPIO_OUTPUT(10)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_GREEN<sp/>WIUS_GPIO_ULP_OUTPUT(2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_INVERTED<sp/>true<sp/>//<sp/>LEDs<sp/>are<sp/>active<sp/>low<sp/>on<sp/>EK2708A</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>WIUS_BOARD<sp/>==<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_RED<sp/>WIUS_GPIO_ULP_OUTPUT(2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_GREEN<sp/>WIUS_GPIO_OUTPUT(10)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_INVERTED<sp/>true<sp/>//<sp/>LEDs<sp/>are<sp/>active<sp/>low<sp/>on<sp/>PK6031A</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>WIUS_BOARD<sp/>==<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_RED<sp/>WIUS_GPIO_OUTPUT(7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_GPIO_GREEN<sp/>WIUS_GPIO_OUTPUT(6)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_INVERTED<sp/>true<sp/>//<sp/>LEDs<sp/>are<sp/>active<sp/>low<sp/>on<sp/>WIUS1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;Unknown<sp/>WIUS_BOARD&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">sl_status_t<sp/>led_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">sl_status_t<sp/>led_set(uint8_t<sp/>x);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/common/led.h"/>
+  </compounddef>
+</doxygen>

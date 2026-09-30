@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__method__controlspi_8c" kind="file" language="C++">
+    <compoundname>tp_method_controlspi.c</compoundname>
+    <includes refid="tp__method__controlspi_8h" local="yes">tp_method_controlspi.h</includes>
+    <includes refid="tp__mux_8h" local="yes">tp_mux.h</includes>
+    <incdepgraph>
+      <node id="543">
+        <label>stdbool.h</label>
+      </node>
+      <node id="548">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="549" relation="include">
+        </childnode>
+      </node>
+      <node id="551">
+        <label>stdarg.h</label>
+      </node>
+      <node id="546">
+        <label>sl_status.h</label>
+      </node>
+      <node id="552">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="548" relation="include">
+        </childnode>
+      </node>
+      <node id="542">
+        <label>stdint.h</label>
+      </node>
+      <node id="541">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="542" relation="include">
+        </childnode>
+        <childnode refid="543" relation="include">
+        </childnode>
+        <childnode refid="544" relation="include">
+        </childnode>
+        <childnode refid="545" relation="include">
+        </childnode>
+        <childnode refid="546" relation="include">
+        </childnode>
+        <childnode refid="547" relation="include">
+        </childnode>
+        <childnode refid="548" relation="include">
+        </childnode>
+        <childnode refid="550" relation="include">
+        </childnode>
+        <childnode refid="552" relation="include">
+        </childnode>
+      </node>
+      <node id="544">
+        <label>stddef.h</label>
+      </node>
+      <node id="549">
+        <label>env.h</label>
+      </node>
+      <node id="547">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="554">
+        <label>tp_mux.h</label>
+        <link refid="tp__mux_8h"/>
+        <childnode refid="541" relation="include">
+        </childnode>
+      </node>
+      <node id="545">
+        <label>string.h</label>
+      </node>
+      <node id="550">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="551" relation="include">
+        </childnode>
+        <childnode refid="543" relation="include">
+        </childnode>
+      </node>
+      <node id="553">
+        <label>methods.pb.h</label>
+      </node>
+      <node id="539">
+        <label>firmware/user/tp/methods/tp_method_controlspi.c</label>
+        <link refid="tp__method__controlspi_8c"/>
+        <childnode refid="540" relation="include">
+        </childnode>
+        <childnode refid="554" relation="include">
+        </childnode>
+      </node>
+      <node id="540">
+        <label>tp_method_controlspi.h</label>
+        <link refid="tp__method__controlspi_8h"/>
+        <childnode refid="541" relation="include">
+        </childnode>
+        <childnode refid="553" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__method__controlspi_8c_1af69683654e13e034d538b4c51a96833e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>methods_status</type>
+        <definition>methods_status tp_method_controlspi</definition>
+        <argsstring>(const methods_controlspi_args *args, void *userdata)</argsstring>
+        <name>tp_method_controlspi</name>
+        <param>
+          <type>const methods_controlspi_args *</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userdata</declname>
+        </param>
+        <briefdescription>
+<para>JSON-RPC method handler for the &quot;controlspi&quot; method. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command arguments struct </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>userdata</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data pointer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>OK if method executed successfully, otherwise an error code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/methods/tp_method_controlspi.c" line="34" column="1" bodyfile="firmware/user/tp/methods/tp_method_controlspi.c" bodystart="34" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe SPI control method implementation file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__controlspi_8h" kindref="compound">tp_method_controlspi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__mux_8h" kindref="compound">tp_mux.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">methods_status<sp/><ref refid="tp__method__controlspi_8c_1af69683654e13e034d538b4c51a96833e" kindref="member">tp_method_controlspi</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>methods_controlspi_args<sp/>*args,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*userdata)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" kindref="member">UNUSED</ref>(userdata);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__mux_8c_1a3056dcc64563523df3ffba7a306b4078" kindref="member">tp_mux_select</ref>((<ref refid="tp__mux_8h_1acb5e90c4e5d140416be1908840a0776c" kindref="member">tp_mux_t</ref>)args-&gt;domain);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>methods_status_OK;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/methods/tp_method_controlspi.c"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__tx_8h" kind="file" language="C++">
+    <compoundname>tp_tx.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includedby refid="tp__tx_8c" local="yes">firmware/user/tp/hal/tp_tx.c</includedby>
+    <includedby refid="tp__method__writetx_8c" local="yes">firmware/user/tp/methods/tp_method_writetx.c</includedby>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <incdepgraph>
+      <node id="489">
+        <label>stdbool.h</label>
+      </node>
+      <node id="494">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="495" relation="include">
+        </childnode>
+      </node>
+      <node id="497">
+        <label>stdarg.h</label>
+      </node>
+      <node id="492">
+        <label>sl_status.h</label>
+      </node>
+      <node id="498">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="494" relation="include">
+        </childnode>
+      </node>
+      <node id="488">
+        <label>stdint.h</label>
+      </node>
+      <node id="487">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+        <childnode refid="490" relation="include">
+        </childnode>
+        <childnode refid="491" relation="include">
+        </childnode>
+        <childnode refid="492" relation="include">
+        </childnode>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="496" relation="include">
+        </childnode>
+        <childnode refid="498" relation="include">
+        </childnode>
+      </node>
+      <node id="490">
+        <label>stddef.h</label>
+      </node>
+      <node id="495">
+        <label>env.h</label>
+      </node>
+      <node id="493">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="491">
+        <label>string.h</label>
+      </node>
+      <node id="496">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="497" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+      </node>
+      <node id="486">
+        <label>firmware/user/tp/hal/tp_tx.h</label>
+        <link refid="tp__tx_8h"/>
+        <childnode refid="487" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="501">
+        <label>firmware/user/tp/methods/tp_method_writetx.c</label>
+        <link refid="tp__method__writetx_8c"/>
+      </node>
+      <node id="502">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="500">
+        <label>firmware/user/tp/hal/tp_tx.c</label>
+        <link refid="tp__tx_8c"/>
+      </node>
+      <node id="499">
+        <label>firmware/user/tp/hal/tp_tx.h</label>
+        <link refid="tp__tx_8h"/>
+        <childnode refid="500" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__tx_8h_1a1f9c34c0591f4a8e0036473828ffcd1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_tx_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_tx_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>TX initialization. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function must be called before any other TX function </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_tx.h" line="43" column="1" bodyfile="firmware/user/tp/hal/tp_tx.c" bodystart="138" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__tx_8h_1aa68ec57be4bccd1f6856e60e2fbf3d04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_tx_write_reg</definition>
+        <argsstring>(uint16_t address, uint32_t value)</argsstring>
+        <name>tp_tx_write_reg</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register of the TX. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_tx.h" line="55" column="1" bodyfile="firmware/user/tp/hal/tp_tx.c" bodystart="49" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__tx_8h_1a8a803401e7ecaeea8e56230e7a9e329b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_tx_write_reg_safe</definition>
+        <argsstring>(uint16_t address, uint32_t value)</argsstring>
+        <name>tp_tx_write_reg_safe</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register of the TX and check if the write was successful. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Write was not successful </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_tx.h" line="68" column="1" bodyfile="firmware/user/tp/hal/tp_tx.c" bodystart="117" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__tx_8h_1ae2a31acb8f2800e94bc7aa09929c9e4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_tx_read_reg</definition>
+        <argsstring>(uint16_t address, uint32_t *value)</argsstring>
+        <name>tp_tx_read_reg</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Read from a register of the TX. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to read from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the value read from the register</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during reading from registers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_tx.h" line="80" column="1" bodyfile="firmware/user/tp/hal/tp_tx.c" bodystart="69" bodyend="115"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe TX chip driver header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">sl_status_t<sp/><ref refid="tp__tx_8h_1a1f9c34c0591f4a8e0036473828ffcd1f" kindref="member">tp_tx_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">sl_status_t<sp/><ref refid="tp__tx_8h_1aa68ec57be4bccd1f6856e60e2fbf3d04" kindref="member">tp_tx_write_reg</ref>(uint16_t<sp/>address,<sp/>uint32_t<sp/>value);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">sl_status_t<sp/><ref refid="tp__tx_8h_1a8a803401e7ecaeea8e56230e7a9e329b" kindref="member">tp_tx_write_reg_safe</ref>(uint16_t<sp/>address,<sp/>uint32_t<sp/>value);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">sl_status_t<sp/><ref refid="tp__tx_8h_1ae2a31acb8f2800e94bc7aa09929c9e4a" kindref="member">tp_tx_read_reg</ref>(uint16_t<sp/>address,<sp/>uint32_t<sp/>*value);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/hal/tp_tx.h"/>
+  </compounddef>
+</doxygen>

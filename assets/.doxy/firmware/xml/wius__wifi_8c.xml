@@ -1,0 +1,728 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__wifi_8c" kind="file" language="C++">
+    <compoundname>wius_wifi.c</compoundname>
+    <includes refid="wius__wifi_8h" local="yes">wius_wifi.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="yes">sl_utility.h</includes>
+    <includes local="yes">sl_wifi.h</includes>
+    <includes local="yes">sl_net.h</includes>
+    <includes local="yes">sl_net_default_values.h</includes>
+    <includes local="yes">sl_net_wifi_types.h</includes>
+    <incdepgraph>
+      <node id="1225">
+        <label>firmware/user/wius/hal/wius_wifi.c</label>
+        <link refid="wius__wifi_8c"/>
+        <childnode refid="1226" relation="include">
+        </childnode>
+        <childnode refid="1231" relation="include">
+        </childnode>
+        <childnode refid="1240" relation="include">
+        </childnode>
+        <childnode refid="1241" relation="include">
+        </childnode>
+        <childnode refid="1242" relation="include">
+        </childnode>
+        <childnode refid="1243" relation="include">
+        </childnode>
+        <childnode refid="1244" relation="include">
+        </childnode>
+      </node>
+      <node id="1226">
+        <label>wius_wifi.h</label>
+        <link refid="wius__wifi_8h"/>
+        <childnode refid="1227" relation="include">
+        </childnode>
+        <childnode refid="1239" relation="include">
+        </childnode>
+      </node>
+      <node id="1229">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1234">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1235" relation="include">
+        </childnode>
+      </node>
+      <node id="1237">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1232">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1240">
+        <label>sl_utility.h</label>
+      </node>
+      <node id="1238">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1234" relation="include">
+        </childnode>
+      </node>
+      <node id="1228">
+        <label>stdint.h</label>
+      </node>
+      <node id="1227">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1228" relation="include">
+        </childnode>
+        <childnode refid="1229" relation="include">
+        </childnode>
+        <childnode refid="1230" relation="include">
+        </childnode>
+        <childnode refid="1231" relation="include">
+        </childnode>
+        <childnode refid="1232" relation="include">
+        </childnode>
+        <childnode refid="1233" relation="include">
+        </childnode>
+        <childnode refid="1234" relation="include">
+        </childnode>
+        <childnode refid="1236" relation="include">
+        </childnode>
+        <childnode refid="1238" relation="include">
+        </childnode>
+      </node>
+      <node id="1230">
+        <label>stddef.h</label>
+      </node>
+      <node id="1244">
+        <label>sl_net_wifi_types.h</label>
+      </node>
+      <node id="1235">
+        <label>env.h</label>
+      </node>
+      <node id="1233">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1231">
+        <label>string.h</label>
+      </node>
+      <node id="1236">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1237" relation="include">
+        </childnode>
+        <childnode refid="1229" relation="include">
+        </childnode>
+      </node>
+      <node id="1242">
+        <label>sl_net.h</label>
+      </node>
+      <node id="1239">
+        <label>sl_mdns.h</label>
+      </node>
+      <node id="1241">
+        <label>sl_wifi.h</label>
+      </node>
+      <node id="1243">
+        <label>sl_net_default_values.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="wius__wifi_8c_1a69fdf82e0ee416ff44d1681d4fc13c69" prot="public" static="no">
+        <name>WIUS_WIFI_FILTER_BROADCAST</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether to filter the WiFi broadcast </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="40" column="9" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="wius__wifi_8c_1a104fdd561726bf17c143d7dfa125cef6" prot="public" static="yes" mutable="no">
+        <type>const sl_wifi_device_configuration_t</type>
+        <definition>const sl_wifi_device_configuration_t station_init_configuration</definition>
+        <argsstring></argsstring>
+        <name>station_init_configuration</name>
+        <initializer>= {
+    .boot_option = LOAD_NWP_FW,
+    .mac_address = NULL,
+    .band = SL_SI91X_WIFI_BAND_2_4GHZ,
+    .region_code = EU,
+    .boot_config = {
+        .oper_mode = SL_SI91X_CLIENT_MODE,
+        .coex_mode = SL_SI91X_WLAN_ONLY_MODE,
+        .feature_bit_map = (SL_SI91X_FEAT_SECURITY_OPEN | SL_SI91X_FEAT_AGGREGATION | SL_SI91X_FEAT_WPS_DISABLE),
+        .tcp_ip_feature_bit_map = (SL_SI91X_TCP_IP_FEAT_DHCPV4_CLIENT | SL_SI91X_TCP_IP_FEAT_SSL | SL_SI91X_TCP_IP_FEAT_EXTENSION_VALID | SL_SI91X_TCP_IP_FEAT_MDNSD),
+        .custom_feature_bit_map = (SL_SI91X_CUSTOM_FEAT_EXTENTION_VALID | SL_SI91X_CUSTOM_FEAT_SOC_CLK_CONFIG_160MHZ),
+        .ext_custom_feature_bit_map = (MEMORY_CONFIG | SL_SI91X_EXT_FEAT_FRONT_END_SWITCH_PINS_ULP_GPIO_4_5_0),
+        .bt_feature_bit_map = 0,
+        .ext_tcp_ip_feature_bit_map = (SL_SI91X_EXT_TCP_IP_WINDOW_DIV | SL_SI91X_CONFIG_FEAT_EXTENTION_VALID | SL_SI91X_EXT_TCP_IP_FEAT_SSL_THREE_SOCKETS),
+        .ble_feature_bit_map = 0,
+        .ble_ext_feature_bit_map = 0,
+        .config_feature_bit_map = SL_SI91X_FEAT_SLEEP_GPIO_SEL_BITMAP},
+    .ta_pool = {.tx_ratio_in_buffer_pool = 1, .rx_ratio_in_buffer_pool = 1, .global_ratio_in_buffer_pool = 1}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="49" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__wifi_8c_1a0a0a77f580495bfbf13981b5c016ccad" prot="public" static="yes" mutable="no">
+        <type>const sl_net_wifi_client_profile_t</type>
+        <definition>const sl_net_wifi_client_profile_t wifi_client_profile</definition>
+        <argsstring></argsstring>
+        <name>wifi_client_profile</name>
+        <initializer>= {
+    .config = {
+        .ssid = {
+            .value = WIUS_WIFI_SSID,
+            .length = sizeof(WIUS_WIFI_SSID) - 1,
+        },
+        .channel = {
+            .channel = SL_WIFI_AUTO_CHANNEL,
+            .band = SL_WIFI_AUTO_BAND,
+            .bandwidth = SL_WIFI_AUTO_BANDWIDTH,
+        },
+        .channel_bitmap.channel_bitmap_2_4 = SL_WIFI_DEFAULT_CHANNEL_BITMAP,
+        .bssid = {{0}},
+        .bss_type = SL_WIFI_BSS_TYPE_INFRASTRUCTURE,
+        .security = DEFAULT_WIFI_CLIENT_SECURITY_TYPE,
+        .encryption = DEFAULT_WIFI_CLIENT_ENCRYPTION_TYPE,
+        .client_options = 0,
+        .credential_id = SL_NET_DEFAULT_WIFI_CLIENT_CREDENTIAL_ID,
+    },
+    .ip = {
+        .mode = SL_IP_MANAGEMENT_DHCP,
+        .type = REQUIRED_IP_TYPE,
+        .host_name = NULL,
+        .ip = {{{0}}},
+    },
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="68" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__wifi_8c_1a67ce20da6e6a6c69abe0d2256ff704a6" prot="public" static="yes" mutable="no">
+        <type>const sl_net_wifi_psk_credential_entry_t</type>
+        <definition>const sl_net_wifi_psk_credential_entry_t wifi_client_credential</definition>
+        <argsstring></argsstring>
+        <name>wifi_client_credential</name>
+        <initializer>= {
+    .type = SL_NET_WIFI_PSK,
+    .data_length = sizeof(WIUS_WIFI_PASS) - 1,
+    .data = WIUS_WIFI_PASS,
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="95" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__wifi_8c_1aaf695214e7fe3c1481f397c69668c2f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_wifi_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the WiFi client interface. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>net initialization or bring up failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="101" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="101" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__wifi_8c_1a594f2cd66c2c4de2d2193b834d215f35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_deinit</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_wifi_deinit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Deinitialize the WiFi client interface. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>net deinitialization failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="171" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="171" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__wifi_8c_1afd6ea0925f54fe735565ea49180035c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_mdns_init</definition>
+        <argsstring>(wius_wifi_mdns_t *mdns)</argsstring>
+        <name>wius_wifi_mdns_init</name>
+        <param>
+          <type><ref refid="wius__wifi_8h_1a279c187e55c77e417944eebd2d3d81ee" kindref="member">wius_wifi_mdns_t</ref> *</type>
+          <declname>mdns</declname>
+        </param>
+        <briefdescription>
+<para>Initialize an mDNS service structure. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mdns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the mDNS service structure</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_PARAMETER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invalid parameter (null pointer or invalid host name) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mDNS or interface initialization failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="176" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="176" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__wifi_8c_1a82855ff628f8f7e45c9d75bca469d5ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_mdns_add</definition>
+        <argsstring>(wius_wifi_mdns_t *mdns)</argsstring>
+        <name>wius_wifi_mdns_add</name>
+        <param>
+          <type><ref refid="wius__wifi_8h_1a279c187e55c77e417944eebd2d3d81ee" kindref="member">wius_wifi_mdns_t</ref> *</type>
+          <declname>mdns</declname>
+        </param>
+        <briefdescription>
+<para>Add an mDNS service. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mdns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the mDNS service structure</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mDNS service addition failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="215" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="215" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__wifi_8c_1a603a11e2f3cac17c65aed65f53b911ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_set_performance_profile</definition>
+        <argsstring>(wius_wifi_performance_profile_t profile)</argsstring>
+        <name>wius_wifi_set_performance_profile</name>
+        <param>
+          <type><ref refid="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" kindref="member">wius_wifi_performance_profile_t</ref></type>
+          <declname>profile</declname>
+        </param>
+        <briefdescription>
+<para>Set the WiFi performance profile. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>profile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the performance profile enumeration (<ref refid="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" kindref="member">wius_wifi_performance_profile_t</ref>)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_PARAMETER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invalid performance profile </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_POWER_SAVE_NOT_SUPPORTED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Profile not applied </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Performance profile setting failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.c" line="261" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="261" bodyend="311"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS WiFi implementation source file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__wifi_8h" kindref="compound">wius_wifi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_utility.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_wifi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_net.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_net_default_values.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_net_wifi_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WIUS_WIFI_FILTER_BROADCAST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_WIFI_FILTER_BROADCAST<sp/>0<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>WIUS_WIFI_FILTER_BROADCAST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BROADCAST_DROP_THRESHOLD<sp/>5000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BROADCAST_IN_TIM<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BROADCAST_TIM_TILL_NEXT_COMMAND<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sl_wifi_device_configuration_t<sp/>station_init_configuration<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>.boot_option<sp/>=<sp/>LOAD_NWP_FW,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>.mac_address<sp/>=<sp/>NULL,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>.band<sp/>=<sp/>SL_SI91X_WIFI_BAND_2_4GHZ,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>.region_code<sp/>=<sp/>EU,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>.boot_config<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.oper_mode<sp/>=<sp/>SL_SI91X_CLIENT_MODE,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.coex_mode<sp/>=<sp/>SL_SI91X_WLAN_ONLY_MODE,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.feature_bit_map<sp/>=<sp/>(SL_SI91X_FEAT_SECURITY_OPEN<sp/>|<sp/>SL_SI91X_FEAT_AGGREGATION<sp/>|<sp/>SL_SI91X_FEAT_WPS_DISABLE),</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.tcp_ip_feature_bit_map<sp/>=<sp/>(SL_SI91X_TCP_IP_FEAT_DHCPV4_CLIENT<sp/>|<sp/>SL_SI91X_TCP_IP_FEAT_SSL<sp/>|<sp/>SL_SI91X_TCP_IP_FEAT_EXTENSION_VALID<sp/>|<sp/>SL_SI91X_TCP_IP_FEAT_MDNSD),</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.custom_feature_bit_map<sp/>=<sp/>(SL_SI91X_CUSTOM_FEAT_EXTENTION_VALID<sp/>|<sp/>SL_SI91X_CUSTOM_FEAT_SOC_CLK_CONFIG_160MHZ),</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ext_custom_feature_bit_map<sp/>=<sp/>(MEMORY_CONFIG<sp/>|<sp/>SL_SI91X_EXT_FEAT_FRONT_END_SWITCH_PINS_ULP_GPIO_4_5_0),</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bt_feature_bit_map<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ext_tcp_ip_feature_bit_map<sp/>=<sp/>(SL_SI91X_EXT_TCP_IP_WINDOW_DIV<sp/>|<sp/>SL_SI91X_CONFIG_FEAT_EXTENTION_VALID<sp/>|<sp/>SL_SI91X_EXT_TCP_IP_FEAT_SSL_THREE_SOCKETS),</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ble_feature_bit_map<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ble_ext_feature_bit_map<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.config_feature_bit_map<sp/>=<sp/>SL_SI91X_FEAT_SLEEP_GPIO_SEL_BITMAP},</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>.ta_pool<sp/>=<sp/>{.tx_ratio_in_buffer_pool<sp/>=<sp/>1,<sp/>.rx_ratio_in_buffer_pool<sp/>=<sp/>1,<sp/>.global_ratio_in_buffer_pool<sp/>=<sp/>1}};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sl_net_wifi_client_profile_t<sp/>wifi_client_profile<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>.config<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ssid<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value<sp/>=<sp/>WIUS_WIFI_SSID,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.length<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(WIUS_WIFI_SSID)<sp/>-<sp/>1,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>SL_WIFI_AUTO_CHANNEL,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.band<sp/>=<sp/>SL_WIFI_AUTO_BAND,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bandwidth<sp/>=<sp/>SL_WIFI_AUTO_BANDWIDTH,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel_bitmap.channel_bitmap_2_4<sp/>=<sp/>SL_WIFI_DEFAULT_CHANNEL_BITMAP,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bssid<sp/>=<sp/>{{0}},</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bss_type<sp/>=<sp/>SL_WIFI_BSS_TYPE_INFRASTRUCTURE,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.security<sp/>=<sp/>DEFAULT_WIFI_CLIENT_SECURITY_TYPE,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.encryption<sp/>=<sp/>DEFAULT_WIFI_CLIENT_ENCRYPTION_TYPE,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.client_options<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.credential_id<sp/>=<sp/>SL_NET_DEFAULT_WIFI_CLIENT_CREDENTIAL_ID,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>.ip<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mode<sp/>=<sp/>SL_IP_MANAGEMENT_DHCP,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.type<sp/>=<sp/>REQUIRED_IP_TYPE,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.host_name<sp/>=<sp/>NULL,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ip<sp/>=<sp/>{{{0}}},</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sl_net_wifi_psk_credential_entry_t<sp/>wifi_client_credential<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>.type<sp/>=<sp/>SL_NET_WIFI_PSK,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>.data_length<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(WIUS_WIFI_PASS)<sp/>-<sp/>1,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>.data<sp/>=<sp/>WIUS_WIFI_PASS,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8c_1aaf695214e7fe3c1481f397c69668c2f6" kindref="member">wius_wifi_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_net_init(SL_NET_WIFI_CLIENT_INTERFACE,<sp/>&amp;station_init_configuration,<sp/>NULL,<sp/>NULL);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>Wi-Fi<sp/>Client<sp/>interface:<sp/>0x%lx&quot;</highlight><highlight class="normal">,<sp/>status);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Somehow<sp/>makes<sp/>initialization<sp/>hang</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sl_mac_address_t<sp/>mac_addr<sp/>=<sp/>{0};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>status<sp/>=<sp/>sl_wifi_get_mac_address(SL_WIFI_CLIENT_INTERFACE,<sp/>&amp;mac_addr);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>(status<sp/>==<sp/>SL_STATUS_OK)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>log_info(&quot;MAC:<sp/>%x:%x:%x:%x:%x:%x&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mac_addr.octet[0],</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mac_addr.octet[1],</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mac_addr.octet[2],</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mac_addr.octet[3],</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mac_addr.octet[4],</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mac_addr.octet[5]);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>log_warn(&quot;Failed<sp/>to<sp/>get<sp/>MAC<sp/>address:<sp/>0x%lx&quot;,<sp/>status);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_net_set_profile(SL_NET_WIFI_CLIENT_INTERFACE,<sp/>SL_NET_PROFILE_ID_1,<sp/>&amp;wifi_client_profile);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>Wi-Fi<sp/>client<sp/>profile:<sp/>0x%lx&quot;</highlight><highlight class="normal">,<sp/>status);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_net_set_credential(SL_NET_DEFAULT_WIFI_CLIENT_CREDENTIAL_ID,<sp/>wifi_client_credential.type,<sp/>&amp;wifi_client_credential.data,<sp/>wifi_client_credential.data_length);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>Wi-Fi<sp/>client<sp/>credential:<sp/>0x%lx&quot;</highlight><highlight class="normal">,<sp/>status);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_net_up(SL_NET_WIFI_CLIENT_INTERFACE,<sp/>SL_NET_PROFILE_ID_1);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>bring<sp/>Wi-Fi<sp/>client<sp/>interface<sp/>up:<sp/>0x%lx&quot;</highlight><highlight class="normal">,<sp/>status);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>0x10003)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;SSID<sp/>&apos;%s&apos;<sp/>not<sp/>found&quot;</highlight><highlight class="normal">,<sp/>WIUS_WIFI_SSID);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>0x10008)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;PASS<sp/>&apos;%s&apos;<sp/>not<sp/>accepted&quot;</highlight><highlight class="normal">,<sp/>WIUS_WIFI_PASS);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>log_debug(</highlight><highlight class="stringliteral">&quot;Wi-Fi<sp/>client<sp/>connected&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_net_wifi_client_profile_t<sp/>profile<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_net_get_profile(SL_NET_WIFI_CLIENT_INTERFACE,<sp/>SL_NET_PROFILE_ID_1,<sp/>&amp;profile);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*ip_bytes<sp/>=<sp/>profile.ip.ip.v4.ip_address.bytes;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_info(</highlight><highlight class="stringliteral">&quot;IP:<sp/>%d.%d.%d.%d&quot;</highlight><highlight class="normal">,<sp/>ip_bytes[0],<sp/>ip_bytes[1],<sp/>ip_bytes[2],<sp/>ip_bytes[3]);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8c_1a594f2cd66c2c4de2d2193b834d215f35" kindref="member">wius_wifi_deinit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sl_net_deinit(SL_NET_WIFI_CLIENT_INTERFACE);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8c_1afd6ea0925f54fe735565ea49180035c8" kindref="member">wius_wifi_mdns_init</ref>(<ref refid="structwius__wifi__mdns" kindref="compound">wius_wifi_mdns_t</ref><sp/>*mdns)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_mdns_configuration_t<sp/>mdns_config<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.protocol<sp/>=<sp/>SL_MDNS_PROTO_UDP,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.type<sp/>=<sp/>SL_IPV4_VERSION,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strlen(mdns-&gt;<ref refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kindref="member">host_name</ref>)<sp/>==<sp/>0<sp/>||<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kindref="member">host_name</ref><sp/>==<sp/>NULL<sp/>||<sp/>strlen(mdns-&gt;<ref refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kindref="member">host_name</ref>)<sp/>+<sp/>8<sp/>&gt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(mdns_config.host_name))</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;mDNS<sp/>host<sp/>name<sp/>string<sp/>not<sp/>set&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strlen(mdns-&gt;<ref refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kindref="member">host_name</ref>)<sp/>+<sp/>8<sp/>&gt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(mdns_config.host_name))</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;mDNS<sp/>host<sp/>name<sp/>too<sp/>long&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(mdns_config.host_name,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(mdns_config.host_name),<sp/></highlight><highlight class="stringliteral">&quot;%s.local.&quot;</highlight><highlight class="normal">,<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kindref="member">host_name</ref>);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_mdns_init(&amp;mdns-&gt;<ref refid="structwius__wifi__mdns_1a1e74eaf538a21737cd5f2f7dcc78060f" kindref="member">handle</ref>,<sp/>&amp;mdns_config,<sp/>NULL);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>mDNS:<sp/>0x%lx&quot;</highlight><highlight class="normal">,<sp/>status);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>log_debug(</highlight><highlight class="stringliteral">&quot;mDNS<sp/>host<sp/>name<sp/>set<sp/>to<sp/>&apos;%s&apos;&quot;</highlight><highlight class="normal">,<sp/>mdns_config.host_name);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_mdns_add_interface(&amp;mdns-&gt;<ref refid="structwius__wifi__mdns_1a1e74eaf538a21737cd5f2f7dcc78060f" kindref="member">handle</ref>,<sp/>SL_NET_WIFI_CLIENT_INTERFACE);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>add<sp/>mDNS<sp/>interface:<sp/>0x%lx&quot;</highlight><highlight class="normal">,<sp/>status);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8c_1a82855ff628f8f7e45c9d75bca469d5ca" kindref="member">wius_wifi_mdns_add</ref>(<ref refid="structwius__wifi__mdns" kindref="compound">wius_wifi_mdns_t</ref><sp/>*mdns)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>service_type[32];</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>instance_name[64];</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mdns-&gt;<ref refid="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" kindref="member">protocol</ref><sp/>==<sp/>NULL<sp/>||<sp/>strlen(mdns-&gt;<ref refid="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" kindref="member">protocol</ref>)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;mDNS<sp/>protocol<sp/>string<sp/>not<sp/>set<sp/>(should<sp/>be<sp/>&apos;udp&apos;<sp/>or<sp/>&apos;tcp&apos;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mdns-&gt;<ref refid="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" kindref="member">service_name</ref><sp/>==<sp/>NULL<sp/>||<sp/>strlen(mdns-&gt;<ref refid="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" kindref="member">service_name</ref>)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;mDNS<sp/>service<sp/>name<sp/>string<sp/>not<sp/>set&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strlen(mdns-&gt;<ref refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kindref="member">host_name</ref>)<sp/>+<sp/>strlen(mdns-&gt;<ref refid="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" kindref="member">protocol</ref>)<sp/>+<sp/>11<sp/>&gt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(service_type))</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;mDNS<sp/>host<sp/>name<sp/>too<sp/>long&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(service_type,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(service_type),<sp/></highlight><highlight class="stringliteral">&quot;_%s._%s.local.&quot;</highlight><highlight class="normal">,<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kindref="member">host_name</ref>,<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" kindref="member">protocol</ref>);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strlen(mdns-&gt;<ref refid="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" kindref="member">service_name</ref>)<sp/>+<sp/>strlen(service_type)<sp/>+<sp/>2<sp/>&gt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(instance_name))</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;mDNS<sp/>service<sp/>name<sp/>too<sp/>long&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(instance_name,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(instance_name),<sp/></highlight><highlight class="stringliteral">&quot;%s.%s&quot;</highlight><highlight class="normal">,<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" kindref="member">service_name</ref>,<sp/>service_type);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_mdns_service_t<sp/>service<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.instance_name<sp/>=<sp/>instance_name,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.port<sp/>=<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a98cb52450cf5cd771f2b2cab2756d80d" kindref="member">port</ref>,</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.service_message<sp/>=<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a2c4d3caa89b8d3679c78053007f5235f" kindref="member">service_message</ref>,</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.service_type<sp/>=<sp/>service_type,</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ttl<sp/>=<sp/>120,</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_mdns_register_service(&amp;mdns-&gt;<ref refid="structwius__wifi__mdns_1a1e74eaf538a21737cd5f2f7dcc78060f" kindref="member">handle</ref>,<sp/>SL_NET_WIFI_CLIENT_INTERFACE,<sp/>&amp;service);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>log_debug(</highlight><highlight class="stringliteral">&quot;mDNS<sp/>service<sp/>type<sp/>&apos;%s&apos;<sp/>instance<sp/>&apos;%s&apos;&quot;</highlight><highlight class="normal">,<sp/>service_type,<sp/>instance_name);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>log_debug(</highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/>added<sp/>on<sp/>port<sp/>%d<sp/>with<sp/>message<sp/>&apos;%s&apos;&quot;</highlight><highlight class="normal">,<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a98cb52450cf5cd771f2b2cab2756d80d" kindref="member">port</ref>,<sp/>mdns-&gt;<ref refid="structwius__wifi__mdns_1a2c4d3caa89b8d3679c78053007f5235f" kindref="member">service_message</ref>);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8c_1a603a11e2f3cac17c65aed65f53b911ec" kindref="member">wius_wifi_set_performance_profile</ref>(<ref refid="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" kindref="member">wius_wifi_performance_profile_t</ref><sp/>profile)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_wifi_performance_profile_v2_t<sp/>set_profile;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(profile)</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9a71330d36c135ee2e5b2c2b09ce369aff" kindref="member">WIUS_PERF_PROFILE_HIGHSPEED</ref>:</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_profile.profile<sp/>=<sp/>SL_WIFI_SYSTEM_HIGH_PERFORMANCE;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9ab20c5ed6f4ea3304bfd92880656066dd" kindref="member">WIUS_PERF_PROFILE_LOWPOWER</ref>:</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_profile.profile<sp/>=<sp/>SL_WIFI_SYSTEM_ASSOCIATED_POWER_SAVE_LOW_LATENCY;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_wifi_set_performance_profile_v2(&amp;set_profile));</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_wifi_performance_profile_v2_t<sp/>read_profile;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_wifi_get_performance_profile_v2(&amp;read_profile));</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>switch<sp/>(read_profile.profile)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>case<sp/>HIGH_PERFORMANCE:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>log_debug(&quot;Performance<sp/>profile:<sp/>HIGH_PERFORMANCE&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>case<sp/>ASSOCIATED_POWER_SAVE:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>log_debug(&quot;Performance<sp/>profile:<sp/>ASSOCIATED_POWER_SAVE&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>case<sp/>ASSOCIATED_POWER_SAVE_LOW_LATENCY:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>log_debug(&quot;Performance<sp/>profile:<sp/>ASSOCIATED_POWER_SAVE_LOW_LATENCY&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>case<sp/>STANDBY_POWER_SAVE:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>log_debug(&quot;Performance<sp/>profile:<sp/>STANDBY_POWER_SAVE&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>case<sp/>STANDBY_POWER_SAVE_WITH_RAM_RETENTION:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>log_debug(&quot;Performance<sp/>profile:<sp/>STANDBY_POWER_SAVE_WITH_RAM_RETENTION&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>default:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>log_warn(&quot;Unknown<sp/>performance<sp/>profile&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(read_profile.profile<sp/>!=<sp/>set_profile.profile)</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_SI91X_POWER_SAVE_NOT_SUPPORTED;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_wifi.c"/>
+  </compounddef>
+</doxygen>

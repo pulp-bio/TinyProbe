@@ -1,0 +1,1013 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__spi_8c" kind="file" language="C++">
+    <compoundname>wius_spi.c</compoundname>
+    <includes refid="wius__spi_8h" local="yes">wius_spi.h</includes>
+    <incdepgraph>
+      <node id="1102">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1107">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1108" relation="include">
+        </childnode>
+      </node>
+      <node id="1110">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1105">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1111">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1107" relation="include">
+        </childnode>
+      </node>
+      <node id="1112">
+        <label>sl_si91x_gspi.h</label>
+      </node>
+      <node id="1101">
+        <label>stdint.h</label>
+      </node>
+      <node id="1098">
+        <label>firmware/user/wius/hal/wius_spi.c</label>
+        <link refid="wius__spi_8c"/>
+        <childnode refid="1099" relation="include">
+        </childnode>
+      </node>
+      <node id="1099">
+        <label>wius_spi.h</label>
+        <link refid="wius__spi_8h"/>
+        <childnode refid="1100" relation="include">
+        </childnode>
+        <childnode refid="1112" relation="include">
+        </childnode>
+        <childnode refid="1113" relation="include">
+        </childnode>
+        <childnode refid="1114" relation="include">
+        </childnode>
+      </node>
+      <node id="1100">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1101" relation="include">
+        </childnode>
+        <childnode refid="1102" relation="include">
+        </childnode>
+        <childnode refid="1103" relation="include">
+        </childnode>
+        <childnode refid="1104" relation="include">
+        </childnode>
+        <childnode refid="1105" relation="include">
+        </childnode>
+        <childnode refid="1106" relation="include">
+        </childnode>
+        <childnode refid="1107" relation="include">
+        </childnode>
+        <childnode refid="1109" relation="include">
+        </childnode>
+        <childnode refid="1111" relation="include">
+        </childnode>
+      </node>
+      <node id="1114">
+        <label>wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="1100" relation="include">
+        </childnode>
+        <childnode refid="1115" relation="include">
+        </childnode>
+        <childnode refid="1116" relation="include">
+        </childnode>
+      </node>
+      <node id="1103">
+        <label>stddef.h</label>
+      </node>
+      <node id="1115">
+        <label>sl_gpio_board.h</label>
+      </node>
+      <node id="1108">
+        <label>env.h</label>
+      </node>
+      <node id="1106">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1116">
+        <label>sl_si91x_driver_gpio.h</label>
+      </node>
+      <node id="1113">
+        <label>sl_si91x_ssi.h</label>
+      </node>
+      <node id="1104">
+        <label>string.h</label>
+      </node>
+      <node id="1109">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1110" relation="include">
+        </childnode>
+        <childnode refid="1102" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="wius__spi_8c_1a499c6992628d9159c49511782c8bc60d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>wius_spi_wait_mode_t</name>
+        <enumvalue id="wius__spi_8c_1a499c6992628d9159c49511782c8bc60dace13e2947e9e9f4b23cb83a6e85b9a23" prot="public">
+          <name>WIUS_SPI_WAIT_IDLE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="wius__spi_8c_1a499c6992628d9159c49511782c8bc60da40b1fcb78513dcfcf2977319b46670ce" prot="public">
+          <name>WIUS_SPI_WAIT_POLL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="wius__spi_8c_1a499c6992628d9159c49511782c8bc60da94637a49b352ede551c6487972173d1e" prot="public">
+          <name>WIUS_SPI_WAIT_SEMAPHORE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="35" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="34" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="wius__spi_8c_1a8a7c7e654c5d0bbf28eddd06e60adc35" prot="public" static="no" mutable="no">
+        <type>osSemaphoreId_t</type>
+        <definition>osSemaphoreId_t _wius_spi_0_sem</definition>
+        <argsstring></argsstring>
+        <name>_wius_spi_0_sem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="31" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__spi_8c_1aeb6927edb95ceac5bd53de5a32a6911a" prot="public" static="no" mutable="no">
+        <type>osSemaphoreId_t</type>
+        <definition>osSemaphoreId_t _wius_spi_1_sem</definition>
+        <argsstring></argsstring>
+        <name>_wius_spi_1_sem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="32" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__spi_8c_1a664d695fcd5fe1d75136f52868c7cfd0" prot="public" static="yes" mutable="no">
+        <type>wius_spi_wait_mode_t</type>
+        <definition>volatile wius_spi_wait_mode_t _wius_spi_0_wait_mode</definition>
+        <argsstring></argsstring>
+        <name>_wius_spi_0_wait_mode</name>
+        <initializer>= WIUS_SPI_WAIT_IDLE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="41" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__spi_8c_1aabdb344d70d83ad57639e738a3e20c75" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>volatile uint32_t _wius_spi_0_event</definition>
+        <argsstring></argsstring>
+        <name>_wius_spi_0_event</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="42" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__spi_8c_1a602b746b0e0c2e825770e9255b280c19" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>volatile bool _wius_spi_0_complete</definition>
+        <argsstring></argsstring>
+        <name>_wius_spi_0_complete</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="43" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__spi_8c_1aac86acad5e67c56f5b5f8e498fd2b9da" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__spi_8h_1af201cebdc47bffa3d7fd5f7b5f51a7d8" kindref="member">wius_spi_inst_t</ref></type>
+        <definition>wius_spi_inst_t _wius_spi_0_instance</definition>
+        <argsstring></argsstring>
+        <name>_wius_spi_0_instance</name>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="45" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="wius__spi_8c_1a7a5df799d192db0cc0b9e637003b4cfa" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__spi_8h_1af201cebdc47bffa3d7fd5f7b5f51a7d8" kindref="member">wius_spi_inst_t</ref></type>
+        <definition>wius_spi_inst_t _wius_spi_1_instance</definition>
+        <argsstring></argsstring>
+        <name>_wius_spi_1_instance</name>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="46" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__spi_8c_1a3b9c1861ab9331bf731c285d10528888" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void _wius_spi_gspi_callback</definition>
+        <argsstring>(uint32_t event)</argsstring>
+        <name>_wius_spi_gspi_callback</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="48" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="349" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1a67e7ba148e4f546fcee06f9df17577d6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void _wius_spi_ssi_callback</definition>
+        <argsstring>(uint32_t event)</argsstring>
+        <name>_wius_spi_ssi_callback</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="49" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="368" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1a6a2b0ec67ae7611c5d8fc9a2f64320dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void _wius_spi_prepare_gspi_wait</definition>
+        <argsstring>(bool poll)</argsstring>
+        <name>_wius_spi_prepare_gspi_wait</name>
+        <param>
+          <type>bool</type>
+          <declname>poll</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="50" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="308" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1a34d425e3858e9ea7250034554e05308b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>static sl_status_t _wius_spi_poll_gspi</definition>
+        <argsstring>(void)</argsstring>
+        <name>_wius_spi_poll_gspi</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="51" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="319" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1a2c63d3c2fe1a38377ce7e9223cd761d8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>static sl_status_t _wius_spi_gspi_event_status</definition>
+        <argsstring>(uint32_t event)</argsstring>
+        <name>_wius_spi_gspi_event_status</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="52" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="339" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1ad0e6c92f255926b5a5ebdff2bb333fb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="wius__spi_8h_1af201cebdc47bffa3d7fd5f7b5f51a7d8" kindref="member">wius_spi_inst_t</ref></type>
+        <definition>wius_spi_inst_t wius_spi_get_instance</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>wius_spi_get_instance</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Get SPI instance by ID. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance ID</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to the SPI instance structure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="54" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="54" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1ac3fc8f4c404b4b2ca545fb275ea41a6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_spi_init</definition>
+        <argsstring>(uint8_t id, wius_spi_config_t *config)</argsstring>
+        <name>wius_spi_init</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="wius__spi_8h_1ad4c07c831a649c8f73c7359df9a151a6" kindref="member">wius_spi_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Initialize SPI module. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance to initialize </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the SPI configuration</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_PARAMETER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invalid instance </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during peripheral initialization </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="59" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="59" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1a7937be4a862bfb4080ca3db6e40a3c8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void _wius_spi_cs_active</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>_wius_spi_cs_active</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="135" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="135" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1abc7d0609165947e34448a28d89ea72af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void _wius_spi_cs_inactive</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>_wius_spi_cs_inactive</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="145" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="145" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1a635806440d8bcf7fbcc1d1f6ca17c3c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_spi_xfer</definition>
+        <argsstring>(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t len, bool wait)</argsstring>
+        <name>wius_spi_xfer</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>tx_buf</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>rx_buf</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait</declname>
+        </param>
+        <briefdescription>
+<para>Transfer data over SPI. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance to use for transfer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tx_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer containing the data to be sent </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer where the received data will be stored </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to transfer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wait for transfer to complete</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during transfer or waiting </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="155" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="155" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1a33cc84419ac464f6de41a332c90586e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_spi_send</definition>
+        <argsstring>(uint8_t id, const uint8_t *tx_buf, size_t len, bool wait)</argsstring>
+        <name>wius_spi_send</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>tx_buf</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait</declname>
+        </param>
+        <briefdescription>
+<para>Send data over SPI without receiving data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance to use for transfer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tx_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer containing the data to be sent </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to send </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wait for transfer to complete</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during transfer or waiting </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="212" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="212" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8c_1a3455051967cd593c0adebcb04d148d10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_spi_await</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>wius_spi_await</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Await SPI transfer completion. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance to await</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_TIMEOUT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout occured (See <ref refid="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" kindref="member">WIUS_SPI_RX_TIMEOUT</ref>) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during acquiring semaphores </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.c" line="261" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="261" bodyend="306"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS SPI implementation source file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__spi_8h" kindref="compound">wius_spi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">osSemaphoreId_t<sp/>_wius_spi_0_sem;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">osSemaphoreId_t<sp/>_wius_spi_1_sem;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>WIUS_SPI_WAIT_IDLE,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>WIUS_SPI_WAIT_POLL,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>WIUS_SPI_WAIT_SEMAPHORE,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}<sp/>wius_spi_wait_mode_t;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>wius_spi_wait_mode_t<sp/>_wius_spi_0_wait_mode<sp/>=<sp/>WIUS_SPI_WAIT_IDLE;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/>_wius_spi_0_event<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>_wius_spi_0_complete<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/>_wius_spi_0_instance<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/>_wius_spi_1_instance<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_wius_spi_gspi_callback(uint32_t<sp/>event);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_wius_spi_ssi_callback(uint32_t<sp/>event);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_wius_spi_prepare_gspi_wait(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>poll);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>sl_status_t<sp/>_wius_spi_poll_gspi(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>sl_status_t<sp/>_wius_spi_gspi_event_status(uint32_t<sp/>event);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/><ref refid="wius__spi_8c_1ad0e6c92f255926b5a5ebdff2bb333fb5" kindref="member">wius_spi_get_instance</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/>?<sp/>_wius_spi_0_instance<sp/>:<sp/>_wius_spi_1_instance;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">sl_status_t<sp/><ref refid="wius__spi_8c_1ac3fc8f4c404b4b2ca545fb275ea41a6c" kindref="member">wius_spi_init</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="structwius__spi__config" kindref="compound">wius_spi_config_t</ref><sp/>*config)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&gt;<sp/><ref refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kindref="member">WIUS_SPI_INST_1</ref>)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/>*instance<sp/>=<sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/>?<sp/>&amp;_wius_spi_0_instance<sp/>:<sp/>&amp;_wius_spi_1_instance;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref><sp/>=<sp/>id;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref><sp/>=<sp/>*config;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" kindref="member">cs_mode</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23ac7502901d7fd9cc3e382d6c0512043cd" kindref="member">WIUS_SPI_CS_SW</ref>)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>instance-&gt;<ref refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" kindref="member">cs</ref><sp/>=<sp/><ref refid="wius__gpio_8h_1acdd1dd0bc2969cf47f8c03faa9c9e347" kindref="member">WIUS_GPIO_OUTPUT</ref>(instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1a0b6a1a8c4604544b58ce125cdedb0102" kindref="member">cs_pin</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(instance-&gt;<ref refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" kindref="member">cs</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(instance-&gt;<ref refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" kindref="member">cs</ref>,<sp/>!instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1ad89ae86bf8cedc1b15c72fcf02392247" kindref="member">cs_polarity</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Add<sp/>pin<sp/>configurations?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Check<sp/>DMA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/></highlight><highlight class="comment">//<sp/>GSPI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_gspi_init(SL_GSPI_MASTER,<sp/>&amp;instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" kindref="member">gspi</ref>));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_gspi_control_config_t<sp/>gspi_config<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bit_width<sp/>=<sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1a464a9360a36971185406f7bf8e5181c6" kindref="member">width</ref>,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bitrate<sp/>=<sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1a8b30e868d6bffbc8c6ed5c8e21ddc637" kindref="member">freq</ref>,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.clock_mode<sp/>=<sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1aabd48310fdb19cb135c66f797f97ca18" kindref="member">mode</ref>,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.slave_select_mode<sp/>=<sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" kindref="member">cs_mode</ref>,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.swap_read<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.swap_write<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_gspi_set_configuration(instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" kindref="member">gspi</ref>,<sp/>&amp;gspi_config));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_si91x_gspi_set_slave_number(GSPI_SLAVE_0);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_0_sem<sp/>=<sp/>osSemaphoreNew(1,<sp/>0,<sp/>NULL);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_wius_spi_0_sem<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_ALLOCATION_FAILED;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_gspi_register_event_callback(instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" kindref="member">gspi</ref>,<sp/>_wius_spi_gspi_callback));</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kindref="member">WIUS_SPI_INST_1</ref>)<sp/></highlight><highlight class="comment">//<sp/>SSI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_ssi_init(SL_SSI_MASTER_ACTIVE,<sp/>&amp;instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" kindref="member">ssi</ref>));</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_ssi_control_config_t<sp/>ssi_config<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.baud_rate<sp/>=<sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1a8b30e868d6bffbc8c6ed5c8e21ddc637" kindref="member">freq</ref>,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bit_width<sp/>=<sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1a464a9360a36971185406f7bf8e5181c6" kindref="member">width</ref>,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.clock_mode<sp/>=<sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1aabd48310fdb19cb135c66f797f97ca18" kindref="member">mode</ref>,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.device_mode<sp/>=<sp/>SL_SSI_MASTER_ACTIVE,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.receive_sample_delay<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_ssi_set_configuration(instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" kindref="member">ssi</ref>,<sp/>&amp;ssi_config,<sp/>SSI_SLAVE_0));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_si91x_ssi_set_slave_number(SSI_SLAVE_0);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_1_sem<sp/>=<sp/>osSemaphoreNew(1,<sp/>0,<sp/>NULL);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_wius_spi_1_sem<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_ALLOCATION_FAILED;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_ssi_register_event_callback(instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" kindref="member">ssi</ref>,<sp/>_wius_spi_ssi_callback));</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_wius_spi_cs_active(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/>*instance<sp/>=<sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/>?<sp/>&amp;_wius_spi_0_instance<sp/>:<sp/>&amp;_wius_spi_1_instance;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" kindref="member">cs_mode</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23ac7502901d7fd9cc3e382d6c0512043cd" kindref="member">WIUS_SPI_CS_SW</ref>)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(instance-&gt;<ref refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" kindref="member">cs</ref>,<sp/>instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1ad89ae86bf8cedc1b15c72fcf02392247" kindref="member">cs_polarity</ref>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_wius_spi_cs_inactive(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/>*instance<sp/>=<sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/>?<sp/>&amp;_wius_spi_0_instance<sp/>:<sp/>&amp;_wius_spi_1_instance;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" kindref="member">cs_mode</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23ac7502901d7fd9cc3e382d6c0512043cd" kindref="member">WIUS_SPI_CS_SW</ref>)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(instance-&gt;<ref refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" kindref="member">cs</ref>,<sp/>!instance-&gt;<ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>.<ref refid="structwius__spi__config_1ad89ae86bf8cedc1b15c72fcf02392247" kindref="member">cs_polarity</ref>);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal">sl_status_t<sp/><ref refid="wius__spi_8c_1a635806440d8bcf7fbcc1d1f6ca17c3c3" kindref="member">wius_spi_xfer</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>uint8_t<sp/>*tx_buf,<sp/>uint8_t<sp/>*rx_buf,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>wait)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&gt;<sp/><ref refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kindref="member">WIUS_SPI_INST_1</ref><sp/>||<sp/>tx_buf<sp/>==<sp/>NULL<sp/>||<sp/>rx_buf<sp/>==<sp/>NULL<sp/>||<sp/>len<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/>*instance<sp/>=<sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/>?<sp/>&amp;_wius_spi_0_instance<sp/>:<sp/>&amp;_wius_spi_1_instance;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/></highlight><highlight class="comment">//<sp/>GSPI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>poll<sp/>=<sp/>wait<sp/>&amp;&amp;<sp/>len<sp/>&lt;=<sp/><ref refid="group__config__wius_1ga9f5eccac536c6a82a45c557825ce80fb" kindref="member">WIUS_SPI_SHORT_XFER_MAX</ref>;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_prepare_gspi_wait(poll);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_active(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_si91x_gspi_transfer_data(instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" kindref="member">gspi</ref>,<sp/>tx_buf,<sp/>rx_buf,<sp/>len);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_0_wait_mode<sp/>=<sp/>WIUS_SPI_WAIT_IDLE;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_inactive(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poll)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_wius_spi_poll_gspi();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kindref="member">WIUS_SPI_INST_1</ref>)<sp/></highlight><highlight class="comment">//<sp/>SSI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_active(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_si91x_ssi_transfer_data(instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" kindref="member">ssi</ref>,<sp/>tx_buf,<sp/>rx_buf,<sp/>len);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_inactive(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(wait)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__spi_8c_1a3455051967cd593c0adebcb04d148d10" kindref="member">wius_spi_await</ref>(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>));</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal">sl_status_t<sp/><ref refid="wius__spi_8c_1a33cc84419ac464f6de41a332c90586e7" kindref="member">wius_spi_send</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*tx_buf,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>wait)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&gt;<sp/><ref refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kindref="member">WIUS_SPI_INST_1</ref><sp/>||<sp/>tx_buf<sp/>==<sp/>NULL<sp/>||<sp/>len<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/>*instance<sp/>=<sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/>?<sp/>&amp;_wius_spi_0_instance<sp/>:<sp/>&amp;_wius_spi_1_instance;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/></highlight><highlight class="comment">//<sp/>GSPI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>poll<sp/>=<sp/>wait<sp/>&amp;&amp;<sp/>len<sp/>&lt;=<sp/><ref refid="group__config__wius_1ga9f5eccac536c6a82a45c557825ce80fb" kindref="member">WIUS_SPI_SHORT_XFER_MAX</ref>;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_prepare_gspi_wait(poll);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_active(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_si91x_gspi_send_data(instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" kindref="member">gspi</ref>,<sp/>tx_buf,<sp/>len);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_0_wait_mode<sp/>=<sp/>WIUS_SPI_WAIT_IDLE;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_inactive(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poll)</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_wius_spi_poll_gspi();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref><sp/>==<sp/><ref refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kindref="member">WIUS_SPI_INST_1</ref>)<sp/></highlight><highlight class="comment">//<sp/>SSI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_active(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_si91x_ssi_send_data(instance-&gt;<ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>.<ref refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" kindref="member">ssi</ref>,<sp/>tx_buf,<sp/>len);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_inactive(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(wait)</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__spi_8c_1a3455051967cd593c0adebcb04d148d10" kindref="member">wius_spi_await</ref>(instance-&gt;<ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>));</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal">sl_status_t<sp/><ref refid="wius__spi_8c_1a3455051967cd593c0adebcb04d148d10" kindref="member">wius_spi_await</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/><ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>)<sp/></highlight><highlight class="comment">//<sp/>GSPI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(osSemaphoreAcquire(_wius_spi_0_sem,<sp/><ref refid="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" kindref="member">WIUS_SPI_RX_TIMEOUT</ref>))</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>osOK:</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>_wius_spi_gspi_event_status(_wius_spi_0_event);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>osErrorTimeout:</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_TIMEOUT;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_FAIL;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_0_wait_mode<sp/>=<sp/>WIUS_SPI_WAIT_IDLE;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_inactive(<ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/><ref refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kindref="member">WIUS_SPI_INST_1</ref>)<sp/></highlight><highlight class="comment">//<sp/>SSI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(osSemaphoreAcquire(_wius_spi_1_sem,<sp/><ref refid="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" kindref="member">WIUS_SPI_RX_TIMEOUT</ref>))</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>osOK:</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>osErrorTimeout:</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_TIMEOUT;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_FAIL;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_inactive(<ref refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" kindref="member">WIUS_SPI_INST_1</ref>);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_wius_spi_prepare_gspi_wait(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>poll)</highlight></codeline>
+<codeline lineno="309"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>late<sp/>completion<sp/>from<sp/>a<sp/>failed<sp/>transfer<sp/>must<sp/>not<sp/>satisfy<sp/>a<sp/>new<sp/>await.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(osSemaphoreAcquire(_wius_spi_0_sem,<sp/>0)<sp/>==<sp/>osOK)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>_wius_spi_0_event<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>_wius_spi_0_complete<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>_wius_spi_0_wait_mode<sp/>=<sp/>poll<sp/>?<sp/>WIUS_SPI_WAIT_POLL<sp/>:<sp/>WIUS_SPI_WAIT_SEMAPHORE;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>sl_status_t<sp/>_wius_spi_poll_gspi(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="320"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>start<sp/>=<sp/>osKernelGetTickCount();</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!_wius_spi_0_complete)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((uint32_t)(osKernelGetTickCount()<sp/>-<sp/>start)<sp/>&gt;=<sp/><ref refid="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" kindref="member">WIUS_SPI_RX_TIMEOUT</ref>)</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_0_wait_mode<sp/>=<sp/>WIUS_SPI_WAIT_IDLE;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_cs_inactive(<ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_TIMEOUT;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>_wius_spi_gspi_event_status(_wius_spi_0_event);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>_wius_spi_0_wait_mode<sp/>=<sp/>WIUS_SPI_WAIT_IDLE;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>_wius_spi_cs_inactive(<ref refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" kindref="member">WIUS_SPI_INST_0</ref>);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>sl_status_t<sp/>_wius_spi_gspi_event_status(uint32_t<sp/>event)</highlight></codeline>
+<codeline lineno="340"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((event<sp/>&amp;<sp/>(SL_GSPI_DATA_LOST<sp/>|<sp/>SL_GSPI_MODE_FAULT))<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_FAIL;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(event<sp/>&amp;<sp/>SL_GSPI_TRANSFER_COMPLETE)<sp/>!=<sp/>0<sp/>?<sp/>SL_STATUS_OK<sp/>:<sp/>SL_STATUS_FAIL;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_wius_spi_gspi_callback(uint32_t<sp/>event)</highlight></codeline>
+<codeline lineno="350"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_wius_spi_0_wait_mode<sp/>==<sp/>WIUS_SPI_WAIT_IDLE)</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((event<sp/>&amp;<sp/>(SL_GSPI_TRANSFER_COMPLETE<sp/>|<sp/>SL_GSPI_DATA_LOST<sp/>|<sp/>SL_GSPI_MODE_FAULT))<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_0_event<sp/>=<sp/>event;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_wius_spi_0_complete<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_wius_spi_0_wait_mode<sp/>==<sp/>WIUS_SPI_WAIT_SEMAPHORE)</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>osSemaphoreRelease(_wius_spi_0_sem);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="366"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_wius_spi_ssi_callback(uint32_t<sp/>event)</highlight></codeline>
+<codeline lineno="369"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event<sp/>==<sp/>SSI_EVENT_TRANSFER_COMPLETE)</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>osSemaphoreRelease(_wius_spi_1_sem);</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="374"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_spi.c"/>
+  </compounddef>
+</doxygen>

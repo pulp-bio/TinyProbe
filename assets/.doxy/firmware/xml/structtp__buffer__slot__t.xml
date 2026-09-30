@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structtp__buffer__slot__t" kind="struct" language="C++" prot="public">
+    <compoundname>tp_buffer_slot_t</compoundname>
+    <includes refid="tp__buffer_8h" local="no">tp_buffer.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtp__buffer__slot__t_1a9c32a4b0a8158067ba6859a511fd1d63" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t tp_buffer_slot_t::data[TP_BUFFER_SIZE]</definition>
+        <argsstring>[TP_BUFFER_SIZE]</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Buffer data </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="61" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtp__buffer__slot__t_1a60884ce48d2604dffcf6f8b0efcd9dc3" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t tp_buffer_slot_t::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Length of the buffer data </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="62" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtp__buffer__slot__t_1a343de7a7c30f335989ae2d668833bd03" prot="public" static="no" mutable="no">
+        <type><ref refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0" kindref="member">tp_buffer_status_t</ref></type>
+        <definition>tp_buffer_status_t tp_buffer_slot_t::status</definition>
+        <argsstring></argsstring>
+        <name>status</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Status of the buffer <simplesect kind="warning"><para>Do not modify </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="63" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtp__buffer__slot__t_1a02e2c65e3afd46aafd7fb7ff70c36f54" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t tp_buffer_slot_t::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ID of the slot </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="64" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Buffer slot structure. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/tp/common/tp_buffer.h" line="60" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="59" bodyend="65"/>
+    <listofallmembers>
+      <member refid="structtp__buffer__slot__t_1a9c32a4b0a8158067ba6859a511fd1d63" prot="public" virt="non-virtual"><scope>tp_buffer_slot_t</scope><name>data</name></member>
+      <member refid="structtp__buffer__slot__t_1a02e2c65e3afd46aafd7fb7ff70c36f54" prot="public" virt="non-virtual"><scope>tp_buffer_slot_t</scope><name>id</name></member>
+      <member refid="structtp__buffer__slot__t_1a60884ce48d2604dffcf6f8b0efcd9dc3" prot="public" virt="non-virtual"><scope>tp_buffer_slot_t</scope><name>length</name></member>
+      <member refid="structtp__buffer__slot__t_1a343de7a7c30f335989ae2d668833bd03" prot="public" virt="non-virtual"><scope>tp_buffer_slot_t</scope><name>status</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

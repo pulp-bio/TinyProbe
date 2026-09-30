@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__power_8h" kind="file" language="C++">
+    <compoundname>tp_power.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includedby refid="tp__power_8c" local="yes">firmware/user/tp/hal/tp_power.c</includedby>
+    <includedby refid="tp__method__controlpower_8c" local="yes">firmware/user/tp/methods/tp_method_controlpower.c</includedby>
+    <includedby refid="tp__method__triggershot_8c" local="yes">firmware/user/tp/methods/tp_method_triggershot.c</includedby>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <incdepgraph>
+      <node id="450">
+        <label>stdbool.h</label>
+      </node>
+      <node id="455">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="456" relation="include">
+        </childnode>
+      </node>
+      <node id="458">
+        <label>stdarg.h</label>
+      </node>
+      <node id="453">
+        <label>sl_status.h</label>
+      </node>
+      <node id="459">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="455" relation="include">
+        </childnode>
+      </node>
+      <node id="449">
+        <label>stdint.h</label>
+      </node>
+      <node id="448">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="449" relation="include">
+        </childnode>
+        <childnode refid="450" relation="include">
+        </childnode>
+        <childnode refid="451" relation="include">
+        </childnode>
+        <childnode refid="452" relation="include">
+        </childnode>
+        <childnode refid="453" relation="include">
+        </childnode>
+        <childnode refid="454" relation="include">
+        </childnode>
+        <childnode refid="455" relation="include">
+        </childnode>
+        <childnode refid="457" relation="include">
+        </childnode>
+        <childnode refid="459" relation="include">
+        </childnode>
+      </node>
+      <node id="451">
+        <label>stddef.h</label>
+      </node>
+      <node id="456">
+        <label>env.h</label>
+      </node>
+      <node id="454">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="452">
+        <label>string.h</label>
+      </node>
+      <node id="457">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="458" relation="include">
+        </childnode>
+        <childnode refid="450" relation="include">
+        </childnode>
+      </node>
+      <node id="447">
+        <label>firmware/user/tp/hal/tp_power.h</label>
+        <link refid="tp__power_8h"/>
+        <childnode refid="448" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="462">
+        <label>firmware/user/tp/methods/tp_method_controlpower.c</label>
+        <link refid="tp__method__controlpower_8c"/>
+      </node>
+      <node id="464">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="463">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+      <node id="461">
+        <label>firmware/user/tp/hal/tp_power.c</label>
+        <link refid="tp__power_8c"/>
+      </node>
+      <node id="460">
+        <label>firmware/user/tp/hal/tp_power.h</label>
+        <link refid="tp__power_8h"/>
+        <childnode refid="461" relation="include">
+        </childnode>
+        <childnode refid="462" relation="include">
+        </childnode>
+        <childnode refid="463" relation="include">
+        </childnode>
+        <childnode refid="464" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>tp_power_domain</name>
+        <enumvalue id="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4ced40720b88fcf8d0034327a1da93c6" prot="public">
+          <name>TP_POWER_DOMAIN_LVDS_2_5V</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>LVDS 2.5V </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4812600986de55f6bcb826757c14fe12" prot="public">
+          <name>TP_POWER_DOMAIN_POS_HV</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Positive high voltage </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9eaea78c3856cf79c5d8d5ee654be18cb3f" prot="public">
+          <name>TP_POWER_DOMAIN_NEG_HV</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Negative high voltage </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea666e5c94c41e2fa90236f8b6b54dc065" prot="public">
+          <name>TP_POWER_DOMAIN_NEG_5V</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Negative 5V </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea39cd583bdce367a99b3f843cc06df5d5" prot="public">
+          <name>TP_POWER_DOMAIN_PLL_PWD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>PLL power down </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Power domain enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.h" line="39" column="1" bodyfile="firmware/user/tp/hal/tp_power.h" bodystart="38" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="tp__power_8h_1a9768fdd498cb105fc0b148d6099746b1" prot="public" static="no">
+        <type>enum <ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9e" kindref="member">tp_power_domain</ref></type>
+        <definition>typedef enum tp_power_domain  tp_power_domain_t</definition>
+        <argsstring></argsstring>
+        <name>tp_power_domain_t</name>
+        <briefdescription>
+<para>Power domain enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.h" line="45" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__power_8h_1a8eb8f9958ed95a620520d7af8ea603a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_power_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_power_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the power control module. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.h" line="51" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="41" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__power_8h_1a60b58ec40db6c7ce2679004af099c0f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_power_on</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_power_on</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the power domain of the TinyProbe. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.h" line="57" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="55" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__power_8h_1ad0aed64c7ed1cc0415e1ba6c3b087941" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_power_set</definition>
+        <argsstring>(tp_power_domain_t domain, bool enabled)</argsstring>
+        <name>tp_power_set</name>
+        <param>
+          <type><ref refid="tp__power_8h_1a9768fdd498cb105fc0b148d6099746b1" kindref="member">tp_power_domain_t</ref></type>
+          <declname>domain</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Enable or disable a power domain. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>domain</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Power domain to enable or disable </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to enable, false to disable </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.h" line="66" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="64" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe power management driver header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9e" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9e" kindref="member">tp_power_domain</ref></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40" refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4ced40720b88fcf8d0034327a1da93c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4ced40720b88fcf8d0034327a1da93c6" kindref="member">TP_POWER_DOMAIN_LVDS_2_5V</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="41" refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4812600986de55f6bcb826757c14fe12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4812600986de55f6bcb826757c14fe12" kindref="member">TP_POWER_DOMAIN_POS_HV</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42" refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9eaea78c3856cf79c5d8d5ee654be18cb3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9eaea78c3856cf79c5d8d5ee654be18cb3f" kindref="member">TP_POWER_DOMAIN_NEG_HV</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43" refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea666e5c94c41e2fa90236f8b6b54dc065" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea666e5c94c41e2fa90236f8b6b54dc065" kindref="member">TP_POWER_DOMAIN_NEG_5V</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44" refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea39cd583bdce367a99b3f843cc06df5d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea39cd583bdce367a99b3f843cc06df5d5" kindref="member">TP_POWER_DOMAIN_PLL_PWD</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}<sp/><ref refid="tp__power_8h_1a9768fdd498cb105fc0b148d6099746b1" kindref="member">tp_power_domain_t</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1a8eb8f9958ed95a620520d7af8ea603a5" kindref="member">tp_power_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1a60b58ec40db6c7ce2679004af099c0f1" kindref="member">tp_power_on</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1ad0aed64c7ed1cc0415e1ba6c3b087941" kindref="member">tp_power_set</ref>(<ref refid="tp__power_8h_1a9768fdd498cb105fc0b148d6099746b1" kindref="member">tp_power_domain_t</ref><sp/>domain,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enabled);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/hal/tp_power.h"/>
+  </compounddef>
+</doxygen>

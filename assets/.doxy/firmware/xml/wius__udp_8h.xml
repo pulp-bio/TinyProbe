@@ -1,0 +1,716 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__udp_8h" kind="file" language="C++">
+    <compoundname>wius_udp.h</compoundname>
+    <includes local="yes">socket.h</includes>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includedby refid="tp_8h" local="yes">firmware/user/tp/tp.h</includedby>
+    <includedby refid="wius__udp_8c" local="yes">firmware/user/wius/hal/wius_udp.c</includedby>
+    <incdepgraph>
+      <node id="1209">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1214">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1215" relation="include">
+        </childnode>
+      </node>
+      <node id="1217">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1212">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1218">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1214" relation="include">
+        </childnode>
+      </node>
+      <node id="1208">
+        <label>stdint.h</label>
+      </node>
+      <node id="1207">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1208" relation="include">
+        </childnode>
+        <childnode refid="1209" relation="include">
+        </childnode>
+        <childnode refid="1210" relation="include">
+        </childnode>
+        <childnode refid="1211" relation="include">
+        </childnode>
+        <childnode refid="1212" relation="include">
+        </childnode>
+        <childnode refid="1213" relation="include">
+        </childnode>
+        <childnode refid="1214" relation="include">
+        </childnode>
+        <childnode refid="1216" relation="include">
+        </childnode>
+        <childnode refid="1218" relation="include">
+        </childnode>
+      </node>
+      <node id="1210">
+        <label>stddef.h</label>
+      </node>
+      <node id="1215">
+        <label>env.h</label>
+      </node>
+      <node id="1213">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1206">
+        <label>socket.h</label>
+      </node>
+      <node id="1211">
+        <label>string.h</label>
+      </node>
+      <node id="1216">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1217" relation="include">
+        </childnode>
+        <childnode refid="1209" relation="include">
+        </childnode>
+      </node>
+      <node id="1205">
+        <label>firmware/user/wius/hal/wius_udp.h</label>
+        <link refid="wius__udp_8h"/>
+        <childnode refid="1206" relation="include">
+        </childnode>
+        <childnode refid="1207" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1223">
+        <label>firmware/user/user.c</label>
+        <link refid="user_8c"/>
+      </node>
+      <node id="1222">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="1220">
+        <label>firmware/user/tp/tp.h</label>
+        <link refid="tp_8h"/>
+        <childnode refid="1221" relation="include">
+        </childnode>
+        <childnode refid="1222" relation="include">
+        </childnode>
+        <childnode refid="1223" relation="include">
+        </childnode>
+      </node>
+      <node id="1224">
+        <label>firmware/user/wius/hal/wius_udp.c</label>
+        <link refid="wius__udp_8c"/>
+      </node>
+      <node id="1219">
+        <label>firmware/user/wius/hal/wius_udp.h</label>
+        <link refid="wius__udp_8h"/>
+        <childnode refid="1220" relation="include">
+        </childnode>
+        <childnode refid="1224" relation="include">
+        </childnode>
+      </node>
+      <node id="1221">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structwius__udp" prot="public">wius_udp</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" prot="public" static="no">
+        <type>struct <ref refid="structwius__udp" kindref="compound">wius_udp</ref></type>
+        <definition>typedef struct wius_udp  wius_udp_t</definition>
+        <argsstring></argsstring>
+        <name>wius_udp_t</name>
+        <briefdescription>
+<para>UDP connection structure. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>To be filled by <ref refid="wius__udp_8h_1ab261748d3aba5b0dd0635f561ca8317b" kindref="member">wius_udp_init</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="46" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__udp_8h_1ab261748d3aba5b0dd0635f561ca8317b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wius_udp_init</definition>
+        <argsstring>(wius_udp_t *udp)</argsstring>
+        <name>wius_udp_init</name>
+        <param>
+          <type><ref refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kindref="member">wius_udp_t</ref> *</type>
+          <declname>udp</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the UDP connection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>udp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDP connection structure</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function must be called before any other UDP function </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="56" column="1" bodyfile="firmware/user/wius/hal/wius_udp.c" bodystart="41" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__udp_8h_1ac6681bf45b86647fb9a0575fba14c4a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_udp_bind</definition>
+        <argsstring>(wius_udp_t *udp, char *ip, int port)</argsstring>
+        <name>wius_udp_bind</name>
+        <param>
+          <type><ref refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kindref="member">wius_udp_t</ref> *</type>
+          <declname>udp</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>ip</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Bind the UDP socket. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>udp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDP connection structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Server IP address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Server port</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_SOCKET_ALREADY_OPEN</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket already binded </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_SOCKET_NOT_CREATED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket creation failed </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_SOCKET_NOT_CONNECTED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket binding failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="71" column="1" bodyfile="firmware/user/wius/hal/wius_udp.c" bodystart="51" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__udp_8h_1a16d2f74cf85e9bf2d403065ce1f1c0e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_udp_close</definition>
+        <argsstring>(wius_udp_t *udp)</argsstring>
+        <name>wius_udp_close</name>
+        <param>
+          <type><ref refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kindref="member">wius_udp_t</ref> *</type>
+          <declname>udp</declname>
+        </param>
+        <briefdescription>
+<para>Close the UDP socket. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>udp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDP connection structure</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_SOCKET_NOT_CONNECTED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket not binded </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="82" column="1" bodyfile="firmware/user/wius/hal/wius_udp.c" bodystart="81" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__udp_8h_1ac9fa29b6355f2fa4c83420a60d2ec908" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_udp_send</definition>
+        <argsstring>(wius_udp_t *udp, const uint8_t *data, size_t data_len)</argsstring>
+        <name>wius_udp_send</name>
+        <param>
+          <type><ref refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kindref="member">wius_udp_t</ref> *</type>
+          <declname>udp</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_len</declname>
+        </param>
+        <briefdescription>
+<para>Send data over a UDP connection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>udp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDP connection structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data buffer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data length</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_SOCKET_NOT_CONNECTED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket not binded </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_IO_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Send failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="96" column="1" bodyfile="firmware/user/wius/hal/wius_udp.c" bodystart="97" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__udp_8h_1a5f44bf4e4a0c7a0770ae3d04f1f8c517" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_udp_sendto</definition>
+        <argsstring>(wius_udp_t *udp, const uint8_t *data, size_t data_len, char *ip, int port)</argsstring>
+        <name>wius_udp_sendto</name>
+        <param>
+          <type><ref refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kindref="member">wius_udp_t</ref> *</type>
+          <declname>udp</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_len</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>ip</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Send data over a UDP connection to a specific IP and port. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>udp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDP connection structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data buffer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data length </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination IP address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination port</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_SOCKET_NOT_CONNECTED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket not binded </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_IO_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Send failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="112" column="1" bodyfile="firmware/user/wius/hal/wius_udp.c" bodystart="115" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__udp_8h_1ac07e72eb078aa6a7370bfc8ad6d19548" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_udp_receive</definition>
+        <argsstring>(wius_udp_t *udp, uint8_t *buffer, size_t buffer_len, ssize_t *received_len, int32_t timeout_ms)</argsstring>
+        <name>wius_udp_receive</name>
+        <param>
+          <type><ref refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kindref="member">wius_udp_t</ref> *</type>
+          <declname>udp</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_len</declname>
+        </param>
+        <param>
+          <type>ssize_t *</type>
+          <declname>received_len</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Receive data over a UDP connection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>udp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDP connection structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store received data </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer length </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>received_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store the received data length </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (set to &lt;= 0 for blocking)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_SOCKET_NOT_CONNECTED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket not binded </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_PARAMETER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer or received_len is NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_IO_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receive failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="130" column="1" bodyfile="firmware/user/wius/hal/wius_udp.c" bodystart="139" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__udp_8h_1abcff7fa7767de94838b602286e8b5908" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_udp_receivefrom</definition>
+        <argsstring>(wius_udp_t *udp, uint8_t *buffer, size_t buffer_len, ssize_t *received_len, char *ip, size_t ip_len, int *port, int32_t timeout_ms)</argsstring>
+        <name>wius_udp_receivefrom</name>
+        <param>
+          <type><ref refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kindref="member">wius_udp_t</ref> *</type>
+          <declname>udp</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_len</declname>
+        </param>
+        <param>
+          <type>ssize_t *</type>
+          <declname>received_len</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>ip</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>ip_len</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Receive data over a UDP connection and retrieve the sender IP and port. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>udp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDP connection structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store received data </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer length </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>received_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store the received data length </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the sender IP address (at least 16 bytes) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ip_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>IP buffer length (at least 16 bytes) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store the sender port </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (set to &lt;= 0 for blocking)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_SOCKET_NOT_CONNECTED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket not binded </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_PARAMETER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer or received_len is NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_IO_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receive failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="151" column="1" bodyfile="firmware/user/wius/hal/wius_udp.c" bodystart="175" bodyend="230"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS UDP implementation header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;socket.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="structwius__udp" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwius__udp" kindref="compound">wius_udp</ref></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43" refid="structwius__udp_1a7ff3c801686b18aa7a0947c9b83145e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structwius__udp_1a7ff3c801686b18aa7a0947c9b83145e3" kindref="member">connected</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44" refid="structwius__udp_1a2242a3a0521c7ec8dd71fc40dd3785ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structwius__udp_1a2242a3a0521c7ec8dd71fc40dd3785ca" kindref="member">socket</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45" refid="structwius__udp_1aa40aa98b41e130f67fc1021f3406c43a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sockaddr_in<sp/><ref refid="structwius__udp_1aa40aa98b41e130f67fc1021f3406c43a" kindref="member">server_address</ref>;<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/><ref refid="wius__udp_8h_1adedbd1dadbfce6754f150954edbdd9ca" kindref="member">wius_udp_t</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="wius__udp_8h_1ab261748d3aba5b0dd0635f561ca8317b" kindref="member">wius_udp_init</ref>(<ref refid="structwius__udp" kindref="compound">wius_udp_t</ref><sp/>*udp);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">sl_status_t<sp/><ref refid="wius__udp_8h_1ac6681bf45b86647fb9a0575fba14c4a8" kindref="member">wius_udp_bind</ref>(<ref refid="structwius__udp" kindref="compound">wius_udp_t</ref><sp/>*udp,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*ip,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">sl_status_t<sp/><ref refid="wius__udp_8h_1a16d2f74cf85e9bf2d403065ce1f1c0e9" kindref="member">wius_udp_close</ref>(<ref refid="structwius__udp" kindref="compound">wius_udp_t</ref><sp/>*udp);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">sl_status_t<sp/><ref refid="wius__udp_8h_1ac9fa29b6355f2fa4c83420a60d2ec908" kindref="member">wius_udp_send</ref>(<ref refid="structwius__udp" kindref="compound">wius_udp_t</ref><sp/>*udp,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_len);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">sl_status_t<sp/><ref refid="wius__udp_8h_1a5f44bf4e4a0c7a0770ae3d04f1f8c517" kindref="member">wius_udp_sendto</ref>(<ref refid="structwius__udp" kindref="compound">wius_udp_t</ref><sp/>*udp,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_len,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*ip,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">sl_status_t<sp/><ref refid="wius__udp_8h_1ac07e72eb078aa6a7370bfc8ad6d19548" kindref="member">wius_udp_receive</ref>(<ref refid="structwius__udp" kindref="compound">wius_udp_t</ref><sp/>*udp,<sp/>uint8_t<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_len,<sp/>ssize_t<sp/>*received_len,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>timeout_ms);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">sl_status_t<sp/><ref refid="wius__udp_8h_1abcff7fa7767de94838b602286e8b5908" kindref="member">wius_udp_receivefrom</ref>(<ref refid="structwius__udp" kindref="compound">wius_udp_t</ref><sp/>*udp,<sp/>uint8_t<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_len,<sp/>ssize_t<sp/>*received_len,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*ip,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>ip_len,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*port,<sp/>int32_t<sp/>timeout_ms);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_udp.h"/>
+  </compounddef>
+</doxygen>

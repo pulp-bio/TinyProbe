@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="group__wius" kind="group">
+    <compoundname>wius</compoundname>
+    <title>WiUS Module</title>
+    <innerfile refid="wius__gpio_8c">wius_gpio.c</innerfile>
+    <innerfile refid="wius__gpio_8h">wius_gpio.h</innerfile>
+    <innerfile refid="wius__power_8c">wius_power.c</innerfile>
+    <innerfile refid="wius__power_8h">wius_power.h</innerfile>
+    <innerfile refid="wius__spi_8c">wius_spi.c</innerfile>
+    <innerfile refid="wius__spi_8h">wius_spi.h</innerfile>
+    <innerfile refid="wius__tcp_8c">wius_tcp.c</innerfile>
+    <innerfile refid="wius__tcp_8h">wius_tcp.h</innerfile>
+    <innerfile refid="wius__udp_8c">wius_udp.c</innerfile>
+    <innerfile refid="wius__udp_8h">wius_udp.h</innerfile>
+    <innerfile refid="wius__wifi_8c">wius_wifi.c</innerfile>
+    <innerfile refid="wius__wifi_8h">wius_wifi.h</innerfile>
+    <innergroup refid="group__config__wius">WiUS firmware configurations</innergroup>
+    <briefdescription>
+<para>Wireless transport, sockets, and power coordination for TinyProbe. </para>    </briefdescription>
+    <detaileddescription>
+<para><heading level="1">WiUS Module</heading>
+</para><para>The WiUS module handles connectivity, sockets, and power states for the probe. It exposes TCP/UDP helpers that feed TinyProbe&apos;s command pipeline and provides GPIO/SPI abstractions used by the hardware-facing code.</para><para><heading level="2">Responsibilities</heading>
+</para><para><itemizedlist>
+<listitem><para>Networking: TCP server and UDP helpers in <ref refid="wius__tcp_8h" kindref="compound">wius_tcp.h</ref> and <ref refid="wius__udp_8h" kindref="compound">wius_udp.h</ref></para></listitem><listitem><para>Wi-Fi control: initialization and mDNS helpers in <ref refid="wius__wifi_8h" kindref="compound">wius_wifi.h</ref></para></listitem><listitem><para>Peripheral access: GPIO and SPI wrappers in <ref refid="wius__gpio_8h" kindref="compound">wius_gpio.h</ref> and <ref refid="wius__spi_8h" kindref="compound">wius_spi.h</ref></para></listitem><listitem><para>Power: power mode helpers in <ref refid="wius__power_8h" kindref="compound">wius_power.h</ref></para></listitem></itemizedlist>
+</para><para><heading level="2">Interaction with TinyProbe</heading>
+</para><para><itemizedlist>
+<listitem><para>Incoming network packets are delivered to the <ref refid="group__tinyprobe" kindref="compound">TinyProbe</ref> dispatcher along with metadata required for replies.</para></listitem><listitem><para>Command replies (when enabled) are sent back via WiUS TCP/UDP primitives.</para></listitem><listitem><para>Power state transitions should be coordinated so that active transfers are drained before entering low-power modes.</para></listitem></itemizedlist>
+</para><para><heading level="2">Notes for Contributors</heading>
+</para><para><itemizedlist>
+<listitem><para>Keep socket buffer sizes and queue depths in sync with command expectations to avoid partial frames.</para></listitem><listitem><para>When adding transports or altering power behavior, document the flow here and cross-reference the affected command handlers. </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="led_8c" kind="file" language="C++">
+    <compoundname>led.c</compoundname>
+    <includes refid="led_8h" local="yes">led.h</includes>
+    <includes refid="wius__gpio_8h" local="yes">wius_gpio.h</includes>
+    <incdepgraph>
+      <node id="88">
+        <label>stdbool.h</label>
+      </node>
+      <node id="83">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>stdarg.h</label>
+      </node>
+      <node id="91">
+        <label>sl_status.h</label>
+      </node>
+      <node id="81">
+        <label>firmware/user/common/led.c</label>
+        <link refid="led_8c"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="83" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>stdint.h</label>
+      </node>
+      <node id="86">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>stddef.h</label>
+      </node>
+      <node id="95">
+        <label>sl_gpio_board.h</label>
+      </node>
+      <node id="84">
+        <label>env.h</label>
+      </node>
+      <node id="92">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="96">
+        <label>sl_si91x_driver_gpio.h</label>
+      </node>
+      <node id="90">
+        <label>string.h</label>
+      </node>
+      <node id="93">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="led_8c_1a15b7e1973e582002ad8bfe8692b490ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t led_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>led_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/led.c" line="33" column="1" bodyfile="firmware/user/common/led.c" bodystart="33" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="led_8c_1ad5c6c530f388c9bba28d93132b44080e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t led_set</definition>
+        <argsstring>(uint8_t x)</argsstring>
+        <name>led_set</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/led.c" line="45" column="1" bodyfile="firmware/user/common/led.c" bodystart="45" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>LED control implementation file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="led_8h" kindref="compound">led.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__gpio_8h" kindref="compound">wius_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">sl_status_t<sp/>led_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(LED_GPIO_RED));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(LED_GPIO_GREEN));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>LED_GPIO_BLUE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(LED_GPIO_BLUE));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_BLUE,<sp/>LED_INVERTED);<sp/></highlight><highlight class="comment">//<sp/>Ensure<sp/>blue<sp/>LED<sp/>is<sp/>off<sp/>if<sp/>it<sp/>exists</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>led_set(LED_COLOR_OFF);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">sl_status_t<sp/>led_set(uint8_t<sp/>x)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(x)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>LED_COLOR_OFF:</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_RED,<sp/>LED_INVERTED);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_GREEN,<sp/>LED_INVERTED);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>LED_COLOR_RED:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_RED,<sp/>!LED_INVERTED);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_GREEN,<sp/>LED_INVERTED);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>LED_COLOR_GREEN:</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_RED,<sp/>LED_INVERTED);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_GREEN,<sp/>!LED_INVERTED);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>LED_COLOR_YELLOW:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_RED,<sp/>!LED_INVERTED);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(LED_GPIO_GREEN,<sp/>!LED_INVERTED);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Invalid<sp/>LED<sp/>color:<sp/>%u&quot;</highlight><highlight class="normal">,<sp/>x);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/common/led.c"/>
+  </compounddef>
+</doxygen>

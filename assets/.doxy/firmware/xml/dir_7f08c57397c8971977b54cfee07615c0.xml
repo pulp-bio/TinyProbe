@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_7f08c57397c8971977b54cfee07615c0" kind="dir">
+    <compoundname>firmware/user/wius/hal</compoundname>
+    <innerfile refid="wius__gpio_8c">wius_gpio.c</innerfile>
+    <innerfile refid="wius__gpio_8h">wius_gpio.h</innerfile>
+    <innerfile refid="wius__power_8c">wius_power.c</innerfile>
+    <innerfile refid="wius__power_8h">wius_power.h</innerfile>
+    <innerfile refid="wius__spi_8c">wius_spi.c</innerfile>
+    <innerfile refid="wius__spi_8h">wius_spi.h</innerfile>
+    <innerfile refid="wius__tcp_8c">wius_tcp.c</innerfile>
+    <innerfile refid="wius__tcp_8h">wius_tcp.h</innerfile>
+    <innerfile refid="wius__udp_8c">wius_udp.c</innerfile>
+    <innerfile refid="wius__udp_8h">wius_udp.h</innerfile>
+    <innerfile refid="wius__wifi_8c">wius_wifi.c</innerfile>
+    <innerfile refid="wius__wifi_8h">wius_wifi.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/wius/hal/"/>
+  </compounddef>
+</doxygen>

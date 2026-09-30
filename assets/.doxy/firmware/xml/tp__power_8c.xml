@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__power_8c" kind="file" language="C++">
+    <compoundname>tp_power.c</compoundname>
+    <includes refid="tp__power_8h" local="yes">tp_power.h</includes>
+    <includes refid="wius__gpio_8h" local="yes">wius_gpio.h</includes>
+    <incdepgraph>
+      <node id="433">
+        <label>stdbool.h</label>
+      </node>
+      <node id="438">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="439" relation="include">
+        </childnode>
+      </node>
+      <node id="441">
+        <label>stdarg.h</label>
+      </node>
+      <node id="436">
+        <label>sl_status.h</label>
+      </node>
+      <node id="442">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="438" relation="include">
+        </childnode>
+      </node>
+      <node id="432">
+        <label>stdint.h</label>
+      </node>
+      <node id="431">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="432" relation="include">
+        </childnode>
+        <childnode refid="433" relation="include">
+        </childnode>
+        <childnode refid="434" relation="include">
+        </childnode>
+        <childnode refid="435" relation="include">
+        </childnode>
+        <childnode refid="436" relation="include">
+        </childnode>
+        <childnode refid="437" relation="include">
+        </childnode>
+        <childnode refid="438" relation="include">
+        </childnode>
+        <childnode refid="440" relation="include">
+        </childnode>
+        <childnode refid="442" relation="include">
+        </childnode>
+      </node>
+      <node id="443">
+        <label>wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="431" relation="include">
+        </childnode>
+        <childnode refid="444" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
+      </node>
+      <node id="434">
+        <label>stddef.h</label>
+      </node>
+      <node id="444">
+        <label>sl_gpio_board.h</label>
+      </node>
+      <node id="439">
+        <label>env.h</label>
+      </node>
+      <node id="437">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="445">
+        <label>sl_si91x_driver_gpio.h</label>
+      </node>
+      <node id="435">
+        <label>string.h</label>
+      </node>
+      <node id="440">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="441" relation="include">
+        </childnode>
+        <childnode refid="433" relation="include">
+        </childnode>
+      </node>
+      <node id="429">
+        <label>firmware/user/tp/hal/tp_power.c</label>
+        <link refid="tp__power_8c"/>
+        <childnode refid="430" relation="include">
+        </childnode>
+        <childnode refid="443" relation="include">
+        </childnode>
+      </node>
+      <node id="430">
+        <label>tp_power.h</label>
+        <link refid="tp__power_8h"/>
+        <childnode refid="431" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="tp__power_8c_1a698c055f20e4ca8d031fb6ab91d1d77e" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+        <definition>wius_gpio_t neg_5v_pin</definition>
+        <argsstring></argsstring>
+        <name>neg_5v_pin</name>
+        <initializer>= <ref refid="wius__gpio_8h_1a6454a4069022f8b4faa75059a31d6a68" kindref="member">WIUS_GPIO_ULP_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1gaa4e408fd057a997a23d2a67e9b91faa7" kindref="member">TP_POWER_GPIO_NEG_5V</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.c" line="36" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="tp__power_8c_1a8eb2ed4374ed80297cc3b959bb8bffd2" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+        <definition>wius_gpio_t neg_hv_pin</definition>
+        <argsstring></argsstring>
+        <name>neg_hv_pin</name>
+        <initializer>= <ref refid="wius__gpio_8h_1acdd1dd0bc2969cf47f8c03faa9c9e347" kindref="member">WIUS_GPIO_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1gaea16d7b845305f7ada04cc932fd02681" kindref="member">TP_POWER_GPIO_NEG_HV</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.c" line="37" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="tp__power_8c_1a2d6d46667570ad54f987d0a06b51353d" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+        <definition>wius_gpio_t pos_hv_pin</definition>
+        <argsstring></argsstring>
+        <name>pos_hv_pin</name>
+        <initializer>= <ref refid="wius__gpio_8h_1acdd1dd0bc2969cf47f8c03faa9c9e347" kindref="member">WIUS_GPIO_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1ga4f24fc2335891e0bcbf47365165fee12" kindref="member">TP_POWER_GPIO_POS_HV</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.c" line="38" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="tp__power_8c_1a8ea710ce617e21a5fc70456a6a9e55fe" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+        <definition>wius_gpio_t lvds_pwr_switch_pin</definition>
+        <argsstring></argsstring>
+        <name>lvds_pwr_switch_pin</name>
+        <initializer>= <ref refid="wius__gpio_8h_1a6454a4069022f8b4faa75059a31d6a68" kindref="member">WIUS_GPIO_ULP_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1ga1b642e68d16f9762cd7400a26f32014a" kindref="member">TP_POWER_GPIO_LVDS_PWR_SW</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.c" line="39" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__power_8c_1a8eb8f9958ed95a620520d7af8ea603a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_power_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_power_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the power control module. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.c" line="41" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="41" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__power_8c_1a60b58ec40db6c7ce2679004af099c0f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_power_on</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_power_on</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the power domain of the TinyProbe. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.c" line="55" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="55" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__power_8c_1ad0aed64c7ed1cc0415e1ba6c3b087941" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_power_set</definition>
+        <argsstring>(tp_power_domain_t domain, bool enabled)</argsstring>
+        <name>tp_power_set</name>
+        <param>
+          <type><ref refid="tp__power_8h_1a9768fdd498cb105fc0b148d6099746b1" kindref="member">tp_power_domain_t</ref></type>
+          <declname>domain</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Enable or disable a power domain. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>domain</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Power domain to enable or disable </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to enable, false to disable </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_power.c" line="64" column="1" bodyfile="firmware/user/tp/hal/tp_power.c" bodystart="64" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe power management driver source file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__power_8h" kindref="compound">tp_power.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#include<sp/>&quot;sl_gpio_board.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__gpio_8h" kindref="compound">wius_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>neg_5v_pin<sp/>=<sp/><ref refid="wius__gpio_8h_1a6454a4069022f8b4faa75059a31d6a68" kindref="member">WIUS_GPIO_ULP_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1gaa4e408fd057a997a23d2a67e9b91faa7" kindref="member">TP_POWER_GPIO_NEG_5V</ref>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>neg_hv_pin<sp/>=<sp/><ref refid="wius__gpio_8h_1acdd1dd0bc2969cf47f8c03faa9c9e347" kindref="member">WIUS_GPIO_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1gaea16d7b845305f7ada04cc932fd02681" kindref="member">TP_POWER_GPIO_NEG_HV</ref>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>pos_hv_pin<sp/>=<sp/><ref refid="wius__gpio_8h_1acdd1dd0bc2969cf47f8c03faa9c9e347" kindref="member">WIUS_GPIO_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1ga4f24fc2335891e0bcbf47365165fee12" kindref="member">TP_POWER_GPIO_POS_HV</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>lvds_pwr_switch_pin<sp/>=<sp/><ref refid="wius__gpio_8h_1a6454a4069022f8b4faa75059a31d6a68" kindref="member">WIUS_GPIO_ULP_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1ga1b642e68d16f9762cd7400a26f32014a" kindref="member">TP_POWER_GPIO_LVDS_PWR_SW</ref>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__power_8c_1a8eb8f9958ed95a620520d7af8ea603a5" kindref="member">tp_power_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(neg_5v_pin);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(neg_hv_pin);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(pos_hv_pin);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(lvds_pwr_switch_pin);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>all<sp/>pins<sp/>to<sp/>low<sp/>initially</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(neg_5v_pin,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(neg_hv_pin,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(pos_hv_pin,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(lvds_pwr_switch_pin,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__power_8c_1a60b58ec40db6c7ce2679004af099c0f1" kindref="member">tp_power_on</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(pos_hv_pin,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(neg_hv_pin,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1ab7cce8122024d7ba47bf10f434956de4" kindref="member">delay_ms</ref>(100);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(neg_5v_pin,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1ab7cce8122024d7ba47bf10f434956de4" kindref="member">delay_ms</ref>(100);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__power_8c_1ad0aed64c7ed1cc0415e1ba6c3b087941" kindref="member">tp_power_set</ref>(<ref refid="tp__power_8h_1a9768fdd498cb105fc0b148d6099746b1" kindref="member">tp_power_domain_t</ref><sp/>domain,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enabled)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(domain)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4ced40720b88fcf8d0034327a1da93c6" kindref="member">TP_POWER_DOMAIN_LVDS_2_5V</ref>:</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(lvds_pwr_switch_pin,<sp/>enabled);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Changing<sp/>LVDS<sp/>pin<sp/>to<sp/>%u&quot;,<sp/>enabled);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Pin<sp/>is<sp/>at<sp/>%u&quot;,<sp/>wius_gpio_get(lvds_pwr_switch_pin));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea4812600986de55f6bcb826757c14fe12" kindref="member">TP_POWER_DOMAIN_POS_HV</ref>:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(pos_hv_pin,<sp/>enabled);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Changing<sp/>+HV<sp/>pin<sp/>to<sp/>%u&quot;,<sp/>enabled);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Pin<sp/>is<sp/>at<sp/>%u&quot;,<sp/>wius_gpio_get(pos_hv_pin));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9eaea78c3856cf79c5d8d5ee654be18cb3f" kindref="member">TP_POWER_DOMAIN_NEG_HV</ref>:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(neg_hv_pin,<sp/>enabled);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Changing<sp/>-HV<sp/>pin<sp/>to<sp/>%u&quot;,<sp/>enabled);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Pin<sp/>is<sp/>at<sp/>%u&quot;,<sp/>wius_gpio_get(neg_hv_pin));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea666e5c94c41e2fa90236f8b6b54dc065" kindref="member">TP_POWER_DOMAIN_NEG_5V</ref>:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(neg_5v_pin,<sp/>enabled);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Changing<sp/>-5V<sp/>pin<sp/>to<sp/>%u&quot;,<sp/>enabled);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Pin<sp/>is<sp/>at<sp/>%u&quot;,<sp/>wius_gpio_get(neg_5v_pin));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__power_8h_1a3f3ee395a93a67eea58b7d204f369b9ea39cd583bdce367a99b3f843cc06df5d5" kindref="member">TP_POWER_DOMAIN_PLL_PWD</ref>:</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Changing<sp/>PLL<sp/>pin<sp/>to<sp/>%u&quot;,<sp/>enabled);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>log_debug(&quot;Pin<sp/>is<sp/>at<sp/>%u&quot;,<sp/>wius_gpio_ulp_pin_get(lvds_pwr_switch_pin));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_warn(</highlight><highlight class="stringliteral">&quot;Not<sp/>implemented&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/hal/tp_power.c"/>
+  </compounddef>
+</doxygen>

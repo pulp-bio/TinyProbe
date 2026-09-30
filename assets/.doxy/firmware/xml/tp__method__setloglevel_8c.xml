@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__method__setloglevel_8c" kind="file" language="C++">
+    <compoundname>tp_method_setloglevel.c</compoundname>
+    <includes refid="tp__method__setloglevel_8h" local="yes">tp_method_setloglevel.h</includes>
+    <incdepgraph>
+      <node id="686">
+        <label>stdbool.h</label>
+      </node>
+      <node id="691">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="692" relation="include">
+        </childnode>
+      </node>
+      <node id="694">
+        <label>stdarg.h</label>
+      </node>
+      <node id="689">
+        <label>sl_status.h</label>
+      </node>
+      <node id="695">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="691" relation="include">
+        </childnode>
+      </node>
+      <node id="685">
+        <label>stdint.h</label>
+      </node>
+      <node id="684">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="685" relation="include">
+        </childnode>
+        <childnode refid="686" relation="include">
+        </childnode>
+        <childnode refid="687" relation="include">
+        </childnode>
+        <childnode refid="688" relation="include">
+        </childnode>
+        <childnode refid="689" relation="include">
+        </childnode>
+        <childnode refid="690" relation="include">
+        </childnode>
+        <childnode refid="691" relation="include">
+        </childnode>
+        <childnode refid="693" relation="include">
+        </childnode>
+        <childnode refid="695" relation="include">
+        </childnode>
+      </node>
+      <node id="687">
+        <label>stddef.h</label>
+      </node>
+      <node id="692">
+        <label>env.h</label>
+      </node>
+      <node id="690">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="688">
+        <label>string.h</label>
+      </node>
+      <node id="693">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="694" relation="include">
+        </childnode>
+        <childnode refid="686" relation="include">
+        </childnode>
+      </node>
+      <node id="696">
+        <label>methods.pb.h</label>
+      </node>
+      <node id="682">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.c</label>
+        <link refid="tp__method__setloglevel_8c"/>
+        <childnode refid="683" relation="include">
+        </childnode>
+      </node>
+      <node id="683">
+        <label>tp_method_setloglevel.h</label>
+        <link refid="tp__method__setloglevel_8h"/>
+        <childnode refid="684" relation="include">
+        </childnode>
+        <childnode refid="696" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__method__setloglevel_8c_1a608f257e98ba0cb1eb304802f1128910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>methods_status</type>
+        <definition>methods_status tp_method_setloglevel</definition>
+        <argsstring>(const methods_setloglevel_args *req, void *userdata)</argsstring>
+        <name>tp_method_setloglevel</name>
+        <param>
+          <type>const methods_setloglevel_args *</type>
+          <declname>args</declname>
+          <defname>req</defname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userdata</declname>
+        </param>
+        <briefdescription>
+<para>JSON-RPC method handler for the &quot;setloglevel&quot; method. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command arguments struct </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>userdata</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data pointer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>OK if method executed successfully, otherwise an error code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/methods/tp_method_setloglevel.c" line="32" column="1" bodyfile="firmware/user/tp/methods/tp_method_setloglevel.c" bodystart="32" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe set log level method implementation file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__setloglevel_8h" kindref="compound">tp_method_setloglevel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">methods_status<sp/><ref refid="tp__method__setloglevel_8c_1a608f257e98ba0cb1eb304802f1128910" kindref="member">tp_method_setloglevel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>methods_setloglevel_args<sp/>*req,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*userdata)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" kindref="member">UNUSED</ref>(req);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" kindref="member">UNUSED</ref>(userdata);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_set_level((log_Level)req-&gt;level);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_info(&quot;Log<sp/>level<sp/>set<sp/>to<sp/>%s&quot;,<sp/>bitlog_level_strings[(log_Level)req-&gt;level]);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>log_warn(</highlight><highlight class="stringliteral">&quot;Not<sp/>implemented&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>methods_status_OK;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/methods/tp_method_setloglevel.c"/>
+  </compounddef>
+</doxygen>

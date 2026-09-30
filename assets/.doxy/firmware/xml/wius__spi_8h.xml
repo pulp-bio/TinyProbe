@@ -1,0 +1,616 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__spi_8h" kind="file" language="C++">
+    <compoundname>wius_spi.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes local="yes">sl_si91x_gspi.h</includes>
+    <includes local="yes">sl_si91x_ssi.h</includes>
+    <includes refid="wius__gpio_8h" local="yes">wius_gpio.h</includes>
+    <includedby refid="tp__afe_8c" local="yes">firmware/user/tp/hal/tp_afe.c</includedby>
+    <includedby refid="tp__fpga_8c" local="yes">firmware/user/tp/hal/tp_fpga.c</includedby>
+    <includedby refid="tp__tx_8c" local="yes">firmware/user/tp/hal/tp_tx.c</includedby>
+    <includedby refid="tp__method__triggershot_8c" local="yes">firmware/user/tp/methods/tp_method_triggershot.c</includedby>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <includedby refid="wius__spi_8c" local="yes">firmware/user/wius/hal/wius_spi.c</includedby>
+    <incdepgraph>
+      <node id="1121">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1126">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1127" relation="include">
+        </childnode>
+      </node>
+      <node id="1129">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1124">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1130">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1126" relation="include">
+        </childnode>
+      </node>
+      <node id="1131">
+        <label>sl_si91x_gspi.h</label>
+      </node>
+      <node id="1120">
+        <label>stdint.h</label>
+      </node>
+      <node id="1118">
+        <label>firmware/user/wius/hal/wius_spi.h</label>
+        <link refid="wius__spi_8h"/>
+        <childnode refid="1119" relation="include">
+        </childnode>
+        <childnode refid="1131" relation="include">
+        </childnode>
+        <childnode refid="1132" relation="include">
+        </childnode>
+        <childnode refid="1133" relation="include">
+        </childnode>
+      </node>
+      <node id="1119">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1120" relation="include">
+        </childnode>
+        <childnode refid="1121" relation="include">
+        </childnode>
+        <childnode refid="1122" relation="include">
+        </childnode>
+        <childnode refid="1123" relation="include">
+        </childnode>
+        <childnode refid="1124" relation="include">
+        </childnode>
+        <childnode refid="1125" relation="include">
+        </childnode>
+        <childnode refid="1126" relation="include">
+        </childnode>
+        <childnode refid="1128" relation="include">
+        </childnode>
+        <childnode refid="1130" relation="include">
+        </childnode>
+      </node>
+      <node id="1133">
+        <label>wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="1119" relation="include">
+        </childnode>
+        <childnode refid="1134" relation="include">
+        </childnode>
+        <childnode refid="1135" relation="include">
+        </childnode>
+      </node>
+      <node id="1122">
+        <label>stddef.h</label>
+      </node>
+      <node id="1134">
+        <label>sl_gpio_board.h</label>
+      </node>
+      <node id="1127">
+        <label>env.h</label>
+      </node>
+      <node id="1125">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1135">
+        <label>sl_si91x_driver_gpio.h</label>
+      </node>
+      <node id="1132">
+        <label>sl_si91x_ssi.h</label>
+      </node>
+      <node id="1123">
+        <label>string.h</label>
+      </node>
+      <node id="1128">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1129" relation="include">
+        </childnode>
+        <childnode refid="1121" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1142">
+        <label>firmware/user/wius/hal/wius_spi.c</label>
+        <link refid="wius__spi_8c"/>
+      </node>
+      <node id="1136">
+        <label>firmware/user/wius/hal/wius_spi.h</label>
+        <link refid="wius__spi_8h"/>
+        <childnode refid="1137" relation="include">
+        </childnode>
+        <childnode refid="1138" relation="include">
+        </childnode>
+        <childnode refid="1139" relation="include">
+        </childnode>
+        <childnode refid="1140" relation="include">
+        </childnode>
+        <childnode refid="1141" relation="include">
+        </childnode>
+        <childnode refid="1142" relation="include">
+        </childnode>
+      </node>
+      <node id="1141">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="1139">
+        <label>firmware/user/tp/hal/tp_tx.c</label>
+        <link refid="tp__tx_8c"/>
+      </node>
+      <node id="1140">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+      <node id="1138">
+        <label>firmware/user/tp/hal/tp_fpga.c</label>
+        <link refid="tp__fpga_8c"/>
+      </node>
+      <node id="1137">
+        <label>firmware/user/tp/hal/tp_afe.c</label>
+        <link refid="tp__afe_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structwius__spi__config" prot="public">wius_spi_config</innerclass>
+    <innerclass refid="structwius__spi__inst" prot="public">wius_spi_inst</innerclass>
+    <innerclass refid="unionwius__spi__inst_1_1instance" prot="public">wius_spi_inst::instance</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" prot="public" static="no">
+        <name>WIUS_SPI_INST_0</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instance 0 on pins [25, 26, 27, 53] (GSPI Master) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="38" column="9" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" prot="public" static="no">
+        <name>WIUS_SPI_INST_1</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instance 1 on pins [8, 9, 10, 11] (SSI Master) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="39" column="9" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23" prot="public" static="no" strong="no">
+        <type></type>
+        <name>wius_spi_cs_mode</name>
+        <enumvalue id="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23a74a3bdc146382f3158ff169a221963ec" prot="public">
+          <name>WIUS_SPI_CS_NONE</name>
+          <initializer>= SL_GSPI_MASTER_UNUSED</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>No chip select </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23ac7502901d7fd9cc3e382d6c0512043cd" prot="public">
+          <name>WIUS_SPI_CS_SW</name>
+          <initializer>= SL_GSPI_MASTER_SW</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Software controlled chip select (Handled by this API) </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23a0d50cd14936ca64d85f976e5b99ddcaa" prot="public">
+          <name>WIUS_SPI_CS_HW</name>
+          <initializer>= SL_GSPI_MASTER_HW_OUTPUT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Hardware controlled chip select (Handled by peripheral) </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SPI chip select modes enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="46" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="45" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="wius__spi_8h_1aede8e12fa0ede54dba99c170315eb6aa" prot="public" static="no">
+        <type>enum <ref refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23" kindref="member">wius_spi_cs_mode</ref></type>
+        <definition>typedef enum wius_spi_cs_mode  wius_spi_cs_mode_t</definition>
+        <argsstring></argsstring>
+        <name>wius_spi_cs_mode_t</name>
+        <briefdescription>
+<para>SPI chip select modes enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="50" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="wius__spi_8h_1ad4c07c831a649c8f73c7359df9a151a6" prot="public" static="no">
+        <type>struct <ref refid="structwius__spi__config" kindref="compound">wius_spi_config</ref></type>
+        <definition>typedef struct wius_spi_config  wius_spi_config_t</definition>
+        <argsstring></argsstring>
+        <name>wius_spi_config_t</name>
+        <briefdescription>
+<para>SPI instance configuration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="64" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="wius__spi_8h_1af201cebdc47bffa3d7fd5f7b5f51a7d8" prot="public" static="no">
+        <type>struct <ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst</ref></type>
+        <definition>typedef struct wius_spi_inst  wius_spi_inst_t</definition>
+        <argsstring></argsstring>
+        <name>wius_spi_inst_t</name>
+        <briefdescription>
+<para>SPI instance enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="81" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__spi_8h_1ad0e6c92f255926b5a5ebdff2bb333fb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="wius__spi_8h_1af201cebdc47bffa3d7fd5f7b5f51a7d8" kindref="member">wius_spi_inst_t</ref></type>
+        <definition>wius_spi_inst_t wius_spi_get_instance</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>wius_spi_get_instance</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Get SPI instance by ID. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance ID</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to the SPI instance structure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="91" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="54" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8h_1ac3fc8f4c404b4b2ca545fb275ea41a6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_spi_init</definition>
+        <argsstring>(uint8_t id, wius_spi_config_t *config)</argsstring>
+        <name>wius_spi_init</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="wius__spi_8h_1ad4c07c831a649c8f73c7359df9a151a6" kindref="member">wius_spi_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Initialize SPI module. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance to initialize </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the SPI configuration</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_PARAMETER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invalid instance </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during peripheral initialization </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="104" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="59" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8h_1a635806440d8bcf7fbcc1d1f6ca17c3c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_spi_xfer</definition>
+        <argsstring>(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t len, bool wait)</argsstring>
+        <name>wius_spi_xfer</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>tx_buf</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>rx_buf</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait</declname>
+        </param>
+        <briefdescription>
+<para>Transfer data over SPI. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance to use for transfer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tx_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer containing the data to be sent </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer where the received data will be stored </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to transfer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wait for transfer to complete</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during transfer or waiting </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="119" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="155" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8h_1a33cc84419ac464f6de41a332c90586e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_spi_send</definition>
+        <argsstring>(uint8_t id, const uint8_t *tx_buf, size_t len, bool wait)</argsstring>
+        <name>wius_spi_send</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>tx_buf</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait</declname>
+        </param>
+        <briefdescription>
+<para>Send data over SPI without receiving data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance to use for transfer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tx_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer containing the data to be sent </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to send </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wait for transfer to complete</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during transfer or waiting </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="133" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="212" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__spi_8h_1a3455051967cd593c0adebcb04d148d10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_spi_await</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>wius_spi_await</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Await SPI transfer completion. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SPI instance to await</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_TIMEOUT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout occured (See <ref refid="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" kindref="member">WIUS_SPI_RX_TIMEOUT</ref>) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during acquiring semaphores </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="145" column="1" bodyfile="firmware/user/wius/hal/wius_spi.c" bodystart="261" bodyend="306"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS SPI implementation header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_si91x_gspi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_si91x_ssi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__gpio_8h" kindref="compound">wius_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="wius__spi_8h_1a482f0d8d91d890839b5924c814fa9534" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_SPI_INST_0<sp/>0<sp/></highlight></codeline>
+<codeline lineno="39" refid="wius__spi_8h_1a7c78a1a315dace7c9cfe49665487b433" refkind="member"><highlight class="preprocessor">#define<sp/>WIUS_SPI_INST_1<sp/>1<sp/></highlight></codeline>
+<codeline lineno="45" refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23" refkind="member"><highlight class="preprocessor">typedef<sp/>enum<sp/>wius_spi_cs_mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47" refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23a74a3bdc146382f3158ff169a221963ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23a74a3bdc146382f3158ff169a221963ec" kindref="member">WIUS_SPI_CS_NONE</ref><sp/>=<sp/>SL_GSPI_MASTER_UNUSED,<sp/></highlight></codeline>
+<codeline lineno="48" refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23ac7502901d7fd9cc3e382d6c0512043cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23ac7502901d7fd9cc3e382d6c0512043cd" kindref="member">WIUS_SPI_CS_SW</ref><sp/>=<sp/>SL_GSPI_MASTER_SW,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49" refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23a0d50cd14936ca64d85f976e5b99ddcaa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__spi_8h_1a03f110e261d162f8772c20cdf0c7cd23a0d50cd14936ca64d85f976e5b99ddcaa" kindref="member">WIUS_SPI_CS_HW</ref><sp/>=<sp/>SL_GSPI_MASTER_HW_OUTPUT<sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><ref refid="wius__spi_8h_1aede8e12fa0ede54dba99c170315eb6aa" kindref="member">wius_spi_cs_mode_t</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="structwius__spi__config" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwius__spi__config" kindref="compound">wius_spi_config</ref></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58" refid="structwius__spi__config_1a464a9360a36971185406f7bf8e5181c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwius__spi__config_1a464a9360a36971185406f7bf8e5181c6" kindref="member">width</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59" refid="structwius__spi__config_1aabd48310fdb19cb135c66f797f97ca18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwius__spi__config_1aabd48310fdb19cb135c66f797f97ca18" kindref="member">mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60" refid="structwius__spi__config_1a8b30e868d6bffbc8c6ed5c8e21ddc637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structwius__spi__config_1a8b30e868d6bffbc8c6ed5c8e21ddc637" kindref="member">freq</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61" refid="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__spi_8h_1aede8e12fa0ede54dba99c170315eb6aa" kindref="member">wius_spi_cs_mode_t</ref><sp/><ref refid="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" kindref="member">cs_mode</ref>;<sp/></highlight></codeline>
+<codeline lineno="62" refid="structwius__spi__config_1a0b6a1a8c4604544b58ce125cdedb0102" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwius__spi__config_1a0b6a1a8c4604544b58ce125cdedb0102" kindref="member">cs_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63" refid="structwius__spi__config_1ad89ae86bf8cedc1b15c72fcf02392247" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwius__spi__config_1ad89ae86bf8cedc1b15c72fcf02392247" kindref="member">cs_polarity</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}<sp/><ref refid="wius__spi_8h_1ad4c07c831a649c8f73c7359df9a151a6" kindref="member">wius_spi_config_t</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="structwius__spi__inst" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst</ref></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72" refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73" refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwius__spi__config" kindref="compound">wius_spi_config_t</ref><sp/><ref refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" kindref="member">config</ref>;<sp/></highlight></codeline>
+<codeline lineno="74" refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/><ref refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" kindref="member">cs</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76" refid="unionwius__spi__inst_1_1instance" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionwius__spi__inst_1_1instance" kindref="compound">instance</ref><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78" refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_gspi_handle_t<sp/><ref refid="unionwius__spi__inst_1_1instance_1a0b8b68f0dd6006224ed018547afe255d" kindref="member">gspi</ref>;<sp/></highlight></codeline>
+<codeline lineno="79" refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_ssi_handle_t<sp/><ref refid="unionwius__spi__inst_1_1instance_1af40c753081c1c8c0912de2fbe379e142" kindref="member">ssi</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" kindref="member">inst</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}<sp/><ref refid="wius__spi_8h_1af201cebdc47bffa3d7fd5f7b5f51a7d8" kindref="member">wius_spi_inst_t</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><ref refid="structwius__spi__inst" kindref="compound">wius_spi_inst_t</ref><sp/><ref refid="wius__spi_8h_1ad0e6c92f255926b5a5ebdff2bb333fb5" kindref="member">wius_spi_get_instance</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal">sl_status_t<sp/><ref refid="wius__spi_8h_1ac3fc8f4c404b4b2ca545fb275ea41a6c" kindref="member">wius_spi_init</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="structwius__spi__config" kindref="compound">wius_spi_config_t</ref><sp/>*config);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">sl_status_t<sp/><ref refid="wius__spi_8h_1a635806440d8bcf7fbcc1d1f6ca17c3c3" kindref="member">wius_spi_xfer</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>uint8_t<sp/>*tx_buf,<sp/>uint8_t<sp/>*rx_buf,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>wait);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">sl_status_t<sp/><ref refid="wius__spi_8h_1a33cc84419ac464f6de41a332c90586e7" kindref="member">wius_spi_send</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*tx_buf,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>wait);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">sl_status_t<sp/><ref refid="wius__spi_8h_1a3455051967cd593c0adebcb04d148d10" kindref="member">wius_spi_await</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_spi.h"/>
+  </compounddef>
+</doxygen>

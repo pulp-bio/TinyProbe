@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__mux_8c" kind="file" language="C++">
+    <compoundname>tp_mux.c</compoundname>
+    <includes refid="tp__mux_8h" local="yes">tp_mux.h</includes>
+    <includes refid="wius__gpio_8h" local="yes">wius_gpio.h</includes>
+    <incdepgraph>
+      <node id="398">
+        <label>stdbool.h</label>
+      </node>
+      <node id="403">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="404" relation="include">
+        </childnode>
+      </node>
+      <node id="406">
+        <label>stdarg.h</label>
+      </node>
+      <node id="401">
+        <label>sl_status.h</label>
+      </node>
+      <node id="407">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="403" relation="include">
+        </childnode>
+      </node>
+      <node id="397">
+        <label>stdint.h</label>
+      </node>
+      <node id="396">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
+        <childnode refid="399" relation="include">
+        </childnode>
+        <childnode refid="400" relation="include">
+        </childnode>
+        <childnode refid="401" relation="include">
+        </childnode>
+        <childnode refid="402" relation="include">
+        </childnode>
+        <childnode refid="403" relation="include">
+        </childnode>
+        <childnode refid="405" relation="include">
+        </childnode>
+        <childnode refid="407" relation="include">
+        </childnode>
+      </node>
+      <node id="408">
+        <label>wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="396" relation="include">
+        </childnode>
+        <childnode refid="409" relation="include">
+        </childnode>
+        <childnode refid="410" relation="include">
+        </childnode>
+      </node>
+      <node id="399">
+        <label>stddef.h</label>
+      </node>
+      <node id="409">
+        <label>sl_gpio_board.h</label>
+      </node>
+      <node id="404">
+        <label>env.h</label>
+      </node>
+      <node id="402">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="394">
+        <label>firmware/user/tp/hal/tp_mux.c</label>
+        <link refid="tp__mux_8c"/>
+        <childnode refid="395" relation="include">
+        </childnode>
+        <childnode refid="408" relation="include">
+        </childnode>
+      </node>
+      <node id="410">
+        <label>sl_si91x_driver_gpio.h</label>
+      </node>
+      <node id="395">
+        <label>tp_mux.h</label>
+        <link refid="tp__mux_8h"/>
+        <childnode refid="396" relation="include">
+        </childnode>
+      </node>
+      <node id="400">
+        <label>string.h</label>
+      </node>
+      <node id="405">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="406" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="tp__mux_8c_1ad719025549906e2089cbf4bc35fb0492" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+        <definition>wius_gpio_t extintmux_pin</definition>
+        <argsstring></argsstring>
+        <name>extintmux_pin</name>
+        <initializer>= <ref refid="wius__gpio_8h_1a9f9df45c6165cac918e282dbde1986e1" kindref="member">WIUS_GPIO_UULP_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1ga18b027740f4b5cd2da100138c487ca61" kindref="member">TP_MUX_GPIO_EXTINT</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_mux.c" line="34" column="1" bodyfile="firmware/user/tp/hal/tp_mux.c" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="tp__mux_8c_1a1192f1967ce69ec7ee8a38321b6bfa70" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+        <definition>wius_gpio_t afetxmux_pin</definition>
+        <argsstring></argsstring>
+        <name>afetxmux_pin</name>
+        <initializer>= <ref refid="wius__gpio_8h_1a6454a4069022f8b4faa75059a31d6a68" kindref="member">WIUS_GPIO_ULP_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1gae715ae579035cb5e18263576d6914aaf" kindref="member">TP_MUX_GPIO_AFETX</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_mux.c" line="35" column="1" bodyfile="firmware/user/tp/hal/tp_mux.c" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__mux_8c_1a345ab0e8f28ee7df36d2524872e0edfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_mux_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_mux_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>MUX initialization. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_mux.c" line="37" column="1" bodyfile="firmware/user/tp/hal/tp_mux.c" bodystart="37" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__mux_8c_1a3056dcc64563523df3ffba7a306b4078" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_mux_select</definition>
+        <argsstring>(tp_mux_t mux)</argsstring>
+        <name>tp_mux_select</name>
+        <param>
+          <type><ref refid="tp__mux_8h_1acb5e90c4e5d140416be1908840a0776c" kindref="member">tp_mux_t</ref></type>
+          <declname>mux</declname>
+        </param>
+        <briefdescription>
+<para>MUX select. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mux</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mux to select </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_mux.c" line="43" column="1" bodyfile="firmware/user/tp/hal/tp_mux.c" bodystart="43" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe SPI MUX driver source file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__mux_8h" kindref="compound">tp_mux.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__gpio_8h" kindref="compound">wius_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>extintmux_pin<sp/>=<sp/><ref refid="wius__gpio_8h_1a9f9df45c6165cac918e282dbde1986e1" kindref="member">WIUS_GPIO_UULP_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1ga18b027740f4b5cd2da100138c487ca61" kindref="member">TP_MUX_GPIO_EXTINT</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref><sp/>afetxmux_pin<sp/>=<sp/><ref refid="wius__gpio_8h_1a6454a4069022f8b4faa75059a31d6a68" kindref="member">WIUS_GPIO_ULP_OUTPUT</ref>(<ref refid="group__config__tinyprobe_1gae715ae579035cb5e18263576d6914aaf" kindref="member">TP_MUX_GPIO_AFETX</ref>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8c_1a345ab0e8f28ee7df36d2524872e0edfe" kindref="member">tp_mux_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(afetxmux_pin);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a1c7fd4dc9012e186c45f29f7b92b15e8" kindref="member">wius_gpio_config</ref>(extintmux_pin);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8c_1a3056dcc64563523df3ffba7a306b4078" kindref="member">tp_mux_select</ref>(<ref refid="tp__mux_8h_1acb5e90c4e5d140416be1908840a0776c" kindref="member">tp_mux_t</ref><sp/>mux)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>wius_gpio_ulp_pin_set(afetxmux_pin,<sp/>mux<sp/>&amp;<sp/>0b01);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>wius_gpio_uulp_pin_set(extintmux_pin,<sp/>(mux<sp/>&amp;<sp/>0b10)<sp/>&gt;&gt;<sp/>1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(mux)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dac915f405e6bdba45b4338c847ead2871" kindref="member">TP_MUX_PLL</ref>:</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(extintmux_pin,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(afetxmux_pin,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2daae0fe945b3029c12736995cb0f407a48" kindref="member">TP_MUX_FPGA</ref>:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(extintmux_pin,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(afetxmux_pin,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2da7a59c069708c5648908545878501393c" kindref="member">TP_MUX_AFE</ref>:</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(extintmux_pin,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(afetxmux_pin,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dad4c6397c9013e7da9c578b50bf16c2df" kindref="member">TP_MUX_TX</ref>:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(extintmux_pin,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="wius__gpio_8c_1a56b5a886449b21ca5512920fd5ccfaa5" kindref="member">wius_gpio_put</ref>(afetxmux_pin,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/hal/tp_mux.c"/>
+  </compounddef>
+</doxygen>

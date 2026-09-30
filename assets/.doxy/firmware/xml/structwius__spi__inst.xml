@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structwius__spi__inst" kind="struct" language="C++" prot="public">
+    <compoundname>wius_spi_inst</compoundname>
+    <includes refid="wius__spi_8h" local="no">wius_spi.h</includes>
+    <innerclass refid="unionwius__spi__inst_1_1instance" prot="public">wius_spi_inst::instance</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wius_spi_inst::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instance ID </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="72" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__spi_8h_1ad4c07c831a649c8f73c7359df9a151a6" kindref="member">wius_spi_config_t</ref></type>
+        <definition>wius_spi_config_t wius_spi_inst::config</definition>
+        <argsstring></argsstring>
+        <name>config</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Configuration </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="73" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__gpio_8h_1afb56f792457258dd31698b7dab00cf75" kindref="member">wius_gpio_t</ref></type>
+        <definition>wius_gpio_t wius_spi_inst::cs</definition>
+        <argsstring></argsstring>
+        <name>cs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Chip select GPIO (only in SW/HW mode) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="74" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" prot="public" static="no" mutable="no">
+        <type>union <ref refid="unionwius__spi__inst_1_1instance" kindref="compound">wius_spi_inst::instance</ref></type>
+        <definition>union wius_spi_inst::instance  wius_spi_inst::inst</definition>
+        <argsstring></argsstring>
+        <name>inst</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Peripheral handle </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="80" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>SPI instance enumeration. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="13">
+        <label>wius_spi_inst::instance</label>
+        <link refid="unionwius__spi__inst_1_1instance"/>
+      </node>
+      <node id="14">
+        <label>wius_spi_config</label>
+        <link refid="structwius__spi__config"/>
+      </node>
+      <node id="12">
+        <label>wius_spi_inst</label>
+        <link refid="structwius__spi__inst"/>
+        <childnode refid="13" relation="usage">
+          <edgelabel>inst</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>config</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="firmware/user/wius/hal/wius_spi.h" line="71" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="70" bodyend="81"/>
+    <listofallmembers>
+      <member refid="structwius__spi__inst_1a258653bf2089fd8a556ef6bddd30f54b" prot="public" virt="non-virtual"><scope>wius_spi_inst</scope><name>config</name></member>
+      <member refid="structwius__spi__inst_1a3f7ed9bd32203afbedb548646f534dfb" prot="public" virt="non-virtual"><scope>wius_spi_inst</scope><name>cs</name></member>
+      <member refid="structwius__spi__inst_1a84b7da652c18027eee300f6ffcf51601" prot="public" virt="non-virtual"><scope>wius_spi_inst</scope><name>id</name></member>
+      <member refid="structwius__spi__inst_1a1f6515e998e1ee4a94343ae734af9b13" prot="public" virt="non-virtual"><scope>wius_spi_inst</scope><name>inst</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,893 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="log_8h" kind="file" language="C++">
+    <compoundname>log.h</compoundname>
+    <includes local="no">stdarg.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="common_8h" local="yes">firmware/user/common/common.h</includedby>
+    <includedby refid="common_8c" local="yes">firmware/user/common/common.c</includedby>
+    <includedby refid="log_8c" local="yes">firmware/user/common/log.c</includedby>
+    <incdepgraph>
+      <node id="163">
+        <label>stdbool.h</label>
+      </node>
+      <node id="162">
+        <label>stdarg.h</label>
+      </node>
+      <node id="161">
+        <label>firmware/user/common/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="216">
+        <label>firmware/user/wius/hal/wius_wifi.c</label>
+        <link refid="wius__wifi_8c"/>
+      </node>
+      <node id="215">
+        <label>firmware/user/wius/hal/wius_wifi.h</label>
+        <link refid="wius__wifi_8h"/>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="216" relation="include">
+        </childnode>
+      </node>
+      <node id="175">
+        <label>firmware/user/tp/methods/tp_method_writeafe.c</label>
+        <link refid="tp__method__writeafe_8c"/>
+      </node>
+      <node id="201">
+        <label>firmware/user/tp/methods/tp_method_writeafe.h</label>
+        <link refid="tp__method__writeafe_8h"/>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="210">
+        <label>firmware/user/wius/hal/wius_power.c</label>
+        <link refid="wius__power_8c"/>
+      </node>
+      <node id="205">
+        <label>firmware/user/common/led.c</label>
+        <link refid="led_8c"/>
+      </node>
+      <node id="209">
+        <label>firmware/user/wius/hal/wius_power.h</label>
+        <link refid="wius__power_8h"/>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="210" relation="include">
+        </childnode>
+      </node>
+      <node id="208">
+        <label>firmware/user/wius/hal/wius_spi.c</label>
+        <link refid="wius__spi_8c"/>
+      </node>
+      <node id="207">
+        <label>firmware/user/wius/hal/wius_spi.h</label>
+        <link refid="wius__spi_8h"/>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+      </node>
+      <node id="166">
+        <label>firmware/user/common/common.c</label>
+        <link refid="common_8c"/>
+      </node>
+      <node id="165">
+        <label>firmware/user/common/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>firmware/user/user.c</label>
+        <link refid="user_8c"/>
+      </node>
+      <node id="206">
+        <label>firmware/user/wius/hal/wius_gpio.c</label>
+        <link refid="wius__gpio_8c"/>
+      </node>
+      <node id="204">
+        <label>firmware/user/wius/hal/wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="205" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+      </node>
+      <node id="184">
+        <label>firmware/user/tp/methods/tp_method_controlpower.c</label>
+        <link refid="tp__method__controlpower_8c"/>
+      </node>
+      <node id="188">
+        <label>firmware/user/tp/methods/tp_method_controlpower.h</label>
+        <link refid="tp__method__controlpower_8h"/>
+        <childnode refid="184" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="180">
+        <label>firmware/user/tp/hal/tp_mux.c</label>
+        <link refid="tp__mux_8c"/>
+      </node>
+      <node id="179">
+        <label>firmware/user/tp/hal/tp_mux.h</label>
+        <link refid="tp__mux_8h"/>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+      </node>
+      <node id="197">
+        <label>firmware/user/tp/methods/tp_method_ping.c</label>
+        <link refid="tp__method__ping_8c"/>
+      </node>
+      <node id="196">
+        <label>firmware/user/tp/methods/tp_method_ping.h</label>
+        <link refid="tp__method__ping_8h"/>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="187">
+        <label>firmware/user/tp/methods/tp_method_writetx.c</label>
+        <link refid="tp__method__writetx_8c"/>
+      </node>
+      <node id="171">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="203">
+        <label>firmware/user/tp/methods/tp_method_writetx.h</label>
+        <link refid="tp__method__writetx_8h"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="169">
+        <label>firmware/user/tp/tp.h</label>
+        <link refid="tp_8h"/>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+      </node>
+      <node id="178">
+        <label>firmware/user/tp/methods/tp_method_writefpga.c</label>
+        <link refid="tp__method__writefpga_8c"/>
+      </node>
+      <node id="202">
+        <label>firmware/user/tp/methods/tp_method_writefpga.h</label>
+        <link refid="tp__method__writefpga_8h"/>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="217">
+        <label>firmware/user/common/log.c</label>
+        <link refid="log_8c"/>
+      </node>
+      <node id="164">
+        <label>firmware/user/common/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+      </node>
+      <node id="168">
+        <label>firmware/user/tp/common/tp_buffer.c</label>
+        <link refid="tp__buffer_8c"/>
+      </node>
+      <node id="167">
+        <label>firmware/user/tp/common/tp_buffer.h</label>
+        <link refid="tp__buffer_8h"/>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+      </node>
+      <node id="186">
+        <label>firmware/user/tp/hal/tp_tx.c</label>
+        <link refid="tp__tx_8c"/>
+      </node>
+      <node id="185">
+        <label>firmware/user/tp/hal/tp_tx.h</label>
+        <link refid="tp__tx_8h"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+      </node>
+      <node id="193">
+        <label>firmware/user/tp/methods/tp_method_delayms.c</label>
+        <link refid="tp__method__delayms_8c"/>
+      </node>
+      <node id="192">
+        <label>firmware/user/tp/methods/tp_method_delayms.h</label>
+        <link refid="tp__method__delayms_8h"/>
+        <childnode refid="193" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="212">
+        <label>firmware/user/wius/hal/wius_tcp.c</label>
+        <link refid="wius__tcp_8c"/>
+      </node>
+      <node id="211">
+        <label>firmware/user/wius/hal/wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+      </node>
+      <node id="214">
+        <label>firmware/user/wius/hal/wius_udp.c</label>
+        <link refid="wius__udp_8c"/>
+      </node>
+      <node id="213">
+        <label>firmware/user/wius/hal/wius_udp.h</label>
+        <link refid="wius__udp_8h"/>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+      </node>
+      <node id="199">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.c</label>
+        <link refid="tp__method__setloglevel_8c"/>
+      </node>
+      <node id="198">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.h</label>
+        <link refid="tp__method__setloglevel_8h"/>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>firmware/user/tp/methods/tp_method_delayns.c</label>
+        <link refid="tp__method__delayns_8c"/>
+      </node>
+      <node id="194">
+        <label>firmware/user/tp/methods/tp_method_delayns.h</label>
+        <link refid="tp__method__delayns_8h"/>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="170">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+      <node id="200">
+        <label>firmware/user/tp/methods/tp_method_triggershot.h</label>
+        <link refid="tp__method__triggershot_8h"/>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+      <node id="183">
+        <label>firmware/user/tp/hal/tp_power.c</label>
+        <link refid="tp__power_8c"/>
+      </node>
+      <node id="182">
+        <label>firmware/user/tp/hal/tp_power.h</label>
+        <link refid="tp__power_8h"/>
+        <childnode refid="183" relation="include">
+        </childnode>
+        <childnode refid="184" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+      </node>
+      <node id="177">
+        <label>firmware/user/tp/hal/tp_fpga.c</label>
+        <link refid="tp__fpga_8c"/>
+      </node>
+      <node id="176">
+        <label>firmware/user/tp/hal/tp_fpga.h</label>
+        <link refid="tp__fpga_8h"/>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+      </node>
+      <node id="190">
+        <label>firmware/user/tp/tp_methods.c</label>
+        <link refid="tp__methods_8c"/>
+      </node>
+      <node id="189">
+        <label>firmware/user/tp/tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+      </node>
+      <node id="174">
+        <label>firmware/user/tp/hal/tp_afe.c</label>
+        <link refid="tp__afe_8c"/>
+      </node>
+      <node id="173">
+        <label>firmware/user/tp/hal/tp_afe.h</label>
+        <link refid="tp__afe_8h"/>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>firmware/user/tp/methods/tp_method_controlspi.c</label>
+        <link refid="tp__method__controlspi_8c"/>
+      </node>
+      <node id="191">
+        <label>firmware/user/tp/methods/tp_method_controlspi.h</label>
+        <link refid="tp__method__controlspi_8h"/>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="log_8h_1af220e0f0458659bfccf3d336d1cacdda" prot="public" static="no">
+        <name>LOG_MAX_CALLBACKS</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="36" column="9" bodyfile="firmware/user/common/log.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="log_8h_1a381c342b2b34df0b1a5b39c0d94da4e1" prot="public" static="no">
+        <name>LOG_BUFFER_SIZE</name>
+        <initializer>128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="40" column="9" bodyfile="firmware/user/common/log.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="log_8h_1a25998682e04e0265f8e4198b6f35ce3f" prot="public" static="no">
+        <name>_LOG_LOG</name>
+        <param><defname>level</defname></param>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>log_log(level, __FILE_NAME__, __FUNCTION__, __LINE__, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="63" column="9" bodyfile="firmware/user/common/log.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="log_8h_1a056b9e71b3a2e575f88c564ff3670877" prot="public" static="no">
+        <name>log_trace</name>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>_LOG_LOG(TRACE, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="66" column="9" bodyfile="firmware/user/common/log.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="log_8h_1a0e37223ab9f5df7af8cb2a59b7c4dc18" prot="public" static="no">
+        <name>log_debug</name>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>_LOG_LOG(DEBUG, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="67" column="9" bodyfile="firmware/user/common/log.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="log_8h_1a442f23202cd03383ed8e3ec6bbae5bd2" prot="public" static="no">
+        <name>log_info</name>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>_LOG_LOG(INFO, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="68" column="9" bodyfile="firmware/user/common/log.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="log_8h_1afd2d22d45a6b32ff3ff8ea73013f09dc" prot="public" static="no">
+        <name>log_warn</name>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>_LOG_LOG(WARN, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="69" column="9" bodyfile="firmware/user/common/log.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="log_8h_1a887f83dbb884a13949e4f2ad710e5ddf" prot="public" static="no">
+        <name>log_error</name>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>_LOG_LOG(ERROR, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="70" column="9" bodyfile="firmware/user/common/log.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="log_8h_1a35b816bc17d7683cb333439a2a17cecf" prot="public" static="no">
+        <name>log_fatal</name>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>_LOG_LOG(FATAL, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="71" column="9" bodyfile="firmware/user/common/log.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06" prot="public" static="no" strong="no">
+        <type></type>
+        <name>log_level_e</name>
+        <enumvalue id="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a7fa27e82c6c4f69434225ed81e5d151e" prot="public">
+          <name>TRACE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a0593585da9181e972974c1274d8f2b4f" prot="public">
+          <name>DEBUG</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a748005382152808a72b1a9177d9dc806" prot="public">
+          <name>INFO</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a74dac7ac23d5b810db6d4067f14e8676" prot="public">
+          <name>WARN</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a2fd6f336d08340583bd620a7f5694c90" prot="public">
+          <name>ERROR</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06a651d8a47a6976d6fe05c0e03fb4cd2d0" prot="public">
+          <name>FATAL</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="log_8h_1ae3b8a89d425d14a2f6b56b007edc0a06ac8312acdf50b862a92c7807ed7657344" prot="public">
+          <name>LOG_LEVEL_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="44" column="1" bodyfile="firmware/user/common/log.h" bodystart="43" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="log_8h_1a071055f67a714cff7cdd508bc3723f79" prot="public" static="no">
+        <type>enum log_level_e</type>
+        <definition>typedef enum log_level_e  log_level_t</definition>
+        <argsstring></argsstring>
+        <name>log_level_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="52" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="log_8h_1a9b2a8d8c0ab25415119a31b51fa947ab" prot="public" static="no">
+        <type>int(*</type>
+        <definition>typedef int(* log_callback_t) (const char *str, int len)</definition>
+        <argsstring>)(const char *str, int len)</argsstring>
+        <name>log_callback_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="54" column="1" bodyfile="firmware/user/common/log.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="log_8h_1ad164aeb597d1fb87abdaa83f361d6fb1" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* log_level_strings[LOG_LEVEL_COUNT]</definition>
+        <argsstring>[LOG_LEVEL_COUNT]</argsstring>
+        <name>log_level_strings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="56" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="log_8h_1a335caee3209dca44238ff176e369c9b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool log_register_callback</definition>
+        <argsstring>(log_callback_t callback)</argsstring>
+        <name>log_register_callback</name>
+        <param>
+          <type>log_callback_t</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="58" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="log_8h_1a8e218e24cdea0d77f812f29e482a1dad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool log_unregister_callback</definition>
+        <argsstring>(log_callback_t callback)</argsstring>
+        <name>log_unregister_callback</name>
+        <param>
+          <type>log_callback_t</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="log_8h_1a1b7d2f9b80deb60879db98fcdd555377" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void log_log</definition>
+        <argsstring>(log_level_t level, const char *file, const char *function, int line, const char *fmt,...)</argsstring>
+        <name>log_log</name>
+        <param>
+          <type>log_level_t</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/log.h" line="64" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Logging header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#ifndef<sp/>_LOG_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_LOG_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdarg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_MAX_CALLBACKS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_MAX_CALLBACKS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_BUFFER_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_BUFFER_SIZE<sp/>128</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>log_level_e</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>TRACE<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>DEBUG<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>INFO<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>WARN<sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>ERROR<sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>FATAL<sp/>=<sp/>5,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_LEVEL_COUNT,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}<sp/>log_level_t;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int<sp/>(*log_callback_t)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*log_level_strings[LOG_LEVEL_COUNT];</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>log_register_callback(log_callback_t<sp/>callback);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_ONCE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>log_unregister_callback(log_callback_t<sp/>callback);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>LOG_ONCE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_LOG_LOG(level,<sp/>fmt,<sp/>...)<sp/>log_log(level,<sp/>__FILE_NAME__,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>fmt,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>log_log(log_level_t<sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">function</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fmt,<sp/>...);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>log_trace(fmt,<sp/>...)<sp/>_LOG_LOG(TRACE,<sp/>fmt,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>log_debug(fmt,<sp/>...)<sp/>_LOG_LOG(DEBUG,<sp/>fmt,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>log_info(fmt,<sp/>...)<sp/>_LOG_LOG(INFO,<sp/>fmt,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>log_warn(fmt,<sp/>...)<sp/>_LOG_LOG(WARN,<sp/>fmt,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>log_error(fmt,<sp/>...)<sp/>_LOG_LOG(ERROR,<sp/>fmt,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>log_fatal(fmt,<sp/>...)<sp/>_LOG_LOG(FATAL,<sp/>fmt,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>LOG_IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>log_callback_t<sp/>log_callbacks[<ref refid="group__config__common_1gaf220e0f0458659bfccf3d336d1cacdda" kindref="member">LOG_MAX_CALLBACKS</ref>]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>log_callback_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>log_buffer[<ref refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kindref="member">LOG_BUFFER_SIZE</ref>];</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*log_level_strings[LOG_LEVEL_COUNT]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TRC&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;DEB&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;INF&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WRN&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ERR&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;FTL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_NO_COLOR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*log_level_colors[LOG_LEVEL_COUNT]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\x1b[36m&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">//<sp/>Cyan<sp/>for<sp/>TRACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\x1b[34m&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">//<sp/>Blue<sp/>for<sp/>DEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\x1b[32m&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">//<sp/>Green<sp/>for<sp/>INFO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\x1b[33m&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">//<sp/>Yellow<sp/>for<sp/>WARN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\x1b[31m&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">//<sp/>Red<sp/>for<sp/>ERROR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\x1b[35m&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">//<sp/>Magenta<sp/>for<sp/>FATAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_STYLE_BOLD<sp/>&quot;\x1b[1m&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_STYLE_DIM<sp/>&quot;\x1b[2m&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_STYLE_RESET<sp/>&quot;\x1b[0m&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>log_register_callback(log_callback_t<sp/>callback)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(log_callback_count<sp/>&gt;=<sp/><ref refid="group__config__common_1gaf220e0f0458659bfccf3d336d1cacdda" kindref="member">LOG_MAX_CALLBACKS</ref>)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>log_callbacks[log_callback_count++]<sp/>=<sp/>callback;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_ONCE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>log_unregister_callback(log_callback_t<sp/>callback)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>log_callback_count;<sp/>i++)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_callback_t<sp/>cb<sp/>=<sp/>log_callbacks[i];</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cb<sp/>==<sp/>callback)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>i;<sp/>j<sp/>&lt;<sp/>log_callback_count<sp/>-<sp/>1;<sp/>j++)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_callbacks[j]<sp/>=<sp/>log_callbacks[j<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_callback_count--;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>LOG_ONCE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>log_log(log_level_t<sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">function</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fmt,<sp/>...)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#ifndef<sp/>LOG_NO_COLOR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>int<sp/>written<sp/>=<sp/>snprintf(log_buffer,<sp/>LOG_BUFFER_SIZE,<sp/>&quot;%s%s(%s)%s<sp/>%s[%s:%d]<sp/>%s:%s<sp/>&quot;,<sp/>log_level_colors[level],<sp/>LOG_STYLE_BOLD,<sp/>log_level_strings[level],<sp/>LOG_STYLE_RESET,<sp/>LOG_STYLE_DIM,<sp/>file,<sp/>line,<sp/>function,<sp/>LOG_STYLE_RESET);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)file;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)</highlight><highlight class="keyword">function</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)line;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>written<sp/>=<sp/>snprintf(log_buffer,<sp/><ref refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kindref="member">LOG_BUFFER_SIZE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;(%s)<sp/>&quot;</highlight><highlight class="normal">,<sp/>log_level_strings[level]);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(log_callback_count<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>va_list<sp/>args;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>va_start(args,<sp/>fmt);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>written<sp/>+=<sp/>vsnprintf(log_buffer<sp/>+<sp/>written,<sp/><ref refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kindref="member">LOG_BUFFER_SIZE</ref><sp/>-<sp/>written,<sp/>fmt,<sp/>args);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>va_end(args);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(written<sp/>&lt;<sp/><ref refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kindref="member">LOG_BUFFER_SIZE</ref><sp/>-<sp/>2)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_buffer[written++]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_buffer[written]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_buffer[<ref refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kindref="member">LOG_BUFFER_SIZE</ref><sp/>-<sp/>2]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_buffer[<ref refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kindref="member">LOG_BUFFER_SIZE</ref><sp/>-<sp/>1]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>written<sp/>=<sp/><ref refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" kindref="member">LOG_BUFFER_SIZE</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>log_callback_count;<sp/>i++)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_callbacks[i](log_buffer,<sp/>written);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>LOG_IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>_LOG_H_</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/common/log.h"/>
+  </compounddef>
+</doxygen>

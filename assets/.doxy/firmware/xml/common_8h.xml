@@ -1,0 +1,887 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="common_8h" kind="file" language="C++">
+    <compoundname>common.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="yes">sl_status.h</includes>
+    <includes local="yes">cmsis_os2.h</includes>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includes refid="log_8h" local="yes">log.h</includes>
+    <includes refid="led_8h" local="yes">led.h</includes>
+    <includedby refid="common_8c" local="yes">firmware/user/common/common.c</includedby>
+    <includedby refid="tp__buffer_8h" local="yes">firmware/user/tp/common/tp_buffer.h</includedby>
+    <includedby refid="tp__afe_8h" local="yes">firmware/user/tp/hal/tp_afe.h</includedby>
+    <includedby refid="tp__fpga_8h" local="yes">firmware/user/tp/hal/tp_fpga.h</includedby>
+    <includedby refid="tp__mux_8h" local="yes">firmware/user/tp/hal/tp_mux.h</includedby>
+    <includedby refid="tp__power_8h" local="yes">firmware/user/tp/hal/tp_power.h</includedby>
+    <includedby refid="tp__tx_8h" local="yes">firmware/user/tp/hal/tp_tx.h</includedby>
+    <includedby refid="tp__method__controlpower_8h" local="yes">firmware/user/tp/methods/tp_method_controlpower.h</includedby>
+    <includedby refid="tp__method__controlspi_8h" local="yes">firmware/user/tp/methods/tp_method_controlspi.h</includedby>
+    <includedby refid="tp__method__delayms_8h" local="yes">firmware/user/tp/methods/tp_method_delayms.h</includedby>
+    <includedby refid="tp__method__delayns_8h" local="yes">firmware/user/tp/methods/tp_method_delayns.h</includedby>
+    <includedby refid="tp__method__ping_8h" local="yes">firmware/user/tp/methods/tp_method_ping.h</includedby>
+    <includedby refid="tp__method__setloglevel_8h" local="yes">firmware/user/tp/methods/tp_method_setloglevel.h</includedby>
+    <includedby refid="tp__method__triggershot_8h" local="yes">firmware/user/tp/methods/tp_method_triggershot.h</includedby>
+    <includedby refid="tp__method__writeafe_8h" local="yes">firmware/user/tp/methods/tp_method_writeafe.h</includedby>
+    <includedby refid="tp__method__writefpga_8h" local="yes">firmware/user/tp/methods/tp_method_writefpga.h</includedby>
+    <includedby refid="tp__method__writetx_8h" local="yes">firmware/user/tp/methods/tp_method_writetx.h</includedby>
+    <includedby refid="tp_8h" local="yes">firmware/user/tp/tp.h</includedby>
+    <includedby refid="tp__methods_8h" local="yes">firmware/user/tp/tp_methods.h</includedby>
+    <includedby refid="user_8c" local="yes">firmware/user/user.c</includedby>
+    <includedby refid="wius__gpio_8h" local="yes">firmware/user/wius/hal/wius_gpio.h</includedby>
+    <includedby refid="wius__power_8h" local="yes">firmware/user/wius/hal/wius_power.h</includedby>
+    <includedby refid="wius__spi_8h" local="yes">firmware/user/wius/hal/wius_spi.h</includedby>
+    <includedby refid="wius__tcp_8h" local="yes">firmware/user/wius/hal/wius_tcp.h</includedby>
+    <includedby refid="wius__udp_8h" local="yes">firmware/user/wius/hal/wius_udp.h</includedby>
+    <includedby refid="wius__wifi_8h" local="yes">firmware/user/wius/hal/wius_wifi.h</includedby>
+    <incdepgraph>
+      <node id="19">
+        <label>stdbool.h</label>
+      </node>
+      <node id="24">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>stdarg.h</label>
+      </node>
+      <node id="22">
+        <label>sl_status.h</label>
+      </node>
+      <node id="28">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>stdint.h</label>
+      </node>
+      <node id="17">
+        <label>firmware/user/common/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>stddef.h</label>
+      </node>
+      <node id="25">
+        <label>env.h</label>
+      </node>
+      <node id="23">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="21">
+        <label>string.h</label>
+      </node>
+      <node id="26">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="80">
+        <label>firmware/user/wius/hal/wius_wifi.c</label>
+        <link refid="wius__wifi_8c"/>
+      </node>
+      <node id="79">
+        <label>firmware/user/wius/hal/wius_wifi.h</label>
+        <link refid="wius__wifi_8h"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>firmware/user/tp/methods/tp_method_writeafe.c</label>
+        <link refid="tp__method__writeafe_8c"/>
+      </node>
+      <node id="65">
+        <label>firmware/user/tp/methods/tp_method_writeafe.h</label>
+        <link refid="tp__method__writeafe_8h"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>firmware/user/wius/hal/wius_power.c</label>
+        <link refid="wius__power_8c"/>
+      </node>
+      <node id="69">
+        <label>firmware/user/common/led.c</label>
+        <link refid="led_8c"/>
+      </node>
+      <node id="73">
+        <label>firmware/user/wius/hal/wius_power.h</label>
+        <link refid="wius__power_8h"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>firmware/user/wius/hal/wius_spi.c</label>
+        <link refid="wius__spi_8c"/>
+      </node>
+      <node id="71">
+        <label>firmware/user/wius/hal/wius_spi.h</label>
+        <link refid="wius__spi_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>firmware/user/common/common.c</label>
+        <link refid="common_8c"/>
+      </node>
+      <node id="29">
+        <label>firmware/user/common/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>firmware/user/user.c</label>
+        <link refid="user_8c"/>
+      </node>
+      <node id="70">
+        <label>firmware/user/wius/hal/wius_gpio.c</label>
+        <link refid="wius__gpio_8c"/>
+      </node>
+      <node id="68">
+        <label>firmware/user/wius/hal/wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>firmware/user/tp/methods/tp_method_controlpower.c</label>
+        <link refid="tp__method__controlpower_8c"/>
+      </node>
+      <node id="52">
+        <label>firmware/user/tp/methods/tp_method_controlpower.h</label>
+        <link refid="tp__method__controlpower_8h"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>firmware/user/tp/hal/tp_mux.c</label>
+        <link refid="tp__mux_8c"/>
+      </node>
+      <node id="43">
+        <label>firmware/user/tp/hal/tp_mux.h</label>
+        <link refid="tp__mux_8h"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>firmware/user/tp/methods/tp_method_ping.c</label>
+        <link refid="tp__method__ping_8c"/>
+      </node>
+      <node id="60">
+        <label>firmware/user/tp/methods/tp_method_ping.h</label>
+        <link refid="tp__method__ping_8h"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>firmware/user/tp/methods/tp_method_writetx.c</label>
+        <link refid="tp__method__writetx_8c"/>
+      </node>
+      <node id="35">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="67">
+        <label>firmware/user/tp/methods/tp_method_writetx.h</label>
+        <link refid="tp__method__writetx_8h"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>firmware/user/tp/tp.h</label>
+        <link refid="tp_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>firmware/user/tp/methods/tp_method_writefpga.c</label>
+        <link refid="tp__method__writefpga_8c"/>
+      </node>
+      <node id="66">
+        <label>firmware/user/tp/methods/tp_method_writefpga.h</label>
+        <link refid="tp__method__writefpga_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>firmware/user/tp/common/tp_buffer.c</label>
+        <link refid="tp__buffer_8c"/>
+      </node>
+      <node id="31">
+        <label>firmware/user/tp/common/tp_buffer.h</label>
+        <link refid="tp__buffer_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>firmware/user/tp/hal/tp_tx.c</label>
+        <link refid="tp__tx_8c"/>
+      </node>
+      <node id="49">
+        <label>firmware/user/tp/hal/tp_tx.h</label>
+        <link refid="tp__tx_8h"/>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>firmware/user/tp/methods/tp_method_delayms.c</label>
+        <link refid="tp__method__delayms_8c"/>
+      </node>
+      <node id="56">
+        <label>firmware/user/tp/methods/tp_method_delayms.h</label>
+        <link refid="tp__method__delayms_8h"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>firmware/user/wius/hal/wius_tcp.c</label>
+        <link refid="wius__tcp_8c"/>
+      </node>
+      <node id="75">
+        <label>firmware/user/wius/hal/wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>firmware/user/wius/hal/wius_udp.c</label>
+        <link refid="wius__udp_8c"/>
+      </node>
+      <node id="77">
+        <label>firmware/user/wius/hal/wius_udp.h</label>
+        <link refid="wius__udp_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.c</label>
+        <link refid="tp__method__setloglevel_8c"/>
+      </node>
+      <node id="62">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.h</label>
+        <link refid="tp__method__setloglevel_8h"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>firmware/user/tp/methods/tp_method_delayns.c</label>
+        <link refid="tp__method__delayns_8c"/>
+      </node>
+      <node id="58">
+        <label>firmware/user/tp/methods/tp_method_delayns.h</label>
+        <link refid="tp__method__delayns_8h"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+      <node id="64">
+        <label>firmware/user/tp/methods/tp_method_triggershot.h</label>
+        <link refid="tp__method__triggershot_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>firmware/user/tp/hal/tp_power.c</label>
+        <link refid="tp__power_8c"/>
+      </node>
+      <node id="46">
+        <label>firmware/user/tp/hal/tp_power.h</label>
+        <link refid="tp__power_8h"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>firmware/user/tp/hal/tp_fpga.c</label>
+        <link refid="tp__fpga_8c"/>
+      </node>
+      <node id="40">
+        <label>firmware/user/tp/hal/tp_fpga.h</label>
+        <link refid="tp__fpga_8h"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>firmware/user/tp/tp_methods.c</label>
+        <link refid="tp__methods_8c"/>
+      </node>
+      <node id="53">
+        <label>firmware/user/tp/tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>firmware/user/tp/hal/tp_afe.c</label>
+        <link refid="tp__afe_8c"/>
+      </node>
+      <node id="37">
+        <label>firmware/user/tp/hal/tp_afe.h</label>
+        <link refid="tp__afe_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>firmware/user/tp/methods/tp_method_controlspi.c</label>
+        <link refid="tp__method__controlspi_8c"/>
+      </node>
+      <node id="55">
+        <label>firmware/user/tp/methods/tp_method_controlspi.h</label>
+        <link refid="tp__method__controlspi_8h"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="common_8h_1aee2a57e33d2c9cdc5ca83b4d9e11e1e6" prot="public" static="no">
+        <name>CONCAT_2</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>a##b</initializer>
+        <briefdescription>
+<para>Concatenate two tokens. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="45" column="9" bodyfile="firmware/user/common/common.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a93d1ecea70d8ee1b817884f3624dfdff" prot="public" static="no">
+        <name>CONCAT_3</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <param><defname>c</defname></param>
+        <initializer>a##b##c</initializer>
+        <briefdescription>
+<para>Concatenate three tokens. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="47" column="9" bodyfile="firmware/user/common/common.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a4a0c770328891d8916c1142a26481e4a" prot="public" static="no">
+        <name>TICKS_PER_SEC</name>
+        <initializer>(OS_Tick_GetClock() / OS_Tick_GetInterval())</initializer>
+        <briefdescription>
+<para>Number of RTOS ticks per second. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="50" column="9" bodyfile="firmware/user/common/common.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a15b48961e1154f835693058463daffc5" prot="public" static="no">
+        <name>LOG_STATUS</name>
+        <param><defname>status</defname></param>
+        <initializer><ref refid="common_8h_1a044e79babf40fbebb0a93ce59f7c21d1" kindref="member">log_status</ref>(__FILE__, __LINE__, (status))</initializer>
+        <briefdescription>
+<para>Macro to log the status of a function call with file and line information. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Status to log </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="58" column="9" bodyfile="firmware/user/common/common.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" prot="public" static="no">
+        <name>LOG_RET_STATUS</name>
+        <param><defname>x</defname></param>
+        <initializer>do                                           \
+    {                                            \
+        sl_status_t _tmp_status = (x);           \
+        <ref refid="common_8h_1a15b48961e1154f835693058463daffc5" kindref="member">LOG_STATUS</ref>(_tmp_status);                 \
+        if (SL_STATUS_OK != _tmp_status)         \
+        {                                        \
+            if (strncmp(#x, &quot;status&quot;, 6) != 0)   \
+            {                                    \
+                log_error(&quot;Expression: %s&quot;, #x); \
+            }                                    \
+            return _tmp_status;                  \
+        }                                        \
+    } while (0)</initializer>
+        <briefdescription>
+<para>Macro to check the status of a function call and return if it is not <computeroutput>SL_STATUS_OK</computeroutput> </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function call to check</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para>This macro returns with <computeroutput>sl_status_t</computeroutput> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="68" column="9" bodyfile="firmware/user/common/common.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a3254d8df847ba3b721c964cc8d45968e" prot="public" static="no">
+        <name>LOG_RET_VOID</name>
+        <param><defname>x</defname></param>
+        <initializer>do                                           \
+    {                                            \
+        sl_status_t _tmp_status = (x);           \
+        <ref refid="common_8h_1a15b48961e1154f835693058463daffc5" kindref="member">LOG_STATUS</ref>(_tmp_status);                 \
+        if (SL_STATUS_OK != _tmp_status)         \
+        {                                        \
+            if (strncmp(#x, &quot;status&quot;, 6) != 0)   \
+            {                                    \
+                log_error(&quot;Expression: %s&quot;, #x); \
+            }                                    \
+            return;                              \
+        }                                        \
+    } while (0)</initializer>
+        <briefdescription>
+<para>Macro to check the status of a function call and return if it is not <computeroutput>SL_STATUS_OK</computeroutput> </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function call to check</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para>This macro returns with <computeroutput>void</computeroutput> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="91" column="9" bodyfile="firmware/user/common/common.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" prot="public" static="no">
+        <name>UNUSED</name>
+        <param><defname>x</defname></param>
+        <initializer>(void)(x)</initializer>
+        <briefdescription>
+<para>Suppress unused variable warning. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="107" column="9" bodyfile="firmware/user/common/common.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="common_8h_1a14befe20ee926d993356b9fabac4b225" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void common_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>common_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize some common stuff. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="113" column="1" bodyfile="firmware/user/common/common.c" bodystart="45" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1a3eb73598ef1a1883d57e9ca79679b26a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void common_tick_update</definition>
+        <argsstring>(void)</argsstring>
+        <name>common_tick_update</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Update the common tick. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="119" column="1" bodyfile="firmware/user/common/common.c" bodystart="59" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1af6090ef9f4a9124b628abff09b82c890" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t core_clock_hz</definition>
+        <argsstring>(void)</argsstring>
+        <name>core_clock_hz</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get the current core clock in Hz. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current core clock in Hz </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="127" column="1" bodyfile="firmware/user/common/common.c" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1a8d0b12edc73fcead8218d099d67d1d90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void delay_ns</definition>
+        <argsstring>(uint64_t ns)</argsstring>
+        <name>delay_ns</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>ns</declname>
+        </param>
+        <briefdescription>
+<para>Delay for a given number of nanoseconds. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of nanoseconds to delay</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function is not very accurate </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="137" column="1" bodyfile="firmware/user/common/common.c" bodystart="74" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1ab7cce8122024d7ba47bf10f434956de4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void delay_ms</definition>
+        <argsstring>(uint32_t ms)</argsstring>
+        <name>delay_ms</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+<para>Delay for a given number of milliseconds. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of milliseconds to delay </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="145" column="1" bodyfile="firmware/user/common/common.c" bodystart="94" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1a9c4a18b1127470d7dc900f7744c7646c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t time_ms</definition>
+        <argsstring>(void)</argsstring>
+        <name>time_ms</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get the current time in milliseconds. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current time in milliseconds </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="153" column="1" bodyfile="firmware/user/common/common.c" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="common_8h_1a044e79babf40fbebb0a93ce59f7c21d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t log_status</definition>
+        <argsstring>(const char *file, int line, sl_status_t status)</argsstring>
+        <name>log_status</name>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>sl_status_t</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Log an error message with file and line information. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Line number </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Status to log</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Propagated status </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/common/common.h" line="165" column="1" bodyfile="firmware/user/common/common.c" bodystart="104" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Common header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>Common<sp/>Header<sp/>Files<sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_status.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;cmsis_os2.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="led_8h" kindref="compound">led.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="common_8h_1aee2a57e33d2c9cdc5ca83b4d9e11e1e6" refkind="member"><highlight class="preprocessor">#define<sp/>CONCAT_2(a,<sp/>b)<sp/>a##b</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_3(a,<sp/>b,<sp/>c)<sp/>a##b##c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="common_8h_1a4a0c770328891d8916c1142a26481e4a" refkind="member"><highlight class="preprocessor">#define<sp/>TICKS_PER_SEC<sp/>(OS_Tick_GetClock()<sp/>/<sp/>OS_Tick_GetInterval())</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="common_8h_1a15b48961e1154f835693058463daffc5" refkind="member"><highlight class="preprocessor">#define<sp/>LOG_STATUS(status)<sp/>log_status(__FILE__,<sp/>__LINE__,<sp/>(status))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" refkind="member"><highlight class="preprocessor">#define<sp/>LOG_RET_STATUS(x)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_status_t<sp/>_tmp_status<sp/>=<sp/>(x);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STATUS(_tmp_status);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(SL_STATUS_OK<sp/>!=<sp/>_tmp_status)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(strncmp(#x,<sp/>&quot;status&quot;,<sp/>6)<sp/>!=<sp/>0)<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(&quot;Expression:<sp/>%s&quot;,<sp/>#x);<sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>_tmp_status;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="common_8h_1a3254d8df847ba3b721c964cc8d45968e" refkind="member"><highlight class="preprocessor">#define<sp/>LOG_RET_VOID(x)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_status_t<sp/>_tmp_status<sp/>=<sp/>(x);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STATUS(_tmp_status);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(SL_STATUS_OK<sp/>!=<sp/>_tmp_status)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(strncmp(#x,<sp/>&quot;status&quot;,<sp/>6)<sp/>!=<sp/>0)<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(&quot;Expression:<sp/>%s&quot;,<sp/>#x);<sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" refkind="member"><highlight class="preprocessor">#define<sp/>UNUSED(x)<sp/>(void)(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a14befe20ee926d993356b9fabac4b225" kindref="member">common_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a3eb73598ef1a1883d57e9ca79679b26a" kindref="member">common_tick_update</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">uint32_t<sp/><ref refid="common_8h_1af6090ef9f4a9124b628abff09b82c890" kindref="member">core_clock_hz</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="common_8h_1a8d0b12edc73fcead8218d099d67d1d90" kindref="member">delay_ns</ref>(uint64_t<sp/>ns);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="common_8h_1ab7cce8122024d7ba47bf10f434956de4" kindref="member">delay_ms</ref>(uint32_t<sp/>ms);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal">uint32_t<sp/><ref refid="common_8h_1a9c4a18b1127470d7dc900f7744c7646c" kindref="member">time_ms</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal">sl_status_t<sp/><ref refid="common_8h_1a044e79babf40fbebb0a93ce59f7c21d1" kindref="member">log_status</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/>sl_status_t<sp/>status);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/common/common.h"/>
+  </compounddef>
+</doxygen>

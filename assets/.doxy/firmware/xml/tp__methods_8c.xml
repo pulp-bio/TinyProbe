@@ -1,0 +1,432 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__methods_8c" kind="file" language="C++">
+    <compoundname>tp_methods.c</compoundname>
+    <includes refid="tp__methods_8h" local="yes">tp_methods.h</includes>
+    <includes local="yes">sl_si91x_clock_manager.h</includes>
+    <includes local="no">pb_decode.h</includes>
+    <includes local="no">pb_encode.h</includes>
+    <includes local="yes">methods.pb.h</includes>
+    <incdepgraph>
+      <node id="943">
+        <label>stdbool.h</label>
+      </node>
+      <node id="948">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="949" relation="include">
+        </childnode>
+      </node>
+      <node id="951">
+        <label>stdarg.h</label>
+      </node>
+      <node id="963">
+        <label>methods/tp_method_writeafe.h</label>
+        <link refid="tp__method__writeafe_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="946">
+        <label>sl_status.h</label>
+      </node>
+      <node id="952">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="948" relation="include">
+        </childnode>
+      </node>
+      <node id="942">
+        <label>stdint.h</label>
+      </node>
+      <node id="941">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="942" relation="include">
+        </childnode>
+        <childnode refid="943" relation="include">
+        </childnode>
+        <childnode refid="944" relation="include">
+        </childnode>
+        <childnode refid="945" relation="include">
+        </childnode>
+        <childnode refid="946" relation="include">
+        </childnode>
+        <childnode refid="947" relation="include">
+        </childnode>
+        <childnode refid="948" relation="include">
+        </childnode>
+        <childnode refid="950" relation="include">
+        </childnode>
+        <childnode refid="952" relation="include">
+        </childnode>
+      </node>
+      <node id="954">
+        <label>sl_si91x_socket.h</label>
+      </node>
+      <node id="955">
+        <label>methods/tp_method_controlpower.h</label>
+        <link refid="tp__method__controlpower_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="944">
+        <label>stddef.h</label>
+      </node>
+      <node id="949">
+        <label>env.h</label>
+      </node>
+      <node id="966">
+        <label>sl_si91x_clock_manager.h</label>
+      </node>
+      <node id="947">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="968">
+        <label>pb_encode.h</label>
+      </node>
+      <node id="945">
+        <label>string.h</label>
+      </node>
+      <node id="960">
+        <label>methods/tp_method_ping.h</label>
+        <link refid="tp__method__ping_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="965">
+        <label>methods/tp_method_writetx.h</label>
+        <link refid="tp__method__writetx_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="967">
+        <label>pb_decode.h</label>
+      </node>
+      <node id="964">
+        <label>methods/tp_method_writefpga.h</label>
+        <link refid="tp__method__writefpga_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="950">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="951" relation="include">
+        </childnode>
+        <childnode refid="943" relation="include">
+        </childnode>
+      </node>
+      <node id="958">
+        <label>methods/tp_method_delayms.h</label>
+        <link refid="tp__method__delayms_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="953">
+        <label>wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="954" relation="include">
+        </childnode>
+      </node>
+      <node id="956">
+        <label>methods.pb.h</label>
+      </node>
+      <node id="961">
+        <label>methods/tp_method_setloglevel.h</label>
+        <link refid="tp__method__setloglevel_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="959">
+        <label>methods/tp_method_delayns.h</label>
+        <link refid="tp__method__delayns_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="962">
+        <label>methods/tp_method_triggershot.h</label>
+        <link refid="tp__method__triggershot_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="939">
+        <label>firmware/user/tp/tp_methods.c</label>
+        <link refid="tp__methods_8c"/>
+        <childnode refid="940" relation="include">
+        </childnode>
+        <childnode refid="966" relation="include">
+        </childnode>
+        <childnode refid="967" relation="include">
+        </childnode>
+        <childnode refid="968" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+      <node id="940">
+        <label>tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="953" relation="include">
+        </childnode>
+        <childnode refid="955" relation="include">
+        </childnode>
+        <childnode refid="957" relation="include">
+        </childnode>
+        <childnode refid="958" relation="include">
+        </childnode>
+        <childnode refid="959" relation="include">
+        </childnode>
+        <childnode refid="960" relation="include">
+        </childnode>
+        <childnode refid="961" relation="include">
+        </childnode>
+        <childnode refid="962" relation="include">
+        </childnode>
+        <childnode refid="963" relation="include">
+        </childnode>
+        <childnode refid="964" relation="include">
+        </childnode>
+        <childnode refid="965" relation="include">
+        </childnode>
+      </node>
+      <node id="957">
+        <label>methods/tp_method_controlspi.h</label>
+        <link refid="tp__method__controlspi_8h"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="tp__methods_8c_1a826edd40636cbaa44266b97c8c6a4fa3" prot="public" static="no">
+        <name>X</name>
+        <param><defname>name</defname></param>
+        <initializer>case methods_cmd_##name##_tag:                            \
+        status = tp_method_##name(&amp;cmd-&gt;args.name, userdata); \
+        break;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp_methods.c" line="80" column="9"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="tp__methods_8c_1abd5bbcdb76ac65efe5ee1504362aeec9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t response_data[methods_response_size]</definition>
+        <argsstring>[methods_response_size]</argsstring>
+        <name>response_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp_methods.c" line="39" column="1" bodyfile="firmware/user/tp/tp_methods.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="tp__methods_8c_1a03aeb6b1e0b1b6dedf379c1c7b6813b7" prot="public" static="no" mutable="no">
+        <type>methods_request</type>
+        <definition>methods_request req</definition>
+        <argsstring></argsstring>
+        <name>req</name>
+        <initializer>= methods_request_init_default</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp_methods.c" line="41" column="1" bodyfile="firmware/user/tp/tp_methods.c" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="tp__methods_8c_1a9db4c152ab0514203746345933cbfc51" prot="public" static="no" mutable="no">
+        <type>methods_response</type>
+        <definition>methods_response rsp</definition>
+        <argsstring></argsstring>
+        <name>rsp</name>
+        <initializer>= methods_response_init_default</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp_methods.c" line="42" column="1" bodyfile="firmware/user/tp/tp_methods.c" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__methods_8c_1ab763b48bb0caae51d13d3a8b9d417311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_methods_handle</definition>
+        <argsstring>(wius_tcp_server_message_t *request, void(*sender)(const char *response, size_t response_len))</argsstring>
+        <name>tp_methods_handle</name>
+        <param>
+          <type><ref refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kindref="member">wius_tcp_server_message_t</ref> *</type>
+          <declname>request</declname>
+        </param>
+        <param>
+          <type>void(*)(const char *response, size_t response_len)</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+<para>Export all TinyProbe methods. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp_methods.c" line="44" column="1" bodyfile="firmware/user/tp/tp_methods.c" bodystart="44" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe methods implementation file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__methods_8h" kindref="compound">tp_methods.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_si91x_clock_manager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pb_decode.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pb_encode.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;methods.pb.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">uint8_t<sp/>response_data[methods_response_size];</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">methods_request<sp/>req<sp/>=<sp/>methods_request_init_default;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">methods_response<sp/>rsp<sp/>=<sp/>methods_response_init_default;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__methods_8c_1ab763b48bb0caae51d13d3a8b9d417311" kindref="member">tp_methods_handle</ref>(<ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message_t</ref><sp/>*request,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*sender)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*response,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>response_len))</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_trace(&quot;Decoding<sp/>request<sp/>with<sp/>%u<sp/>bytes<sp/>of<sp/>data&quot;,<sp/>(unsigned)request-&gt;length);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>pb_istream_t<sp/>istream<sp/>=<sp/>pb_istream_from_buffer(request-&gt;<ref refid="structwius__tcp__server__message_1a38e768968dc2012cd20d071bf190c898" kindref="member">data</ref>,<sp/>request-&gt;<ref refid="structwius__tcp__server__message_1a5b0c0ab617b6e108f9abb7f68491ce97" kindref="member">length</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_trace(&quot;Created<sp/>istream<sp/>for<sp/>request<sp/>data&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!pb_decode(&amp;istream,<sp/>methods_request_fields,<sp/>&amp;req))</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>decode<sp/>request:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>istream.errmsg<sp/>?<sp/>istream.errmsg<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;unknown<sp/>decode<sp/>error&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Decoded<sp/>request<sp/>with<sp/>%u<sp/>commands&quot;,<sp/>(unsigned)req.cmd_count);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>rsp.status_count<sp/>=<sp/>req.cmd_count;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>rsp.status_count;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp.status[i]<sp/>=<sp/>methods_status_OK;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>triggered_shots<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>loop_iterations<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*userdata<sp/>=<sp/>request;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>req.cmd_count;<sp/>i++)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>methods_cmd<sp/>*cmd<sp/>=<sp/>&amp;req.cmd[i];</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>methods_status<sp/>status<sp/>=<sp/>methods_status_OK;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cmd-&gt;which_args<sp/>==<sp/>methods_cmd_triggershot_tag)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_debug(</highlight><highlight class="stringliteral">&quot;Shot<sp/>at<sp/>%u&quot;</highlight><highlight class="normal">,<sp/><ref refid="common_8c_1a9c4a18b1127470d7dc900f7744c7646c" kindref="member">time_ms</ref>());</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>TP_METHOD_TIMING</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>time_start<sp/>=<sp/>DWT-&gt;CYCCNT;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(cmd-&gt;which_args)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>case<sp/>methods_cmd_##name##_tag:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>tp_method_##name(&amp;cmd-&gt;args.name,<sp/>userdata);<sp/>\</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tp__methods_8h_1aa41f0609b4f642da47f7ad40ae07f0d8" kindref="member">TP_METHODS</ref></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>methods_cmd_loop_tag:</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Handling<sp/>method<sp/>%u:<sp/>loop&quot;,<sp/>i);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(loop_iterations<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>loop_iterations<sp/>=<sp/>cmd-&gt;args.loop.iterations;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(loop_iterations<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Looping<sp/>back<sp/>to<sp/>command<sp/>index:<sp/>%d,<sp/>remaining<sp/>iterations:<sp/>%d&quot;,<sp/>cmd-&gt;args.loop.command_index,<sp/>loop_iterations);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>=<sp/>cmd-&gt;args.loop.command_index<sp/>-<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>-1<sp/>because<sp/>the<sp/>for<sp/>loop<sp/>will<sp/>increment<sp/>i</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>loop_iterations--;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;No<sp/>more<sp/>iterations<sp/>left<sp/>for<sp/>loop&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>methods_status_OK;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_warn(</highlight><highlight class="stringliteral">&quot;Unknown<sp/>method:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>cmd-&gt;which_args);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>methods_status_INVALID_STATE;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>TP_METHOD_TIMING</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>time_end<sp/>=<sp/>DWT-&gt;CYCCNT;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>time_elapsed<sp/>=<sp/>time_end<sp/>-<sp/>time_start;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_debug(</highlight><highlight class="stringliteral">&quot;%u<sp/>%u<sp/>%u&quot;</highlight><highlight class="normal">,<sp/>i,<sp/>cmd-&gt;which_args,<sp/>time_elapsed);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cmd-&gt;which_args<sp/>==<sp/>methods_cmd_triggershot_tag<sp/>&amp;&amp;<sp/>status<sp/>==<sp/>methods_status_OK)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triggered_shots++;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rsp.status[i]<sp/>==<sp/>methods_status_OK)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp.status[i]<sp/>=<sp/>status;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(methods_status_OK<sp/>!=<sp/>status)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Error<sp/>handling<sp/>method<sp/>%d:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>cmd-&gt;which_args,<sp/>status);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>TP_METHOD_TIMING</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>log_info(</highlight><highlight class="stringliteral">&quot;Triggered<sp/>total<sp/>%u<sp/>shots&quot;</highlight><highlight class="normal">,<sp/>triggered_shots);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" kindref="member">UNUSED</ref>(triggered_shots);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>pb_ostream_t<sp/>ostream<sp/>=<sp/>pb_ostream_from_buffer(response_data,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(response_data));</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!pb_encode(&amp;ostream,<sp/>methods_response_fields,<sp/>&amp;rsp))</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_error(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>encode<sp/>response:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>ostream.errmsg<sp/>?<sp/>ostream.errmsg<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;unknown<sp/>encode<sp/>error&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>sender((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)response_data,<sp/>ostream.bytes_written);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/tp_methods.c"/>
+  </compounddef>
+</doxygen>

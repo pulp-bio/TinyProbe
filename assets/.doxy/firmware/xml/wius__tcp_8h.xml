@@ -1,0 +1,710 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__tcp_8h" kind="file" language="C++">
+    <compoundname>wius_tcp.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes local="yes">sl_si91x_socket.h</includes>
+    <includedby refid="tp__method__ping_8c" local="yes">firmware/user/tp/methods/tp_method_ping.c</includedby>
+    <includedby refid="tp__methods_8h" local="yes">firmware/user/tp/tp_methods.h</includedby>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <includedby refid="wius__tcp_8c" local="yes">firmware/user/wius/hal/wius_tcp.c</includedby>
+    <incdepgraph>
+      <node id="1168">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1173">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1174" relation="include">
+        </childnode>
+      </node>
+      <node id="1176">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1171">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1177">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1173" relation="include">
+        </childnode>
+      </node>
+      <node id="1167">
+        <label>stdint.h</label>
+      </node>
+      <node id="1166">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1167" relation="include">
+        </childnode>
+        <childnode refid="1168" relation="include">
+        </childnode>
+        <childnode refid="1169" relation="include">
+        </childnode>
+        <childnode refid="1170" relation="include">
+        </childnode>
+        <childnode refid="1171" relation="include">
+        </childnode>
+        <childnode refid="1172" relation="include">
+        </childnode>
+        <childnode refid="1173" relation="include">
+        </childnode>
+        <childnode refid="1175" relation="include">
+        </childnode>
+        <childnode refid="1177" relation="include">
+        </childnode>
+      </node>
+      <node id="1178">
+        <label>sl_si91x_socket.h</label>
+      </node>
+      <node id="1169">
+        <label>stddef.h</label>
+      </node>
+      <node id="1174">
+        <label>env.h</label>
+      </node>
+      <node id="1172">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1170">
+        <label>string.h</label>
+      </node>
+      <node id="1175">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1176" relation="include">
+        </childnode>
+        <childnode refid="1168" relation="include">
+        </childnode>
+      </node>
+      <node id="1165">
+        <label>firmware/user/wius/hal/wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="1166" relation="include">
+        </childnode>
+        <childnode refid="1178" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1180">
+        <label>firmware/user/tp/methods/tp_method_ping.c</label>
+        <link refid="tp__method__ping_8c"/>
+      </node>
+      <node id="1182">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="1184">
+        <label>firmware/user/wius/hal/wius_tcp.c</label>
+        <link refid="wius__tcp_8c"/>
+      </node>
+      <node id="1179">
+        <label>firmware/user/wius/hal/wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="1180" relation="include">
+        </childnode>
+        <childnode refid="1181" relation="include">
+        </childnode>
+        <childnode refid="1182" relation="include">
+        </childnode>
+        <childnode refid="1184" relation="include">
+        </childnode>
+      </node>
+      <node id="1183">
+        <label>firmware/user/tp/tp_methods.c</label>
+        <link refid="tp__methods_8c"/>
+      </node>
+      <node id="1181">
+        <label>firmware/user/tp/tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="1182" relation="include">
+        </childnode>
+        <childnode refid="1183" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structwius__tcp__server__message" prot="public">wius_tcp_server_message</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="wius__tcp_8h_1a0886528f4b9c2a64f4cf41b41c3e4e9d" prot="public" static="no">
+        <name>WIUS_TCP_SERVER_MAX_CLIENTS</name>
+        <initializer>5</initializer>
+        <briefdescription>
+<para>Maximum number of TCP server clients. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="37" column="9" bodyfile="firmware/user/wius/hal/wius_tcp.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="wius__tcp_8h_1ac08b1ebe0b1e11ff91dd5ef59e5e1e43" prot="public" static="no">
+        <name>WIUS_TCP_SERVER_QUEUE_SIZE</name>
+        <initializer>10</initializer>
+        <briefdescription>
+<para>TCP server message queue size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="41" column="9" bodyfile="firmware/user/wius/hal/wius_tcp.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="wius__tcp_8h_1a71fc5da54721508d19d017ce2782c85d" prot="public" static="no">
+        <name>WIUS_TCP_SERVER_MESSAGE_DATA_SIZE</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+<para>TCP server message data size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="45" column="9" bodyfile="firmware/user/wius/hal/wius_tcp.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" prot="public" static="no">
+        <type>struct <ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message</ref></type>
+        <definition>typedef struct wius_tcp_server_message  wius_tcp_server_message_t</definition>
+        <argsstring></argsstring>
+        <name>wius_tcp_server_message_t</name>
+        <briefdescription>
+<para>TCP connection message structure. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="58" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="wius__tcp_8h_1a497247b3071524696500fd746bf16382" prot="public" static="no" mutable="no">
+        <type>osMessageQueueId_t</type>
+        <definition>osMessageQueueId_t wius_tcp_server_queue</definition>
+        <argsstring></argsstring>
+        <name>wius_tcp_server_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TCP server message queue identifier </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="60" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__tcp_8h_1ade3c34c213992075a796a7ad93dc362f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_tcp_server_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the TCP server. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_ALLOCATION_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Memory allocation failed</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function must be called before any other TCP function </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="71" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="180" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__tcp_8h_1ad2f298780f6d457b704aca7b4ea3c3b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_deinit</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_tcp_server_deinit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Deinitialize the TCP server. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="79" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="202" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__tcp_8h_1af40d945009db8b491691bb228a5bc970" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_start</definition>
+        <argsstring>(uint16_t port)</argsstring>
+        <name>wius_tcp_server_start</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Start the TCP server on the specified port. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Port number to listen on</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure (During socket creation, binding or listening)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The server must be initialized with <ref refid="wius__tcp_8h_1ade3c34c213992075a796a7ad93dc362f" kindref="member">wius_tcp_server_init</ref> before starting </para></simplesect>
+<simplesect kind="note"><para>The exact cause of failure can be found by reading the errno variable </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="93" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="226" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__tcp_8h_1a0a715b1c9f663b80db6b88a961becbe6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_stop</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_tcp_server_stop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stop the TCP server. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="101" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="273" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__tcp_8h_1a5f4b12f04bc793c12b06851fe4fe353d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_respond</definition>
+        <argsstring>(wius_tcp_server_message_t *msg, char *response, size_t response_length)</argsstring>
+        <name>wius_tcp_server_respond</name>
+        <param>
+          <type><ref refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kindref="member">wius_tcp_server_message_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>response</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>response_length</declname>
+        </param>
+        <briefdescription>
+<para>Send a response to a TCP client. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the message structure containing client info </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>response</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the response data </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>response_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of the response data</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure (During sending)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The server must be started with <ref refid="wius__tcp_8h_1af40d945009db8b491691bb228a5bc970" kindref="member">wius_tcp_server_start</ref> before sending responses </para></simplesect>
+<simplesect kind="note"><para>The exact cause of failure can be found by reading the errno variable </para></simplesect>
+<simplesect kind="note"><para>The msg parameter only has to contain the client socket </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="118" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="294" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__tcp_8h_1a5f2eca72de35712f6d97ea2a572ad755" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_respond_udp</definition>
+        <argsstring>(wius_tcp_server_message_t *msg, uint16_t port, uint8_t *response, size_t response_length)</argsstring>
+        <name>wius_tcp_server_respond_udp</name>
+        <param>
+          <type><ref refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kindref="member">wius_tcp_server_message_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>response</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>response_length</declname>
+        </param>
+        <briefdescription>
+<para>Send a UDP response to a specified IP and port. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the message structure containing client info </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination port number </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>response</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the response data </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>response_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of the response data</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure (During socket creation or sending)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The server must be started with <ref refid="wius__tcp_8h_1af40d945009db8b491691bb228a5bc970" kindref="member">wius_tcp_server_start</ref> before sending responses </para></simplesect>
+<simplesect kind="note"><para>The exact cause of failure can be found by reading the errno variable </para></simplesect>
+<simplesect kind="note"><para>The msg parameter only has to contain the destination IP address in its metadata </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="136" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="345" bodyend="402"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__tcp_8h_1aba9cd73ef34295991d4e30422d2b5fd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_respond_ok</definition>
+        <argsstring>(wius_tcp_server_message_t *msg, uint8_t cmd_id)</argsstring>
+        <name>wius_tcp_server_respond_ok</name>
+        <param>
+          <type><ref refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kindref="member">wius_tcp_server_message_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>cmd_id</declname>
+        </param>
+        <briefdescription>
+<para>Send an &quot;OK&quot; response to a TCP client. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the message structure containing client info </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cmd_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command identifier</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure (During sending)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The msg parameter only has to contain the client socket </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="150" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="404" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__tcp_8h_1a7f945d0dcd184b02037c49f226a988ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_respond_error</definition>
+        <argsstring>(wius_tcp_server_message_t *msg, uint8_t cmd_id, sl_status_t error_code)</argsstring>
+        <name>wius_tcp_server_respond_error</name>
+        <param>
+          <type><ref refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kindref="member">wius_tcp_server_message_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>cmd_id</declname>
+        </param>
+        <param>
+          <type>sl_status_t</type>
+          <declname>error_code</declname>
+        </param>
+        <briefdescription>
+<para>Send an &quot;Error&quot; response to a TCP client. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the message structure containing client info </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cmd_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command identifier </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>error_code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error code to send</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure (During sending)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The msg parameter only has to contain the client socket </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="165" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="412" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__tcp_8h_1afff6c9a2528f0e9720a18e3343d9c44b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_tcp_server_respond_data</definition>
+        <argsstring>(wius_tcp_server_message_t *msg, uint8_t cmd_id, uint8_t *data, size_t data_length)</argsstring>
+        <name>wius_tcp_server_respond_data</name>
+        <param>
+          <type><ref refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kindref="member">wius_tcp_server_message_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>cmd_id</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_length</declname>
+        </param>
+        <briefdescription>
+<para>Send data to a TCP client. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the message structure containing client info </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cmd_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command identifier </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the data to send </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of the data to send</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_TRANSMIT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure during transmission </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_TRANSMIT_INCOMPLETE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Incomplete transmission</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The msg parameter only has to contain the client socket </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="182" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.c" bodystart="421" bodyend="449"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS TCP implementation header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_si91x_socket.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor">#ifndef<sp/>WIUS_TCP_SERVER_MAX_CLIENTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="wius__tcp_8h_1a0886528f4b9c2a64f4cf41b41c3e4e9d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_TCP_SERVER_MAX_CLIENTS<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WIUS_TCP_SERVER_QUEUE_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="wius__tcp_8h_1ac08b1ebe0b1e11ff91dd5ef59e5e1e43" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_TCP_SERVER_QUEUE_SIZE<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WIUS_TCP_SERVER_MESSAGE_DATA_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="wius__tcp_8h_1a71fc5da54721508d19d017ce2782c85d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_TCP_SERVER_MESSAGE_DATA_SIZE<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="structwius__tcp__server__message" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message</ref></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54" refid="structwius__tcp__server__message_1abeec1718e893a6c7ea73b26b313de58a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structwius__tcp__server__message_1abeec1718e893a6c7ea73b26b313de58a" kindref="member">socket</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55" refid="structwius__tcp__server__message_1a38e768968dc2012cd20d071bf190c898" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwius__tcp__server__message_1a38e768968dc2012cd20d071bf190c898" kindref="member">data</ref>[<ref refid="wius__tcp_8h_1a71fc5da54721508d19d017ce2782c85d" kindref="member">WIUS_TCP_SERVER_MESSAGE_DATA_SIZE</ref>];<sp/></highlight></codeline>
+<codeline lineno="56" refid="structwius__tcp__server__message_1a5b0c0ab617b6e108f9abb7f68491ce97" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structwius__tcp__server__message_1a5b0c0ab617b6e108f9abb7f68491ce97" kindref="member">length</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57" refid="structwius__tcp__server__message_1a5cd263a0db8a56928c57d823c4d80829" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sl_si91x_socket_metadata_t<sp/>*<ref refid="structwius__tcp__server__message_1a5cd263a0db8a56928c57d823c4d80829" kindref="member">meta</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}<sp/><ref refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kindref="member">wius_tcp_server_message_t</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>osMessageQueueId_t<sp/><ref refid="wius__tcp_8h_1a497247b3071524696500fd746bf16382" kindref="member">wius_tcp_server_queue</ref>;<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1ade3c34c213992075a796a7ad93dc362f" kindref="member">wius_tcp_server_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1ad2f298780f6d457b704aca7b4ea3c3b4" kindref="member">wius_tcp_server_deinit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1af40d945009db8b491691bb228a5bc970" kindref="member">wius_tcp_server_start</ref>(uint16_t<sp/>port);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1a0a715b1c9f663b80db6b88a961becbe6" kindref="member">wius_tcp_server_stop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1a5f4b12f04bc793c12b06851fe4fe353d" kindref="member">wius_tcp_server_respond</ref>(<ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message_t</ref><sp/>*msg,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*response,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>response_length);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1a5f2eca72de35712f6d97ea2a572ad755" kindref="member">wius_tcp_server_respond_udp</ref>(<ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message_t</ref><sp/>*msg,<sp/>uint16_t<sp/>port,<sp/>uint8_t<sp/>*response,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>response_length);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1aba9cd73ef34295991d4e30422d2b5fd8" kindref="member">wius_tcp_server_respond_ok</ref>(<ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message_t</ref><sp/>*msg,<sp/>uint8_t<sp/>cmd_id);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1a7f945d0dcd184b02037c49f226a988ee" kindref="member">wius_tcp_server_respond_error</ref>(<ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message_t</ref><sp/>*msg,<sp/>uint8_t<sp/>cmd_id,<sp/>sl_status_t<sp/>error_code);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal">sl_status_t<sp/><ref refid="wius__tcp_8h_1afff6c9a2528f0e9720a18e3343d9c44b" kindref="member">wius_tcp_server_respond_data</ref>(<ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message_t</ref><sp/>*msg,<sp/>uint8_t<sp/>cmd_id,<sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_length);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_tcp.h"/>
+  </compounddef>
+</doxygen>

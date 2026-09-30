@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="group__tinyprobe" kind="group">
+    <compoundname>tinyprobe</compoundname>
+    <title>TinyProbe Module</title>
+    <innerfile refid="tp__buffer_8c">tp_buffer.c</innerfile>
+    <innerfile refid="tp__buffer_8h">tp_buffer.h</innerfile>
+    <innerfile refid="tp__afe_8c">tp_afe.c</innerfile>
+    <innerfile refid="tp__afe_8h">tp_afe.h</innerfile>
+    <innerfile refid="tp__fpga_8c">tp_fpga.c</innerfile>
+    <innerfile refid="tp__fpga_8h">tp_fpga.h</innerfile>
+    <innerfile refid="tp__mux_8c">tp_mux.c</innerfile>
+    <innerfile refid="tp__mux_8h">tp_mux.h</innerfile>
+    <innerfile refid="tp__power_8c">tp_power.c</innerfile>
+    <innerfile refid="tp__power_8h">tp_power.h</innerfile>
+    <innerfile refid="tp__tx_8c">tp_tx.c</innerfile>
+    <innerfile refid="tp__tx_8h">tp_tx.h</innerfile>
+    <innerfile refid="tp_8c">tp.c</innerfile>
+    <innerfile refid="tp_8h">tp.h</innerfile>
+    <innerfile refid="tp__methods_8c">tp_methods.c</innerfile>
+    <innerfile refid="tp__methods_8h">tp_methods.h</innerfile>
+    <innergroup refid="group__config__tinyprobe">TinyProbe firmware configurations</innergroup>
+    <innergroup refid="group__tinyprobe__methods">TinyProbe Methods</innergroup>
+    <briefdescription>
+<para>Method processing, FPGA/AFE control, and probe orchestration. </para>    </briefdescription>
+    <detaileddescription>
+<para><heading level="1">TinyProbe Module</heading>
+</para><para>TinyProbe translates incoming control messages into hardware actions on the probe. It owns the method registry, FPGA/AFE access, and buffers that feed outbound data paths.</para><para><heading level="2">Architecture</heading>
+</para><para><itemizedlist>
+<listitem><para>Method dispatch: protobuf request decoding and routing in <ref refid="tp__methods_8h" kindref="compound">tp_methods.h</ref></para></listitem><listitem><para>Method handlers: grouped under <ref refid="group__tinyprobe__methods" kindref="compound">TinyProbe Methods</ref> with one handler per generated method</para></listitem><listitem><para>Hardware control: FPGA, AFE, TX, mux, and power accessors in <ref refid="tp__fpga_8h" kindref="compound">tp_fpga.h</ref>, <ref refid="tp__afe_8h" kindref="compound">tp_afe.h</ref>, <ref refid="tp__tx_8h" kindref="compound">tp_tx.h</ref>, <ref refid="tp__mux_8h" kindref="compound">tp_mux.h</ref>, and <ref refid="tp__power_8h" kindref="compound">tp_power.h</ref></para></listitem><listitem><para>Buffering: circular buffer helpers in <ref refid="tp__buffer_8h" kindref="compound">tp_buffer.h</ref></para></listitem></itemizedlist>
+</para><para><heading level="2">Data Flow (high level)</heading>
+</para><para><orderedlist>
+<listitem><para>WiUS transport receives a message and forwards it to the TinyProbe method layer.</para></listitem><listitem><para><computeroutput><ref refid="tp__methods_8c_1ab763b48bb0caae51d13d3a8b9d417311" kindref="member">tp_methods_handle()</ref></computeroutput> decodes the nanopb request and selects the matching handler from <ref refid="group__tinyprobe__methods" kindref="compound">TinyProbe Methods</ref>.</para></listitem><listitem><para>Handlers perform register writes/reads through TinyProbe helpers and may enqueue data into probe buffers.</para></listitem><listitem><para>Status replies are encoded as protobuf responses and returned via the WiUS transport.</para></listitem></orderedlist>
+</para><para><heading level="2">Extending TinyProbe</heading>
+</para><para><itemizedlist>
+<listitem><para>Add a new method: update the generated method definition, create <computeroutput>tp_method_&lt;name&gt;.c/.h</computeroutput>, add it to <computeroutput>TP_METHODS</computeroutput>, and document it under <ref refid="group__tinyprobe__methods" kindref="compound">TinyProbe Methods</ref>.</para></listitem><listitem><para>Touch hardware safely: prefer helper APIs in <computeroutput>tp_fpga</computeroutput>, <computeroutput>tp_afe</computeroutput>, <computeroutput>tp_tx</computeroutput>, <computeroutput>tp_mux</computeroutput>, and <computeroutput>tp_power</computeroutput> rather than open-coded register writes to keep side effects contained. </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

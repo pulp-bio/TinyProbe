@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structwius__tcp__server__message" kind="struct" language="C++" prot="public">
+    <compoundname>wius_tcp_server_message</compoundname>
+    <includes refid="wius__tcp_8h" local="no">wius_tcp.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwius__tcp__server__message_1abeec1718e893a6c7ea73b26b313de58a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int wius_tcp_server_message::socket</definition>
+        <argsstring></argsstring>
+        <name>socket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Client socket </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="54" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__tcp__server__message_1a38e768968dc2012cd20d071bf190c898" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wius_tcp_server_message::data[WIUS_TCP_SERVER_MESSAGE_DATA_SIZE]</definition>
+        <argsstring>[WIUS_TCP_SERVER_MESSAGE_DATA_SIZE]</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Body data </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="55" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__tcp__server__message_1a5b0c0ab617b6e108f9abb7f68491ce97" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t wius_tcp_server_message::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Length of the body data </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="56" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__tcp__server__message_1a5cd263a0db8a56928c57d823c4d80829" prot="public" static="no" mutable="no">
+        <type>const sl_si91x_socket_metadata_t *</type>
+        <definition>const sl_si91x_socket_metadata_t* wius_tcp_server_message::meta</definition>
+        <argsstring></argsstring>
+        <name>meta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Metadata associated with the message </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_tcp.h" line="57" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TCP connection message structure. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/wius/hal/wius_tcp.h" line="53" column="1" bodyfile="firmware/user/wius/hal/wius_tcp.h" bodystart="52" bodyend="58"/>
+    <listofallmembers>
+      <member refid="structwius__tcp__server__message_1a38e768968dc2012cd20d071bf190c898" prot="public" virt="non-virtual"><scope>wius_tcp_server_message</scope><name>data</name></member>
+      <member refid="structwius__tcp__server__message_1a5b0c0ab617b6e108f9abb7f68491ce97" prot="public" virt="non-virtual"><scope>wius_tcp_server_message</scope><name>length</name></member>
+      <member refid="structwius__tcp__server__message_1a5cd263a0db8a56928c57d823c4d80829" prot="public" virt="non-virtual"><scope>wius_tcp_server_message</scope><name>meta</name></member>
+      <member refid="structwius__tcp__server__message_1abeec1718e893a6c7ea73b26b313de58a" prot="public" virt="non-virtual"><scope>wius_tcp_server_message</scope><name>socket</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

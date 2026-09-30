@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="group__config__wius" kind="group">
+    <compoundname>config_wius</compoundname>
+    <title>WiUS firmware configurations</title>
+      <sectiondef kind="user-defined">
+      <header>WiUS SPI configurations</header>
+      <memberdef kind="define" id="group__config__wius_1ga828b21f1639e1f61e3c11b4ae30aee8a" prot="public" static="no">
+        <name>WIUS_SPI_FREQ</name>
+        <initializer>32000000</initializer>
+        <briefdescription>
+<para>SPI clock frequency in Hz. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="76" column="9" bodyfile="firmware/user/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" prot="public" static="no">
+        <name>WIUS_SPI_RX_TIMEOUT</name>
+        <initializer>100</initializer>
+        <briefdescription>
+<para>SPI timeout for transmission in ticks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="78" column="9" bodyfile="firmware/user/config.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__wius_1ga9f5eccac536c6a82a45c557825ce80fb" prot="public" static="no">
+        <name>WIUS_SPI_SHORT_XFER_MAX</name>
+        <initializer>16</initializer>
+        <briefdescription>
+<para>Maximum transfer size that waits by polling an interrupt-updated flag. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="80" column="9" bodyfile="firmware/user/config.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__wius_1ga5a13ae0c719433b77bcaed48eaa19fc7" prot="public" static="no">
+        <name>WIUS_SPI_EXT_CS0</name>
+        <initializer>53</initializer>
+        <briefdescription>
+<para>CS pin number for instance 0 (set to 0 if unused) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="82" column="9" bodyfile="firmware/user/config.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__wius_1gac41a23d5859834f639180ce898679ae7" prot="public" static="no">
+        <name>WIUS_SPI_EXT_CS1</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>CS pin number for instance 1 (set to 0 if unused) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="84" column="9" bodyfile="firmware/user/config.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>WiUS WiFi configurations</header>
+      <memberdef kind="define" id="group__config__wius_1ga0fb6abe0ceadcc2168b436c5f531f8d2" prot="public" static="no">
+        <name>WIUS_WIFI_DEVICE_NAME</name>
+        <initializer>&quot;WiUS&quot;</initializer>
+        <briefdescription>
+<para>Device name for WiFi. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="98" column="9" bodyfile="firmware/user/config.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This module documents the firmware configurations specific to WiUS. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

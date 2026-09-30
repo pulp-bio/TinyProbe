@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="group__tinyprobe__methods" kind="group">
+    <compoundname>tinyprobe_methods</compoundname>
+    <title>TinyProbe Methods</title>
+    <innerfile refid="tp__method__controlpower_8c">tp_method_controlpower.c</innerfile>
+    <innerfile refid="tp__method__controlpower_8h">tp_method_controlpower.h</innerfile>
+    <innerfile refid="tp__method__controlspi_8c">tp_method_controlspi.c</innerfile>
+    <innerfile refid="tp__method__controlspi_8h">tp_method_controlspi.h</innerfile>
+    <innerfile refid="tp__method__delayms_8c">tp_method_delayms.c</innerfile>
+    <innerfile refid="tp__method__delayms_8h">tp_method_delayms.h</innerfile>
+    <innerfile refid="tp__method__delayns_8c">tp_method_delayns.c</innerfile>
+    <innerfile refid="tp__method__delayns_8h">tp_method_delayns.h</innerfile>
+    <innerfile refid="tp__method__ping_8c">tp_method_ping.c</innerfile>
+    <innerfile refid="tp__method__ping_8h">tp_method_ping.h</innerfile>
+    <innerfile refid="tp__method__setloglevel_8c">tp_method_setloglevel.c</innerfile>
+    <innerfile refid="tp__method__setloglevel_8h">tp_method_setloglevel.h</innerfile>
+    <innerfile refid="tp__method__triggershot_8c">tp_method_triggershot.c</innerfile>
+    <innerfile refid="tp__method__triggershot_8h">tp_method_triggershot.h</innerfile>
+    <innerfile refid="tp__method__writeafe_8c">tp_method_writeafe.c</innerfile>
+    <innerfile refid="tp__method__writeafe_8h">tp_method_writeafe.h</innerfile>
+    <innerfile refid="tp__method__writefpga_8c">tp_method_writefpga.c</innerfile>
+    <innerfile refid="tp__method__writefpga_8h">tp_method_writefpga.h</innerfile>
+    <innerfile refid="tp__method__writetx_8c">tp_method_writetx.c</innerfile>
+    <innerfile refid="tp__method__writetx_8h">tp_method_writetx.h</innerfile>
+    <briefdescription>
+<para>Method handlers for TinyProbe control operations. </para>    </briefdescription>
+    <detaileddescription>
+<para><heading level="1">TinyProbe Methods</heading>
+</para><para>This group contains all method handlers used by TinyProbe to interact with hardware and system services. Each method implementation and its public interface lives in this subgroup to keep the method surface easy to navigate.</para><para><heading level="2">Method Catalog</heading>
+</para><para><table rows="11" cols="3"><row>
+<entry thead="yes"><para>Method  </para></entry><entry thead="yes"><para>Header  </para></entry><entry thead="yes"><para>Description   </para></entry></row>
+<row>
+<entry thead="no"><para>Ping  </para></entry><entry thead="no"><para><ref refid="tp__method__ping_8h" kindref="compound">tp_method_ping.h</ref>  </para></entry><entry thead="no"><para>Reachability and identity check   </para></entry></row>
+<row>
+<entry thead="no"><para>Trigger shot  </para></entry><entry thead="no"><para><ref refid="tp__method__triggershot_8h" kindref="compound">tp_method_triggershot.h</ref>  </para></entry><entry thead="no"><para>Trigger capture   </para></entry></row>
+<row>
+<entry thead="no"><para>Delay ns  </para></entry><entry thead="no"><para><ref refid="tp__method__delayns_8h" kindref="compound">tp_method_delayns.h</ref>  </para></entry><entry thead="no"><para>Nanosecond timing control   </para></entry></row>
+<row>
+<entry thead="no"><para>Delay ms  </para></entry><entry thead="no"><para><ref refid="tp__method__delayms_8h" kindref="compound">tp_method_delayms.h</ref>  </para></entry><entry thead="no"><para>Millisecond timing control   </para></entry></row>
+<row>
+<entry thead="no"><para>Power control  </para></entry><entry thead="no"><para><ref refid="tp__method__controlpower_8h" kindref="compound">tp_method_controlpower.h</ref>  </para></entry><entry thead="no"><para>Toggle power rails   </para></entry></row>
+<row>
+<entry thead="no"><para>Set log level  </para></entry><entry thead="no"><para><ref refid="tp__method__setloglevel_8h" kindref="compound">tp_method_setloglevel.h</ref>  </para></entry><entry thead="no"><para>Configure firmware log verbosity   </para></entry></row>
+<row>
+<entry thead="no"><para>SPI MUX  </para></entry><entry thead="no"><para><ref refid="tp__method__controlspi_8h" kindref="compound">tp_method_controlspi.h</ref>  </para></entry><entry thead="no"><para>Select SPI MUX target   </para></entry></row>
+<row>
+<entry thead="no"><para>Write AFE  </para></entry><entry thead="no"><para><ref refid="tp__method__writeafe_8h" kindref="compound">tp_method_writeafe.h</ref>  </para></entry><entry thead="no"><para>AFE register write   </para></entry></row>
+<row>
+<entry thead="no"><para>Write FPGA  </para></entry><entry thead="no"><para><ref refid="tp__method__writefpga_8h" kindref="compound">tp_method_writefpga.h</ref>  </para></entry><entry thead="no"><para>FPGA register write   </para></entry></row>
+<row>
+<entry thead="no"><para>Write TX  </para></entry><entry thead="no"><para><ref refid="tp__method__writetx_8h" kindref="compound">tp_method_writetx.h</ref>  </para></entry><entry thead="no"><para>TX buffer write   </para></entry></row>
+</table>
+</para><para><heading level="2">How Methods Are Dispatched</heading>
+</para><para><orderedlist>
+<listitem><para>Incoming framed protobuf packets are decoded by <computeroutput><ref refid="tp__methods_8c_1ab763b48bb0caae51d13d3a8b9d417311" kindref="member">tp_methods_handle()</ref></computeroutput> in <ref refid="tp__methods_8h" kindref="compound">tp_methods.h</ref>.</para></listitem><listitem><para>The dispatcher switches on the generated nanopb oneof tag and calls the corresponding handler from this group.</para></listitem><listitem><para>Handlers validate arguments, perform hardware actions through <ref refid="group__common" kindref="compound">common</ref> helpers and TinyProbe drivers, and return a generated status code.</para></listitem></orderedlist>
+</para><para><heading level="2">Adding a New Method</heading>
+</para><para><itemizedlist>
+<listitem><para>Create <computeroutput>tp_method_&lt;name&gt;.c/.h</computeroutput> under <computeroutput>user/tp/methods/</computeroutput>.</para></listitem><listitem><para>Add it to the generated method definition and include it in the <computeroutput>TP_METHODS</computeroutput> macro.</para></listitem><listitem><para>Document it in this catalog and keep the description concise (what it does, inputs, side effects). </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

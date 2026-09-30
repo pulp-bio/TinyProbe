@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp_2module_8md" kind="file" language="Markdown">
+    <compoundname>module.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">@defgroup<sp/>tinyprobe<sp/>TinyProbe<sp/>Module</highlight></codeline>
+<codeline><highlight class="normal">@brief<sp/>Method<sp/>processing,<sp/>FPGA/AFE<sp/>control,<sp/>and<sp/>probe<sp/>orchestration</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>TinyProbe<sp/>Module</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TinyProbe<sp/>translates<sp/>incoming<sp/>control<sp/>messages<sp/>into<sp/>hardware<sp/>actions<sp/>on<sp/>the<sp/>probe.<sp/>It<sp/>owns<sp/>the<sp/>method<sp/>registry,<sp/>FPGA/AFE<sp/>access,<sp/>and<sp/>buffers<sp/>that<sp/>feed<sp/>outbound<sp/>data<sp/>paths.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Architecture</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Method<sp/>dispatch:<sp/>protobuf<sp/>request<sp/>decoding<sp/>and<sp/>routing<sp/>in<sp/>@ref<sp/>tp_methods.h</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Method<sp/>handlers:<sp/>grouped<sp/>under<sp/>@ref<sp/>tinyprobe_methods<sp/>&quot;TinyProbe<sp/>Methods&quot;<sp/>with<sp/>one<sp/>handler<sp/>per<sp/>generated<sp/>method</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Hardware<sp/>control:<sp/>FPGA,<sp/>AFE,<sp/>TX,<sp/>mux,<sp/>and<sp/>power<sp/>accessors<sp/>in<sp/>@ref<sp/>tp_fpga.h,<sp/>@ref<sp/>tp_afe.h,<sp/>@ref<sp/>tp_tx.h,<sp/>@ref<sp/>tp_mux.h,<sp/>and<sp/>@ref<sp/>tp_power.h</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Buffering:<sp/>circular<sp/>buffer<sp/>helpers<sp/>in<sp/>@ref<sp/>tp_buffer.h</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Data<sp/>Flow<sp/>(high<sp/>level)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>WiUS<sp/>transport<sp/>receives<sp/>a<sp/>message<sp/>and<sp/>forwards<sp/>it<sp/>to<sp/>the<sp/>TinyProbe<sp/>method<sp/>layer.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>`tp_methods_handle()`<sp/>decodes<sp/>the<sp/>nanopb<sp/>request<sp/>and<sp/>selects<sp/>the<sp/>matching<sp/>handler<sp/>from<sp/>@ref<sp/>tinyprobe_methods<sp/>&quot;TinyProbe<sp/>Methods&quot;.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Handlers<sp/>perform<sp/>register<sp/>writes/reads<sp/>through<sp/>TinyProbe<sp/>helpers<sp/>and<sp/>may<sp/>enqueue<sp/>data<sp/>into<sp/>probe<sp/>buffers.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Status<sp/>replies<sp/>are<sp/>encoded<sp/>as<sp/>protobuf<sp/>responses<sp/>and<sp/>returned<sp/>via<sp/>the<sp/>WiUS<sp/>transport.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Extending<sp/>TinyProbe</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Add<sp/>a<sp/>new<sp/>method:<sp/>update<sp/>the<sp/>generated<sp/>method<sp/>definition,<sp/>create<sp/>`tp_method_&lt;name&gt;.c/.h`,<sp/>add<sp/>it<sp/>to<sp/>`TP_METHODS`,<sp/>and<sp/>document<sp/>it<sp/>under<sp/>@ref<sp/>tinyprobe_methods<sp/>&quot;TinyProbe<sp/>Methods&quot;.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Touch<sp/>hardware<sp/>safely:<sp/>prefer<sp/>helper<sp/>APIs<sp/>in<sp/>`tp_fpga`,<sp/>`tp_afe`,<sp/>`tp_tx`,<sp/>`tp_mux`,<sp/>and<sp/>`tp_power`<sp/>rather<sp/>than<sp/>open-coded<sp/>register<sp/>writes<sp/>to<sp/>keep<sp/>side<sp/>effects<sp/>contained.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@addtogroup<sp/>tinyprobe</highlight></codeline>
+<codeline><highlight class="normal">@{</highlight></codeline>
+<codeline><highlight class="normal">@}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/module.md"/>
+  </compounddef>
+</doxygen>

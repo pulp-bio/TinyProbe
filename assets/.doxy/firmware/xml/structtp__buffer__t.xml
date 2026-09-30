@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structtp__buffer__t" kind="struct" language="C++" prot="public">
+    <compoundname>tp_buffer_t</compoundname>
+    <includes refid="tp__buffer_8h" local="no">tp_buffer.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtp__buffer__t_1a295f8b1ee7ed55a5bfb2119fbb67ed96" prot="public" static="no" mutable="no">
+        <type><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref></type>
+        <definition>tp_buffer_slot_t tp_buffer_t::slots[TP_BUFFER_NUM]</definition>
+        <argsstring>[TP_BUFFER_NUM]</argsstring>
+        <name>slots</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Buffer slots </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="75" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtp__buffer__t_1a1eb14807390dc9a2aca50bf7f6c50ddb" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t tp_buffer_t::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Head index </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="76" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtp__buffer__t_1a8147fdbf4f78149aed5831550a92ef9c" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t tp_buffer_t::tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tail index </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="77" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtp__buffer__t_1ab91d13657b27240a54730f7cf12b5436" prot="public" static="no" mutable="no">
+        <type>osSemaphoreId_t</type>
+        <definition>osSemaphoreId_t tp_buffer_t::sem_read</definition>
+        <argsstring></argsstring>
+        <name>sem_read</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Semaphore for reading </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="78" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtp__buffer__t_1a817f7edb865c3b5e5cd4251e11aa62aa" prot="public" static="no" mutable="no">
+        <type>osSemaphoreId_t</type>
+        <definition>osSemaphoreId_t tp_buffer_t::sem_write</definition>
+        <argsstring></argsstring>
+        <name>sem_write</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Semaphore for writing </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="79" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Buffer structure. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="warning"><para>Do not modify the structure directly </para></simplesect>
+</para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="8">
+        <label>tp_buffer_slot_t</label>
+        <link refid="structtp__buffer__slot__t"/>
+      </node>
+      <node id="7">
+        <label>tp_buffer_t</label>
+        <link refid="structtp__buffer__t"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>slots</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="firmware/user/tp/common/tp_buffer.h" line="74" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="73" bodyend="80"/>
+    <listofallmembers>
+      <member refid="structtp__buffer__t_1a1eb14807390dc9a2aca50bf7f6c50ddb" prot="public" virt="non-virtual"><scope>tp_buffer_t</scope><name>head</name></member>
+      <member refid="structtp__buffer__t_1ab91d13657b27240a54730f7cf12b5436" prot="public" virt="non-virtual"><scope>tp_buffer_t</scope><name>sem_read</name></member>
+      <member refid="structtp__buffer__t_1a817f7edb865c3b5e5cd4251e11aa62aa" prot="public" virt="non-virtual"><scope>tp_buffer_t</scope><name>sem_write</name></member>
+      <member refid="structtp__buffer__t_1a295f8b1ee7ed55a5bfb2119fbb67ed96" prot="public" virt="non-virtual"><scope>tp_buffer_t</scope><name>slots</name></member>
+      <member refid="structtp__buffer__t_1a8147fdbf4f78149aed5831550a92ef9c" prot="public" virt="non-virtual"><scope>tp_buffer_t</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

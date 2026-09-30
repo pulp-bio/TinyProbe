@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__mux_8h" kind="file" language="C++">
+    <compoundname>tp_mux.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includedby refid="tp__mux_8c" local="yes">firmware/user/tp/hal/tp_mux.c</includedby>
+    <includedby refid="tp__method__controlspi_8c" local="yes">firmware/user/tp/methods/tp_method_controlspi.c</includedby>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <incdepgraph>
+      <node id="415">
+        <label>stdbool.h</label>
+      </node>
+      <node id="420">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="421" relation="include">
+        </childnode>
+      </node>
+      <node id="423">
+        <label>stdarg.h</label>
+      </node>
+      <node id="418">
+        <label>sl_status.h</label>
+      </node>
+      <node id="424">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="420" relation="include">
+        </childnode>
+      </node>
+      <node id="414">
+        <label>stdint.h</label>
+      </node>
+      <node id="413">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="414" relation="include">
+        </childnode>
+        <childnode refid="415" relation="include">
+        </childnode>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="417" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="419" relation="include">
+        </childnode>
+        <childnode refid="420" relation="include">
+        </childnode>
+        <childnode refid="422" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+      </node>
+      <node id="416">
+        <label>stddef.h</label>
+      </node>
+      <node id="421">
+        <label>env.h</label>
+      </node>
+      <node id="419">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="412">
+        <label>firmware/user/tp/hal/tp_mux.h</label>
+        <link refid="tp__mux_8h"/>
+        <childnode refid="413" relation="include">
+        </childnode>
+      </node>
+      <node id="417">
+        <label>string.h</label>
+      </node>
+      <node id="422">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="423" relation="include">
+        </childnode>
+        <childnode refid="415" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="426">
+        <label>firmware/user/tp/hal/tp_mux.c</label>
+        <link refid="tp__mux_8c"/>
+      </node>
+      <node id="425">
+        <label>firmware/user/tp/hal/tp_mux.h</label>
+        <link refid="tp__mux_8h"/>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+        <childnode refid="428" relation="include">
+        </childnode>
+      </node>
+      <node id="428">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="427">
+        <label>firmware/user/tp/methods/tp_method_controlspi.c</label>
+        <link refid="tp__method__controlspi_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>tp_mux</name>
+        <enumvalue id="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dac915f405e6bdba45b4338c847ead2871" prot="public">
+          <name>TP_MUX_PLL</name>
+          <initializer>= 0b00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>PLL Mux </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2daae0fe945b3029c12736995cb0f407a48" prot="public">
+          <name>TP_MUX_FPGA</name>
+          <initializer>= 0b01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>FPGA Mux </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2da7a59c069708c5648908545878501393c" prot="public">
+          <name>TP_MUX_AFE</name>
+          <initializer>= 0b10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>AFE Mux </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dad4c6397c9013e7da9c578b50bf16c2df" prot="public">
+          <name>TP_MUX_TX</name>
+          <initializer>= 0b11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>TX Mux </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Mux selection enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_mux.h" line="39" column="1" bodyfile="firmware/user/tp/hal/tp_mux.h" bodystart="38" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="tp__mux_8h_1acb5e90c4e5d140416be1908840a0776c" prot="public" static="no">
+        <type>enum <ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2d" kindref="member">tp_mux</ref></type>
+        <definition>typedef enum tp_mux  tp_mux_t</definition>
+        <argsstring></argsstring>
+        <name>tp_mux_t</name>
+        <briefdescription>
+<para>Mux selection enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_mux.h" line="44" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__mux_8h_1a345ab0e8f28ee7df36d2524872e0edfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_mux_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_mux_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>MUX initialization. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_mux.h" line="50" column="1" bodyfile="firmware/user/tp/hal/tp_mux.c" bodystart="37" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__mux_8h_1a3056dcc64563523df3ffba7a306b4078" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_mux_select</definition>
+        <argsstring>(tp_mux_t mux)</argsstring>
+        <name>tp_mux_select</name>
+        <param>
+          <type><ref refid="tp__mux_8h_1acb5e90c4e5d140416be1908840a0776c" kindref="member">tp_mux_t</ref></type>
+          <declname>mux</declname>
+        </param>
+        <briefdescription>
+<para>MUX select. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mux</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mux to select </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_mux.h" line="57" column="1" bodyfile="firmware/user/tp/hal/tp_mux.c" bodystart="43" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe SPI MUX driver header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2d" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2d" kindref="member">tp_mux</ref></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40" refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dac915f405e6bdba45b4338c847ead2871" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dac915f405e6bdba45b4338c847ead2871" kindref="member">TP_MUX_PLL</ref><sp/>=<sp/>0b00,<sp/><sp/></highlight></codeline>
+<codeline lineno="41" refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2daae0fe945b3029c12736995cb0f407a48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2daae0fe945b3029c12736995cb0f407a48" kindref="member">TP_MUX_FPGA</ref><sp/>=<sp/>0b01,<sp/></highlight></codeline>
+<codeline lineno="42" refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2da7a59c069708c5648908545878501393c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2da7a59c069708c5648908545878501393c" kindref="member">TP_MUX_AFE</ref><sp/>=<sp/>0b10,<sp/><sp/></highlight></codeline>
+<codeline lineno="43" refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dad4c6397c9013e7da9c578b50bf16c2df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__mux_8h_1a302af494d85477e26557ab653ffe8c2dad4c6397c9013e7da9c578b50bf16c2df" kindref="member">TP_MUX_TX</ref><sp/>=<sp/>0b11<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}<sp/><ref refid="tp__mux_8h_1acb5e90c4e5d140416be1908840a0776c" kindref="member">tp_mux_t</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8h_1a345ab0e8f28ee7df36d2524872e0edfe" kindref="member">tp_mux_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__mux_8h_1a3056dcc64563523df3ffba7a306b4078" kindref="member">tp_mux_select</ref>(<ref refid="tp__mux_8h_1acb5e90c4e5d140416be1908840a0776c" kindref="member">tp_mux_t</ref><sp/>mux);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/hal/tp_mux.h"/>
+  </compounddef>
+</doxygen>

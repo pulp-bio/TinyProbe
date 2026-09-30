@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__power_8h" kind="file" language="C++">
+    <compoundname>wius_power.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <includedby refid="wius__power_8c" local="yes">firmware/user/wius/hal/wius_power.c</includedby>
+    <incdepgraph>
+      <node id="1085">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1090">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1091" relation="include">
+        </childnode>
+      </node>
+      <node id="1093">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1088">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1082">
+        <label>firmware/user/wius/hal/wius_power.h</label>
+        <link refid="wius__power_8h"/>
+        <childnode refid="1083" relation="include">
+        </childnode>
+      </node>
+      <node id="1094">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1090" relation="include">
+        </childnode>
+      </node>
+      <node id="1084">
+        <label>stdint.h</label>
+      </node>
+      <node id="1083">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1084" relation="include">
+        </childnode>
+        <childnode refid="1085" relation="include">
+        </childnode>
+        <childnode refid="1086" relation="include">
+        </childnode>
+        <childnode refid="1087" relation="include">
+        </childnode>
+        <childnode refid="1088" relation="include">
+        </childnode>
+        <childnode refid="1089" relation="include">
+        </childnode>
+        <childnode refid="1090" relation="include">
+        </childnode>
+        <childnode refid="1092" relation="include">
+        </childnode>
+        <childnode refid="1094" relation="include">
+        </childnode>
+      </node>
+      <node id="1086">
+        <label>stddef.h</label>
+      </node>
+      <node id="1091">
+        <label>env.h</label>
+      </node>
+      <node id="1089">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1087">
+        <label>string.h</label>
+      </node>
+      <node id="1092">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1093" relation="include">
+        </childnode>
+        <childnode refid="1085" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1097">
+        <label>firmware/user/wius/hal/wius_power.c</label>
+        <link refid="wius__power_8c"/>
+      </node>
+      <node id="1095">
+        <label>firmware/user/wius/hal/wius_power.h</label>
+        <link refid="wius__power_8h"/>
+        <childnode refid="1096" relation="include">
+        </childnode>
+        <childnode refid="1097" relation="include">
+        </childnode>
+      </node>
+      <node id="1096">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246" prot="public" static="no" strong="no">
+        <type></type>
+        <name>wius_power_mode</name>
+        <enumvalue id="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a87d6fc152671f566ec22732b8c2ee36c" prot="public">
+          <name>WIUS_POWER_MODE_LOW</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Low power </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a16c220b56cb785160051030ab4d2273d" prot="public">
+          <name>WIUS_POWER_MODE_HIGH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>High power </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>WiUS power modes enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_power.h" line="38" column="1" bodyfile="firmware/user/wius/hal/wius_power.h" bodystart="37" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" prot="public" static="no">
+        <type>enum <ref refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246" kindref="member">wius_power_mode</ref></type>
+        <definition>typedef enum wius_power_mode  wius_power_mode_t</definition>
+        <argsstring></argsstring>
+        <name>wius_power_mode_t</name>
+        <briefdescription>
+<para>WiUS power modes enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_power.h" line="41" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__power_8h_1a58233657d300250657e148fe69d27eab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_power_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_power_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the power management module. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Power management initialization failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_power.h" line="50" column="1" bodyfile="firmware/user/wius/hal/wius_power.c" bodystart="33" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__power_8h_1a14e2d5e1b84a778679ed752ec70e4e6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_power_set</definition>
+        <argsstring>(wius_power_mode_t mode)</argsstring>
+        <name>wius_power_set</name>
+        <param>
+          <type><ref refid="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" kindref="member">wius_power_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set the power mode. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Power mode to set (<ref refid="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" kindref="member">wius_power_mode_t</ref>) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_power.h" line="58" column="1" bodyfile="firmware/user/wius/hal/wius_power.c" bodystart="55" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS power management header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246" kindref="member">wius_power_mode</ref></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39" refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a87d6fc152671f566ec22732b8c2ee36c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a87d6fc152671f566ec22732b8c2ee36c" kindref="member">WIUS_POWER_MODE_LOW</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="40" refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a16c220b56cb785160051030ab4d2273d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a16c220b56cb785160051030ab4d2273d" kindref="member">WIUS_POWER_MODE_HIGH</ref><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}<sp/><ref refid="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" kindref="member">wius_power_mode_t</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">sl_status_t<sp/><ref refid="wius__power_8h_1a58233657d300250657e148fe69d27eab" kindref="member">wius_power_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">sl_status_t<sp/><ref refid="wius__power_8h_1a14e2d5e1b84a778679ed752ec70e4e6f" kindref="member">wius_power_set</ref>(<ref refid="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" kindref="member">wius_power_mode_t</ref><sp/>mode);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_power.h"/>
+  </compounddef>
+</doxygen>

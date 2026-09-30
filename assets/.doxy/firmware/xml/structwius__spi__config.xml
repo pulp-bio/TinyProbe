@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structwius__spi__config" kind="struct" language="C++" prot="public">
+    <compoundname>wius_spi_config</compoundname>
+    <includes refid="wius__spi_8h" local="no">wius_spi.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwius__spi__config_1a464a9360a36971185406f7bf8e5181c6" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wius_spi_config::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data width in bits </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="58" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__spi__config_1aabd48310fdb19cb135c66f797f97ca18" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wius_spi_config::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>SPI mode (0-3) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="59" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__spi__config_1a8b30e868d6bffbc8c6ed5c8e21ddc637" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t wius_spi_config::freq</definition>
+        <argsstring></argsstring>
+        <name>freq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clock frequency in Hz </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="60" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" prot="public" static="no" mutable="no">
+        <type><ref refid="wius__spi_8h_1aede8e12fa0ede54dba99c170315eb6aa" kindref="member">wius_spi_cs_mode_t</ref></type>
+        <definition>wius_spi_cs_mode_t wius_spi_config::cs_mode</definition>
+        <argsstring></argsstring>
+        <name>cs_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Chip select mode </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="61" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__spi__config_1a0b6a1a8c4604544b58ce125cdedb0102" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wius_spi_config::cs_pin</definition>
+        <argsstring></argsstring>
+        <name>cs_pin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Chip select pin (only for SW mode) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="62" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__spi__config_1ad89ae86bf8cedc1b15c72fcf02392247" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t wius_spi_config::cs_polarity</definition>
+        <argsstring></argsstring>
+        <name>cs_polarity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Chip select polarity (only for SW mode, 0 for active low, 1 for active high) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_spi.h" line="63" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>SPI instance configuration. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="firmware/user/wius/hal/wius_spi.h" line="57" column="1" bodyfile="firmware/user/wius/hal/wius_spi.h" bodystart="56" bodyend="64"/>
+    <listofallmembers>
+      <member refid="structwius__spi__config_1aca763679d51369a8915b7df61ceb38a4" prot="public" virt="non-virtual"><scope>wius_spi_config</scope><name>cs_mode</name></member>
+      <member refid="structwius__spi__config_1a0b6a1a8c4604544b58ce125cdedb0102" prot="public" virt="non-virtual"><scope>wius_spi_config</scope><name>cs_pin</name></member>
+      <member refid="structwius__spi__config_1ad89ae86bf8cedc1b15c72fcf02392247" prot="public" virt="non-virtual"><scope>wius_spi_config</scope><name>cs_polarity</name></member>
+      <member refid="structwius__spi__config_1a8b30e868d6bffbc8c6ed5c8e21ddc637" prot="public" virt="non-virtual"><scope>wius_spi_config</scope><name>freq</name></member>
+      <member refid="structwius__spi__config_1aabd48310fdb19cb135c66f797f97ca18" prot="public" virt="non-virtual"><scope>wius_spi_config</scope><name>mode</name></member>
+      <member refid="structwius__spi__config_1a464a9360a36971185406f7bf8e5181c6" prot="public" virt="non-virtual"><scope>wius_spi_config</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

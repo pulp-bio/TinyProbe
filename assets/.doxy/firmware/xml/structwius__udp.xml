@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structwius__udp" kind="struct" language="C++" prot="public">
+    <compoundname>wius_udp</compoundname>
+    <includes refid="wius__udp_8h" local="no">wius_udp.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwius__udp_1a7ff3c801686b18aa7a0947c9b83145e3" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool wius_udp::connected</definition>
+        <argsstring></argsstring>
+        <name>connected</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Connection status flag </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="43" column="1" bodyfile="firmware/user/wius/hal/wius_udp.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__udp_1a2242a3a0521c7ec8dd71fc40dd3785ca" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int wius_udp::socket</definition>
+        <argsstring></argsstring>
+        <name>socket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Socket file descriptor </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="44" column="1" bodyfile="firmware/user/wius/hal/wius_udp.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwius__udp_1aa40aa98b41e130f67fc1021f3406c43a" prot="public" static="no" mutable="no">
+        <type>struct sockaddr_in</type>
+        <definition>struct sockaddr_in wius_udp::server_address</definition>
+        <argsstring></argsstring>
+        <name>server_address</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Server address structure </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_udp.h" line="44" column="1" bodyfile="firmware/user/wius/hal/wius_udp.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>UDP connection structure. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>To be filled by <ref refid="wius__udp_8h_1ab261748d3aba5b0dd0635f561ca8317b" kindref="member">wius_udp_init</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <location file="firmware/user/wius/hal/wius_udp.h" line="42" column="1" bodyfile="firmware/user/wius/hal/wius_udp.h" bodystart="41" bodyend="46"/>
+    <listofallmembers>
+      <member refid="structwius__udp_1a7ff3c801686b18aa7a0947c9b83145e3" prot="public" virt="non-virtual"><scope>wius_udp</scope><name>connected</name></member>
+      <member refid="structwius__udp_1aa40aa98b41e130f67fc1021f3406c43a" prot="public" virt="non-virtual"><scope>wius_udp</scope><name>server_address</name></member>
+      <member refid="structwius__udp_1a2242a3a0521c7ec8dd71fc40dd3785ca" prot="public" virt="non-virtual"><scope>wius_udp</scope><name>socket</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__buffer_8h" kind="file" language="C++">
+    <compoundname>tp_buffer.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includedby refid="tp__buffer_8c" local="yes">firmware/user/tp/common/tp_buffer.c</includedby>
+    <includedby refid="tp_8h" local="yes">firmware/user/tp/tp.h</includedby>
+    <incdepgraph>
+      <node id="301">
+        <label>stdbool.h</label>
+      </node>
+      <node id="306">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="307" relation="include">
+        </childnode>
+      </node>
+      <node id="309">
+        <label>stdarg.h</label>
+      </node>
+      <node id="304">
+        <label>sl_status.h</label>
+      </node>
+      <node id="310">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="306" relation="include">
+        </childnode>
+      </node>
+      <node id="300">
+        <label>stdint.h</label>
+      </node>
+      <node id="299">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="300" relation="include">
+        </childnode>
+        <childnode refid="301" relation="include">
+        </childnode>
+        <childnode refid="302" relation="include">
+        </childnode>
+        <childnode refid="303" relation="include">
+        </childnode>
+        <childnode refid="304" relation="include">
+        </childnode>
+        <childnode refid="305" relation="include">
+        </childnode>
+        <childnode refid="306" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+        <childnode refid="310" relation="include">
+        </childnode>
+      </node>
+      <node id="302">
+        <label>stddef.h</label>
+      </node>
+      <node id="307">
+        <label>env.h</label>
+      </node>
+      <node id="305">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="303">
+        <label>string.h</label>
+      </node>
+      <node id="308">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="309" relation="include">
+        </childnode>
+        <childnode refid="301" relation="include">
+        </childnode>
+      </node>
+      <node id="298">
+        <label>firmware/user/tp/common/tp_buffer.h</label>
+        <link refid="tp__buffer_8h"/>
+        <childnode refid="299" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="316">
+        <label>firmware/user/user.c</label>
+        <link refid="user_8c"/>
+      </node>
+      <node id="315">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="313">
+        <label>firmware/user/tp/tp.h</label>
+        <link refid="tp_8h"/>
+        <childnode refid="314" relation="include">
+        </childnode>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="316" relation="include">
+        </childnode>
+      </node>
+      <node id="312">
+        <label>firmware/user/tp/common/tp_buffer.c</label>
+        <link refid="tp__buffer_8c"/>
+      </node>
+      <node id="311">
+        <label>firmware/user/tp/common/tp_buffer.h</label>
+        <link refid="tp__buffer_8h"/>
+        <childnode refid="312" relation="include">
+        </childnode>
+        <childnode refid="313" relation="include">
+        </childnode>
+      </node>
+      <node id="314">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structtp__buffer__slot__t" prot="public">tp_buffer_slot_t</innerclass>
+    <innerclass refid="structtp__buffer__t" prot="public">tp_buffer_t</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="tp__buffer_8h_1a1f7b1b9b4054944c12def08b01d16323" prot="public" static="no">
+        <name>TP_BUFFER_HISTORY</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Enable buffer history recording. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="35" column="9" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tp__buffer_8h_1accc8ed3d4b0b10f3c6709d4a835823a6" prot="public" static="no">
+        <name>TP_BUFFER_HISTORY_ENTRIES</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+<para>Number of entries in the buffer history. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="39" column="9" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0" prot="public" static="no" strong="no">
+        <type></type>
+        <name>tp_buffer_status_t</name>
+        <enumvalue id="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0aa2697ed8b85e77c1400e3e9f54f0d6d0" prot="public">
+          <name>TP_BUFFER_FREE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Buffer is free </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0a96509a959606d4fc820ce9621bcb442a" prot="public">
+          <name>TP_BUFFER_FILLED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Buffer is filled </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0a87f553ebee29eb482a996e442e70998c" prot="public">
+          <name>TP_BUFFER_INUSE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Buffer is in use </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Buffer status enumeration. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Only used internally </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="49" column="1" bodyfile="firmware/user/tp/common/tp_buffer.h" bodystart="48" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__buffer_8h_1a4dd5227c03bafa82254919aceedf0469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t tp_buffer_history_get</definition>
+        <argsstring>(uint32_t **history)</argsstring>
+        <name>tp_buffer_history_get</name>
+        <param>
+          <type>uint32_t **</type>
+          <declname>history</declname>
+        </param>
+        <briefdescription>
+<para>Get the buffer history. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>history</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the history array</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>size_t Number of entries in the history</para></simplesect>
+<simplesect kind="warning"><para>The history is only available if TP_BUFFER_HISTORY is enabled, otherwise history will be NULL and size 0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="92" column="1" bodyfile="firmware/user/tp/common/tp_buffer.c" bodystart="57" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__buffer_8h_1a065e9774887a8e4efc1a7c6c1a042a54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_buffer_history_reset</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_buffer_history_reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset the buffer history. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="98" column="1" bodyfile="firmware/user/tp/common/tp_buffer.c" bodystart="68" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__buffer_8h_1a75e2904d307382f94b076c9cba359294" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_buffer_init</definition>
+        <argsstring>(tp_buffer_t *buf)</argsstring>
+        <name>tp_buffer_init</name>
+        <param>
+          <type><ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the buffer structure. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer structure to initialize </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="106" column="1" bodyfile="firmware/user/tp/common/tp_buffer.c" bodystart="76" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__buffer_8h_1afe6b885b11172b641a566706f75e56b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref> *</type>
+        <definition>tp_buffer_slot_t* tp_buffer_claim_writing</definition>
+        <argsstring>(tp_buffer_t *buf)</argsstring>
+        <name>tp_buffer_claim_writing</name>
+        <param>
+          <type><ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+<para>Claim a buffer slot for writing. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer structure to claim from</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to the claimed buffer slot </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="116" column="1" bodyfile="firmware/user/tp/common/tp_buffer.c" bodystart="113" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__buffer_8h_1a9b027317eaca6f40473b04e5774d8d99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref> *</type>
+        <definition>tp_buffer_slot_t* tp_buffer_claim_reading</definition>
+        <argsstring>(tp_buffer_t *buf)</argsstring>
+        <name>tp_buffer_claim_reading</name>
+        <param>
+          <type><ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+<para>Return a buffer slot after writing. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer structure to return to</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to the claimed buffer slot </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="126" column="1" bodyfile="firmware/user/tp/common/tp_buffer.c" bodystart="141" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__buffer_8h_1a2c321e88788c3324a7f8307a9ded2ca2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_buffer_return_writing</definition>
+        <argsstring>(tp_buffer_t *buf, tp_buffer_slot_t *slot)</argsstring>
+        <name>tp_buffer_return_writing</name>
+        <param>
+          <type><ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref> *</type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+<para>Return a buffer slot after writing. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer structure to return to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>slot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer slot to return </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="135" column="1" bodyfile="firmware/user/tp/common/tp_buffer.c" bodystart="167" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__buffer_8h_1aab200dfe79e54dcf0c46dc1a7fa2155a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_buffer_return_reading</definition>
+        <argsstring>(tp_buffer_t *buf, tp_buffer_slot_t *slot)</argsstring>
+        <name>tp_buffer_return_reading</name>
+        <param>
+          <type><ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref> *</type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+<para>Return a buffer slot after reading. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer structure to return to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>slot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer slot to return </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/common/tp_buffer.h" line="144" column="1" bodyfile="firmware/user/tp/common/tp_buffer.c" bodystart="180" bodyend="193"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe buffer handler header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor">#ifndef<sp/>TP_BUFFER_HISTORY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="tp__buffer_8h_1a1f7b1b9b4054944c12def08b01d16323" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_BUFFER_HISTORY<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TP_BUFFER_HISTORY_ENTRIES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="tp__buffer_8h_1accc8ed3d4b0b10f3c6709d4a835823a6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_BUFFER_HISTORY_ENTRIES<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50" refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0aa2697ed8b85e77c1400e3e9f54f0d6d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0aa2697ed8b85e77c1400e3e9f54f0d6d0" kindref="member">TP_BUFFER_FREE</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51" refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0a96509a959606d4fc820ce9621bcb442a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0a96509a959606d4fc820ce9621bcb442a" kindref="member">TP_BUFFER_FILLED</ref>,<sp/></highlight></codeline>
+<codeline lineno="52" refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0a87f553ebee29eb482a996e442e70998c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0a87f553ebee29eb482a996e442e70998c" kindref="member">TP_BUFFER_INUSE</ref><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}<sp/><ref refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0" kindref="member">tp_buffer_status_t</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="structtp__buffer__slot__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61" refid="structtp__buffer__slot__t_1a9c32a4b0a8158067ba6859a511fd1d63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>data[<ref refid="group__config__tinyprobe_1ga669190c664bc3df1976b0dbdf0b2064e" kindref="member">TP_BUFFER_SIZE</ref>];<sp/></highlight></codeline>
+<codeline lineno="62" refid="structtp__buffer__slot__t_1a60884ce48d2604dffcf6f8b0efcd9dc3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structtp__buffer__slot__t_1a60884ce48d2604dffcf6f8b0efcd9dc3" kindref="member">length</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63" refid="structtp__buffer__slot__t_1a343de7a7c30f335989ae2d668833bd03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tp__buffer_8h_1a4006374a29b4b0dd8a920ad1361671b0" kindref="member">tp_buffer_status_t</ref><sp/><ref refid="structtp__buffer__slot__t_1a343de7a7c30f335989ae2d668833bd03" kindref="member">status</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64" refid="structtp__buffer__slot__t_1a02e2c65e3afd46aafd7fb7ff70c36f54" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structtp__buffer__slot__t_1a02e2c65e3afd46aafd7fb7ff70c36f54" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}<sp/><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="structtp__buffer__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75" refid="structtp__buffer__t_1a295f8b1ee7ed55a5bfb2119fbb67ed96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref><sp/>slots[<ref refid="group__config__tinyprobe_1gaa79cc3d791200b9aa20df7f8561848d5" kindref="member">TP_BUFFER_NUM</ref>];<sp/></highlight></codeline>
+<codeline lineno="76" refid="structtp__buffer__t_1a1eb14807390dc9a2aca50bf7f6c50ddb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structtp__buffer__t_1a1eb14807390dc9a2aca50bf7f6c50ddb" kindref="member">head</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77" refid="structtp__buffer__t_1a8147fdbf4f78149aed5831550a92ef9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structtp__buffer__t_1a8147fdbf4f78149aed5831550a92ef9c" kindref="member">tail</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78" refid="structtp__buffer__t_1ab91d13657b27240a54730f7cf12b5436" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>osSemaphoreId_t<sp/><ref refid="structtp__buffer__t_1ab91d13657b27240a54730f7cf12b5436" kindref="member">sem_read</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79" refid="structtp__buffer__t_1a817f7edb865c3b5e5cd4251e11aa62aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>osSemaphoreId_t<sp/><ref refid="structtp__buffer__t_1a817f7edb865c3b5e5cd4251e11aa62aa" kindref="member">sem_write</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}<sp/><ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="tp__buffer_8h_1a4dd5227c03bafa82254919aceedf0469" kindref="member">tp_buffer_history_get</ref>(uint32_t<sp/>**history);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__buffer_8h_1a065e9774887a8e4efc1a7c6c1a042a54" kindref="member">tp_buffer_history_reset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">sl_status_t<sp/><ref refid="tp__buffer_8h_1a75e2904d307382f94b076c9cba359294" kindref="member">tp_buffer_init</ref>(<ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref><sp/>*buf);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref><sp/>*<ref refid="tp__buffer_8h_1afe6b885b11172b641a566706f75e56b0" kindref="member">tp_buffer_claim_writing</ref>(<ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref><sp/>*buf);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref><sp/>*<ref refid="tp__buffer_8h_1a9b027317eaca6f40473b04e5774d8d99" kindref="member">tp_buffer_claim_reading</ref>(<ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref><sp/>*buf);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__buffer_8h_1a2c321e88788c3324a7f8307a9ded2ca2" kindref="member">tp_buffer_return_writing</ref>(<ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref><sp/>*buf,<sp/><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref><sp/>*slot);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__buffer_8h_1aab200dfe79e54dcf0c46dc1a7fa2155a" kindref="member">tp_buffer_return_reading</ref>(<ref refid="structtp__buffer__t" kindref="compound">tp_buffer_t</ref><sp/>*buf,<sp/><ref refid="structtp__buffer__slot__t" kindref="compound">tp_buffer_slot_t</ref><sp/>*slot);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/common/tp_buffer.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,699 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__fpga_8h" kind="file" language="C++">
+    <compoundname>tp_fpga.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includedby refid="tp__fpga_8c" local="yes">firmware/user/tp/hal/tp_fpga.c</includedby>
+    <includedby refid="tp__method__triggershot_8c" local="yes">firmware/user/tp/methods/tp_method_triggershot.c</includedby>
+    <includedby refid="tp__method__writefpga_8c" local="yes">firmware/user/tp/methods/tp_method_writefpga.c</includedby>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <incdepgraph>
+      <node id="379">
+        <label>stdbool.h</label>
+      </node>
+      <node id="384">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="385" relation="include">
+        </childnode>
+      </node>
+      <node id="387">
+        <label>stdarg.h</label>
+      </node>
+      <node id="382">
+        <label>sl_status.h</label>
+      </node>
+      <node id="388">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="384" relation="include">
+        </childnode>
+      </node>
+      <node id="378">
+        <label>stdint.h</label>
+      </node>
+      <node id="377">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="378" relation="include">
+        </childnode>
+        <childnode refid="379" relation="include">
+        </childnode>
+        <childnode refid="380" relation="include">
+        </childnode>
+        <childnode refid="381" relation="include">
+        </childnode>
+        <childnode refid="382" relation="include">
+        </childnode>
+        <childnode refid="383" relation="include">
+        </childnode>
+        <childnode refid="384" relation="include">
+        </childnode>
+        <childnode refid="386" relation="include">
+        </childnode>
+        <childnode refid="388" relation="include">
+        </childnode>
+      </node>
+      <node id="380">
+        <label>stddef.h</label>
+      </node>
+      <node id="385">
+        <label>env.h</label>
+      </node>
+      <node id="383">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="381">
+        <label>string.h</label>
+      </node>
+      <node id="386">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="387" relation="include">
+        </childnode>
+        <childnode refid="379" relation="include">
+        </childnode>
+      </node>
+      <node id="376">
+        <label>firmware/user/tp/hal/tp_fpga.h</label>
+        <link refid="tp__fpga_8h"/>
+        <childnode refid="377" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="393">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="392">
+        <label>firmware/user/tp/methods/tp_method_writefpga.c</label>
+        <link refid="tp__method__writefpga_8c"/>
+      </node>
+      <node id="391">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+      <node id="390">
+        <label>firmware/user/tp/hal/tp_fpga.c</label>
+        <link refid="tp__fpga_8c"/>
+      </node>
+      <node id="389">
+        <label>firmware/user/tp/hal/tp_fpga.h</label>
+        <link refid="tp__fpga_8h"/>
+        <childnode refid="390" relation="include">
+        </childnode>
+        <childnode refid="391" relation="include">
+        </childnode>
+        <childnode refid="392" relation="include">
+        </childnode>
+        <childnode refid="393" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__fpga_8h_1a46421a225d6040c78bf0d5d598ac8742" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_fpga_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>FPGA initialization. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function must be called before any other FPGA function </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="43" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="223" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1af5815ceb27f9df140f5fbb131cddb6e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_write_reg</definition>
+        <argsstring>(uint32_t reg_value, uint8_t reg_addr)</argsstring>
+        <name>tp_fpga_write_reg</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>reg_value</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register of the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reg_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to write to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="54" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="103" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1ad6772d7a3a7ffbca4b049647e5bb75ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_write_reg_safe</definition>
+        <argsstring>(uint32_t reg_value, uint8_t reg_addr)</argsstring>
+        <name>tp_fpga_write_reg_safe</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>reg_value</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register of the FPGA and check if the write was successful. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reg_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to write to</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_FAIL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Write was not successful </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="67" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="135" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1aa285208b0b15ac379384d3437fbdcc3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_write_cfg</definition>
+        <argsstring>(uint8_t value)</argsstring>
+        <name>tp_fpga_write_cfg</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write to the configuration register of the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the configuration register</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="78" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="169" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1a8a20878fac888827537fba61b39c6e38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_send_read_reg_cmd</definition>
+        <argsstring>(uint8_t reg_addr)</argsstring>
+        <name>tp_fpga_send_read_reg_cmd</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <briefdescription>
+<para>Send a read register command to the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the register to read</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during writing to registers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="89" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="119" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1abfa7e0e67ddd4b39e1cbc0e7dd2ca6eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_read_fifo</definition>
+        <argsstring>(uint8_t *tx_buf, uint8_t *rx_buf, uint32_t len, bool wait)</argsstring>
+        <name>tp_fpga_read_fifo</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>tx_buf</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>rx_buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait</declname>
+        </param>
+        <briefdescription>
+<para>Read from the FIFO of the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tx_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to write to the FIFO </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to read from the FIFO </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of the buffer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wait for the transfer to finish</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during reading from the FIFO </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="103" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="91" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1a81c7003257a953ec4084e973b74e42df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_read_cfg</definition>
+        <argsstring>(uint8_t *value)</argsstring>
+        <name>tp_fpga_read_cfg</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Read from the configuration register of the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the value buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during reading from the register </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="114" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="187" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1a08eec530ab1a4b75a9fcc48953a2bd4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_send_cmd</definition>
+        <argsstring>(uint8_t cmd, uint8_t *answer)</argsstring>
+        <name>tp_fpga_send_cmd</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>cmd</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>answer</declname>
+        </param>
+        <briefdescription>
+<para>Send a command to the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cmd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command to send </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>answer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the answer buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during sending the command </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="126" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="205" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1a6e7bc425f240dcd6fda20cc72654dc49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_trigger_shot</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_fpga_trigger_shot</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Trigger a shot on the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during triggering the shot </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="135" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="248" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1aec88b400c34f6cda2e32a560255e2c22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_send_start</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_fpga_send_start</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Send a start command to the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during sending the command </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="144" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="263" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1aa511aa65c3186451a882d789a499c8e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_reset_multififo</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_fpga_reset_multififo</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset the FIFO of the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during resetting the FIFO </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="153" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="268" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1a7b370a061e3e3ccedfdc79d28a9e547e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_empty_tx</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_fpga_empty_tx</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Empty the TX FIFO of the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during emptying the TX FIFO </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="162" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="273" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="tp__fpga_8h_1a31137f97ee7d33df7a4172d470e99685" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t tp_fpga_en_read</definition>
+        <argsstring>(void)</argsstring>
+        <name>tp_fpga_en_read</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Enable the readout of the FPGA. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error during enabling the readout </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/hal/tp_fpga.h" line="171" column="1" bodyfile="firmware/user/tp/hal/tp_fpga.c" bodystart="281" bodyend="284"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe FPGA driver header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1a46421a225d6040c78bf0d5d598ac8742" kindref="member">tp_fpga_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1af5815ceb27f9df140f5fbb131cddb6e3" kindref="member">tp_fpga_write_reg</ref>(uint32_t<sp/>reg_value,<sp/>uint8_t<sp/>reg_addr);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1ad6772d7a3a7ffbca4b049647e5bb75ef" kindref="member">tp_fpga_write_reg_safe</ref>(uint32_t<sp/>reg_value,<sp/>uint8_t<sp/>reg_addr);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1aa285208b0b15ac379384d3437fbdcc3a" kindref="member">tp_fpga_write_cfg</ref>(uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1a8a20878fac888827537fba61b39c6e38" kindref="member">tp_fpga_send_read_reg_cmd</ref>(uint8_t<sp/>reg_addr);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1abfa7e0e67ddd4b39e1cbc0e7dd2ca6eb" kindref="member">tp_fpga_read_fifo</ref>(uint8_t<sp/>*tx_buf,<sp/>uint8_t<sp/>*rx_buf,<sp/>uint32_t<sp/>len,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>wait);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1a81c7003257a953ec4084e973b74e42df" kindref="member">tp_fpga_read_cfg</ref>(uint8_t<sp/>*value);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1a08eec530ab1a4b75a9fcc48953a2bd4f" kindref="member">tp_fpga_send_cmd</ref>(uint8_t<sp/>cmd,<sp/>uint8_t<sp/>*answer);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1a6e7bc425f240dcd6fda20cc72654dc49" kindref="member">tp_fpga_trigger_shot</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1aec88b400c34f6cda2e32a560255e2c22" kindref="member">tp_fpga_send_start</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1aa511aa65c3186451a882d789a499c8e7" kindref="member">tp_fpga_reset_multififo</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1a7b370a061e3e3ccedfdc79d28a9e547e" kindref="member">tp_fpga_empty_tx</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal">sl_status_t<sp/><ref refid="tp__fpga_8h_1a31137f97ee7d33df7a4172d470e99685" kindref="member">tp_fpga_en_read</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/hal/tp_fpga.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,936 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="config_8h" kind="file" language="C++">
+    <compoundname>config.h</compoundname>
+    <includes local="yes">env.h</includes>
+    <includedby refid="common_8h" local="yes">firmware/user/common/common.h</includedby>
+    <includedby refid="led_8h" local="yes">firmware/user/common/led.h</includedby>
+    <includedby refid="log_8c" local="yes">firmware/user/common/log.c</includedby>
+    <incdepgraph>
+      <node id="218">
+        <label>firmware/user/config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="219" relation="include">
+        </childnode>
+      </node>
+      <node id="219">
+        <label>env.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="272">
+        <label>firmware/user/wius/hal/wius_wifi.c</label>
+        <link refid="wius__wifi_8c"/>
+      </node>
+      <node id="271">
+        <label>firmware/user/wius/hal/wius_wifi.h</label>
+        <link refid="wius__wifi_8h"/>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="272" relation="include">
+        </childnode>
+      </node>
+      <node id="220">
+        <label>firmware/user/config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="273" relation="include">
+        </childnode>
+        <childnode refid="274" relation="include">
+        </childnode>
+      </node>
+      <node id="231">
+        <label>firmware/user/tp/methods/tp_method_writeafe.c</label>
+        <link refid="tp__method__writeafe_8c"/>
+      </node>
+      <node id="257">
+        <label>firmware/user/tp/methods/tp_method_writeafe.h</label>
+        <link refid="tp__method__writeafe_8h"/>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="266">
+        <label>firmware/user/wius/hal/wius_power.c</label>
+        <link refid="wius__power_8c"/>
+      </node>
+      <node id="261">
+        <label>firmware/user/common/led.c</label>
+        <link refid="led_8c"/>
+      </node>
+      <node id="265">
+        <label>firmware/user/wius/hal/wius_power.h</label>
+        <link refid="wius__power_8h"/>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+      </node>
+      <node id="273">
+        <label>firmware/user/common/led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="261" relation="include">
+        </childnode>
+      </node>
+      <node id="264">
+        <label>firmware/user/wius/hal/wius_spi.c</label>
+        <link refid="wius__spi_8c"/>
+      </node>
+      <node id="263">
+        <label>firmware/user/wius/hal/wius_spi.h</label>
+        <link refid="wius__spi_8h"/>
+        <childnode refid="230" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+      </node>
+      <node id="222">
+        <label>firmware/user/common/common.c</label>
+        <link refid="common_8c"/>
+      </node>
+      <node id="221">
+        <label>firmware/user/common/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="229" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+        <childnode refid="241" relation="include">
+        </childnode>
+        <childnode refid="244" relation="include">
+        </childnode>
+        <childnode refid="247" relation="include">
+        </childnode>
+        <childnode refid="248" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+        <childnode refid="254" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="259" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+        <childnode refid="260" relation="include">
+        </childnode>
+        <childnode refid="265" relation="include">
+        </childnode>
+        <childnode refid="263" relation="include">
+        </childnode>
+        <childnode refid="267" relation="include">
+        </childnode>
+        <childnode refid="269" relation="include">
+        </childnode>
+        <childnode refid="271" relation="include">
+        </childnode>
+      </node>
+      <node id="228">
+        <label>firmware/user/user.c</label>
+        <link refid="user_8c"/>
+      </node>
+      <node id="262">
+        <label>firmware/user/wius/hal/wius_gpio.c</label>
+        <link refid="wius__gpio_8c"/>
+      </node>
+      <node id="260">
+        <label>firmware/user/wius/hal/wius_gpio.h</label>
+        <link refid="wius__gpio_8h"/>
+        <childnode refid="261" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="262" relation="include">
+        </childnode>
+        <childnode refid="263" relation="include">
+        </childnode>
+      </node>
+      <node id="240">
+        <label>firmware/user/tp/methods/tp_method_controlpower.c</label>
+        <link refid="tp__method__controlpower_8c"/>
+      </node>
+      <node id="244">
+        <label>firmware/user/tp/methods/tp_method_controlpower.h</label>
+        <link refid="tp__method__controlpower_8h"/>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="236">
+        <label>firmware/user/tp/hal/tp_mux.c</label>
+        <link refid="tp__mux_8c"/>
+      </node>
+      <node id="235">
+        <label>firmware/user/tp/hal/tp_mux.h</label>
+        <link refid="tp__mux_8h"/>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="253">
+        <label>firmware/user/tp/methods/tp_method_ping.c</label>
+        <link refid="tp__method__ping_8c"/>
+      </node>
+      <node id="252">
+        <label>firmware/user/tp/methods/tp_method_ping.h</label>
+        <link refid="tp__method__ping_8h"/>
+        <childnode refid="253" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="243">
+        <label>firmware/user/tp/methods/tp_method_writetx.c</label>
+        <link refid="tp__method__writetx_8c"/>
+      </node>
+      <node id="227">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="259">
+        <label>firmware/user/tp/methods/tp_method_writetx.h</label>
+        <link refid="tp__method__writetx_8h"/>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="225">
+        <label>firmware/user/tp/tp.h</label>
+        <link refid="tp_8h"/>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+      </node>
+      <node id="234">
+        <label>firmware/user/tp/methods/tp_method_writefpga.c</label>
+        <link refid="tp__method__writefpga_8c"/>
+      </node>
+      <node id="258">
+        <label>firmware/user/tp/methods/tp_method_writefpga.h</label>
+        <link refid="tp__method__writefpga_8h"/>
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="274">
+        <label>firmware/user/common/log.c</label>
+        <link refid="log_8c"/>
+      </node>
+      <node id="224">
+        <label>firmware/user/tp/common/tp_buffer.c</label>
+        <link refid="tp__buffer_8c"/>
+      </node>
+      <node id="223">
+        <label>firmware/user/tp/common/tp_buffer.h</label>
+        <link refid="tp__buffer_8h"/>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+      </node>
+      <node id="242">
+        <label>firmware/user/tp/hal/tp_tx.c</label>
+        <link refid="tp__tx_8c"/>
+      </node>
+      <node id="241">
+        <label>firmware/user/tp/hal/tp_tx.h</label>
+        <link refid="tp__tx_8h"/>
+        <childnode refid="242" relation="include">
+        </childnode>
+        <childnode refid="243" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="249">
+        <label>firmware/user/tp/methods/tp_method_delayms.c</label>
+        <link refid="tp__method__delayms_8c"/>
+      </node>
+      <node id="248">
+        <label>firmware/user/tp/methods/tp_method_delayms.h</label>
+        <link refid="tp__method__delayms_8h"/>
+        <childnode refid="249" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="268">
+        <label>firmware/user/wius/hal/wius_tcp.c</label>
+        <link refid="wius__tcp_8c"/>
+      </node>
+      <node id="267">
+        <label>firmware/user/wius/hal/wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="253" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="268" relation="include">
+        </childnode>
+      </node>
+      <node id="270">
+        <label>firmware/user/wius/hal/wius_udp.c</label>
+        <link refid="wius__udp_8c"/>
+      </node>
+      <node id="269">
+        <label>firmware/user/wius/hal/wius_udp.h</label>
+        <link refid="wius__udp_8h"/>
+        <childnode refid="225" relation="include">
+        </childnode>
+        <childnode refid="270" relation="include">
+        </childnode>
+      </node>
+      <node id="255">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.c</label>
+        <link refid="tp__method__setloglevel_8c"/>
+      </node>
+      <node id="254">
+        <label>firmware/user/tp/methods/tp_method_setloglevel.h</label>
+        <link refid="tp__method__setloglevel_8h"/>
+        <childnode refid="255" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="251">
+        <label>firmware/user/tp/methods/tp_method_delayns.c</label>
+        <link refid="tp__method__delayns_8c"/>
+      </node>
+      <node id="250">
+        <label>firmware/user/tp/methods/tp_method_delayns.h</label>
+        <link refid="tp__method__delayns_8h"/>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="226">
+        <label>firmware/user/tp/methods/tp_method_triggershot.c</label>
+        <link refid="tp__method__triggershot_8c"/>
+      </node>
+      <node id="256">
+        <label>firmware/user/tp/methods/tp_method_triggershot.h</label>
+        <link refid="tp__method__triggershot_8h"/>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+      <node id="239">
+        <label>firmware/user/tp/hal/tp_power.c</label>
+        <link refid="tp__power_8c"/>
+      </node>
+      <node id="238">
+        <label>firmware/user/tp/hal/tp_power.h</label>
+        <link refid="tp__power_8h"/>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="233">
+        <label>firmware/user/tp/hal/tp_fpga.c</label>
+        <link refid="tp__fpga_8c"/>
+      </node>
+      <node id="232">
+        <label>firmware/user/tp/hal/tp_fpga.h</label>
+        <link refid="tp__fpga_8h"/>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="246">
+        <label>firmware/user/tp/tp_methods.c</label>
+        <link refid="tp__methods_8c"/>
+      </node>
+      <node id="245">
+        <label>firmware/user/tp/tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="246" relation="include">
+        </childnode>
+      </node>
+      <node id="230">
+        <label>firmware/user/tp/hal/tp_afe.c</label>
+        <link refid="tp__afe_8c"/>
+      </node>
+      <node id="229">
+        <label>firmware/user/tp/hal/tp_afe.h</label>
+        <link refid="tp__afe_8h"/>
+        <childnode refid="230" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="237">
+        <label>firmware/user/tp/methods/tp_method_controlspi.c</label>
+        <link refid="tp__method__controlspi_8c"/>
+      </node>
+      <node id="247">
+        <label>firmware/user/tp/methods/tp_method_controlspi.h</label>
+        <link refid="tp__method__controlspi_8h"/>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="245" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="user-defined">
+      <header>Board configurations</header>
+      <memberdef kind="define" id="group__config__common_1gaed91737767c96e2af18274f8aca5e6a8" prot="public" static="no">
+        <name>WIUS_BOARD</name>
+        <initializer>3</initializer>
+        <briefdescription>
+<para>&lt; Board type for WiUS firmware. Can be one of 0: &quot;DK2605A&quot;, 1: &quot;EK2708A&quot;, 2: &quot;PK6031A&quot;, 3: &quot;WIUS1&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="45" column="9" bodyfile="firmware/user/config.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Logging configurations</header>
+      <memberdef kind="define" id="group__config__common_1gaf220e0f0458659bfccf3d336d1cacdda" prot="public" static="no">
+        <name>LOG_MAX_CALLBACKS</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>&lt; Maximum number of log callbacks that can be registered </para>        </briefdescription>
+        <detaileddescription>
+<para>Size of the log buffer in bytes </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="54" column="9" bodyfile="firmware/user/config.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" prot="public" static="no">
+        <name>LOG_BUFFER_SIZE</name>
+        <initializer>128</initializer>
+        <briefdescription>
+<para>Remove lifetime of log library (no deinitialization, no callback unregistration) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="56" column="9" bodyfile="firmware/user/config.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__common_1ga4993efe73dbf525b44ee2deca215d595" prot="public" static="no">
+        <name>LOG_ONCE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="58" column="9" bodyfile="firmware/user/config.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__common_1ga66c43661af4dcbd9cf28884139343649" prot="public" static="no">
+        <name>LOG_NO_COLOR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="59" column="9" bodyfile="firmware/user/config.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>WiUS SPI configurations</header>
+      <memberdef kind="define" id="group__config__wius_1ga828b21f1639e1f61e3c11b4ae30aee8a" prot="public" static="no">
+        <name>WIUS_SPI_FREQ</name>
+        <initializer>32000000</initializer>
+        <briefdescription>
+<para>SPI clock frequency in Hz. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="76" column="9" bodyfile="firmware/user/config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__wius_1ga48741bb25c5bcd31997891af7a90d983" prot="public" static="no">
+        <name>WIUS_SPI_RX_TIMEOUT</name>
+        <initializer>100</initializer>
+        <briefdescription>
+<para>SPI timeout for transmission in ticks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="78" column="9" bodyfile="firmware/user/config.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__wius_1ga9f5eccac536c6a82a45c557825ce80fb" prot="public" static="no">
+        <name>WIUS_SPI_SHORT_XFER_MAX</name>
+        <initializer>16</initializer>
+        <briefdescription>
+<para>Maximum transfer size that waits by polling an interrupt-updated flag. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="80" column="9" bodyfile="firmware/user/config.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__wius_1ga5a13ae0c719433b77bcaed48eaa19fc7" prot="public" static="no">
+        <name>WIUS_SPI_EXT_CS0</name>
+        <initializer>53</initializer>
+        <briefdescription>
+<para>CS pin number for instance 0 (set to 0 if unused) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="82" column="9" bodyfile="firmware/user/config.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__wius_1gac41a23d5859834f639180ce898679ae7" prot="public" static="no">
+        <name>WIUS_SPI_EXT_CS1</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>CS pin number for instance 1 (set to 0 if unused) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="84" column="9" bodyfile="firmware/user/config.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>WiUS WiFi configurations</header>
+      <memberdef kind="define" id="group__config__wius_1ga0fb6abe0ceadcc2168b436c5f531f8d2" prot="public" static="no">
+        <name>WIUS_WIFI_DEVICE_NAME</name>
+        <initializer>&quot;WiUS&quot;</initializer>
+        <briefdescription>
+<para>Device name for WiFi. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="98" column="9" bodyfile="firmware/user/config.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe general configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga847efbd12a789766466eb1b53eb1756c" prot="public" static="no">
+        <name>TP_TEST_MODE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Enable test mode (1=enabled, 0=disabled). Used for testing acquisition code without actual TinyProbe hardware. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="114" column="9" bodyfile="firmware/user/config.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gabfe4c2202e961a2f200075735b7525d5" prot="public" static="no">
+        <name>TP_PROBE_ID</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>ID of the probe (used for Ping responses) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="116" column="9" bodyfile="firmware/user/config.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga7406d8ca8d5b7d3ed7cb36986bdb531b" prot="public" static="no">
+        <name>TP_WIFI_RX_BUFFER_SIZE</name>
+        <initializer>1472</initializer>
+        <briefdescription>
+<para>Size of the WiFi RX buffer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="118" column="9" bodyfile="firmware/user/config.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga6fdbf1a538943d80f3ed5e4cea669db2" prot="public" static="no">
+        <name>TP_UDP_PACKET_SIZE</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+<para>Size of one UDP packet (no header) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="120" column="9" bodyfile="firmware/user/config.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga92dda9fe52c98ced3e52ac0c0a91662b" prot="public" static="no">
+        <name>TP_UDP_PACKET_AMT</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>Number of packets to acquire per SPI before sending. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="122" column="9" bodyfile="firmware/user/config.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gac6d27f073879a9bdc4cfd92e7c496a0a" prot="public" static="no">
+        <name>TP_UDP_PORT</name>
+        <initializer>50007</initializer>
+        <briefdescription>
+<para>Port on which UDP transfers happen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="124" column="9" bodyfile="firmware/user/config.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gafe1863a06fa74bcfc27f71305efdef08" prot="public" static="no">
+        <name>TP_TCP_PORT</name>
+        <initializer>50008</initializer>
+        <briefdescription>
+<para>Port on which TCP transfers happen. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="126" column="9" bodyfile="firmware/user/config.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga886e6b681d04e833135384b906c35855" prot="public" static="no">
+        <name>TP_GPIO_INT</name>
+        <initializer>2</initializer>
+        <briefdescription>
+<para>FPGA Interrupt UULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="128" column="9" bodyfile="firmware/user/config.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga1d147963731373a6548eb05ec9566b7a" prot="public" static="no">
+        <name>TP_GPIO_RESET</name>
+        <initializer>10</initializer>
+        <briefdescription>
+<para>FPGA Reset ULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="130" column="9" bodyfile="firmware/user/config.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga620a92942d660c7539c0d4204ae2bbf8" prot="public" static="no">
+        <name>TP_THREAD_STACK_MAIN</name>
+        <initializer>4500</initializer>
+        <briefdescription>
+<para>Stack size for main thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="132" column="9" bodyfile="firmware/user/config.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga585a303cc76e1c41648053420492f586" prot="public" static="no">
+        <name>TP_THREAD_STACK_WIFI</name>
+        <initializer>1500</initializer>
+        <briefdescription>
+<para>Stack size for WiFi thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="134" column="9" bodyfile="firmware/user/config.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe AFE control configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaa8c7f772c64d442a763ed7650d81b5f2" prot="public" static="no">
+        <name>TP_AFE_SPI_DELAY_NS</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Delay after SPI transfers in ns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="142" column="9" bodyfile="firmware/user/config.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe buffering configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaa79cc3d791200b9aa20df7f8561848d5" prot="public" static="no">
+        <name>TP_BUFFER_NUM</name>
+        <initializer>10</initializer>
+        <briefdescription>
+<para>Number of buffers available for data acquisition. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="150" column="9" bodyfile="firmware/user/config.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaf50d4cb1e27fca09afa5151fa469d686" prot="public" static="no">
+        <name>TP_FIFO_READ_SIZE</name>
+        <initializer>(<ref refid="group__config__tinyprobe_1ga6fdbf1a538943d80f3ed5e4cea669db2" kindref="member">TP_UDP_PACKET_SIZE</ref> * <ref refid="group__config__tinyprobe_1ga92dda9fe52c98ced3e52ac0c0a91662b" kindref="member">TP_UDP_PACKET_AMT</ref>)</initializer>
+        <briefdescription>
+<para>FIFO read size in bytes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="152" column="9" bodyfile="firmware/user/config.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga669190c664bc3df1976b0dbdf0b2064e" prot="public" static="no">
+        <name>TP_BUFFER_SIZE</name>
+        <initializer>(<ref refid="group__config__tinyprobe_1gaf50d4cb1e27fca09afa5151fa469d686" kindref="member">TP_FIFO_READ_SIZE</ref> + 2)</initializer>
+        <briefdescription>
+<para>Size of one buffer in bytes (FIFO read size + 2 bytes for packet index) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="154" column="9" bodyfile="firmware/user/config.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe methods configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaeb9b1e088aa0a565966217292bee9f08" prot="public" static="no">
+        <name>TP_RESPONSE_BUFFER_SIZE</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+<para>Response buffer size for JSON-RPC methods in bytes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="162" column="9" bodyfile="firmware/user/config.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga4360960e1ff4d05b32d1d3d14511b0e9" prot="public" static="no">
+        <name>TP_METHOD_TIMING</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Enable per-method DWT timing logs. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="164" column="9" bodyfile="firmware/user/config.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe FPGA control configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gae886c0017d472d2b9e9fa27b7c537408" prot="public" static="no">
+        <name>TP_FPGA_SPI_DELAY_NS</name>
+        <initializer>50</initializer>
+        <briefdescription>
+<para>Delay after SPI transfers in ns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="172" column="9" bodyfile="firmware/user/config.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe MUX control configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga18b027740f4b5cd2da100138c487ca61" prot="public" static="no">
+        <name>TP_MUX_GPIO_EXTINT</name>
+        <initializer>3</initializer>
+        <briefdescription>
+<para>EXT INT MUX UULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="180" column="9" bodyfile="firmware/user/config.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gae715ae579035cb5e18263576d6914aaf" prot="public" static="no">
+        <name>TP_MUX_GPIO_AFETX</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>AFE TX MUX ULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="182" column="9" bodyfile="firmware/user/config.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TinyProbe power control configurations</header>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaa4e408fd057a997a23d2a67e9b91faa7" prot="public" static="no">
+        <name>TP_POWER_GPIO_NEG_5V</name>
+        <initializer>2</initializer>
+        <briefdescription>
+<para>-5V ULP gpio number </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="190" column="9" bodyfile="firmware/user/config.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1gaea16d7b845305f7ada04cc932fd02681" prot="public" static="no">
+        <name>TP_POWER_GPIO_NEG_HV</name>
+        <initializer>52</initializer>
+        <briefdescription>
+<para>-HV gpio number </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="192" column="9" bodyfile="firmware/user/config.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga4f24fc2335891e0bcbf47365165fee12" prot="public" static="no">
+        <name>TP_POWER_GPIO_POS_HV</name>
+        <initializer>56</initializer>
+        <briefdescription>
+<para>+HV gpio number </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="194" column="9" bodyfile="firmware/user/config.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__config__tinyprobe_1ga1b642e68d16f9762cd7400a26f32014a" prot="public" static="no">
+        <name>TP_POWER_GPIO_LVDS_PWR_SW</name>
+        <initializer>8</initializer>
+        <briefdescription>
+<para>LVDS power switch ULP gpio number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="196" column="9" bodyfile="firmware/user/config.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="config_8h_1a2d8e7f5e7cf0c758d269915839802089" prot="public" static="no">
+        <name>RSI_DHCP_HOST_NAME</name>
+        <initializer><ref refid="group__config__wius_1ga0fb6abe0ceadcc2168b436c5f531f8d2" kindref="member">WIUS_WIFI_DEVICE_NAME</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Host name for DHCP </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/config.h" line="203" column="9" bodyfile="firmware/user/config.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Configuration header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;env.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor">#define<sp/>WIUS_BOARD<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="group__config__common_1gaf220e0f0458659bfccf3d336d1cacdda" refkind="member"><highlight class="preprocessor">#define<sp/>LOG_MAX_CALLBACKS<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="group__config__common_1ga381c342b2b34df0b1a5b39c0d94da4e1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_BUFFER_SIZE<sp/>128</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_ONCE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_NO_COLOR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor">#define<sp/>WIUS_SPI_FREQ<sp/>32000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_SPI_RX_TIMEOUT<sp/>100</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_SPI_SHORT_XFER_MAX<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_SPI_EXT_CS0<sp/>53</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_SPI_EXT_CS1<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor">#ifndef<sp/>WIUS_WIFI_SSID</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;Please<sp/>define<sp/>WIUS_WIFI_SSID<sp/>in<sp/>env.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WIUS_WIFI_PASS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="group__config__wius_1ga0fb6abe0ceadcc2168b436c5f531f8d2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;Please<sp/>define<sp/>WIUS_WIFI_PASS<sp/>in<sp/>env.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WIUS_WIFI_DEVICE_NAME<sp/>&quot;WiUS&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="preprocessor">#define<sp/>TP_TEST_MODE<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_PROBE_ID<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_WIFI_RX_BUFFER_SIZE<sp/>1472</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_UDP_PACKET_SIZE<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_UDP_PACKET_AMT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_UDP_PORT<sp/>50007</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_TCP_PORT<sp/>50008</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_GPIO_INT<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_GPIO_RESET<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_THREAD_STACK_MAIN<sp/>4500</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_THREAD_STACK_WIFI<sp/>1500</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="preprocessor">#define<sp/>TP_AFE_SPI_DELAY_NS<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="preprocessor">#define<sp/>TP_BUFFER_NUM<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_FIFO_READ_SIZE<sp/>(TP_UDP_PACKET_SIZE<sp/>*<sp/>TP_UDP_PACKET_AMT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_BUFFER_SIZE<sp/>(TP_FIFO_READ_SIZE<sp/>+<sp/>2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="group__config__tinyprobe_1gaeb9b1e088aa0a565966217292bee9f08" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="preprocessor">#define<sp/>TP_RESPONSE_BUFFER_SIZE<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_METHOD_TIMING<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="group__config__tinyprobe_1ga18b027740f4b5cd2da100138c487ca61" refkind="member"><highlight class="preprocessor">#define<sp/>TP_FPGA_SPI_DELAY_NS<sp/>50</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="group__config__tinyprobe_1gae715ae579035cb5e18263576d6914aaf" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="preprocessor">#define<sp/>TP_MUX_GPIO_EXTINT<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_MUX_GPIO_AFETX<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="preprocessor">#define<sp/>TP_POWER_GPIO_NEG_5V<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_POWER_GPIO_NEG_HV<sp/>52</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_POWER_GPIO_POS_HV<sp/>56</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TP_POWER_GPIO_LVDS_PWR_SW<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="comment">//<sp/>Don&apos;t<sp/>touch<sp/>this,<sp/>here<sp/>we<sp/>transfer<sp/>some<sp/>configurations<sp/>to<sp/>all<sp/>the<sp/>drivers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RSI_DHCP_HOST_NAME<sp/>WIUS_WIFI_DEVICE_NAME<sp/></highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/config.h"/>
+  </compounddef>
+</doxygen>

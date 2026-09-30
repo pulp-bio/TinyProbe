@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__power_8c" kind="file" language="C++">
+    <compoundname>wius_power.c</compoundname>
+    <includes refid="wius__power_8h" local="yes">wius_power.h</includes>
+    <includes local="yes">sl_si91x_power_manager.h</includes>
+    <incdepgraph>
+      <node id="1070">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1075">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1076" relation="include">
+        </childnode>
+      </node>
+      <node id="1078">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1073">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1066">
+        <label>firmware/user/wius/hal/wius_power.c</label>
+        <link refid="wius__power_8c"/>
+        <childnode refid="1067" relation="include">
+        </childnode>
+        <childnode refid="1080" relation="include">
+        </childnode>
+      </node>
+      <node id="1067">
+        <label>wius_power.h</label>
+        <link refid="wius__power_8h"/>
+        <childnode refid="1068" relation="include">
+        </childnode>
+      </node>
+      <node id="1079">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1075" relation="include">
+        </childnode>
+      </node>
+      <node id="1069">
+        <label>stdint.h</label>
+      </node>
+      <node id="1068">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1069" relation="include">
+        </childnode>
+        <childnode refid="1070" relation="include">
+        </childnode>
+        <childnode refid="1071" relation="include">
+        </childnode>
+        <childnode refid="1072" relation="include">
+        </childnode>
+        <childnode refid="1073" relation="include">
+        </childnode>
+        <childnode refid="1074" relation="include">
+        </childnode>
+        <childnode refid="1075" relation="include">
+        </childnode>
+        <childnode refid="1077" relation="include">
+        </childnode>
+        <childnode refid="1079" relation="include">
+        </childnode>
+      </node>
+      <node id="1071">
+        <label>stddef.h</label>
+      </node>
+      <node id="1076">
+        <label>env.h</label>
+      </node>
+      <node id="1080">
+        <label>sl_si91x_power_manager.h</label>
+      </node>
+      <node id="1074">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1072">
+        <label>string.h</label>
+      </node>
+      <node id="1077">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1078" relation="include">
+        </childnode>
+        <childnode refid="1070" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__power_8c_1a58233657d300250657e148fe69d27eab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_power_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_power_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the power management module. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Power management initialization failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_power.c" line="33" column="1" bodyfile="firmware/user/wius/hal/wius_power.c" bodystart="33" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__power_8c_1a14e2d5e1b84a778679ed752ec70e4e6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_power_set</definition>
+        <argsstring>(wius_power_mode_t mode)</argsstring>
+        <name>wius_power_set</name>
+        <param>
+          <type><ref refid="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" kindref="member">wius_power_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set the power mode. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Power mode to set (<ref refid="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" kindref="member">wius_power_mode_t</ref>) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_power.c" line="55" column="1" bodyfile="firmware/user/wius/hal/wius_power.c" bodystart="55" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS power management source file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__power_8h" kindref="compound">wius_power.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_si91x_power_manager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">sl_status_t<sp/><ref refid="wius__power_8c_1a58233657d300250657e148fe69d27eab" kindref="member">wius_power_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>the<sp/>SI91X<sp/>power<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>sl_si91x_power_manager_init();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>SL_STATUS_ALREADY_INITIALIZED)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>SL_STATUS_OK)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>default<sp/>power<sp/>mode<sp/>(low<sp/>power)<sp/>initially.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_power_manager_add_ps_requirement(SL_SI91X_POWER_MANAGER_PS4));</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(<ref refid="wius__power_8c_1a14e2d5e1b84a778679ed752ec70e4e6f" kindref="member">wius_power_set</ref>(<ref refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a87d6fc152671f566ec22732b8c2ee36c" kindref="member">WIUS_POWER_MODE_LOW</ref>));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">sl_status_t<sp/><ref refid="wius__power_8c_1a14e2d5e1b84a778679ed752ec70e4e6f" kindref="member">wius_power_set</ref>(<ref refid="wius__power_8h_1a29ff6e1c75aeb94698b495618ff5ed37" kindref="member">wius_power_mode_t</ref><sp/>mode)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(mode)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a87d6fc152671f566ec22732b8c2ee36c" kindref="member">WIUS_POWER_MODE_LOW</ref>:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>LOW<sp/>mode,<sp/>remove<sp/>the<sp/>high<sp/>performance<sp/>(PS4)<sp/>requirement<sp/>and<sp/>add<sp/>the<sp/>low-power<sp/>(PS3)<sp/>requirement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>call<sp/>to<sp/>set_clock_scaling<sp/>with<sp/>SL_SI91X_POWER_MANAGER_POWERSAVE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>will<sp/>configure<sp/>the<sp/>MCU<sp/>to<sp/>run<sp/>at<sp/>40MHz<sp/>(PS3<sp/>mode),<sp/>as<sp/>per<sp/>the<sp/>SDK<sp/>defaults.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_power_manager_remove_ps_requirement(SL_SI91X_POWER_MANAGER_PS4));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_power_manager_add_ps_requirement(SL_SI91X_POWER_MANAGER_PS3));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_power_manager_set_clock_scaling(SL_SI91X_POWER_MANAGER_POWERSAVE));</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="wius__power_8h_1a5bd7ae4c70002ab6bad7327feeabb246a16c220b56cb785160051030ab4d2273d" kindref="member">WIUS_POWER_MODE_HIGH</ref>:</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>HIGH<sp/>mode,<sp/>remove<sp/>the<sp/>low-power<sp/>(PS3)<sp/>requirement<sp/>and<sp/>add<sp/>the<sp/>high-performance<sp/>(PS4)<sp/>requirement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>clock<sp/>scaling<sp/>is<sp/>set<sp/>to<sp/>SL_SI91X_POWER_MANAGER_PERFORMANCE<sp/>to<sp/>run<sp/>at<sp/>180MHz.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_power_manager_remove_ps_requirement(SL_SI91X_POWER_MANAGER_PS3));</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_power_manager_add_ps_requirement(SL_SI91X_POWER_MANAGER_PS4));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a89a8972154c6dee53b72ab7e6de25e42" kindref="member">LOG_RET_STATUS</ref>(sl_si91x_power_manager_set_clock_scaling(SL_SI91X_POWER_MANAGER_PERFORMANCE));</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SL_STATUS_INVALID_PARAMETER;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>system<sp/>ticks<sp/>if<sp/>needed<sp/>after<sp/>a<sp/>clock<sp/>change.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8c_1a3eb73598ef1a1883d57e9ca79679b26a" kindref="member">common_tick_update</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_power.c"/>
+  </compounddef>
+</doxygen>

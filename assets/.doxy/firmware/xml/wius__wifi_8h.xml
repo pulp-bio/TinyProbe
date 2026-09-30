@@ -1,0 +1,411 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="wius__wifi_8h" kind="file" language="C++">
+    <compoundname>wius_wifi.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes local="yes">sl_mdns.h</includes>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <includedby refid="wius__wifi_8c" local="yes">firmware/user/wius/hal/wius_wifi.c</includedby>
+    <incdepgraph>
+      <node id="1246">
+        <label>firmware/user/wius/hal/wius_wifi.h</label>
+        <link refid="wius__wifi_8h"/>
+        <childnode refid="1247" relation="include">
+        </childnode>
+        <childnode refid="1259" relation="include">
+        </childnode>
+      </node>
+      <node id="1249">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1254">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="1255" relation="include">
+        </childnode>
+      </node>
+      <node id="1257">
+        <label>stdarg.h</label>
+      </node>
+      <node id="1252">
+        <label>sl_status.h</label>
+      </node>
+      <node id="1258">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="1254" relation="include">
+        </childnode>
+      </node>
+      <node id="1248">
+        <label>stdint.h</label>
+      </node>
+      <node id="1247">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="1248" relation="include">
+        </childnode>
+        <childnode refid="1249" relation="include">
+        </childnode>
+        <childnode refid="1250" relation="include">
+        </childnode>
+        <childnode refid="1251" relation="include">
+        </childnode>
+        <childnode refid="1252" relation="include">
+        </childnode>
+        <childnode refid="1253" relation="include">
+        </childnode>
+        <childnode refid="1254" relation="include">
+        </childnode>
+        <childnode refid="1256" relation="include">
+        </childnode>
+        <childnode refid="1258" relation="include">
+        </childnode>
+      </node>
+      <node id="1250">
+        <label>stddef.h</label>
+      </node>
+      <node id="1255">
+        <label>env.h</label>
+      </node>
+      <node id="1253">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="1251">
+        <label>string.h</label>
+      </node>
+      <node id="1256">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1257" relation="include">
+        </childnode>
+        <childnode refid="1249" relation="include">
+        </childnode>
+      </node>
+      <node id="1259">
+        <label>sl_mdns.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1262">
+        <label>firmware/user/wius/hal/wius_wifi.c</label>
+        <link refid="wius__wifi_8c"/>
+      </node>
+      <node id="1260">
+        <label>firmware/user/wius/hal/wius_wifi.h</label>
+        <link refid="wius__wifi_8h"/>
+        <childnode refid="1261" relation="include">
+        </childnode>
+        <childnode refid="1262" relation="include">
+        </childnode>
+      </node>
+      <node id="1261">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structwius__wifi__mdns" prot="public">wius_wifi_mdns</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>wius_wifi_performance_profile</name>
+        <enumvalue id="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9a71330d36c135ee2e5b2c2b09ce369aff" prot="public">
+          <name>WIUS_PERF_PROFILE_HIGHSPEED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>High speed </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9ab20c5ed6f4ea3304bfd92880656066dd" prot="public">
+          <name>WIUS_PERF_PROFILE_LOWPOWER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Low power </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>WiFi performance profile enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="40" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.h" bodystart="39" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" prot="public" static="no">
+        <type>enum <ref refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9" kindref="member">wius_wifi_performance_profile</ref></type>
+        <definition>typedef enum wius_wifi_performance_profile  wius_wifi_performance_profile_t</definition>
+        <argsstring></argsstring>
+        <name>wius_wifi_performance_profile_t</name>
+        <briefdescription>
+<para>WiFi performance profile enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="wius__wifi_8h_1a279c187e55c77e417944eebd2d3d81ee" prot="public" static="no">
+        <type>struct <ref refid="structwius__wifi__mdns" kindref="compound">wius_wifi_mdns</ref></type>
+        <definition>typedef struct wius_wifi_mdns  wius_wifi_mdns_t</definition>
+        <argsstring></argsstring>
+        <name>wius_wifi_mdns_t</name>
+        <briefdescription>
+<para>WiFi mDNS service structure. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="57" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="wius__wifi_8h_1aaf695214e7fe3c1481f397c69668c2f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_wifi_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the WiFi client interface. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>net initialization or bring up failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="66" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="101" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__wifi_8h_1a594f2cd66c2c4de2d2193b834d215f35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_deinit</definition>
+        <argsstring>(void)</argsstring>
+        <name>wius_wifi_deinit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Deinitialize the WiFi client interface. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>net deinitialization failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="75" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="171" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__wifi_8h_1afd6ea0925f54fe735565ea49180035c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_mdns_init</definition>
+        <argsstring>(wius_wifi_mdns_t *mdns)</argsstring>
+        <name>wius_wifi_mdns_init</name>
+        <param>
+          <type><ref refid="wius__wifi_8h_1a279c187e55c77e417944eebd2d3d81ee" kindref="member">wius_wifi_mdns_t</ref> *</type>
+          <declname>mdns</declname>
+        </param>
+        <briefdescription>
+<para>Initialize an mDNS service structure. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mdns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the mDNS service structure</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_PARAMETER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invalid parameter (null pointer or invalid host name) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mDNS or interface initialization failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="87" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="176" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__wifi_8h_1a82855ff628f8f7e45c9d75bca469d5ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_mdns_add</definition>
+        <argsstring>(wius_wifi_mdns_t *mdns)</argsstring>
+        <name>wius_wifi_mdns_add</name>
+        <param>
+          <type><ref refid="wius__wifi_8h_1a279c187e55c77e417944eebd2d3d81ee" kindref="member">wius_wifi_mdns_t</ref> *</type>
+          <declname>mdns</declname>
+        </param>
+        <briefdescription>
+<para>Add an mDNS service. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mdns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the mDNS service structure</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mDNS service addition failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="98" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="215" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="wius__wifi_8h_1a603a11e2f3cac17c65aed65f53b911ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>sl_status_t</type>
+        <definition>sl_status_t wius_wifi_set_performance_profile</definition>
+        <argsstring>(wius_wifi_performance_profile_t profile)</argsstring>
+        <name>wius_wifi_set_performance_profile</name>
+        <param>
+          <type><ref refid="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" kindref="member">wius_wifi_performance_profile_t</ref></type>
+          <declname>profile</declname>
+        </param>
+        <briefdescription>
+<para>Set the WiFi performance profile. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>profile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the performance profile enumeration (<ref refid="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" kindref="member">wius_wifi_performance_profile_t</ref>)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_INVALID_PARAMETER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invalid performance profile </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SL_STATUS_SI91X_POWER_SAVE_NOT_SUPPORTED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Profile not applied </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Performance profile setting failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/wius/hal/wius_wifi.h" line="111" column="1" bodyfile="firmware/user/wius/hal/wius_wifi.c" bodystart="261" bodyend="311"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>WiUS WiFi implementation header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sl_mdns.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9" kindref="member">wius_wifi_performance_profile</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41" refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9a71330d36c135ee2e5b2c2b09ce369aff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9a71330d36c135ee2e5b2c2b09ce369aff" kindref="member">WIUS_PERF_PROFILE_HIGHSPEED</ref>,<sp/></highlight></codeline>
+<codeline lineno="42" refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9ab20c5ed6f4ea3304bfd92880656066dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="wius__wifi_8h_1a89fabb28fd1e68583b22d1838f2efba9ab20c5ed6f4ea3304bfd92880656066dd" kindref="member">WIUS_PERF_PROFILE_LOWPOWER</ref><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}<sp/><ref refid="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" kindref="member">wius_wifi_performance_profile_t</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="structwius__wifi__mdns" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwius__wifi__mdns" kindref="compound">wius_wifi_mdns</ref></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51" refid="structwius__wifi__mdns_1a1e74eaf538a21737cd5f2f7dcc78060f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_mdns_t<sp/><ref refid="structwius__wifi__mdns_1a1e74eaf538a21737cd5f2f7dcc78060f" kindref="member">handle</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52" refid="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structwius__wifi__mdns_1a74eea305055adc04443c8a0ad929346d" kindref="member">protocol</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53" refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structwius__wifi__mdns_1a33eb1ef9e57f7527882db5b423e8eda7" kindref="member">host_name</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54" refid="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structwius__wifi__mdns_1a7193fe0ffd1d80e1366868862b1c0f10" kindref="member">service_name</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55" refid="structwius__wifi__mdns_1a2c4d3caa89b8d3679c78053007f5235f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structwius__wifi__mdns_1a2c4d3caa89b8d3679c78053007f5235f" kindref="member">service_message</ref>;<sp/></highlight></codeline>
+<codeline lineno="56" refid="structwius__wifi__mdns_1a98cb52450cf5cd771f2b2cab2756d80d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structwius__wifi__mdns_1a98cb52450cf5cd771f2b2cab2756d80d" kindref="member">port</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}<sp/><ref refid="wius__wifi_8h_1a279c187e55c77e417944eebd2d3d81ee" kindref="member">wius_wifi_mdns_t</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8h_1aaf695214e7fe3c1481f397c69668c2f6" kindref="member">wius_wifi_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8h_1a594f2cd66c2c4de2d2193b834d215f35" kindref="member">wius_wifi_deinit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8h_1afd6ea0925f54fe735565ea49180035c8" kindref="member">wius_wifi_mdns_init</ref>(<ref refid="structwius__wifi__mdns" kindref="compound">wius_wifi_mdns_t</ref><sp/>*mdns);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8h_1a82855ff628f8f7e45c9d75bca469d5ca" kindref="member">wius_wifi_mdns_add</ref>(<ref refid="structwius__wifi__mdns" kindref="compound">wius_wifi_mdns_t</ref><sp/>*mdns);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal">sl_status_t<sp/><ref refid="wius__wifi_8h_1a603a11e2f3cac17c65aed65f53b911ec" kindref="member">wius_wifi_set_performance_profile</ref>(<ref refid="wius__wifi_8h_1abb2164a9d7d75027cfaaeee5ee38429e" kindref="member">wius_wifi_performance_profile_t</ref><sp/>profile);</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/wius/hal/wius_wifi.h"/>
+  </compounddef>
+</doxygen>

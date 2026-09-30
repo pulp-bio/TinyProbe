@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__methods_8h" kind="file" language="C++">
+    <compoundname>tp_methods.h</compoundname>
+    <includes refid="common_8h" local="yes">common.h</includes>
+    <includes refid="wius__tcp_8h" local="yes">wius_tcp.h</includes>
+    <includes refid="tp__method__controlpower_8h" local="yes">methods/tp_method_controlpower.h</includes>
+    <includes refid="tp__method__controlspi_8h" local="yes">methods/tp_method_controlspi.h</includes>
+    <includes refid="tp__method__delayms_8h" local="yes">methods/tp_method_delayms.h</includes>
+    <includes refid="tp__method__delayns_8h" local="yes">methods/tp_method_delayns.h</includes>
+    <includes refid="tp__method__ping_8h" local="yes">methods/tp_method_ping.h</includes>
+    <includes refid="tp__method__setloglevel_8h" local="yes">methods/tp_method_setloglevel.h</includes>
+    <includes refid="tp__method__triggershot_8h" local="yes">methods/tp_method_triggershot.h</includes>
+    <includes refid="tp__method__writeafe_8h" local="yes">methods/tp_method_writeafe.h</includes>
+    <includes refid="tp__method__writefpga_8h" local="yes">methods/tp_method_writefpga.h</includes>
+    <includes refid="tp__method__writetx_8h" local="yes">methods/tp_method_writetx.h</includes>
+    <includedby refid="tp_8c" local="yes">firmware/user/tp/tp.c</includedby>
+    <includedby refid="tp__methods_8c" local="yes">firmware/user/tp/tp_methods.c</includedby>
+    <incdepgraph>
+      <node id="973">
+        <label>stdbool.h</label>
+      </node>
+      <node id="978">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="979" relation="include">
+        </childnode>
+      </node>
+      <node id="981">
+        <label>stdarg.h</label>
+      </node>
+      <node id="993">
+        <label>methods/tp_method_writeafe.h</label>
+        <link refid="tp__method__writeafe_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="976">
+        <label>sl_status.h</label>
+      </node>
+      <node id="982">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="978" relation="include">
+        </childnode>
+      </node>
+      <node id="972">
+        <label>stdint.h</label>
+      </node>
+      <node id="971">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="972" relation="include">
+        </childnode>
+        <childnode refid="973" relation="include">
+        </childnode>
+        <childnode refid="974" relation="include">
+        </childnode>
+        <childnode refid="975" relation="include">
+        </childnode>
+        <childnode refid="976" relation="include">
+        </childnode>
+        <childnode refid="977" relation="include">
+        </childnode>
+        <childnode refid="978" relation="include">
+        </childnode>
+        <childnode refid="980" relation="include">
+        </childnode>
+        <childnode refid="982" relation="include">
+        </childnode>
+      </node>
+      <node id="984">
+        <label>sl_si91x_socket.h</label>
+      </node>
+      <node id="985">
+        <label>methods/tp_method_controlpower.h</label>
+        <link refid="tp__method__controlpower_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="974">
+        <label>stddef.h</label>
+      </node>
+      <node id="979">
+        <label>env.h</label>
+      </node>
+      <node id="977">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="975">
+        <label>string.h</label>
+      </node>
+      <node id="990">
+        <label>methods/tp_method_ping.h</label>
+        <link refid="tp__method__ping_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="995">
+        <label>methods/tp_method_writetx.h</label>
+        <link refid="tp__method__writetx_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="994">
+        <label>methods/tp_method_writefpga.h</label>
+        <link refid="tp__method__writefpga_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="980">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="981" relation="include">
+        </childnode>
+        <childnode refid="973" relation="include">
+        </childnode>
+      </node>
+      <node id="988">
+        <label>methods/tp_method_delayms.h</label>
+        <link refid="tp__method__delayms_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="983">
+        <label>wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="984" relation="include">
+        </childnode>
+      </node>
+      <node id="986">
+        <label>methods.pb.h</label>
+      </node>
+      <node id="991">
+        <label>methods/tp_method_setloglevel.h</label>
+        <link refid="tp__method__setloglevel_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="989">
+        <label>methods/tp_method_delayns.h</label>
+        <link refid="tp__method__delayns_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="992">
+        <label>methods/tp_method_triggershot.h</label>
+        <link refid="tp__method__triggershot_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="970">
+        <label>firmware/user/tp/tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="983" relation="include">
+        </childnode>
+        <childnode refid="985" relation="include">
+        </childnode>
+        <childnode refid="987" relation="include">
+        </childnode>
+        <childnode refid="988" relation="include">
+        </childnode>
+        <childnode refid="989" relation="include">
+        </childnode>
+        <childnode refid="990" relation="include">
+        </childnode>
+        <childnode refid="991" relation="include">
+        </childnode>
+        <childnode refid="992" relation="include">
+        </childnode>
+        <childnode refid="993" relation="include">
+        </childnode>
+        <childnode refid="994" relation="include">
+        </childnode>
+        <childnode refid="995" relation="include">
+        </childnode>
+      </node>
+      <node id="987">
+        <label>methods/tp_method_controlspi.h</label>
+        <link refid="tp__method__controlspi_8h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="997">
+        <label>firmware/user/tp/tp.c</label>
+        <link refid="tp_8c"/>
+      </node>
+      <node id="998">
+        <label>firmware/user/tp/tp_methods.c</label>
+        <link refid="tp__methods_8c"/>
+      </node>
+      <node id="996">
+        <label>firmware/user/tp/tp_methods.h</label>
+        <link refid="tp__methods_8h"/>
+        <childnode refid="997" relation="include">
+        </childnode>
+        <childnode refid="998" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="tp__methods_8h_1aa41f0609b4f642da47f7ad40ae07f0d8" prot="public" static="no">
+        <name>TP_METHODS</name>
+        <initializer>X(controlpower) \
+    X(controlspi) \
+    X(delayms) \
+    X(delayns) \
+    X(ping) \
+    X(setloglevel) \
+    X(triggershot) \
+    X(writeafe) \
+    X(writefpga) \
+    X(writetx)</initializer>
+        <briefdescription>
+<para>All TinyProbe methods must be listed here. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp_methods.h" line="47" column="9" bodyfile="firmware/user/tp/tp_methods.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__methods_8h_1ab763b48bb0caae51d13d3a8b9d417311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tp_methods_handle</definition>
+        <argsstring>(wius_tcp_server_message_t *request, void(*sender)(const char *response, size_t response_len))</argsstring>
+        <name>tp_methods_handle</name>
+        <param>
+          <type><ref refid="wius__tcp_8h_1a781129114f766624cfe13d28bd7892cb" kindref="member">wius_tcp_server_message_t</ref> *</type>
+          <declname>request</declname>
+        </param>
+        <param>
+          <type>void(*)(const char *response, size_t response_len)</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+<para>Export all TinyProbe methods. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/tp_methods.h" line="63" column="1" bodyfile="firmware/user/tp/tp_methods.c" bodystart="44" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe methods header file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__tcp_8h" kindref="compound">wius_tcp.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__controlpower_8h" kindref="compound">methods/tp_method_controlpower.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__controlspi_8h" kindref="compound">methods/tp_method_controlspi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__delayms_8h" kindref="compound">methods/tp_method_delayms.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__delayns_8h" kindref="compound">methods/tp_method_delayns.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__ping_8h" kindref="compound">methods/tp_method_ping.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__setloglevel_8h" kindref="compound">methods/tp_method_setloglevel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__triggershot_8h" kindref="compound">methods/tp_method_triggershot.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__writeafe_8h" kindref="compound">methods/tp_method_writeafe.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__writefpga_8h" kindref="compound">methods/tp_method_writefpga.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__writetx_8h" kindref="compound">methods/tp_method_writetx.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="tp__methods_8h_1aa41f0609b4f642da47f7ad40ae07f0d8" refkind="member"><highlight class="preprocessor">#define<sp/>TP_METHODS<sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(controlpower)<sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(controlspi)<sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(delayms)<sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(delayns)<sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(ping)<sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(setloglevel)<sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(triggershot)<sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(writeafe)<sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(writefpga)<sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>X(writetx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tp__methods_8h_1ab763b48bb0caae51d13d3a8b9d417311" kindref="member">tp_methods_handle</ref>(<ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message_t</ref><sp/>*request,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*sender)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*response,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>response_len));</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/tp_methods.h"/>
+  </compounddef>
+</doxygen>

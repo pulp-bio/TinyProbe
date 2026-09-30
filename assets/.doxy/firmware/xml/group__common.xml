@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="group__common" kind="group">
+    <compoundname>common</compoundname>
+    <title>Common Module</title>
+    <innerfile refid="common_8c">common.c</innerfile>
+    <innerfile refid="common_8h">common.h</innerfile>
+    <innerfile refid="led_8c">led.c</innerfile>
+    <innerfile refid="led_8h">led.h</innerfile>
+    <innerfile refid="log_8c">log.c</innerfile>
+    <innerfile refid="log_8h">log.h</innerfile>
+    <innerfile refid="config_8h">config.h</innerfile>
+    <innerfile refid="user_8c">user.c</innerfile>
+    <innerfile refid="user_8h">user.h</innerfile>
+    <innergroup refid="group__config__common">Common firmware configurations</innergroup>
+    <briefdescription>
+<para>Shared utilities, HAL glue, and logging used across TinyProbe and WiUS. </para>    </briefdescription>
+    <detaileddescription>
+<para><heading level="1">Common Module</heading>
+</para><para>The common module provides shared glue that both <ref refid="group__tinyprobe" kindref="compound">TinyProbe</ref> and <ref refid="group__wius" kindref="compound">WiUS</ref> modules rely on. It contains lightweight utilities, logging, timing helpers, and macros that keep the platform code consistent across commands and transports.</para><para><heading level="2">Purpose</heading>
+</para><para><itemizedlist>
+<listitem><para>Provide common macros and helpers (see <ref refid="common_8h" kindref="compound">common.h</ref>)</para></listitem><listitem><para>Offer a lightweight logging facade for all modules (see <ref refid="log_8h" kindref="compound">log.h</ref>)</para></listitem><listitem><para>Centralize timing/delay helpers used by command handlers and drivers</para></listitem></itemizedlist>
+</para><para><heading level="2">Key Pieces</heading>
+</para><para><itemizedlist>
+<listitem><para>Logging: initialized via <computeroutput>log_init()</computeroutput> and consumed through <computeroutput>LOG_*</computeroutput> macros</para></listitem><listitem><para>Time helpers: <computeroutput>delay_ms</computeroutput>, <computeroutput>delay_ns</computeroutput>, and <computeroutput>TICKS_PER_SEC</computeroutput> definitions</para></listitem><listitem><para>Safety macros: <computeroutput>CHECK_STATUS</computeroutput>, <computeroutput>ASSERT</computeroutput>, and argument extraction helpers in commands</para></listitem></itemizedlist>
+</para><para><heading level="2">Interactions</heading>
+</para><para><itemizedlist>
+<listitem><para>Method handlers in <ref refid="group__tinyprobe__methods" kindref="compound">TinyProbe Methods</ref> use the logging and argument macros from this module.</para></listitem><listitem><para>WiUS transports depend on shared type and error definitions. </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

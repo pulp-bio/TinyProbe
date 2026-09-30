@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__method__writefpga_8c" kind="file" language="C++">
+    <compoundname>tp_method_writefpga.c</compoundname>
+    <includes refid="tp__method__writefpga_8h" local="yes">tp_method_writefpga.h</includes>
+    <includes refid="tp__fpga_8h" local="yes">tp_fpga.h</includes>
+    <incdepgraph>
+      <node id="804">
+        <label>stdbool.h</label>
+      </node>
+      <node id="809">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="810" relation="include">
+        </childnode>
+      </node>
+      <node id="812">
+        <label>stdarg.h</label>
+      </node>
+      <node id="807">
+        <label>sl_status.h</label>
+      </node>
+      <node id="813">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="809" relation="include">
+        </childnode>
+      </node>
+      <node id="803">
+        <label>stdint.h</label>
+      </node>
+      <node id="802">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="803" relation="include">
+        </childnode>
+        <childnode refid="804" relation="include">
+        </childnode>
+        <childnode refid="805" relation="include">
+        </childnode>
+        <childnode refid="806" relation="include">
+        </childnode>
+        <childnode refid="807" relation="include">
+        </childnode>
+        <childnode refid="808" relation="include">
+        </childnode>
+        <childnode refid="809" relation="include">
+        </childnode>
+        <childnode refid="811" relation="include">
+        </childnode>
+        <childnode refid="813" relation="include">
+        </childnode>
+      </node>
+      <node id="805">
+        <label>stddef.h</label>
+      </node>
+      <node id="810">
+        <label>env.h</label>
+      </node>
+      <node id="808">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="806">
+        <label>string.h</label>
+      </node>
+      <node id="800">
+        <label>firmware/user/tp/methods/tp_method_writefpga.c</label>
+        <link refid="tp__method__writefpga_8c"/>
+        <childnode refid="801" relation="include">
+        </childnode>
+        <childnode refid="815" relation="include">
+        </childnode>
+      </node>
+      <node id="801">
+        <label>tp_method_writefpga.h</label>
+        <link refid="tp__method__writefpga_8h"/>
+        <childnode refid="802" relation="include">
+        </childnode>
+        <childnode refid="814" relation="include">
+        </childnode>
+      </node>
+      <node id="811">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="812" relation="include">
+        </childnode>
+        <childnode refid="804" relation="include">
+        </childnode>
+      </node>
+      <node id="814">
+        <label>methods.pb.h</label>
+      </node>
+      <node id="815">
+        <label>tp_fpga.h</label>
+        <link refid="tp__fpga_8h"/>
+        <childnode refid="802" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__method__writefpga_8c_1af793ad1a1206cbe848c7440f639d7ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>methods_status</type>
+        <definition>methods_status tp_method_writefpga</definition>
+        <argsstring>(const methods_writefpga_args *args, void *userdata)</argsstring>
+        <name>tp_method_writefpga</name>
+        <param>
+          <type>const methods_writefpga_args *</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userdata</declname>
+        </param>
+        <briefdescription>
+<para>JSON-RPC method handler for the &quot;writefpga&quot; method. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command arguments struct </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>userdata</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data pointer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>OK if method executed successfully, otherwise an error code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/methods/tp_method_writefpga.c" line="34" column="1" bodyfile="firmware/user/tp/methods/tp_method_writefpga.c" bodystart="34" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe FPGA write method implementation file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__writefpga_8h" kindref="compound">tp_method_writefpga.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__fpga_8h" kindref="compound">tp_fpga.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">methods_status<sp/><ref refid="tp__method__writefpga_8c_1af793ad1a1206cbe848c7440f639d7ac7" kindref="member">tp_method_writefpga</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>methods_writefpga_args<sp/>*args,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*userdata)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" kindref="member">UNUSED</ref>(userdata);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log_debug(&quot;Writing<sp/>%lu<sp/>to<sp/>%u&quot;,<sp/>args-&gt;value,<sp/>args-&gt;address);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="tp__fpga_8c_1af5815ceb27f9df140f5fbb131cddb6e3" kindref="member">tp_fpga_write_reg</ref>(args-&gt;value,<sp/>args-&gt;address);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SL_STATUS_OK<sp/>!=<sp/>status)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a15b48961e1154f835693058463daffc5" kindref="member">LOG_STATUS</ref>(status);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>methods_status_UNKNOWN_ERROR;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>methods_status_OK;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/methods/tp_method_writefpga.c"/>
+  </compounddef>
+</doxygen>

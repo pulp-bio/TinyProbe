@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tp__method__ping_8c" kind="file" language="C++">
+    <compoundname>tp_method_ping.c</compoundname>
+    <includes refid="tp__method__ping_8h" local="yes">tp_method_ping.h</includes>
+    <includes refid="wius__tcp_8h" local="yes">wius_tcp.h</includes>
+    <incdepgraph>
+      <node id="649">
+        <label>stdbool.h</label>
+      </node>
+      <node id="654">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="655" relation="include">
+        </childnode>
+      </node>
+      <node id="657">
+        <label>stdarg.h</label>
+      </node>
+      <node id="652">
+        <label>sl_status.h</label>
+      </node>
+      <node id="658">
+        <label>led.h</label>
+        <link refid="led_8h"/>
+        <childnode refid="654" relation="include">
+        </childnode>
+      </node>
+      <node id="648">
+        <label>stdint.h</label>
+      </node>
+      <node id="647">
+        <label>common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="648" relation="include">
+        </childnode>
+        <childnode refid="649" relation="include">
+        </childnode>
+        <childnode refid="650" relation="include">
+        </childnode>
+        <childnode refid="651" relation="include">
+        </childnode>
+        <childnode refid="652" relation="include">
+        </childnode>
+        <childnode refid="653" relation="include">
+        </childnode>
+        <childnode refid="654" relation="include">
+        </childnode>
+        <childnode refid="656" relation="include">
+        </childnode>
+        <childnode refid="658" relation="include">
+        </childnode>
+      </node>
+      <node id="661">
+        <label>sl_si91x_socket.h</label>
+      </node>
+      <node id="650">
+        <label>stddef.h</label>
+      </node>
+      <node id="655">
+        <label>env.h</label>
+      </node>
+      <node id="653">
+        <label>cmsis_os2.h</label>
+      </node>
+      <node id="651">
+        <label>string.h</label>
+      </node>
+      <node id="645">
+        <label>firmware/user/tp/methods/tp_method_ping.c</label>
+        <link refid="tp__method__ping_8c"/>
+        <childnode refid="646" relation="include">
+        </childnode>
+        <childnode refid="660" relation="include">
+        </childnode>
+      </node>
+      <node id="646">
+        <label>tp_method_ping.h</label>
+        <link refid="tp__method__ping_8h"/>
+        <childnode refid="647" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+      </node>
+      <node id="656">
+        <label>log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="657" relation="include">
+        </childnode>
+        <childnode refid="649" relation="include">
+        </childnode>
+      </node>
+      <node id="660">
+        <label>wius_tcp.h</label>
+        <link refid="wius__tcp_8h"/>
+        <childnode refid="647" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+      </node>
+      <node id="659">
+        <label>methods.pb.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tp__method__ping_8c_1ac2e24851e0e52a811dfb479b783525de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>methods_status</type>
+        <definition>methods_status tp_method_ping</definition>
+        <argsstring>(const methods_ping_args *args, void *userdata)</argsstring>
+        <name>tp_method_ping</name>
+        <param>
+          <type>const methods_ping_args *</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>userdata</declname>
+        </param>
+        <briefdescription>
+<para>JSON-RPC method handler for the &quot;ping&quot; method. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command arguments struct </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>userdata</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data pointer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>OK if method executed successfully, otherwise an error code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="firmware/user/tp/methods/tp_method_ping.c" line="34" column="1" bodyfile="firmware/user/tp/methods/tp_method_ping.c" bodystart="34" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TinyProbe ping method implementation file. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>03.09.2026 </para></simplesect>
+<simplesect kind="copyright"><para>Copyright (C) 2026 ETH Zurich. All rights reserved.</para></simplesect>
+<simplesect kind="author"><para>Cédric Hirschi, ETH Zürich </para></simplesect>
+<simplesect kind="author"><para>Sergei Vostrikov, ETH Zürich</para></simplesect>
+<parblock><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim></para><para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </para></parblock></para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tp__method__ping_8h" kindref="compound">tp_method_ping.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wius__tcp_8h" kindref="compound">wius_tcp.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">methods_status<sp/><ref refid="tp__method__ping_8c_1ac2e24851e0e52a811dfb479b783525de" kindref="member">tp_method_ping</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>methods_ping_args<sp/>*args,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*userdata)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8h_1a86d500a34c624c2cae56bc25a31b12f3" kindref="member">UNUSED</ref>(userdata);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>sl_status_t<sp/>status<sp/>=<sp/>SL_STATUS_OK;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwius__tcp__server__message" kindref="compound">wius_tcp_server_message_t</ref><sp/>*msg<sp/>=<sp/>userdata;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(args-&gt;probe_id<sp/>!=<sp/><ref refid="group__config__tinyprobe_1gabfe4c2202e961a2f200075735b7525d5" kindref="member">TP_PROBE_ID</ref>)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_warn(</highlight><highlight class="stringliteral">&quot;Invalid<sp/>probe<sp/>ID:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>args-&gt;probe_id);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>methods_status_INVALID_STATE;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>reply[32]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(reply,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(reply),<sp/></highlight><highlight class="stringliteral">&quot;TinyProbe<sp/>%lu&quot;</highlight><highlight class="normal">,<sp/>args-&gt;probe_id);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="wius__tcp_8c_1a5f2eca72de35712f6d97ea2a572ad755" kindref="member">wius_tcp_server_respond_udp</ref>(msg,<sp/><ref refid="group__config__tinyprobe_1gac6d27f073879a9bdc4cfd92e7c496a0a" kindref="member">TP_UDP_PORT</ref>,<sp/>(uint8_t<sp/>*)reply,<sp/>strlen(reply));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SL_STATUS_OK<sp/>!=<sp/>status)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8h_1a15b48961e1154f835693058463daffc5" kindref="member">LOG_STATUS</ref>(status);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>methods_status_UNKNOWN_ERROR;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>methods_status_OK;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="firmware/user/tp/methods/tp_method_ping.c"/>
+  </compounddef>
+</doxygen>
