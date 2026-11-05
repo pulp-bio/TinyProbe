@@ -50,7 +50,7 @@ Due to a minor mistake in the power architecture of the original acquisition boa
 
 ### Acquisition Board AFE Input Resistors (R1–R32)
 
-The acquisition board BOM (`tp_acquisition_board_v1.zip`, `fabrication_files/BOM/`) lists `ERJ-1GNF2000C` for R1–R32, which is a 200 Ω part. The schematic and the BOM description specify 50 Ω. Use a 49.9 Ω 0201 1 % resistor instead (e.g. `ERJ-1GNF49R9C`).
+The acquisition board BOM (`tp_acquisition_board_v1.zip`, `fabrication_files/BOM/`) lists `ERJ-1GNF2000C` (200 Ω) for R1–R32, while the schematic symbol and the BOM description say 50 Ω. The MPN is the correct one: the boards were built and characterised with 200 Ω, the 50 Ω text is a leftover in the schematic library. Use `ERJ-1GNF2000C` or any 200 Ω 0201 1 % resistor.
 
 ## Sources
 
