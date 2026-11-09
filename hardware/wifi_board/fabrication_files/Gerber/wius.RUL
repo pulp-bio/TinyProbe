@@ -1,0 +1,22 @@
+DRC Rules Export File for PCB: H:\PCB-Reviews\2024\Cedric Hirschi\wius_hardware\wius.PcbDoc
+RuleKind=Clearance|RuleName=Clearance_RF|Scope=Board|Minimum=3.94
+RuleKind=Width|RuleName=Schematic Width Constraint_2|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_1|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_21|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_20|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_18|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_17|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_16|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_15|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_14|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_13|Scope=Board|Minimum=4.59
+RuleKind=Width|RuleName=Schematic Width Constraint_11|Scope=Board|Minimum=4.59
+RuleKind=MinimumAnnularRing|RuleName=MinimumAnnularRing_hole|Scope=Board|Minimum=5.91
+RuleKind=MinimumAnnularRing|RuleName=MinimumAnnularRing_via|Scope=Board|Minimum=1.96
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=1.50
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion_1|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=3.54
+RuleKind=Width|RuleName=Width_power_lines|Scope=Board|Minimum=2.00
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=3.94
