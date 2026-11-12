@@ -48,6 +48,10 @@ flowchart TB
 
 Due to a minor mistake in the power architecture of the original acquisition board, a separate power fix board (`acquisition_board/power_fix_board`) was designed to correct the issue. This board needs to be soldered onto the main acquisition board to ensure proper power distribution.
 
+### Acquisition Board AFE Input Resistors (R1–R32)
+
+The acquisition board BOM (`tp_acquisition_board_v1.zip`, `fabrication_files/BOM/`) lists `ERJ-1GNF2000C` (200 Ω) for R1–R32, while the schematic symbol and the BOM description say 50 Ω. The MPN is the correct one: the boards were built and characterised with 200 Ω, the 50 Ω text is a leftover in the schematic library. Use `ERJ-1GNF2000C` or any 200 Ω 0201 1 % resistor.
+
 ## Sources
 
 Sources referenced can be found in the [sources.md](sources.md) file.
