@@ -1,3 +1,21 @@
+// Copyright 2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Check signed sample accumulation and averaging through the pipeline.
+// -----------------------------------------------------------------------------
+
 `timescale 1ns/1ps
 // Uses the FIFO model in accumulation_pipeline_tb.sv and production arithmetic.
 module signed_average_tb;
@@ -11,12 +29,12 @@ wire [27:0] sum;
 wire [19:0] average;
 integer sums_a[0:3],sums_b[0:3];
 integer received=0,tests=0;
-accumulation #(.N_FIFOS(1),.WRITE_CNT_WIDTH(8)) acc(
+accumulation #(.N_FIFOS(1),.SUM_WIDTH(14),.WRITE_CNT_WIDTH(8)) acc(
  .rst_state_ni(rst),.rst_fifos_i(reset_fifo),.write_cnt_i(8'd4),
  .wr_fifo_done_o(done),.wr_accept_o(accept),.data_i(raw),.first_shot_i(first),
  .start_capture_i(start),.wr_clk_i(clk),.wr_en_i(wr),.rd_clk_i(clk),
  .rd_en_i(read_sum),.data_o(sum),.data_valid_o(dv),.empty_o(empty));
-result_average_engine #(.N_LANES(1),.FRAME_COUNT_WIDTH(8)) avg(
+result_average_engine #(.N_LANES(1),.SUM_WIDTH(14),.FRAME_COUNT_WIDTH(8)) avg(
  .clk_i(clk),.rst_ni(rst),.enable_i(enable),.accumulation_count_i(count),
  .samples_per_lane_i(8'd4),.lanes_enable_i(1'b1),.frame_done_o(finished),
  .sum_empty_i(empty),.sum_data_valid_i(dv),.sum_data_i(sum),.sum_read_o(read_sum),

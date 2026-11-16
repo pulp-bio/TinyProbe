@@ -1,4 +1,67 @@
-// Author: Soumyo Bhattacharjee
+// Copyright 2021-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Soumyo Bhattacharjee
+//   Sergei Vostrikov
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Connect board clocks, AFE capture, waveform control, accumulation,
+//   averaging and dual-SPI readout.
+//
+// Parameters:
+//   N_LVDS_LANES - Number of AFE LVDS data lanes.
+//   N_BITS_PER_FRAME - Bits per AFE lane frame.
+//   CFG_REG_MEM_ADDR_SIZE - Configuration-register address width.
+//   CFG_REG_WIDTH - Configuration-register data width.
+//   READ_CNT_WIDTH - FIFO read-count width.
+//
+// Ports:
+//   rst_ni - Active-low reset.
+//   crystal_clk_i - External 16 MHz oscillator input.
+//   spi_io0_io - Bidirectional MCU SPI data pad.
+//   spi_io1_io - Bidirectional MCU SPI data pad.
+//   spi_clk_i - SPI serial clock.
+//   spi_ss_ni - Active-low SPI chip select.
+//   mcu_int_o - Acquisition interrupt to the MCU.
+//   trigger_o - Acquisition trigger output.
+//   ext_trigger_i - External acquisition trigger input.
+//   spi_ext_int_sel_i - Select internal FPGA or external peripheral SPI
+//     routing.
+//   spi_ext_cs_sel_i - Select the external AFE or transmitter chip select.
+//   spi_clk_ext_o - Clock to the external configuration interfaces.
+//   spi_mosi_ext_o - Serial configuration data to external peripherals.
+//   spi_miso_ext_i - Serial response from external peripherals.
+//   spi_cs_tx_no - Active-low transmitter configuration chip select.
+//   spi_cs_afe_no - Active-low AFE configuration chip select.
+//   afe_clk_o - AFE conversion clock.
+//   afe_tx_trig_o - AFE transmit-trigger output.
+//   afe_rst_o - AFE reset output.
+//   afe_data_i - Positive AFE differential data inputs.
+//   afe_data_ni - Negative AFE differential data inputs.
+//   afe_frame_clk_i - Positive AFE frame-clock input.
+//   afe_frame_clk_ni - Negative AFE frame-clock input.
+//   afe_bit_clk_i - Positive AFE DDR bit-clock input.
+//   afe_bit_clk_ni - Negative AFE DDR bit-clock input.
+//   tgc_slope_o - AFE time-gain compensation step signal.
+//   tgc_up_dn_o - AFE time-gain compensation direction.
+//   afe_fast_pdn_o - AFE fast power-down control.
+//   afe_glb_pdn_o - AFE global power-down control.
+//   tx_bf_clk_o - Transmitter beamforming clock.
+//   tx_bf_sync_o - Transmitter synchronization output.
+//   tx_tr_en_o - Transmitter enable output.
+//   tx_rst_o - Transmitter reset output.
+// -----------------------------------------------------------------------------
+
   // Top module of Tinyprobe compact design
 
 module tiny_probe_top#(
@@ -6,7 +69,6 @@ module tiny_probe_top#(
     parameter N_BITS_PER_FRAME      = 20,
     parameter CFG_REG_MEM_ADDR_SIZE = 4,
     parameter CFG_REG_WIDTH         = 32,
-    parameter SPI_WORD_WIDTH        = 8,
     parameter READ_CNT_WIDTH        = 12
 )(
 
@@ -84,14 +146,8 @@ module tiny_probe_top#(
     ///////////////////////////////// Buffers instantiation /////////////////////////////////
     // Reset
     logic rst_n;
-    logic rst;
-    // INBUF rst_ibuf (
-    //     .PAD   (rst_ni),
-    //     .Y   (rst_n)
-    // );
 
     assign rst_n = rst_ni;
-    assign rst = ~rst_n;
 
     ///////////////////////////////// LVDS buffers /////////////////////////////////
     logic [N_LVDS_LANES - 1:0]  afe_bit_input;
@@ -197,7 +253,7 @@ module tiny_probe_top#(
 
 
     ///////////////////////////////// PLL clock generator /////////////////////////////////
-
+    
     // Oscillator signal
     logic osc_xtal;
     // HOLD_N signal for NGMUXes
@@ -285,9 +341,9 @@ module tiny_probe_top#(
     ///////////////////////////////// Waveform Generator for TX chip and AFE /////////////////////////////////
     logic fifo_start_capt_wave_gen;
     logic wave_gen_start_capt;
-    logic fifo_rst_wave_gen, fifo_wr_en_wave_gen;
+    logic fifo_wr_en_wave_gen;
     logic tx_clk_buf_en_wave_gen, afe_clk_buf_en_wave_gen;
-    logic afe_fast_pdn_wave_gen, afe_glb_pdn_wave_gen;
+    logic afe_fast_pdn_wave_gen;
     logic tx_tr_en_wave_gen;
 
     logic afe_tx_trig;
@@ -298,7 +354,6 @@ module tiny_probe_top#(
     logic [15:0] capture_delay;
     logic [7:0] n_shots;
     logic fifo_reader_busy;
-    logic waveform_period_done;
     logic accumulation_sequence_start;
     logic accumulation_active;
     logic accumulation_first_shot;
@@ -327,7 +382,6 @@ module tiny_probe_top#(
     logic [31:0] external_input_debug;
     waveform_generator_fsm waveform_gen (
         .clk_i                (core_clk),
-
         .rst_ni               (rst_n),
 
         // General signals
@@ -347,11 +401,11 @@ module tiny_probe_top#(
         .core_clk_fast_i      (config_regs[1][2]),
         .n_shots_i            (n_shots),
         .fifo_rd_busy_i       (fifo_reader_busy),
-        .period_done_o        (waveform_period_done),
+        .period_done_o        (),
 
         // RX FIFO control signals
         .fifo_start_capture_o (fifo_start_capt_wave_gen),
-        .fifo_rst_o           (fifo_rst_wave_gen),
+        .fifo_rst_o           (),
         .fifo_wr_en_o         (fifo_wr_en_wave_gen),
         .accumulation_sequence_start_o (accumulation_sequence_start),
         .accumulation_active_o         (accumulation_active),
@@ -407,7 +461,7 @@ module tiny_probe_top#(
     logic [31:0] tgc_capture_time;
     logic [31:0] tgc_delay_finish;
     logic [31:0] tgc_delay_start;
-
+    
     ti_afe_tgc #(
         .CNT_WIDTH            (32)
     ) ti_afe_tgc (
@@ -483,7 +537,6 @@ module tiny_probe_top#(
         fifo_start_afe && !fifo_start_afe_q;
 
     logic [N_LVDS_LANES-1:0] deep_fifo_empty;
-    logic [N_LVDS_LANES-1:0] deep_fifo_full;
     logic [N_LVDS_LANES-1:0] deep_fifo_rd_en;
     logic [N_LVDS_LANES-1:0] deep_fifo_data_valid;
     logic [N_LVDS_LANES*ACCUM_FRAME_WIDTH-1:0] deep_fifo_rd_data;
@@ -616,7 +669,7 @@ module tiny_probe_top#(
         .start_capture_i  (accumulation_start_capture_mux),
         .wr_clk_i         (afe_frame_clock),
         .wr_en_i          (accumulation_wr_en),
-        .full_o           (deep_fifo_full),
+        .full_o           (),
         .rd_clk_i         (afe_frame_clock),
         .rd_en_i          (deep_fifo_rd_en),
         .data_o           (deep_fifo_rd_data),
@@ -981,7 +1034,7 @@ module tiny_probe_top#(
     localparam WAVEFORM_GEN_REG_4 = 11;
     localparam WAVEFORM_GEN_REG_5 = 12;
     localparam EXT_INT_TRIG_REG   = 13;
-
+    
     // The signals enabling the LVDS receivers are declared with the
     // accumulation datapath above because they also gate accumulator lanes.
     // Priority signal to enable clock for TX and AFE (required for initialization)
@@ -1065,7 +1118,6 @@ module tiny_probe_top#(
     assign start_cap_time    = config_regs[WAVEFORM_GEN_REG_4][31:16];
     // Old-MCU compatibility mode: register 11 remains accessible, but its
     // low byte cannot change acquisition behavior in this bitstream.
-    // assign n_shots = 8'd1;
     // to get the new number of accumulations from the user
     // if zero no division by zero is allowed, so we will use 1 instead
     // US and OA use the same accumulation count; pulse mode changes width only.
@@ -1147,12 +1199,12 @@ module tiny_probe_top#(
     // if corresponding register signals are not asserted. Otherwise they are always on.
     assign afe_clk_buf_en = afe_clk_buf_en_mux_ctrl ? 1'b1 : afe_clk_buf_en_wave_gen;
     assign tx_clk_buf_en  = tx_clk_buf_en_mux_ctrl ? 1'b1 : tx_clk_buf_en_wave_gen;
-
+    
     // Afe frame and bit clock buffers are directly controlled by waveform generator
     // if register signal above is not asserted. Otherwise it is always on.
     assign frame_clk_buf_en = afe_clk_buf_en;
     assign bit_clk_buf_en   = afe_clk_buf_en;
-
+    
     genvar l;
     // Generate for loop for connecting the control signals 
     for (l = 0; l < N_LVDS_LANES; l = l + 1) begin
@@ -1167,7 +1219,7 @@ module tiny_probe_top#(
 
 
     // Main Demultiplexer (spi_demux) uses only 3 states with 2 control signals (spi_ext_int_sel_i, spi_ext_cs_sel_i)
-
+    
     // The block below dynamically connects the spi_ss_n either to the
     // spi_demux or to PLL control input signal.
     logic spi_ss_demux_n;

@@ -1,6 +1,24 @@
+# Copyright 2026 ETH Zurich
+# Copyright and related rights are licensed under the Solderpad Hardware
+# License, Version 0.51 (the "License"); you may not use this file except in
+# compliance with the License. You may obtain a copy of the License at
+# http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+# or agreed to in writing, software, hardware and materials distributed under
+# this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+# CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations under the License.
+#
+# Authors:
+#   LisaMaria Odermatt
+#   Federico Villani
+# -----------------------------------------------------------------------------
+# Description:
+#   Check first-shot storage, subsequent-shot accumulation and FIFO results.
+# -----------------------------------------------------------------------------
+
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles, FallingEdge, ReadOnly, RisingEdge
+from cocotb.triggers import ClockCycles, FallingEdge, ReadOnly, RisingEdge, Timer
 
 
 def pack(a, b):
@@ -8,7 +26,7 @@ def pack(a, b):
 
 
 def unpack_sum(word):
-    return word & 0x3FFF, (word >> 14) & 0x3FFF
+    return word & 0x1FFF, (word >> 13) & 0x1FFF
 
 
 async def start_shot(dut, first):
@@ -67,12 +85,21 @@ async def first_shot_writes_and_second_shot_accumulates(dut):
 
     observed = []
     for _ in range(3):
+        for _ in range(50):
+            await RisingEdge(dut.clk)
+            await ReadOnly()
+            if not int(dut.empty.value):
+                break
+        else:
+            raise AssertionError("FIFO did not become nonempty")
         await FallingEdge(dut.clk)
         dut.rd_en.value = 1
+        await Timer(1, unit="ns")
+        await ReadOnly()
+        got_word = int(dut.data_out.value) if int(dut.dvld.value) else None
         await RisingEdge(dut.clk)
         await ReadOnly()
-        got_word = None
-        if int(dut.dvld.value):
+        if got_word is None and int(dut.dvld.value):
             got_word = int(dut.data_out.value)
 
         await FallingEdge(dut.clk)
@@ -90,5 +117,7 @@ async def first_shot_writes_and_second_shot_accumulates(dut):
             raise AssertionError("FIFO read did not produce DVLD")
         observed.append(unpack_sum(got_word))
 
-    expected = [(a+c, b+d) for (a, b), (c, d) in zip(shot1, shot2)]
+    # Each signed 10-bit sample is biased by 512 before accumulation.
+    expected = [((a ^ 0x200) + (c ^ 0x200), (b ^ 0x200) + (d ^ 0x200))
+                for (a, b), (c, d) in zip(shot1, shot2)]
     assert observed == expected, f"observed={observed}, expected={expected}"

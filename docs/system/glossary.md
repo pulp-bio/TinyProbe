@@ -4,7 +4,7 @@
 
 | Term | Meaning |
 | --- | --- |
-| AFE | Analog front end. In TinyProbe this is the AFE5832LP receive chip. |
+| AFE | Analog front end. In TinyProbe this is the Analog Frontend receive chip. |
 | Acquisition | One configured run that may contain one or more ultrasound shots and RF data transfers. |
 | Capture delay | Delay from the FPGA trigger point to the start of FIFO capture. |
 | FIFO | First-in, first-out buffer in the FPGA used to hold captured RF samples until MCU readout. |
@@ -17,4 +17,4 @@
 | Shot | One transmit/receive event inside an acquisition. |
 | Sync period | FPGA waveform-generator period between trigger opportunities. |
 | TGC | Time gain compensation. A gain ramp applied during receive to compensate depth-dependent attenuation. |
-| TX BF | Transmit beamformer. In TinyProbe this refers to TX7332 timing and pulse control. |
+| TX BF | Transmit beamformer. In TinyProbe this refers to the T/R IC timing and pulse control. |

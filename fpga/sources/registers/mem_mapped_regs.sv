@@ -1,3 +1,35 @@
+// Copyright 2021-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Decode configuration-register reads and writes and expose the complete
+//   register bank.
+//
+// Parameters:
+//   ADDR_SIZE - Register address width.
+//   REG_WIDTH - Configuration-register data width.
+//
+// Ports:
+//   clk_i - Module clock.
+//   rst_ni - Active-low reset.
+//   addr_i - Configuration-register address.
+//   data_o - Output data word.
+//   data_i - Input data word.
+//   wr_en_i - Write enable.
+//   raw_regs_o - All configuration-register values.
+// -----------------------------------------------------------------------------
+
 module mem_mapped_regs # (
     parameter integer ADDR_SIZE      = 4,
     parameter integer REG_WIDTH      = 32
@@ -30,7 +62,7 @@ module mem_mapped_regs # (
     end
 
     ///////////////////////////////// Config registers default values /////////////////////////////////
-    `include "reg_default_values.svh"
+    `include "reg_default_values.sv"
     parameter [REG_WIDTH - 1:0] PARAM_ARRAY [NUM_OF_REGS - 1:0] = `DEFAULT_VALS;
 
     ///////////////////////////////// Config registers /////////////////////////////////
@@ -70,33 +102,3 @@ module mem_mapped_regs # (
     assign data_o = data_out[addr_i];
 
 endmodule
-
-
-
-// module config_regs # (
-//     parameter integer RAM_ADDR_SIZE   = 4,
-//     parameter integer RAM_WORD_WIDTH  = 32
-// )(
-//     input  logic                           clk_i,
-//     input  logic                           rst_ni,
-
-//     output logic  [RAM_WORD_WIDTH - 1:0]   data_o,
-//     input  logic  [RAM_ADDR_SIZE - 1:0]    addr_i,
-//     input  logic  [RAM_WORD_WIDTH - 1:0]   data_i, 
-//     input  logic                           wr_en_i
-// );
-//     localparam NUM_OF_REGS = 2**RAM_ADDR_SIZE;
-
-//     logic [NUM_OF_REGS - 1:0] [RAM_WORD_WIDTH - 1:0] memory;
-
-//     always @(posedge clk_i, negedge rst_ni) begin
-
-//         if (!rst_ni) begin
-//             for (int i=0; i < NUM_OF_REGS; i++) memory[i] <= '0;
-//         end else if (wr_en_i) begin
-//             memory[addr_i] <= data_i;
-//         end
-//         data_o <= memory[addr_i];
-//     end
-
-// endmodule

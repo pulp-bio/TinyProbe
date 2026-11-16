@@ -1,4 +1,64 @@
-// Author: Soumyo Bhattacharjee
+// Copyright 2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Soumyo Bhattacharjee
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Bridge SPI register transactions and acquisition streams across clock
+//   domains and expose acquisition diagnostics.
+//
+// Parameters:
+//   N_FIFOS - Number of lane FIFOs.
+//   IN_DATA_WIDTH - Input word width per FIFO.
+//   READ_CNT_WIDTH - FIFO read-count width.
+//   REG_ADDR_W - Configuration-register address width.
+//
+// Ports:
+//   spi_sclk_i - SPI serial clock.
+//   spi_cs_ni - Active-low SPI chip select.
+//   spi_io0_i - SPI pad input.
+//   spi_io1_i - SPI pad input.
+//   spi_io0_o - SPI pad output data.
+//   spi_io1_o - SPI pad output data.
+//   spi_pad_oe_o - SPI pad output enables.
+//   core_clk_i - Acquisition transport clock.
+//   rst_ni - Active-low reset.
+//   fifos_empty_i - Per-lane FIFO empty flags.
+//   fifos_data_i - Packed data from the lane FIFOs.
+//   fifos_en_i - Enabled lane mask.
+//   read_cnt_i - FIFO words to read per enabled lane.
+//   stage3_frame_gray_i - Gray-coded frame counter diagnostic.
+//   stage3_enable_meta_i - Capture-test enable synchronizer observations.
+//   stage3_enable_sync_i - Capture-test enable synchronizer observations.
+//   stage3_wr_count_gray_i - Gray-coded capture write counter diagnostic.
+//   stage3_req_seen_i - Capture-test request observed.
+//   stage3_start_asserted_i - Capture-test start observed.
+//   stage3_wr_done_i - Capture-test FIFO write complete.
+//   stage3_lane0_nonempty_i - Capture-test lane-zero FIFO contains data.
+//   stage3_state_i - Capture-test controller state.
+//   normal_debug_i - Normal-acquisition checkpoint diagnostics.
+//   average_engine_debug_i - Averaging pipeline diagnostics.
+//   average_fifo_debug_i - Averaging pipeline diagnostics.
+//   average_event_debug_i - Averaging pipeline diagnostics.
+//   pipeline_trace_data_i - Captured pipeline trace word.
+//   fifos_read_req_o - Per-lane FIFO read requests.
+//   capture_start_o - Acquisition-start command.
+//   fifo_reader_busy_o - Acquisition reader busy indication.
+//   stage3_enable_o - Enable deterministic capture-path testing.
+//   accumulation_test_enable_o - Enable accumulation testing.
+//   config_regs_o - Complete configuration-register bank.
+// -----------------------------------------------------------------------------
+
 module tinyprobe_qspi_transport #(
     parameter int N_FIFOS = 16,
     parameter int IN_DATA_WIDTH = 20,
@@ -97,7 +157,7 @@ module tinyprobe_qspi_transport #(
     // final payload falling edge.  This bypasses both mailboxes and the
     // register bank, isolating SPI receive assembly alone.
     localparam bit DIAG_RETURN_SPI_WRITE_FULL = 1'b0;
-    logic [31:0] core_wr_data, core_rd_data, reg_data_o;
+    logic [31:0] core_wr_data, core_rd_data;
     logic [3:0] core_pad_oe;
     logic [23:0] core_wr_addr;
     logic [7:0] latched_cmd;
@@ -120,14 +180,14 @@ module tinyprobe_qspi_transport #(
     logic reader_debug_word_load;
     logic [IN_DATA_WIDTH-1:0] reader_debug_word_data;
     logic [1:0] pack_count_q;
-    logic [31:0] pack_word_q;
+    logic [23:0] pack_word_q;
     logic stream_full, stream_empty, stream_rd_valid, stream_rd_en;
     logic [31:0] stream_rd_data, stream_hold_q;
     logic stream_word_complete_toggle, stream_complete_seen_q;
     logic [31:0] stream_replay_q;
     logic stream_replay_valid_q, stream_transaction_loaded_q;
     logic stream_use_replay;
-    logic stream_hold_valid_q, stream_fetch_pending_q, stream_ready_q, stream_started_q, stream_overflow_q, stream_underflow_q;
+    logic stream_hold_valid_q, stream_fetch_pending_q, stream_ready_q, stream_overflow_q, stream_underflow_q;
     logic stream_rst_ni;
     logic stream_seed_enable;
     logic stream_reader_test_enable;
@@ -308,7 +368,7 @@ module tinyprobe_qspi_transport #(
         .ADDR_SIZE(REG_ADDR_W),
         .REG_WIDTH(32)
     ) i_mem_mapped_regs (
-        .clk_i(core_clk_i), .rst_ni(rst_ni), .addr_i(reg_addr_i), .data_o(reg_data_o),
+        .clk_i(core_clk_i), .rst_ni(rst_ni), .addr_i(reg_addr_i), .data_o(),
         .data_i(wr_mb_data[31:0]), .wr_en_i(reg_write_valid), .raw_regs_o(config_regs_o)
     );
 
@@ -400,7 +460,7 @@ module tinyprobe_qspi_transport #(
     ) i_multi_fifo_reader (
         .clk_i(core_clk_i), .rst_ni(sw_rst_no), .start_i(cmd_stream_start_q && !stream_seed_enable), .read_cnt_i(read_cnt_i),
         .busy_o(reader_busy), .fifos_en_i(reader_fifos_en_i), .fifos_empty_i(reader_fifos_empty_i),
-        .fifos_data_i(reader_fifos_data_i), .fifos_read_req_o(reader_fifos_read_req), .fifos_rst_o(),
+        .fifos_data_i(reader_fifos_data_i), .fifos_read_req_o(reader_fifos_read_req),
         .data_o(reader_data), .valid_o(reader_valid), .ready_i(reader_ready),
         .debug_word_load_o(reader_debug_word_load),
         .debug_word_data_o(reader_debug_word_data)
@@ -476,7 +536,7 @@ module tinyprobe_qspi_transport #(
     always_ff @(posedge core_clk_i or negedge rst_ni) begin
         if (!rst_ni) begin
             cmd_start_q <= 1'b0; cmd_reset_q <= 1'b0; cmd_stream_start_q <= 1'b0;
-            pack_count_q <= '0; pack_word_q <= '0; stream_ready_q <= 1'b0; stream_started_q <= 1'b0; stream_overflow_q <= 1'b0;
+            pack_count_q <= '0; pack_word_q <= '0; stream_ready_q <= 1'b0; stream_overflow_q <= 1'b0;
             stream_seed_settle_q <= '0;
             stream_seed_bytes_remaining_q <= '0;
             stream_seed_byte_index_q <= '0;
@@ -494,7 +554,7 @@ module tinyprobe_qspi_transport #(
             cmd_reset_q <= reg_write_valid && (wr_mb_data[35:32] == 4'd0) && (wr_mb_data[7:0] == 8'h02);
             cmd_stream_start_q <= reg_write_valid && (wr_mb_data[35:32] == 4'd0) && (wr_mb_data[7:0] == 8'h03);
             if (cmd_stream_start_q) begin
-                pack_count_q <= '0; pack_word_q <= '0; stream_ready_q <= 1'b0; stream_started_q <= 1'b0; stream_overflow_q <= 1'b0;
+                pack_count_q <= '0; pack_word_q <= '0; stream_ready_q <= 1'b0; stream_overflow_q <= 1'b0;
                 stream_seed_settle_q <= stream_seed_enable ? 4'd10 : '0;
                 stream_seed_bytes_remaining_q <= stream_seed_enable ? 9'd256 : '0;
                 stream_seed_byte_index_q <= '0;
@@ -541,7 +601,6 @@ module tinyprobe_qspi_transport #(
                     if (stream_full)
                         stream_ready_q <= 1'b1;
                 end else begin
-                    if (reader_busy) stream_started_q <= 1'b1;
                     // Start MCU consumption when the stream FIFO reaches its
                     // initial buffering threshold. Waiting for reader_busy to
                     // deassert deadlocks whenever the complete acquisition is
@@ -555,7 +614,7 @@ module tinyprobe_qspi_transport #(
                         stream_overflow_q <= 1'b1;
                 end
                 if (pack_input_valid && reader_ready) begin
-                    pack_word_q <= {pack_word_q[23:0], pack_input_data};
+                    pack_word_q <= {pack_word_q[15:0], pack_input_data};
                     pack_count_q <= pack_count_q + 1'b1;
                 end
             end

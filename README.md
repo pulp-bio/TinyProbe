@@ -4,10 +4,32 @@
 
 A Wearable 32-Channel Multi-Modal Wireless Ultrasound Probe
 
+> **Work in progress.** This branch is work in progress to update tinyprobe bandwidth.
+
+> **Implemented.** Single spi (from hte original paper) is replaced by dual spi. **Warning:** Using the dual SPI implementation with the SiW917 has a limited bandwidth due to SiWG917’s dual-SPI 10MHz limit.
+> **Work in progress.** We are upgrading the PCBs and system controller to overcome this dual-SPI limitation. 
+> **Work in progress: `feature/dual-spi`.** This branch includes FPGA gateware, but the included SiWG917 MCU firmware is currently incompatible with its dual-SPI protocol. Assembling the hardware and programming this branch as-is will **not produce a working acquisition system**. The updated SSI-based dual SPI interface will fix this incompatibility.
 
 ## Introduction
 
 This repository contains ongoing work on **TinyProbe**, an advanced wearable ultrasound platform developed at the [Integrated Systems Laboratory (IIS)](https://iis.ee.ethz.ch/) of ETH Zurich.
+
+## FPGA release status (work in progress)
+
+This branch publishes FPGA RTL, pin and timing constraints, simulation tests, and a source-based Hog/Libero build. Compared with the single-SPI readout in the original TinyProbe paper, it introduces dual-SPI payload transfers to increase the FPGA-side readout bandwidth. Updating the SiWG917 MCU firmware to support this interface is planned and is not included in this release.
+
+| Interface | Raw rate | Status |
+| --- | --- | --- |
+| FPGA dual-SPI payload | At most **20 Mbps** (two bits per clock) | Requires a compatible MCU driver |
+| Included MCU single-SPI driver | At most **40 Mbps** (one bit per clock) | Uses the legacy protocol; incompatible with this gateware |
+
+The reduced bandwith with the dual spi interface is due to a limitation of the current SiWG917 MCU, which is only able to run dual and quad SPI at 1/4 of the speed of single SPI.
+
+See the [FPGA status and build instructions](fpga/Readme.md).
+
+## Published-system capabilities
+
+The specifications and frame rates below describe the published TinyProbe configurations; they are not measurements of this development branch.
 
 ### Transmit
 
@@ -43,7 +65,7 @@ Please also take a look at our overview video on YouTube:
 
 ## Contents
 
-Host software, MCU firmware, and board hardware are in this repository. FPGA gateware is planned for a later release.
+Host software, MCU firmware, board hardware, and FPGA gateware are in this repository. FPGA/MCU integration on this branch is work in progress.
 
 ```mermaid
 flowchart TB
@@ -51,10 +73,10 @@ flowchart TB
 
     subgraph Probe["TinyProbe hardware · hardware/"]
         MCU["SiWG917 Wi-Fi 6 MCU<br/>Firmware · firmware/"]
-        FPGA["IGLOO 2 FPGA<br/>Gateware · release planned"]
-        Analog["Analog front end and pulser<br/>AFE5832LP + TX7332"]
+        FPGA["IGLOO 2 FPGA<br/>Gateware · fpga/ · work in progress"]
+        Analog["Analog front end and pulser<br/>"]
 
-        MCU <-->|"SPI · control and captured data"| FPGA
+        MCU <-->|"FPGA dual-SPI · MCU update pending"| FPGA
         FPGA -->|"Configuration, clocks and triggers"| Analog
         Analog -->|"LVDS · receive data"| FPGA
     end
@@ -70,6 +92,7 @@ See the [hardware overview](hardware/README.md) for individual boards and their 
 .
 ├── software/               # Host Python package, demos, and tests
 ├── firmware/               # SiWG917 Wi-Fi 6 MCU firmware
+├── fpga/                   # FPGA RTL, constraints, tests, and Hog build (WiP)
 ├── hardware/               # Board PCB designs
 │   ├── wifi_board/         # Wi-Fi 6 PCB
 │   ├── hv_board/           # Pulser PCB
@@ -135,10 +158,7 @@ uv sync --group dev --group demo
 
 ## Documentation
 
-The MkDocs documentation in `docs/` starts with a system overview, followed by host software and Wi-Fi 6 firmware references. New
-contributors should begin with the system overview to understand how the host,
-MCU, FPGA, AFE, and TX paths fit together. Build or serve the site locally from
-the repository root:
+The MkDocs documentation in `docs/` starts with a system overview, followed by host software and Wi-Fi 6 firmware references. New contributors should begin with the system overview to understand how the host, MCU, FPGA, AFE, and TX paths fit together. Build or serve the site locally from the repository root:
 
 ```bash
 just docs_serve
@@ -193,10 +213,10 @@ Thanks to all the people who contributed to the TinyProbe platform:
 
 This repository makes use of the following licenses:
 
-- for all *hardware* (`hardware/`): [Solderpad Hardware License Version 0.51](licenses/LICENSE.hw)
+- for all *hardware* (`hardware/` and `fpga/`): [Solderpad Hardware License Version 0.51](licenses/LICENSE.hw)
 - for all *software* (`software/`): [Apache License Version 2.0](licenses/LICENSE.sw)
 - for all *images* (`docs/images/`): [Creative Commons Attribution 4.0 International License](licenses/LICENSE.images)
 
 For further information, please refer to the license files: `licenses/LICENSE.hw`, `licenses/LICENSE.sw`, `licenses/LICENSE.images`.
 
-The `firmware/` and `software/` directories contain third-party sources that come with their own licenses. See their respective [README](firmware/README.md) and [README](software/README.md) for more information.
+The `firmware/`, `software/`, and `fpga/` directories contain third-party sources with their own licenses. See the [firmware](firmware/README.md) [software](software/README.md), and [FPGA](fpga/Readme.md#license) READMEs.

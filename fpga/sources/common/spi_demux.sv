@@ -1,4 +1,47 @@
-// Author: Soumyo Bhattacharjee
+// Copyright 2021-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Soumyo Bhattacharjee
+//   Sergei Vostrikov
+//   LisaMaria Odermatt
+// -----------------------------------------------------------------------------
+// Description:
+//   Route MCU SPI traffic to the FPGA slave or to the AFE and transmitter
+//   configuration interfaces.
+//
+// Ports:
+//   spi_clk_i - SPI serial clock.
+//   spi_io0_i - SPI pad input.
+//   spi_io1_i - SPI pad input.
+//   spi_cs_i - Active-low SPI chip select.
+//   spi_ext_int_sel_i - Select internal FPGA or external peripheral SPI
+//     routing.
+//   spi_ext_cs_sel_i - Select the external AFE or transmitter chip select.
+//   spi_clk_int_o - Clock to the internal SPI slave.
+//   spi_io0_int_o - Pad data to the internal SPI slave.
+//   spi_io1_int_o - Pad data to the internal SPI slave.
+//   spi_io0_int_i - Response data from the internal SPI slave.
+//   spi_io1_int_i - Response data from the internal SPI slave.
+//   spi_pad_oe_int_i - Internal slave pad output enables.
+//   spi_cs_int_no - Active-low internal slave chip select.
+//   spi_io0_o - SPI pad output data.
+//   spi_io1_o - SPI pad output data.
+//   spi_pad_oe_o - SPI pad output enables.
+//   spi_clk_ext_o - Clock to the external configuration interfaces.
+//   spi_mosi_ext_o - Serial configuration data to external peripherals.
+//   spi_miso_ext_i - Serial response from external peripherals.
+//   spi_cs_tx_no - Active-low transmitter configuration chip select.
+//   spi_cs_afe_no - Active-low AFE configuration chip select.
+// -----------------------------------------------------------------------------
+
 // Routes the MCU SPI pads either to the internal dual-SPI transport or to the
 // existing external AFE/TX SPI bus.  IO0 is master-to-slave when external
 // devices are selected; IO1 returns their MISO data to the MCU.

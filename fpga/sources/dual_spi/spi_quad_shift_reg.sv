@@ -1,3 +1,48 @@
+// Copyright 2025-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Soumyo Bhattacharjee
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Shift received and transmitted SPI words, with optional dual-lane payload
+//   transfers.
+//
+// Parameters:
+//   ENABLE_DUAL - Enable dual-lane payload transfers.
+//
+// Ports:
+//   sclk - SPI serial clock.
+//   sys_rst_n - Active-low reset.
+//   cs_n - Active-low SPI chip select.
+//   rx_mode - Select serial receive mode.
+//   data_phase - Payload phase indication.
+//   shift_en - Enable serial-word shifting.
+//   rx_frame_clks - Clock count for the receive frame.
+//   sdi0 - SPI lane input data.
+//   sdi1 - SPI lane input data.
+//   sdi2 - SPI lane input data.
+//   sdi3 - SPI lane input data.
+//   sdo0 - SPI lane output data.
+//   sdo1 - SPI lane output data.
+//   sdo2 - SPI lane output data.
+//   sdo3 - SPI lane output data.
+//   shift_data_next - Received word including the current input bits.
+//   shift_done - Receive word complete indication.
+//   load_data - Transmit word to load.
+//   load_en - Load the transmit shift register.
+//   tx_done - Transmit word complete indication.
+// -----------------------------------------------------------------------------
+
 /**
  * Mode-1 SPI symbol engine (CPOL=0, CPHA=1).
  *
@@ -16,7 +61,6 @@ module spi_quad_shift_reg #(
     input  logic [5:0]  rx_frame_clks,
     input  logic        sdi0, sdi1, sdi2, sdi3,
     output logic        sdo0, sdo1, sdo2, sdo3,
-    output logic [31:0] shift_data,
     output logic [31:0] shift_data_next,
     output logic        shift_done,
     input  logic [31:0] load_data,
@@ -35,7 +79,6 @@ module spi_quad_shift_reg #(
     // Command/address are eight serial symbols.  The controller selects the
     // common read-dummy count while its transaction state is DUMMY.
     assign frame_cycles = data_phase ? ACTIVE_FRAME_CLKS : rx_frame_clks;
-    assign shift_data = rx_shift_reg;
 
     always_comb begin
         shift_data_next = rx_shift_reg;

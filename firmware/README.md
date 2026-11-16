@@ -2,6 +2,8 @@
 
 This directory contains the firmware for the SiWG917 Wi-Fi 6 MCU used in TinyProbe.
 
+**Branch compatibility:** this firmware uses the legacy single-SPI FPGA protocol and cannot operate the dual-SPI gateware included on `feature/dual-spi`. Building and flashing both as-is will not give a working acquisition system. The MCU protocol update is planned; see the [branch release status](../README.md#fpga-release-status-work-in-progress).
+
 
 ## Requisites
 
@@ -155,8 +157,8 @@ This directory does not include the Silicon Labs Simplicity SDK or the WiseConne
 
 [nanopb](https://github.com/nanopb/nanopb) is vendored under `vendor/nanopb` and is licensed under the [Zlib License](https://github.com/nanopb/nanopb/blob/master/LICENSE.txt).
 
-### AFE5832LP and TX7332 drivers
+### AFE IC and Pulser IC drivers
 
-The drivers for the [AFE5832LP](user/tp/hal/tp_afe.h) and [TX7332](user/tp/hal/tp_tx.h) are included in this repository as precompiled binaries; source code for these drivers is not released as distribution restrictions apply.
+The drivers for the [AFE IC](user/tp/hal/tp_afe.h) and [Pulser IC](user/tp/hal/tp_tx.h) are included in this repository as precompiled binaries; source code for these drivers is not released as distribution restrictions apply.
 
 [toolchain_getting_started]: ../docs/firmware/toolchain.md

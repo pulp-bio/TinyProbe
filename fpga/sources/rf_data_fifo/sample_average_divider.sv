@@ -1,3 +1,37 @@
+// Copyright 2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Divide unsigned sample magnitudes by shot counts from 1 to 12 using
+//   reciprocal multiplication and exact quotient correction.
+//
+// Parameters:
+//   NUMERATOR_WIDTH - Unsigned accumulated-sample magnitude width.
+//   DIVISOR_WIDTH - Unsigned shot-count width.
+//   QUOTIENT_WIDTH - Unsigned average-result magnitude width.
+//
+// Ports:
+//   clk_i - Module clock.
+//   rst_ni - Active-low reset.
+//   start_i - Start request.
+//   numerator_i - Unsigned accumulated-sample magnitude.
+//   divisor_i - Unsigned shot count.
+//   busy_o - Operation in progress.
+//   done_o - Operation complete.
+//   quotient_o - Unsigned average-result magnitude.
+// -----------------------------------------------------------------------------
+
 // Shared sequential unsigned divider for accumulated samples.
 //
 // Division is implemented as reciprocal multiplication followed by an exact
@@ -34,7 +68,7 @@ module sample_average_divider #(
 
     logic [NUMERATOR_WIDTH-1:0] numerator_q;
     logic [DIVISOR_WIDTH-1:0] divisor_q;
-    logic [NUMERATOR_WIDTH:0] estimate_q;
+    logic [QUOTIENT_WIDTH-1:0] estimate_q;
     logic signed [DSP_WIDTH-1:0] multiplier_a_q;
     logic signed [DSP_WIDTH-1:0] multiplier_b_q;
     logic signed [(2*DSP_WIDTH)-1:0] multiplier_product;

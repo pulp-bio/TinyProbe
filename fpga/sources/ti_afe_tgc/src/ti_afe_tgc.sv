@@ -1,3 +1,38 @@
+// Copyright 2020-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Sequence the AFE time-gain compensation slope and direction outputs
+//   around a capture.
+//
+// Parameters:
+//   CNT_WIDTH - Timing-counter and divider width.
+//
+// Ports:
+//   clk_afe_i - AFE clock used to synchronize the slope and direction
+//     outputs.
+//   clk_i - Module clock.
+//   rst_ni - Active-low reset.
+//   clk_div_i - Slope-clock division count.
+//   start_i - Start request.
+//   delay_start_i - Delay before the compensation ramp, in clk_i cycles.
+//   capt_time_i - Capture interval in clk_i cycles.
+//   delay_finish_i - Final ramp interval in clk_i cycles.
+//   tgc_slope_o - AFE time-gain compensation step signal.
+//   tgc_up_dn_o - AFE time-gain compensation direction.
+// -----------------------------------------------------------------------------
+
 module ti_afe_tgc #(
     parameter integer CNT_WIDTH = 32  // Counter width
 )(
@@ -30,7 +65,7 @@ module ti_afe_tgc #(
     logic cnt_en;
 
     // Rising edge detector signals for start input signal
-    logic start_d, start_q, start_q2, start_q3;
+    logic start_d, start_q, start_q2;
     logic start_rising_edge_d, start_rising_edge_q;
 
     // Start asserted signal (indicates that start was triggered at least once) 
@@ -139,7 +174,6 @@ module ti_afe_tgc #(
     always_ff  @(posedge clk_i)begin
         start_q              <= start_d;
         start_q2             <= start_q;
-        start_q3             <= start_q2;
     end   
 
     always_ff  @(posedge clk_i, negedge rst_ni)begin

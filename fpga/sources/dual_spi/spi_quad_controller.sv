@@ -1,3 +1,55 @@
+// Copyright 2025-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Soumyo Bhattacharjee
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Sequence SPI command, address and payload transfers and expose register
+//   and stream handshakes.
+//
+// Parameters:
+//   ENABLE_DUAL - Enable dual-lane payload transfers.
+//
+// Ports:
+//   sclk - SPI serial clock.
+//   sys_rst_n - Active-low reset.
+//   cs_n - Active-low SPI chip select.
+//   shift_en - Enable serial-word shifting.
+//   rx_mode - Select serial receive mode.
+//   data_phase - Payload phase indication.
+//   rx_frame_clks - Clock count for the receive frame.
+//   shift_data_next - Received word including the current input bits.
+//   shift_done - Receive word complete indication.
+//   tx_done - Transmit word complete indication.
+//   load_en - Load the transmit shift register.
+//   load_data - Transmit word to load.
+//   sys_wr_data - Received register-write data.
+//   sys_wr_valid - Register-write payload valid.
+//   sys_wr_begin - Predictive start of the register-write payload phase.
+//   sys_wr_begin_addr - Address associated with the write-start diagnostic.
+//   sys_wr_data_active - Register-write payload phase diagnostic.
+//   sys_wr_ready - Register-write receiver ready.
+//   latched_addr - Captured register address.
+//   sys_reg_rd_req - Register-read request.
+//   sys_rd_data - Register or stream read data.
+//   sys_rd_valid - Read-data valid.
+//   sys_rd_ready - Read-data consumer ready.
+//   stream_word_complete_toggle - Toggle on completion of a transmitted
+//     stream word.
+//   latched_cmd - Captured SPI command byte.
+//   spi_pad_oe - SPI pad output enables.
+// -----------------------------------------------------------------------------
+
 /**
  * Mode-1 SPI transaction controller (CPOL=0, CPHA=1).
  * Incoming symbols and transaction state are sampled on falling SCLK edges;
@@ -55,7 +107,7 @@ module spi_quad_controller #(
 
     spi_quad_cmd_decoder cmd_dec (
         .cmd_i(latched_cmd), .is_write_o(is_write), .is_read_o(is_read),
-        .is_reg_read_o(is_reg_read), .is_invalid_o()
+        .is_reg_read_o(is_reg_read)
     );
 
     // This is predictive of the final mode-1 capture edge.  shift_data_next

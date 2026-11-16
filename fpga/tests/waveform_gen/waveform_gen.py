@@ -1,8 +1,30 @@
+# The following Solderpad notice applies to TinyProbe modifications.
+# The original CC0 notice is retained below.
+#
+# Copyright 2021-2026 ETH Zurich
+# Copyright and related rights are licensed under the Solderpad Hardware
+# License, Version 0.51 (the "License"); you may not use this file except in
+# compliance with the License. You may obtain a copy of the License at
+# http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+# or agreed to in writing, software, hardware and materials distributed under
+# this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+# CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations under the License.
+#
+# Authors:
+#   Sergei Vostrikov
+#   LisaMaria Odermatt
+#   Federico Villani
+# -----------------------------------------------------------------------------
+# Description:
+#   Check waveform-generator timing, FIFO controls and transmitter/AFE
+#   outputs.
+# -----------------------------------------------------------------------------
+
 # This file is public domain, it can be freely copied without restrictions.
 # SPDX-License-Identifier: CC0-1.0
 
 import random
-import struct
 import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import FallingEdge, RisingEdge, ClockCycles, Timer

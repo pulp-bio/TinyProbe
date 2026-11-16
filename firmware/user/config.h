@@ -7,6 +7,7 @@
  * @copyright Copyright (C) 2026 ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich
+ * @author Federico Villani, ETH Zurich
  * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup common

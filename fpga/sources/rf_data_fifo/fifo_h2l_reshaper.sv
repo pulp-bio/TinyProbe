@@ -1,3 +1,44 @@
+// Copyright 2024-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+//   LisaMaria Odermatt
+// -----------------------------------------------------------------------------
+// Description:
+//   Repack FIFO words into a narrower ready/valid stream while preserving
+//   residual bits across lane changes.
+//
+// Parameters:
+//   INPUT_DATA_WIDTH - Input FIFO word width.
+//   OUTPUT_DATA_WIDTH - Output stream word width.
+//   READ_CNT_WIDTH - FIFO read-count width.
+//
+// Ports:
+//   clk_i - Module clock.
+//   rst_ni - Active-low reset.
+//   read_cnt_i - FIFO words to read per enabled lane.
+//   fifo_empty_i - Input FIFO empty flag.
+//   fifo_data_i - Input FIFO word.
+//   fifo_read_req_o - Input FIFO read request.
+//   fifo_rst_o - Sample FIFO reset request.
+//   data_o - Output data word.
+//   valid_o - Output data valid.
+//   ready_i - Output consumer ready.
+//   debug_word_load_o - Diagnostic pulse when an input FIFO word is loaded.
+//   debug_word_data_o - Input FIFO word observed by the diagnostic.
+//   start_i - Start request.
+//   continue_i - Preserve residual packed bits when switching lanes.
+//   busy_o - Operation in progress.
+// -----------------------------------------------------------------------------
+
 module fifo_h2l_reshaper #(
     parameter integer INPUT_DATA_WIDTH  = 20,
     parameter integer OUTPUT_DATA_WIDTH = 8,

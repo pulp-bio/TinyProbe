@@ -1,9 +1,6 @@
-# LVDS Receiver RTL module for TI AFEs
-This project implement RTL module that receives the data from Texas Instruments AFE5832LP via LVDS interfaqce.
-### Structure of the project
-- src - source RTL files
-- tests - verification tests
-- vivado_test_files - additianal source files and constraints for vivado project
- 
-### Requirements to run tests:
-1. Python module cocotb 1.4.0
+# LVDS receiver RTL for TI AFEs
+
+The `src/` modules receive serialized AFE IC LVDS data using DCLK and
+align the parallel output to FCLK. The board wrapper is `common/afe_rx.sv`.
+
+See [FPGA tests](../../tests/README.md) for the current test commands.

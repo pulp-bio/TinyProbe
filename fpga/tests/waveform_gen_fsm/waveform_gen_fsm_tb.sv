@@ -1,3 +1,22 @@
+// Copyright 2021-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Expose waveform-generator FSM configuration and status signals to cocotb.
+// -----------------------------------------------------------------------------
+
 module waveform_gen_fsm_tb;
 
     logic        clk;
@@ -33,7 +52,6 @@ module waveform_gen_fsm_tb;
 
     waveform_generator_fsm dut (
         .clk_i(clk),
-
         .rst_ni(rst_n),
         .sync_period_i(sync_period),
         .start_cap_time_i(start_cap_time),
@@ -41,6 +59,14 @@ module waveform_gen_fsm_tb;
         .start_capture_i(start_capture),
         .n_shots_i(n_shots),
         .fifo_rd_busy_i(fifo_rd_busy),
+        .external_mode_i(1'b0),
+        .external_trigger_i(1'b0),
+        .external_sample_clk_i(clk),
+        .capture_done_i(1'b0),
+        .abort_external_i(1'b0),
+        .oa_mode_i(1'b0),
+        .oa_pulse_width_cycles_i(16'd0),
+        .core_clk_fast_i(1'b0),
         .period_done_o(period_done),
         .fifo_start_capture_o(fifo_start_capture),
         .fifo_rst_o(fifo_rst),

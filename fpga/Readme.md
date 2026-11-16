@@ -2,7 +2,9 @@
 
 FPGA RTL for the TinyProbe wearable ultrasound system. The FPGA controls transmitter and analog front-end (AFE) timing, receives digitized samples over LVDS, accumulates repeated acquisitions, computes averages, and returns results to the microcontroller over dual SPI.
 
-This repository contains RTL, the Microchip Libero project, generated components, simulation tests, and a UDP debugging tool. MCU firmware and TiPy host software are separate projects and must match the gateware's register definitions and SPI protocol.
+This repository contains RTL, constraints, simulation tests, and a UDP debugging tool. MCU firmware and TiPy host software are separate projects and must match the gateware's register definitions and SPI protocol.
+
+**Work in progress.** The included SiWG917 firmware uses the legacy single-SPI protocol and cannot operate this dual-SPI gateware. Programming both as-is does not give a working acquisition system. See the [branch release status](../README.md#fpga-release-status-work-in-progress) for scope, bandwidth limits, and remaining integration work.
 
 ## Hardware and toolchain
 
@@ -10,11 +12,11 @@ This repository contains RTL, the Microchip Libero project, generated components
 | --- | --- |
 | FPGA | Microchip IGLOO2; Libero device identifier `PA4MGL5000_N`, package `vf400` |
 | Top module | `tiny_probe_top` in `sources/common/tiny_probe_top_v2.sv` |
-| Project | `project/tiny_probe.prjx` |
-| Libero | 2025.1, as recorded in the project and setup report (dont use any other version!) |
-| Simulation | Windows, MSYS2 Make, Python/Cocotb, QuestaSim |
-
-The original setup used Libero 12.6. Use the current project's recorded 2025.1 version as the starting point for this checkout.
+| Generated project | `Projects/tiny_probe/tiny_probe.prjx` at the repository root |
+| Libero | SoC 2026.1 (2026.1.0.17) |
+| AFE link | AFE IC, 10-bit, 10X serialization, 1X lanes: 600 Mbps per lane, DCLK 300 MHz, FCLK 30 MHz (60 MHz ADC clock from `Clock_gen`) |
+| FPGA SPI clock | 1 MHz configured in firmware for bring-up, 10 MHz interface limit |
+| Simulation | Just, Python/Cocotb, QuestaSim |
 
 ## Repository structure
 
@@ -23,22 +25,16 @@ sources/
   common/                    Board top, AFE wrapper, waveform timing, SPI routing
   dual_spi/                  dual SPI slave, transport, CDC mailboxes, stream FIFO wrapper
   rf_data_fifo/              Accumulation, averaging, FIFO wrappers, capture diagnostics
-  registers/                 Configuration registers and reset defaults
-  ti_afe_lvds_rx/            Submodule: LVDS deserialization and frame alignment
-  ti_afe_tgc/                Submodule: time-gain compensation generator
+  registers/                 Configuration register bank and defaults
+  ti_afe_lvds_rx/             LVDS deserialization and frame alignment
+  ti_afe_tgc/                 Time-gain compensation generator
 project/
-  tiny_probe.prjx            Libero project and source/component registrations
-  build_programming_data.tcl Implementation flow script
-  component/                Generated clock, oscillator, and FIFO components
-  hdl/                      Imported/generated HDL and local diagnostic module
-  constraint/               Pin, synthesis-clock, and timing constraints
-  stimulus/                 Libero simulation stimulus
-MicrochipCommon/vault/       Vendor IP catalog metadata
+  constraint/               Pins, input delays and timing constraints
 tests/                      Cocotb and standalone SystemVerilog tests
 tools/                      Host-side UDP acquisition debugger
 ```
 
-`sources/` contains the main maintained RTL. Generated and imported HDL under `project/component/` and `project/hdl/` also are part in the build.
+Hog generates vendor cores from the repository's `Top/tiny_probe/post-creation.tcl`.
 
 ### Board integration and clock domains
 
@@ -104,55 +100,27 @@ The transport exposes sixteen 32-bit registers. This table summarizes the board-
 | 13 | Trigger/interrupt routing and diagnostic selection |
 | 14–15 | Status/readback; register 15 includes selected diagnostic pages |
 
-## Libero installation
+An optional diagnostic trace records up to 16 lane-0 entries at the shot, accumulation, and averaging stages. Register 13 bit 23 enables capture; diagnostic register readback exposes the records.
 
-### Requirements
+## Build
 
-- Windows machine.
-- Libero SoC 2025.1.
-- Access to the ETH license servers listed below.
+See [Hog build instructions](../../Top/tiny_probe/README.md).
 
-1. Create these Windows environment variables before launching Libero:
+## AFE capture timing (600 Mbps)
 
-   | Name | Value |
-   | --- | --- |
-   | `LM_LICENSE_FILE` | `8169@lic-synopsys-r.ethz.ch;8183@lic-microsemi.ethz.ch` |
-   | `TINY_PROBE_SRC_PATH` | `D:\Workspace\TinyProbe\tiny_probe_fpga_project\sources` — replace this example with the absolute `sources` directory in your checkout |
+The AFE receiver (`afe_rx`, `ti_afe_lvds_rx`) captures each data lane with an I/O DDR register on the AFE bit clock (DCLK) and samples the 20-bit frame on the frame clock (FCLK). Its timing closure needs these project settings together:
 
-2. Download the **Libero SoC Design Suite Version 2025.1 Full Installer** from the [Microchip FPGA software downloads page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga-software-downloads).
-3. Run `Libero_SoC_2025.1_offline_pc.exe` as administrator to install the suite.
-4. Restart Libero after setting the environment variables. Open the project using `project/tiny_probe.prjx`. If Libero closes while opening the project, relaunch it and open the project again; this has been observed with this setup.
-5. Before each synthesis run, select **Build Hierarchy** in the **Design Hierarchy** window.
-6. Double-click **Synthesis** in the **Design Flow** window to start synthesis.
+| Setting | File | Value |
+| --- | --- | --- |
+| Clocks and AFE input window | `constraint/timing_constraints.sdc` | DCLK 3.333 ns, FCLK 33.333 ns; input delay min UI/2 − 0.4 ns and max UI/2 + 0.4 ns on both DCLK edges; provisional 0.4 ns DCLK-to-FCLK uncertainty |
+| FPGA input delay taps | `constraint/io/phys_constr_gen_v2_igloo.pdc` | `-IN_DELAY 17` on both pins of lanes 1 and 3, `18` on all other data lanes, `0` on DCLK and FCLK |
+| Placement | `Top/tiny_probe/hog.conf` in the repository root | High effort, timing-driven placement and hold repair|
+| Operating conditions | `Top/tiny_probe/post-creation.tcl` in the repository root | FPGA junction 10/25/60 °C, all process corners, core 1.14 to 1.26 V |
 
-## Clone and open the project
 
-```powershell
-git clone git@gitlab.ethz.ch:tinyprobe/tiny_probe_fpga_project.git
-cd tiny_probe_fpga_project
-git submodule update --init --recursive
-```
+Check setup and hold reports in `bin/tiny_probe-<version>/` after each build.
 
-Set `TINY_PROBE_SRC_PATH` to the absolute `sources` directory. From the repository root in PowerShell:
 
-```powershell
-$sourcePath = Join-Path (Get-Location).Path 'sources'
-$env:TINY_PROBE_SRC_PATH = $sourcePath
-[Environment]::SetEnvironmentVariable('TINY_PROBE_SRC_PATH', $sourcePath, 'User')
-```
-
-Restart Libero after setting the persistent variable and open `project/tiny_probe.prjx`. Check that linked files resolve and the active root is `tiny_probe_top::work`.
-
-## Build and programming data
-
-Run the Libero flow in this order:
-
-Before starting synthesis, run **Build Hierarchy** in the **Design Hierarchy** window.
-
-1. Synthesis.
-2. Place and route.
-3. Timing verification.
-4. Programming-data generation.
 
 ## Troubleshooting Libero
 
@@ -174,36 +142,24 @@ This project requires **COREFIFO 2.8.101**. If Design Hierarchy shows a differen
 
 ### Unexpected signals or component interfaces
 
-Check the source path of the component Libero is using. Imported and generated copies exist in this repository; an incorrect path can select a different implementation or interface.
+Check the source path of the component Libero is using; it must be under `project\component\work`. Older plain-HDL copies of `Clock_gen` and `RF_DATA_FIFO` from Libero v12.6 used to sit in `project\hdl`; the `RF_DATA_FIFO` copy lacks the `DVLD` port ("Port DVLD does not exist"). They were removed, so if such a copy reappears, delete it and regenerate the component.
 
 ### Missing FIFO simulation files
 
-Check the imported FIFO HDL under:
+The generated FIFO HDL is under:
 
 ```text
-project\hdl\RF_DATA_FIFO_0\rtl\vlog\core
+project\component\work\RF_DATA_FIFO\RF_DATA_FIFO_0\rtl\vlog\core
 ```
 
-That directory contains FIFO implementation files. The imported FIFO testbench is under:
+and the generated FIFO testbench under `project\component\work\RF_DATA_FIFO\RF_DATA_FIFO_0\rtl\vlog\test\user`. Ensure the simulation configuration points to these files.
 
-```text
-project\hdl\RF_DATA_FIFO_0\rtl\vlog\test\user
-```
-
-Also check the corresponding generated files under `project\component\work\RF_DATA_FIFO\RF_DATA_FIFO_0` and ensure the simulation configuration points to the intended files.
 
 ## Simulation and tests
 
-See [tests/README.md](tests/README.md) for the existing Windows/MSYS2 instructions. The Makefiles use Cocotb and default to the `questa-compat` simulator selection.
+See [FPGA test instructions](tests/README.md).
 
-In an MSYS2 terminal, install Make and prepare Python/Cocotb. Adapt installation paths to your machine:
 
-```bash
-pacman -S --needed make
-source /c/Users/oderl/anaconda3/etc/profile.d/conda.sh
-conda create -n cocotb python=3.11 pip -y
-conda activate cocotb
-python -m pip install cocotb
-export PATH="/c/Microchip/Libero_SoC_2025.1/Libero_SoC/QuestaSim_Pro/win64:$PATH"
-```
+## License
 
+Project-owned FPGA sources and build recipes use the [Solderpad Hardware License Version 0.51](../licenses/LICENSE.hw). Hog and locally generated vendor IP retain their own licenses.

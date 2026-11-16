@@ -9,7 +9,7 @@ hardware/
 ├── acquisition_board/      # Acquisition board (FPGA & AFE)
 │   ├── acquisition_board/  # Main acquisition board project
 │   └── power_fix_board/    # Power fix board project
-├── hv_board/               # Pulser board project (Helios-T)
+├── hv_board/               # Pulser board project
 └── wifi_board/             # Wi-Fi 6 board project
 ```
 
@@ -25,7 +25,7 @@ flowchart TB
 
         subgraph acquisition["Acquisition PCB"]
             fpga["IGLOO 2<br/>FPGA"]
-            afe["AFE5832<br/>Analog Front End"]
+            afe["AFE IC<br/>Analog Front End"]
         end
 
         subgraph hv["HV PCB"]

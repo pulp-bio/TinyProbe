@@ -1,3 +1,23 @@
+// Copyright 2021-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Connect the accumulation block to selectable behavioral or generated FIFO
+//   models for cocotb.
+// -----------------------------------------------------------------------------
+
 `timescale 1ns/1ps
 
 `ifndef USE_LIBERO_FIFO
@@ -28,18 +48,18 @@ endmodule
 
 module accumulation_tb;
     localparam int RAW_WIDTH = 20;
-    localparam int FIFO_WIDTH = 28;
+    localparam int FIFO_WIDTH = 26;
     logic clk, rst_n, fifo_reset, first_shot, start_capture, wr_en;
     logic [RAW_WIDTH-1:0] data_in;
     logic done, full, rd_en, dvld, empty;
     logic [FIFO_WIDTH-1:0] data_out;
 
     accumulation #(
-        .N_FIFOS(1), .SAMPLE_WIDTH(10), .SUM_WIDTH(14),
+        .N_FIFOS(1), .SAMPLE_WIDTH(10), .SUM_WIDTH(13),
         .WRITE_CNT_WIDTH(3), .RAW_QUEUE_DEPTH(4)
     ) dut (
         .rst_state_ni(rst_n), .rst_fifos_i(fifo_reset),
-        .write_cnt_i(3), .wr_fifo_done_o(done),
+        .write_cnt_i(3'd3), .wr_fifo_done_o(done),
         .data_i(data_in), .first_shot_i(first_shot),
         .start_capture_i(start_capture), .wr_clk_i(clk),
         .wr_en_i(wr_en), .full_o(full), .rd_clk_i(clk),

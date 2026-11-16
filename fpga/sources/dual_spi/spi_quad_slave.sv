@@ -1,3 +1,54 @@
+// Copyright 2025-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Soumyo Bhattacharjee
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Combine SPI command decoding, transfer control and serial-word shifting.
+//
+// Parameters:
+//   ENABLE_DUAL - Enable dual-lane payload transfers.
+//
+// Ports:
+//   spi_sclk - SPI serial clock.
+//   spi_cs_n - Active-low SPI chip select.
+//   spi_sdi0 - SPI lane input data.
+//   spi_sdi1 - SPI lane input data.
+//   spi_sdi2 - SPI lane input data.
+//   spi_sdi3 - SPI lane input data.
+//   spi_sdo0 - SPI lane output data.
+//   spi_sdo1 - SPI lane output data.
+//   spi_sdo2 - SPI lane output data.
+//   spi_sdo3 - SPI lane output data.
+//   spi_pad_oe - SPI pad output enables.
+//   sys_clk - Module clock.
+//   sys_rst_n - Active-low reset.
+//   wr_data - Received register-write data.
+//   wr_valid - Register-write payload valid.
+//   wr_begin - Predictive start of the register-write payload phase.
+//   wr_begin_addr - Address associated with the write-start diagnostic.
+//   wr_data_active - Register-write payload phase diagnostic.
+//   wr_ready - Register-write receiver ready.
+//   wr_addr - Captured register address.
+//   reg_rd_req - Register-read request.
+//   rd_data - Register or stream read data.
+//   rd_valid - Read-data valid.
+//   rd_ready - Read-data consumer ready.
+//   stream_word_complete_toggle - Toggle on completion of a transmitted
+//     stream word.
+//   latched_cmd - Captured SPI command byte.
+// -----------------------------------------------------------------------------
+
 /**
 QUAD SPI Slave - Top Level
 
@@ -35,7 +86,7 @@ module spi_quad_slave #(
 
     logic shift_en, rx_mode, data_phase;
     logic [5:0] rx_frame_clks;
-    logic [31:0] shift_data, shift_data_next, load_data;
+    logic [31:0] shift_data_next, load_data;
     logic shift_done, tx_done, load_en;
     
     spi_quad_shift_reg #(
@@ -46,7 +97,7 @@ module spi_quad_slave #(
         .rx_frame_clks(rx_frame_clks),
         .sdi0(spi_sdi0), .sdi1(spi_sdi1), .sdi2(spi_sdi2), .sdi3(spi_sdi3),
         .sdo0(spi_sdo0), .sdo1(spi_sdo1), .sdo2(spi_sdo2), .sdo3(spi_sdo3),
-        .shift_data(shift_data), .shift_data_next(shift_data_next), .shift_done(shift_done),
+        .shift_data_next(shift_data_next), .shift_done(shift_done),
         .load_data(load_data), .load_en(load_en), .tx_done(tx_done)
     );
     

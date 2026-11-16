@@ -1,0 +1,913 @@
+# Copyright 2021-2026 ETH Zurich
+# Copyright and related rights are licensed under the Solderpad Hardware
+# License, Version 0.51 (the "License"); you may not use this file except in
+# compliance with the License. You may obtain a copy of the License at
+# http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+# or agreed to in writing, software, hardware and materials distributed under
+# this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+# CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations under the License.
+#
+# Authors:
+#   Sergei Vostrikov
+#   LisaMaria Odermatt
+#   Federico Villani
+# -----------------------------------------------------------------------------
+# Description:
+#   Board I/O assignments, bank voltages and AFE input-delay settings.
+# -----------------------------------------------------------------------------
+
+# Microchip I/O Physical Design Constraints file
+# User I/O Constraints file
+
+# Version: 2026.1 2026.1.0.17
+# Family: IGLOO2 , Die: M2GL050 , Package: 400 VF
+# Date generated: Mon Nov 16 13:16:28 2026 
+
+
+# 
+# User Locked I/O Bank Settings
+# 
+
+set_iobank Bank0  \
+    -vcci 1.80    \
+    -fixed yes
+
+set_iobank Bank1  \
+    -vcci 1.80    \
+    -fixed yes
+
+set_iobank Bank2  \
+    -vcci 1.20    \
+    -fixed yes
+
+set_iobank Bank3  \
+    -vcci 3.30    \
+    -fixed yes
+
+set_iobank Bank4  \
+    -vcci 3.30    \
+    -fixed yes
+
+set_iobank Bank6  \
+    -vcci 2.50    \
+    -fixed yes
+
+set_iobank Bank7  \
+    -vcci 2.50    \
+    -fixed yes
+
+set_iobank Bank8  \
+    -vcci 2.50    \
+    -fixed yes
+
+
+# 
+# Unlocked I/O Bank Settings
+# The I/O Bank Settings can be locked by directly editing this file
+# or by making changes in the I/O Attribute Editor
+# 
+
+
+# 
+# User Locked I/O settings
+# 
+
+set_io afe_bit_clk_i       \
+    -pinname G1            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 0            \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io afe_bit_clk_ni      \
+    -pinname F1            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 0            \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io afe_clk_o           \
+    -pinname H15           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io {afe_data_i[0]}     \
+    -pinname M7            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[1]}     \
+    -pinname R1            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 17           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[2]}     \
+    -pinname L6            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[3]}     \
+    -pinname P2            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 17           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[4]}     \
+    -pinname N1            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[5]}     \
+    -pinname L1            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[6]}     \
+    -pinname M1            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[7]}     \
+    -pinname N4            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[8]}     \
+    -pinname M3            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[9]}     \
+    -pinname L4            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[10]}    \
+    -pinname K2            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[11]}    \
+    -pinname K5            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[12]}    \
+    -pinname J2            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[13]}    \
+    -pinname K7            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[14]}    \
+    -pinname H1            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_i[15]}    \
+    -pinname J4            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[0]}    \
+    -pinname M6            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[1]}    \
+    -pinname R2            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 17           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[2]}    \
+    -pinname L7            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[3]}    \
+    -pinname P3            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 17           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[4]}    \
+    -pinname N2            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[5]}    \
+    -pinname K1            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[6]}    \
+    -pinname M2            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[7]}    \
+    -pinname M4            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[8]}    \
+    -pinname L3            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[9]}    \
+    -pinname L5            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[10]}   \
+    -pinname K3            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[11]}   \
+    -pinname K6            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[12]}   \
+    -pinname J3            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[13]}   \
+    -pinname J6            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[14]}   \
+    -pinname H2            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io {afe_data_ni[15]}   \
+    -pinname J5            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 18           \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io afe_fast_pdn_o      \
+    -pinname G14           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io afe_frame_clk_i     \
+    -pinname G2            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 0            \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io afe_frame_clk_ni    \
+    -pinname G3            \
+    -fixed yes             \
+    -iostd LVDS            \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY 0            \
+    -ODT_STATIC On         \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io afe_glb_pdn_o       \
+    -pinname G16           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io afe_rst_o           \
+    -pinname J15           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io afe_tx_trig_o       \
+    -pinname F14           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io ext_trigger_i       \
+    -pinname F15           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -ODT_IMP 50            \
+    -ODT_STATIC Off        \
+    -RES_PULL Down         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io mcu_int_o           \
+    -pinname K20           \
+    -fixed yes             \
+    -iostd LVCMOS33        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -DIRECTION OUTPUT
+
+
+set_io rst_ni              \
+    -pinname V20           \
+    -fixed yes             \
+    -iostd LVCMOS33        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -RES_PULL Up           \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io spi_clk_ext_o       \
+    -pinname E18           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io spi_clk_i           \
+    -pinname J19           \
+    -fixed yes             \
+    -iostd LVCMOS33        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io spi_cs_afe_no       \
+    -pinname D20           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL Up           \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io spi_cs_tx_no        \
+    -pinname C20           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL Up           \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io spi_ext_cs_sel_i    \
+    -pinname R20           \
+    -fixed yes             \
+    -iostd LVCMOS33        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -RES_PULL Up           \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io spi_ext_int_sel_i   \
+    -pinname N20           \
+    -fixed yes             \
+    -iostd LVCMOS33        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -RES_PULL Up           \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io spi_io0_io          \
+    -pinname J20           \
+    -fixed yes             \
+    -iostd LVCMOS33        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INOUT
+
+
+set_io spi_io1_io          \
+    -pinname J18           \
+    -fixed yes             \
+    -iostd LVCMOS33        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INOUT
+
+
+set_io spi_miso_ext_i      \
+    -pinname E17           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -ODT_IMP 50            \
+    -ODT_STATIC Off        \
+    -RES_PULL None         \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io spi_mosi_ext_o      \
+    -pinname E16           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io spi_ss_ni           \
+    -pinname J17           \
+    -fixed yes             \
+    -iostd LVCMOS33        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -IN_DELAY Off          \
+    -LPE Off               \
+    -RES_PULL Up           \
+    -SCHMITT_TRIGGER Off   \
+    -DIRECTION INPUT
+
+
+set_io tgc_slope_o         \
+    -pinname F18           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io tgc_up_dn_o         \
+    -pinname G17           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io trigger_o           \
+    -pinname F16           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io tx_bf_clk_o         \
+    -pinname A20           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io tx_bf_sync_o        \
+    -pinname A19           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL Down         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io tx_rst_o            \
+    -pinname B19           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+set_io tx_tr_en_o          \
+    -pinname C19           \
+    -fixed yes             \
+    -iostd LVCMOS18        \
+    -FF_IO_AVAIL No        \
+    -FF_IO_STATE TRISTATE  \
+    -OUT_DRIVE 4           \
+    -OUT_LOAD 5            \
+    -RES_PULL None         \
+    -SLEW SLOW             \
+    -DIRECTION OUTPUT
+
+
+
+# 
+# ##################################################
+# 
+
+
+# 
+# Dedicated Peripheral I/O Settings
+# I/O placements are locked and cannot be moved
+# 
+
+
+# 
+# Unlocked I/O settings
+# The I/Os in this section are unplaced or placed but are not locked
+# the other listed attributes have been applied
+# 
+
+
+# 
+# Ports using Dedicated Pins
+# 
+
+
+

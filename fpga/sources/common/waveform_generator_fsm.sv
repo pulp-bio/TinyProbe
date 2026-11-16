@@ -1,3 +1,68 @@
+// Copyright 2021-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Sequence ultrasound and optoacoustic acquisitions, external triggers,
+//   accumulation and readout readiness.
+//
+// Ports:
+//   clk_i - Module clock.
+//   rst_ni - Active-low reset.
+//   sync_period_i - Acquisition period in core-clock cycles.
+//   start_cap_time_i - Acquisition counter preload.
+//   capture_delay_i - Capture delay in core-clock cycles.
+//   start_capture_i - Capture-start request.
+//   n_shots_i - Number of acquisition shots.
+//   fifo_rd_busy_i - FIFO reader busy indication.
+//   oa_mode_i - Enable optoacoustic timing mode.
+//   oa_pulse_width_cycles_i - Optoacoustic trigger width in core-clock
+//     cycles.
+//   external_mode_i - Enable externally triggered acquisition.
+//   external_trigger_i - External acquisition trigger input.
+//   external_sample_clk_i - External-trigger sampling clock.
+//   capture_done_i - Capture completion indication.
+//   abort_external_i - Abort an external acquisition sequence.
+//   external_debug_o - External acquisition diagnostic state.
+//   external_input_debug_o - External acquisition diagnostic state.
+//   core_clk_fast_i - Indicate the faster core-clock setting.
+//   period_done_o - Acquisition period terminal-count indication.
+//   fifo_start_capture_o - Start the sample FIFO capture.
+//   fifo_rst_o - Sample FIFO reset request.
+//   fifo_wr_en_o - Sample FIFO write enable.
+//   accumulation_sequence_start_o - Start a new accumulation sequence.
+//   accumulation_active_o - Accumulation sequence active indication.
+//   accumulation_first_shot_o - First shot in the accumulation sequence.
+//   accumulation_final_shot_o - Final shot in the accumulation sequence.
+//   tx_wake_up_time_i - Transmitter wake-up interval in core-clock cycles.
+//   tx_sleep_time_i - Transmitter sleep interval in core-clock cycles.
+//   tx_bf_sync_o - Transmitter synchronization output.
+//   tx_clk_buf_en_o - Transmitter clock-buffer enable.
+//   tx_sync_buf_en_o - Transmitter sync-buffer enable.
+//   tx_tr_en_o - Transmitter enable output.
+//   refresh_en_i - Enable transmitter LDO refreshing.
+//   tr_en_period_i - Transmitter refresh period in core-clock cycles.
+//   tr_en_on_time_i - Transmitter refresh on-time in core-clock cycles.
+//   afe_wake_up_time_i - AFE wake-up interval in core-clock cycles.
+//   afe_clk_on_time_i - AFE clock-on interval in core-clock cycles.
+//   afe_data_acq_time_i - AFE data-acquisition interval in core-clock cycles.
+//   afe_tx_trig_o - AFE transmit-trigger output.
+//   afe_tx_trig_buf_en_o - AFE trigger-buffer enable.
+//   afe_clk_buf_en_o - AFE clock-buffer enable.
+//   afe_fast_pdn_o - AFE fast power-down control.
+// -----------------------------------------------------------------------------
+
 // FSM-controlled output-register wrapper for waveform_generator.
 //
 // Internal US/OA timing remains in waveform_generator. External OA uses the
@@ -97,7 +162,6 @@ module waveform_generator_fsm (
 
     waveform_generator waveform_gen (
     .clk_i                (clk_i),
-
     .rst_ni               (rst_ni),
 
     // General signals

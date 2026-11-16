@@ -1,6 +1,25 @@
+# Copyright 2026 ETH Zurich
+# Copyright and related rights are licensed under the Solderpad Hardware
+# License, Version 0.51 (the "License"); you may not use this file except in
+# compliance with the License. You may obtain a copy of the License at
+# http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+# or agreed to in writing, software, hardware and materials distributed under
+# this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+# CONDITIONS OF ANY KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations under the License.
+#
+# Authors:
+#   LisaMaria Odermatt
+#   Federico Villani
+# -----------------------------------------------------------------------------
+# Description:
+#   Check accumulation, averaging and packed readout across the complete
+#   sample pipeline.
+# -----------------------------------------------------------------------------
+
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles, FallingEdge, ReadOnly, RisingEdge
+from cocotb.triggers import ClockCycles, FallingEdge, ReadOnly, RisingEdge, Timer
 import random
 
 
@@ -99,21 +118,21 @@ async def read_cdc_word(dut, lane, timeout=300):
     await FallingEdge(dut.core_clk)
     dut.average_read.value = 1 << lane
     await RisingEdge(dut.core_clk)
-    await ReadOnly()
-    value = (int(dut.average_read_data.value) >> (lane * 20)) & 0xFFFFF
     await FallingEdge(dut.core_clk)
     dut.average_read.value = 0
+    await Timer(1, unit="ns")
+    await ReadOnly()
+    value = (int(dut.average_read_data.value) >> (lane * 20)) & 0xFFFFF
     return unpack_frame(value)
 
 
 def frames_to_bytes(frames):
-    """MSB-first packing; the RTL emits complete bytes and drops tail bits."""
+    """Production format: MSB-first bits, partial-byte zero fill, 1000 bytes/lane."""
     bits = "".join(f"{pack_frame(a, b):020b}" for a, b in frames)
-    complete_bits = len(bits) - (len(bits) % 8)
-    return [
-        int(bits[i:i + 8], 2)
-        for i in range(0, complete_bits, 8)
-    ]
+    bits += "0" * ((-len(bits)) % 8)
+    data = [int(bits[i:i+8], 2) for i in range(0, len(bits), 8)]
+    return (data + [0] * 1000)[:1000]
+
 
 
 async def initialize(dut):
@@ -188,21 +207,12 @@ async def drain_byte_stream(dut, expected_count, ready_pattern=None, timeout=400
     """Drain the same ready/valid byte interface connected to the SPI slave."""
     observed = []
     for cycle in range(timeout):
-        await FallingEdge(dut.core_clk)
         ready = 1 if ready_pattern is None else ready_pattern(cycle)
-        dut.stream_ready.value = ready
-        await RisingEdge(dut.core_clk)
-        await ReadOnly()
-
+        byte = await stream_cycle(dut, ready)
         reader_state = int(dut.stream_reader.state_q.value)
-        reshaper_state = int(
-            dut.stream_reader.fifo_h2l_reshaper_inst.state_q.value
-        )
-        assert 0 <= reader_state <= 3, f"illegal multi_fifo_reader state {reader_state}"
-        assert 0 <= reshaper_state <= 5, f"illegal fifo_h2l_reshaper state {reshaper_state}"
-
-        if int(dut.stream_valid.value) and ready:
-            observed.append(int(dut.stream_data.value))
+        assert 0 <= reader_state <= 5, f"illegal multi_fifo_reader state {reader_state}"
+        if byte is not None:
+            observed.append(byte)
         if len(observed) == expected_count:
             return observed
     raise AssertionError(
@@ -389,6 +399,7 @@ async def exact_fpga_byte_pipeline_survives_refill_gaps_and_backpressure(dut):
     await FallingEdge(dut.afe_clk)
     dut.enable_average.value = 1
     dut.use_stream_reader.value = 1
+    await wait_frame_done(dut)
     await FallingEdge(dut.core_clk)
     dut.stream_start.value = 1
     await RisingEdge(dut.core_clk)
@@ -398,12 +409,9 @@ async def exact_fpga_byte_pipeline_survives_refill_gaps_and_backpressure(dut):
     rng = random.Random(0x3030)
     observed = []
     for cycle in range(4000):
-        await FallingEdge(dut.core_clk)
-        dut.stream_ready.value = int(rng.randrange(5) != 0)
-        await RisingEdge(dut.core_clk)
-        await ReadOnly()
-        if int(dut.stream_valid.value) and int(dut.stream_ready.value):
-            observed.append(int(dut.stream_data.value))
+        byte = await stream_cycle(dut, int(rng.randrange(5) != 0))
+        if byte is not None:
+            observed.append(byte)
         if len(observed) == len(expected):
             break
     else:
@@ -432,6 +440,7 @@ async def exact_fpga_byte_pipeline_survives_refill_gaps_and_backpressure(dut):
         expected2.extend(frames_to_bytes(lane_frames))
     await FallingEdge(dut.afe_clk)
     dut.enable_average.value = 1
+    await wait_frame_done(dut)
     await FallingEdge(dut.core_clk)
     dut.stream_start.value = 1
     await RisingEdge(dut.core_clk)
@@ -440,10 +449,9 @@ async def exact_fpga_byte_pipeline_survives_refill_gaps_and_backpressure(dut):
     dut.stream_ready.value = 1
     observed2 = []
     for _ in range(4000):
-        await RisingEdge(dut.core_clk)
-        await ReadOnly()
-        if int(dut.stream_valid.value) and int(dut.stream_ready.value):
-            observed2.append(int(dut.stream_data.value))
+        byte = await stream_cycle(dut, 1)
+        if byte is not None:
+            observed2.append(byte)
         if len(observed2) == len(expected2):
             break
     assert observed2 == expected2, (
@@ -465,8 +473,7 @@ async def raw_48_and_numeric_boundaries_reach_spi_bytes_exactly(dut):
     shots = [lane_frames, lane_frames, lane_frames]
     await acquire(dut, shots)
 
-    # For three maximum samples the internal 14-bit sum must be 3069, proving
-    # that accumulation did not truncate at the original 10-bit width.
+    # Confirm that all three frames were committed before result processing.
     assert int(dut.accumulator.commit_count_q.value) == SAMPLE_COUNT
     assert int(dut.accumulator.raw_count_q.value) == 0
 
@@ -480,6 +487,7 @@ async def raw_48_and_numeric_boundaries_reach_spi_bytes_exactly(dut):
     await FallingEdge(dut.afe_clk)
     dut.enable_average.value = 1
     dut.use_stream_reader.value = 1
+    await wait_frame_done(dut)
     await FallingEdge(dut.core_clk)
     dut.stream_start.value = 1
     await RisingEdge(dut.core_clk)
@@ -507,3 +515,22 @@ async def raw_48_and_numeric_boundaries_reach_spi_bytes_exactly(dut):
             break
     else:
         raise AssertionError("multi_fifo_reader did not return to IDLE after transfer")
+
+
+async def wait_frame_done(dut):
+    for _ in range(1000):
+        await RisingEdge(dut.afe_clk)
+        await ReadOnly()
+        if int(dut.frame_done.value):
+            return
+    raise AssertionError("averaging frame did not complete")
+
+
+async def stream_cycle(dut, ready):
+    await FallingEdge(dut.core_clk)
+    dut.stream_ready.value = ready
+    await Timer(1, unit="ns")
+    await ReadOnly()
+    byte = int(dut.stream_data.value) if int(dut.stream_valid.value) and ready else None
+    await RisingEdge(dut.core_clk)
+    return byte

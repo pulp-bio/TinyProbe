@@ -1,3 +1,45 @@
+// Copyright 2024-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Read enabled lane FIFOs sequentially and pack their data into a
+//   ready/valid output stream.
+//
+// Parameters:
+//   N_FIFOS - Number of lane FIFOs.
+//   IN_DATA_WIDTH - Input word width per FIFO.
+//   OUT_DATA_WIDTH - Output stream word width.
+//   READ_CNT_WIDTH - FIFO read-count width.
+//
+// Ports:
+//   clk_i - Module clock.
+//   rst_ni - Active-low reset.
+//   start_i - Start request.
+//   read_cnt_i - FIFO words to read per enabled lane.
+//   busy_o - Operation in progress.
+//   fifos_en_i - Enabled lane mask.
+//   fifos_empty_i - Per-lane FIFO empty flags.
+//   fifos_data_i - Packed data from the lane FIFOs.
+//   fifos_read_req_o - Per-lane FIFO read requests.
+//   data_o - Output data word.
+//   valid_o - Output data valid.
+//   ready_i - Output consumer ready.
+//   debug_word_load_o - Diagnostic pulse when an input FIFO word is loaded.
+//   debug_word_data_o - Input FIFO word observed by the diagnostic.
+// -----------------------------------------------------------------------------
+
 module multi_fifo_reader #(
     parameter integer N_FIFOS  = 16,
     parameter integer IN_DATA_WIDTH = 20,
@@ -17,7 +59,6 @@ module multi_fifo_reader #(
     input logic  [N_FIFOS - 1:0]                         fifos_empty_i,
     input logic  [(IN_DATA_WIDTH *N_FIFOS)  - 1:0]       fifos_data_i,
     output logic [N_FIFOS - 1:0]                         fifos_read_req_o,
-    output logic [N_FIFOS - 1:0]                         fifos_rst_o,
 
     // Ready/Valid output interface
     output logic [OUT_DATA_WIDTH - 1:0]                  data_o,
@@ -50,7 +91,6 @@ module multi_fifo_reader #(
     always_comb begin
         busy_o = (state_q != IDLE);
         fifos_read_req_o = '0;
-        fifos_rst_o = '0;
         valid_o = 1'b0;
         data_o = '0;
         debug_word_load_o = (state_q == READ_RETURN);

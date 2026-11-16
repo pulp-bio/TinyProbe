@@ -1,10 +1,5 @@
 # Time Gain Compensation (TGC) RTL module for TI AFEs
-This project implement hardware RTL module that produces control signals for Texas Instruments AFE5832LP required for Time Gain Compensation.
-### Structure of the project
-- src - source RTL files
-- tests - verification tests
-- vivado_test_files - additianal source files and constraints for vivado project
-
+This project implement hardware RTL module that produces control signals for Texas Instruments AFE IC required for Time Gain Compensation.
 ### Short description of the current design
 User provides the following inputs:
 - clk_i,
@@ -29,9 +24,4 @@ User provides the following inputs:
 7. The system waits for **delay_finish_i** cycles
 8. Finally, system returns to the state 1.
 
-![Simulation waveform](images/test_waveform.png "Simulation waveform")
- 
-### Requirements to run tests:
-1. Python module cocotb 1.4.0
-2. cocotb-spi extension
-https://github.com/Martoni/cocotbext-spi
+See [FPGA tests](../../tests/README.md) for the current test commands.

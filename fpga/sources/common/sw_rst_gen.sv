@@ -1,3 +1,31 @@
+// Copyright 2020-2021 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+// -----------------------------------------------------------------------------
+// Description:
+//   Generate complementary software-reset pulses from a trigger.
+//
+// Parameters:
+//   RESET_LENGTH_CYCLES - Software-reset pulse length in clock cycles.
+//
+// Ports:
+//   clk_i - Module clock.
+//   rst_ni - Active-low reset.
+//   trig_in - Trigger input.
+//   sw_rst_no - Active-low software-reset output.
+//   sw_rst_o - Active-high software-reset output.
+//   busy_o - Operation in progress.
+// -----------------------------------------------------------------------------
+
 module sw_rst_gen  #(
     parameter integer RESET_LENGTH_CYCLES = 20
 ) (

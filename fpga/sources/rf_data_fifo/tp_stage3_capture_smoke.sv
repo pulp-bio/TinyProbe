@@ -1,4 +1,45 @@
-// Author: Soumyo Bhattacharjee
+// Copyright 2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Soumyo Bhattacharjee
+//   LisaMaria Odermatt
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Exercise the AFE frame-clock capture path with deterministic lane-zero
+//   data and diagnostic state outputs.
+//
+// Parameters:
+//   N_LANES - Number of data lanes.
+//   SAMPLE_WIDTH - Packed frame width per lane.
+//
+// Ports:
+//   frame_clk_i - AFE frame clock.
+//   rst_ni - Active-low reset.
+//   enable_i - Block enable.
+//   wr_done_i - Capture FIFO write completion.
+//   sample_accepted_i - Capture sample accepted indication.
+//   fifo_reset_o - Sample FIFO reset request.
+//   start_capture_o - Acquisition-start command.
+//   first_shot_o - First-shot indication for a new accumulation.
+//   fifo_data_o - Deterministic capture-test lane data.
+//   fifo_wr_en_o - Sample FIFO write enable.
+//   req_seen_o - Capture-test request observed.
+//   done_o - Operation complete.
+//   state_o - Capture-test controller state.
+//   frame_gray_o - Gray-coded capture-test frame counter.
+//   enable_meta_o - Enable synchronizer stage observations.
+//   enable_sync_o - Enable synchronizer stage observations.
+// -----------------------------------------------------------------------------
+
 // Stage-3A capture-path smoke-test controller.
 //
 // This block deliberately drives the production rx_fifo_v3 write port from
@@ -8,8 +49,7 @@
 // It does not start the FIFO reader or the QSPI stream transaction.
 module tp_stage3_capture_smoke #(
     parameter int N_LANES       = 16,
-    parameter int SAMPLE_WIDTH  = 20,
-    parameter logic [SAMPLE_WIDTH-1:0] SAMPLE_DATA = 20'hA_53C9
+    parameter int SAMPLE_WIDTH  = 20
 ) (
     input  logic                              frame_clk_i,
     input  logic                              rst_ni,

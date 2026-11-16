@@ -1,3 +1,34 @@
+// Copyright 2021-2026 ETH Zurich
+// Copyright and related rights are licensed under the Solderpad Hardware
+// License, Version 0.51 (the "License"); you may not use this file except in
+// compliance with the License. You may obtain a copy of the License at
+// http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+// or agreed to in writing, software, hardware and materials distributed under
+// this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+//
+// Authors:
+//   Sergei Vostrikov
+//   Federico Villani
+// -----------------------------------------------------------------------------
+// Description:
+//   Deserialize one AFE LVDS lane on both bit-clock edges and align it to the
+//   frame clock.
+//
+// Parameters:
+//   BITS_PER_FRAME - Serial bits in each parallel frame.
+//   FRAME_SKEW - Bit offset passed to the frame aligner.
+//
+// Ports:
+//   ser_data_i - Serial AFE data input.
+//   bit_clk_i - AFE DDR bit clock.
+//   frame_clk_i - AFE frame clock.
+//   en_i - Block enable.
+//   rst_ni - Active-low reset.
+//   data_o - Output data word.
+// -----------------------------------------------------------------------------
+
 module ti_afe_lvds_rx #(
     parameter int BITS_PER_FRAME = 20,
     parameter int FRAME_SKEW = 0
@@ -12,18 +43,15 @@ module ti_afe_lvds_rx #(
     output logic [BITS_PER_FRAME-1:0] data_o
 );
 
-    logic reg_clr;
     logic qr, qf;
     logic [BITS_PER_FRAME/2 - 1:0] reg_r_data, reg_f_data;
     logic [BITS_PER_FRAME - 1:0] shift_regs_data;
 
-    assign reg_clr = ~rst_ni;
 
     ddr_reg_wrapper ddr_reg (
         .d_i       (ser_data_i),
         .clk_i     (bit_clk_i),
         .clk_en_i  (en_i),
-        .clr_i     (reg_clr),
         .qr_o      (qr),
         .qf_o      (qf)
     );
@@ -69,16 +97,5 @@ module ti_afe_lvds_rx #(
         .rst_ni        (rst_ni),
         .data_o        (data_o)
     );
-
-    // // Latch the data by frame clock
-    // always_ff @(posedge frame_clk_i, negedge rst_ni) begin
-    //     if (~rst_ni) begin
-    //         data_o <= '0;
-    //     end else begin
-    //         if (en_i) begin
-    //             data_o <= shift_regs_data;
-    //         end
-    //     end
-    // end
 
 endmodule

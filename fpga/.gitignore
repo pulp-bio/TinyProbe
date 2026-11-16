@@ -30,21 +30,9 @@ modelsim.ini
 results.xml
 **__pycache__/
 **sim_build/
-<<<<<<< HEAD
-**work/*
-!project/component/work/  # Negate the exclusion for this specific folder
+**/work/
 *.mti
 *.vstf
-modelsim.ini
 transcript
-=======
-**work/
-*.mti
-*.vstf
-modelsim.ini
-transcript
-
-# Submodules
-sources/ti_afe_lvds_rx/
-sources/ti_afe_tgc/
->>>>>>> origin/dual_spi_merge
+project/*.prjx
+project/libero_setup_info.txt
