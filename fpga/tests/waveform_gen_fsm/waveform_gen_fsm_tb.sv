@@ -66,7 +66,6 @@ module waveform_gen_fsm_tb;
         .abort_external_i(1'b0),
         .oa_mode_i(1'b0),
         .oa_pulse_width_cycles_i(16'd0),
-        .core_clk_fast_i(1'b0),
         .period_done_o(period_done),
         .fifo_start_capture_o(fifo_start_capture),
         .fifo_rst_o(fifo_rst),

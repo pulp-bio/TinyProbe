@@ -36,7 +36,6 @@
 //   abort_external_i - Abort an external acquisition sequence.
 //   external_debug_o - External acquisition diagnostic state.
 //   external_input_debug_o - External acquisition diagnostic state.
-//   core_clk_fast_i - Indicate the faster core-clock setting.
 //   period_done_o - Acquisition period terminal-count indication.
 //   fifo_start_capture_o - Start the sample FIFO capture.
 //   fifo_rst_o - Sample FIFO reset request.
@@ -87,7 +86,6 @@ module waveform_generator_fsm (
     input  logic        abort_external_i,
     output logic [31:0] external_debug_o,
     output logic [31:0] external_input_debug_o,
-    input  logic        core_clk_fast_i,
     // Public terminal-count event from waveform_generator.
     output logic        period_done_o,
 
@@ -453,10 +451,8 @@ module waveform_generator_fsm (
                 ext_duration<=afe_data_acq_time_i==0 ? 16'd1 : afe_data_acq_time_i;
                 // Keep clocks running while receiver powers up, with the same
                 // minimum 50 us clock settling and 3 us wake-up as normal setup.
-                ext_count <= (afe_clk_on_time_i < (core_clk_fast_i ? 1000 : 500) ?
-                    (core_clk_fast_i ? 1000 : 500) : afe_clk_on_time_i) +
-                    (afe_wake_up_time_i < (core_clk_fast_i ? 60 : 30) ?
-                    (core_clk_fast_i ? 60 : 30) : afe_wake_up_time_i) + 16;
+                ext_count <= (afe_clk_on_time_i < 500 ? 500 : afe_clk_on_time_i) +
+                    (afe_wake_up_time_i < 30 ? 30 : afe_wake_up_time_i) + 16;
                 ext_ignored<=0;
             end else begin
                 if (ext_edge && ext_state!=EXT_WAIT && external_active && ext_ignored!=16'hffff)

@@ -261,7 +261,6 @@ module tiny_probe_top#(
     // MUX cintrols for multiple clocks
     logic pll_tx_clk_mux_ctrl;
     logic pll_afe_clk_mux_ctrl;
-    logic pll_core_clk_mux_ctrl;
     // Enable signals
     logic pll_tx_bf_clk_en;
     logic pll_afe_clk_en;
@@ -308,7 +307,7 @@ module tiny_probe_top#(
 
         .NGMUX2_ARST_N   (rst_ni),
         .NGMUX2_HOLD_N   (pll_ngmux_hold_n),
-        .NGMUX2_SEL      (pll_core_clk_mux_ctrl),
+        .NGMUX2_SEL      (1'b0), // Fixed 10 MHz waveform/control clock.
 
         .PLL_ARST_N      (pll_arst_n),
         .PLL_POWERDOWN_N (pll_powerdown_n),
@@ -398,7 +397,6 @@ module tiny_probe_top#(
         .abort_external_i     (config_regs[10][4] && config_regs[10][5]),
         .external_debug_o     (external_debug),
         .external_input_debug_o(external_input_debug),
-        .core_clk_fast_i      (config_regs[1][2]),
         .n_shots_i            (n_shots),
         .fifo_rd_busy_i       (fifo_reader_busy),
         .period_done_o        (),
@@ -1052,7 +1050,6 @@ module tiny_probe_top#(
     // GL1 is the existing 20/60 MHz PLL output.  Select its 60 MHz input so
     // the QSPI transport/register-bank test domain has a deterministic clock.
     assign pll_afe_clk_mux_ctrl  = 1'b1;
-    assign pll_core_clk_mux_ctrl = config_regs[PLL_CONFIG_REG][2];
 
     // Keep GL0 / tx_bf_clk continuously enabled during QSPI bring-up.  Driving
     // the FCCC clock-gate enable from the 60 MHz register domain creates a

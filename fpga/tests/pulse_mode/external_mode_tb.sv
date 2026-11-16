@@ -28,7 +28,7 @@ waveform_generator_fsm dut(
  .clk_i(clk),.rst_ni(rst),
  .sync_period_i(16'd1000),.start_cap_time_i(16'd0),.capture_delay_i(16'd10),
  .start_capture_i(arm),.n_shots_i(8'd3),.fifo_rd_busy_i(1'b0),
- .oa_pulse_width_cycles_i(16'd0),.oa_mode_i(1'b1),.core_clk_fast_i(1'b0),.external_mode_i(1'b1),
+ .oa_pulse_width_cycles_i(16'd0),.oa_mode_i(1'b1),.external_mode_i(1'b1),
  .external_trigger_i(ext),.external_sample_clk_i(fastclk),.capture_done_i(done),
  .abort_external_i(abort_rx),.external_debug_o(debug),
  .tx_wake_up_time_i(8'd100),.tx_sleep_time_i(8'd32),.refresh_en_i(1'b1),

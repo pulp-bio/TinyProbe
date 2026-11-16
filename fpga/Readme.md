@@ -15,6 +15,7 @@ This repository contains RTL, constraints, simulation tests, and a UDP debugging
 | Generated project | `Projects/tiny_probe/tiny_probe.prjx` under `fpga/` |
 | Libero | SoC 2026.1 (2026.1.0.17) |
 | AFE link | AFE IC, 10-bit, 10X serialization, 1X lanes: 600 Mbps per lane, DCLK 300 MHz, FCLK 30 MHz (60 MHz ADC clock from `Clock_gen`) |
+| Control clock | Fixed 10 MHz; register 1 bit 2 is reserved |
 | FPGA SPI clock | 1 MHz configured in firmware for bring-up, 10 MHz interface limit |
 | Simulation | Just, Python/Cocotb, QuestaSim |
 

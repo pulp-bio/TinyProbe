@@ -36,7 +36,7 @@ async def reset_dut(dut):
 async def fsm_counts_complete_shots_and_applies_control_modes(dut):
     """Check the remaining-shot counter, final transition, and output modes."""
 
-    cocotb.start_soon(Clock(dut.clk, 10, units="ns").start())
+    cocotb.start_soon(Clock(dut.clk, 100, units="ns").start())
 
     dut.sync_period.value = 300
     dut.start_cap_time.value = 0

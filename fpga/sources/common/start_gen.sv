@@ -34,7 +34,7 @@ module start_gen (
     output logic        busy_o
 );
 
-    // Stretch a command across the 60 MHz transport -> 10/20 MHz waveform
+    // Stretch a command across the 60 MHz transport -> 10 MHz waveform
     // clock crossing, then return low so the next command has a rising edge.
     // Previously start_q latched high until global reset, preventing rearming.
     logic [5:0] cycles_left_q;

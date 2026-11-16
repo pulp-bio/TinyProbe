@@ -31,7 +31,7 @@ create_clock -name {spi_clk_i} -period 100 -waveform {50 0 } [ get_ports { spi_c
 create_clock -ignore_errors -name {crystal_clk_i} -period 62.5 [ get_pins { ext_osc/EXT_OSC_0/I_XTLOSC/CLKOUT } ]
 create_generated_clock -name {tx_bf_clk} -multiply_by 75 -divide_by 12 -source [ get_pins { pll_clk_gen/Clock_gen_0/CCC_INST/XTLOSC } ] -phase 0 [ get_pins { pll_clk_gen/Clock_gen_0/CCC_INST/GL0 } ]
 create_generated_clock -name {afe_clk} -multiply_by 75 -divide_by 20 -source [ get_pins { pll_clk_gen/Clock_gen_0/CCC_INST/XTLOSC } ] -phase 0 [ get_pins { pll_clk_gen/Clock_gen_0/CCC_INST/GL1 } ]
-create_generated_clock -name {core_clk} -multiply_by 75 -divide_by 60 -source [ get_pins { pll_clk_gen/Clock_gen_0/CCC_INST/XTLOSC } ] -phase 0 [ get_pins { pll_clk_gen/Clock_gen_0/CCC_INST/GL2 } ]
+create_generated_clock -name {core_clk} -multiply_by 75 -divide_by 120 -source [ get_pins { pll_clk_gen/Clock_gen_0/CCC_INST/XTLOSC } ] -phase 0 [ get_pins { pll_clk_gen/Clock_gen_0/CCC_INST/GL2 } ]
 # Set output delay constraints
 create_generated_clock -name {tx_bf_clk_out} -divide_by 1 -source [ get_pins { tx_chip_clk_obuf/PAD } ] [ get_ports { tx_bf_clk_o } ]
 create_generated_clock -name {afe_clk_out} -divide_by 1 -source [ get_pins { afe_clk_obuf/PAD } ] [ get_ports { afe_clk_o } ]
