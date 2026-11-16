@@ -80,7 +80,7 @@ For deeper subsystem detail, continue with [Hardware & Control](hardware-control
 | System behavior | [System Overview](index.md) | [Acquisition Timing](acquisition-timing.md) |
 | Host software | [Software Overview](../software/index.md) | `software/` |
 | Firmware | [Firmware Overview](../firmware/index.md) | `firmware/`, especially methods and HAL drivers |
-| Gateware | `fpga/Readme.md` | `fpga/Top/tiny_probe/README.md`; MCU integration pending |
+| Gateware | `fpga/README.md` | `fpga/Top/tiny_probe/hog.conf` and `fpga/tests/README.md` |
 | Hardware control | [Hardware & Control](hardware-control.md) | Firmware mux/power drivers and FPGA SPI demux logic |
 
 ## Traceability Hints

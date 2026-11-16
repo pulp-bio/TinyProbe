@@ -18,3 +18,8 @@
 [submodule "firmware/vendor/nanopb"]
 	path = firmware/vendor/nanopb
 	url = https://github.com/nanopb/nanopb.git
+
+[submodule "Hog"]
+	path = fpga/Hog
+	url = https://gitlab.com/hog-cern/Hog.git
+	branch = fix/libero-compatibility

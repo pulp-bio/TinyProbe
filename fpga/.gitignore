@@ -1,3 +1,7 @@
+# Hog project and output folders; Libero regenerates the vendor cores here.
+/Projects/
+/bin/
+
 # Libero
 project/designer/
 project/synthesis/

@@ -12,7 +12,7 @@ This repository contains RTL, constraints, simulation tests, and a UDP debugging
 | --- | --- |
 | FPGA | Microchip IGLOO2; Libero device identifier `PA4MGL5000_N`, package `vf400` |
 | Top module | `tiny_probe_top` in `sources/common/tiny_probe_top_v2.sv` |
-| Generated project | `Projects/tiny_probe/tiny_probe.prjx` at the repository root |
+| Generated project | `Projects/tiny_probe/tiny_probe.prjx` under `fpga/` |
 | Libero | SoC 2026.1 (2026.1.0.17) |
 | AFE link | AFE IC, 10-bit, 10X serialization, 1X lanes: 600 Mbps per lane, DCLK 300 MHz, FCLK 30 MHz (60 MHz ADC clock from `Clock_gen`) |
 | FPGA SPI clock | 1 MHz configured in firmware for bring-up, 10 MHz interface limit |
@@ -34,7 +34,7 @@ tests/                      Cocotb and standalone SystemVerilog tests
 tools/                      Host-side UDP acquisition debugger
 ```
 
-Hog generates vendor cores from the repository's `Top/tiny_probe/post-creation.tcl`.
+Hog generates vendor cores from `fpga/Top/tiny_probe/post-creation.tcl`.
 
 ### Board integration and clock domains
 
@@ -104,7 +104,27 @@ An optional diagnostic trace records up to 16 lane-0 entries at the shot, accumu
 
 ## Build
 
-See [Hog build instructions](../../Top/tiny_probe/README.md).
+Use Git Bash with the following prerequisites.
+
+- Libero SoC 2026.1.0.17 with `Designer/bin` on `PATH` and the licence in `LM_LICENSE_FILE`.
+- Tcllib 2.0 with `HOG_TCLLIB_PATH` pointing to its `modules` directory.
+- Libero Vault cores FCCC 2.0.201, OSC 2.0.101, and COREFIFO 2.8.101.
+
+Initialize submodules once after cloning, from the repository root.
+
+```bash
+git submodule update --init --recursive
+```
+
+Build from `fpga/`.
+
+```bash
+./Hog/Do WORKFLOW tiny_probe -recreate
+```
+
+Open the generated project at `Projects/tiny_probe/tiny_probe.prjx`. Check the setup and hold reports under `bin/`.
+
+The pinned Hog revision includes Libero fixes and supports version tracking with the build rooted in `fpga/`.
 
 ## AFE capture timing (600 Mbps)
 
@@ -114,11 +134,11 @@ The AFE receiver (`afe_rx`, `ti_afe_lvds_rx`) captures each data lane with an I/
 | --- | --- | --- |
 | Clocks and AFE input window | `constraint/timing_constraints.sdc` | DCLK 3.333 ns, FCLK 33.333 ns; input delay min UI/2 − 0.4 ns and max UI/2 + 0.4 ns on both DCLK edges; provisional 0.4 ns DCLK-to-FCLK uncertainty |
 | FPGA input delay taps | `constraint/io/phys_constr_gen_v2_igloo.pdc` | `-IN_DELAY 17` on both pins of lanes 1 and 3, `18` on all other data lanes, `0` on DCLK and FCLK |
-| Placement | `Top/tiny_probe/hog.conf` in the repository root | High effort, timing-driven placement and hold repair|
-| Operating conditions | `Top/tiny_probe/post-creation.tcl` in the repository root | FPGA junction 10/25/60 °C, all process corners, core 1.14 to 1.26 V |
+| Placement | `fpga/Top/tiny_probe/hog.conf` | High effort, timing-driven placement and hold repair|
+| Operating conditions | `fpga/Top/tiny_probe/post-creation.tcl` | FPGA junction 10/25/60 °C, all process corners, core 1.14 to 1.26 V |
 
 
-Check setup and hold reports in `bin/tiny_probe-<version>/` after each build.
+Check setup and hold reports in `fpga/bin/tiny_probe-<version>/` after each build.
 
 
 
@@ -131,7 +151,7 @@ If synthesis reports an undefined module such as `Clock_gen`, right-click the co
 If the component has a question mark or cannot be generated, use **File > Import** to import its component definition. For `Clock_gen`, select:
 
 ```text
-project\component\work\Clock_gen\Clock_gen.cxf
+Projects\tiny_probe\component\work\Clock_gen\Clock_gen.cxf
 ```
 
 Repeat the import/generation procedure for other missing components using their corresponding `.cxf` files.
@@ -142,17 +162,17 @@ This project requires **COREFIFO 2.8.101**. If Design Hierarchy shows a differen
 
 ### Unexpected signals or component interfaces
 
-Check the source path of the component Libero is using; it must be under `project\component\work`. Older plain-HDL copies of `Clock_gen` and `RF_DATA_FIFO` from Libero v12.6 used to sit in `project\hdl`; the `RF_DATA_FIFO` copy lacks the `DVLD` port ("Port DVLD does not exist"). They were removed, so if such a copy reappears, delete it and regenerate the component.
+Check the source path of the component Libero is using; it must be under `Projects\tiny_probe\component\work`. Older plain-HDL copies of `Clock_gen` and `RF_DATA_FIFO` from Libero v12.6 used to sit in `project\hdl`; the `RF_DATA_FIFO` copy lacks the `DVLD` port ("Port DVLD does not exist"). They were removed, so if such a copy reappears, delete it and regenerate the component.
 
 ### Missing FIFO simulation files
 
 The generated FIFO HDL is under:
 
 ```text
-project\component\work\RF_DATA_FIFO\RF_DATA_FIFO_0\rtl\vlog\core
+Projects\tiny_probe\component\work\RF_DATA_FIFO\RF_DATA_FIFO_0\rtl\vlog\core
 ```
 
-and the generated FIFO testbench under `project\component\work\RF_DATA_FIFO\RF_DATA_FIFO_0\rtl\vlog\test\user`. Ensure the simulation configuration points to these files.
+and the generated FIFO testbench under `Projects\tiny_probe\component\work\RF_DATA_FIFO\RF_DATA_FIFO_0\rtl\vlog\test\user`. Ensure the simulation configuration points to these files.
 
 
 ## Simulation and tests

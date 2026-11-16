@@ -1,0 +1,31 @@
+# Author: Federico Villani
+sources/rf_data_fifo/tp_stage3_capture_smoke.sv
+sources/common/afe_rx.sv
+sources/common/ibuf_diff.sv
+sources/registers/reg_default_values.sv
+sources/common/spi_demux.sv
+sources/common/tiny_probe_top_v2.sv top=tiny_probe_top
+sources/common/waveform_gen.sv
+sources/common/waveform_generator_fsm.sv
+sources/dual_spi/spi_quad_cmd_decoder.sv
+sources/dual_spi/spi_quad_controller.sv
+sources/dual_spi/spi_quad_shift_reg.sv
+sources/dual_spi/spi_quad_slave.sv
+sources/dual_spi/tinyprobe_qspi_transport.sv
+sources/dual_spi/tp_req_ack_mailbox.sv
+sources/dual_spi/tp_stream_corefifo.sv
+sources/rf_data_fifo/accumulation.sv
+sources/rf_data_fifo/async_sym_fifo_sf2.sv
+sources/rf_data_fifo/result_average_engine.sv
+sources/rf_data_fifo/sample_average_divider.sv
+sources/registers/config_reg.sv
+sources/registers/mem_mapped_regs.sv
+sources/rf_data_fifo/multi_fifo_reader.sv
+sources/common/start_gen.sv
+sources/common/sw_rst_gen.sv
+sources/ti_afe_lvds_rx/src/ddr_reg_wrapper_sf2.sv
+sources/ti_afe_lvds_rx/src/frame_aligner.sv
+sources/ti_afe_lvds_rx/src/shift_reg.sv
+sources/ti_afe_lvds_rx/src/ti_afe_lvds_rx.sv
+sources/ti_afe_tgc/src/integer_divider.sv
+sources/ti_afe_tgc/src/ti_afe_tgc.sv

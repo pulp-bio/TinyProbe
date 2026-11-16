@@ -27,4 +27,4 @@ test *args:
 
 # Build with the native Hog workflow.
 build:
-    cd .. && ./Hog/Do WORKFLOW tiny_probe -recreate
+    ./Hog/Do WORKFLOW tiny_probe -recreate
