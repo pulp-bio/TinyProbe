@@ -4,6 +4,7 @@ Copyright (C) 2026 ETH Zurich. All rights reserved.
 Authors:
     - Sergei Vostrikov, ETH Zurich
     - Cedric Hirschi, ETH Zurich
+    - Federico Villani, ETH Zurich
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -49,10 +50,8 @@ class HAL_FPGA_ClockingTiming:
     """Slow AFE frequency"""
     FREQ_AFE_HIGH = 30e6
     """Fast AFE frequency"""
-    FREQ_FPGA_CORE_LOW = 10e6
-    """Slow FPGA Core frequency"""
-    FREQ_FPGA_CORE_HIGH = 20e6
-    """Fast FPGA Core frequency"""
+    FREQ_FPGA_CORE = 10e6
+    """Fixed FPGA core frequency"""
 
     _FIFO_START_CAPTURE_DELAY_CYCLES = 5 + 2
     """FIFO start capture signal is delayed (with resp to AFE trig.) by this number of FPGA core clock cycles"""
@@ -148,9 +147,6 @@ class HAL_FPGA_ClockingTiming:
             enable_buffer (Optional[bool]): If True, enable the clock buffer
             wavegen_ctrl (Optional[bool]): If True, control PLL enable from waveform generator (Otherwise, control from `enable` parameter)
 
-        Note:
-            For the `FPGA_CORE` domain, only the `fast` argument is applicable. Other parameters will be ignored.
-
         Raises:
             ValueError: If no parameters are provided or if an invalid domain is specified
         """
@@ -201,22 +197,6 @@ class HAL_FPGA_ClockingTiming:
                 if enable_buffer is not None:
                     self.regmap.lvds_ch_en.clk_ctl_afe.value = int(enable_buffer)
 
-            case self._ClockDomain.FPGA_CORE:
-                if fast is not None:
-                    self.regmap.pll_config_reg.fpga_mux.value = int(fast)
-                if enable is not None:
-                    raise ValueError(
-                        "FPGA_CORE PLL does not support manual enable/disable"
-                    )
-                if enable_buffer is not None:
-                    raise ValueError(
-                        "FPGA_CORE PLL does not support clock buffer enable/disable"
-                    )
-                if wavegen_ctrl is not None:
-                    raise ValueError(
-                        "FPGA_CORE PLL does not support waveform generator control"
-                    )
-
             case _:
                 raise ValueError(f"Invalid Clock Domain: {domain}")
 
@@ -235,8 +215,6 @@ class HAL_FPGA_ClockingTiming:
                 - enable_buffer (Optional[bool]): Whether the clock buffer is enabled
                 - wavegen_ctrl (Optional[bool]): Whether waveform generator controls the PLL
 
-        Note:
-            For the `FPGA_CORE` domain, only the `fast` value is applicable. Other values will be `None`.
         """
 
         match domain:
@@ -253,10 +231,6 @@ class HAL_FPGA_ClockingTiming:
                 enable_buffer = bool(self.regmap.lvds_ch_en.clk_ctl_afe.value)
                 wavegen_ctrl = bool(self.regmap.pll_config_reg.afe_ctrl.value)
                 return fast, enable, enable_buffer, wavegen_ctrl
-
-            case self._ClockDomain.FPGA_CORE:
-                fast = bool(self.regmap.pll_config_reg.fpga_mux.value)
-                return fast, None, None, None
 
             case _:
                 raise ValueError(f"Invalid Clock Domain: {domain}")
@@ -317,31 +291,8 @@ class HAL_FPGA_ClockingTiming:
 
     @property
     def freq_fpga_core_hz(self) -> float:
-        """FPGA core clock frequency in Hz
-
-        Valid values:
-
-        - `FREQ_FPGA_CORE_LOW`
-        - `FREQ_FPGA_CORE_HIGH`
-        """
-
-        return (
-            self.FREQ_FPGA_CORE_HIGH
-            if self._pll_get(self._ClockDomain.FPGA_CORE)[0]
-            else self.FREQ_FPGA_CORE_LOW
-        )
-
-    @freq_fpga_core_hz.setter
-    def freq_fpga_core_hz(self, freq: float) -> None:
-        if freq == self.FREQ_FPGA_CORE_HIGH:
-            self._pll_set(self._ClockDomain.FPGA_CORE, fast=True)
-        elif freq == self.FREQ_FPGA_CORE_LOW:
-            self._pll_set(self._ClockDomain.FPGA_CORE, fast=False)
-        else:
-            raise ValueError(
-                f"Invalid FPGA core frequency: {freq}. Must be either "
-                f"{self.FREQ_FPGA_CORE_LOW} or {self.FREQ_FPGA_CORE_HIGH}."
-            )
+        """Fixed FPGA core clock frequency in Hz."""
+        return self.FREQ_FPGA_CORE
 
     # -------------------------------------------------------------------------------------------
     # MARK: Settings: Wavegen

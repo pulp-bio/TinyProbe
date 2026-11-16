@@ -8,6 +8,7 @@
  *
  * @author Cédric Hirschi, ETH Zürich
  * @author Sergei Vostrikov, ETH Zürich
+ * @author Federico Villani, ETH Zurich
  * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup tinyprobe
@@ -66,7 +67,8 @@ static bool tp_fpga_dual_spi_framing_configured = false;
 // Default register values at startup
 uint32_t default_values[TP_NUM_DEFAULT_REGS] = {
     // Configure the PLL settings.
-    // All clocks mux are in default (low frequency) position
+    // TX and AFE clock muxes are in the default (low frequency) position.
+    // The FPGA core clock is fixed at 10 MHz; PLL register bit 2 is reserved.
     // PLL outputs for TX and AFE clocks are turned on
     0x00000050,
     // Enable all the channels, TX and AFE clock are permanently on

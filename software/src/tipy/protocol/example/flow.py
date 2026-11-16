@@ -3,6 +3,7 @@ Copyright (C) 2026 ETH Zurich. All rights reserved.
 
 Authors:
     - Cedric Hirschi, ETH Zurich
+    - Federico Villani, ETH Zurich
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -147,7 +148,6 @@ class ProtocolExample(ProtocolBase[ProtocolExampleConfig]):
             num_shots=config.num_shots,
             afe_clk_fast=config.afe_clk_hispeed,
             tx_bf_clk_fast=config.txbf_clk_hispeed,
-            fpga_core_clk_fast=config.fpga_clk_hispeed,
             capture_delay_afe_us=config.afe_startcapt_delay_us,
         )
         self.hw.fpga.trigger_mcu_source = config.mcu_interrupt_src

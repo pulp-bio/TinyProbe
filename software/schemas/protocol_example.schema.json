@@ -52,11 +52,6 @@
           "title": "Txbf Clk Hispeed",
           "type": "boolean"
         },
-        "fpga_clk_hispeed": {
-          "default": false,
-          "title": "Fpga Clk Hispeed",
-          "type": "boolean"
-        },
         "afe_startcapt_delay_us": {
           "default": 0,
           "title": "Afe Startcapt Delay Us",

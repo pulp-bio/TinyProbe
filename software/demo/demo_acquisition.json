@@ -23,7 +23,6 @@
         "num_shots": 100,
         "afe_clk_hispeed": false,
         "txbf_clk_hispeed": true,
-        "fpga_clk_hispeed": false,
         "afe_startcapt_delay_us": 0,
         "mcu_interrupt_src": "tx_bf_sync"
     },

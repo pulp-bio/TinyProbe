@@ -4,6 +4,7 @@ Copyright (C) 2026 ETH Zurich. All rights reserved.
 Authors:
     - Sergei Vostrikov, ETH Zurich
     - Cedric Hirschi, ETH Zurich
+    - Federico Villani, ETH Zurich
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -54,7 +55,6 @@ class HAL_FPGA(
         num_shots: int = 1,
         afe_clk_fast: bool = True,
         tx_bf_clk_fast: bool = True,
-        fpga_core_clk_fast: bool = False,
         capture_delay_afe_us: float = 0.0,
     ) -> None:
         """Generate default FPGA configuration command sequence
@@ -66,7 +66,6 @@ class HAL_FPGA(
             num_shots (int): Number of shots
             afe_clk_fast (bool): AFE PLL frequency setting (True: fast, False: slow)
             tx_bf_clk_fast (bool): TX BF PLL frequency setting (True: fast, False: slow)
-            fpga_core_clk_fast (bool): FPGA core PLL frequency setting (True: fast, False: slow)
             capture_delay_afe_us (float): AFE capture start delay in microseconds
         """
 
@@ -83,9 +82,6 @@ class HAL_FPGA(
             enable=True,
             enable_buffer=True,
         )
-
-        ## FPGA Core PLL
-        self._pll_set(self._ClockDomain.FPGA_CORE, fast=fpga_core_clk_fast)
 
         # Configure LVDS lanes
         self.lvds_lanes = lvds_lanes

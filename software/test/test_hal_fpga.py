@@ -3,6 +3,7 @@ Copyright (C) 2026 ETH Zurich. All rights reserved.
 
 Authors:
     - Cedric Hirschi, ETH Zurich
+    - Federico Villani, ETH Zurich
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -46,3 +47,13 @@ class TestHAL_FPGA:
     def test_default_setup(self, hal: HAL_FPGA):
         hal.default_setup(lvds_lanes=list(range(16)))
         # assert len(cmds) > 0
+
+    def test_fixed_core_clock_timing(self, hal: HAL_FPGA, intf: Interface):
+        # The former selector bit must not change timing conversions.
+        intf.write(register_address=1, offset=2, width=1, value=1)
+        assert hal.freq_fpga_core_hz == 10_000_000
+        hal.meas_period_us = 1000.0
+        assert hal.regmap.waveform_gen_reg_1.sync_period.value == 10_000
+        assert hal.meas_period_us == 1000.0
+        with pytest.raises(AttributeError):
+            hal.freq_fpga_core_hz = 20_000_000

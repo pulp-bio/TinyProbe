@@ -160,20 +160,6 @@ class BitFieldPLL_CONFIG_REGAfe_mux(BitField):
     _enums = None
 
 
-class BitFieldPLL_CONFIG_REGFpga_mux(BitField):
-    """BitField FPGA_MUX in Register PLL_CONFIG_REG
-
-    FPGA core clock: 0 = 10 MHz, 1 = 20 MHz.
-    """
-
-    _name = "FPGA_MUX"
-    _description = "FPGA core clock: 0 = 10 MHz, 1 = 20 MHz."
-    _reset = 0
-    _width = 1
-    _offset = 2
-    _enums = None
-
-
 class BitFieldPLL_CONFIG_REGTx_ctrl(BitField):
     """BitField TX_CTRL in Register PLL_CONFIG_REG
 
@@ -265,8 +251,6 @@ class RegisterPLL_CONFIG_REG(Register):
         self.tx_mux._set_interface(self._address, interface, self._access)
         self.afe_mux = BitFieldPLL_CONFIG_REGAfe_mux()
         self.afe_mux._set_interface(self._address, interface, self._access)
-        self.fpga_mux = BitFieldPLL_CONFIG_REGFpga_mux()
-        self.fpga_mux._set_interface(self._address, interface, self._access)
         self.tx_ctrl = BitFieldPLL_CONFIG_REGTx_ctrl()
         self.tx_ctrl._set_interface(self._address, interface, self._access)
         self.tx_en = BitFieldPLL_CONFIG_REGTx_en()

@@ -3,6 +3,7 @@ Copyright (C) 2026 ETH Zurich. All rights reserved.
 
 Authors:
     - Cedric Hirschi, ETH Zurich
+    - Federico Villani, ETH Zurich
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -30,7 +31,6 @@ class ConfigFPGA(BaseModel):
     num_shots: int = 1
     afe_clk_hispeed: bool = False
     txbf_clk_hispeed: bool = True
-    fpga_clk_hispeed: bool = False
     afe_startcapt_delay_us: int = 0
     mcu_interrupt_src: HAL_FPGA.TriggerSourceMCU = (
         HAL_FPGA.TriggerSourceMCU.MCU_INT_TX_BF_SYNC
