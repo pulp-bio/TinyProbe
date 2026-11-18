@@ -360,7 +360,7 @@ class TinyprobeMethods:
     def triggershot(
         self,
         num_shots: int = 1,
-        num_packets: int = 82,
+        num_packets: int = 0,
         delay_dcdc_off_ns: int = 6100,
         delay_read_fifo_ns: int = 200000,
         callback_id: int = 65535,
@@ -371,10 +371,10 @@ class TinyprobeMethods:
 
         Args:
             num_shots: Number of shots to trigger Defaults to 1.
-            num_packets: Number of packets to expect Defaults to 82.
+            num_packets: Read this many enabled LVDS lanes in scan order, one packet per lane, or zero for all enabled lanes Defaults to 0.
             delay_dcdc_off_ns: Delay before DCDC is disabled, in nanoseconds Defaults to 6100.
             delay_read_fifo_ns: Delay before FIFO read, in nanoseconds Defaults to 200000.
-            callback_id: Callback packet identifier (0-65535), or 65535 for no callback Defaults to 65535.
+            callback_id: Zero-based packet index in the enabled-lane stream, or 65535 for no callback Defaults to 65535.
             software_trigger: True to use a software trigger Defaults to True.
             pwd_dcdc_at_rx: True to power down DCDC during RX Defaults to True.
 
@@ -488,7 +488,7 @@ METHOD_DEFAULTS: dict[str, dict[str, Any]] = {
     "setloglevel": {},
     "triggershot": {
         "num_shots": 1,
-        "num_packets": 82,
+        "num_packets": 0,
         "delay_dcdc_off_ns": 6100,
         "delay_read_fifo_ns": 200000,
         "callback_id": 65535,

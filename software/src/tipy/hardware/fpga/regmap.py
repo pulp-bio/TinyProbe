@@ -805,13 +805,13 @@ class RegisterAFE_TX_RST_REG(Register):
 class BitFieldWAVEFORM_GEN_REG_4N_shots_to_make(BitField):
     """BitField N_SHOTS_TO_MAKE in Register WAVEFORM_GEN_REG_4
 
-    Number of acquisitions (shots) to perform.
+    Number of shots to average into one frame. Zero selects one shot.
     """
 
     _name = "N_SHOTS_TO_MAKE"
-    _description = "Number of acquisitions (shots) to perform."
+    _description = "Number of shots to average into one frame. Zero selects one shot."
     _reset = 0
-    _width = 16
+    _width = 8
     _offset = 0
     _enums = None
 

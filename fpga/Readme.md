@@ -4,7 +4,7 @@ FPGA RTL for the TinyProbe wearable ultrasound system. The FPGA controls transmi
 
 This repository contains RTL, constraints, simulation tests, and a UDP debugging tool. MCU firmware and TiPy host software are separate projects and must match the gateware's register definitions and SPI protocol.
 
-**Work in progress.** The included SiWG917 firmware uses the legacy single-SPI protocol and cannot operate this dual-SPI gateware. Programming both as-is does not give a working acquisition system. See the [branch release status](../README.md#fpga-release-status-work-in-progress) for scope, bandwidth limits, and remaining integration work.
+**Work in progress.** The accompanying SiWG917 firmware implements the dual-SPI protocol using primary SSI. See the [branch release status](../README.md#fpga-release-status-work-in-progress).
 
 ## Hardware and toolchain
 

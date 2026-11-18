@@ -3,6 +3,7 @@
 # Authors:
 #     - Sergei Vostrikov, ETH Zurich
 #     - Cedric Hirschi, ETH Zurich
+#     - Federico Villani, ETH Zurich
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -96,9 +97,9 @@ methods:
         type: H
         description: "Number of shots to trigger"
       - name: num_packets
-        default: 82
+        default: 0
         type: H
-        description: "Number of packets to expect"
+        description: "Read this many enabled LVDS lanes in scan order, one packet per lane, or zero for all enabled lanes"
       - name: delay_dcdc_off_ns
         default: 6100
         type: I
@@ -110,7 +111,7 @@ methods:
       - name: callback_id
         default: 65535
         type: H
-        description: "Callback packet identifier (0-65535), or 65535 for no callback"
+        description: "Zero-based packet index in the enabled-lane stream, or 65535 for no callback"
       - name: software_trigger
         default: true
         type: "?"

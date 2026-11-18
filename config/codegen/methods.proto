@@ -66,10 +66,10 @@ message setloglevel_args {
 // Trigger a shot
 message triggershot_args {
   uint32 num_shots = 1; // Number of shots to trigger
-  uint32 num_packets = 2; // Number of packets to expect
+  uint32 num_packets = 2; // Read this many enabled LVDS lanes in scan order, one packet per lane, or zero for all enabled lanes
   uint32 delay_dcdc_off_ns = 3; // Delay before DCDC is disabled, in nanoseconds
   uint32 delay_read_fifo_ns = 4; // Delay before FIFO read, in nanoseconds
-  uint32 callback_id = 5; // Callback packet identifier (0-65535), or 65535 for no callback
+  uint32 callback_id = 5; // Zero-based packet index in the enabled-lane stream, or 65535 for no callback
   bool software_trigger = 6; // True to use a software trigger
   bool pwd_dcdc_at_rx = 7; // True to power down DCDC during RX
 }

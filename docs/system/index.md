@@ -2,7 +2,7 @@
 
 TinyProbe is a wireless ultrasound research platform split across host software, MCU firmware, FPGA gateware, and analog front-end hardware. Start here when you need the whole system model before working on one subsystem.
 
-**Work in progress:** `feature/dual-spi` includes FPGA gateware, but the MCU firmware still uses the legacy single-SPI protocol. The acquisition flow below describes the intended system architecture; it does not work end to end with this branch's gateware/firmware pair. See the repository-root README for release scope and bandwidth limits.
+**Work in progress.** On `feature/dual-spi`, the MCU uses SSI to communicate with the FPGA over dual SPI. See the repository-root README for release scope and readout bandwidth.
 
 ```mermaid
 flowchart LR
@@ -19,7 +19,7 @@ flowchart LR
     Probe ==>|"echoes"| AFE
 
     AFE -->|"LVDS data, frame clock, bit clock"| FPGA
-    FPGA -->|"FIFO read over SPI"| MCU
+    FPGA -->|"FIFO read over dual SPI"| MCU
     MCU -->|"UDP RF packets"| Host
 
     subgraph host ["Host PC"]
@@ -44,7 +44,7 @@ flowchart LR
 | --- | --- | --- |
 | Host PC | Builds acquisition configs, writes AFE/TX/FPGA settings, receives RF data, and runs processing tools. | [Software](../software/index.md) |
 | MCU firmware | Owns Wi-Fi command and bulk links, SPI target selection, power control, FPGA FIFO readout, and command handlers. | [Firmware](../firmware/index.md) |
-| FPGA gateware | Generates shot timing, captures LVDS data, controls AFE/TX timing pins, and buffers RF samples. | `fpga/` (development branch; MCU integration pending) |
+| FPGA gateware | Generates shot timing, captures LVDS data, controls AFE/TX timing pins, and buffers RF samples. | `fpga/README.md` |
 | AFE IC | Receives analog echo signals, applies gain/TGC, digitizes data, and emits LVDS streams. | [Hardware & Control](hardware-control.md) |
 | Pulser IC | Generates transmit pulses and beamforming delays for the probe elements. | [Hardware & Control](hardware-control.md) |
 

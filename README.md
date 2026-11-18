@@ -8,7 +8,7 @@ A Wearable 32-Channel Multi-Modal Wireless Ultrasound Probe
 
 > **Implemented.** Single spi (from hte original paper) is replaced by dual spi. **Warning:** Using the dual SPI implementation with the SiW917 has a limited bandwidth due to SiWG917’s dual-SPI 10MHz limit.
 > **Work in progress.** We are upgrading the PCBs and system controller to overcome this dual-SPI limitation. 
-> **Work in progress: `feature/dual-spi`.** This branch includes FPGA gateware, but the included SiWG917 MCU firmware is currently incompatible with its dual-SPI protocol. Assembling the hardware and programming this branch as-is will **not produce a working acquisition system**. The updated SSI-based dual SPI interface will fix this incompatibility.
+> Functional, but not reccomended for high speed data acquisition needs until final release.
 
 ## Introduction
 
@@ -16,14 +16,7 @@ This repository contains ongoing work on **TinyProbe**, an advanced wearable ult
 
 ## FPGA release status (work in progress)
 
-This branch publishes FPGA RTL, pin and timing constraints, simulation tests, and a source-based Hog/Libero build. Compared with the single-SPI readout in the original TinyProbe paper, it introduces dual-SPI payload transfers to increase the FPGA-side readout bandwidth. Updating the SiWG917 MCU firmware to support this interface is planned and is not included in this release.
-
-| Interface | Raw rate | Status |
-| --- | --- | --- |
-| FPGA dual-SPI payload | At most **20 Mbps** (two bits per clock) | Requires a compatible MCU driver |
-| Included MCU single-SPI driver | At most **40 Mbps** (one bit per clock) | Uses the legacy protocol; incompatible with this gateware |
-
-The reduced bandwith with the dual spi interface is due to a limitation of the current SiWG917 MCU, which is only able to run dual and quad SPI at 1/4 of the speed of single SPI.
+This branch includes FPGA RTL, pin and timing constraints, simulation tests, and a source-based Hog/Libero build. Compared with the single-SPI readout in the original TinyProbe paper, the FPGA can transfer two payload bits per SPI clock. The SiWG917 port uses SSI for FPGA register access and acquisition streaming, and standard SPI for the AFE and transmitter. The SiWG917 limits the system's readout rate. 
 
 See the [FPGA status and build instructions](fpga/Readme.md).
 
@@ -76,7 +69,7 @@ flowchart TB
         FPGA["IGLOO 2 FPGA<br/>Gateware · fpga/ · work in progress"]
         Analog["Analog front end and pulser<br/>"]
 
-        MCU <-->|"FPGA dual-SPI · MCU update pending"| FPGA
+        MCU <-->|"FPGA dual-SPI over SSI"| FPGA
         FPGA -->|"Configuration, clocks and triggers"| Analog
         Analog -->|"LVDS · receive data"| FPGA
     end

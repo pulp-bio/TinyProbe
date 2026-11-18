@@ -18,7 +18,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import math
 from ipaddress import IPv4Address
 
 from ...control.methods import TinyprobeMethods
@@ -27,15 +26,12 @@ from ...transport.implementations.tcp import TransportTCP
 from ...transport.implementations.udp import TransportUDP
 from ...transport.transport import TransportEndpoint, TransportProtocol
 from ..protocol import ProtocolBase
-from .config import ProtocolExampleConfig
+from .config import LANE_PACKET_BYTES, SAMPLES_PER_LANE_PACKET, ProtocolExampleConfig
 
 
 class ProtocolExample(ProtocolBase[ProtocolExampleConfig]):
     config_model = ProtocolExampleConfig
     num_packets: int
-
-    TX_START_DELAY_US = 5
-    TR_SW_DELAY_US = 1.1
 
     def get_transports(self) -> tuple[TransportProtocol, TransportProtocol]:
         if self.config.transport.command_dummy:
@@ -77,69 +73,32 @@ class ProtocolExample(ProtocolBase[ProtocolExampleConfig]):
         return transport_command, transport_bulk
 
     def check_throughput(self) -> None:
-        bytes_per_shot = (
-            self.config.fpga.fifo_depth * len(self.config.fpga.lvds_lanes) * 20 / 8
+        frame_bytes = LANE_PACKET_BYTES * len(self.config.fpga.lvds_lanes)
+        duration_per_frame = frame_bytes * 8 / self.config.transport.bulk_throughput_bps
+        frame_period_s = (
+            self.config.fpga.shot_period_ms * max(1, self.config.fpga.num_shots) / 1e3
         )
-        packets_per_shot = math.ceil(
-            bytes_per_shot / self.config.transport.bulk_packet_size_bytes
-        )
-        bytes_per_shot = packets_per_shot * self.config.transport.bulk_packet_size_bytes
-        duration_per_shot = (
-            bytes_per_shot * 8 / self.config.transport.bulk_throughput_bps
-        )
-
-        if duration_per_shot > self.config.fpga.shot_period_ms / 1e3:
+        if duration_per_frame > frame_period_s:
             self.log.warning(
-                "Configured bulk transport may not be able to keep up with the acquisition"
-            )
-            self.log.warning(
-                f"Estimated time to transfer each shot is {duration_per_shot * 1e3:.2f} ms, but shot period is only {self.config.fpga.shot_period_ms} ms"
-            )
-
-            budget_bytes = (
-                self.config.fpga.shot_period_ms
-                / 1e3
-                * self.config.transport.bulk_throughput_bps
-                / 8
-            )
-            max_packets = int(
-                budget_bytes // self.config.transport.bulk_packet_size_bytes
-            )
-            max_raw_bytes = max_packets * self.config.transport.bulk_packet_size_bytes
-
-            self.log.warning("Consider reducing:")
-            ok_num_samples = (
-                max_raw_bytes * 8 // (20 * len(self.config.fpga.lvds_lanes))
-            )
-            self.log.warning(
-                f"- Number of samples (currently {self.config.fpga.fifo_depth}, max {ok_num_samples})"
-            )
-            ok_num_lanes = max_raw_bytes * 8 // (20 * self.config.fpga.fifo_depth)
-            self.log.warning(
-                f"- Number of LVDS lanes (currently {len(self.config.fpga.lvds_lanes)}, max {ok_num_lanes})"
-            )
-
-            self.log.warning("Consider increasing:")
-            self.log.warning(
-                f"- Shot period (currently {self.config.fpga.shot_period_ms} ms, min {duration_per_shot * 1e3:.2f} ms)"
-            )
-        else:
-            self.log.debug(
-                f"Estimated link congestion: {duration_per_shot / (self.config.fpga.shot_period_ms / 1e3):.1%}"
+                f"Estimated transfer time is {duration_per_frame * 1e3:.2f} ms per frame "
+                f"for an acquisition period of {frame_period_s * 1e3:.2f} ms"
             )
 
     def setup_fpga(self):
         config = self.config.fpga
+        if self.config.transport.bulk_packet_size_bytes != LANE_PACKET_BYTES:
+            raise ValueError(
+                f"Dual-SPI firmware uses {LANE_PACKET_BYTES} payload bytes per packet"
+            )
+        if not 1 <= config.fifo_depth <= SAMPLES_PER_LANE_PACKET:
+            raise ValueError(
+                f"Sample count per lane must be between 1 and {SAMPLES_PER_LANE_PACKET}"
+            )
+        if not config.lvds_lanes:
+            raise ValueError("At least one FPGA acquisition lane must be enabled")
 
         self.check_throughput()
-
-        self.num_packets = math.ceil(
-            config.fifo_depth
-            * 20
-            * len(config.lvds_lanes)
-            / 8
-            / 1000  # Firmware will convert from 1000 byte packets to the packet size specified in the firmware
-        )
+        self.num_packets = len(set(config.lvds_lanes))
 
         self.hw.fpga.default_setup(
             lvds_lanes=config.lvds_lanes,
@@ -176,37 +135,16 @@ class ProtocolExample(ProtocolBase[ProtocolExampleConfig]):
     def acquire(self):
         config = self.config.acquisition
 
-        # dcdc_delay_off_us = self.TX_START_DELAY_US + self.TR_SW_DELAY_US
-        # read_fifo_delay_us = (
-        #     3
-        #     + self.config.fpga.fifo_depth / self.hw.fpga.freq_afe_hz * 1e6
-        #     - dcdc_delay_off_us
-        # )
+        self.acquire_power_on()
+        self.methods.setloglevel(self.methods.Loglevel.INFO)
 
-        self.acquire_power_on()  # Methods 0 - 6
-
-        self.methods.setloglevel(self.methods.Loglevel.INFO)  # Method 7
-
-        if config.onboard_looping:
-            self.methods.delayms(1)  # Method 8
-            self.methods.ping()  # Method 9
-
-            self.methods.loop(
-                config.num_frames, 8
-            )  # Loop back to method 8 for num_frames times
-        else:
-            for _ in range(config.num_frames):
-                # Trigger shot does not work when the AFE and TX are not initialized
-                # self.methods.triggershot(
-                #     num_shots=self.config.fpga.num_shots,
-                #     num_packets=self.num_packets,
-                #     delay_dcdc_off_ns=int(dcdc_delay_off_us * 1e3),
-                #     delay_read_fifo_ns=int(read_fifo_delay_us * 1e3),
-                # )
-                self.methods.delayms(
-                    1
-                )  # Simulate the time it would take to acquire a shot
-                self.methods.ping()  # Simulate some communication
+        # Register 11 controls the number of averaged captures inside each returned frame.
+        frames_per_request = 256 if config.onboard_looping else 1
+        for frame_index in range(0, config.num_frames, frames_per_request):
+            self.methods.triggershot(
+                num_shots=min(frames_per_request, config.num_frames - frame_index),
+                num_packets=self.num_packets,
+            )
 
         self.methods.setloglevel(self.methods.Loglevel.TRACE)
 

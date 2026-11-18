@@ -2,7 +2,7 @@
 
 This directory contains the firmware for the SiWG917 Wi-Fi 6 MCU used in TinyProbe.
 
-**Branch compatibility:** this firmware uses the legacy single-SPI FPGA protocol and cannot operate the dual-SPI gateware included on `feature/dual-spi`. Building and flashing both as-is will not give a working acquisition system. The MCU protocol update is planned; see the [branch release status](../README.md#fpga-release-status-work-in-progress).
+**Branch compatibility.** This firmware uses SiWG917 primary SSI in mode 1 for the FPGA's dual-SPI protocol and switches to standard mode 0 for AFE and transmitter configuration. It targets the gateware on `feature/dual-spi`.
 
 
 ## Requisites
@@ -100,7 +100,7 @@ just clean_all  # Also remove SLC-generated files and config files except pin_co
 
 ## Code Structure
 
-`config/pin_config.h` is a header containing the WiUS SSI and GSPI pin assignments. Keep it in source control and preserve it when cleaning or regenerating SDK configuration files. Edit board pin assignments in this header rather than replacing it with Pin Tool output.
+`config/pin_config.h` is a header containing the board's SPI pin assignments. Keep it in source control and preserve it when cleaning or regenerating SDK configuration files. The FPGA SPI bus uses SSI DATA0 on GPIO 26, DATA1 on GPIO 27, SCLK on GPIO 25, and active-low software chip select on GPIO 53.
 
 The application code is in the `user` directory, divided into the following directories:
 - `user/wius`: Low-level and Hardware-specific code for the WiUS PCB

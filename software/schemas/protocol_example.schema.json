@@ -148,7 +148,7 @@
           }
         },
         "bulk_packet_size_bytes": {
-          "default": 3000,
+          "default": 1000,
           "title": "Bulk Packet Size Bytes",
           "type": "integer"
         },

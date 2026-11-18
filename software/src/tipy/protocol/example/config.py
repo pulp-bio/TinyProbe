@@ -3,6 +3,7 @@ Copyright (C) 2026 ETH Zurich. All rights reserved.
 
 Authors:
     - Cedric Hirschi, ETH Zurich
+    - Federico Villani, ETH Zurich
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,6 +25,9 @@ from pydantic import Field
 from ..hardware.fpga import ConfigFPGA
 from ..protocol import ProtocolConfig
 
+LANE_PACKET_BYTES = 1000
+SAMPLES_PER_LANE_PACKET = LANE_PACKET_BYTES * 8 // 20
+
 
 class ProtocolAcquisitionConfig(ProtocolConfig):
     num_frames: int = 1
@@ -44,7 +48,7 @@ class ProtocolTransportConfig(ProtocolConfig):
     bulk: ProtocolSingleTransportConfig = ProtocolSingleTransportConfig(
         port=50007, timeout=0.5
     )
-    bulk_packet_size_bytes: int = 3000  # Size of each packet sent by the bulk transport
+    bulk_packet_size_bytes: int = LANE_PACKET_BYTES
     bulk_throughput_bps: float = (
         32e6  # Approximate throughput of the bulk transport in bits per second
     )
