@@ -33,17 +33,9 @@
 #include "tp.h"
 #include "tp_fpga.h"
 #include "tp_power.h"
+#include "tp_spi.h"
+#include "regmap_fpga.h"
 
-#define TP_FPGA_CAPTURE_CONFIG_REG 2U
-#define TP_FPGA_MODE_REG 12U
-#define TP_FPGA_IRQ_CONFIG_REG 13U
-#define TP_FPGA_STATUS_REG 15U
-#define TP_FPGA_EXTERNAL_MODE (1UL << 25U)
-#define TP_FPGA_IRQ_SELECT_MASK (3UL << 1U)
-#define TP_FPGA_STATUS_PAGE_MASK (0xFF800000UL)
-#define TP_FPGA_RESULTS_STATUS_PAGE (1UL << 27U)
-#define TP_FPGA_RESULT_READY 1U
-#define TP_FPGA_STREAM_READY 1U
 #define TP_NO_CALLBACK UINT16_MAX
 
 static sl_status_t _tp_wait_results_ready(bool external_mode)
@@ -53,13 +45,14 @@ static sl_status_t _tp_wait_results_ready(bool external_mode)
     do
     {
         uint32_t value = 0U;
-        sl_status_t status = tp_fpga_read_reg(TP_FPGA_STATUS_REG, &value);
+        sl_status_t status = tp_fpga_read_reg(REGMAP_FPGA_ADDR_TRANSPORT_STATUS, &value);
         if (status != SL_STATUS_OK)
         {
             return status;
         }
         // The interrupt can wake this task early. Wait for the sticky results-ready flag.
-        if ((value >> 24U) == 0xD4U && (value & TP_FPGA_RESULT_READY) != 0U)
+        if (REGMAP_FPGA_TRANSPORT_STATUS_GET_PAGE_TAG(value) == REGMAP_FPGA_TRANSPORT_STATUS_PAGE_TAG_RESULTS &&
+            REGMAP_FPGA_TRANSPORT_STATUS_GET_READY(value) != 0U)
         {
             return SL_STATUS_OK;
         }
@@ -77,12 +70,12 @@ static sl_status_t _tp_wait_stream_ready(void)
     do
     {
         uint32_t value = 0U;
-        sl_status_t status = tp_fpga_read_reg(TP_FPGA_STATUS_REG, &value);
+        sl_status_t status = tp_fpga_read_reg(REGMAP_FPGA_ADDR_TRANSPORT_STATUS, &value);
         if (status != SL_STATUS_OK)
         {
             return status;
         }
-        if ((value & TP_FPGA_STREAM_READY) != 0U)
+        if (REGMAP_FPGA_TRANSPORT_STATUS_GET_READY(value) != 0U)
         {
             return SL_STATUS_OK;
         }
@@ -95,18 +88,19 @@ static sl_status_t _tp_wait_stream_ready(void)
 
 static sl_status_t _tp_restore_callback_power(void)
 {
-    sl_status_t status = tp_fpga_write_reg(16U, 10U);
+    sl_status_t status = tp_fpga_write_reg(REGMAP_FPGA_AFE_TX_RST_REG_AFE_GPWD_SRC_MASK,
+                                          REGMAP_FPGA_ADDR_AFE_TX_RST_REG);
     tp_power_set(TP_POWER_DOMAIN_LVDS_2_5V, true);
     return status;
 }
 
-static sl_status_t _tp_transmit_packages(uint32_t shot, uint16_t num_packets,
-                                         uint16_t callback_id, bool *callback_powered_down)
+static sl_status_t _tp_transmit_lane_packets(uint32_t shot, uint16_t num_lanes,
+                                              uint16_t callback_id, bool *callback_powered_down)
 {
     // DMA starts at the payload. Keep its buffer aligned independently of the UDP header.
     _Alignas(uint32_t) static uint8_t spi_rx[TP_FIFO_READ_SIZE];
 
-    for (uint16_t packet = 0; packet < num_packets; packet++)
+    for (uint16_t packet = 0; packet < num_lanes; packet++)
     {
         sl_status_t status = tp_fpga_read_fifo(spi_rx, sizeof(spi_rx));
         if (status != SL_STATUS_OK)
@@ -139,12 +133,14 @@ static sl_status_t _tp_transmit_packages(uint32_t shot, uint16_t num_packets,
     return SL_STATUS_OK;
 }
 
-static sl_status_t _tp_acquire_shots(const methods_triggershot_args *args, uint16_t num_packets,
+static sl_status_t _tp_acquire_shots(const methods_triggershot_args *args, uint16_t num_lanes,
                                      bool external_mode, uint32_t irq_config)
 {
     sl_status_t status = SL_STATUS_OK;
-    const uint32_t stream_config = irq_config & ~TP_FPGA_STATUS_PAGE_MASK;
-    const uint32_t result_config = stream_config | TP_FPGA_RESULTS_STATUS_PAGE;
+    const uint32_t stream_config = REGMAP_FPGA_EXT_INT_TRIG_REG_SET_STATUS_CONTROL(
+        irq_config, REGMAP_FPGA_EXT_INT_TRIG_REG_STATUS_CONTROL_STREAM);
+    const uint32_t result_config = REGMAP_FPGA_EXT_INT_TRIG_REG_SET_STATUS_CONTROL(
+        irq_config, REGMAP_FPGA_EXT_INT_TRIG_REG_STATUS_CONTROL_RESULTS);
     bool callback_powered_down = false;
 
     for (uint32_t shot = 0; shot < args->num_shots; shot++)
@@ -155,7 +151,7 @@ static sl_status_t _tp_acquire_shots(const methods_triggershot_args *args, uint1
         while (osSemaphoreAcquire(sem_fpga, 0U) == osOK)
         {
         }
-        status = tp_fpga_write_reg(result_config, TP_FPGA_IRQ_CONFIG_REG);
+        status = tp_fpga_write_reg(result_config, REGMAP_FPGA_ADDR_EXT_INT_TRIG_REG);
         if (status != SL_STATUS_OK) break;
 
         if (args->software_trigger || external_mode)
@@ -181,20 +177,22 @@ static sl_status_t _tp_acquire_shots(const methods_triggershot_args *args, uint1
 
         if (args->callback_id != TP_NO_CALLBACK)
         {
-            status = tp_fpga_write_reg(48U, 10U);
+            status = tp_fpga_write_reg(REGMAP_FPGA_AFE_TX_RST_REG_AFE_GPWD_SRC_MASK |
+                                       REGMAP_FPGA_AFE_TX_RST_REG_AFE_GPWD_CTRL_MASK,
+                                       REGMAP_FPGA_ADDR_AFE_TX_RST_REG);
             if (status != SL_STATUS_OK) break;
             tp_power_set(TP_POWER_DOMAIN_LVDS_2_5V, false);
             callback_powered_down = true;
         }
 
         // Read the transport status layout while waiting for the stream FIFO to fill.
-        status = tp_fpga_write_reg(stream_config, TP_FPGA_IRQ_CONFIG_REG);
+        status = tp_fpga_write_reg(stream_config, REGMAP_FPGA_ADDR_EXT_INT_TRIG_REG);
         if (status != SL_STATUS_OK) break;
         status = tp_fpga_en_read();
         if (status != SL_STATUS_OK) break;
         status = _tp_wait_stream_ready();
         if (status != SL_STATUS_OK) break;
-        status = _tp_transmit_packages(shot, num_packets, args->callback_id, &callback_powered_down);
+        status = _tp_transmit_lane_packets(shot, num_lanes, args->callback_id, &callback_powered_down);
         if (status != SL_STATUS_OK) break;
     }
 
@@ -218,31 +216,34 @@ methods_status tp_method_triggershot(const methods_triggershot_args *args, void 
     uint32_t mode = 0U;
     uint32_t irq_config = 0U;
     sl_status_t status = tp_spi_select(TP_MUX_FPGA);
-    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(TP_FPGA_CAPTURE_CONFIG_REG, &capture_config);
-    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(TP_FPGA_MODE_REG, &mode);
-    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(TP_FPGA_IRQ_CONFIG_REG, &irq_config);
+    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(REGMAP_FPGA_ADDR_LVDS_CH_EN, &capture_config);
+    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(REGMAP_FPGA_ADDR_WAVEFORM_GEN_REG_5, &mode);
+    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(REGMAP_FPGA_ADDR_EXT_INT_TRIG_REG, &irq_config);
     if (status != SL_STATUS_OK)
     {
         LOG_STATUS(status);
         return methods_status_UNKNOWN_ERROR;
     }
 
-    const uint16_t available_packets = (uint16_t)__builtin_popcount(capture_config & UINT16_MAX);
-    const uint32_t num_packets = args->num_packets == 0U ? available_packets : args->num_packets;
-    if (num_packets == 0U || num_packets > available_packets ||
-        (args->callback_id != TP_NO_CALLBACK && args->callback_id >= num_packets))
+    const uint32_t lane_mask = REGMAP_FPGA_LVDS_CH_EN_GET_LVDS_CH_EN(capture_config);
+    const uint16_t available_lanes = (uint16_t)__builtin_popcount(lane_mask);
+    const uint32_t num_lanes = args->num_packets == 0U ? available_lanes : args->num_packets;
+    if (num_lanes == 0U || num_lanes > available_lanes ||
+        (args->callback_id != TP_NO_CALLBACK && args->callback_id >= num_lanes))
     {
         return methods_status_INVALID_ARGUMENT;
     }
 
-    const bool external_mode = (mode & TP_FPGA_EXTERNAL_MODE) != 0U;
-    uint32_t capture_irq_config = irq_config & ~TP_FPGA_IRQ_SELECT_MASK;
+    const bool external_mode = REGMAP_FPGA_WAVEFORM_GEN_REG_5_GET_EXTERNAL_ACQUISITION(mode) != 0U;
+    uint32_t capture_irq_config = REGMAP_FPGA_EXT_INT_TRIG_REG_SET_MIM(
+        irq_config, REGMAP_FPGA_EXT_INT_TRIG_REG_MIM_MCU_INT_FIFO_WR_DONE);
     if (external_mode)
     {
-        capture_irq_config |= 1U; // Enable the external trigger input.
+        capture_irq_config = REGMAP_FPGA_EXT_INT_TRIG_REG_SET_EIT(
+            capture_irq_config, REGMAP_FPGA_EXT_INT_TRIG_REG_EIT_EXTERNAL_TRIGGER);
     }
-    status = _tp_acquire_shots(args, (uint16_t)num_packets, external_mode, capture_irq_config);
-    sl_status_t restore_status = tp_fpga_write_reg(irq_config, TP_FPGA_IRQ_CONFIG_REG);
+    status = _tp_acquire_shots(args, (uint16_t)num_lanes, external_mode, capture_irq_config);
+    sl_status_t restore_status = tp_fpga_write_reg(irq_config, REGMAP_FPGA_ADDR_EXT_INT_TRIG_REG);
     if (status == SL_STATUS_OK)
     {
         status = restore_status;

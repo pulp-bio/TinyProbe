@@ -8,7 +8,7 @@ from enum import Enum as BaseEnum
 
 try:
     # Try relative import first for better compatibility when used as a package
-    from..regmap_base import (
+    from ..regmap_base import (
         RegisterMapInterface,
         RegisterMap,
         Register,
@@ -76,6 +76,18 @@ class Regmap_FPGA(RegisterMap):
         TRIG_OUT_PLL_LOCK = 2
         TRIG_OUT_FIFO_WR_DONE = 3
 
+    class EnumStatus_control(BaseEnum):
+        """Enum for bitfield STATUS_CONTROL.EXT_INT_TRIG_REG"""
+
+        STREAM = 0
+        RESULTS = 16
+
+    class EnumPage_tag(BaseEnum):
+        """Enum for bitfield PAGE_TAG.TRANSPORT_STATUS"""
+
+        STREAM = 0
+        RESULTS = 212
+
     def __init__(self, interface: RegisterMapInterface) -> None:
         self._interface = interface
         self.cmd = RegisterCMD(self._interface)
@@ -92,6 +104,8 @@ class Regmap_FPGA(RegisterMap):
         self.waveform_gen_reg_4 = RegisterWAVEFORM_GEN_REG_4(self._interface)
         self.waveform_gen_reg_5 = RegisterWAVEFORM_GEN_REG_5(self._interface)
         self.ext_int_trig_reg = RegisterEXT_INT_TRIG_REG(self._interface)
+        self.reserved_reg = RegisterRESERVED_REG(self._interface)
+        self.transport_status = RegisterTRANSPORT_STATUS(self._interface)
 
 
 # ============================================================================
@@ -153,7 +167,9 @@ class BitFieldPLL_CONFIG_REGAfe_mux(BitField):
     """
 
     _name = "AFE_MUX"
-    _description = "AFE clock: 0 = 20 MHz (10 MHz sampling), 1 = 60 MHz (30 MHz sampling)."
+    _description = (
+        "AFE clock: 0 = 20 MHz (10 MHz sampling), 1 = 60 MHz (30 MHz sampling)."
+    )
     _reset = 0
     _width = 1
     _offset = 1
@@ -690,7 +706,9 @@ class BitFieldAFE_TX_RST_REGAfe_fpwd_src(BitField):
     """
 
     _name = "AFE_FPWD_SRC"
-    _description = "AFE fast power-down control source. Enables control from AFE_FPWD_CTRL if set."
+    _description = (
+        "AFE fast power-down control source. Enables control from AFE_FPWD_CTRL if set."
+    )
     _reset = 0
     _width = 1
     _offset = 2
@@ -860,7 +878,9 @@ class BitFieldWAVEFORM_GEN_REG_5Refresh_cnt_period(BitField):
     """
 
     _name = "REFRESH_CNT_PERIOD"
-    _description = "Period of refresh counter for periodic TR_EN pulses (TX LDO refresh)."
+    _description = (
+        "Period of refresh counter for periodic TR_EN pulses (TX LDO refresh)."
+    )
     _reset = 0
     _width = 16
     _offset = 0
@@ -878,6 +898,20 @@ class BitFieldWAVEFORM_GEN_REG_5Tr_en_on_time(BitField):
     _reset = 0
     _width = 8
     _offset = 16
+    _enums = None
+
+
+class BitFieldWAVEFORM_GEN_REG_5External_acquisition(BitField):
+    """BitField EXTERNAL_ACQUISITION in Register WAVEFORM_GEN_REG_5
+
+    Arm with the start command and capture on external rising edges.
+    """
+
+    _name = "EXTERNAL_ACQUISITION"
+    _description = "Arm with the start command and capture on external rising edges."
+    _reset = 0
+    _width = 1
+    _offset = 25
     _enums = None
 
 
@@ -916,6 +950,8 @@ class RegisterWAVEFORM_GEN_REG_5(Register):
         self.refresh_cnt_period._set_interface(self._address, interface, self._access)
         self.tr_en_on_time = BitFieldWAVEFORM_GEN_REG_5Tr_en_on_time()
         self.tr_en_on_time._set_interface(self._address, interface, self._access)
+        self.external_acquisition = BitFieldWAVEFORM_GEN_REG_5External_acquisition()
+        self.external_acquisition._set_interface(self._address, interface, self._access)
         self.fen = BitFieldWAVEFORM_GEN_REG_5Fen()
         self.fen._set_interface(self._address, interface, self._access)
 
@@ -962,6 +998,20 @@ class BitFieldEXT_INT_TRIG_REGOtm(BitField):
     _enums = Regmap_FPGA.EnumOtm
 
 
+class BitFieldEXT_INT_TRIG_REGStatus_control(BitField):
+    """BitField STATUS_CONTROL in Register EXT_INT_TRIG_REG
+
+    Transport diagnostic controls in bits 31:23. The stream and acquisition-results settings clear the other diagnostic controls.
+    """
+
+    _name = "STATUS_CONTROL"
+    _description = "Transport diagnostic controls in bits 31:23. The stream and acquisition-results settings clear the other diagnostic controls."
+    _reset = 0
+    _width = 9
+    _offset = 23
+    _enums = Regmap_FPGA.EnumStatus_control
+
+
 class RegisterEXT_INT_TRIG_REG(Register):
     """Register EXT_INT_TRIG_REG
 
@@ -985,3 +1035,92 @@ class RegisterEXT_INT_TRIG_REG(Register):
         self.mim._set_interface(self._address, interface, self._access)
         self.otm = BitFieldEXT_INT_TRIG_REGOtm()
         self.otm._set_interface(self._address, interface, self._access)
+        self.status_control = BitFieldEXT_INT_TRIG_REGStatus_control()
+        self.status_control._set_interface(self._address, interface, self._access)
+
+
+class BitFieldRESERVED_REGReserved(BitField):
+    """BitField RESERVED in Register RESERVED_REG"""
+
+    _name = "RESERVED"
+    _description = ""
+    _reset = 0
+    _width = 32
+    _offset = 0
+    _enums = None
+
+
+class RegisterRESERVED_REG(Register):
+    """Register RESERVED_REG
+
+    Address: 0x000e (14)
+
+    Reserved address. Leave unchanged.
+    """
+
+    _name = "RESERVED_REG"
+    _description = "Reserved address. Leave unchanged."
+    _address = 14
+    _access = Access.RO
+
+    def __init__(self, interface: RegisterMapInterface) -> None:
+        self._interface = interface
+
+        # Create instances of bitfields for this register instance
+        self.reserved = BitFieldRESERVED_REGReserved()
+        self.reserved._set_interface(self._address, interface, self._access)
+
+
+class BitFieldTRANSPORT_STATUSReady(BitField):
+    """BitField READY in Register TRANSPORT_STATUS
+
+    Stream data ready on the STREAM page, or acquisition results ready on the RESULTS page.
+    """
+
+    _name = "READY"
+    _description = "Stream data ready on the STREAM page, or acquisition results ready on the RESULTS page."
+    _reset = 0
+    _width = 1
+    _offset = 0
+    _enums = None
+
+
+class BitFieldTRANSPORT_STATUSPage_tag(BitField):
+    """BitField PAGE_TAG in Register TRANSPORT_STATUS
+
+    Upper status byte. The acquisition-results layout is identified by 0xD4.
+    """
+
+    _name = "PAGE_TAG"
+    _description = (
+        "Upper status byte. The acquisition-results layout is identified by 0xD4."
+    )
+    _reset = 0
+    _width = 8
+    _offset = 24
+    _enums = Regmap_FPGA.EnumPage_tag
+
+
+class RegisterTRANSPORT_STATUS(Register):
+    """Register TRANSPORT_STATUS
+
+    Address: 0x000f (15)
+
+    Read-only SPI status. EXT_INT_TRIG_REG.STATUS_CONTROL selects the layout.
+    """
+
+    _name = "TRANSPORT_STATUS"
+    _description = (
+        "Read-only SPI status. EXT_INT_TRIG_REG.STATUS_CONTROL selects the layout."
+    )
+    _address = 15
+    _access = Access.RO
+
+    def __init__(self, interface: RegisterMapInterface) -> None:
+        self._interface = interface
+
+        # Create instances of bitfields for this register instance
+        self.ready = BitFieldTRANSPORT_STATUSReady()
+        self.ready._set_interface(self._address, interface, self._access)
+        self.page_tag = BitFieldTRANSPORT_STATUSPage_tag()
+        self.page_tag._set_interface(self._address, interface, self._access)

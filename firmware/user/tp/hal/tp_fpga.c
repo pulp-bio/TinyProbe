@@ -31,17 +31,18 @@
 
 #include "tp_fpga.h"
 
+#include "regmap_fpga.h"
+
 #include "wius_spi.h"
 
 #define TP_FPGA_DUAL_SPI_WRITE_CMD 0x32U
 #define TP_FPGA_DUAL_SPI_READ_CMD 0x4CU
 #define TP_FPGA_DUAL_SPI_STREAM_READ_CMD 0x6BU
-#define TP_FPGA_STATUS_REG_ADDR 15U
 #define TP_FPGA_DUAL_SPI_PAYLOAD_BYTES 4U
 #define TP_FPGA_DUAL_SPI_READ_DUMMY_CLKS 10U
 #define TP_FPGA_DUAL_SPI_RX_SAMPLE_DELAY 0U
 #define TP_FPGA_DUAL_SPI_CS_SETTLE_MS 10U
-#define TP_FPGA_DUAL_SPI_WRITE_TIMEOUT_MS 100U
+#define TP_FPGA_DUAL_SPI_IDLE_TIMEOUT_MS 100U
 #define TP_FPGA_DUAL_SPI_TRANSFER_TIMEOUT_MS 1000U
 #define TP_FPGA_DUAL_SPI_INTF_PLL_CLK 180000000UL
 #define TP_FPGA_DUAL_SPI_INTF_PLL_REF_CLK 40000000UL
@@ -55,11 +56,6 @@ static sl_ssi_handle_t tp_fpga_dual_spi_handle = NULL;
 // Command framing is retained by SSI until the shared peripheral is switched
 // to the conventional TX/AFE setup.
 static bool tp_fpga_dual_spi_framing_configured = false;
-
-// Commands for User logic (System controller)
-#define SYS_CTRL_CMD_START 1
-#define SYS_CTRL_CMD_RESET 2
-#define SYS_CTRL_CMD_RD_EN 3
 
 // Number of registers to configure to defaults on startup
 #define TP_NUM_DEFAULT_REGS 10
@@ -205,13 +201,21 @@ static sl_status_t tp_fpga_dual_spi_set_cs(bool active)
     return status;
 }
 
-static sl_status_t tp_fpga_dual_spi_wait_for_idle(uint32_t timeout_ms)
+static sl_status_t tp_fpga_dual_spi_await(void)
 {
+    sl_status_t status = wius_spi_await_completion(WIUS_SPI_INST_0,
+                                                   TP_FPGA_DUAL_SPI_TRANSFER_TIMEOUT_MS);
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    // Keep chip select active until the SSI peripheral has finished shifting.
     uint32_t start_ms = time_ms();
 
     while (sl_si91x_ssi_get_status(tp_fpga_dual_spi_handle).busy != 0U)
     {
-        if ((time_ms() - start_ms) >= timeout_ms)
+        if ((time_ms() - start_ms) >= TP_FPGA_DUAL_SPI_IDLE_TIMEOUT_MS)
         {
             wius_spi_abort(WIUS_SPI_INST_0);
             return SL_STATUS_TIMEOUT;
@@ -245,12 +249,7 @@ static sl_status_t tp_fpga_dual_spi_send(const uint8_t *data, uint32_t length,
     }
     else
     {
-        status = wius_spi_await_completion(WIUS_SPI_INST_0,
-                                           TP_FPGA_DUAL_SPI_TRANSFER_TIMEOUT_MS);
-        if (status == SL_STATUS_OK)
-        {
-            status = tp_fpga_dual_spi_wait_for_idle(TP_FPGA_DUAL_SPI_WRITE_TIMEOUT_MS);
-        }
+        status = tp_fpga_dual_spi_await();
     }
 
     sl_status_t cs_status = tp_fpga_dual_spi_set_cs(false);
@@ -277,12 +276,7 @@ static sl_status_t tp_fpga_dual_spi_receive(uint8_t *data, uint32_t length,
     int32_t driver_status = SSI_MASTER_Receive_Command_Data(data, length, command, address, dummy_clocks);
     if (driver_status == ARM_DRIVER_OK)
     {
-        status = wius_spi_await_completion(WIUS_SPI_INST_0,
-                                           TP_FPGA_DUAL_SPI_TRANSFER_TIMEOUT_MS);
-        if (status == SL_STATUS_OK)
-        {
-            status = tp_fpga_dual_spi_wait_for_idle(TP_FPGA_DUAL_SPI_WRITE_TIMEOUT_MS);
-        }
+        status = tp_fpga_dual_spi_await();
     }
     else
     {
@@ -304,7 +298,7 @@ static uint32_t tp_fpga_dual_spi_decode_be_word(const uint8_t data[TP_FPGA_DUAL_
 
 static sl_status_t tp_fpga_reg_write(uint8_t reg_addr, uint32_t reg_value)
 {
-    if (reg_addr >= TP_FPGA_STATUS_REG_ADDR)
+    if (reg_addr >= REGMAP_FPGA_ADDR_TRANSPORT_STATUS)
     {
         return SL_STATUS_INVALID_PARAMETER;
     }
@@ -327,7 +321,7 @@ static sl_status_t tp_fpga_reg_write(uint8_t reg_addr, uint32_t reg_value)
 
 static sl_status_t tp_fpga_reg_read(uint8_t reg_addr, uint32_t *reg_value)
 {
-    if ((reg_addr > TP_FPGA_STATUS_REG_ADDR) || (reg_value == NULL))
+    if ((reg_addr > REGMAP_FPGA_ADDR_TRANSPORT_STATUS) || (reg_value == NULL))
     {
         return SL_STATUS_INVALID_PARAMETER;
     }
@@ -427,15 +421,15 @@ sl_status_t tp_fpga_init(void)
 
 sl_status_t tp_fpga_send_start(void)
 {
-    return tp_fpga_write_reg(SYS_CTRL_CMD_START, 0);
+    return tp_fpga_write_reg(REGMAP_FPGA_CMD_CMD_START, REGMAP_FPGA_ADDR_CMD);
 }
 
 sl_status_t tp_fpga_reset_multififo(void)
 {
-    return tp_fpga_write_reg(SYS_CTRL_CMD_RESET, 0);
+    return tp_fpga_write_reg(REGMAP_FPGA_CMD_CMD_SW_RESET, REGMAP_FPGA_ADDR_CMD);
 }
 
 sl_status_t tp_fpga_en_read(void)
 {
-    return tp_fpga_write_reg(SYS_CTRL_CMD_RD_EN, 0);
+    return tp_fpga_write_reg(REGMAP_FPGA_CMD_CMD_RD_EN, REGMAP_FPGA_ADDR_CMD);
 }

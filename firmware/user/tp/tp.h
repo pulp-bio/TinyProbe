@@ -31,7 +31,6 @@
 #pragma once
 
 #include "common.h"
-#include "tp_mux.h"
 #include "wius_udp.h"
 #include "tp_buffer.h"
 
@@ -40,19 +39,16 @@ extern osSemaphoreId_t sem_fpga; /**< Semaphore raised by FPGA interrupts */
 extern tp_buffer_t tp_buf; /**< Buffer for storing acquired data */
 
 /**
- * @brief Initialize the FPGA (SPI, GPIOs, register values)
+ * @brief Initialize TinyProbe board peripherals, the FPGA and the acquisition buffers.
  *
- * @retval SL_STATUS_OK: Success
- * @retval other: SPI, GPIO interrupt or register initialization failed
- *
+ * @retval SL_STATUS_OK Initialization completed.
+ * @return The first fatal initialization error.
  */
 sl_status_t tp_init(void);
 
-/** Select an SPI target and configure its SSI mode. */
-sl_status_t tp_spi_select(tp_mux_t target);
-
 /**
- * @brief TinyProbe main thread
+ * @brief Initialize the TCP server and serve TinyProbe commands.
  *
+ * @return The status of an initialization step if the command loop cannot start.
  */
 sl_status_t tp_main_thread(void);

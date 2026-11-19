@@ -35,49 +35,18 @@
 #include "sl_si91x_power_manager.h"
 
 #include "tp_methods.h"
-#include "tp_mux.h"
+#include "tp_spi.h"
 #include "tp_fpga.h"
 #include "tp_afe.h"
 #include "tp_tx.h"
 #include "tp_power.h"
 #include "wius_power.h"
 #include "wius_wifi.h"
-#include "wius_spi.h"
 #include "wius_tcp.h"
 #include "wius_gpio.h"
-#include "sl_si91x_ssi_primary_config.h"
 
 wius_gpio_t int_pin = WIUS_GPIO_UULP_INPUT(TP_GPIO_INT);
 wius_gpio_t reset_pin = WIUS_GPIO_ULP_OUTPUT(TP_GPIO_RESET);
-
-static wius_spi_config_t spi_config = {
-    .cs_mode = WIUS_SPI_CS_SW,
-    .cs_pin = WIUS_SPI_EXT_CS0,
-    .cs_polarity = 0,
-    .freq = WIUS_SPI_FREQ,
-    // Base FPGA mode. Dual payload framing is installed by the FPGA HAL.
-    // The shared SSI wrapper explicitly restores software CS ownership on
-    // GPIO 53 after every mode switch.
-    .mode = SL_SSI_PERIPHERAL_CPOL0_CPHA1,
-    .transfer_mode = SPI_TRANSFER_MODE_STANDARD,
-    .cs_assert_delay_ns = WIUS_SPI_CS_ASSERT_DELAY_NS,
-    .cs_deassert_delay_ns = WIUS_SPI_CS_DEASSERT_DELAY_NS,
-    .rx_sample_delay = 0U,
-    .width = 8,
-};
-
-static const wius_spi_config_t spi_external_config = {
-    .cs_mode = WIUS_SPI_CS_SW,
-    .cs_pin = WIUS_SPI_EXT_CS0,
-    .cs_polarity = 0,
-    .freq = WIUS_SPI_FREQ,
-    .mode = SL_SSI_PERIPHERAL_CPOL0_CPHA0,
-    .transfer_mode = SPI_TRANSFER_MODE_STANDARD,
-    .cs_assert_delay_ns = WIUS_SPI_CS_ASSERT_DELAY_NS,
-    .cs_deassert_delay_ns = WIUS_SPI_CS_DEASSERT_DELAY_NS,
-    .rx_sample_delay = 0U,
-    .width = 8,
-};
 
 uint8_t wifi_rx_buffer[TP_WIFI_RX_BUFFER_SIZE] = {0};
 
@@ -111,63 +80,6 @@ void _tp_thread_wifi_transmit(void *argument);
 void _tp_int_handler(uint32_t flag);
 static void _tp_nanopb_sender(const char *response, size_t response_len);
 
-/* SSI is shared by the FPGA and the external TX/AFE devices.  Keep the
- * current configuration when it already matches the selected bus target;
- * reconfiguration is required only on an actual FPGA <-> TX/AFE transition.
- */
-static sl_status_t _tp_spi_ensure_config(const wius_spi_config_t *target)
-{
-    wius_spi_inst_t current = wius_spi_get_instance(WIUS_SPI_INST_0);
-
-    if ((current.inst.ssi != NULL) &&
-        (current.config.freq == target->freq) &&
-        (current.config.width == target->width) &&
-        (current.config.mode == target->mode) &&
-        (current.config.transfer_mode == target->transfer_mode) &&
-        (current.config.rx_sample_delay == target->rx_sample_delay))
-    {
-        return SL_STATUS_OK;
-    }
-
-    return wius_spi_reconfigure(WIUS_SPI_INST_0, target);
-}
-
-sl_status_t tp_spi_select(tp_mux_t target)
-{
-    sl_status_t status = SL_STATUS_OK;
-
-    switch (target)
-    {
-    case TP_MUX_AFE:
-    case TP_MUX_TX:
-        // Leaving the FPGA invalidates its enhanced dual-data framing and
-        // restores the raw Mode-0 transfers expected by the external chips.
-        status = _tp_spi_ensure_config(&spi_external_config);
-        if (status != SL_STATUS_OK)
-        {
-            return status;
-        }
-        break;
-
-    case TP_MUX_FPGA:
-        // Each FPGA HAL transaction restores Mode-1 and SSI_FRF_DUAL after a
-        // preceding external-device transaction.
-        break;
-
-    case TP_MUX_PLL:
-        // In PLL mode the chip-select pin controls the FPGA PLL directly.
-        break;
-
-    default:
-        return SL_STATUS_INVALID_PARAMETER;
-    }
-
-    tp_mux_select(target);
-    delay_ms(10);
-
-    return SL_STATUS_OK;
-}
-
 sl_status_t tp_init(void)
 {
     sl_status_t status = SL_STATUS_OK;
@@ -190,7 +102,7 @@ sl_status_t tp_init(void)
     LOG_RET_STATUS(wius_gpio_init());
 
     // Initialize SPI
-    status = wius_spi_init(WIUS_SPI_INST_0, &spi_config);
+    status = tp_spi_init();
     if (SL_STATUS_OK != status)
     {
         log_error("Error initializing FPGA SPI: 0x%lx", status);

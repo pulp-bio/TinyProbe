@@ -306,6 +306,12 @@ regmap:
         offset: 16
         reset: 0
         access: rw
+      - name: EXTERNAL_ACQUISITION
+        description: "Arm with the start command and capture on external rising edges."
+        width: 1
+        offset: 25
+        reset: 0
+        access: rw
       - name: FEN
         description: "Enable periodic refresh mechanism."
         width: 1
@@ -351,3 +357,42 @@ regmap:
           - { name: TRIG_OUT_AFE_TX_TRIG,  value: 1, description: "AFE/TX trigger" }
           - { name: TRIG_OUT_PLL_LOCK,     value: 2, description: "PLL lock" }
           - { name: TRIG_OUT_FIFO_WR_DONE, value: 3, description: "FIFO write done" }
+
+      - name: STATUS_CONTROL
+        description: "Transport diagnostic controls in bits 31:23. The stream and acquisition-results settings clear the other diagnostic controls."
+        width: 9
+        offset: 23
+        reset: 0
+        access: rw
+        enums:
+          - { name: STREAM,  value: 0x00, description: "Normal transport status" }
+          - { name: RESULTS, value: 0x10, description: "Sticky acquisition events and results-ready flag" }
+
+  - name: RESERVED_REG
+    description: Reserved address. Leave unchanged.
+    address: 14
+    access: ro
+    bitfields:
+      - name: RESERVED
+        width: 32
+        offset: 0
+        reset: 0
+
+  - name: TRANSPORT_STATUS
+    description: "Read-only SPI status. EXT_INT_TRIG_REG.STATUS_CONTROL selects the layout."
+    address: 15
+    access: ro
+    bitfields:
+      - name: READY
+        description: "Stream data ready on the STREAM page, or acquisition results ready on the RESULTS page."
+        width: 1
+        offset: 0
+        reset: 0
+      - name: PAGE_TAG
+        description: "Upper status byte. The acquisition-results layout is identified by 0xD4."
+        width: 8
+        offset: 24
+        reset: 0
+        enums:
+          - { name: STREAM,  value: 0x00, description: "Normal transport status" }
+          - { name: RESULTS, value: 0xD4, description: "Acquisition results status" }

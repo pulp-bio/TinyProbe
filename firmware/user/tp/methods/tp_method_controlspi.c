@@ -30,7 +30,7 @@
 
 #include "tp_method_controlspi.h"
 
-#include "tp.h"
+#include "tp_spi.h"
 
 methods_status tp_method_controlspi(const methods_controlspi_args *args, void *userdata)
 {

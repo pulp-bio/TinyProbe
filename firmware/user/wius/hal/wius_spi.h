@@ -84,66 +84,104 @@ typedef struct wius_spi_inst
 } wius_spi_inst_t;
 
 /**
- * @brief Get SPI instance by ID
+ * @brief Get a snapshot of the active SPI configuration and SSI handle.
  *
- * @param id: SPI instance ID
- *
- * @return SPI instance configuration and driver handle
- *
+ * @param[in] id SPI instance ID.
+ * @return Instance snapshot or an empty instance for an unsupported ID.
  */
 wius_spi_inst_t wius_spi_get_instance(uint8_t id);
 
 /**
- * @brief Initialize SPI module
+ * @brief Initialize an SSI peripheral and its chip select.
  *
- * @param id: SPI instance to initialize
- * @param config: Pointer to the SPI configuration
- *
- * @retval SL_STATUS_OK: Success
- * @retval SL_STATUS_INVALID_PARAMETER: Invalid instance
- * @retval other: Error during peripheral initialization
- *
+ * @param[in] id SPI instance ID.
+ * @param[in] config Initial bus and chip-select settings.
+ * @retval SL_STATUS_OK Initialization completed.
+ * @return An error if the instance, settings, or peripheral initialization failed.
  */
 sl_status_t wius_spi_init(uint8_t id, wius_spi_config_t *config);
-/** Reconfigure the already initialized SSI peripheral without changing its CS GPIO ownership. */
+
+/**
+ * @brief Reconfigure an initialized SSI peripheral while retaining its chip-select GPIO.
+ *
+ * @param[in] id SPI instance ID.
+ * @param[in] config New SSI settings. Preserve the existing chip-select assignment.
+ * @return SL_STATUS_OK on success or an SSI configuration error.
+ */
 sl_status_t wius_spi_reconfigure(uint8_t id, const wius_spi_config_t *config);
+
+/**
+ * @brief Assert or release software chip select for a caller-managed transfer.
+ *
+ * @param[in] id SPI instance ID.
+ * @param[in] active True to assert chip select, false to release it.
+ * @return SL_STATUS_OK on success or an instance or driver error.
+ */
 sl_status_t wius_spi_set_cs(uint8_t id, bool active);
 
 /**
- * @brief Transfer data over SPI
+ * @brief Start a full-duplex SPI transfer with chip select managed by this driver.
  *
- * @param id: SPI instance to use for transfer
- * @param tx_buf: Pointer to the buffer containing the data to be sent
- * @param rx_buf: Pointer to the buffer where the received data will be stored
- * @param len: Number of bytes to transfer
- * @param wait: Wait for transfer to complete
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during transfer or waiting
- *
+ * @param[in] id SPI instance ID.
+ * @param[in] tx_buf Bytes to transmit.
+ * @param[out] rx_buf Buffer for received bytes.
+ * @param[in] len Number of bytes to transfer.
+ * @param[in] wait True to wait for completion and release chip select.
+ * @return SL_STATUS_OK on success or a setup, transfer, or timeout error.
+ * @note If wait is false, call wius_spi_await() before reusing either buffer.
  */
 sl_status_t wius_spi_xfer(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t len, bool wait);
 
-/** Send data over SPI. This entry point is also used by the AFE and TX drivers. */
+/**
+ * @brief Start a transmit-only SPI transfer with chip select managed by this driver.
+ *
+ * @param[in] id SPI instance ID.
+ * @param[in] tx_buf Bytes to transmit.
+ * @param[in] len Number of bytes to send.
+ * @param[in] wait True to wait for completion and release chip select.
+ * @return SL_STATUS_OK on success or a setup, transfer, or timeout error.
+ * @note If wait is false, call wius_spi_await() before reusing the transmit buffer.
+ */
 sl_status_t wius_spi_send(uint8_t id, const uint8_t *tx_buf, size_t len, bool wait);
 
 /**
- * @brief Await SPI transfer completion
+ * @brief Finish a transfer started by wius_spi_xfer() or wius_spi_send().
  *
- * @param id: SPI instance to await
+ * Waits up to one second, aborts on a wait error, and releases chip select
+ * after the configured deassertion delay.
  *
- * @retval SL_STATUS_OK: Success
- * @retval SL_STATUS_TIMEOUT: The transfer timed out
- * @retval SL_STATUS_FAIL: Error during acquiring semaphores
- *
+ * @param[in] id SPI instance ID.
+ * @retval SL_STATUS_OK The completion event was received.
+ * @retval SL_STATUS_TIMEOUT The transfer timed out.
+ * @return An error for an invalid instance or a failed semaphore wait.
  */
 sl_status_t wius_spi_await(uint8_t id);
 
-/** Remove any pending completion event before starting a direct SSI transfer. */
+/**
+ * @brief Discard stale completion events before starting a caller-managed SSI transfer.
+ *
+ * @param[in] id SPI instance ID.
+ * @return SL_STATUS_OK if the completion semaphore was drained.
+ */
 sl_status_t wius_spi_clear_completion(uint8_t id);
 
-/** Wait for a direct SSI transfer callback without changing chip select. */
+/**
+ * @brief Wait for a caller-managed SSI transfer to signal completion.
+ *
+ * The caller owns chip select and any peripheral-idle check. If the wait
+ * fails, the driver requests a transfer abort before returning.
+ *
+ * @param[in] id SPI instance ID.
+ * @param[in] timeout_ms Timeout in milliseconds.
+ * @retval SL_STATUS_OK The completion event was received.
+ * @retval SL_STATUS_TIMEOUT The timeout elapsed.
+ * @return An error for an invalid instance or a failed semaphore wait.
+ */
 sl_status_t wius_spi_await_completion(uint8_t id, uint32_t timeout_ms);
 
-/** Abort the current SSI transfer before releasing its buffers. */
+/**
+ * @brief Request cancellation of an active SSI transfer before reusing its buffers.
+ *
+ * @param[in] id SPI instance ID.
+ */
 void wius_spi_abort(uint8_t id);

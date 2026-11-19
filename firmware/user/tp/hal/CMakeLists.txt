@@ -19,6 +19,7 @@ add_library(tp_hal STATIC
 	tp_fpga.c
 	tp_mux.c
 	tp_power.c
+	tp_spi.c
 )
 add_conditional_c_source(tp_hal tp_afe)
 add_conditional_c_source(tp_hal tp_tx)

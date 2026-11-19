@@ -26,14 +26,15 @@ config_source_path := "config"
 config_codegen_path := config_source_path / "codegen"
 sw_source_path := "software/src/tipy"
 regmap_output := sw_source_path / "hardware/fpga/regmap.py"
+regmap_header := "firmware/user/tp/hal/regmap_fpga.h"
 
 # List available recipes
 default:
     @just --list --list-submodules
 
-# Generate Python code from YAML configuration files
+# Generate firmware and Python interfaces from YAML configuration files
 codegen: _proto _regmap
-    sed -i 's/ \.regmap_base/..regmap_base/g' {{ regmap_output }}
+    sed -i 's/from \.regmap_base/from ..regmap_base/' {{ regmap_output }}
     uv run ruff format {{ sw_source_path }}
 
 # Run pre-commit hooks on all files using prek
@@ -60,5 +61,8 @@ _proto:
 
 [private]
 _regmap:
-    {{ embgen }} -s auto {{ config_codegen_path }}/regmap_fpga.yml -p -o {{ sw_source_path }}/hardware/fpga/
+    {{ embgen }} -s auto {{ config_codegen_path }}/regmap_fpga.yml -p -c -o {{ sw_source_path }}/hardware/fpga/
+    # Work around the pinned embgen template shifting a 32-bit mask by 32.
+    sed -i 's/(1U << 32) - 1/UINT32_MAX/g' {{ sw_source_path }}/hardware/fpga/regmap.h
+    mv {{ sw_source_path }}/hardware/fpga/regmap.h {{ regmap_header }}
     mv {{ sw_source_path }}/hardware/fpga/regmap_base.py {{ sw_source_path }}/hardware/regmap_base.py
