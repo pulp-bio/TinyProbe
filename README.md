@@ -4,6 +4,10 @@
 
 A Wearable 32-Channel Multi-Modal Wireless Ultrasound Probe
 
+> [!WARNING]
+> A partial, preliminary release of the FPGA code is available in the  [`feature/dual-spi`](https://github.com/pulp-bio/TinyProbe/tree/feature/dual-spi).
+> Compared to the original TinyProbe implementation described in the paper, this version introduces a dual-SPI interface designed to increase data transfer bandwidth between the FPGA and the system controller.
+> This implementation is still a work in progress: while the updated FPGA design supports higher data transfer rates, the current SiW917 firmware limits the dual-SPI clock frequency to 10 MHz, limiting the total system bandwidth. We are working on a hardware revision to overcome this limitation and plan to release a complete implementation soon.
 
 ## Introduction
 
@@ -43,15 +47,14 @@ Please also take a look at our overview video on YouTube:
 
 ## Contents
 
-Host software, MCU firmware, and board hardware are in this repository. FPGA gateware is planned for a later release.
-
+Host software, MCU firmware, and board hardware are in this repository. The limited dual-spi version of the FPGA gateware is available on the [`feature/dual-spi`](https://github.com/pulp-bio/TinyProbe/tree/feature/dual-spi) branch. The performance of this release is limited compared to the unreleased single SPI version. 
 ```mermaid
 flowchart TB
     Host["Host computer<br/>tipy Python package · software/"]
 
     subgraph Probe["TinyProbe hardware · hardware/"]
         MCU["SiWG917 Wi-Fi 6 MCU<br/>Firmware · firmware/"]
-        FPGA["IGLOO 2 FPGA<br/>Gateware · release planned"]
+        FPGA["IGLOO 2 FPGA<br/>Gateware · feature/dual-spi"]
         Analog["Analog front end and pulser<br/>AFE5832LP + TX7332"]
 
         MCU <-->|"SPI · control and captured data"| FPGA
