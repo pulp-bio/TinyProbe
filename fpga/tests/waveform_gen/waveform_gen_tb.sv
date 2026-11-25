@@ -5,9 +5,9 @@ module waveform_gen_tb ();
 
     // General signals
     logic  [15:0] sync_period;
-    logic  [7:0]  capture_delay;
+    logic  [15:0] capture_delay;
     logic         start_capture;
-    logic  [15:0] n_shots;
+    logic  [7:0]  n_shots;
     logic  [15:0] start_cap_time;
     logic         fifo_rd_busy;
 
@@ -40,6 +40,7 @@ module waveform_gen_tb ();
 
     waveform_generator dut (
         .clk_i                (clk),
+
         .rst_ni               (rst_n),
 
         // General signals
@@ -80,7 +81,7 @@ module waveform_gen_tb ();
     // Dump waves
     initial begin
     $dumpfile("dump.vcd");
-    $dumpvars(2, waveform_gen_tb);
+    $dumpvars(0, waveform_gen_tb);
     end
 
 endmodule

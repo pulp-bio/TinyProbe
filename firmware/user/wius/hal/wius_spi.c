@@ -7,6 +7,7 @@
  * @copyright Copyright (C) 2026 ETH Zurich. All rights reserved.
  *
  * @author Cédric Hirschi, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup wius
  *
@@ -29,43 +30,89 @@
 #include "wius_spi.h"
 
 osSemaphoreId_t _wius_spi_0_sem;
-osSemaphoreId_t _wius_spi_1_sem;
-
-typedef enum
-{
-    WIUS_SPI_WAIT_IDLE,
-    WIUS_SPI_WAIT_POLL,
-    WIUS_SPI_WAIT_SEMAPHORE,
-} wius_spi_wait_mode_t;
-
-static volatile wius_spi_wait_mode_t _wius_spi_0_wait_mode = WIUS_SPI_WAIT_IDLE;
-static volatile uint32_t _wius_spi_0_event = 0;
-static volatile bool _wius_spi_0_complete = false;
 
 wius_spi_inst_t _wius_spi_0_instance = {0};
-wius_spi_inst_t _wius_spi_1_instance = {0};
 
-static void _wius_spi_gspi_callback(uint32_t event);
 static void _wius_spi_ssi_callback(uint32_t event);
-static void _wius_spi_prepare_gspi_wait(bool poll);
-static sl_status_t _wius_spi_poll_gspi(void);
-static sl_status_t _wius_spi_gspi_event_status(uint32_t event);
+
+/*
+ * The Si91x SSI high-level configuration API defaults a standard (single-line)
+ * master to hardware-controlled SS.  This project routes CS0 through GPIO 53
+ * and multiplexes it in the FPGA, so every bus target requires a real
+ * software-controlled CS pulse.  In addition, the FPGA's enhanced dual-SPI
+ * command configuration leaves state in SPI_CTRLR0 that is not cleared by a
+ * normal SSI reconfiguration.  Reset both pieces of state whenever the shared
+ * SSI is configured.
+ */
+static sl_status_t _wius_spi_restore_software_cs_and_raw_framing(wius_spi_inst_t *instance)
+{
+    if ((instance == NULL) || (instance->inst.ssi == NULL))
+    {
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+
+    sl_ssi_driver_t *driver = (sl_ssi_driver_t *)instance->inst.ssi;
+    if (driver->Control == NULL)
+    {
+        return SL_STATUS_INVALID_STATE;
+    }
+
+    sl_si91x_ssi_set_slave_number(SSI_SLAVE_0);
+
+    const uint32_t control = SL_SSI_MASTER_ACTIVE |
+                             ARM_SPI_SS_MASTER_SW |
+                             instance->config.mode |
+                             ARM_SPI_DATA_BITS(instance->config.width) |
+                             instance->config.transfer_mode;
+    if (driver->Control(control, instance->config.freq) != ARM_DRIVER_OK)
+    {
+        return SL_STATUS_FAIL;
+    }
+
+    /* SPI_Command_Configure() used by the FPGA owns these fields.  The normal
+     * full-duplex SSI transfer routine does not clear them, so clear all
+     * enhanced command/address/dummy state before AFE/TX raw SPI traffic. */
+    SSI0->SSIENR = SSI_DISABLE;
+    SSI0->SER = 0U;
+    SSI0->CTRLR0_b.SPI_FRF = 0U;             /* standard single-line SPI */
+    SSI0->SPI_CTRLR0_b.TRANS_TYPE = 0U;
+    SSI0->SPI_CTRLR0_b.INST_L = 0U;
+    SSI0->SPI_CTRLR0_b.ADDR_L = 0U;
+    SSI0->SPI_CTRLR0_b.WAIT_CYCLES = 0U;
+    SSI0->CTRLR1 = 0U;
+    SSI0->DMACR = 0U;
+
+    if (instance->config.cs_mode == WIUS_SPI_CS_SW)
+    {
+        /* The CMSIS Control call above changes CS0 back to GPIO ownership.
+         * Drive the physical active-low GPIO 53 high before any transaction. */
+        wius_gpio_config(instance->cs);
+        wius_gpio_put(instance->cs, !instance->config.cs_polarity);
+    }
+
+    return SL_STATUS_OK;
+}
 
 wius_spi_inst_t wius_spi_get_instance(uint8_t id)
 {
-    return (id == WIUS_SPI_INST_0) ? _wius_spi_0_instance : _wius_spi_1_instance;
+    if (id != WIUS_SPI_INST_0)
+    {
+        return (wius_spi_inst_t){0};
+    }
+
+    return _wius_spi_0_instance;
 }
 
 sl_status_t wius_spi_init(uint8_t id, wius_spi_config_t *config)
 {
     sl_status_t status = SL_STATUS_OK;
 
-    if (id > WIUS_SPI_INST_1)
+    if ((id != WIUS_SPI_INST_0) || (config == NULL))
     {
         return SL_STATUS_INVALID_PARAMETER;
     }
 
-    wius_spi_inst_t *instance = (id == WIUS_SPI_INST_0) ? &_wius_spi_0_instance : &_wius_spi_1_instance;
+    wius_spi_inst_t *instance = &_wius_spi_0_instance;
 
     instance->id = id;
     instance->config = *config;
@@ -76,292 +123,204 @@ sl_status_t wius_spi_init(uint8_t id, wius_spi_config_t *config)
         wius_gpio_put(instance->cs, !instance->config.cs_polarity);
     }
 
-    // TODO: Add pin configurations?
-    // TODO: Check DMA
+    LOG_RET_STATUS(sl_si91x_ssi_init(SL_SSI_MASTER_ACTIVE, &instance->inst.ssi));
 
-    if (instance->id == WIUS_SPI_INST_0) // GSPI
+    sl_ssi_control_config_t ssi_config = {
+        .baud_rate = instance->config.freq,
+        .bit_width = instance->config.width,
+        .clock_mode = instance->config.mode,
+        .device_mode = SL_SSI_MASTER_ACTIVE,
+        .receive_sample_delay = instance->config.rx_sample_delay,
+        .transfer_mode = instance->config.transfer_mode,
+    };
+    LOG_RET_STATUS(sl_si91x_ssi_set_configuration(instance->inst.ssi, &ssi_config, SSI_SLAVE_0));
+    LOG_RET_STATUS(_wius_spi_restore_software_cs_and_raw_framing(instance));
+
+    _wius_spi_0_sem = osSemaphoreNew(1, 0, NULL);
+    if (_wius_spi_0_sem == NULL)
     {
-        LOG_RET_STATUS(sl_si91x_gspi_init(SL_GSPI_MASTER, &instance->inst.gspi));
-
-        sl_gspi_control_config_t gspi_config = {
-            .bit_width = instance->config.width,
-            .bitrate = instance->config.freq,
-            .clock_mode = instance->config.mode,
-            .slave_select_mode = instance->config.cs_mode,
-            .swap_read = false,
-            .swap_write = false,
-        };
-        LOG_RET_STATUS(sl_si91x_gspi_set_configuration(instance->inst.gspi, &gspi_config));
-        sl_si91x_gspi_set_slave_number(GSPI_SLAVE_0);
-
-        _wius_spi_0_sem = osSemaphoreNew(1, 0, NULL);
-        if (_wius_spi_0_sem == NULL)
-        {
-            return SL_STATUS_ALLOCATION_FAILED;
-        }
-
-        LOG_RET_STATUS(sl_si91x_gspi_register_event_callback(instance->inst.gspi, _wius_spi_gspi_callback));
+        return SL_STATUS_ALLOCATION_FAILED;
     }
-    else if (instance->id == WIUS_SPI_INST_1) // SSI
+
+    LOG_RET_STATUS(sl_si91x_ssi_register_event_callback(instance->inst.ssi, _wius_spi_ssi_callback));
+
+    return status;
+}
+
+sl_status_t wius_spi_reconfigure(uint8_t id, const wius_spi_config_t *config)
+{
+    if ((id != WIUS_SPI_INST_0) || (config == NULL) || (_wius_spi_0_instance.inst.ssi == NULL))
     {
-        LOG_RET_STATUS(sl_si91x_ssi_init(SL_SSI_MASTER_ACTIVE, &instance->inst.ssi));
-
-        sl_ssi_control_config_t ssi_config = {
-            .baud_rate = instance->config.freq,
-            .bit_width = instance->config.width,
-            .clock_mode = instance->config.mode,
-            .device_mode = SL_SSI_MASTER_ACTIVE,
-            .receive_sample_delay = 0,
-        };
-        LOG_RET_STATUS(sl_si91x_ssi_set_configuration(instance->inst.ssi, &ssi_config, SSI_SLAVE_0));
-        sl_si91x_ssi_set_slave_number(SSI_SLAVE_0);
-
-        _wius_spi_1_sem = osSemaphoreNew(1, 0, NULL);
-        if (_wius_spi_1_sem == NULL)
-        {
-            return SL_STATUS_ALLOCATION_FAILED;
-        }
-
-        LOG_RET_STATUS(sl_si91x_ssi_register_event_callback(instance->inst.ssi, _wius_spi_ssi_callback));
+        return SL_STATUS_INVALID_PARAMETER;
     }
-    else
+
+    sl_ssi_control_config_t ssi_config = {
+        .baud_rate = config->freq,
+        .bit_width = config->width,
+        .clock_mode = config->mode,
+        .device_mode = SL_SSI_MASTER_ACTIVE,
+        .receive_sample_delay = config->rx_sample_delay,
+        .transfer_mode = config->transfer_mode,
+    };
+
+    sl_status_t status = sl_si91x_ssi_set_configuration(_wius_spi_0_instance.inst.ssi,
+                                                         &ssi_config,
+                                                         SSI_SLAVE_0);
+    if (status == SL_STATUS_OK)
     {
-        status = SL_STATUS_INVALID_PARAMETER;
+        _wius_spi_0_instance.config = *config;
+        status = _wius_spi_restore_software_cs_and_raw_framing(&_wius_spi_0_instance);
     }
 
     return status;
 }
 
-void _wius_spi_cs_active(uint8_t id)
+sl_status_t wius_spi_set_cs(uint8_t id, bool active)
 {
-    wius_spi_inst_t *instance = (id == WIUS_SPI_INST_0) ? &_wius_spi_0_instance : &_wius_spi_1_instance;
+    if (id != WIUS_SPI_INST_0)
+    {
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+
+    wius_spi_inst_t *instance = &_wius_spi_0_instance;
 
     if (instance->config.cs_mode == WIUS_SPI_CS_SW)
     {
-        wius_gpio_put(instance->cs, instance->config.cs_polarity);
+        sl_ssi_driver_t *driver = (sl_ssi_driver_t *)instance->inst.ssi;
+        if ((driver == NULL) || (driver->Control == NULL))
+        {
+            return SL_STATUS_INVALID_STATE;
+        }
+
+        uint32_t state = active ? ARM_SPI_SS_ACTIVE : ARM_SPI_SS_INACTIVE;
+        if (driver->Control(ARM_SPI_CONTROL_SS, state) != ARM_DRIVER_OK)
+        {
+            return SL_STATUS_FAIL;
+        }
+
+        return SL_STATUS_OK;
     }
+
+    if (instance->config.cs_mode == WIUS_SPI_CS_HW)
+    {
+        sl_ssi_driver_t *driver = (sl_ssi_driver_t *)instance->inst.ssi;
+        uint32_t state = active ? ARM_SPI_SS_ACTIVE : ARM_SPI_SS_INACTIVE;
+
+        if ((driver == NULL) || (driver->Control == NULL))
+        {
+            return SL_STATUS_INVALID_STATE;
+        }
+        if (driver->Control(ARM_SPI_CONTROL_SS, state) != ARM_DRIVER_OK)
+        {
+            return SL_STATUS_FAIL;
+        }
+    }
+
+    return SL_STATUS_OK;
 }
 
-void _wius_spi_cs_inactive(uint8_t id)
+static sl_status_t _wius_spi_transfer(uint8_t id, const uint8_t *tx_buf, uint8_t *rx_buf,
+                                      size_t len, bool wait)
 {
-    wius_spi_inst_t *instance = (id == WIUS_SPI_INST_0) ? &_wius_spi_0_instance : &_wius_spi_1_instance;
+    sl_status_t status = SL_STATUS_OK;
 
-    if (instance->config.cs_mode == WIUS_SPI_CS_SW)
+    if (id != WIUS_SPI_INST_0 || tx_buf == NULL || len == 0U)
     {
-        wius_gpio_put(instance->cs, !instance->config.cs_polarity);
+        return SL_STATUS_INVALID_PARAMETER;
     }
+
+    wius_spi_inst_t *instance = &_wius_spi_0_instance;
+    LOG_RET_STATUS(wius_spi_clear_completion(id));
+
+    sl_si91x_ssi_set_slave_number(SSI_SLAVE_0);
+
+    LOG_RET_STATUS(wius_spi_set_cs(instance->id, true));
+    delay_ns(instance->config.cs_assert_delay_ns);
+
+    status = rx_buf == NULL
+        ? sl_si91x_ssi_send_data(instance->inst.ssi, tx_buf, len)
+        : sl_si91x_ssi_transfer_data(instance->inst.ssi, (uint8_t *)tx_buf, rx_buf, len);
+    if (status != SL_STATUS_OK)
+    {
+        (void)wius_spi_set_cs(instance->id, false);
+
+        return status;
+    }
+
+    if (wait)
+    {
+        LOG_RET_STATUS(wius_spi_await(instance->id));
+    }
+
+    return status;
 }
 
 sl_status_t wius_spi_xfer(uint8_t id, uint8_t *tx_buf, uint8_t *rx_buf, size_t len, bool wait)
 {
-    sl_status_t status = SL_STATUS_OK;
-
-    if (id > WIUS_SPI_INST_1 || tx_buf == NULL || rx_buf == NULL || len == 0)
+    if (rx_buf == NULL)
     {
         return SL_STATUS_INVALID_PARAMETER;
     }
-
-    wius_spi_inst_t *instance = (id == WIUS_SPI_INST_0) ? &_wius_spi_0_instance : &_wius_spi_1_instance;
-
-    if (instance->id == WIUS_SPI_INST_0) // GSPI
-    {
-        bool poll = wait && len <= WIUS_SPI_SHORT_XFER_MAX;
-        _wius_spi_prepare_gspi_wait(poll);
-
-        _wius_spi_cs_active(instance->id);
-
-        status = sl_si91x_gspi_transfer_data(instance->inst.gspi, tx_buf, rx_buf, len);
-        if (status != SL_STATUS_OK)
-        {
-            _wius_spi_0_wait_mode = WIUS_SPI_WAIT_IDLE;
-            _wius_spi_cs_inactive(instance->id);
-
-            return status;
-        }
-
-        if (poll)
-        {
-            return _wius_spi_poll_gspi();
-        }
-    }
-    else if (instance->id == WIUS_SPI_INST_1) // SSI
-    {
-        _wius_spi_cs_active(instance->id);
-
-        status = sl_si91x_ssi_transfer_data(instance->inst.ssi, tx_buf, rx_buf, len);
-        if (status != SL_STATUS_OK)
-        {
-            _wius_spi_cs_inactive(instance->id);
-
-            return status;
-        }
-    }
-    else
-    {
-        status = SL_STATUS_INVALID_PARAMETER;
-    }
-
-    if (wait)
-    {
-        LOG_RET_STATUS(wius_spi_await(instance->id));
-    }
-
-    return status;
+    return _wius_spi_transfer(id, tx_buf, rx_buf, len, wait);
 }
 
 sl_status_t wius_spi_send(uint8_t id, const uint8_t *tx_buf, size_t len, bool wait)
 {
-    sl_status_t status = SL_STATUS_OK;
-
-    if (id > WIUS_SPI_INST_1 || tx_buf == NULL || len == 0)
-    {
-        return SL_STATUS_INVALID_PARAMETER;
-    }
-
-    wius_spi_inst_t *instance = (id == WIUS_SPI_INST_0) ? &_wius_spi_0_instance : &_wius_spi_1_instance;
-
-    if (instance->id == WIUS_SPI_INST_0) // GSPI
-    {
-        bool poll = wait && len <= WIUS_SPI_SHORT_XFER_MAX;
-        _wius_spi_prepare_gspi_wait(poll);
-
-        _wius_spi_cs_active(instance->id);
-        status = sl_si91x_gspi_send_data(instance->inst.gspi, tx_buf, len);
-        if (status != SL_STATUS_OK)
-        {
-            _wius_spi_0_wait_mode = WIUS_SPI_WAIT_IDLE;
-            _wius_spi_cs_inactive(instance->id);
-            return status;
-        }
-
-        if (poll)
-        {
-            return _wius_spi_poll_gspi();
-        }
-    }
-    else if (instance->id == WIUS_SPI_INST_1) // SSI
-    {
-        _wius_spi_cs_active(instance->id);
-        status = sl_si91x_ssi_send_data(instance->inst.ssi, tx_buf, len);
-        if (status != SL_STATUS_OK)
-        {
-            _wius_spi_cs_inactive(instance->id);
-            return status;
-        }
-    }
-
-    if (wait)
-    {
-        LOG_RET_STATUS(wius_spi_await(instance->id));
-    }
-
-    return status;
+    return _wius_spi_transfer(id, tx_buf, NULL, len, wait);
 }
 
 sl_status_t wius_spi_await(uint8_t id)
 {
-    sl_status_t status = SL_STATUS_OK;
-
-    if (id == WIUS_SPI_INST_0) // GSPI
+    if (id != WIUS_SPI_INST_0)
     {
-        switch (osSemaphoreAcquire(_wius_spi_0_sem, WIUS_SPI_RX_TIMEOUT))
-        {
-        case osOK:
-            status = _wius_spi_gspi_event_status(_wius_spi_0_event);
-            break;
-        case osErrorTimeout:
-            status = SL_STATUS_TIMEOUT;
-            break;
-        default:
-            status = SL_STATUS_FAIL;
-            break;
-        }
-
-        _wius_spi_0_wait_mode = WIUS_SPI_WAIT_IDLE;
-        _wius_spi_cs_inactive(WIUS_SPI_INST_0);
-    }
-    else if (id == WIUS_SPI_INST_1) // SSI
-    {
-        switch (osSemaphoreAcquire(_wius_spi_1_sem, WIUS_SPI_RX_TIMEOUT))
-        {
-        case osOK:
-            status = SL_STATUS_OK;
-            break;
-        case osErrorTimeout:
-            status = SL_STATUS_TIMEOUT;
-            break;
-        default:
-            status = SL_STATUS_FAIL;
-            break;
-        }
-
-        _wius_spi_cs_inactive(WIUS_SPI_INST_1);
-    }
-    else
-    {
-        status = SL_STATUS_INVALID_PARAMETER;
+        return SL_STATUS_INVALID_PARAMETER;
     }
 
+    sl_status_t status = wius_spi_await_completion(id, 1000U);
+    delay_ns(_wius_spi_0_instance.config.cs_deassert_delay_ns);
+    (void)wius_spi_set_cs(WIUS_SPI_INST_0, false);
     return status;
 }
 
-static void _wius_spi_prepare_gspi_wait(bool poll)
+sl_status_t wius_spi_clear_completion(uint8_t id)
 {
-    // A late completion from a failed transfer must not satisfy a new await.
-    while (osSemaphoreAcquire(_wius_spi_0_sem, 0) == osOK)
-        ;
-
-    _wius_spi_0_event = 0;
-    _wius_spi_0_complete = false;
-    _wius_spi_0_wait_mode = poll ? WIUS_SPI_WAIT_POLL : WIUS_SPI_WAIT_SEMAPHORE;
-}
-
-static sl_status_t _wius_spi_poll_gspi(void)
-{
-    uint32_t start = osKernelGetTickCount();
-
-    while (!_wius_spi_0_complete)
+    if ((id != WIUS_SPI_INST_0) || (_wius_spi_0_sem == NULL))
     {
-        if ((uint32_t)(osKernelGetTickCount() - start) >= WIUS_SPI_RX_TIMEOUT)
-        {
-            _wius_spi_0_wait_mode = WIUS_SPI_WAIT_IDLE;
-            _wius_spi_cs_inactive(WIUS_SPI_INST_0);
-            return SL_STATUS_TIMEOUT;
-        }
+        return SL_STATUS_INVALID_PARAMETER;
     }
 
-    sl_status_t status = _wius_spi_gspi_event_status(_wius_spi_0_event);
-    _wius_spi_0_wait_mode = WIUS_SPI_WAIT_IDLE;
-    _wius_spi_cs_inactive(WIUS_SPI_INST_0);
-    return status;
-}
-
-static sl_status_t _wius_spi_gspi_event_status(uint32_t event)
-{
-    if ((event & (SL_GSPI_DATA_LOST | SL_GSPI_MODE_FAULT)) != 0)
+    while (osSemaphoreAcquire(_wius_spi_0_sem, 0U) == osOK)
     {
-        return SL_STATUS_FAIL;
     }
 
-    return (event & SL_GSPI_TRANSFER_COMPLETE) != 0 ? SL_STATUS_OK : SL_STATUS_FAIL;
+    return SL_STATUS_OK;
 }
 
-static void _wius_spi_gspi_callback(uint32_t event)
+sl_status_t wius_spi_await_completion(uint8_t id, uint32_t timeout_ms)
 {
-    if (_wius_spi_0_wait_mode == WIUS_SPI_WAIT_IDLE)
+    if ((id != WIUS_SPI_INST_0) || (_wius_spi_0_sem == NULL))
     {
-        return;
+        return SL_STATUS_INVALID_PARAMETER;
     }
 
-    if ((event & (SL_GSPI_TRANSFER_COMPLETE | SL_GSPI_DATA_LOST | SL_GSPI_MODE_FAULT)) != 0)
+    uint32_t ticks = (uint32_t)(((uint64_t)timeout_ms * osKernelGetTickFreq() + 999U) / 1000U);
+    osStatus_t status = osSemaphoreAcquire(_wius_spi_0_sem, ticks);
+    if (status == osOK)
     {
-        _wius_spi_0_event = event;
-        _wius_spi_0_complete = true;
+        return SL_STATUS_OK;
+    }
 
-        if (_wius_spi_0_wait_mode == WIUS_SPI_WAIT_SEMAPHORE)
-        {
-            osSemaphoreRelease(_wius_spi_0_sem);
-        }
+    // Stop DMA before the caller can reuse its transmit or receive buffer.
+    wius_spi_abort(id);
+    return status == osErrorTimeout ? SL_STATUS_TIMEOUT : SL_STATUS_FAIL;
+}
+
+void wius_spi_abort(uint8_t id)
+{
+    if (id == WIUS_SPI_INST_0 && _wius_spi_0_instance.inst.ssi != NULL)
+    {
+        sl_ssi_driver_t *driver = (sl_ssi_driver_t *)_wius_spi_0_instance.inst.ssi;
+        (void)driver->Control(ARM_SPI_ABORT_TRANSFER, 0U);
     }
 }
 
@@ -369,6 +328,6 @@ static void _wius_spi_ssi_callback(uint32_t event)
 {
     if (event == SSI_EVENT_TRANSFER_COMPLETE)
     {
-        osSemaphoreRelease(_wius_spi_1_sem);
+        osSemaphoreRelease(_wius_spi_0_sem);
     }
 }

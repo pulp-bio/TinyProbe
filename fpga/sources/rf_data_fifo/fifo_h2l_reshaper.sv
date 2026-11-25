@@ -18,8 +18,15 @@ module fifo_h2l_reshaper #(
     output logic                            valid_o,
     input  logic                            ready_i,
 
+    // Bounded pipeline diagnostic: reports only genuine 20-bit FIFO-word
+    // loads into the bit reservoir. It has no effect on flow control.
+    output logic                            debug_word_load_o,
+    output logic [INPUT_DATA_WIDTH-1:0]     debug_word_data_o,
+
     // Start module signal
     input logic                             start_i,
+    // Keep the bit reservoir when the reader changes to another FIFO.
+    input logic                             continue_i,
     // Module busy signal
     output logic                            busy_o
 );
@@ -50,6 +57,9 @@ module fifo_h2l_reshaper #(
     logic shift_buffer_d, shift_buffer_q;
     // Real signal
     logic shift_buffer;
+    // The input FIFO has a registered output. A word can be shifted into the
+    // reservoir one clock after its accepted read request.
+    logic read_pending_q;
 
 
     // Arrays of the main parameters of the internal FSM
@@ -126,12 +136,15 @@ module fifo_h2l_reshaper #(
     logic [READ_CNT_WIDTH - 1:0] rd_cnt_q;
 
     logic rd_cnt_done;
+    logic rd_cnt_clr;
 
     always_comb begin
         rd_cnt_d = rd_cnt_q;
         rd_cnt_done = 0;
 
-        if(fifo_read_req_o) begin
+        // A read request is accepted only while the FIFO is non-empty.
+        // Do not count a request rejected during an asynchronous refill gap.
+        if (fifo_read_req_o && !fifo_empty_i) begin
             rd_cnt_d = rd_cnt_q + 1;
         end
 
@@ -142,7 +155,7 @@ module fifo_h2l_reshaper #(
         end
 
         // Use the dedicated signal to reset the read counter
-        if (cnt_clr) begin
+        if (rd_cnt_clr) begin
             rd_cnt_d = 0;
         end
     end
@@ -174,7 +187,15 @@ module fifo_h2l_reshaper #(
 
     ///////////////////////////////// FSM /////////////////////////////////
     // FSM states type definition. This FSM is responsible for start, maintaining and finishing the transfer.
-    typedef enum {IDLE, REQ_FIRST_WORD, CONT_TRANSFER, SEND_LEFTOVERS} state_e;
+    typedef enum {
+        IDLE,
+        WAIT_NEXT_WORD,
+        RESUME_TRANSFER,
+        REQ_FIRST_WORD,
+        CONT_TRANSFER,
+        WAIT_CONTINUE,
+        SEND_LEFTOVERS
+    } state_e;
 
     // State vasriable
     state_e state_q, state_d;
@@ -191,6 +212,7 @@ module fifo_h2l_reshaper #(
         cnt_d = cnt_q;
         cnt_enable = 0;
         cnt_clr = 0;
+        rd_cnt_clr = 0;
 
         valid_o = 0;
 
@@ -207,10 +229,49 @@ module fifo_h2l_reshaper #(
                 if (!fifo_empty_i && en && !rd_cnt_done) begin
                     fifo_read_req_o = 1;
                     state_d = REQ_FIRST_WORD;
-                end else begin
+                end else if (!en || rd_cnt_done) begin
                     // The module is not yet busy
-                    // Either the FIFO is empty or the start is not triggered
+                    // because it has not started or reached its programmed
+                    // input-word count. A temporary empty while enabled is
+                    // backpressure from the one-entry average buffer, so stay
+                    // busy and wait for the divider to refill it.
                     busy_o = 1'b0;
+                end
+            end
+
+            // A one-entry average buffer becomes empty as soon as it is read.
+            // The shared divider takes several core clocks to refill it. Do
+            // not interpret that temporary empty condition as end-of-lane.
+            WAIT_NEXT_WORD: begin
+                if (rd_cnt_done) begin
+                    state_d = continue_i ? WAIT_CONTINUE : SEND_LEFTOVERS;
+                end else if (!fifo_empty_i) begin
+                    fifo_read_req_o = 1'b1;
+                    state_d = RESUME_TRANSFER;
+                end
+            end
+
+            // The read requested in WAIT_NEXT_WORD has completed, but the
+            // current mux position still contains one byte made entirely from
+            // the previous 20-bit word. Send that byte before shifting the
+            // newly returned word into the bit reservoir.
+            RESUME_TRANSFER: begin
+                valid_o = 1'b1;
+                shift_buffer_d = req_word[cnt_q];
+                if (ready_i) begin
+                    cnt_enable = 1'b1;
+                    shift_buffer = read_pending_q;
+                    state_d = CONT_TRANSFER;
+                end
+            end
+
+            WAIT_CONTINUE: begin
+                // The current FIFO is exhausted, but the byte reservoir is
+                // intentionally retained until the next FIFO is selected.
+                busy_o = 1'b0;
+                if (start_i && !start_q) begin
+                    rd_cnt_clr = 1'b1;
+                    state_d = IDLE;
                 end
             end
 
@@ -224,7 +285,7 @@ module fifo_h2l_reshaper #(
 
                 if (ready_i) begin
                     // Shift the first word into the internal buffer
-                    shift_buffer = 1;
+                    shift_buffer = read_pending_q;
 
                     // Corner case for the sutuations
                     // When only one output word contains in the input word.
@@ -254,10 +315,16 @@ module fifo_h2l_reshaper #(
 
                     // Request the input word depending on the counter state
                     // and precomputed values
-                    fifo_read_req_o = req_word[cnt_q];
+                    fifo_read_req_o = req_word[cnt_q] && !fifo_empty_i;
 
                     // Shift buffer value depends on the previous states
-                    shift_buffer = shift_buffer_q;
+                    shift_buffer = read_pending_q;
+
+                    // The current output byte may still be accepted, but if
+                    // the next 20-bit word is not ready, pause before emitting
+                    // any byte that depends on it.
+                    if (req_word[cnt_q] && fifo_empty_i && !rd_cnt_done)
+                        state_d = WAIT_NEXT_WORD;
 
                 end else begin
                     // Otherwise halt the timer and wait till the output FIFO is ready
@@ -267,15 +334,13 @@ module fifo_h2l_reshaper #(
                 end
 
 
-                // If FIFO becomes empty or the read counter almost reached the threshold 
-                // check the following conditions
-                if (fifo_empty_i || rd_cnt_done) begin
-                    // if we need to request the input word in the next round
-                    // Jump into the next state
-                    if (fifo_read_req_o) begin
-                        state_d = SEND_LEFTOVERS;
-                        fifo_read_req_o = 0;
-                    end
+                // The programmed read count, not a temporary empty flag,
+                // marks the end of this lane.
+                if (rd_cnt_done && ready_i && req_word[cnt_q]) begin
+                    // Do not flush the reservoir when another FIFO follows:
+                    // its first word continues this byte stream.
+                    state_d = continue_i ? WAIT_CONTINUE : SEND_LEFTOVERS;
+                    fifo_read_req_o = 0;
                 end
             end
 
@@ -338,6 +403,8 @@ module fifo_h2l_reshaper #(
 
     // Never reset FIFO
     assign fifo_rst_o = 0;
+    assign debug_word_load_o = shift_buffer && read_pending_q;
+    assign debug_word_data_o = fifo_data_i;
 
     // State transition logic
     always_ff  @(posedge clk_i, negedge rst_ni)begin
@@ -352,6 +419,7 @@ module fifo_h2l_reshaper #(
         if(~rst_ni) begin
             cnt_q    <= 0;
             shift_buffer_q <= 0;
+            read_pending_q <= 1'b0;
         end
         else  begin
             cnt_q    <=  cnt_d;
@@ -360,6 +428,9 @@ module fifo_h2l_reshaper #(
             if (ready_i) begin
                 shift_buffer_q <= shift_buffer_d; 
             end
+            read_pending_q <=
+                (read_pending_q && !shift_buffer) ||
+                (fifo_read_req_o && !fifo_empty_i);
         end
     end
 

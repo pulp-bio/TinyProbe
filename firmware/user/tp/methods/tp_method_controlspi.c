@@ -8,6 +8,7 @@
  *
  * @author Cédric Hirschi, ETH Zürich
  * @author Sergei Vostrikov, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup tinyprobe_methods
  *
@@ -29,13 +30,23 @@
 
 #include "tp_method_controlspi.h"
 
-#include "tp_mux.h"
+#include "tp.h"
 
 methods_status tp_method_controlspi(const methods_controlspi_args *args, void *userdata)
 {
     UNUSED(userdata);
 
-    tp_mux_select((tp_mux_t)args->domain);
+    if ((uint32_t)args->domain > (uint32_t)TP_MUX_TX)
+    {
+        return methods_status_INVALID_ARGUMENT;
+    }
+
+    sl_status_t status = tp_spi_select((tp_mux_t)args->domain);
+    if (status != SL_STATUS_OK)
+    {
+        LOG_STATUS(status);
+        return methods_status_UNKNOWN_ERROR;
+    }
 
     return methods_status_OK;
 }

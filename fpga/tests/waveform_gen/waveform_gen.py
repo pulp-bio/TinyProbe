@@ -11,16 +11,17 @@ PERIOD = 100
 SET_DELAY = 0.1 * PERIOD
 units = "ns"
 async def reset_dut(clk_sig, reset_sig):
+    # rst_ni is active low.  Drive the HDL handle itself, not the local
+    # Python variable passed to this helper.
+    reset_sig.value = 1
     await FallingEdge(clk_sig)
-    await Timer(SET_DELAY, units=units)
-    reset_sig <= 1
+    await Timer(SET_DELAY, unit=units)
+    reset_sig.value = 0
     await RisingEdge(clk_sig)
-    await Timer(SET_DELAY, units=units)
-    reset_sig <= 0
+    await Timer(SET_DELAY, unit=units)
+    reset_sig.value = 1
+    await RisingEdge(clk_sig)
     print('Reset done!!')
-    await FallingEdge(clk_sig)
-    await Timer(SET_DELAY, units=units)
-    reset_sig <= 1
 
 @cocotb.test()
 async def mem_ctrl_test(dut):
@@ -36,45 +37,45 @@ async def mem_ctrl_test(dut):
     AFE_DATA_ACQ_TIME   = int("0x64", 0)
 
     TR_EN_PERIOD_DEF    = 50000 # = 200 Hz
-    TR_EN_ON_TIME_DEF   = 500 # = 10 us
+    TR_EN_ON_TIME_DEF   = 240 # = 10 us
 
 
     # ns
     delay = 100
     long_delay = SYNC_PERIOD_DEF * 1/10**6 * 10 **9
 
-    # Initialize clocks
-    clock = Clock(dut.clk, PERIOD, units=units)  # Create a 10us period clock on port clk
+    # Initialize clock
+    clock = Clock(dut.clk, PERIOD, unit=units)
 
-    cocotb.fork(clock.start())  # Start the clock
+    cocotb.start_soon(clock.start())  # Start the clock
 
     ##################### Set default values #####################
 
     # dut.sync_period       <= SYNC_PERIOD_DEF
-    dut.sync_period       <= 11999
-    dut.capture_delay     <= CAPTURE_DELAY_DEF
-    dut.tx_wake_up_time   <= TX_WAKE_UP_TIME_DEF
-    dut.tx_sleep_time     <= TX_SLEEP_TIME_DEF
-    dut.afe_wake_up_time  <= AFE_WAKE_UP_TIME
-    dut.afe_clk_on_time   <= AFE_CLK_ON_TIME
-    dut.afe_data_acq_time <= AFE_DATA_ACQ_TIME
+    dut.sync_period.value       = 11999
+    dut.capture_delay.value     = CAPTURE_DELAY_DEF
+    dut.tx_wake_up_time.value   = TX_WAKE_UP_TIME_DEF
+    dut.tx_sleep_time.value     = TX_SLEEP_TIME_DEF
+    dut.afe_wake_up_time.value  = AFE_WAKE_UP_TIME
+    dut.afe_clk_on_time.value   = AFE_CLK_ON_TIME
+    dut.afe_data_acq_time.value = AFE_DATA_ACQ_TIME
 
-    dut.n_shots           <= 11
+    dut.n_shots.value           = 11
 
-    dut.tr_en_period      <= TR_EN_PERIOD_DEF
-    dut.tr_en_on_time     <= TR_EN_ON_TIME_DEF
-    dut.refresh_en        <= 1
+    dut.tr_en_period.value      = TR_EN_PERIOD_DEF
+    dut.tr_en_on_time.value     = TR_EN_ON_TIME_DEF
+    dut.refresh_en.value        = 1
 
-    dut.start_capture     <= 0
+    dut.start_capture.value     = 0
 
-    dut.start_cap_time    <= 0
+    dut.start_cap_time.value    = 0
 
-    dut.fifo_rd_busy      <= 0
+    dut.fifo_rd_busy.value      = 0
 
     ##################### Make a reset ##################### 
 
     # Some delay
-    await Timer(delay, units=units)
+    await Timer(delay, unit=units)
 
     await FallingEdge(dut.clk)  # Synchronize with the clock
 
@@ -84,7 +85,7 @@ async def mem_ctrl_test(dut):
     ##################### Set start Capture time ##################### 
     await ClockCycles(dut.clk, random.randint(0, 2))
     # dut.start_cap_time    <= int(SYNC_PERIOD_DEF/2)
-    dut.start_cap_time    <= 0
+    dut.start_cap_time.value    = 0
     await ClockCycles(dut.clk, random.randint(0, 2))
 
     ##################### Start capture ##################### 
@@ -95,9 +96,14 @@ async def mem_ctrl_test(dut):
 
     # Start capture
     await RisingEdge(dut.clk)
-    dut.start_capture = 1
+    dut.start_capture.value = 1
     await RisingEdge(dut.clk)
-    dut.start_capture = 0
+    dut.start_capture.value = 0
+
+    # The start command must load the configured number of shots before the
+    # first 11,999-cycle waveform period completes.
+    await ClockCycles(dut.clk, 5)
+    assert int(dut.dut.shot_cnt_q.value) == 11, "start_capture did not load n_shots"
 
     # Some long delay
     await ClockCycles(dut.clk, random.randint(SYNC_PERIOD_DEF, SYNC_PERIOD_DEF*2))
@@ -106,41 +112,41 @@ async def mem_ctrl_test(dut):
 
     await RisingEdge(dut.clk)
     # Data acquisition time = 70 uS
-    dut.afe_data_acq_time <= 700
+    dut.afe_data_acq_time.value = 700
     # Capture delay 10 uS
-    dut.capture_delay     <= 100
+    dut.capture_delay.value     = 100
     # AFE clock on time before wake up = 20 uS
-    dut.afe_clk_on_time   <= 200
+    dut.afe_clk_on_time.value   = 200
 
     # Set start Capture time
     await ClockCycles(dut.clk, random.randint(0, 2))
-    dut.start_cap_time    <= random.randint(0, int(SYNC_PERIOD_DEF/2))
+    dut.start_cap_time.value    = random.randint(0, int(SYNC_PERIOD_DEF/2))
 
-    dut.fifo_rd_busy      <= 1
+    dut.fifo_rd_busy.value      = 1
 
     # Change parameters of the refreshing timer
-    dut.refresh_en        <= 0
+    dut.refresh_en.value        = 0
     await ClockCycles(dut.clk, random.randint(1, SYNC_PERIOD_DEF))
 
-    dut.tr_en_period      <= int(TR_EN_PERIOD_DEF/2)
-    dut.tr_en_on_time     <= int(TR_EN_ON_TIME_DEF/2)
-    dut.refresh_en        <= 1
+    dut.tr_en_period.value      = int(TR_EN_PERIOD_DEF/2)
+    dut.tr_en_on_time.value     = int(TR_EN_ON_TIME_DEF/2)
+    dut.refresh_en.value        = 1
 
-    dut.fifo_rd_busy      <= 1
+    dut.fifo_rd_busy.value      = 1
 
     # Some delay
     await ClockCycles(dut.clk, random.randint(1, SYNC_PERIOD_DEF))
 
-    dut.fifo_rd_busy      <= 0
+    dut.fifo_rd_busy.value      = 0
 
     # Some delay
     await ClockCycles(dut.clk, random.randint(1, 2*SYNC_PERIOD_DEF))
 
     # Start capture
     await RisingEdge(dut.clk)
-    dut.start_capture = 1
+    dut.start_capture.value = 1
     await RisingEdge(dut.clk)
-    dut.start_capture = 0
+    dut.start_capture.value = 0
 
     # Some long delay
     await ClockCycles(dut.clk, random.randint(2*SYNC_PERIOD_DEF, 3*SYNC_PERIOD_DEF))
@@ -149,11 +155,11 @@ async def mem_ctrl_test(dut):
 
     await RisingEdge(dut.clk)
     # Data acquisition time = 110 uS
-    dut.afe_data_acq_time <= 1100
+    dut.afe_data_acq_time.value = 1100
     # Capture delay 12 uS
-    dut.capture_delay     <= 120
+    dut.capture_delay.value     = 120
     # AFE clock on time before wake up = 22 uS
-    dut.afe_clk_on_time   <= 220
+    dut.afe_clk_on_time.value   = 220
 
 
     # Wait one sync cycle
@@ -164,9 +170,9 @@ async def mem_ctrl_test(dut):
 
     # Start capture
     await RisingEdge(dut.clk)
-    dut.start_capture = 1
+    dut.start_capture.value = 1
     await RisingEdge(dut.clk)
-    dut.start_capture = 0
+    dut.start_capture.value = 0
 
     # Some long delay
     await ClockCycles(dut.clk, random.randint(2*SYNC_PERIOD_DEF, 3*SYNC_PERIOD_DEF))

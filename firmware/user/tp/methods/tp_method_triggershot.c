@@ -8,6 +8,7 @@
  *
  * @author Cédric Hirschi, ETH Zürich
  * @author Sergei Vostrikov, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup tinyprobe_methods
  *
@@ -32,229 +33,224 @@
 #include "tp.h"
 #include "tp_fpga.h"
 #include "tp_power.h"
-#include "wius_spi.h"
 
-static uint8_t tx_dummy[TP_BUFFER_SIZE] = {0};
+#define TP_FPGA_CAPTURE_CONFIG_REG 2U
+#define TP_FPGA_MODE_REG 12U
+#define TP_FPGA_IRQ_CONFIG_REG 13U
+#define TP_FPGA_STATUS_REG 15U
+#define TP_FPGA_EXTERNAL_MODE (1UL << 25U)
+#define TP_FPGA_IRQ_SELECT_MASK (3UL << 1U)
+#define TP_FPGA_STATUS_PAGE_MASK (0xFF800000UL)
+#define TP_FPGA_RESULTS_STATUS_PAGE (1UL << 27U)
+#define TP_FPGA_RESULT_READY 1U
+#define TP_FPGA_STREAM_READY 1U
+#define TP_NO_CALLBACK UINT16_MAX
 
-static sl_status_t _tp_transmit_packages(uint32_t shot_index, uint16_t num_packets,
-                                         uint16_t callback_id, bool *callback_powered_down);
-static sl_status_t _tp_restore_callback_power(bool *callback_powered_down);
-
-methods_status tp_method_triggershot(const methods_triggershot_args *args, void *userdata)
+static sl_status_t _tp_wait_results_ready(bool external_mode)
 {
-    UNUSED(userdata);
+    const uint32_t timeout_ms = external_mode ? 60000U : 1000U;
+    const uint32_t start = time_ms();
+    do
+    {
+        uint32_t value = 0U;
+        sl_status_t status = tp_fpga_read_reg(TP_FPGA_STATUS_REG, &value);
+        if (status != SL_STATUS_OK)
+        {
+            return status;
+        }
+        // The interrupt can wake this task early. Wait for the sticky results-ready flag.
+        if ((value >> 24U) == 0xD4U && (value & TP_FPGA_RESULT_READY) != 0U)
+        {
+            return SL_STATUS_OK;
+        }
+        const uint32_t poll_ticks = (osKernelGetTickFreq() + 9U) / 10U;
+        (void)osSemaphoreAcquire(sem_fpga, poll_ticks);
+    } while (time_ms() - start < timeout_ms);
 
+    log_error("Timed out waiting for FPGA acquisition results");
+    return SL_STATUS_TIMEOUT;
+}
+
+static sl_status_t _tp_wait_stream_ready(void)
+{
+    const uint32_t start = time_ms();
+    do
+    {
+        uint32_t value = 0U;
+        sl_status_t status = tp_fpga_read_reg(TP_FPGA_STATUS_REG, &value);
+        if (status != SL_STATUS_OK)
+        {
+            return status;
+        }
+        if ((value & TP_FPGA_STREAM_READY) != 0U)
+        {
+            return SL_STATUS_OK;
+        }
+        delay_ms(1U);
+    } while (time_ms() - start < 1000U);
+
+    log_error("Timed out waiting for FPGA stream data");
+    return SL_STATUS_TIMEOUT;
+}
+
+static sl_status_t _tp_restore_callback_power(void)
+{
+    sl_status_t status = tp_fpga_write_reg(16U, 10U);
+    tp_power_set(TP_POWER_DOMAIN_LVDS_2_5V, true);
+    return status;
+}
+
+static sl_status_t _tp_transmit_packages(uint32_t shot, uint16_t num_packets,
+                                         uint16_t callback_id, bool *callback_powered_down)
+{
+    // DMA starts at the payload. Keep its buffer aligned independently of the UDP header.
+    _Alignas(uint32_t) static uint8_t spi_rx[TP_FIFO_READ_SIZE];
+
+    for (uint16_t packet = 0; packet < num_packets; packet++)
+    {
+        sl_status_t status = tp_fpga_read_fifo(spi_rx, sizeof(spi_rx));
+        if (status != SL_STATUS_OK)
+        {
+            return status;
+        }
+
+        tp_buffer_slot_t *slot = tp_buffer_claim_writing(&tp_buf);
+        if (slot == NULL)
+        {
+            return SL_STATUS_TIMEOUT;
+        }
+
+        slot->data[0] = (uint8_t)shot;
+        slot->data[1] = (uint8_t)packet;
+        memcpy(slot->data + 2, spi_rx, sizeof(spi_rx));
+        slot->length = TP_BUFFER_SIZE;
+        tp_buffer_return_writing(&tp_buf, slot);
+
+        if (packet == callback_id)
+        {
+            status = _tp_restore_callback_power();
+            if (status != SL_STATUS_OK)
+            {
+                return status;
+            }
+            *callback_powered_down = false;
+        }
+    }
+    return SL_STATUS_OK;
+}
+
+static sl_status_t _tp_acquire_shots(const methods_triggershot_args *args, uint16_t num_packets,
+                                     bool external_mode, uint32_t irq_config)
+{
     sl_status_t status = SL_STATUS_OK;
+    const uint32_t stream_config = irq_config & ~TP_FPGA_STATUS_PAGE_MASK;
+    const uint32_t result_config = stream_config | TP_FPGA_RESULTS_STATUS_PAGE;
     bool callback_powered_down = false;
 
-    if (args->num_shots == 0 || args->num_shots > 256 ||
-        args->num_packets == 0 || args->num_packets > 256 ||
-        (args->callback_id != 65535 && args->callback_id >= args->num_packets))
+    for (uint32_t shot = 0; shot < args->num_shots; shot++)
     {
-        return methods_status_INVALID_ARGUMENT;
-    }
+        status = tp_fpga_reset_multififo();
+        if (status != SL_STATUS_OK) break;
 
-    // log_info("Triggering %lu shots with %u packets each", args->num_shots, args->num_packets);
-    // log_info("dcdc_off_delay_ns=%luns, read_fifo_delay_ns=%luns, sw_trigger=%u, dcdc_pwd_at_rx=%u", dcdc_off_delay_ns, read_fifo_delay_ns, sw_trigger, dcdc_pwd_at_rx);
-
-    // log_trace("Resetting FPGA multififo");
-    status = tp_fpga_reset_multififo();
-    if (SL_STATUS_OK != status)
-    {
-        goto error;
-    }
-
-    // log_trace("Emptying FPGA TX FIFO");
-    status = tp_fpga_empty_tx();
-    if (SL_STATUS_OK != status)
-    {
-        goto error;
-    }
-
-    // Empty FPGA semaphore
-    while (osSemaphoreAcquire(sem_fpga, 0) == osOK)
-        ;
-
-    if (args->software_trigger)
-    {
-        // log_trace("Sending start command to FPGA");
-        status = tp_fpga_send_start();
-        if (SL_STATUS_OK != status)
+        while (osSemaphoreAcquire(sem_fpga, 0U) == osOK)
         {
-            goto error;
         }
-        // log_debug("Sent start method");
-    }
+        status = tp_fpga_write_reg(result_config, TP_FPGA_IRQ_CONFIG_REG);
+        if (status != SL_STATUS_OK) break;
 
-    // log_trace("Entering shot loop");
-    for (uint32_t i = 0; i < args->num_shots; i++)
-    {
-#if !TP_TEST_MODE
-        if (osSemaphoreAcquire(sem_fpga, 1000) != osOK)
+        if (args->software_trigger || external_mode)
         {
-            log_error("Error waiting for FIFO data ready flag");
-            status = SL_STATUS_TIMEOUT;
-            goto error;
+            status = tp_fpga_send_start();
+            if (status != SL_STATUS_OK) break;
         }
-#endif
+        status = _tp_wait_results_ready(external_mode);
+        if (status != SL_STATUS_OK) break;
 
         delay_ns(args->delay_dcdc_off_ns);
-
         if (args->pwd_dcdc_at_rx)
         {
             tp_power_set(TP_POWER_DOMAIN_POS_HV, false);
             tp_power_set(TP_POWER_DOMAIN_NEG_HV, false);
         }
-
         delay_ns(args->delay_read_fifo_ns);
-
         if (args->pwd_dcdc_at_rx)
         {
             tp_power_set(TP_POWER_DOMAIN_POS_HV, true);
             tp_power_set(TP_POWER_DOMAIN_NEG_HV, true);
         }
 
-        if (args->callback_id != 65535)
+        if (args->callback_id != TP_NO_CALLBACK)
         {
-            // Enable AFE Global power down
-            status = tp_fpga_write_reg(48, 10);
-            if (SL_STATUS_OK != status)
-            {
-                goto error;
-            }
-            // Disable LVDS IO bank of the FPGA
+            status = tp_fpga_write_reg(48U, 10U);
+            if (status != SL_STATUS_OK) break;
             tp_power_set(TP_POWER_DOMAIN_LVDS_2_5V, false);
             callback_powered_down = true;
         }
 
+        // Read the transport status layout while waiting for the stream FIFO to fill.
+        status = tp_fpga_write_reg(stream_config, TP_FPGA_IRQ_CONFIG_REG);
+        if (status != SL_STATUS_OK) break;
         status = tp_fpga_en_read();
-        if (SL_STATUS_OK != status)
-        {
-            goto error;
-        }
-
-        // Wait 24 clock cycles of 10 MHz clock
-        // It is worst case maximum time needed for the internal IP
-        // To read the data from the Core FIFO and push it into the SPI TX buffer.
-        delay_ns(2400);
-
-        status = _tp_transmit_packages(i, (uint16_t)args->num_packets,
-                                       (uint16_t)args->callback_id, &callback_powered_down);
-        if (SL_STATUS_OK != status)
-        {
-            goto error;
-        }
-
-        status = tp_fpga_reset_multififo();
-        if (SL_STATUS_OK != status)
-        {
-            goto error;
-        }
+        if (status != SL_STATUS_OK) break;
+        status = _tp_wait_stream_ready();
+        if (status != SL_STATUS_OK) break;
+        status = _tp_transmit_packages(shot, num_packets, args->callback_id, &callback_powered_down);
+        if (status != SL_STATUS_OK) break;
     }
 
-    return methods_status_OK;
-
-error:
     if (callback_powered_down)
     {
-        sl_status_t restore_status = _tp_restore_callback_power(&callback_powered_down);
-        if (SL_STATUS_OK == status)
-        {
-            status = restore_status;
-        }
-        else if (SL_STATUS_OK != restore_status)
-        {
-            LOG_STATUS(restore_status);
-        }
+        LOG_STATUS(_tp_restore_callback_power());
     }
-
-    LOG_STATUS(status);
-    return methods_status_UNKNOWN_ERROR;
+    sl_status_t reset_status = tp_fpga_reset_multififo();
+    return status == SL_STATUS_OK ? reset_status : status;
 }
 
-static sl_status_t _tp_transmit_packages(uint32_t shot_index, uint16_t num_packets,
-                                         uint16_t callback_id, bool *callback_powered_down)
+methods_status tp_method_triggershot(const methods_triggershot_args *args, void *userdata)
 {
-    sl_status_t status = SL_STATUS_OK;
-
-    tp_buffer_slot_t *slot_spi = tp_buffer_claim_writing(&tp_buf);
-    if (NULL == slot_spi)
+    UNUSED(userdata);
+    if (args->num_shots == 0U || args->num_shots > 256U)
     {
-        log_warn("Timeout claiming initial buffer for write");
-        return SL_STATUS_FAIL;
+        return methods_status_INVALID_ARGUMENT;
     }
 
-    status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
-    if (SL_STATUS_OK != status)
+    uint32_t capture_config = 0U;
+    uint32_t mode = 0U;
+    uint32_t irq_config = 0U;
+    sl_status_t status = tp_spi_select(TP_MUX_FPGA);
+    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(TP_FPGA_CAPTURE_CONFIG_REG, &capture_config);
+    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(TP_FPGA_MODE_REG, &mode);
+    if (status == SL_STATUS_OK) status = tp_fpga_read_reg(TP_FPGA_IRQ_CONFIG_REG, &irq_config);
+    if (status != SL_STATUS_OK)
     {
-        log_error("Error starting initial SPI recv: 0x%04X", (unsigned)status);
-        return status;
+        LOG_STATUS(status);
+        return methods_status_UNKNOWN_ERROR;
     }
 
-    uint16_t num_packet_groups =
-        (num_packets + (TP_UDP_PACKET_AMT - 1)) / TP_UDP_PACKET_AMT;
-
-    for (uint16_t packet_group = 0; packet_group < num_packet_groups; packet_group++)
+    const uint16_t available_packets = (uint16_t)__builtin_popcount(capture_config & UINT16_MAX);
+    const uint32_t num_packets = args->num_packets == 0U ? available_packets : args->num_packets;
+    if (num_packets == 0U || num_packets > available_packets ||
+        (args->callback_id != TP_NO_CALLBACK && args->callback_id >= num_packets))
     {
-        status = wius_spi_await(WIUS_SPI_INST_0);
-        if (SL_STATUS_OK != status)
-        {
-            log_error("Error waiting for SPI recv complete: 0x%04X", (unsigned)status);
-            tp_buffer_return_writing(&tp_buf, slot_spi);
-            return status;
-        }
-
-        slot_spi->data[0] = shot_index & 0xFF;
-        slot_spi->data[1] = packet_group & 0xFF;
-        slot_spi->length = TP_BUFFER_SIZE;
-        tp_buffer_return_writing(&tp_buf, slot_spi);
-
-        if (callback_id != 65535 &&
-            packet_group == (uint16_t)(callback_id / TP_UDP_PACKET_AMT))
-        {
-            status = _tp_restore_callback_power(callback_powered_down);
-            if (SL_STATUS_OK != status)
-            {
-                return status;
-            }
-        }
-
-        if (packet_group != num_packet_groups - 1)
-        {
-            slot_spi = tp_buffer_claim_writing(&tp_buf);
-            if (NULL == slot_spi)
-            {
-                log_error("Error claiming buffer for write");
-                return SL_STATUS_FAIL;
-            }
-
-            status = tp_fpga_read_fifo(tx_dummy, slot_spi->data, TP_BUFFER_SIZE, false);
-            if (SL_STATUS_OK != status)
-            {
-                log_error("Error starting SPI recv: 0x%04X", (unsigned)status);
-                return status;
-            }
-        }
+        return methods_status_INVALID_ARGUMENT;
     }
 
-    return status;
-}
-
-static sl_status_t _tp_restore_callback_power(bool *callback_powered_down)
-{
-    if (!*callback_powered_down)
+    const bool external_mode = (mode & TP_FPGA_EXTERNAL_MODE) != 0U;
+    uint32_t capture_irq_config = irq_config & ~TP_FPGA_IRQ_SELECT_MASK;
+    if (external_mode)
     {
-        return SL_STATUS_OK;
+        capture_irq_config |= 1U; // Enable the external trigger input.
     }
-
-    sl_status_t status = tp_fpga_write_reg(16, 10);
-    if (SL_STATUS_OK != status)
+    status = _tp_acquire_shots(args, (uint16_t)num_packets, external_mode, capture_irq_config);
+    sl_status_t restore_status = tp_fpga_write_reg(irq_config, TP_FPGA_IRQ_CONFIG_REG);
+    if (status == SL_STATUS_OK)
     {
-        return status;
+        status = restore_status;
     }
-
-    tp_power_set(TP_POWER_DOMAIN_LVDS_2_5V, true);
-    *callback_powered_down = false;
-
-    return SL_STATUS_OK;
+    if (status != SL_STATUS_OK)
+    {
+        LOG_STATUS(status);
+        return status == SL_STATUS_TIMEOUT ? methods_status_TIMEOUT : methods_status_UNKNOWN_ERROR;
+    }
+    return methods_status_OK;
 }

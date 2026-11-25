@@ -8,6 +8,7 @@
  *
  * @author Cédric Hirschi, ETH Zürich
  * @author Sergei Vostrikov, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup tinyprobe
  *
@@ -31,141 +32,26 @@
 
 #include "common.h"
 
-/**
- * @brief FPGA initialization
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during writing to registers
- *
- * @note This function must be called before any other FPGA function
- *
- */
+/** Initialize and verify the FPGA configuration registers. */
 sl_status_t tp_fpga_init(void);
 
-/**
- * @brief Write to a register of the FPGA
- *
- * @param reg_value: Value to write to the register
- * @param reg_addr: Address of the register to write to
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during writing to registers
- *
- */
+/** Write a 32-bit FPGA register using 0x32. */
 sl_status_t tp_fpga_write_reg(uint32_t reg_value, uint8_t reg_addr);
 
-/**
- * @brief Write to a register of the FPGA and check if the write was successful
- *
- * @param reg_value: Value to write to the register
- * @param reg_addr: Address of the register to write to
- *
- * @retval SL_STATUS_OK: Success
- * @retval SL_STATUS_FAIL: Write was not successful
- * @retval other: Error during writing to registers
- *
- */
+/** Write a 32-bit FPGA register and verify its readback. */
 sl_status_t tp_fpga_write_reg_safe(uint32_t reg_value, uint8_t reg_addr);
 
-/**
- * @brief Write to the configuration register of the FPGA
- *
- * @param value: Value to write to the configuration register
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during writing to registers
- *
- */
-sl_status_t tp_fpga_write_cfg(uint8_t value);
+/** Read a 32-bit FPGA register using 0x4C. */
+sl_status_t tp_fpga_read_reg(uint8_t reg_addr, uint32_t *reg_value);
 
-/**
- * @brief Send a read register command to the FPGA
- *
- * @param reg_addr: Address of the register to read
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during writing to registers
- *
- */
-sl_status_t tp_fpga_send_read_reg_cmd(uint8_t reg_addr);
+/** Read whole 32-bit stream words using 0x6B. The receive buffer must be DMA-aligned. */
+sl_status_t tp_fpga_read_fifo(uint8_t *data, uint32_t length);
 
-/**
- * @brief Read from the FIFO of the FPGA
- *
- * @param tx_buf: Buffer to write to the FIFO
- * @param rx_buf: Buffer to read from the FIFO
- * @param len: Length of the buffer
- * @param wait: Wait for the transfer to finish
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during reading from the FIFO
- *
- */
-sl_status_t tp_fpga_read_fifo(uint8_t *tx_buf, uint8_t *rx_buf, uint32_t len, bool wait);
-
-/**
- * @brief Read from the configuration register of the FPGA
- *
- * @param value: Pointer to the value buffer
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during reading from the register
- *
- */
-sl_status_t tp_fpga_read_cfg(uint8_t *value);
-
-/**
- * @brief Send a command to the FPGA
- *
- * @param cmd: Command to send
- * @param answer: Pointer to the answer buffer
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during sending the command
- *
- */
-sl_status_t tp_fpga_send_cmd(uint8_t cmd, uint8_t *answer);
-
-/**
- * @brief Trigger a shot on the FPGA
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during triggering the shot
- *
- */
-sl_status_t tp_fpga_trigger_shot(void);
-
-/**
- * @brief Send a start command to the FPGA
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during sending the command
- *
- */
+/** Start an acquisition or arm the FPGA for external triggers. */
 sl_status_t tp_fpga_send_start(void);
 
-/**
- * @brief Reset the FIFO of the FPGA
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during resetting the FIFO
- *
- */
+/** Reset the acquisition FIFOs. */
 sl_status_t tp_fpga_reset_multififo(void);
 
-/**
- * @brief Empty the TX FIFO of the FPGA
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during emptying the TX FIFO
- *
- */
-sl_status_t tp_fpga_empty_tx(void);
-
-/**
- * @brief Enable the readout of the FPGA
- *
- * @retval SL_STATUS_OK: Success
- * @retval other: Error during enabling the readout
- *
- */
+/** Start moving the captured data to the SPI stream FIFO. */
 sl_status_t tp_fpga_en_read(void);

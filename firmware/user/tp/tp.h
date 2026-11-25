@@ -8,6 +8,7 @@
  *
  * @author Cédric Hirschi, ETH Zürich
  * @author Sergei Vostrikov, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup tinyprobe
  *
@@ -30,6 +31,7 @@
 #pragma once
 
 #include "common.h"
+#include "tp_mux.h"
 #include "wius_udp.h"
 #include "tp_buffer.h"
 
@@ -45,6 +47,9 @@ extern tp_buffer_t tp_buf; /**< Buffer for storing acquired data */
  *
  */
 sl_status_t tp_init(void);
+
+/** Select an SPI target and configure its SSI mode. */
+sl_status_t tp_spi_select(tp_mux_t target);
 
 /**
  * @brief TinyProbe main thread

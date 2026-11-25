@@ -8,6 +8,7 @@
  *
  * @author Cédric Hirschi, ETH Zürich
  * @author Sergei Vostrikov, ETH Zürich
+ * @author Lisa Maria Odermatt, ETH Zurich
  *
  * @ingroup tinyprobe
  *
@@ -31,24 +32,33 @@
 
 #include "wius_spi.h"
 
-// Generic commands
-#define SPI_READ_CFG 1
-#define SPI_WRITE_CFG 2
-#define SP_RD_FIFO 16
-#define SPI_WR_FIFO 17
+#define TP_FPGA_DUAL_SPI_WRITE_CMD 0x32U
+#define TP_FPGA_DUAL_SPI_READ_CMD 0x4CU
+#define TP_FPGA_DUAL_SPI_STREAM_READ_CMD 0x6BU
+#define TP_FPGA_STATUS_REG_ADDR 15U
+#define TP_FPGA_DUAL_SPI_PAYLOAD_BYTES 4U
+#define TP_FPGA_DUAL_SPI_READ_DUMMY_CLKS 10U
+#define TP_FPGA_DUAL_SPI_RX_SAMPLE_DELAY 0U
+#define TP_FPGA_DUAL_SPI_CS_SETTLE_MS 10U
+#define TP_FPGA_DUAL_SPI_WRITE_TIMEOUT_MS 100U
+#define TP_FPGA_DUAL_SPI_TRANSFER_TIMEOUT_MS 1000U
+#define TP_FPGA_DUAL_SPI_INTF_PLL_CLK 180000000UL
+#define TP_FPGA_DUAL_SPI_INTF_PLL_REF_CLK 40000000UL
+#define TP_FPGA_DUAL_SPI_SOC_PLL_CLK 20000000UL
+#define TP_FPGA_DUAL_SPI_SOC_PLL_REF_CLK 40000000UL
+#define TP_FPGA_DUAL_SPI_INTF_PLL_500_CTRL 0xD900UL
+#define TP_FPGA_DUAL_SPI_SOC_PLL_MM_COUNT 0xA4UL
+#define TP_FPGA_DUAL_SPI_DIVISION_FACTOR 90U
 
-#define SPI_DUMMY_ADDR 0
+static sl_ssi_handle_t tp_fpga_dual_spi_handle = NULL;
+// Command framing is retained by SSI until the shared peripheral is switched
+// to the conventional TX/AFE setup.
+static bool tp_fpga_dual_spi_framing_configured = false;
 
 // Commands for User logic (System controller)
-#define SYS_CTRL_CMD_DUMMY 0
 #define SYS_CTRL_CMD_START 1
 #define SYS_CTRL_CMD_RESET 2
 #define SYS_CTRL_CMD_RD_EN 3
-#define SYS_CTRL_CMD_ECHO 4
-
-// Commands for Memory Controller
-#define MEM_CTRL_WR_CMD 1
-#define MEM_CTRL_RD_CMD 0
 
 // Number of registers to configure to defaults on startup
 #define TP_NUM_DEFAULT_REGS 10
@@ -88,175 +98,328 @@ uint8_t default_registers[TP_NUM_DEFAULT_REGS] = {
     9,
     10};
 
-sl_status_t tp_fpga_read_fifo(uint8_t *tx_buf, uint8_t *rx_buf, uint32_t len, bool wait)
+static sl_status_t tp_fpga_dual_spi_configure(void)
 {
-    sl_status_t status = SL_STATUS_OK;
+    wius_spi_inst_t instance = wius_spi_get_instance(WIUS_SPI_INST_0);
+    if (instance.inst.ssi == NULL)
+    {
+        return SL_STATUS_INVALID_STATE;
+    }
 
-    tx_buf[0] = SP_RD_FIFO;
-    tx_buf[1] = SPI_DUMMY_ADDR;
+    // The generic SSI configuration remains standard because setting
+    // SPI_TRANSFER_MODE_DUAL there makes the SI91x SDK take ownership of the
+    // hardware CS pin.  GPIO 53 is deliberately firmware-owned.  The command
+    // configuration below supplies the actual dual-line payload phase.
+    const bool fpga_base_mode_already_active =
+        (instance.config.width == 8U) &&
+        (instance.config.mode == SL_SSI_PERIPHERAL_CPOL0_CPHA1) &&
+        (instance.config.freq == TP_FPGA_DUAL_SPI_BAUDRATE) &&
+        (instance.config.rx_sample_delay == TP_FPGA_DUAL_SPI_RX_SAMPLE_DELAY) &&
+        (instance.config.transfer_mode == SPI_TRANSFER_MODE_STANDARD);
 
-    LOG_RET_STATUS(wius_spi_xfer(WIUS_SPI_INST_0, tx_buf, rx_buf, len, wait));
+    // Program the SSI clock source on entry to an FPGA session. The baud rate
+    // is set separately when selecting the FPGA's base SSI mode.
+    if (!tp_fpga_dual_spi_framing_configured)
+    {
+        sl_ssi_clock_config_t clock_config = {
+            .soc_pll_mm_count_value = TP_FPGA_DUAL_SPI_SOC_PLL_MM_COUNT,
+            .intf_pll_500_control_value = TP_FPGA_DUAL_SPI_INTF_PLL_500_CTRL,
+            .intf_pll_clock = TP_FPGA_DUAL_SPI_INTF_PLL_CLK,
+            .intf_pll_reference_clock = TP_FPGA_DUAL_SPI_INTF_PLL_REF_CLK,
+            .soc_pll_clock = TP_FPGA_DUAL_SPI_SOC_PLL_CLK,
+            .soc_pll_reference_clock = TP_FPGA_DUAL_SPI_SOC_PLL_REF_CLK,
+            .division_factor = TP_FPGA_DUAL_SPI_DIVISION_FACTOR,
+        };
+
+        sl_status_t status = sl_si91x_ssi_configure_clock(&clock_config);
+        if (status != SL_STATUS_OK)
+        {
+            log_error("FPGA_REG: SSI clock configuration failed: 0x%lx", (unsigned long)status);
+            return status;
+        }
+    }
+
+    if (!fpga_base_mode_already_active)
+    {
+        wius_spi_config_t fpga_base_config = instance.config;
+        fpga_base_config.width = 8U;
+        fpga_base_config.mode = SL_SSI_PERIPHERAL_CPOL0_CPHA1;
+        fpga_base_config.freq = TP_FPGA_DUAL_SPI_BAUDRATE;
+        fpga_base_config.rx_sample_delay = TP_FPGA_DUAL_SPI_RX_SAMPLE_DELAY;
+        // Command/address remain single-line through the enhanced command
+        // configuration below; SSI_FRF_DUAL selects only the payload phase.
+        fpga_base_config.transfer_mode = SPI_TRANSFER_MODE_STANDARD;
+
+        sl_status_t status = wius_spi_reconfigure(WIUS_SPI_INST_0, &fpga_base_config);
+        if (status != SL_STATUS_OK)
+        {
+            log_error("FPGA_REG: SSI switch to Mode-1 FPGA base mode failed: 0x%lx", (unsigned long)status);
+            return status;
+        }
+
+        // A Mode-0/single-line user of the shared SSI peripheral invalidates
+        // the enhanced command framing used by the FPGA transaction.
+        tp_fpga_dual_spi_framing_configured = false;
+    }
+
+    tp_fpga_dual_spi_handle = instance.inst.ssi;
+    if (!tp_fpga_dual_spi_framing_configured)
+    {
+        sl_si91x_ssi_set_slave_number(SSI_SLAVE_0);
+
+        sl_status_t status = sl_si91x_ssi_command_config(tp_fpga_dual_spi_handle,
+                                                          SSI_INST_LEN_8_BITS,
+                                                          SSI_ADDR_LEN_24_BITS,
+                                                          SSI_FRF_DUAL,
+                                                          SSI_XFER_TYPE_INST_ADDR_STD);
+        if (status != SL_STATUS_OK)
+        {
+            log_error("FPGA_REG: SSI command framing failed: 0x%lx", (unsigned long)status);
+            return status;
+        }
+
+        tp_fpga_dual_spi_framing_configured = true;
+    }
+
+    return SL_STATUS_OK;
+}
+
+static sl_status_t tp_fpga_dual_spi_set_cs(bool active)
+{
+    sl_status_t status = wius_spi_set_cs(WIUS_SPI_INST_0, active);
+
+    // SSI_MASTER_Send/Receive_Command_Data reject a transfer with a mode
+    // fault when SER has no selected slave.  SER gates the SSI engine; GPIO 53
+    // remains the physical chip-select and is asserted or released above.
+    if (active && status == SL_STATUS_OK)
+    {
+        SSI0->SER |= (1UL << SSI_SLAVE_0);
+    }
+    else
+    {
+        SSI0->SER &= ~(1UL << SSI_SLAVE_0);
+    }
 
     return status;
+}
+
+static sl_status_t tp_fpga_dual_spi_wait_for_idle(uint32_t timeout_ms)
+{
+    uint32_t start_ms = time_ms();
+
+    while (sl_si91x_ssi_get_status(tp_fpga_dual_spi_handle).busy != 0U)
+    {
+        if ((time_ms() - start_ms) >= timeout_ms)
+        {
+            wius_spi_abort(WIUS_SPI_INST_0);
+            return SL_STATUS_TIMEOUT;
+        }
+    }
+
+    return SL_STATUS_OK;
+}
+
+static sl_status_t tp_fpga_dual_spi_send(const uint8_t *data, uint32_t length,
+                                         uint8_t command, uint32_t address)
+{
+    sl_status_t status = wius_spi_clear_completion(WIUS_SPI_INST_0);
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    status = tp_fpga_dual_spi_set_cs(true);
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    int32_t driver_status =
+        SSI_MASTER_Send_Command_Data((void *)data, length, command, address);
+    if (driver_status != ARM_DRIVER_OK)
+    {
+        log_warn("DUALSPI_REG: write driver status=%ld", (long)driver_status);
+        status = SL_STATUS_FAIL;
+    }
+    else
+    {
+        status = wius_spi_await_completion(WIUS_SPI_INST_0,
+                                           TP_FPGA_DUAL_SPI_TRANSFER_TIMEOUT_MS);
+        if (status == SL_STATUS_OK)
+        {
+            status = tp_fpga_dual_spi_wait_for_idle(TP_FPGA_DUAL_SPI_WRITE_TIMEOUT_MS);
+        }
+    }
+
+    sl_status_t cs_status = tp_fpga_dual_spi_set_cs(false);
+    return (status == SL_STATUS_OK) ? cs_status : status;
+}
+
+static sl_status_t tp_fpga_dual_spi_receive(uint8_t *data, uint32_t length,
+                                            uint8_t command, uint32_t address,
+                                            uint32_t dummy_clocks)
+{
+    sl_status_t status = wius_spi_clear_completion(WIUS_SPI_INST_0);
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    status = tp_fpga_dual_spi_set_cs(true);
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    delay_ms(TP_FPGA_DUAL_SPI_CS_SETTLE_MS);
+    int32_t driver_status = SSI_MASTER_Receive_Command_Data(data, length, command, address, dummy_clocks);
+    if (driver_status == ARM_DRIVER_OK)
+    {
+        status = wius_spi_await_completion(WIUS_SPI_INST_0,
+                                           TP_FPGA_DUAL_SPI_TRANSFER_TIMEOUT_MS);
+        if (status == SL_STATUS_OK)
+        {
+            status = tp_fpga_dual_spi_wait_for_idle(TP_FPGA_DUAL_SPI_WRITE_TIMEOUT_MS);
+        }
+    }
+    else
+    {
+        log_warn("DUALSPI_REG: read driver status=%ld", (long)driver_status);
+        status = SL_STATUS_FAIL;
+    }
+    delay_ms(TP_FPGA_DUAL_SPI_CS_SETTLE_MS);
+    sl_status_t cs_status = tp_fpga_dual_spi_set_cs(false);
+    return (status == SL_STATUS_OK) ? cs_status : status;
+}
+
+static uint32_t tp_fpga_dual_spi_decode_be_word(const uint8_t data[TP_FPGA_DUAL_SPI_PAYLOAD_BYTES])
+{
+    return ((uint32_t)data[0] << 24U) |
+           ((uint32_t)data[1] << 16U) |
+           ((uint32_t)data[2] << 8U) |
+           (uint32_t)data[3];
+}
+
+static sl_status_t tp_fpga_reg_write(uint8_t reg_addr, uint32_t reg_value)
+{
+    if (reg_addr >= TP_FPGA_STATUS_REG_ADDR)
+    {
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+
+    _Alignas(uint32_t) uint8_t data[TP_FPGA_DUAL_SPI_PAYLOAD_BYTES] = {
+        (uint8_t)(reg_value >> 24U),
+        (uint8_t)(reg_value >> 16U),
+        (uint8_t)(reg_value >> 8U),
+        (uint8_t)reg_value,
+    };
+
+    sl_status_t status = tp_fpga_dual_spi_configure();
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    return tp_fpga_dual_spi_send(data, sizeof(data), TP_FPGA_DUAL_SPI_WRITE_CMD, reg_addr);
+}
+
+static sl_status_t tp_fpga_reg_read(uint8_t reg_addr, uint32_t *reg_value)
+{
+    if ((reg_addr > TP_FPGA_STATUS_REG_ADDR) || (reg_value == NULL))
+    {
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+
+    _Alignas(uint32_t) uint8_t data[TP_FPGA_DUAL_SPI_PAYLOAD_BYTES] = {0};
+    sl_status_t status = tp_fpga_dual_spi_configure();
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    status = tp_fpga_dual_spi_receive(data, sizeof(data), TP_FPGA_DUAL_SPI_READ_CMD,
+                                      reg_addr, TP_FPGA_DUAL_SPI_READ_DUMMY_CLKS);
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    *reg_value = tp_fpga_dual_spi_decode_be_word(data);
+    return SL_STATUS_OK;
+}
+
+sl_status_t tp_fpga_read_reg(uint8_t reg_addr, uint32_t *reg_value)
+{
+    sl_status_t status = tp_fpga_reg_read(reg_addr, reg_value);
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+    // The first read after an address change can return the previous register.
+    return tp_fpga_reg_read(reg_addr, reg_value);
+}
+
+sl_status_t tp_fpga_read_fifo(uint8_t *data, uint32_t length)
+{
+    if (data == NULL || length == 0U || length % TP_FPGA_DUAL_SPI_PAYLOAD_BYTES != 0U ||
+        (uintptr_t)data % _Alignof(uint32_t) != 0U)
+    {
+        return SL_STATUS_INVALID_PARAMETER;
+    }
+
+    sl_status_t status = tp_fpga_dual_spi_configure();
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    // The stream address is currently unused by the RTL but remains a full
+    // 24-bit single-line address phase, just like a 0x4C register read.
+    status = tp_fpga_dual_spi_receive(data, length, TP_FPGA_DUAL_SPI_STREAM_READ_CMD,
+                                      0U, TP_FPGA_DUAL_SPI_READ_DUMMY_CLKS);
+    if (status != SL_STATUS_OK)
+    {
+        return status;
+    }
+
+    return SL_STATUS_OK;
 }
 
 sl_status_t tp_fpga_write_reg(uint32_t reg_value, uint8_t reg_addr)
 {
-    sl_status_t status = SL_STATUS_OK;
-    uint8_t tx_buf[8];
-
-    tx_buf[0] = SPI_WR_FIFO;
-    tx_buf[1] = SPI_DUMMY_ADDR;
-    tx_buf[2] = MEM_CTRL_WR_CMD;
-    tx_buf[3] = reg_addr;
-    memcpy(tx_buf + 4, &reg_value, 4);
-
-    LOG_RET_STATUS(wius_spi_send(WIUS_SPI_INST_0, tx_buf, 8, true));
-
-    return status;
-}
-
-sl_status_t tp_fpga_send_read_reg_cmd(uint8_t reg_addr)
-{
-    sl_status_t status = SL_STATUS_OK;
-    uint8_t tx_buf[8];
-
-    tx_buf[0] = SPI_WR_FIFO;
-    tx_buf[1] = SPI_DUMMY_ADDR;
-    tx_buf[2] = MEM_CTRL_RD_CMD;
-    tx_buf[3] = reg_addr;
-    memset(tx_buf + 4, 0, 4);
-
-    LOG_RET_STATUS(wius_spi_send(WIUS_SPI_INST_0, tx_buf, 8, true));
-
-    return status;
+    return tp_fpga_reg_write(reg_addr, reg_value);
 }
 
 sl_status_t tp_fpga_write_reg_safe(uint32_t reg_value, uint8_t reg_addr)
 {
-    sl_status_t status = SL_STATUS_OK;
-    static uint8_t tx_buf[8 + 2];
-    static uint8_t rx_buf[8 + 2];
-
-    LOG_RET_STATUS(tp_fpga_write_reg(reg_value, reg_addr));
-
-    LOG_RET_STATUS(tp_fpga_write_reg(0, 0));
-
-    LOG_RET_STATUS(tp_fpga_read_fifo(tx_buf, rx_buf, 8 + 2, true));
-
-    LOG_RET_STATUS(tp_fpga_send_read_reg_cmd(reg_addr));
-
-    LOG_RET_STATUS(tp_fpga_read_fifo(tx_buf, rx_buf, 8 + 2, true));
-
-    uint32_t reg_value_result = *((uint32_t *)(rx_buf + 2));
-
-    if (reg_value != reg_value_result)
+    sl_status_t status = tp_fpga_write_reg(reg_value, reg_addr);
+    if (status != SL_STATUS_OK)
     {
-        if (!TP_TEST_MODE)
-        {
-            log_error("Expected 0x%08lX, got 0x%08lX", reg_value, reg_value_result);
-            return SL_STATUS_FAIL;
-        }
-        else
-        {
-            log_warn("Expected 0x%08lX, got 0x%08lX", reg_value, reg_value_result);
-        }
-    }
-
-    return status;
-}
-
-sl_status_t tp_fpga_write_cfg(uint8_t value)
-{
-    sl_status_t status = SL_STATUS_OK;
-    static uint8_t tx_buf[2];
-
-    tx_buf[0] = SPI_WRITE_CFG;
-    tx_buf[1] = value;
-
-    status = wius_spi_send(WIUS_SPI_INST_0, tx_buf, 2, true);
-    if (SL_STATUS_OK != status)
-    {
-        log_error("SPI CFG write failed!");
         return status;
     }
 
-    return status;
-}
+    delay_ns(TP_FPGA_READBACK_TURNAROUND_DELAY_NS);
+    delay_ms(1U);
+    uint32_t readback = 0U;
+    LOG_RET_STATUS(tp_fpga_read_reg(reg_addr, &readback));
 
-sl_status_t tp_fpga_read_cfg(uint8_t *value)
-{
-    sl_status_t status = SL_STATUS_OK;
-    uint8_t tx_buf[3];
-    uint8_t rx_buf[3];
-
-    tx_buf[0] = SPI_READ_CFG;
-    tx_buf[1] = SPI_DUMMY_ADDR;
-    tx_buf[2] = 0;
-    *value = 0;
-
-    LOG_RET_STATUS(wius_spi_xfer(WIUS_SPI_INST_0, tx_buf, rx_buf, 3, true));
-
-    *value = rx_buf[2];
-
-    return status;
-}
-
-sl_status_t tp_fpga_send_cmd(uint8_t cmd, uint8_t *answer)
-{
-    sl_status_t status = SL_STATUS_OK;
-    uint8_t tx_buf[3];
-    uint8_t rx_buf[3];
-
-    tx_buf[0] = SPI_WR_FIFO;
-    tx_buf[1] = SPI_DUMMY_ADDR;
-    tx_buf[2] = cmd;
-    *answer = 0;
-
-    LOG_RET_STATUS(wius_spi_xfer(WIUS_SPI_INST_0, tx_buf, rx_buf, 3, true));
-
-    *answer = rx_buf[2];
-
-    return status;
+    if (readback != reg_value)
+    {
+        log_error("FPGA register %u: expected 0x%08lX, got 0x%08lX",
+                  (unsigned int)reg_addr, (unsigned long)reg_value, (unsigned long)readback);
+        return SL_STATUS_FAIL;
+    }
+    return SL_STATUS_OK;
 }
 
 sl_status_t tp_fpga_init(void)
 {
     sl_status_t status = SL_STATUS_OK;
-    uint8_t answer = 0;
-
-    LOG_RET_STATUS(tp_fpga_write_cfg(6));
-    delay_ns(TP_FPGA_SPI_DELAY_NS);
-    LOG_RET_STATUS(tp_fpga_read_cfg(&answer));
-    delay_ns(TP_FPGA_SPI_DELAY_NS);
-    if ((answer & 0b111) != 6)
-    {
-        log_warn("CFG reg expected 6, got %u", (answer & 0b111));
-        return SL_STATUS_BUS_ERROR;
-    }
-
     for (uint8_t i = 0; i < TP_NUM_DEFAULT_REGS; i++)
     {
         LOG_RET_STATUS(tp_fpga_write_reg_safe(default_values[i], default_registers[i]));
-        delay_ns(TP_FPGA_SPI_DELAY_NS);
-        // delay_ms(10);
+        delay_ms(1U);
     }
-
-    return status;
-}
-
-sl_status_t tp_fpga_trigger_shot(void)
-{
-    sl_status_t status = SL_STATUS_OK;
-
-    LOG_RET_STATUS(tp_fpga_write_reg(SYS_CTRL_CMD_RESET, 0));
-    delay_ns(TP_FPGA_SPI_DELAY_NS);
-    LOG_RET_STATUS(tp_fpga_write_reg(SYS_CTRL_CMD_START, 0));
-    delay_ns(TP_FPGA_SPI_DELAY_NS);
-    delay_ms(3);
-    LOG_RET_STATUS(tp_fpga_write_reg(SYS_CTRL_CMD_RD_EN, 0));
-    delay_ns(2400);
-
     return status;
 }
 
@@ -268,14 +431,6 @@ sl_status_t tp_fpga_send_start(void)
 sl_status_t tp_fpga_reset_multififo(void)
 {
     return tp_fpga_write_reg(SYS_CTRL_CMD_RESET, 0);
-}
-
-sl_status_t tp_fpga_empty_tx(void)
-{
-    uint8_t tx_buf[8 + 2] = {0};
-    uint8_t rx_buf[8 + 2] = {0};
-
-    return tp_fpga_read_fifo(tx_buf, rx_buf, 8 + 2, true);
 }
 
 sl_status_t tp_fpga_en_read(void)

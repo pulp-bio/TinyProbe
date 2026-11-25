@@ -33,6 +33,7 @@ module spi_quad_controller #(
     input  logic [31:0] sys_rd_data,
     input  logic        sys_rd_valid,
     output logic        sys_rd_ready,
+    output logic        stream_word_complete_toggle,
     output logic [7:0]  latched_cmd,
     output logic [3:0]  spi_pad_oe
 );
@@ -74,6 +75,15 @@ module spi_quad_controller #(
     assign sys_rd_ready = rd_ready_pending;
     assign load_en      = tx_load_pending;
     assign load_data    = tx_load_data;
+
+    // Commit on the final mode-1 sampling edge, not the leading load edge.
+    // Retain the event across CS so the transport sees it on its next clock.
+    always_ff @(negedge sclk or negedge sys_rst_n) begin
+        if (!sys_rst_n)
+            stream_word_complete_toggle <= 1'b0;
+        else if (!cs_n && state == DATA_TX && tx_done && is_read && !is_reg_read)
+            stream_word_complete_toggle <= ~stream_word_complete_toggle;
+    end
 
     always_comb begin
         state_next = state;

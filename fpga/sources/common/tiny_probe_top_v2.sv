@@ -77,6 +77,10 @@ module tiny_probe_top#(
     output logic tx_rst_o
 );
 
+    localparam int ACCUM_SAMPLE_WIDTH = 10;
+    localparam int ACCUM_SUM_WIDTH    = 13;
+    localparam int ACCUM_FRAME_WIDTH  = 2 * ACCUM_SUM_WIDTH;
+
     ///////////////////////////////// Buffers instantiation /////////////////////////////////
     // Reset
     logic rst_n;
@@ -96,12 +100,13 @@ module tiny_probe_top#(
     genvar i;
     // Generate for loop to instantiate lvds receiver for each lane
     for (i = 0; i < N_LVDS_LANES; i = i + 1) begin
-        ibuf_diff input_diff_data (
-            .pad_i      (afe_data_i[i]),
-            .pad_ni     (afe_data_ni[i]), 
-            // .en_i       (afe_rx_en[i]),
-            .d_o        (afe_bit_input[i])
-        )/* synthesis syn_keep=1 */;
+        // Preserve the physical data pads during fixed-result substitution.
+        // Apply noprune to the primitive itself, not the shared clock wrapper.
+        INBUF_DIFF input_diff_data (
+            .PADP       (afe_data_i[i]),
+            .PADN       (afe_data_ni[i]),
+            .Y          (afe_bit_input[i])
+        ) /* synthesis syn_noprune=1 */;
     end
 
     logic afe_frame_clock, afe_bit_clock;
@@ -291,8 +296,14 @@ module tiny_probe_top#(
     logic [15:0] sync_period;
     logic [15:0] start_cap_time;
     logic [15:0] capture_delay;
-    logic [15:0] n_shots;
+    logic [7:0] n_shots;
     logic fifo_reader_busy;
+    logic waveform_period_done;
+    logic accumulation_sequence_start;
+    logic accumulation_active;
+    logic accumulation_first_shot;
+    logic accumulation_final_shot;
+    logic [7:0] accumulation_count_q;
 
     logic [7:0]  tx_wake_up_time;
     logic [7:0]  tx_sleep_time;
@@ -307,7 +318,14 @@ module tiny_probe_top#(
     logic [15:0] afe_clk_on_time;
     logic [15:0] afe_data_acq_time; 
 
-    waveform_generator waveform_gen (
+    // The FSM wrapper is a port-compatible replacement for waveform_generator.
+    // It contains the original timing generator and applies the FSM-controlled
+    // output-register layer before driving the board-level waveform signals.
+    logic [ 2**CFG_REG_MEM_ADDR_SIZE - 1:0] [CFG_REG_WIDTH - 1:0] config_regs;
+    logic accumulation_done_afe;
+    logic [31:0] external_debug;
+    logic [31:0] external_input_debug;
+    waveform_generator_fsm waveform_gen (
         .clk_i                (core_clk),
 
         .rst_ni               (rst_n),
@@ -317,13 +335,28 @@ module tiny_probe_top#(
         .start_cap_time_i     (start_cap_time),
         .capture_delay_i      (capture_delay),
         .start_capture_i      (wave_gen_start_capt),
+        .oa_mode_i            (config_regs[12][24]),
+        .oa_pulse_width_cycles_i(config_regs[1][23:8]),
+        .external_mode_i      (config_regs[12][25]),
+        .external_trigger_i   (ext_trigger_i),
+        .external_sample_clk_i(afe_clk),
+        .capture_done_i       (accumulation_done_afe),
+        .abort_external_i     (config_regs[10][4] && config_regs[10][5]),
+        .external_debug_o     (external_debug),
+        .external_input_debug_o(external_input_debug),
+        .core_clk_fast_i      (config_regs[1][2]),
         .n_shots_i            (n_shots),
         .fifo_rd_busy_i       (fifo_reader_busy),
+        .period_done_o        (waveform_period_done),
 
         // RX FIFO control signals
         .fifo_start_capture_o (fifo_start_capt_wave_gen),
         .fifo_rst_o           (fifo_rst_wave_gen),
         .fifo_wr_en_o         (fifo_wr_en_wave_gen),
+        .accumulation_sequence_start_o (accumulation_sequence_start),
+        .accumulation_active_o         (accumulation_active),
+        .accumulation_first_shot_o     (accumulation_first_shot),
+        .accumulation_final_shot_o     (accumulation_final_shot),
 
         // TX chip signals
         .tx_wake_up_time_i    (tx_wake_up_time),
@@ -390,133 +423,500 @@ module tiny_probe_top#(
         .tgc_up_dn_o          (tgc_up_dn_o)
     );
 
-    ///////////////////////////////// RX FIFO /////////////////////////////////
-    logic [N_LVDS_LANES - 1: 0] fifos_empty;
-    logic [N_LVDS_LANES - 1: 0] fifos_read_req;
-    logic [N_LVDS_LANES * N_BITS_PER_FRAME - 1: 0] fifos_data_read;
+    ////////////////////// Circular accumulation and result FIFOs //////////////////////
+    logic [N_LVDS_LANES-1:0] afe_rx_en_reg;
 
-    // Temporary variable
-    logic wr_fifo_done;
+    // FSM controls are synchronized into the AFE frame-clock domain. They are
+    // stable for a complete shot; only rising edges are converted into pulses.
+    logic accumulation_active_meta, accumulation_active_afe;
+    logic accumulation_active_afe_q;
+    logic accumulation_first_meta, accumulation_first_afe;
+    logic accumulation_final_meta, accumulation_final_afe;
+    logic fifo_start_meta, fifo_start_afe, fifo_start_afe_q;
+    logic fifo_wr_en_meta, fifo_wr_en_afe;
+    logic accumulation_sequence_start_afe;
+    logic accumulation_shot_start_afe;
+    logic normal_debug_enable_meta, normal_debug_enable_afe;
+    logic pipeline_trace_enable_meta, pipeline_trace_enable_afe;
 
-    // Reset signal coming from the SPI slave IP
-    logic [N_LVDS_LANES - 1: 0] fifos_rst_spi;
-
-    // Declare a temporary loop variable
-    genvar i;
-    // Generate for loop to assign the same SW reset sinal to all the FIFOs
-    for (i = 0; i < (N_LVDS_LANES); i = i + 1) begin
-         assign fifos_rst_spi[i] = fifo_rst_wave_gen;
+    always_ff @(posedge afe_frame_clock or negedge rst_n) begin
+        if (!rst_n) begin
+            accumulation_active_meta  <= 1'b0;
+            accumulation_active_afe   <= 1'b0;
+            accumulation_active_afe_q <= 1'b0;
+            accumulation_first_meta   <= 1'b0;
+            accumulation_first_afe    <= 1'b0;
+            accumulation_final_meta   <= 1'b0;
+            accumulation_final_afe    <= 1'b0;
+            fifo_start_meta           <= 1'b0;
+            fifo_start_afe            <= 1'b0;
+            fifo_start_afe_q          <= 1'b0;
+            fifo_wr_en_meta           <= 1'b0;
+            fifo_wr_en_afe            <= 1'b0;
+            normal_debug_enable_meta  <= 1'b0;
+            normal_debug_enable_afe   <= 1'b0;
+            pipeline_trace_enable_meta <= 1'b0;
+            pipeline_trace_enable_afe  <= 1'b0;
+        end else begin
+            accumulation_active_meta  <= accumulation_active;
+            accumulation_active_afe   <= accumulation_active_meta;
+            accumulation_active_afe_q <= accumulation_active_afe;
+            accumulation_first_meta   <= accumulation_first_shot;
+            accumulation_first_afe    <= accumulation_first_meta;
+            accumulation_final_meta   <= accumulation_final_shot;
+            accumulation_final_afe    <= accumulation_final_meta;
+            fifo_start_meta           <= fifo_start_capt_wave_gen;
+            fifo_start_afe            <= fifo_start_meta;
+            fifo_start_afe_q          <= fifo_start_afe;
+            fifo_wr_en_meta           <= fifo_wr_en_wave_gen;
+            fifo_wr_en_afe            <= fifo_wr_en_meta;
+            normal_debug_enable_meta  <= config_regs[13][27];
+            normal_debug_enable_afe   <= normal_debug_enable_meta;
+            pipeline_trace_enable_meta <= config_regs[13][23];
+            pipeline_trace_enable_afe  <= pipeline_trace_enable_meta;
+        end
     end
 
-    // FIFO write enable 
-    logic [N_LVDS_LANES - 1: 0] fifos_wr_en;
-    // Stage-3A uses the real frame-clock write port of rx_fifo_v3 but
-    // replaces the waveform/AFE producer with a deterministic local source.
-    // It is selected exclusively by config-register 13 bit 28.
-    logic stage3_smoke_enable;
-    logic stage3_fifo_reset, stage3_start_capture;
-    logic stage3_req_seen, stage3_done;
+    assign accumulation_sequence_start_afe =
+        accumulation_active_afe && !accumulation_active_afe_q;
+    assign accumulation_shot_start_afe =
+        fifo_start_afe && !fifo_start_afe_q;
+
+    logic [N_LVDS_LANES-1:0] deep_fifo_empty;
+    logic [N_LVDS_LANES-1:0] deep_fifo_full;
+    logic [N_LVDS_LANES-1:0] deep_fifo_rd_en;
+    logic [N_LVDS_LANES-1:0] deep_fifo_data_valid;
+    logic [N_LVDS_LANES*ACCUM_FRAME_WIDTH-1:0] deep_fifo_rd_data;
+
+
+    logic accumulation_accept_afe;
+
+    // Stage-3A uses the real returned AFE frame clock and the production
+    // accumulation FIFO, but supplies deterministic lane-0 data. It is
+    // enabled only by register 13 bit 28, so normal acquisition is unchanged.
+    logic stage3_enable;
+    logic accumulation_test_enable;
+    logic stage3_fifo_reset;
+    logic stage3_start_capture;
+    logic stage3_first_shot;
+    logic [N_LVDS_LANES*N_BITS_PER_FRAME-1:0] stage3_fifo_data;
+    logic [N_LVDS_LANES-1:0] stage3_fifo_wr_en;
+    logic stage3_req_seen;
+    logic stage3_done;
     logic [2:0] stage3_state;
     logic [7:0] stage3_frame_gray;
-    logic stage3_enable_meta, stage3_enable_sync;
-    logic [READ_CNT_WIDTH - 1:0] stage3_wr_count_dbg, stage3_wr_count_gray;
-    logic stage3_start_asserted_dbg;
-    logic [N_LVDS_LANES * N_BITS_PER_FRAME - 1:0] stage3_fifo_data;
-    logic [N_LVDS_LANES - 1:0] stage3_fifo_wr_en;
-    logic [N_LVDS_LANES - 1:0] fifo_reset_i;
-    logic fifo_state_rst_ni, fifo_start_capture_i;
-    // Stream-path smoke-test source.  When config register 13 bit 31 is set,
-    // lane 0 receives a deterministic 20-bit sample on the *real* AFE frame
-    // clock/write-enable path.  This deliberately bypasses only afe_rx; the
-    // rx_fifo_v3, multi_fifo_reader, QSPI_STREAM_FIFO and 0x6B path remain
-    // exactly the production path.  All other lanes are held inactive.
-    logic stream_test_enable;
-    logic [N_LVDS_LANES * N_BITS_PER_FRAME - 1:0] fifo_data_i;
-    logic [N_LVDS_LANES - 1:0]                    fifo_wr_en_i;
+    logic stage3_enable_meta;
+    logic stage3_enable_sync;
+    logic stage3_start_seen_afe;
+    logic [READ_CNT_WIDTH-1:0] stage3_wr_count_q;
+    logic [READ_CNT_WIDTH-1:0] stage3_wr_count_gray;
 
-    always_comb begin
-        fifo_data_i  = data_fifo_write;
-        fifo_wr_en_i = fifos_wr_en;
-        if (stream_test_enable) begin
-            fifo_data_i  = '0;
-            fifo_data_i[0 +: N_BITS_PER_FRAME] = 20'hA5_3C9;
-            fifo_wr_en_i = '0;
-            fifo_wr_en_i[0] = fifos_wr_en[0];
-        end
-        if (stage3_smoke_enable) begin
-            fifo_data_i  = stage3_fifo_data;
-            fifo_wr_en_i = stage3_fifo_wr_en;
-        end
-    end
-
-    always_comb begin
-        fifo_reset_i        = fifos_rst_spi;
-        fifo_state_rst_ni   = !fifo_rst_wave_gen;
-        fifo_start_capture_i = fifo_start_capt_wave_gen;
-        if (stage3_smoke_enable) begin
-            fifo_reset_i         = {N_LVDS_LANES{stage3_fifo_reset}};
-            fifo_state_rst_ni    = !stage3_fifo_reset;
-            fifo_start_capture_i = stage3_start_capture;
-        end
-    end
-
-    rx_fifo_v3  #(
-        .N_FIFOS          (N_LVDS_LANES),
-        .DATA_WIDTH       (N_BITS_PER_FRAME),
-        .WRITE_CNT_WIDTH  (READ_CNT_WIDTH)
-    ) rf_data_fifo (
-        .rst_state_ni     (fifo_state_rst_ni), // Resets the rx_fifo_v3 capture state between shots
-        .rst_fifos_i      (fifo_reset_i), // Resets all internal FIFO write/read pointers
-
-        .write_cnt_i      (fifos_read_cnt), // Write the same number of samples which we will read
-        .wr_fifo_done_o   (wr_fifo_done),
-
-        .wr_clk_i         (afe_frame_clock),
-        .wr_en_i          (fifo_wr_en_i),
-        .data_i           (fifo_data_i),
-        .full_o           (),
-
-        // Keep this read port in the QSPI transport's 60 MHz domain.
-        .rd_clk_i         (afe_clk),
-        .rd_en_i          (fifos_read_req),
-        .data_o           (fifos_data_read),
-        .empty_o          (fifos_empty),
-
-        .start_capture_i  (fifo_start_capture_i),
-        .start_asserted_dbg_o(stage3_start_asserted_dbg),
-        .wr_count_dbg_o   (stage3_wr_count_dbg)
-    );
-
-    ///////////////////////////////// SPI slave /////////////////////////////////
-    logic [ 2**CFG_REG_MEM_ADDR_SIZE - 1:0] [CFG_REG_WIDTH - 1:0] config_regs;
-    // Runtime-only stream smoke-test controls default low after reset.  The
-    // Stage-3 mode is supplied as an explicit scalar by the QSPI transport,
-    // rather than being reconstructed from this packed register-array port.
-    assign stream_test_enable = config_regs[13][31];
+    logic [N_LVDS_LANES*N_BITS_PER_FRAME-1:0] accumulation_data;
+    logic [N_LVDS_LANES-1:0] accumulation_wr_en;
+    logic accumulation_first_shot_mux;
+    logic accumulation_start_capture_mux;
+    logic [N_LVDS_LANES-1:0] accumulation_fifo_reset;
 
     tp_stage3_capture_smoke #(
         .N_LANES      (N_LVDS_LANES),
         .SAMPLE_WIDTH (N_BITS_PER_FRAME)
-    ) i_stage3_capture_smoke (
-        .frame_clk_i      (afe_frame_clock),
-        .rst_ni           (rst_n),
-        .enable_i         (stage3_smoke_enable),
-        .wr_done_i        (wr_fifo_done),
-        .fifo_reset_o     (stage3_fifo_reset),
-        .start_capture_o  (stage3_start_capture),
-        .fifo_data_o      (stage3_fifo_data),
-        .fifo_wr_en_o     (stage3_fifo_wr_en),
-        .req_seen_o       (stage3_req_seen),
-        .done_o           (stage3_done),
-        .state_o          (stage3_state),
-        .frame_gray_o     (stage3_frame_gray),
-        .enable_meta_o    (stage3_enable_meta),
-        .enable_sync_o    (stage3_enable_sync)
+    ) stage3_capture_smoke (
+        .frame_clk_i       (afe_frame_clock),
+        .rst_ni            (rst_n),
+        .enable_i          (stage3_enable | accumulation_test_enable),
+        .wr_done_i         (accumulation_done_afe),
+        .sample_accepted_i (accumulation_accept_afe),
+        .fifo_reset_o      (stage3_fifo_reset),
+        .start_capture_o   (stage3_start_capture),
+        .first_shot_o      (stage3_first_shot),
+        .fifo_data_o       (stage3_fifo_data),
+        .fifo_wr_en_o      (stage3_fifo_wr_en),
+        .req_seen_o        (stage3_req_seen),
+        .done_o            (stage3_done),
+        .state_o           (stage3_state),
+        .frame_gray_o      (stage3_frame_gray),
+        .enable_meta_o     (stage3_enable_meta),
+        .enable_sync_o     (stage3_enable_sync)
     );
 
-    assign stage3_wr_count_gray = stage3_wr_count_dbg ^ (stage3_wr_count_dbg >> 1);
+    always_ff @(posedge afe_frame_clock or negedge rst_n) begin
+        if (!rst_n) begin
+            stage3_start_seen_afe <= 1'b0;
+            stage3_wr_count_q     <= '0;
+        end else if (!stage3_enable_sync || stage3_fifo_reset) begin
+            stage3_start_seen_afe <= 1'b0;
+            stage3_wr_count_q     <= '0;
+        end else begin
+            if (stage3_start_capture)
+                stage3_start_seen_afe <= 1'b1;
+            if (stage3_fifo_wr_en[0] && !accumulation_done_afe)
+                stage3_wr_count_q <= stage3_wr_count_q + 1'b1;
+        end
+    end
 
-    logic spi_ss_int_n, spi_io0_int, spi_io1_int, spi_io0_qspi, spi_io1_qspi, spi_clk_int;
+    assign stage3_wr_count_gray =
+        stage3_wr_count_q ^ (stage3_wr_count_q >> 1);
+
+    assign accumulation_data = stage3_enable_sync ?
+        stage3_fifo_data : data_fifo_write;
+    assign accumulation_wr_en = stage3_enable_sync ?
+        stage3_fifo_wr_en :
+        (afe_rx_en_reg & {N_LVDS_LANES{fifo_wr_en_afe}});
+    assign accumulation_first_shot_mux = stage3_enable_sync ?
+        stage3_first_shot : accumulation_first_afe;
+    assign accumulation_start_capture_mux = stage3_enable_sync ?
+        stage3_start_capture : fifo_start_afe;
+    assign accumulation_fifo_reset =
+        {N_LVDS_LANES{accumulation_sequence_start_afe | stage3_fifo_reset}};
+
+    logic [N_LVDS_LANES-1:0] average_fifo_full;
+    logic [N_LVDS_LANES-1:0] average_fifo_empty;
+    logic [N_LVDS_LANES-1:0] average_fifo_write;
+    logic [N_LVDS_LANES-1:0] average_fifo_read_req;
+    logic [N_LVDS_LANES*N_BITS_PER_FRAME-1:0] result_fifo_average_data;
+    logic [N_LVDS_LANES*N_BITS_PER_FRAME-1:0] averaged_frame_data;
+    logic result_processing_rst_n;
+    logic [2:0] result_reset_count_q;
+    logic averaging_frame_done_afe;
+
+    // CoreFIFO contains reset synchronizers for both clock domains. Stretch
+    // the sequence reset in the AFE domain so it cannot be missed as the old
+    // single-core-clock pulse could be.
+    always_ff @(posedge afe_frame_clock or negedge rst_n) begin
+        if (!rst_n)
+            result_reset_count_q <= 3'd7;
+        else if (accumulation_sequence_start_afe || stage3_fifo_reset)
+            result_reset_count_q <= 3'd7;
+        else if (result_reset_count_q != 0)
+            result_reset_count_q <= result_reset_count_q - 1'b1;
+    end
+
+    assign result_processing_rst_n =
+        rst_n && (result_reset_count_q == 0);
+
+    // The waveform generator supplies exactly the same controls used by
+    // rx_fifo_v3. accumulation owns the Libero FIFO bank and only changes the
+    // later-shot operation from a direct write to read/add/write.
+    accumulation #(
+        .N_FIFOS          (N_LVDS_LANES),
+        .SAMPLE_WIDTH     (ACCUM_SAMPLE_WIDTH),
+        .SUM_WIDTH        (ACCUM_SUM_WIDTH),
+        .WRITE_CNT_WIDTH  (READ_CNT_WIDTH),
+        .RAW_QUEUE_DEPTH  (4)
+    ) accumulation_fifo (
+        .rst_state_ni     (rst_n),
+        .rst_fifos_i      (accumulation_fifo_reset),
+        // Preserve the original rx_fifo_v3 contract: capture exactly the
+        // number of frames that the MCU later requests from the SPI reader.
+        .write_cnt_i      (fifos_read_cnt),
+        .wr_fifo_done_o   (accumulation_done_afe),
+        .wr_accept_o      (accumulation_accept_afe),
+        .data_i           (accumulation_data),
+        .first_shot_i     (accumulation_first_shot_mux),
+        .start_capture_i  (accumulation_start_capture_mux),
+        .wr_clk_i         (afe_frame_clock),
+        .wr_en_i          (accumulation_wr_en),
+        .full_o           (deep_fifo_full),
+        .rd_clk_i         (afe_frame_clock),
+        .rd_en_i          (deep_fifo_rd_en),
+        .data_o           (deep_fifo_rd_data),
+        .data_valid_o     (deep_fifo_data_valid),
+        .empty_o          (deep_fifo_empty)
+    );
+
+    // Arm only after the final shot has cleared the previous shot's sticky
+    // done level. This prevents the previous completion from starting a drain
+    // during the few AFE clocks needed to detect the final start pulse.
+    logic final_shot_seen_afe;
+    logic final_done_armed_afe;
+
+    always_ff @(posedge afe_frame_clock or negedge rst_n) begin
+        if (!rst_n) begin
+            final_shot_seen_afe <= 1'b0;
+            final_done_armed_afe <= 1'b0;
+        end else if (accumulation_sequence_start_afe) begin
+            final_shot_seen_afe <= 1'b0;
+            final_done_armed_afe <= 1'b0;
+        end else begin
+            if (accumulation_shot_start_afe && accumulation_final_afe) begin
+                final_shot_seen_afe <= 1'b1;
+                final_done_armed_afe <= 1'b0;
+            end
+            if (final_shot_seen_afe && !accumulation_done_afe)
+                final_done_armed_afe <= 1'b1;
+        end
+    end
+
+    genvar accum_lane;
+    generate
+        for (accum_lane = 0; accum_lane < N_LVDS_LANES;
+             accum_lane = accum_lane + 1) begin : gen_accumulation_fifos
+            // Store the complete averaged frame before allowing the MCU to
+            // start SPI readout. The former two-entry CDC buffer forced the
+            // reader and shared divider to run concurrently and starved SPI.
+            async_sym_fifo #(
+                .FIFO_DATA_WIDTH (N_BITS_PER_FRAME)
+            ) average_buffer (
+                .rst_i     (!result_processing_rst_n),
+                .wr_clk_i  (afe_frame_clock),
+                .wr_en_i   (average_fifo_write[accum_lane]),
+                .data_i    (averaged_frame_data[
+                     accum_lane*N_BITS_PER_FRAME +: N_BITS_PER_FRAME]),
+                .full_o    (average_fifo_full[accum_lane]),
+                // The stream reader generates rd_en and consumes empty/data
+                // on afe_clk. Keep the FIFO read port in that same domain so
+                // no unsynchronised request or response crosses core_clk.
+                .rd_clk_i  (afe_clk),
+                .rd_en_i   (average_fifo_read_req[accum_lane]),
+                .data_o    (result_fifo_average_data[
+                     accum_lane*N_BITS_PER_FRAME +: N_BITS_PER_FRAME]),
+                .data_valid_o (),
+                .empty_o   (average_fifo_empty[accum_lane])
+            );
+        end
+    endgenerate
+
+    logic [2:0] average_debug_state;
+    logic [3:0] average_debug_lane;
+    logic [READ_CNT_WIDTH-1:0] average_debug_lane_count;
+    logic average_debug_enable;
+    logic average_debug_divider_busy;
+    logic average_debug_divider_start;
+    logic average_debug_divider_done;
+    logic [7:0] average_debug_event_sticky_afe_q;
+    logic [31:0] average_engine_debug_status;
+    logic [31:0] average_fifo_debug_status;
+    logic [N_BITS_PER_FRAME-1:0] pipeline_trace_shot1_q [0:15];
+    logic [N_BITS_PER_FRAME-1:0] pipeline_trace_shot2_q [0:15];
+    logic [ACCUM_FRAME_WIDTH-1:0] pipeline_trace_sum_q [0:15];
+    logic [N_BITS_PER_FRAME-1:0] pipeline_trace_average_q [0:15];
+    logic [4:0] pipeline_trace_shot1_count_q;
+    logic [4:0] pipeline_trace_shot2_count_q;
+    logic [4:0] pipeline_trace_sum_count_q;
+    logic [4:0] pipeline_trace_average_count_q;
+    logic [31:0] pipeline_trace_data;
+
+    result_average_engine #(
+        .N_LANES      (N_LVDS_LANES),
+        .SAMPLE_WIDTH (ACCUM_SAMPLE_WIDTH),
+        .SUM_WIDTH    (ACCUM_SUM_WIDTH),
+        .COUNT_WIDTH  (8)
+    ) average_engine (
+        .clk_i                (afe_frame_clock),
+        // Abort any unfinished drain/divide operation when a new acquisition
+        // clears the associated accumulation and result buffers.
+        .rst_ni               (result_processing_rst_n),
+        .enable_i             (stage3_enable_sync ? stage3_done :
+                               (final_done_armed_afe && accumulation_done_afe)),
+        .accumulation_count_i (stage3_enable_sync ? 8'd2 : accumulation_count_q),
+        .samples_per_lane_i   (fifos_read_cnt),
+        .lanes_enable_i       (stage3_enable_sync ? {{(N_LVDS_LANES-1){1'b0}}, 1'b1} :
+                               result_lane_enable_q),
+        .frame_done_o         (averaging_frame_done_afe),
+        .sum_empty_i          (deep_fifo_empty),
+        .sum_data_valid_i     (deep_fifo_data_valid),
+        .sum_data_i           (deep_fifo_rd_data),
+        .sum_read_o           (deep_fifo_rd_en),
+        .average_full_i       (average_fifo_full),
+        .average_write_o      (average_fifo_write),
+        .average_data_o       (averaged_frame_data),
+        .debug_state_o        (average_debug_state),
+        .debug_lane_o         (average_debug_lane),
+        .debug_lane_write_count_o(average_debug_lane_count),
+        .debug_enable_o       (average_debug_enable),
+        .debug_divider_busy_o (average_debug_divider_busy),
+        .debug_divider_start_o(average_debug_divider_start),
+        .debug_divider_done_o (average_debug_divider_done)
+    );
+
+
+    always_ff @(posedge afe_frame_clock or negedge rst_n) begin
+        if (!rst_n) begin
+            pipeline_trace_shot1_count_q <= '0;
+            pipeline_trace_shot2_count_q <= '0;
+            pipeline_trace_sum_count_q <= '0;
+            pipeline_trace_average_count_q <= '0;
+        end else if (accumulation_sequence_start_afe) begin
+            pipeline_trace_shot1_count_q <= '0;
+            pipeline_trace_shot2_count_q <= '0;
+            pipeline_trace_sum_count_q <= '0;
+            pipeline_trace_average_count_q <= '0;
+        end else if (pipeline_trace_enable_afe) begin
+            if (accumulation_accept_afe && accumulation_wr_en[0]) begin
+                if (accumulation_first_shot_mux &&
+                    pipeline_trace_shot1_count_q < 5'd16) begin
+                    pipeline_trace_shot1_q[pipeline_trace_shot1_count_q[3:0]] <=
+                        accumulation_data[0 +: N_BITS_PER_FRAME];
+                    pipeline_trace_shot1_count_q <= pipeline_trace_shot1_count_q + 1'b1;
+                end else if (!accumulation_first_shot_mux &&
+                             pipeline_trace_shot2_count_q < 5'd16) begin
+                    pipeline_trace_shot2_q[pipeline_trace_shot2_count_q[3:0]] <=
+                        accumulation_data[0 +: N_BITS_PER_FRAME];
+                    pipeline_trace_shot2_count_q <= pipeline_trace_shot2_count_q + 1'b1;
+                end
+            end
+            if (average_debug_enable && deep_fifo_data_valid[0] &&
+                pipeline_trace_sum_count_q < 5'd16) begin
+                pipeline_trace_sum_q[pipeline_trace_sum_count_q[3:0]] <=
+                    deep_fifo_rd_data[0 +: ACCUM_FRAME_WIDTH];
+                pipeline_trace_sum_count_q <= pipeline_trace_sum_count_q + 1'b1;
+            end
+            if (average_fifo_write[0] &&
+                pipeline_trace_average_count_q < 5'd16) begin
+                pipeline_trace_average_q[pipeline_trace_average_count_q[3:0]] <=
+                    averaged_frame_data[0 +: N_BITS_PER_FRAME];
+                pipeline_trace_average_count_q <= pipeline_trace_average_count_q + 1'b1;
+            end
+        end
+    end
+
+    always_comb begin
+        pipeline_trace_data = '0;
+        unique case (config_regs[13][5:4])
+            2'd0: pipeline_trace_data[N_BITS_PER_FRAME-1:0] =
+                      pipeline_trace_shot1_q[config_regs[13][3:0]];
+            2'd1: pipeline_trace_data[N_BITS_PER_FRAME-1:0] =
+                      pipeline_trace_shot2_q[config_regs[13][3:0]];
+            2'd2: pipeline_trace_data[ACCUM_FRAME_WIDTH-1:0] =
+                      pipeline_trace_sum_q[config_regs[13][3:0]];
+            2'd3: pipeline_trace_data[N_BITS_PER_FRAME-1:0] =
+                      pipeline_trace_average_q[config_regs[13][3:0]];
+            default: pipeline_trace_data = 32'hffff_ffff;
+        endcase
+    end
+
+    // Latch the divisor and enabled lanes for the complete sequence. The
+    // sticky result-ready indication crosses into the core-clock domain only
+    // after every requested sample for every enabled lane has been averaged.
+    logic results_ready;
+    logic [N_LVDS_LANES-1:0] result_lane_enable_q;
+    logic averaging_done_meta;
+    logic averaging_done_core;
+    logic accumulation_test_enable_q;
+    logic accumulation_test_armed_q;
+    logic normal_result_pending_q;
+    logic normal_result_armed_q;
+    logic [6:0] normal_debug_sticky_afe_q;
+    logic [7:0] normal_debug_status;
+
+    // Register 13 bit 27 enables normal-acquisition observability. Short
+    // frame-domain events are made sticky before crossing to the transport
+    // clock, so a slow register read cannot miss them. Bit layout at status F:
+    // [7] sequence start, [6] FIFO start, [5] FIFO write enable,
+    // [4] accumulation done, [3] final shot seen, [2] final done armed,
+    // [1] averaging done, [0] results ready.
+    always_ff @(posedge afe_frame_clock or negedge rst_n) begin
+        if (!rst_n) begin
+            normal_debug_sticky_afe_q <= '0;
+            average_debug_event_sticky_afe_q <= '0;
+        end else if (!normal_debug_enable_afe) begin
+            normal_debug_sticky_afe_q <= '0;
+            average_debug_event_sticky_afe_q <= '0;
+        end else begin
+            normal_debug_sticky_afe_q[6] <= normal_debug_sticky_afe_q[6] |
+                                             accumulation_sequence_start_afe;
+            normal_debug_sticky_afe_q[5] <= normal_debug_sticky_afe_q[5] |
+                                             accumulation_shot_start_afe;
+            normal_debug_sticky_afe_q[4] <= normal_debug_sticky_afe_q[4] |
+                                             fifo_wr_en_afe;
+            normal_debug_sticky_afe_q[3] <= normal_debug_sticky_afe_q[3] |
+                                             accumulation_done_afe;
+            normal_debug_sticky_afe_q[2] <= normal_debug_sticky_afe_q[2] |
+                                             final_shot_seen_afe;
+            normal_debug_sticky_afe_q[1] <= normal_debug_sticky_afe_q[1] |
+                                             final_done_armed_afe;
+            normal_debug_sticky_afe_q[0] <= normal_debug_sticky_afe_q[0] |
+                                             averaging_frame_done_afe;
+            average_debug_event_sticky_afe_q[0] <=
+                average_debug_event_sticky_afe_q[0] | average_debug_enable;
+            average_debug_event_sticky_afe_q[1] <=
+                average_debug_event_sticky_afe_q[1] | (|deep_fifo_rd_en);
+            average_debug_event_sticky_afe_q[2] <=
+                average_debug_event_sticky_afe_q[2] | (|deep_fifo_data_valid);
+            average_debug_event_sticky_afe_q[3] <=
+                average_debug_event_sticky_afe_q[3] | average_debug_divider_start;
+            average_debug_event_sticky_afe_q[4] <=
+                average_debug_event_sticky_afe_q[4] | average_debug_divider_done;
+            average_debug_event_sticky_afe_q[5] <=
+                average_debug_event_sticky_afe_q[5] | (|average_fifo_write);
+            average_debug_event_sticky_afe_q[6] <=
+                average_debug_event_sticky_afe_q[6] | (|average_fifo_full);
+            average_debug_event_sticky_afe_q[7] <=
+                average_debug_event_sticky_afe_q[7] | averaging_frame_done_afe;
+        end
+    end
+
+    assign normal_debug_status = {normal_debug_sticky_afe_q, results_ready};
+    assign average_engine_debug_status = {
+        8'hd5, average_debug_enable, average_debug_divider_busy,
+        average_debug_state, average_debug_lane,
+        // Page 1 bits 14:12 expose the core-domain completion handshake.
+        normal_result_pending_q, normal_result_armed_q, averaging_done_core,
+        average_debug_lane_count
+    };
+    assign average_fifo_debug_status = {average_fifo_full, deep_fifo_empty};
+
+    always_ff @(posedge core_clk or negedge rst_n) begin
+        if (!rst_n) begin
+            accumulation_count_q     <= '0;
+            result_lane_enable_q     <= '0;
+            results_ready            <= 1'b0;
+            averaging_done_meta       <= 1'b0;
+            averaging_done_core       <= 1'b0;
+            accumulation_test_enable_q <= 1'b0;
+            accumulation_test_armed_q <= 1'b0;
+            normal_result_pending_q <= 1'b0;
+            normal_result_armed_q <= 1'b0;
+        end else begin
+            averaging_done_meta <= averaging_frame_done_afe;
+            averaging_done_core <= averaging_done_meta;
+            accumulation_test_enable_q <= accumulation_test_enable;
+            if (accumulation_test_enable) begin
+                normal_result_pending_q <= 1'b0;
+                normal_result_armed_q <= 1'b0;
+            end
+            if (accumulation_test_enable && !accumulation_test_enable_q) begin
+                accumulation_count_q <= 8'd2;
+                result_lane_enable_q <= {{(N_LVDS_LANES-1){1'b0}}, 1'b1};
+                // Do not accept a stale frame_done level from the preceding
+                // acquisition. Arm only after this diagnostic's reset has
+                // propagated a low level through the synchronizer.
+                accumulation_test_armed_q <= 1'b0;
+                results_ready <= 1'b0;
+            end else if (accumulation_test_enable) begin
+                if (!averaging_done_core) begin
+                    accumulation_test_armed_q <= 1'b1;
+                    results_ready <= 1'b0;
+                end else if (accumulation_test_armed_q) begin
+                    results_ready <= 1'b1;
+                end
+            end else if (accumulation_sequence_start) begin
+                accumulation_count_q <= n_shots;
+                result_lane_enable_q <= afe_rx_en_reg;
+                accumulation_test_armed_q <= 1'b0;
+                results_ready        <= 1'b0;
+                normal_result_pending_q <= 1'b1;
+                normal_result_armed_q <= 1'b0;
+            end else if (normal_result_pending_q) begin
+                // The previous completion may remain high until the AFE-domain
+                // reset has crossed back through the two-flop synchronizer.
+                // Require a low level after start before accepting completion.
+                if (!averaging_done_core)
+                    normal_result_armed_q <= 1'b1;
+                else if (normal_result_armed_q) begin
+                    results_ready <= 1'b1;
+                    normal_result_pending_q <= 1'b0;
+                    normal_result_armed_q <= 1'b0;
+                end
+            end
+        end
+    end
+
+    ///////////////////////////////// SPI slave /////////////////////////////////
+
+
+    logic spi_ss_int_n, spi_io0_int, spi_io1_int;
+    logic spi_io0_qspi, spi_io1_qspi, spi_clk_int;
     logic [1:0] spi_pad_oe_qspi;
     logic [N_LVDS_LANES - 1:0] fifos_en;
     // Indicates how much input samples to acquire from every activ FIFO
@@ -539,9 +939,9 @@ module tiny_probe_top#(
         // GL1 / afe_clk is forced to 60 MHz below during QSPI bring-up.
         .core_clk_i          (afe_clk),
         .rst_ni              (rst_n),
-        .fifos_empty_i       (fifos_empty),
-        .fifos_data_i        (fifos_data_read),
-        .fifos_read_req_o    (fifos_read_req),
+        .fifos_empty_i       (average_fifo_empty),
+        .fifos_data_i        (result_fifo_average_data),
+        .fifos_read_req_o    (average_fifo_read_req),
         .fifos_en_i          (fifos_en),
         .read_cnt_i          (fifos_read_cnt),
         .stage3_frame_gray_i (stage3_frame_gray),
@@ -549,13 +949,20 @@ module tiny_probe_top#(
         .stage3_enable_sync_i(stage3_enable_sync),
         .stage3_wr_count_gray_i(stage3_wr_count_gray),
         .stage3_req_seen_i   (stage3_req_seen),
-        .stage3_start_asserted_i(stage3_start_asserted_dbg),
+        .stage3_start_asserted_i(stage3_start_seen_afe),
         .stage3_wr_done_i    (stage3_done),
-        .stage3_lane0_nonempty_i(!fifos_empty[0]),
+        .stage3_lane0_nonempty_i(!deep_fifo_empty[0]),
         .stage3_state_i      (stage3_state),
+        .normal_debug_i      (normal_debug_status),
+        .average_engine_debug_i(average_engine_debug_status),
+        .average_fifo_debug_i(config_regs[12][25] ?
+            (config_regs[13][22] ? external_input_debug : external_debug) : average_fifo_debug_status),
+        .average_event_debug_i(average_debug_event_sticky_afe_q),
+        .pipeline_trace_data_i(pipeline_trace_data),
         .fifo_reader_busy_o  (fifo_reader_busy),
         .capture_start_o     (start_capture_spi),
-        .stage3_enable_o     (stage3_smoke_enable),
+        .stage3_enable_o     (stage3_enable),
+        .accumulation_test_enable_o(accumulation_test_enable),
         .config_regs_o       (config_regs)
     );
 
@@ -575,8 +982,8 @@ module tiny_probe_top#(
     localparam WAVEFORM_GEN_REG_5 = 12;
     localparam EXT_INT_TRIG_REG   = 13;
 
-    // The signals enables LVDS lanes at receive
-    logic [N_LVDS_LANES - 1:0] afe_rx_en_reg;
+    // The signals enabling the LVDS receivers are declared with the
+    // accumulation datapath above because they also gate accumulator lanes.
     // Priority signal to enable clock for TX and AFE (required for initialization)
     logic afe_clk_buf_en_mux_ctrl, tx_clk_buf_en_mux_ctrl;
 
@@ -594,7 +1001,10 @@ module tiny_probe_top#(
     assign pll_afe_clk_mux_ctrl  = 1'b1;
     assign pll_core_clk_mux_ctrl = config_regs[PLL_CONFIG_REG][2];
 
-    assign pll_tx_bf_clk_en      = config_regs[PLL_CONFIG_REG][3] ? tx_clk_buf_en_wave_gen : config_regs[PLL_CONFIG_REG][4];
+    // Keep GL0 / tx_bf_clk continuously enabled during QSPI bring-up.  Driving
+    // the FCCC clock-gate enable from the 60 MHz register domain creates a
+    // timing-critical clock-control crossing into the 100 MHz TX clock.
+    assign pll_tx_bf_clk_en      = 1'b1;
     // GL1 is now the QSPI transport core clock as well as the AFE clock;
     // keep its global buffer enabled independently of reset register values.
     assign pll_afe_clk_en        = 1'b1;
@@ -645,12 +1055,22 @@ module tiny_probe_top#(
     // If Bit 4 is 1 then Bit 5 controls global power down. Otherwise - fast_pdn output of the waveform generator.
     assign afe_glb_pdn_o     = config_regs[AFE_TX_RST_REG][4] ? config_regs[AFE_TX_RST_REG][5] : afe_fast_pdn_wave_gen;
     // TX TR_EN mux control
-    // If Bit 6 is 1 then Bit 7 controls TR_EN. Otherwise - tx_tr_en_wave_gen output of the waveform generator.
-    assign tx_tr_en_o        = config_regs[AFE_TX_RST_REG][6] ? config_regs[AFE_TX_RST_REG][7] : tx_tr_en_wave_gen;
+    // OA (register 12 bit 24) holds the physical pin low, including refresh
+    // pulses and the manual override. Configure the mode before acquisition.
+    // In US, Bit 6 selects Bit 7 or the waveform generator as before.
+    assign tx_tr_en_o        = (config_regs[12][24] || config_regs[12][25]) ? 1'b0 :
+                              (config_regs[AFE_TX_RST_REG][6] ? config_regs[AFE_TX_RST_REG][7] : tx_tr_en_wave_gen);
 
     // REG 11
     assign start_cap_time    = config_regs[WAVEFORM_GEN_REG_4][31:16];
-    assign n_shots           = config_regs[WAVEFORM_GEN_REG_4][15:0];
+    // Old-MCU compatibility mode: register 11 remains accessible, but its
+    // low byte cannot change acquisition behavior in this bitstream.
+    // assign n_shots = 8'd1;
+    // to get the new number of accumulations from the user
+    // if zero no division by zero is allowed, so we will use 1 instead
+    // US and OA use the same accumulation count; pulse mode changes width only.
+    assign n_shots =
+        ((config_regs[WAVEFORM_GEN_REG_4][7:0] == 8'd0) ? 8'd1 : config_regs[WAVEFORM_GEN_REG_4][7:0]);
 
     // REG 12
     assign tr_en_period      = config_regs[WAVEFORM_GEN_REG_5][15:0];
@@ -665,7 +1085,7 @@ module tiny_probe_top#(
     ///////////////////////////////// OUTPUT trigger / MCU interrupt / INPUT trigger multiplexing  /////////////////////////////////
 
     // MCU interrupt Multiplexer
-    localparam MCU_INT_FIFO_WR_DONE = 2'b00,
+    localparam MCU_INT_RESULTS_READY = 2'b00,
                MCU_INT_AFE_TX_TRIG  = 2'b01,
                MCU_INT_TX_BF_SYNC   = 2'b10,
                MCU_INT_EXT_TRIG     = 2'b11;
@@ -674,11 +1094,14 @@ module tiny_probe_top#(
 
         if (pll_mcu_ctrl_active) begin
             mcu_int_o = pll_lock; 
+        end else if (config_regs[12][25] && config_regs[13][27] && config_regs[13][21]) begin
+            // External diagnostic only: validate the physical MCU interrupt path.
+            mcu_int_o = config_regs[13][20];
         end else begin
             unique case (mcu_int_mux_ctrl)
 
-                MCU_INT_FIFO_WR_DONE: begin
-                    mcu_int_o = wr_fifo_done;
+                MCU_INT_RESULTS_READY: begin
+                    mcu_int_o = results_ready;
                 end
 
                 MCU_INT_AFE_TX_TRIG: begin
@@ -693,43 +1116,30 @@ module tiny_probe_top#(
                     mcu_int_o = ext_trigger_i;
                 end
 
-                default: mcu_int_o = wr_fifo_done;
+                default: mcu_int_o = results_ready;
             endcase 
         end
     end
 
     // Output trigger multiplexing
-
-    localparam TRIG_OUT_TX_BF_SYNC   = 2'b00,
-               TRIG_OUT_AFE_TX_TRIG  = 2'b01,
-               TRIG_OUT_PLL_LOCK     = 2'b10,
-               TRIG_OUT_FIFO_WR_DONE = 2'b11;
+    localparam TRIG_OUT_TX_BF_SYNC = 2'b00,
+               TRIG_OUT_AFE_TX_TRIG = 2'b01,
+               TRIG_OUT_PLL_LOCK = 2'b10,
+               TRIG_OUT_RESULTS_READY = 2'b11;
 
     always_comb begin
         unique case (trig_out_mux_ctrl)
-
-            TRIG_OUT_TX_BF_SYNC: begin
-                trigger_o = tx_bf_sync;
-            end
-
-            TRIG_OUT_AFE_TX_TRIG: begin
-                trigger_o = afe_tx_trig;
-            end
-
-            TRIG_OUT_PLL_LOCK: begin
-                trigger_o = pll_lock;
-            end
-
-            TRIG_OUT_FIFO_WR_DONE: begin
-                trigger_o = wr_fifo_done;
-            end
-
+            TRIG_OUT_TX_BF_SYNC: trigger_o = tx_bf_sync;
+            TRIG_OUT_AFE_TX_TRIG: trigger_o = afe_tx_trig;
+            TRIG_OUT_PLL_LOCK: trigger_o = pll_lock;
+            TRIG_OUT_RESULTS_READY: trigger_o = results_ready;
             default: trigger_o = tx_bf_sync;
         endcase
     end
 
     // Multiplexing the Input trigger signal (Either in SW or via external signal)
-    assign wave_gen_start_capt = ext_trigger_en ? ext_trigger_i : start_capture_spi;
+    assign wave_gen_start_capt = config_regs[12][25] ? start_capture_spi :
+        (ext_trigger_en ? ext_trigger_i : start_capture_spi);
 
     ///////////////////////////////// Buffers enable and other control signals /////////////////////////////////
 
@@ -746,9 +1156,6 @@ module tiny_probe_top#(
     genvar l;
     // Generate for loop for connecting the control signals 
     for (l = 0; l < N_LVDS_LANES; l = l + 1) begin
-        // Enable individual FIFO write if the register value is assigned and waveform generator
-        // write enable signal is active
-        assign fifos_wr_en[l] = afe_rx_en_reg[l] && fifo_wr_en_wave_gen;
         // If AFE clock is enabled then enable LVDS lanes specified by the register are enabled
         assign afe_rx_en[l] = (afe_clk_buf_en) ? afe_rx_en_reg[l] : '0;
     end
@@ -815,5 +1222,4 @@ module tiny_probe_top#(
         .spi_cs_tx_no       (spi_cs_tx_no),
         .spi_cs_afe_no      (spi_cs_afe_no)
     );
-
 endmodule
